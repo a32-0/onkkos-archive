@@ -114,16 +114,28 @@ locks.
 
 ## Checked when the deployment is set up
 
-Two limits of Vercel Hobby are read from Vercel's own documentation by the task
-that creates the projects, not assumed here:
+Two limits of Vercel Hobby were read from Vercel's own documentation by the
+task that creates the projects (T-03, on 2026-10-08), not assumed here:
 
 - **A function's longest run.** A new read can take the fifteen-second wait for
-  another instance's lock and then DE's fifteen-second timeout. If Hobby's
-  limit is shorter than that sum, the two waits shrink to fit inside it, and
-  part 2 records the new values.
-- **Deployment Protection on previews.** If previews answer `smoke.yml` with a
-  login wall, the workflow uses Vercel's bypass for automation where Hobby
-  offers it, or runs against production only.
+  another instance's lock and then DE's fifteen-second timeout, thirty seconds
+  in all. On Hobby a Node.js function runs for 300 seconds by default and at
+  most, with fluid compute, which new projects have on by default
+  ([Vercel: function limitations, max duration](https://vercel.com/docs/functions/limitations#max-duration);
+  [fluid compute, default settings by plan](https://vercel.com/docs/fluid-compute#default-settings-by-plan)).
+  Thirty seconds fits inside it, so the two waits stay as part 2 sets them and
+  no route sets `maxDuration`.
+- **Deployment Protection on previews.** Vercel Authentication with Standard
+  Protection is available on Hobby and, when on, puts every deployment but the
+  production domains behind Vercel's login
+  ([Vercel: Deployment Protection](https://vercel.com/docs/deployment-protection#standard-protection);
+  [Vercel Authentication](https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/vercel-authentication)).
+  Protection Bypass for Automation is available on all plans: a secret sent as
+  the `x-vercel-protection-bypass` header passes the login
+  ([Vercel: Protection Bypass for Automation](https://vercel.com/docs/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation)).
+  The owner keeps previews protected; `smoke.yml` then sends that header,
+  its secret held in the repository's Actions secrets by the owner (T-30).
+  That secret is `smoke.yml`'s only one; `check.yml` still holds none.
 
 ## Divergences from the code
 
