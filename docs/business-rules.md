@@ -807,6 +807,29 @@ settled where the frames disagreed with each other or with the docs.
   as BR-17's table draws them. The Cards frame shows every catalogue's hero
   for its kicker, name and art; its badge position is not followed.
 
+## The mark: settled on 2026-10-07
+
+### BR-58 · The quill is the app's own mark
+
+- Settled by the owner on 2026-10-07, after asking whether the game's art and
+  the logo may be used.
+- Type: content.
+- Rule: the mark beside "Onkko's Archive" is the app's own quill, one vector
+  path on a 96 × 144 box in `--brand`. It is not the emblem of The Quills, the
+  game's art the frames first drew there.
+- Why: Digital Extremes' [content policy](https://www.warframe.com/contentpolicy)
+  (last updated 2020-07-16) lets fans use the game's assets in non-commercial
+  work, and forbids the Warframe and Digital Extremes logos without written
+  consent. The Quills' emblem is neither logo, so the policy allows it, but as
+  the app's own mark it would read as official, and it could never be the
+  owner's. The quill drawn for the first build is original, and the owner chose
+  it.
+- The game's art is still used where it names a thing (BR-42): non-commercial,
+  served from DE's and the wiki's hosts, never rehosted. The wiki's licence
+  covers its text only; its images are DE's, under the same policy.
+- Figma: the vector replaced the emblem on 2026-10-07 in `Wordmark` (three
+  sizes), `Imagotipo`, `Loading card` and `Header`, and so in every screen.
+
 ## Not applied
 
 Two comments were set aside by the owner on 2026-10-04 and carry no rule:

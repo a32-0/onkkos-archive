@@ -13,6 +13,7 @@ The smallest parts every screen uses. `GameIcon` renders the game's own art from
 | File                                                                        | Origin | Note                                                                                             |
 | --------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------ |
 | `src/ui/{Icon,GameIcon,Badge,Button,Checkbox,Wordmark,OnkkoLine,WikiLink}/` | New    | From the Design System page; the old `src/components/` read for behaviour and accessibility only |
+| `src/ui/Wordmark/Quill.tsx`                                                 | Moves  | From `src/components/brand/Quill.tsx`: the app's own quill (BR-58), never the game's emblem      |
 
 ## Acceptance
 
