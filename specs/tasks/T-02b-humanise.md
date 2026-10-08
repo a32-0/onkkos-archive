@@ -35,9 +35,9 @@ The plan's other parts, the task files and the issue blocks are written for the 
 ## Acceptance
 
 - [ ] Every file in the table opens with a paragraph a person reads without knowing the code, the specs or the jargon.
-- [ ] No rule, number, node id, business rule id or acceptance item is lost or changed: each reworked file is checked against its previous version, rule by rule, and the check is listed in the pull request.
+- [ ] No rule, number, node id, business rule id, acceptance item, link target or linked heading is lost or changed: each reworked file is checked against its previous version, and the check is listed in the pull request.
 - [ ] No sentence only explains the one before it, and nothing reads as filler (constitution, "The anchor holds").
-- [ ] None of humanizer's 26 patterns is left in the prose of a reworked file, and its prose holds no em or en dash.
+- [ ] None of humanizer's 26 patterns is left, and no em or en dash: in all the prose of `README.md` and `docs/`, and in the openings this task writes for the constitution and the specs. A Figma frame's own name keeps its dash.
 - [ ] No plan part other than part 6, no task file and no issue block changes.
 - [ ] `check.yml` passes on the pull request.
 
@@ -61,9 +61,9 @@ Every page a person reads opens in plain language: what it is, who it is for and
 ### Acceptance
 
 - [ ] Every file in the table opens with a paragraph a person reads without knowing the code, the specs or the jargon.
-- [ ] No rule, number, node id, business rule id or acceptance item is lost or changed: each reworked file is checked against its previous version, rule by rule, and the check is listed in the pull request.
+- [ ] No rule, number, node id, business rule id, acceptance item, link target or linked heading is lost or changed: each reworked file is checked against its previous version, and the check is listed in the pull request.
 - [ ] No sentence only explains the one before it, and nothing reads as filler (constitution, "The anchor holds").
-- [ ] None of humanizer's 26 patterns is left in the prose of a reworked file, and its prose holds no em or en dash.
+- [ ] None of humanizer's 26 patterns is left, and no em or en dash: in all the prose of `README.md` and `docs/`, and in the openings this task writes for the constitution and the specs. A Figma frame's own name keeps its dash.
 - [ ] No plan part other than part 6, no task file and no issue block changes.
 - [ ] `check.yml` passes on the pull request.
 ```
