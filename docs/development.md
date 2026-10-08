@@ -28,6 +28,26 @@ pnpm knip
 pnpm build
 ```
 
+## Continuous integration
+
+`.github/workflows/check.yml` runs the gates on every push and every pull
+request, on GitHub's Ubuntu runner with Node 24 and the pnpm version
+`packageManager` names
+([plan part 4](../specs/plan/04-deployment.md#on-every-push-checkyml)). Each
+step is named for the gate it runs, so a red run names the gate that failed:
+
+| Step      | Command                                       | Why it runs                                                    |
+| --------- | --------------------------------------------- | -------------------------------------------------------------- |
+| Install   | `pnpm install --frozen-lockfile`              | The lockfile is the only source of versions; a stale one fails |
+| Check     | `pnpm check`                                  | Types, lint with the layers, format and tests, as on a machine |
+| Dead code | `pnpm knip`                                   | A file, export or dependency nothing reaches does not merge    |
+| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture` | The app builds without DE, the way every preview runs          |
+
+The workflow holds no secret and reads nothing outside the repository but the
+packages the lockfile names. Its token can only read the repository, checkout
+does not keep it, and Next's telemetry is off. The Storybook steps join when
+Storybook does (T-05).
+
 ## The layers
 
 `src/` holds six layers, and every import points one way

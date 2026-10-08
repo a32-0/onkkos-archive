@@ -45,7 +45,7 @@ with nothing behind it.
 Progress is tracked as issues, one per task, grouped by phase in the
 milestones.
 
-Claude assisted with development, implementation, debugging and documentation.
+Claude assisted with research, implementation, debugging and documentation.
 
 ## Licence
 
