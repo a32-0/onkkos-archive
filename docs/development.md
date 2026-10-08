@@ -1,22 +1,27 @@
 # Development
 
+This page is for anyone who runs the project or changes it: the tools it uses,
+the commands that check a change before it merges, what CI runs on every push,
+how the code is split into layers, and the conventions every file follows.
+
 ## Tooling
 
-- **pnpm** is the package manager (`packageManager` in `package.json`);
+- pnpm is the package manager (`packageManager` in `package.json`), and
   `pnpm-lock.yaml` is the only lockfile.
-- **TypeScript** in strict mode with `noUncheckedIndexedAccess`.
-- **ESLint** (flat config, `eslint.config.mjs`): `eslint-config-next`'s
-  core-web-vitals and TypeScript presets plus `eslint-config-prettier`.
-  Inline type imports are enforced; `console.log` is an error;
-  `@next/next/no-img-element` is off, because the game's art is served from
-  the wiki and DE's CDN as it is, never rehosted.
-- **Prettier** (`.prettierrc`): 100 columns, double quotes, trailing commas.
-- **Vitest** for tests, which never reach the network. Until the first test
-  exists it passes with none (`passWithNoTests`); the tokens task removes the
+- TypeScript runs in strict mode with `noUncheckedIndexedAccess`.
+- ESLint uses a flat config, `eslint.config.mjs`: `eslint-config-next`'s
+  core-web-vitals and TypeScript presets plus `eslint-config-prettier`. Type
+  imports must be inline, and `console.log` is an error.
+  `@next/next/no-img-element` is off, because the game's art is served as it
+  is from the wiki and DE's CDN, never rehosted.
+- Prettier (`.prettierrc`) wraps at 100 columns, with double quotes and
+  trailing commas.
+- Vitest runs the tests, which never reach the network. Until the first test
+  exists it passes with none (`passWithNoTests`); the tokens task removes that
   setting.
-- **knip** finds files, exports and dependencies that nothing reaches. Its
-  Vitest and Storybook plugins count tests and stories as entry points, so a
-  module reached only by its tests or its stories is not dead.
+- knip finds files, exports and dependencies that nothing reaches. Its Vitest
+  and Storybook plugins count tests and stories as entry points, so a module
+  that only its tests or its stories use is not reported as dead.
 
 ```bash
 pnpm typecheck
@@ -34,7 +39,7 @@ pnpm build
 request, on GitHub's Ubuntu runner with Node 24 and the pnpm version
 `packageManager` names
 ([plan part 4](../specs/plan/04-deployment.md#on-every-push-checkyml)). Each
-step is named for the gate it runs, so a red run names the gate that failed:
+step is named after the gate it runs, so a failed run shows which gate failed:
 
 | Step      | Command                                       | Why it runs                                                    |
 | --------- | --------------------------------------------- | -------------------------------------------------------------- |
@@ -43,10 +48,10 @@ step is named for the gate it runs, so a red run names the gate that failed:
 | Dead code | `pnpm knip`                                   | A file, export or dependency nothing reaches does not merge    |
 | App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture` | The app builds without DE, the way every preview runs          |
 
-The workflow holds no secret and reads nothing outside the repository but the
-packages the lockfile names. Its token can only read the repository, checkout
-does not keep it, and Next's telemetry is off. The Storybook steps join when
-Storybook does (T-05).
+The workflow holds no secret. Apart from the packages the lockfile names, it
+reads nothing outside the repository. Its token can only read the repository,
+checkout does not keep it, and Next's telemetry is off. The Storybook steps
+are added with Storybook itself (T-05).
 
 ## The layers
 
@@ -61,8 +66,9 @@ app ──► screens ──► ui
  └──────────────────► infra
 ```
 
-`eslint-plugin-boundaries` enforces it in `eslint.config.mjs`. Every import is
-refused unless a policy allows it, and the last matching policy wins:
+`eslint-plugin-boundaries` enforces this in `eslint.config.mjs`. An import is
+refused unless a policy allows it, and when several policies match, the last
+one wins:
 
 | Layer      | May import                                                       |
 | ---------- | ---------------------------------------------------------------- |
@@ -74,36 +80,37 @@ refused unless a policy allows it, and the last matching policy wins:
 | `content/` | `content/`                                                       |
 | `proxy.ts` | `infra/`, `domain/`, `routes.ts`                                 |
 
-`ui/` takes no Next import and no `server-only` either: a component renders
+`ui/` takes no Next import and no `server-only` either, so a component renders
 in Storybook with nothing behind it. A layer's folder appears with its first
-file; the rule names the paths before they exist.
+file, but the rule already names every path.
 
 ## Conventions
 
-- No comments in code, CSS, YAML or configuration. What needs explaining goes
-  in `docs/`.
-- No user-facing string outside `src/content/`. Templates with variables are
-  functions in the same modules.
+- No comments in code, CSS, YAML or configuration. Anything that needs
+  explaining goes in `docs/`.
+- No user-facing string outside `src/content/`. A template with variables is a
+  function in the same module.
 - No internal href outside `src/routes.ts`.
-- Pages under `src/app/` are thin: read, call the domain, hand the result to a
-  screen.
+- Pages under `src/app/` stay thin: they read, call the domain, and hand the
+  result to a screen.
 - Everything in the repository is written in English: code, tests,
-  documentation, curated files. The app's own copy is a separate concern.
+  documentation and curated files. The app's own copy is a separate matter.
 
 ## Files written for coding agents
 
 `next dev` writes `AGENTS.md` and `CLAUDE.md` at the root when it detects an AI
 coding agent (`node_modules/next/dist/server/lib/generate-agent-files.js`).
-Both are ignored by git, with `.claude/`, so neither enters the history by
+Git ignores both, along with `.claude/`, so neither can enter the history by
 accident.
 
 ## Environment variables
 
-See `.env.example`. Copy it to `.env.local` for development.
+`.env.example` lists them. Copy it to `.env.local` for development.
 
-- `WF_PROFILE_SOURCE` — `fixture` serves every profile from `fixtures/` and
-  never reaches DE; `live` reads DE's endpoint through the locks. Development
-  and previews use `fixture`; only production uses `live`
+- `WF_PROFILE_SOURCE`: with `fixture`, every profile is served from
+  `fixtures/` and DE is never reached. With `live`, DE's endpoint is read
+  through the locks. Development and previews use `fixture`, and only
+  production uses `live`
   ([plan part 4](../specs/plan/04-deployment.md#three-environments)).
-- `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` — the shared store, set
-  in production only.
+- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: the shared store,
+  set in production only.

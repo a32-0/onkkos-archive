@@ -1,9 +1,10 @@
-# The public release — decisions and why
+# The public release: decisions and why
 
-The owner decided on 2026-10-04 to release the app from a new public
-repository, built through the spec-driven order. This document records every
-decision taken on the way there, the question that raised it, the options
-weighed and the measurement that settled it, so the reasoning survives into the
+Onkko's Archive first ran only on the developer's machine. On 2026-10-04 the
+owner decided to release it from a new public repository, deployed for anyone
+to use and built through the spec-driven order. This page records each
+decision made on the way: the question that raised it, the options weighed and
+the measurement that settled it, so the reasoning is still there for the
 project's case study. The rules that came out of it are in
 [`specs/00-constitution.md`](../specs/00-constitution.md).
 
@@ -53,7 +54,7 @@ The first version of the question was "how often can we call DE before the
 player's account is blocked?" The premise needed correcting, and the correction
 shaped everything after it:
 
-- DE refuses an **IP address** that calls too often, not an account.
+- DE refuses an IP address that calls too often, not an account.
 - The browser cannot call DE (CORS), so every call leaves from our server. DE
   sees the server's IP, never the player's.
 - In production a refusal takes the app down for every player for up to a day.
@@ -81,7 +82,7 @@ profile an hour ago; copy B, just started, does not, and calls DE again. A
 breaker opened in A does not stop B. Under a burst, which is exactly when the
 breaker matters, many copies call at once.
 
-So "once every twelve hours" quietly becomes "once every twelve hours per
+So "once every twelve hours" turns into "once every twelve hours per
 copy". The constitution therefore states the rule rather than the tool: the
 window holds across the whole deployment.
 
@@ -94,9 +95,9 @@ provider's own documentation:
 | ---------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------- |
 | Vercel Hobby + Upstash | Yes; Vercel Hobby is for non-commercial use, as this app is | A normal load                                                                        | The four locks move to a shared store        |
 | Render free            | Yes, 750 instance hours a month                             | After 15 minutes with no traffic the service sleeps, and waking takes about a minute | Nothing; a single instance shares its memory |
-| Railway, Fly           | No permanent free tier (not re-checked that day)            | —                                                                                    | —                                            |
+| Railway, Fly           | No permanent free tier (not re-checked that day)            | n/a                                                                                  | n/a                                          |
 
-The decision: **Vercel Hobby with Upstash Redis**, confirmed in
+The decision: Vercel Hobby with Upstash Redis, confirmed in
 [plan part 4](../specs/plan/04-deployment.md).
 
 - A fan app sits idle most of the day, so on Render almost every first visitor
@@ -119,9 +120,9 @@ The owner had written twelve hours into BR-07 as an example and asked what the
 right figure was, given the traffic. Two different questions were hiding in
 it.
 
-**The window does not prevent blocking.** What DE punishes is bursts, mostly of
+The window does not prevent blocking. What DE punishes is bursts, mostly of
 mistyped ids, and the format check, the cached not-found, the visitor budget and
-the breaker answer that. **The window decides how fresh the data is.** DE's own
+the breaker answer that. The window decides how fresh the data is. DE's own
 response allows a re-read every ten minutes (`Cache-Control: max-age=600`).
 
 One hour was proposed first, on the argument that a player who finishes a step
@@ -142,13 +143,13 @@ it (`buildTime` in `@wfcd/items`):
 The few builds that take minutes are not crafted the usual way. Twelve hours is
 the real floor of the arsenal.
 
-What tipped it: **the app cannot see the foundry.** An item reaches the profile
+What tipped it: the app cannot see the foundry. An item reaches the profile
 only once it is built and has gained affinity, so nothing the app reads about an
 item changes faster than its build. The rest of what it reads moves by the day
 as well: the Mastery Rank test can be taken once every 24 hours, and syndicate
 standing has a daily cap.
 
-The decision: **twelve hours**, which is also what the code, BR-07 and the
+The decision: twelve hours, which is also what the code, BR-07 and the
 player menu already said. The Figma frame `270:1145` drew 24, and the owner
 corrected it to 12 the same day.
 
