@@ -9,7 +9,7 @@ it is used.
 
 | Site      | Vercel project    | Builds                                     | Serves                     |
 | --------- | ----------------- | ------------------------------------------ | -------------------------- |
-| The app   | `onkko`           | `next build`                               | The app, at the public URL |
+| The app   | `onkkos-archive`  | `next build`                               | The app, at the public URL |
 | Storybook | `onkko-storybook` | `storybook build` into `storybook-static/` | The catalogue, static      |
 
 Both are Vercel Hobby projects on the same GitHub repository. The constitution

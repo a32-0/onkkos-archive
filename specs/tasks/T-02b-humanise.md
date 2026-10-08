@@ -6,7 +6,7 @@
 | Serves   | [spec 00](../00-constitution.md); [plan 6](../plan/06-roadmap.md) |
 | Waits on | [T-02](T-02-ci.md)                                                |
 
-Every page a person reads opens in plain language: what it is, who it is for and why it matters, before any rule. One text per document, never a second copy for people beside the one Claude reads: the human opening comes first, and the exact rules stay under it, word for word where they are already exact. Added by the owner on 2026-10-08, after the issues T-01 to T-33 were planned; it is done before T-03.
+Every page a person reads opens in plain language: what it is, who it is for and why it matters, before any rule. One text per document, never a second copy for people beside the one Claude reads: the human opening comes first, and the exact rules stay under it, word for word where they are already exact. Added by the owner on 2026-10-08, after the issues T-01 to T-33 were planned.
 
 The rewrite follows [humanizer](https://github.com/blader/humanizer/blob/225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8/SKILL.md) (version 3.1.0, MIT), the owner's reference, in its file mode: only prose changes; code, commands, paths, node ids, rule ids, data and link targets stay as they are.
 

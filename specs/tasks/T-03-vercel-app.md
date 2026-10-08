@@ -10,7 +10,7 @@ The first preview. While it is set up, the two limits plan part 4 leaves open ar
 
 ## The owner
 
-- Creates the Vercel account and the `onkko` project, connected to the repository.
+- Creates the Vercel account and the `onkkos-archive` project, connected to the repository.
 - Sets `WF_PROFILE_SOURCE=fixture` for Preview and Development. Production gets `live` only in T-33.
 
 ## Documents that cross
@@ -38,7 +38,7 @@ The first preview. While it is set up, the two limits plan part 4 leaves open ar
 
 ### The owner
 
-- [ ] Creates the Vercel account and the `onkko` project, connected to the repository.
+- [ ] Creates the Vercel account and the `onkkos-archive` project, connected to the repository.
 - [ ] Sets `WF_PROFILE_SOURCE=fixture` for Preview and Development. Production gets `live` only in T-33.
 
 ### Acceptance
