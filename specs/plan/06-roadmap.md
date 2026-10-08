@@ -15,6 +15,11 @@ on 2026-10-06 for visibility and traceability over the whole release.
 
 A player reads none of it.
 
+Each document is one text for every reader in its row, never a copy for people
+beside one for Claude. A page a person reads opens in plain language, saying
+what it is and why it matters, and the exact rules follow under it unchanged.
+Set by the owner on 2026-10-08 ([T-02b](../tasks/T-02b-humanise.md)).
+
 ## The phases
 
 | Phase                   | What is built                                                                                                             | What the owner creates                                                      | Done when                                                                                          |

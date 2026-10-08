@@ -4,9 +4,10 @@ Been away from the Origin System for months? Onkko's Archive reads your public
 Warframe profile, lists what shipped since you last played, and shows what you
 still need to get the thing you want next.
 
-It is being built in the open, from its specs. The app is not deployed yet.
+It is being built in the open with spec-driven development: every line of code
+answers to a written spec. The app is not deployed yet.
 
-## How it was built
+## How it is built: spec-driven development
 
 The work follows one order, and every step answers to the one before it:
 

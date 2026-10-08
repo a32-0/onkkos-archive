@@ -32,7 +32,8 @@ The owner creates every issue (set on 2026-10-06):
 2. Create the issues in order, T-01 to T-33, before anything else is opened in
    the repository. GitHub numbers issues and pull requests from one counter, so
    in that order issue #n is task T-n. The title carries the task's id anyway,
-   so nothing depends on the numbers matching.
+   so nothing depends on the numbers matching. T-02b was added on 2026-10-08,
+   after the others; its issue takes the next free number.
 3. Add them to one GitHub Project, which shows the phases as its milestones.
 
 Paste the block under **The issue** as the body. Its paths are plain text
@@ -55,6 +56,7 @@ against its frames at 390 px on the preview, and swept at 360, 600, 840, 1280 an
 | ------------------------------------------------------------------------------------------------------------- | ----- | -------------------------- | ---------------- |
 | [T-01 · Scaffold the repository](T-01-scaffold.md)                                                            | 1     | 00                         | —                |
 | [T-02 · Run the gates on every push](T-02-ci.md)                                                              | 1     | 00                         | T-01             |
+| [T-02b · Write for the people who read it](T-02b-humanise.md)                                                 | 1     | 00                         | T-02             |
 | [T-03 · Deploy the app on Vercel](T-03-vercel-app.md)                                                         | 1     | 00                         | T-02             |
 | [T-04 · Tokens and type](T-04-tokens.md)                                                                      | 2     | 00                         | T-01             |
 | [T-05 · Storybook and the Foundations page](T-05-storybook.md)                                                | 2     | 00                         | T-04, T-02       |
