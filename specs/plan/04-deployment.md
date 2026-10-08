@@ -7,10 +7,10 @@ it is used.
 
 ## Two sites, one repository
 
-| Site      | Vercel project    | Builds                                     | Serves                     |
-| --------- | ----------------- | ------------------------------------------ | -------------------------- |
-| The app   | `onkkos-archive`  | `next build`                               | The app, at the public URL |
-| Storybook | `onkko-storybook` | `storybook build` into `storybook-static/` | The catalogue, static      |
+| Site      | Vercel project             | Builds                                     | Serves                     |
+| --------- | -------------------------- | ------------------------------------------ | -------------------------- |
+| The app   | `onkkos-archive`           | `next build`                               | The app, at the public URL |
+| Storybook | `onkkos-archive-storybook` | `storybook build` into `storybook-static/` | The catalogue, static      |
 
 Both are Vercel Hobby projects on the same GitHub repository. The constitution
 asks for Storybook "from the same host as the app"; a second project on Vercel

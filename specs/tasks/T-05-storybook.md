@@ -10,7 +10,7 @@ The catalogue the constitution asks for, its tests in CI, and a Foundations page
 
 ## The owner
 
-- Creates the `onkko-storybook` Vercel project: build `pnpm storybook:build`, output `storybook-static/`.
+- Creates the `onkkos-archive-storybook` Vercel project: build `pnpm storybook:build`, output `storybook-static/`.
 
 ## What crosses
 
@@ -45,7 +45,7 @@ The catalogue the constitution asks for, its tests in CI, and a Foundations page
 
 ### The owner
 
-- [ ] Creates the `onkko-storybook` Vercel project: build `pnpm storybook:build`, output `storybook-static/`.
+- [ ] Creates the `onkkos-archive-storybook` Vercel project: build `pnpm storybook:build`, output `storybook-static/`.
 
 ### Acceptance
 
