@@ -1,0 +1,14 @@
+.bottom {
+  --tab-bar-height: 65px;
+  display: flex;
+  align-items: stretch;
+  height: var(--tab-bar-height);
+  padding: 0 var(--space-6);
+  background: var(--surface-header);
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}

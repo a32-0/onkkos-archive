@@ -1,0 +1,18 @@
+.close {
+  display: flex;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.close:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.close:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+}

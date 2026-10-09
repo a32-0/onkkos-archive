@@ -1,0 +1,14 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.input {
+  composes: field from "../Field/Field.module.css";
+}
+
+.input::-webkit-search-cancel-button {
+  appearance: none;
+}

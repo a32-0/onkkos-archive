@@ -20,6 +20,7 @@ export function Button({
       {...rest}
       type={type}
       className={styles[variant]}
+      data-variant={variant}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
     >

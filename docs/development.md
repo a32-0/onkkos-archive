@@ -47,8 +47,9 @@ pnpm test:stories     # every story in Chromium, with the accessibility checks
 `pnpm exec playwright install chromium`. Each story is checked by axe, and a
 violation fails the story; a run with no story fails too. A story turns one
 rule off only where the frame itself falls below that rule, and the owner has
-been told: the red label of Disconnect (`color-contrast`) and the wiki link,
-which only its colour sets apart from the prose (`link-in-text-block`). The
+been told: the red label of Disconnect (`color-contrast`), and the wiki link,
+which its colour and its arrow set apart from the prose with no underline
+(`link-in-text-block`; the owner kept the frame on 2026-10-08). The
 hover and focus stories force those states with
 `storybook-addon-pseudo-states`.
 
@@ -109,7 +110,9 @@ one wins:
 | `proxy.ts` | `infra/`, `domain/`, `routes.ts`                                                      |
 
 `ui/` takes no Next import and no `server-only` either, so a component renders
-in Storybook with nothing behind it. `ui/tokens.css` is the one file of `ui/`
+in Storybook with nothing behind it. A component that navigates takes the link it renders
+as a prop (`LinkComponent` in `src/ui/link.ts`): a screen passes `next/link`,
+and a story leaves the plain anchor. `ui/tokens.css` is the one file of `ui/`
 that `app/` imports: the root layout loads the token layer once for every
 page. A layer's folder appears with its first
 file, but the rule already names every path.

@@ -1,0 +1,28 @@
+.field {
+  composes: body-l from "../type.module.css";
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: var(--space-5);
+  border: var(--border-1) solid var(--line-strong);
+  border-radius: var(--radius-s);
+  background: var(--surface-sunken);
+  color: var(--ink);
+  text-overflow: ellipsis;
+}
+
+.field::placeholder {
+  color: var(--ink-dim);
+  opacity: 1;
+}
+
+.field:focus {
+  outline: none;
+  border-width: var(--border-2);
+  border-color: var(--focus);
+}
+
+.field[aria-invalid] {
+  border-width: var(--border-2);
+  border-color: var(--brand);
+}

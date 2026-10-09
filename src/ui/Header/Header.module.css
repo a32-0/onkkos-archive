@@ -1,0 +1,25 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-bottom: var(--border-1) solid var(--brand);
+  background: var(--surface-header);
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.header {
+  composes: bar;
+  justify-content: space-between;
+}
+
+.centred {
+  composes: bar;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  flex: 1 0 0;
+  justify-content: center;
+}

@@ -1,0 +1,81 @@
+.trigger {
+  composes: label from "../type.module.css";
+  --date-trigger-height: 48px;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--date-trigger-height);
+  padding: var(--space-5) var(--space-7);
+  border: none;
+  border-radius: var(--radius-l);
+  background-color: var(--fill-strong);
+  color: var(--ink-inverse);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.trigger:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.trigger:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.chevron {
+  display: flex;
+  transform: rotate(-90deg);
+}
+
+.menu {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + var(--space-4));
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-6);
+  border-radius: var(--radius-m);
+  background: var(--surface-raised-strong);
+}
+
+.heading {
+  composes: badge from "../type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.months {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.month {
+  composes: body-l from "../type.module.css";
+  --date-month-padding: 10px;
+  display: block;
+  width: 100%;
+  padding: var(--date-month-padding) 0;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+}
+
+.month:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.month:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+}
