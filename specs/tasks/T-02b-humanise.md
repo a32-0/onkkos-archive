@@ -37,6 +37,6 @@ The plan's other parts and the task files are written for the build, and stay as
 - [ ] Every file in the table opens with a paragraph a person reads without knowing the code, the specs or the jargon.
 - [ ] No rule, number, node id, business rule id, acceptance item, link target or linked heading is lost or changed: each reworked file is checked against its previous version, and the check is listed when the task is handed over.
 - [ ] No sentence only explains the one before it, and nothing reads as filler (constitution, "The anchor holds").
-- [ ] None of humanizer's 26 patterns is left, and no em or en dash: in all the prose of `README.md` and `docs/`, and in the openings this task writes for the constitution and the specs. A Figma frame's own name keeps its dash.
+- [ ] None of humanizer's 26 patterns is left, and no em or en dash: in all the prose of `README.md` and `docs/`, and in the openings this task writes for the constitution and the specs. A Figma frame's name or a quoted UI string keeps its dash.
 - [ ] No plan part other than part 6 and no task file changes.
 - [ ] `check.yml` passes on `dev`.
