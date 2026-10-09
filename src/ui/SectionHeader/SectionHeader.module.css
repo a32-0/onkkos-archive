@@ -1,0 +1,59 @@
+.header {
+  display: flex;
+  margin: 0;
+  color: var(--ink);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.art {
+  --section-art-size: 32px;
+  display: block;
+  flex: none;
+  width: var(--section-art-size);
+  height: var(--section-art-size);
+  object-fit: cover;
+}
+
+.title {
+  composes: name from "../type.module.css";
+}
+
+.fold {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.fold:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-2);
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+}
+
+.up {
+  composes: chevron;
+  transform: rotate(90deg);
+}
+
+.down {
+  composes: chevron;
+  transform: rotate(-90deg);
+}

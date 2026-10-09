@@ -127,10 +127,10 @@ why the frames' Onkko lines read in small caps without `textCase`.
 | Class             | Figma style       | Face           | Weight | Size | Case  | Used for                                             |
 | ----------------- | ----------------- | -------------- | ------ | ---- | ----- | ---------------------------------------------------- |
 | `.place`          | Display/Place     | Cinzel         | 700    | 40   | upper | the place card's name                                |
-| `.numeral`        | Display/Numeral   | Cinzel         | 700    | 36   |       | the numbered steps on the id form                    |
-| `.title`          | Display/Title     | Cinzel         | 700    | 32   | upper | screen titles, the hero's name                       |
+| `.numeral`        | Display/Numeral   | Cinzel         | 700    | 36   |       | screen titles, the numbered steps on the id form     |
+| `.title`          | Display/Title     | Cinzel         | 700    | 32   | upper | the hero's name                                      |
 | `.display-name`   | Display/Name      | Cinzel         | 700    | 32   |       | the player's name                                    |
-| `.heading`        | Display/Heading   | Cinzel         | 700    | 24   | upper | system names in the system list                      |
+| `.heading`        | Display/Heading   | Cinzel         | 700    | 24   | upper | the system card of the place list                    |
 | `.name`           | Name/Default      | Cinzel         | 700    | 16   | upper | card, tile, group, place and update names            |
 | `.name-caps`      | Name/Small Caps   | Cinzel         | 700    | 16   |       | the choice cards' titles, in Cinzel's small capitals |
 | `.name-s`         | Name/Small        | Cinzel         | 700    | 14   | upper | section titles, dividers, the featured card          |
@@ -168,7 +168,7 @@ through `next/font/google`, self-hosted at build time, as the variables
 | Token family | Values                                                                                                                                                                  |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Radius       | `--radius-xs` 2 (diamonds), `--radius-s` 4 (fields), `--radius-m` 8 (badges, chips), `--radius-l` 24 (buttons, segmented), `--radius-full` (orbs, avatars, round icons) |
-| Space        | `--space-1` 2, `--space-2` 4, `--space-3` 6, `--space-4` 8, `--space-5` 12, `--space-6` 16, `--space-7` 24, `--space-8` 32                                              |
+| Space        | `--space-1` 2, `--space-2` 4, `--space-4` 8, `--space-5` 12, `--space-6` 16, `--space-7` 24, `--space-8` 32                                                             |
 | Border       | `--border-1` 1, `--border-2` 2 (a field in error)                                                                                                                       |
 | Blur         | `--blur-band` 4 (`Blur/Band`)                                                                                                                                           |
 | Gutter       | `--gutter` 16, the frames' side margin                                                                                                                                  |
@@ -232,7 +232,6 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `RowDetail`             | the reading under a step                                                                                                                                                | 10             |
 | `RowProse`              | the wiki's paragraphs under a step                                                                                                                                      | 10             |
 | `WikiLink`              | wiki, our page                                                                                                                                                          | 09, 10         |
-| `GroupDivider`          | between groups of steps                                                                                                                                                 | 10             |
 | `EmptyState`            | icon, title, one line                                                                                                                                                   | 06, 07, 08     |
 
 ## Storybook
@@ -253,7 +252,12 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 - A test fails on any colour, length, radius, duration or font in a
   `.module.css`, outside `tokens.css` and `type.module.css`. `0`, `100%` and
   layout keywords are allowed.
-- A test fails on a token that no module uses.
+- A test fails on a token that no module uses. Its allowance list holds what
+  no component applies, each until the screen that applies it: `.numeral`
+  and `.mono-label` (T-22, Connect), `--scrim` (T-25, the Summary's open
+  card) and `.heading` (T-26, the place list's system card), which deletes
+  the list. `--space-3` (6) was applied nowhere, in the code or in Figma,
+  and the owner removed it on 2026-10-08; the steps keep their names.
 - `pnpm palette` reads `tokens.css` and reports every ink against the colour
   blindness matrices, as the constitution says. It never blocks.
 
@@ -354,6 +358,21 @@ owner put it: a large orb with a small one beside it, its satellite.
 the icon's 27 px width from the frames so that their labels overflowed and
 ran into each other, was set to hug its content with a minimum of 80 px,
 centred, so Focus rings the whole tab.
+
+For T-10, Step by step was bound as most of its frames already drew it: the line
+down a section to `--timeline` (103 lines had it, 5 had `--fill-dim`), the
+diamonds to `--fill-strong` (127 had it, 5 a loose `#d2c4b4`), and the rows'
+loose passages and wiki links to `--ink-muted`, `Body/Default` and `--link`,
+in the Step section and Step row sets and in the screens. The hero's Not
+obtained Prime border moved from `--accent` to `--state-prime`, the same gold.
+"(Highest chance)" turned gold (`--accent`) in the screens and the Step section,
+as BR-26 asks and no frame drew, and Step row gained **Best=Yes**. Component
+row's Open state takes the drawn ground, `--surface-sunken`, and its Collapsed
+state, a cloned "Mastery Rank 0" with no instance, was rebuilt as a folded
+component: an empty box, the art and the title, the chevron down. The screens
+compose a component row from the set's head, a chevron and the passage;
+`ComponentRow` is that whole row. The divider between groups of components is
+`Divider` itself, so `GroupDivider` was dropped from the table.
 
 ### The screens are built from the components
 

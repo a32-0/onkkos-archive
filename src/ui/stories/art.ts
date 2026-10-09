@@ -26,3 +26,15 @@ export const SAMPLE_ORB = [
   orb("#4ad8c8", "#00201c"),
   orb("#7a5a6a", "#1a1018"),
 ] as const;
+
+export const SAMPLE_BLUEPRINT =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1b2a3a"/><path d="M0 20h100M0 40h100M0 60h100M0 80h100M20 0v100M40 0v100M60 0v100M80 0v100" stroke="#3a5a7a" stroke-width="1"/></svg>`,
+  );
+
+export const SAMPLE_PART =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30 20h40l10 30-30 35-30-35z" fill="#8aa4b4"/></svg>`,
+  );

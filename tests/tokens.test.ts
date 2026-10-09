@@ -7,22 +7,7 @@ const root = process.cwd();
 const TOKENS = "src/ui/tokens.css";
 const TYPE = "src/ui/type.module.css";
 
-const UNAPPLIED = [
-  "--slate-400",
-  "--bronze-600",
-  "--scrim",
-  "--timeline",
-  "--state-absent",
-  "--state-prime",
-  "--art-done",
-  "--space-3",
-  ".numeral",
-  ".title",
-  ".heading",
-  ".kicker",
-  ".reading-l",
-  ".mono-label",
-];
+const UNAPPLIED = ["--scrim", ".numeral", ".heading", ".mono-label"];
 
 function files(dir: string, suffix: string): string[] {
   const out: string[] = [];
