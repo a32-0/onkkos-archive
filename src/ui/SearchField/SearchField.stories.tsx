@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+import { SAMPLE_ART, SAMPLE_ORB } from "../stories/art";
+import { optionId, SuggestionList } from "../SuggestionList/SuggestionList";
 import { SearchField } from "./SearchField";
 
 const meta = {
@@ -31,24 +33,20 @@ export const WithSuggestions: Story = {
   args: {
     value: "Em",
     listId: "goal-suggestions",
+    "aria-activedescendant": optionId("goal-suggestions", 0),
     suggestions: (
-      <ul
+      <SuggestionList
         id="goal-suggestions"
-        role="listbox"
-        aria-label="Suggestions"
-        style={{
-          margin: 0,
-          padding: "var(--space-5) var(--space-6)",
-          listStyle: "none",
-          background: "var(--surface)",
-          border: "var(--border-1) solid var(--line-subtle)",
-          borderRadius: "var(--radius-m)",
-        }}
-      >
-        <li role="option" aria-selected="true">
-          Ember
-        </li>
-      </ul>
+        label="Suggestions"
+        active={0}
+        empty="Nothing by that name."
+        onChoose={() => {}}
+        items={[
+          { value: "ember", name: "Ember", catalogue: "Warframe", art: SAMPLE_ART[4] },
+          { value: "ember-prime", name: "Ember Prime", catalogue: "Warframe", art: SAMPLE_ART[2] },
+          { value: "earth", name: "Earth", catalogue: "Place", art: SAMPLE_ORB[0], round: true },
+        ]}
+      />
     ),
   },
   parameters: { pseudo: { focus: true } },

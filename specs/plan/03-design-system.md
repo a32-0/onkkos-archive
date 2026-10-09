@@ -205,12 +205,12 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `FeaturedCard`          | last played, up to date; closed, open                                                                                                                                   | 06, 07         |
 | `UpdateList`            | with "Show older"                                                                                                                                                       | 06, 07         |
 | `Divider`               | with label                                                                                                                                                              | 06, 07, 10     |
-| `GroupRow`              | closed, open; with count                                                                                                                                                | 06, 07         |
-| `ItemTile`              | plain, Rank, Mastered                                                                                                                                                   | 06, 07         |
+| `GroupRow`              | closed, open; with count; focus                                                                                                                                         | 06, 07         |
+| `ItemTile`              | plain, Rank, Mastered; hover, focus                                                                                                                                     | 06, 07         |
 | `Rail`                  | sideways (compact), grid (from 840)                                                                                                                                     | 06, 07         |
-| `PlaceCard`             | in progress, mastered                                                                                                                                                   | 07             |
+| `PlaceCard`             | in progress, mastered, no nodes                                                                                                                                         | 07             |
 | `ProgressBar`           | in progress, mastered                                                                                                                                                   | 07             |
-| `PlaceRow`, `SystemRow` | plain, on view, Start here, New, Mastered, Soon                                                                                                                         | 07             |
+| `PlaceRow`, `SystemRow` | plain, on view, Start here, New, Mastered, Soon; hover, focus                                                                                                           | 07             |
 | `PlaceCrumb`            | "You're on"                                                                                                                                                             | 09, 10         |
 | `ItemHero`              | Rank, Mastered, Not obtained, Not obtained Prime, no state, collectible                                                                                                 | 09             |
 | `BlueprintArt`          | the part over the blueprint                                                                                                                                             | 09, 10         |
@@ -227,7 +227,7 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `DateMenu`              | closed, open                                                                                                                                                            | 05             |
 | `ShowMore`              | "Show {n} older"                                                                                                                                                        | 05, 06         |
 | `SearchCard`            | title, line, field and Continue                                                                                                                                         | 08             |
-| `SuggestionRow`         | icon, name, catalogue; hover, focus                                                                                                                                     | 08             |
+| `SuggestionRow`         | art, name, catalogue; default, active (the option the arrow keys or the pointer are on)                                                                                 | 08             |
 | `Timeline`              | the diamonds and the line of a section                                                                                                                                  | 10             |
 | `RowDetail`             | the reading under a step                                                                                                                                                | 10             |
 | `RowProse`              | the wiki's paragraphs under a step                                                                                                                                      | 10             |
@@ -332,6 +332,28 @@ and **Date menu** (Closed, Open). Button's description says that Loading is
 drawn as Disabled. Error band, Field's Error state and the Danger button were bound to
 `--danger` instead of `--brand`, which they had used for the same colour, so
 the mark and the rules keep `--brand` and every failure reads `--danger`.
+
+The same day, for T-09, Item tile's Plain state was bound like its Rank and
+Mastered states (it still carried Consolas and raw colours), and the Suggestion
+list's gaps and paddings were bound to the spaces. Two sets were drawn out of
+the components that held them: **Suggestion row** (Default, Active), now
+instanced in the Suggestion list, and **Progress bar** (In progress, Mastered),
+now instanced in the Place card. The page gained the states the code has and
+the page did not: Item tile Hover and Focus, Place row Focus, System row Hover
+and Focus, Group row Focus (the ring 4 px outside the row), Place card Hover
+and Focus, and Place card No
+nodes, the card of a place with no nodes of its own (spec 07). Rail's grid from
+840 is not drawn, as the owner chose for every wider layout. The place card
+binds the system name to `Eyebrow/Default`, so the code uses `.eyebrow` there,
+not `.kicker`; its "mastered" is `Quiet/Upper`, which confirms that style.
+The system name there was `--ink-dim`, 4.14:1 on the band; the owner moved it
+to `--ink-muted` (5.10:1) on the same day, in the components and in the
+mastered place's frame. A system row's art is the symbol of a system, as the
+owner put it: a large orb with a small one beside it, its satellite.
+`SystemRow` takes both, `art` and `satellite`. The Tab set, whose variants had kept
+the icon's 27 px width from the frames so that their labels overflowed and
+ran into each other, was set to hug its content with a minimum of 80 px,
+centred, so Focus rings the whole tab.
 
 ### The screens are built from the components
 

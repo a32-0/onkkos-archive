@@ -132,7 +132,8 @@ Choosing a place closes the sheet and opens it.
 ### The system list
 
 The system card's chevron opens `270:786`: **Choose a system**, "You can switch
-at any time.", and the systems in BR-47's order, each with its art, its name
+at any time.", and the systems in BR-47's order, each with its symbol (a large orb and a
+small one beside it, its satellite; the owner, 2026-10-08), its name
 and its mastered count or badge, **Start here** on the system that holds it,
 and the system on view highlighted. Tau reads "Soon™" and cannot be chosen.
 Choosing a system returns to the place list, now listing that system's places.

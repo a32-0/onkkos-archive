@@ -1,0 +1,19 @@
+.list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: var(--border-1) solid var(--line-subtle);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  list-style: none;
+}
+
+.empty {
+  composes: body from "../type.module.css";
+  margin: 0;
+  padding: calc(var(--space-4) + var(--space-5)) var(--space-6);
+  border: var(--border-1) solid var(--line-subtle);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  color: var(--ink-muted);
+}

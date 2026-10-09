@@ -1,0 +1,60 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-6);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.row[aria-current] {
+  background-color: var(--surface-raised);
+}
+
+.row:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.row:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.art {
+  --row-art-size: 48px;
+  display: block;
+  flex: none;
+  width: var(--row-art-size);
+  height: var(--row-art-size);
+  border-radius: var(--radius-full);
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.inline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.name {
+  composes: name from "../type.module.css";
+}
+
+.count {
+  composes: quiet from "../type.module.css";
+  color: var(--ink-dim);
+}
+
+.strong {
+  composes: label-s from "../type.module.css";
+}

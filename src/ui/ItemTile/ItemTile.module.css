@@ -1,0 +1,76 @@
+.tile {
+  --tile-size: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  overflow: hidden;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tile:hover .band {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.tile:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.tint {
+  position: absolute;
+  inset: 0;
+}
+
+.rank-tint {
+  composes: tint;
+  background: var(--state-rank-tint);
+}
+
+.mastered-tint {
+  composes: tint;
+  background: var(--state-mastered-tint);
+}
+
+.badge {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.band {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding: var(--space-4);
+  background-color: var(--surface-band);
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.name {
+  composes: name from "../type.module.css";
+}
+
+.reading {
+  composes: reading from "../type.module.css";
+  color: var(--accent);
+}
+
+.place {
+  composes: body-s from "../type.module.css";
+}

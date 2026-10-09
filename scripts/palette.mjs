@@ -63,6 +63,7 @@ const CONTRAST = [
   ["link on a card", "--link", "--surface", TEXT_FLOOR],
   ["Disconnect label on canvas", "--danger", "--canvas", TEXT_FLOOR],
   ["Disconnect outline on canvas", "--danger", "--canvas", NON_TEXT_FLOOR],
+  ["place card system name on its band", "--ink-muted", "--surface-raised-strong", TEXT_FLOOR],
   ["error band text", "--danger-ink", "--danger", TEXT_FLOOR],
   ["mastered on its ground", "--state-mastered", "--state-mastered-ground", TEXT_FLOOR],
   ["rank on its ground", "--state-rank", "--state-rank-ground", TEXT_FLOOR],

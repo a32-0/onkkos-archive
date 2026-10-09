@@ -1,0 +1,18 @@
+.bar {
+  width: 100%;
+  height: var(--space-4);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  background: var(--surface-raised-strong);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  background: var(--state-rank);
+}
+
+.bar[data-mastered] .fill {
+  border-radius: 0;
+  background: var(--state-mastered);
+}
