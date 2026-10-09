@@ -51,8 +51,8 @@ identify anyone.
 ## What DE blocks, and who pays for it
 
 The first version of the question was "how often can we call DE before the
-player's account is blocked?" The premise needed correcting, and the correction
-shaped everything after it:
+player's account is blocked?" Its premise was wrong, and every later decision follows
+from correcting it:
 
 - DE refuses an IP address that calls too often, not an account.
 - The browser cannot call DE (CORS), so every call leaves from our server. DE
@@ -79,8 +79,8 @@ single server that is one memory, and the locks hold. A serverless host has no
 single server: it starts copies of the app as traffic arrives and stops them
 when it leaves, and each copy has its own memory. Copy A knows it read a
 profile an hour ago; copy B, just started, does not, and calls DE again. A
-breaker opened in A does not stop B. Under a burst, which is exactly when the
-breaker matters, many copies call at once.
+breaker opened in A does not stop B. Under a burst, when the breaker matters
+most, many copies call at once.
 
 So "once every twelve hours" turns into "once every twelve hours per
 copy". The constitution therefore states the rule rather than the tool: the
@@ -141,7 +141,7 @@ it (`buildTime` in `@wfcd/items`):
 | Warframes                | 72 h (111 of 118) | 72 h    |
 
 The few builds that take minutes are not crafted the usual way. Twelve hours is
-the real floor of the arsenal.
+the arsenal's floor.
 
 What tipped it: the app cannot see the foundry. An item reaches the profile
 only once it is built and has gained affinity, so nothing the app reads about an
@@ -297,5 +297,5 @@ still has its Step by step, and its chain still comes from the spine (BR-28).
 - The stored profile is the whitelisted, compressed form, not the raw payload.
 - The budget can stay as it is: with a twelve-hour window, re-reading one's own
   profile costs at most one lookup per window.
-- The README's privacy section is rewritten for a deployed app, where it is a
-  promise to strangers, not a description of a local script.
+- The README's privacy section is rewritten for a deployed app, where
+  strangers read it as a promise.

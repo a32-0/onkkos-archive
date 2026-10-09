@@ -1,7 +1,8 @@
 # 01 · Onboarding
 
-The first screen anyone sees: the app's name, one line from Onkko, and the way
-in.
+The first screen anyone sees: the app's name, one line from Onkko, the
+character the app is named after, and a Begin button. Begin leads to the account form, which already holds the
+player's id when this device remembers them.
 
 ## Frames
 

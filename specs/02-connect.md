@@ -1,7 +1,10 @@
 # 02 · Connect
 
-The account id form: the one place the profile is first read, the one place a
-read is seen loading, and the one place a failure is shown.
+Where a player types their Warframe account id so the app can read their
+public profile, or picks a demo profile to try the app without one. It is the
+only screen that reads a profile for the first time, the only one that shows a
+read in progress, and the only one that says what went wrong when a read
+fails.
 
 ## Frames
 

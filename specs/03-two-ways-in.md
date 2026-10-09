@@ -1,7 +1,9 @@
 # 03 · Two ways in
 
-Where a returning player chooses between catching up and chasing a goal. It is
-the last screen of onboarding.
+Where a returning player chooses what to do first: catch up on what the game
+added while they were away, or pick one thing to chase. Only a player who has
+played past the first planet sees it; a newer player goes straight to picking a
+goal. It is the last screen of onboarding.
 
 ## Frames
 

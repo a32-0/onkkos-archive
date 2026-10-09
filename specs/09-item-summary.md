@@ -1,7 +1,9 @@
 # 09 · The item: hero and Summary
 
-The one page every item reaches, wherever it was opened from: what it is, the
-player's state with it, and the short answer to where it comes from.
+Every item in the app opens this page, wherever the player found it. It shows
+what the item is, whether the player has it, is still ranking it or has
+mastered it, and the short answer to where it comes from: its blueprints and
+the materials they call for.
 
 ## Frames
 

@@ -1,7 +1,9 @@
 # 06 · Catch me up: Summary
 
-What shipped in the arsenal and the collection since the update the player
-last played, and the way on: an item, or Next to the map.
+The answer to "what did I miss?": everything added to the arsenal and the
+collection since the update the player last played, in groups, each counting
+what is new. From here the player opens any item to see how to get it, or
+presses Next to go to the map.
 
 ## Frames
 

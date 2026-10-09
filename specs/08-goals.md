@@ -1,7 +1,8 @@
 # 08 · Goal
 
-Where a player picks one thing to chase: a curated goal, or anything with a
-known source, found by name.
+Where a player picks one thing to chase. They can take one of the suggested
+goals, or search by name for anything the app knows how to get, and the app
+opens the steps to it.
 
 ## Frames
 

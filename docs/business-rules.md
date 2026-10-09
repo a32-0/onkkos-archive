@@ -1,14 +1,17 @@
 # Business rules from the Figma wireframes
 
-The owner annotates the wireframes in the Figma file
-[Warframe](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1-2)
-with comments. Each comment is a business rule bound to the place it is pinned:
-a state of a component, a behaviour, an ordering, a piece of content, or an open
-question. This document transcribes every one of them, says where it sits, and
-ties it to the rest of `docs/`.
+The app's design lives in the Figma file
+[Warframe](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1-2),
+and the owner leaves comments on its wireframes. Each comment is a business
+rule tied to the spot where it is pinned: how a component looks in a state,
+what something does, the order of a list, a piece of content, or an open
+question. This page writes every one of them down, says where it sits, and
+links it to the rest of `docs/`. The specs cite these rules by id instead of
+repeating them, so this is the page that explains why a screen behaves the way
+it does.
 
 Read on 2026-10-03 through the Figma REST API: 66 comments, 53 open and 13
-resolved, all on the page **Wireframes**. The owner answered the open
+resolved, all on the page Wireframes. The owner answered the open
 readings on 2026-10-04, and those answers are folded into the rules below.
 
 ## How to read an entry
@@ -63,7 +66,7 @@ cite one. The Figma comment id is given beside each for traceability.
   logical desktop behaviour, defined here rather than invented screen by
   screen.
 - Type: behaviour (of the work).
-- Rule: width changes **arrangement**, never content. At every width the
+- Rule: width changes arrangement, never content. At every width the
   screen holds what its frame holds, in the same order, with the same copy,
   components, states, type and colours. A wider window may change only the
   number of columns, where navigation sits, and how wide things grow.
@@ -72,8 +75,8 @@ cite one. The Figma comment id is given beside each for traceability.
   | Width       | Class    | Layout                                                                                                                                                                                                                                             |
   | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                     |
-  | 600 – 839   | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                 |
-  | 840 – 1199  | expanded | The tab bar moves into the header, the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
+  | 600 to 839  | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                 |
+  | 840 to 1199 | expanded | The tab bar moves into the header, the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
   | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                          |
 
 - Outside the shell, the splash and the id form stay one centred column at the
@@ -119,7 +122,7 @@ a reading of the earlier build against it was put to them.
   `257:653`, `264:67`.
 - Type: content.
 - Rule: Catch me up shows what shipped since the chosen update, under
-  **Arsenal** and **Collection**, and nothing else. Story quests, the live
+  Arsenal and Collection, and nothing else. Story quests, the live
   Nightwave ("Running now") and the suggested goal ("Pick up") are not part
   of it.
 
@@ -128,7 +131,7 @@ a reading of the earlier build against it was put to them.
 - Frame `206:774`, the tiles and the "Next" button.
 - Type: behaviour.
 - Rule: from the Summary the player either opens an item, which opens that
-  item's page, or presses **Next**, which opens the map on one place: the
+  item's page, or presses Next, which opens the map on one place: the
   frontier when the player has one, otherwise the focus
   ([`system.md`](system.md#two-lenses-that-cut-every-level-at-once)). The two
   are separate decisions: Next does not lead to quests.
@@ -163,7 +166,7 @@ a reading of the earlier build against it was put to them.
   in a red band under the account id field, and the form stays usable.
 - The band's words are not fixed by the frame. The owner drew one as an
   example and on 2026-10-04 left the messages to be written from the failures
-  the system actually has. The proxy knows seven reasons
+  the system can return. The proxy knows seven reasons
   (`FailureReason` in `src/infra/profile/client.ts`); the player can act on
   four, so the band says four things:
 
@@ -188,12 +191,12 @@ a reading of the earlier build against it was put to them.
 ### BR-40 · Two ways in: Skip goes to the map, Go back to the id form
 
 - Frame [`203:140` Features](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-140),
-  the **Skip** and **Go back** buttons under the two cards. Settled by the
+  the Skip and Go back buttons under the two cards. Settled by the
   owner on 2026-10-05.
 - Type: behaviour.
-- Rule: **Skip** opens the map on one place, the same as Next on the Summary
-  (BR-36): the frontier when the player has one, otherwise the focus. **Go
-  back** returns to `/connect`, with the player's id in the field, which is
+- Rule: Skip opens the map on one place, the same as Next on the Summary
+  (BR-36): the frontier when the player has one, otherwise the focus. Go
+  back returns to `/connect`, with the player's id in the field, which is
   also how a player changes account or demo.
 - The screen is still onboarding, so it draws no tab bar and no player chip
   (thread `1929710840`, "no navbar during onboarding until it ends").
@@ -203,9 +206,9 @@ a reading of the earlier build against it was put to them.
 - Frame [`203:231` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231).
   Settled by the owner on 2026-10-05.
 - Type: behaviour.
-- Rule: reached from **Pick up where you left off** (BR-40's screen), Resume is
-  onboarding and looks as drawn: no tab bar, with **Skip** and **Go back**.
-  Reached from the **Resume** tab, it is a section of the shell: the tab bar
+- Rule: reached from "Pick up where you left off" (BR-40's screen), Resume is
+  onboarding and looks as drawn: no tab bar, with Skip and Go back.
+  Reached from the Resume tab, it is a section of the shell: the tab bar
   shows and Skip and Go back do not. Everything else is the same screen.
 - The Summary that follows keeps the entrance: no tab bar after the onboarding
   entrance, the tab bar after the tab's. Its frames draw the first. Settled by
@@ -237,7 +240,7 @@ a reading of the earlier build against it was put to them.
 
 - Frames [`215:610`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=215-610)
   and [`270:786`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=270-786),
-  the gold-outlined **Start here** badge. Settled by the owner on 2026-10-06.
+  the gold-outlined "Start here" badge. Settled by the owner on 2026-10-06.
 - Type: content.
 - Rule: Start here marks the one place Next and Skip open: the frontier, or the
   focus when the player has no frontier (BR-36). Exactly one place carries it,
@@ -252,7 +255,7 @@ a reading of the earlier build against it was put to them.
 - Rule: by default a place shows only what is left: everything here the player
   has not mastered. That includes a ranked item short of its maximum and every
   collectible, since the profile cannot prove one is owned. The control has
-  two options, **Mastered** and **New**, and none is chosen by default.
+  two options, Mastered and New, and none is chosen by default.
   Choosing Mastered shows only what is mastered here; choosing New shows only
   what shipped since the player's month, mastered or not. Choosing the chosen
   option again returns to the default.
@@ -331,9 +334,9 @@ a reading of the earlier build against it was put to them.
   2026-10-05, and the first sentence then built still promised quests, which
   BR-35 took out of Catch me up. The owner chose to correct the frame with
   these two lines, which the build then follows:
-  - **Pick up where you left off**: "Name the last update you played and see
+  - "Pick up where you left off": "Name the last update you played and see
     everything added to your arsenal and collection since."
-  - **Set a goal**: "Pick one thing to chase and get the road to it, in order,
+  - "Set a goal": "Pick one thing to chase and get the road to it, in order,
     read from your profile."
 
 ### BR-05 · "Set a goal" runs on frontier and focus
@@ -409,7 +412,7 @@ a reading of the earlier build against it was put to them.
   month the player chose.
 - Only what the profile can read counts. Mods, resources and other
   collectibles are not in the profile, so they never hold the card back.
-- Two consequences to know: the card can say "up to date" while Catch me up
+- The card can say "up to date" while Catch me up
   still lists what shipped since an older chosen month, because the month the
   player picked is not rewritten. And `XPInfo` holds what was ever ranked, so
   an item bought and never levelled does not count as owned yet.
@@ -679,7 +682,7 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - Type: behaviour.
 - Rule: from the second character, a list opens under the field with the
   matches, best first, each with its icon, its name and its catalogue
-  ("Warframe", "Primary", "Place"). Choosing one opens it; **Continue** opens
+  ("Warframe", "Primary", "Place"). Choosing one opens it; Continue opens
   the first. A place opens the map on it; anything else opens its item page.
 - The list is the `Suggestion list` component (Results, No match) on the
   Design System page, approved by the owner on 2026-10-06, and drawn in place
@@ -703,12 +706,12 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
   Settled by the owner on 2026-10-06.
 - Type: content.
 - Rule: the Summary view shows the two sections the frame draws, and nothing
-  else: **Blueprints**, one row per blueprint with its best route, and
-  **Components**, one row per ingredient. Every row is drawn as the frame
+  else: Blueprints, one row per blueprint with its best route, and
+  Components, one row per ingredient. Every row is drawn as the frame
   draws it: the art (a part on its blueprint, BR-19), the name, the reading in
   gold and the place. Prerequisites and How to get stay in Step by step.
 - An item with neither (a Kuva weapon, a Tenet weapon, a bred companion) shows
-  its **How to get**, or its Acquisition, in the same rows instead, so the
+  its "How to get", or its Acquisition, in the same rows instead, so the
   Summary is never empty.
 - The table in [`scenario-guidelines.md`](scenario-guidelines.md#one-answer-two-densities)
   that listed Prerequisites and How to get in the Summary is replaced by this
@@ -736,7 +739,7 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - Frame `372:355` Nesha, "You're on Origin > Dojo". Settled by the owner on
   2026-10-06.
 - Type: content.
-- Rule: the Origin System holds a place, **Dojo**, that holds everything built
+- Rule: the Origin System holds a place, Dojo, that holds everything built
   from research in a clan dojo's labs, whichever lab researches it.
   It is listed with the other places, carries a mastered count and lenses like
   any place, has no Nodes lines and never carries Start here.
@@ -758,7 +761,7 @@ settled where the frames disagreed with each other or with the docs.
   whose route only prose names, its Acquisition section; for anything else
   (a boss, a lab, a vendor), the lead of its page. The data detail ("It drops at
   rotation C, 7.5% a run, so about 13 runs for an even chance.") stays its own
-  first line, and **Wiki ↗** closes the passage.
+  first line, and "Wiki ↗" closes the passage.
 - This replaces the rule "one sentence per row and never more" in
   [`scenario-guidelines.md`](scenario-guidelines.md) and
   [`step-by-step.md`](step-by-step.md), which treated the drawn paragraphs as
@@ -847,7 +850,7 @@ so the comments are kept here and not applied:
 | `94:156` Home - 0.0.0 | (1400, 275) | `1918281689` | Use more symbols on labels                                                      |
 | `94:156` Home - 0.0.0 | (633, 227)  | `1918287698` | Nodes?                                                                          |
 | `94:156` Home - 0.0.0 | (1221, 478) | `1918287884` | A "platinum" completion system for free items, to find, track and guide to them |
-| reply to the above    | —           | `1918290338` | Track and guide what the game does not say; never be redundant                  |
+| reply to the above    | n/a         | `1918290338` | Track and guide what the game does not say; never be redundant                  |
 | `129:12` Home - 0.0.0 | (142, 116)  | `1918300458` | The places list becomes a planet menu, with a card on hover                     |
 | `129:118` Frame 83    | (167, 371)  | `1918304538` | Planet stats?                                                                   |
 | `128:2223` Frame 96   | (284, 53)   | `1918286062` | Shine effect (on the Mastered badge)                                            |
