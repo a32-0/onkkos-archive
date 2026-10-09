@@ -10,19 +10,22 @@ The token layer of plan part 3: primitives, semantic roles, type, shape, space a
 
 ## What crosses
 
-| File                     | Origin   | Note                                                                                                                         |
-| ------------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `src/ui/tokens.css`      | New      | Every token in plan part 3, primitives then roles                                                                            |
-| `src/ui/type.module.css` | New      | One class per type token, taken with `composes:`                                                                             |
-| `src/app/layout.tsx`     | Reworked | Loads Cinzel, Inter and JetBrains Mono through `next/font/google`                                                            |
-| `scripts/palette.mjs`    | Moves    | Reads `tokens.css`; `pnpm palette`                                                                                           |
-| `tests/tokens.test.ts`   | New      | No raw colour, radius, duration or easing outside `tokens.css` and `type.module.css`; no token that no `.module.css` applies |
-| `tests/language.test.ts` | Reworked | Names in the display serif, readings in mono, against the new type classes                                                   |
-| `vitest.config.ts`       | Reworked | `passWithNoTests` removed: the first tests are here                                                                          |
+| File                     | Origin   | Note                                                                                                                                       |
+| ------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/ui/tokens.css`      | New      | Every token in plan part 3, primitives then roles                                                                                          |
+| `src/ui/type.module.css` | New      | One class per type token, taken with `composes:`                                                                                           |
+| `src/app/layout.tsx`     | Reworked | Loads Cinzel, Inter and JetBrains Mono through `next/font/google`                                                                          |
+| `scripts/palette.mjs`    | Reworked | The method and the matrices move; it reads `tokens.css`, follows each role to its primitive and measures the frames' pairs; `pnpm palette` |
+| `eslint.config.mjs`      | Reworked | `app/` may import `ui/tokens.css`, the one file of `ui/` the root layout loads                                                             |
+| `tests/tokens.test.ts`   | New      | No raw colour, radius, duration or easing outside `tokens.css` and `type.module.css`; no token that no `.module.css` applies               |
+| `tests/language.test.ts` | Reworked | Names in the display serif, readings in mono, against the new type classes; its other two checks cross with T-06 and T-20                  |
+| `vitest.config.ts`       | Reworked | `passWithNoTests` removed: the first tests are here                                                                                        |
 
 ## Documents that cross
 
 - `docs/cetus.md`: Reworked as plan part 5 sets: the reasoning stays, the tokens point to plan part 3
+- `docs/development.md`: Vitest without `passWithNoTests`, `pnpm palette`, and the layer exception for `tokens.css`
+- `docs/README.md`: lists `cetus.md`
 
 ## Acceptance
 

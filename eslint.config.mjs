@@ -38,6 +38,7 @@ export default defineConfig([
       "boundaries/files": [
         { category: "routes", pattern: "src/routes.ts" },
         { category: "proxy", pattern: "src/proxy.ts" },
+        { category: "tokens", pattern: "src/ui/tokens.css" },
       ],
     },
     rules: {
@@ -90,6 +91,10 @@ export default defineConfig([
             {
               from: { element: { type: ["app", "screens"] } },
               allow: { to: { file: { categories: "routes" } } },
+            },
+            {
+              from: { element: { type: "app" } },
+              allow: { to: { file: { categories: "tokens" } } },
             },
             {
               from: { file: { categories: "proxy" } },

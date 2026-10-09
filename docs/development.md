@@ -16,9 +16,8 @@ how the code is split into layers, and the conventions every file follows.
   is from the wiki and DE's CDN, never rehosted.
 - Prettier (`.prettierrc`) wraps at 100 columns, with double quotes and
   trailing commas.
-- Vitest runs the tests, which never reach the network. Until the first test
-  exists it passes with none (`passWithNoTests`); the tokens task removes that
-  setting.
+- Vitest runs the tests, which never reach the network. A run with no test
+  file fails.
 - knip finds files, exports and dependencies that nothing reaches. Its Vitest
   and Storybook plugins count tests and stories as entry points, so a module
   that only its tests or its stories use is not reported as dead.
@@ -31,7 +30,13 @@ pnpm test          # pnpm test:watch
 pnpm check         # all of the above
 pnpm knip
 pnpm build
+pnpm palette
 ```
+
+`pnpm palette` measures every ink in `src/ui/tokens.css` for contrast and
+against the colour blindness matrices. It reports and never fails;
+[`cetus.md`](cetus.md#the-palette-is-measured) explains what it
+measures and why.
 
 ## Continuous integration
 
@@ -48,7 +53,8 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Dead code | `pnpm knip`                                   | A file, export or dependency nothing reaches does not merge    |
 | App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture` | The app builds without DE, the way every preview runs          |
 
-The workflow holds no secret. Apart from the packages the lockfile names, it
+The workflow holds no secret. Apart from the packages the lockfile names and
+the three fonts `next/font` downloads from Google Fonts during the build, it
 reads nothing outside the repository. Its token can only read the repository,
 checkout does not keep it, and Next's telemetry is off. The Storybook steps
 are added with Storybook itself (T-05).
@@ -70,18 +76,20 @@ app ──► screens ──► ui
 refused unless a policy allows it, and when several policies match, the last
 one wins:
 
-| Layer      | May import                                                       |
-| ---------- | ---------------------------------------------------------------- |
-| `app/`     | `app/`, `screens/`, `domain/`, `infra/`, `content/`, `routes.ts` |
-| `screens/` | `screens/`, `ui/`, `content/`, `routes.ts`, and `domain/` types  |
-| `ui/`      | `ui/`                                                            |
-| `domain/`  | `domain/`; no Node built-in, no React, no Next, no `server-only` |
-| `infra/`   | `infra/`, `domain/`                                              |
-| `content/` | `content/`                                                       |
-| `proxy.ts` | `infra/`, `domain/`, `routes.ts`                                 |
+| Layer      | May import                                                                            |
+| ---------- | ------------------------------------------------------------------------------------- |
+| `app/`     | `app/`, `screens/`, `domain/`, `infra/`, `content/`, `routes.ts`, and `ui/tokens.css` |
+| `screens/` | `screens/`, `ui/`, `content/`, `routes.ts`, and `domain/` types                       |
+| `ui/`      | `ui/`                                                                                 |
+| `domain/`  | `domain/`; no Node built-in, no React, no Next, no `server-only`                      |
+| `infra/`   | `infra/`, `domain/`                                                                   |
+| `content/` | `content/`                                                                            |
+| `proxy.ts` | `infra/`, `domain/`, `routes.ts`                                                      |
 
 `ui/` takes no Next import and no `server-only` either, so a component renders
-in Storybook with nothing behind it. A layer's folder appears with its first
+in Storybook with nothing behind it. `ui/tokens.css` is the one file of `ui/`
+that `app/` imports: the root layout loads the token layer once for every
+page. A layer's folder appears with its first
 file, but the rule already names every path.
 
 ## Conventions

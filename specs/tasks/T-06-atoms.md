@@ -10,10 +10,11 @@ The smallest parts every screen uses. `GameIcon` renders the game's own art from
 
 ## What crosses
 
-| File                                                                        | Origin | Note                                                                                             |
-| --------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------ |
-| `src/ui/{Icon,GameIcon,Badge,Button,Checkbox,Wordmark,OnkkoLine,WikiLink}/` | New    | From the Design System page; the old `src/components/` read for behaviour and accessibility only |
-| `src/ui/Wordmark/Quill.tsx`                                                 | Moves  | From `src/components/brand/Quill.tsx`: the app's own quill (BR-58), never the game's emblem      |
+| File                                                                        | Origin   | Note                                                                                                                                                    |
+| --------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/ui/{Icon,GameIcon,Badge,Button,Checkbox,Wordmark,OnkkoLine,WikiLink}/` | New      | From the Design System page; the old `src/components/` read for behaviour and accessibility only                                                        |
+| `src/ui/Wordmark/Quill.tsx`                                                 | Moves    | From `src/components/brand/Quill.tsx`: the app's own quill (BR-58), never the game's emblem                                                             |
+| `tests/language.test.ts`                                                    | Reworked | The four states keep their vocabulary: `Badge` draws Mastered and Rank, and nothing for not obtained or unknown, against `Badge` instead of `StateChip` |
 
 ## Acceptance
 

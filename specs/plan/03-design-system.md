@@ -12,7 +12,10 @@ The Figma file defines no variables and no styles, apart from one blur
 counted every colour, text style, radius, spacing, stroke and effect in use.
 That inventory is the source below; a value used once in a stray frame is left
 out. It is not fetched again: a change in Figma is a design change, and the
-spec it touches is updated first.
+spec it touches is updated first. The one exception was T-04, on 2026-10-08:
+binding (below) had named five colour roles and seven text styles without all
+their values, so the variables of `421:590` were read once, and the tables
+here carry what they gave.
 
 Four decisions the owner made the same day shape the result:
 
@@ -49,62 +52,71 @@ of them; a component never computes a colour.
 
 ### Primitives
 
-| Token          | Value            | Was in the frames                                                          | Uses  |
-| -------------- | ---------------- | -------------------------------------------------------------------------- | ----- |
-| `--black`      | `#000000`        | page canvas                                                                | 32    |
-| `--night-900`  | `#0f0f0f`        | `#0f0f0f`, `#110e09`, `#17140f`, `#161413` (header, text on light buttons) | 45    |
-| `--night-800`  | `#16130e`        | art ground, value fields (BR-18)                                           | 111   |
-| `--night-700`  | `#1f1b16`        | `#1f1b16`, `#1f1c18` (sections, cards, segmented)                          | 244   |
-| `--night-600`  | `#2e2924`        | active segment, secondary buttons                                          | 42    |
-| `--night-500`  | `#39342e`        | `#39342e`, `#352f2d` (featured card)                                       | 9     |
-| `--night-band` | `#37322c` at 90% | `#37322c@90`, `#373130@90`, `#39342e@80` (title bands)                     | 70    |
-| `--ash-100`    | `#eae1d9`        | `#eae1d9`, `#ffffff` (text, light buttons, icons)                          | 2,163 |
-| `--ash-300`    | `#b1a595`        | `#b1a595`, `#b6a99a` (secondary text)                                      | 279   |
-| `--ash-500`    | `#9f9486`        | `#9f9486`, `#9b8f80`, `#97a5a4` (dim text, lines)                          | 210   |
-| `--slate-400`  | `#98a2b3`        | the not-obtained frame                                                     | 32    |
-| `--gold-400`   | `#fcbb4a`        | `#fcbb4a`, `#fbbc36`, `#f5b731` (accent, Newest, card rules)               | 141   |
-| `--bronze-600` | `#765824`        | the line down a Step by step section                                       | 101   |
-| `--cyan-300`   | `#4fd8e8`        | links ("Wiki ↗")                                                           | 236   |
-| `--green-400`  | `#4ec98a`        | mastered, done                                                             | 26    |
-| `--green-900`  | `#143024`        | mastered ground                                                            | 25    |
-| `--green-700`  | `#1f5138`        | mastered border                                                            | 25    |
-| `--blue-400`   | `#5aa9ff`        | rank                                                                       | 6     |
-| `--blue-900`   | `#122438`        | rank ground                                                                | 4     |
-| `--blue-700`   | `#1d3c5c`        | rank border                                                                | 4     |
-| `--red-600`    | `#b33419`        | the mark, the header rule, Disconnect, the error band                      | 43    |
-| `--red-100`    | `#ffd4cb`        | text on the error band                                                     | 1     |
+| Token          | Value       | Was in the frames                                                          | Uses  |
+| -------------- | ----------- | -------------------------------------------------------------------------- | ----- |
+| `--black`      | `#000000`   | page canvas                                                                | 32    |
+| `--night-900`  | `#0f0f0f`   | `#0f0f0f`, `#110e09`, `#17140f`, `#161413` (header, text on light buttons) | 45    |
+| `--night-800`  | `#16130e`   | art ground, value fields (BR-18)                                           | 111   |
+| `--night-700`  | `#1f1b16`   | `#1f1b16`, `#1f1c18` (sections, cards, segmented)                          | 244   |
+| `--night-600`  | `#2e2924`   | active segment, secondary buttons                                          | 42    |
+| `--night-500`  | `#39342e`   | `#39342e`, `#352f2d` (featured card)                                       | 9     |
+| `--night-band` | `#37322ce5` | `#37322c@90`, `#373130@90`, `#39342e@80` (title bands)                     | 70    |
+| `--night-card` | `#231f1acc` | the choice cards                                                           | n/a   |
+| `--ash-100`    | `#eae1d9`   | `#eae1d9`, `#ffffff` (text, light buttons, icons)                          | 2,163 |
+| `--ash-300`    | `#b1a595`   | `#b1a595`, `#b6a99a` (secondary text)                                      | 279   |
+| `--ash-500`    | `#9f9486`   | `#9f9486`, `#9b8f80`, `#97a5a4` (dim text, lines)                          | 210   |
+| `--slate-400`  | `#98a2b3`   | the not-obtained frame                                                     | 32    |
+| `--gold-400`   | `#fcbb4a`   | `#fcbb4a`, `#fbbc36`, `#f5b731` (accent, Newest, card rules)               | 141   |
+| `--bronze-600` | `#765824`   | the line down a Step by step section                                       | 101   |
+| `--cyan-300`   | `#4fd8e8`   | links ("Wiki ↗")                                                           | 236   |
+| `--green-400`  | `#4ec98a`   | mastered, done                                                             | 26    |
+| `--green-900`  | `#143024`   | mastered ground                                                            | 25    |
+| `--green-700`  | `#1f5138`   | mastered border                                                            | 25    |
+| `--blue-400`   | `#5aa9ff`   | rank                                                                       | 6     |
+| `--blue-900`   | `#122438`   | rank ground                                                                | 4     |
+| `--blue-700`   | `#1d3c5c`   | rank border                                                                | 4     |
+| `--red-600`    | `#b33419`   | the mark, the header rule, Disconnect, the error band                      | 43    |
+| `--red-100`    | `#ffd4cb`   | text on the error band                                                     | 1     |
 
 ### Semantic
 
-| Role                                     | Points at                                                                               |
-| ---------------------------------------- | --------------------------------------------------------------------------------------- |
-| `--canvas`                               | `--black`                                                                               |
-| `--surface-header`                       | `--night-900`                                                                           |
-| `--surface`                              | `--night-700`                                                                           |
-| `--surface-sunken`                       | `--night-800`                                                                           |
-| `--surface-raised`                       | `--night-600`                                                                           |
-| `--surface-raised-strong`                | `--night-500`                                                                           |
-| `--surface-band`                         | `--night-band`                                                                          |
-| `--scrim`                                | `--black` at 60%                                                                        |
-| `--ink`                                  | `--ash-100`                                                                             |
-| `--ink-muted`                            | `--ash-300`                                                                             |
-| `--ink-dim`                              | `--ash-500`                                                                             |
-| `--ink-inverse`                          | `--night-900`                                                                           |
-| `--fill-strong`                          | `--ash-100` (primary buttons, icons)                                                    |
-| `--line`                                 | `--ash-500`                                                                             |
-| `--line-strong`                          | `--ash-100` (fields, outlined buttons)                                                  |
-| `--line-subtle`                          | `--night-600`                                                                           |
-| `--accent`                               | `--gold-400`                                                                            |
-| `--timeline`                             | `--bronze-600`                                                                          |
-| `--link`                                 | `--cyan-300`                                                                            |
-| `--brand`                                | `--red-600`                                                                             |
-| `--danger`, `--danger-ink`               | `--red-600`, `--red-100`                                                                |
-| `--state-mastered`, `-ground`, `-border` | the greens                                                                              |
-| `--state-rank`, `-ground`, `-border`     | the blues                                                                               |
-| `--state-absent`                         | `--slate-400`                                                                           |
-| `--state-prime`                          | `--gold-400`                                                                            |
-| `--hover`                                | `--ash-100` at 8%, laid over what is pressable (BR-39; drawn on the Design System page) |
-| `--focus`                                | `--gold-400`, a 2 px ring offset 2 px (drawn on the Design System page)                 |
+| Role                                         | Points at                                                                               |
+| -------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `--canvas`                                   | `--black`                                                                               |
+| `--surface-header`                           | `--night-900`                                                                           |
+| `--surface`                                  | `--night-700`                                                                           |
+| `--surface-sunken`                           | `--night-800`                                                                           |
+| `--surface-raised`                           | `--night-600`                                                                           |
+| `--surface-raised-strong`                    | `--night-500`                                                                           |
+| `--surface-band`                             | `--night-band`                                                                          |
+| `--surface-card`                             | `--night-card`                                                                          |
+| `--scrim`                                    | `--black` at 60%                                                                        |
+| `--ink`                                      | `--ash-100`                                                                             |
+| `--ink-muted`                                | `--ash-300`                                                                             |
+| `--ink-dim`                                  | `--ash-500`                                                                             |
+| `--ink-inverse`                              | `--night-900`                                                                           |
+| `--fill-strong`                              | `--ash-100` (primary buttons, icons)                                                    |
+| `--fill-dim`                                 | `--ash-500`                                                                             |
+| `--line`                                     | `--ash-500`                                                                             |
+| `--line-strong`                              | `--ash-100` (fields, outlined buttons)                                                  |
+| `--line-subtle`                              | `--night-600`                                                                           |
+| `--accent`                                   | `--gold-400`                                                                            |
+| `--timeline`                                 | `--bronze-600`                                                                          |
+| `--link`                                     | `--cyan-300`                                                                            |
+| `--brand`                                    | `--red-600`                                                                             |
+| `--danger`, `--danger-ink`                   | `--red-600`, `--red-100`                                                                |
+| `--state-mastered`, `-ground`, `-border`     | the greens                                                                              |
+| `--state-rank`, `-ground`, `-border`         | the blues                                                                               |
+| `--state-mastered-tint`, `--state-rank-tint` | `--green-400`, `--blue-400` at 20% (the ground behind a part's art)                     |
+| `--art-done`                                 | `--night-800` at 20% (a ticked component's faded art)                                   |
+| `--state-absent`                             | `--slate-400`                                                                           |
+| `--state-prime`                              | `--gold-400`                                                                            |
+| `--hover`                                    | `--ash-100` at 8%, laid over what is pressable (BR-39; drawn on the Design System page) |
+| `--focus`                                    | `--gold-400`, a 2 px ring offset 2 px (drawn on the Design System page)                 |
+
+A role at a fraction of a primitive's opacity is written as `color-mix()` on
+that primitive. `tokens.css` has 23 primitives; Figma's Primitives collection
+counts 28, and the five it adds have not been read.
 
 ## Type
 
@@ -112,36 +124,44 @@ Line height is the font's own (`auto` in every frame) and letter spacing 0.
 Cinzel has no lowercase of its own; its lowercase are small capitals, which is
 why the frames' Onkko lines read in small caps without `textCase`.
 
-| Token                   | Face           | Weight | Size | Case  | Used for                                          |
-| ----------------------- | -------------- | ------ | ---- | ----- | ------------------------------------------------- |
-| `--type-place`          | Cinzel         | 700    | 40   | upper | the place card's name                             |
-| `--type-numeral`        | Cinzel         | 700    | 36   |       | the numbered steps on the id form                 |
-| `--type-title`          | Cinzel         | 700    | 32   | upper | screen titles, the hero's name, the player's name |
-| `--type-heading`        | Cinzel         | 700    | 24   | upper | system names in the system list                   |
-| `--type-name`           | Cinzel         | 700    | 16   | upper | card, tile, group, place and update names         |
-| `--type-name-s`         | Cinzel         | 700    | 14   | upper | section titles, dividers, the featured card       |
-| `--type-voice`          | Cinzel         | 400    | 14   |       | Onkko's lines                                     |
-| `--type-figure`         | Inter          | 700    | 24   |       | "Mastery Rank 27"                                 |
-| `--type-figure-caption` | Inter          | 400    | 24   |       | the rank's title                                  |
-| `--type-body-l`         | Inter          | 400    | 16   |       | leads, the search field                           |
-| `--type-body`           | Inter          | 400    | 14   |       | descriptions, prose, dates                        |
-| `--type-body-s`         | Inter          | 400    | 12   |       | places under a tile, the update list              |
-| `--type-label`          | Inter          | 700    | 16   |       | buttons, step titles                              |
-| `--type-label-s`        | Inter          | 700    | 14   |       | tabs, counts                                      |
-| `--type-kicker`         | Inter          | 400    | 16   | upper | the hero's catalogue                              |
-| `--type-eyebrow`        | Inter          | 400    | 14   | upper | "Origin", "Normal", "Steel Path"                  |
-| `--type-eyebrow-s`      | Inter          | 400    | 12   | upper | "You're on", "System"                             |
-| `--type-badge`          | Inter          | 700    | 12   | upper | badges, "You last played"                         |
-| `--type-quiet`          | Inter          | 300    | 14   |       | "12/21 Mastered"                                  |
-| `--type-reading`        | JetBrains Mono | 700    | 12   |       | the gold line, "~24 Runs · Rotation A"            |
-| `--type-reading-l`      | JetBrains Mono | 700    | 16   |       | the gold line in Summary rows                     |
-| `--type-mono`           | JetBrains Mono | 400    | 14   |       | the read cycle, field labels, addresses           |
+| Class             | Figma style       | Face           | Weight | Size | Case  | Used for                                             |
+| ----------------- | ----------------- | -------------- | ------ | ---- | ----- | ---------------------------------------------------- |
+| `.place`          | Display/Place     | Cinzel         | 700    | 40   | upper | the place card's name                                |
+| `.numeral`        | Display/Numeral   | Cinzel         | 700    | 36   |       | the numbered steps on the id form                    |
+| `.title`          | Display/Title     | Cinzel         | 700    | 32   | upper | screen titles, the hero's name                       |
+| `.display-name`   | Display/Name      | Cinzel         | 700    | 32   |       | the player's name                                    |
+| `.heading`        | Display/Heading   | Cinzel         | 700    | 24   | upper | system names in the system list                      |
+| `.name`           | Name/Default      | Cinzel         | 700    | 16   | upper | card, tile, group, place and update names            |
+| `.name-caps`      | Name/Small Caps   | Cinzel         | 700    | 16   |       | the choice cards' titles, in Cinzel's small capitals |
+| `.name-s`         | Name/Small        | Cinzel         | 700    | 14   | upper | section titles, dividers, the featured card          |
+| `.voice`          | Voice             | Cinzel         | 400    | 14   |       | Onkko's lines                                        |
+| `.figure`         | Figure/Value      | Inter          | 700    | 24   |       | "Mastery Rank 27"                                    |
+| `.figure-caption` | Figure/Caption    | Inter          | 400    | 24   |       | the rank's title                                     |
+| `.body-l`         | Body/Large        | Inter          | 400    | 16   |       | leads, the search field                              |
+| `.body`           | Body/Default      | Inter          | 400    | 14   |       | descriptions, prose, dates                           |
+| `.body-s`         | Body/Small        | Inter          | 400    | 12   |       | places under a tile, the update list                 |
+| `.label`          | Label/Default     | Inter          | 700    | 16   |       | buttons, step titles                                 |
+| `.label-upper`    | Label/Upper       | Inter          | 700    | 16   | upper | Newest, system names                                 |
+| `.label-s`        | Label/Small       | Inter          | 700    | 14   |       | tabs, counts                                         |
+| `.label-s-upper`  | Label/Small Upper | Inter          | 700    | 14   | upper | the counts on the place card                         |
+| `.kicker`         | Kicker            | Inter          | 400    | 16   | upper | the hero's catalogue                                 |
+| `.eyebrow`        | Eyebrow/Default   | Inter          | 400    | 14   | upper | "Origin", "Normal", "Steel Path"                     |
+| `.eyebrow-s`      | Eyebrow/Small     | Inter          | 400    | 12   | upper | "You're on", "System"                                |
+| `.badge`          | Badge             | Inter          | 700    | 12   | upper | badges, "You last played"                            |
+| `.quiet`          | Quiet             | Inter          | 300    | 14   |       | "12/21 Mastered"                                     |
+| `.quiet-upper`    | Quiet/Upper       | Inter          | 300    | 14   | upper | the quiet line in capitals                           |
+| `.reading`        | Reading/Default   | JetBrains Mono | 700    | 12   |       | the gold line, "~24 Runs · Rotation A"               |
+| `.reading-l`      | Reading/Large     | JetBrains Mono | 700    | 16   |       | the gold line in Summary rows                        |
+| `.mono`           | Mono              | JetBrains Mono | 400    | 14   |       | the read cycle, addresses                            |
+| `.mono-label`     | Mono/Label        | JetBrains Mono | 400    | 14   | upper | field labels                                         |
+| `.mono-strong`    | Mono/Strong       | JetBrains Mono | 700    | 14   |       | the bold part of the read cycle                      |
 
 A type token is a set of properties (`font-family`, `font-weight`, `font-size`,
-`text-transform`), one class each in `src/ui/type.module.css`, which a
-component's module takes with `composes:`. Like `tokens.css`, it is the only
-other file allowed raw type values. Fonts load through `next/font/google`, self-hosted at
-build time.
+`text-transform`), one class each in `src/ui/type.module.css`, named in the
+table above, which a component's module takes with `composes:`. Like
+`tokens.css`, it is the only other file allowed raw type values. Fonts load
+through `next/font/google`, self-hosted at build time, as the variables
+`--font-cinzel`, `--font-inter` and `--font-jetbrains-mono`.
 
 ## Shape, space and effect
 
@@ -150,8 +170,11 @@ build time.
 | Radius       | `--radius-xs` 2 (diamonds), `--radius-s` 4 (fields), `--radius-m` 8 (badges, chips), `--radius-l` 24 (buttons, segmented), `--radius-full` (orbs, avatars, round icons) |
 | Space        | `--space-1` 2, `--space-2` 4, `--space-3` 6, `--space-4` 8, `--space-5` 12, `--space-6` 16, `--space-7` 24, `--space-8` 32                                              |
 | Border       | `--border-1` 1, `--border-2` 2 (a field in error)                                                                                                                       |
-| Blur         | `--blur-band` 4 (`Blur/Overlay`)                                                                                                                                        |
+| Blur         | `--blur-band` 4 (`Blur/Band`)                                                                                                                                           |
 | Gutter       | `--gutter` 16, the frames' side margin                                                                                                                                  |
+
+The frames draw no motion, so there is no duration or easing token yet; the
+check below still refuses a raw one in a module.
 
 The 44 px indent of a step's text under its diamond is a component token of
 `StepRow`, not a space step.

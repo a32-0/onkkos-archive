@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test",
-    "knip": "knip"
+    "knip": "knip",
+    "palette": "node scripts/palette.mjs"
   },
   "dependencies": {
     "next": "16.3.2",
