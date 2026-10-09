@@ -23,26 +23,7 @@ Everything else that touches the outside: the wiki's prose and icons, Varzia's s
 
 ## Acceptance
 
-- [ ] In development, `logging.fetches` shows the wiki and worldstate reads as hits on a second render; the pull request records what it showed.
+- [ ] In development, `logging.fetches` shows the wiki and worldstate reads as hits on a second render; the commit message records what it showed.
 - [ ] A prefetch of a place does not change `wf_place`.
 - [ ] A failed read lands on `/connect` with the reason and the retry time.
-- [ ] `check.yml` passes on the pull request.
-
-## The issue
-
-Title: `T-19 · Outside reads and the request: wiki, Varzia, cookies, the screen read` · Milestone: `3. Domain and infra`
-
-```markdown
-Everything else that touches the outside: the wiki's prose and icons, Varzia's stock, the cookies, the one read every screen makes (`readScreen()`), and `proxy.ts`, which writes the last place visited. Wiki and worldstate reads stay in Next's data cache (`force-cache` with `revalidate`), and no route exports `force-dynamic`.
-
-- **Serves:** `specs/04-shell.md`, `specs/07-map.md`, `specs/09-item-summary.md`, `specs/10-step-by-step.md`, `specs/plan/02-architecture.md`; BR-38, BR-46, BR-48
-- **Waits on:** T-16, T-18
-- **Task:** `specs/tasks/T-19-outside-reads.md`
-
-### Acceptance
-
-- [ ] In development, `logging.fetches` shows the wiki and worldstate reads as hits on a second render; the pull request records what it showed.
-- [ ] A prefetch of a place does not change `wf_place`.
-- [ ] A failed read lands on `/connect` with the reason and the retry time.
-- [ ] `check.yml` passes on the pull request.
-```
+- [ ] `check.yml` passes on `dev`.

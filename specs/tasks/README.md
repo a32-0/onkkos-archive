@@ -1,16 +1,16 @@
 # Tasks
 
 Step 5 of the [spec-driven order](../../docs/spec-driven-order.md): the work that
-builds the public repository from the specs and the plan, cut into pieces that
-each end in one pull request. The constitution sets the first one, the scaffold;
-the rest follow the plan's phases ([plan part 6](../plan/06-roadmap.md)).
+builds the public repository from the specs and the plan, cut into pieces. The
+constitution sets the first one, the scaffold; the rest follow the plan's phases
+([plan part 6](../plan/06-roadmap.md)).
 
 ## What a task carries
 
 Every task file has the same parts, so a later session builds from it without
 asking the owner to restate a decision:
 
-- **Phase**, which is the issue's milestone.
+- **Phase**: the phase of plan part 6 it belongs to.
 - **Serves**: the specs, the plan parts and the business rules it builds.
 - **Waits on**: earlier tasks only. No task waits on a later one.
 - **The owner**: what only the owner does (accounts, projects, secrets,
@@ -21,34 +21,28 @@ asking the owner to restate a decision:
   that moves the code it describes, so the two cross together.
 - **Acceptance**: the spec's acceptance by reference, never copied, plus the
   task's own. A screen task points at its spec; the frames are in the spec.
-- **The issue**: the title, the milestone and the body, ready to paste.
 
-## Issues
+## Branches
 
-The owner creates every issue (set on 2026-10-06):
+Set by the owner on 2026-10-08, replacing the issues, milestones and GitHub
+Project planned on 2026-10-06:
 
-1. Create the five milestones, named as the phases: `1. Scaffold`,
-   `2. Design system`, `3. Domain and infra`, `4. Screens`, `5. Launch`.
-2. Create the issues in order, T-01 to T-33, before anything else is opened in
-   the repository. GitHub numbers issues and pull requests from one counter, so
-   in that order issue #n is task T-n. The title carries the task's id anyway,
-   so nothing depends on the numbers matching. T-02b was added on 2026-10-08,
-   after the others; its issue takes the next free number.
-3. Add them to one GitHub Project, which shows the phases as its milestones.
-
-Paste the block under **The issue** as the body. Its paths are plain text
-rather than links, because a relative link in an issue body does not resolve
-the way it does in a file.
-
-A pull request closes its issue (`Closes #n`) and links its Vercel preview and,
-from T-05, its Storybook build.
+- **`dev`** is where every task is committed. Each push runs `check.yml` and
+  builds a Vercel preview, which reads fixtures.
+- **`main`** is production. It moves once per phase: when a phase's tasks are
+  done, the owner opens one pull request from `dev` to `main`, titled with the
+  phase, `check.yml` runs on it, and the merge deploys production.
+- A commit's subject starts with its task id (`T-04: …`), so `git log` reads
+  task by task. The phase's pull request lists the tasks it carries and links
+  its preview and, from T-05, its Storybook build.
 
 ## Done
 
-A task is done when its acceptance holds, `check.yml` passes on its pull
-request, and the owner has merged it. A screen task is also checked by the owner
-against its frames at 390 px on the preview, and swept at 360, 600, 840, 1280 and
-1440 (constitution, "The gates").
+A task is done when its acceptance holds, `check.yml` passes on `dev`, and the
+owner has committed it. A screen task is also checked by the owner against its
+frames at 390 px on the preview, and swept at 360, 600, 840, 1280 and 1440
+(constitution, "The gates"). A phase is done when its pull request is merged
+into `main`.
 
 ## The tasks
 

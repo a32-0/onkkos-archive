@@ -20,22 +20,4 @@ The part of the catalog that everything else reads: an item's name, category and
 
 - [ ] The arsenal reads every item's mastery from `XPInfo`.
 - [ ] No module under `domain/` reads a file or the network.
-- [ ] `check.yml` passes on the pull request.
-
-## The issue
-
-Title: `T-14 · Items and mastery: the catalog's base and the arsenal` · Milestone: `3. Domain and infra`
-
-```markdown
-The part of the catalog that everything else reads: an item's name, category and art, mastery, the odds, an item's dossier, and the player's arsenal read against them. It imports nothing outside itself and the profile.
-
-- **Serves:** `specs/06-catch-up-summary.md`, `specs/07-map.md`, `specs/09-item-summary.md`, `specs/plan/01-repository.md`; BR-15
-- **Waits on:** T-12
-- **Task:** `specs/tasks/T-14-items.md`
-
-### Acceptance
-
-- [ ] The arsenal reads every item's mastery from `XPInfo`.
-- [ ] No module under `domain/` reads a file or the network.
-- [ ] `check.yml` passes on the pull request.
-```
+- [ ] `check.yml` passes on `dev`.
