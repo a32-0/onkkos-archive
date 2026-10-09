@@ -5,7 +5,14 @@ import prettier from "eslint-config-prettier";
 import boundaries from "eslint-plugin-boundaries";
 
 export default defineConfig([
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "coverage/**"]),
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "coverage/**",
+    "storybook-static/**",
+  ]),
   ...nextVitals,
   ...nextTypescript,
   prettier,

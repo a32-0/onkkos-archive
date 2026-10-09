@@ -1,0 +1,211 @@
+import { Meta, Unstyled } from "@storybook/addon-docs/blocks";
+
+import tokensCss from "./tokens.css?raw";
+import typeCss from "./type.module.css?raw";
+import type from "./type.module.css";
+
+<Meta title="Foundations" />
+
+export const tokens = [...tokensCss.matchAll(/^\s*(--[a-z0-9-]+):\s*([^;]+);/gm)].map(
+  ([, name, value]) => ({ name, value: value.trim() }),
+);
+
+export const SHAPE = /^--(radius|space|border|blur|gutter)/;
+
+export const primitives = tokens.filter(
+  ({ name, value }) => !SHAPE.test(name) && !value.includes("var("),
+);
+
+export const roles = tokens.filter(
+  ({ name, value }) => !SHAPE.test(name) && value.includes("var("),
+);
+
+export const shape = (family) => tokens.filter(({ name }) => name.startsWith(`--${family}`));
+
+export const styles = [...typeCss.matchAll(/^\.([a-z0-9-]+)\s*\{([^}]*)\}/gm)].map(
+  ([, name, body]) => ({
+    name,
+    body: body
+      .trim()
+      .split(/;\s*/)
+      .filter(Boolean)
+      .map((line) =>
+        line
+          .split(":")[1]
+          .trim()
+          .replace(/^var\(--font-([a-z-]+)\).*$/, "$1"),
+      )
+      .join(" · "),
+  }),
+);
+
+export const grid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(calc(var(--space-8) * 6), 1fr))",
+  gap: "var(--space-6)",
+  margin: "var(--space-6) 0 var(--space-8)",
+};
+
+export const caption = { fontFamily: "var(--font-jetbrains-mono)", color: "var(--ink-muted)" };
+
+export const Swatch = ({ name, value }) => (
+  <div style={{ display: "flex", gap: "var(--space-5)", alignItems: "center" }}>
+    <div
+      style={{
+        flex: "none",
+        width: "calc(var(--space-8) * 1.5)",
+        height: "calc(var(--space-8) * 1.5)",
+        borderRadius: "var(--radius-m)",
+        border: "var(--border-1) solid var(--line-subtle)",
+        background: `var(${name})`,
+      }}
+    />
+    <div className={type.mono}>
+      <div style={{ color: "var(--ink)" }}>{name}</div>
+      <div style={caption}>{value}</div>
+    </div>
+  </div>
+);
+
+export const Swatches = ({ of }) => (
+  <div style={grid}>
+    {of.map((token) => (
+      <Swatch key={token.name} {...token} />
+    ))}
+  </div>
+);
+
+export const Measure = ({ name, value, draw }) => (
+  <div
+    style={{
+      display: "flex",
+      gap: "var(--space-6)",
+      alignItems: "center",
+      margin: "var(--space-5) 0",
+    }}
+  >
+    <div className={type.mono} style={{ flex: "none", width: "calc(var(--space-8) * 5)" }}>
+      <span style={{ color: "var(--ink)" }}>{name}</span> <span style={caption}>{value}</span>
+    </div>
+    {draw(`var(${name})`)}
+  </div>
+);
+
+export const Measures = ({ family, draw }) =>
+  shape(family).map((token) => <Measure key={token.name} {...token} draw={draw} />);
+
+<Unstyled style={{ background: "var(--canvas)", color: "var(--ink)", padding: "var(--space-8) var(--gutter)" }}>
+
+<h1 className={type.title}>Foundations</h1>
+
+<p className={type["body-l"]} style={{ color: "var(--ink-muted)" }}>
+  Every token in <code>src/ui/tokens.css</code> and every style in{" "}
+  <code>src/ui/type.module.css</code>, read from the files themselves, so a value can be checked
+  against the Figma file at a glance. Plan part 3 says where each one comes from.
+</p>
+
+<h2 className={type["name-s"]}>Colour roles</h2>
+
+<p className={type.body} style={{ color: "var(--ink-dim)" }}>
+  What components use. Each role names the primitive it points at.
+</p>
+
+<Swatches of={roles} />
+
+<h2 className={type["name-s"]}>Primitives</h2>
+
+<p className={type.body} style={{ color: "var(--ink-dim)" }}>
+  The raw values. Only the roles above read them.
+</p>
+
+<Swatches of={primitives} />
+
+<h2 className={type["name-s"]}>Type</h2>
+
+<div style={{ margin: "var(--space-6) 0 var(--space-8)" }}>
+  {styles.map(({ name, body }) => (
+    <div
+      key={name}
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "var(--space-2) var(--space-6)",
+        alignItems: "baseline",
+        padding: "var(--space-5) 0",
+        borderBottom: "var(--border-1) solid var(--line-subtle)",
+      }}
+    >
+      <div className={type.mono} style={{ flex: "none", width: "calc(var(--space-8) * 5)" }}>
+        <div style={{ color: "var(--ink)" }}>.{name}</div>
+        <div style={caption}>{body}</div>
+      </div>
+      <div className={type[name]}>The Plains of Eidolon · 24 Runs</div>
+    </div>
+  ))}
+</div>
+
+<h2 className={type["name-s"]}>Radius</h2>
+
+<Measures
+  family="radius"
+  draw={(value) => (
+    <div
+      style={{
+        width: "var(--space-8)",
+        height: "var(--space-8)",
+        borderRadius: value,
+        border: "var(--border-1) solid var(--line-strong)",
+      }}
+    />
+  )}
+/>
+
+<h2 className={type["name-s"]}>Space</h2>
+
+<Measures
+  family="space"
+  draw={(value) => (
+    <div style={{ width: value, height: "var(--space-6)", background: "var(--accent)" }} />
+  )}
+/>
+
+<h2 className={type["name-s"]}>Border</h2>
+
+<Measures
+  family="border"
+  draw={(value) => (
+    <div
+      style={{ width: "calc(var(--space-8) * 3)", borderTop: `${value} solid var(--line-strong)` }}
+    />
+  )}
+/>
+
+<h2 className={type["name-s"]}>Gutter</h2>
+
+<Measures
+  family="gutter"
+  draw={(value) => (
+    <div style={{ width: value, height: "var(--space-6)", background: "var(--accent)" }} />
+  )}
+/>
+
+<h2 className={type["name-s"]}>Blur</h2>
+
+<Measures
+  family="blur"
+  draw={(value) => (
+    <div style={{ position: "relative", width: "calc(var(--space-8) * 6)" }}>
+      <div className={type.title}>Cetus</div>
+      <div
+        style={{
+          position: "absolute",
+          inset: "0 0 0 calc(var(--space-8) * 3)",
+          background: "var(--surface-band)",
+          backdropFilter: `blur(${value})`,
+        }}
+      />
+    </div>
+  )}
+/>
+
+</Unstyled>

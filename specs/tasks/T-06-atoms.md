@@ -22,4 +22,5 @@ The smallest parts every screen uses. `GameIcon` renders the game's own art from
 - [ ] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
 - [ ] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
 - [ ] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
+- [ ] `--passWithNoTests` is removed from `test:stories`: from here a run with no story fails.
 - [ ] `check.yml` passes on `dev`.

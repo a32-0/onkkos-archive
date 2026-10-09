@@ -16,8 +16,15 @@ how the code is split into layers, and the conventions every file follows.
   is from the wiki and DE's CDN, never rehosted.
 - Prettier (`.prettierrc`) wraps at 100 columns, with double quotes and
   trailing commas.
-- Vitest runs the tests, which never reach the network. A run with no test
-  file fails.
+- Vitest runs the tests, which never reach the network. It has two projects:
+  `unit` runs `tests/` in Node, and `storybook` runs every story as a test in
+  a headless Chromium. A unit run with no test file fails.
+- Storybook (`@storybook/nextjs-vite`) is the catalogue of the design system.
+  It loads `tokens.css` and the same three fonts as the app, from
+  `src/app/fonts.ts`, and offers the widths the constitution sweeps: 360, 390,
+  600, 840, 1280 and 1440. The Foundations page, `src/ui/Foundations.mdx`,
+  reads `tokens.css` and `type.module.css` as text and shows every token and
+  every type style, so nothing can be added to either without appearing there.
 - knip finds files, exports and dependencies that nothing reaches. Its Vitest
   and Storybook plugins count tests and stories as entry points, so a module
   that only its tests or its stories use is not reported as dead.
@@ -31,7 +38,15 @@ pnpm check         # all of the above
 pnpm knip
 pnpm build
 pnpm palette
+pnpm storybook        # the catalogue at localhost:6006
+pnpm storybook:build  # into storybook-static/
+pnpm test:stories     # every story in Chromium, with the accessibility checks
 ```
+
+`pnpm test:stories` needs Chromium once on a machine:
+`pnpm exec playwright install chromium`. Each story is checked by axe, and a
+violation fails the story. Until the first story arrives (T-06) the command
+passes with none.
 
 `pnpm palette` measures every ink in `src/ui/tokens.css` for contrast and
 against the colour blindness matrices. It reports and never fails;
@@ -46,18 +61,21 @@ request, on GitHub's Ubuntu runner with Node 24 and the pnpm version
 ([plan part 4](../specs/plan/04-deployment.md#on-every-push-checkyml)). Each
 step is named after the gate it runs, so a failed run shows which gate failed:
 
-| Step      | Command                                       | Why it runs                                                    |
-| --------- | --------------------------------------------- | -------------------------------------------------------------- |
-| Install   | `pnpm install --frozen-lockfile`              | The lockfile is the only source of versions; a stale one fails |
-| Check     | `pnpm check`                                  | Types, lint with the layers, format and tests, as on a machine |
-| Dead code | `pnpm knip`                                   | A file, export or dependency nothing reaches does not merge    |
-| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture` | The app builds without DE, the way every preview runs          |
+| Step      | Command                                             | Why it runs                                                    |
+| --------- | --------------------------------------------------- | -------------------------------------------------------------- |
+| Install   | `pnpm install --frozen-lockfile`                    | The lockfile is the only source of versions; a stale one fails |
+| Check     | `pnpm check`                                        | Types, lint with the layers, format and tests, as on a machine |
+| Dead code | `pnpm knip`                                         | A file, export or dependency nothing reaches does not merge    |
+| Chromium  | `pnpm exec playwright install --with-deps chromium` | The browser the story tests run in                             |
+| Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
+| Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
+| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, the way every preview runs          |
 
-The workflow holds no secret. Apart from the packages the lockfile names and
-the three fonts `next/font` downloads from Google Fonts during the build, it
-reads nothing outside the repository. Its token can only read the repository,
-checkout does not keep it, and Next's telemetry is off. The Storybook steps
-are added with Storybook itself (T-05).
+The workflow holds no secret. It reads nothing outside the repository except
+the packages the lockfile names, the three fonts `next/font` downloads from
+Google Fonts during both builds, and Chromium with the system libraries it
+needs, which Playwright installs. Its token can only read the repository,
+checkout does not keep it, and the telemetry of Next and Storybook is off.
 
 ## The layers
 
