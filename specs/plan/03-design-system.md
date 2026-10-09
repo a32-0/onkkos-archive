@@ -185,55 +185,55 @@ Inferred from what the frames repeat, since the file has almost no components.
 Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 `Name.stories.tsx`, and its stories show every variant and state below.
 
-| Component               | Variants and states                                                                                       | Seen in        |
-| ----------------------- | --------------------------------------------------------------------------------------------------------- | -------------- |
-| `Button`                | primary (light), secondary (outlined), danger (red outlined), text; rest, hover, focus, disabled, loading | every screen   |
-| `Field`                 | rest, focus, filled, error                                                                                | 02, 05, 07, 08 |
-| `SearchField`           | empty, typing, with suggestions                                                                           | 05, 07, 08     |
-| `Segmented`             | two options; none chosen, one chosen                                                                      | 07, 09         |
-| `Badge`                 | Newest, Start here, New, Mastered, Rank                                                                   | 05, 07, 09     |
-| `Icon`                  | Material Symbols Rounded, by name; sizes 16, 20, 24                                                       | all            |
-| `GameIcon`              | the game's icon from the wiki; the name alone when it has none                                            | 06, 07, 10     |
-| `Wordmark`              | large (splash), header, sheet                                                                             | 01, 02, 04     |
-| `OnkkoLine`             | top, bottom                                                                                               | all            |
-| `Header`                | wordmark only, with chip, sheet (with close)                                                              | 04             |
-| `PlayerChip`            |                                                                                                           | 04             |
-| `TabBar`, `Tab`         | active, inactive; bottom, in the header                                                                   | 04             |
-| `Sheet`                 | full screen, anchored panel                                                                               | 04, 07         |
-| `ChoiceCard`            | with icon, title, line; link                                                                              | 03, 08         |
-| `UpdateCard`            | plain, Newest; with art, without                                                                          | 05             |
-| `FeaturedCard`          | last played, up to date; closed, open                                                                     | 06, 07         |
-| `UpdateList`            | with "Show older"                                                                                         | 06, 07         |
-| `Divider`               | with label                                                                                                | 06, 07, 10     |
-| `GroupRow`              | closed, open; with count                                                                                  | 06, 07         |
-| `ItemTile`              | plain, Rank, Mastered                                                                                     | 06, 07         |
-| `Rail`                  | sideways (compact), grid (from 840)                                                                       | 06, 07         |
-| `PlaceCard`             | in progress, mastered                                                                                     | 07             |
-| `ProgressBar`           | in progress, mastered                                                                                     | 07             |
-| `PlaceRow`, `SystemRow` | plain, on view, Start here, New, Mastered, Soon                                                           | 07             |
-| `PlaceCrumb`            | "You're on"                                                                                               | 09, 10         |
-| `ItemHero`              | Rank, Mastered, Not obtained, Not obtained Prime, no state, collectible                                   | 09             |
-| `BlueprintArt`          | the part over the blueprint                                                                               | 09, 10         |
-| `SummaryRow`            | blueprint, component, route                                                                               | 09             |
-| `SectionHeader`         | game icon, part art; open, closed                                                                         | 09, 10         |
-| `StepRow`               | step, optional, alternative, best; open, collapsed                                                        | 10             |
-| `ComponentRow`          | open, collapsed, ticked                                                                                   | 10             |
-| `Checkbox`              | off, on                                                                                                   | 10             |
-| `ErrorBand`             |                                                                                                           | 02             |
-| `LoadingCard`           | the quill                                                                                                 | 02             |
-| `SuggestionList`        | the search's list (BR-53): results, no match                                                              | 08             |
-| `PlayerMenu`            | open, with Disconnect                                                                                     | 04             |
-| `SheetHeader`           | wordmark and close                                                                                        | 04, 07         |
-| `DateMenu`              | closed, open                                                                                              | 05             |
-| `ShowMore`              | "Show {n} older"                                                                                          | 05, 06         |
-| `SearchCard`            | title, line, field and Continue                                                                           | 08             |
-| `SuggestionRow`         | icon, name, catalogue; hover, focus                                                                       | 08             |
-| `Timeline`              | the diamonds and the line of a section                                                                    | 10             |
-| `RowDetail`             | the reading under a step                                                                                  | 10             |
-| `RowProse`              | the wiki's paragraphs under a step                                                                        | 10             |
-| `WikiLink`              | wiki, our page                                                                                            | 09, 10         |
-| `GroupDivider`          | between groups of steps                                                                                   | 10             |
-| `EmptyState`            | icon, title, one line                                                                                     | 06, 07, 08     |
+| Component               | Variants and states                                                                                                                                                     | Seen in        |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| `Button`                | primary (light), secondary (outlined), danger (red outlined), text; rest, hover, focus, disabled, loading (drawn as disabled and marked busy, as Connect is in spec 02) | every screen   |
+| `Field`                 | rest, focus, filled, error                                                                                                                                              | 02, 05, 07, 08 |
+| `SearchField`           | empty, typing, with suggestions                                                                                                                                         | 05, 07, 08     |
+| `Segmented`             | two options; none chosen, one chosen                                                                                                                                    | 07, 09         |
+| `Badge`                 | Newest, Start here, New, Mastered, Rank                                                                                                                                 | 05, 07, 09     |
+| `Icon`                  | Material Symbols Rounded, by name; sizes 16, 20, 24                                                                                                                     | all            |
+| `GameIcon`              | the game's icon from the wiki; the name alone when it has none                                                                                                          | 06, 07, 10     |
+| `Wordmark`              | large (splash), header, sheet                                                                                                                                           | 01, 02, 04     |
+| `OnkkoLine`             | top, bottom                                                                                                                                                             | all            |
+| `Header`                | wordmark only, with chip, sheet (with close)                                                                                                                            | 04             |
+| `PlayerChip`            |                                                                                                                                                                         | 04             |
+| `TabBar`, `Tab`         | active, inactive; bottom, in the header                                                                                                                                 | 04             |
+| `Sheet`                 | full screen, anchored panel                                                                                                                                             | 04, 07         |
+| `ChoiceCard`            | with icon, title, line; link                                                                                                                                            | 03, 08         |
+| `UpdateCard`            | plain, Newest; with art, without                                                                                                                                        | 05             |
+| `FeaturedCard`          | last played, up to date; closed, open                                                                                                                                   | 06, 07         |
+| `UpdateList`            | with "Show older"                                                                                                                                                       | 06, 07         |
+| `Divider`               | with label                                                                                                                                                              | 06, 07, 10     |
+| `GroupRow`              | closed, open; with count                                                                                                                                                | 06, 07         |
+| `ItemTile`              | plain, Rank, Mastered                                                                                                                                                   | 06, 07         |
+| `Rail`                  | sideways (compact), grid (from 840)                                                                                                                                     | 06, 07         |
+| `PlaceCard`             | in progress, mastered                                                                                                                                                   | 07             |
+| `ProgressBar`           | in progress, mastered                                                                                                                                                   | 07             |
+| `PlaceRow`, `SystemRow` | plain, on view, Start here, New, Mastered, Soon                                                                                                                         | 07             |
+| `PlaceCrumb`            | "You're on"                                                                                                                                                             | 09, 10         |
+| `ItemHero`              | Rank, Mastered, Not obtained, Not obtained Prime, no state, collectible                                                                                                 | 09             |
+| `BlueprintArt`          | the part over the blueprint                                                                                                                                             | 09, 10         |
+| `SummaryRow`            | blueprint, component, route                                                                                                                                             | 09             |
+| `SectionHeader`         | game icon, part art; open, closed                                                                                                                                       | 09, 10         |
+| `StepRow`               | step, optional, alternative, best; open, collapsed                                                                                                                      | 10             |
+| `ComponentRow`          | open, collapsed, ticked                                                                                                                                                 | 10             |
+| `Checkbox`              | off, on                                                                                                                                                                 | 10             |
+| `ErrorBand`             |                                                                                                                                                                         | 02             |
+| `LoadingCard`           | the quill                                                                                                                                                               | 02             |
+| `SuggestionList`        | the search's list (BR-53): results, no match                                                                                                                            | 08             |
+| `PlayerMenu`            | open, with Disconnect                                                                                                                                                   | 04             |
+| `SheetHeader`           | wordmark and close                                                                                                                                                      | 04, 07         |
+| `DateMenu`              | closed, open                                                                                                                                                            | 05             |
+| `ShowMore`              | "Show {n} older"                                                                                                                                                        | 05, 06         |
+| `SearchCard`            | title, line, field and Continue                                                                                                                                         | 08             |
+| `SuggestionRow`         | icon, name, catalogue; hover, focus                                                                                                                                     | 08             |
+| `Timeline`              | the diamonds and the line of a section                                                                                                                                  | 10             |
+| `RowDetail`             | the reading under a step                                                                                                                                                | 10             |
+| `RowProse`              | the wiki's paragraphs under a step                                                                                                                                      | 10             |
+| `WikiLink`              | wiki, our page                                                                                                                                                          | 09, 10         |
+| `GroupDivider`          | between groups of steps                                                                                                                                                 | 10             |
+| `EmptyState`            | icon, title, one line                                                                                                                                                   | 06, 07, 08     |
 
 ## Storybook
 

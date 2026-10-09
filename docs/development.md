@@ -45,8 +45,12 @@ pnpm test:stories     # every story in Chromium, with the accessibility checks
 
 `pnpm test:stories` needs Chromium once on a machine:
 `pnpm exec playwright install chromium`. Each story is checked by axe, and a
-violation fails the story. Until the first story arrives (T-06) the command
-passes with none.
+violation fails the story; a run with no story fails too. A story turns one
+rule off only where the frame itself falls below that rule, and the owner has
+been told: the red label of Disconnect (`color-contrast`) and the wiki link,
+which only its colour sets apart from the prose (`link-in-text-block`). The
+hover and focus stories force those states with
+`storybook-addon-pseudo-states`.
 
 `pnpm palette` measures every ink in `src/ui/tokens.css` for contrast and
 against the colour blindness matrices. It reports and never fails;

@@ -1,0 +1,15 @@
+.line {
+  composes: voice from "../type.module.css";
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.top {
+  composes: line;
+}
+
+.bottom {
+  composes: line;
+  width: 100%;
+  text-align: center;
+}

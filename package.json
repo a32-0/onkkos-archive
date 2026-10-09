@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run --project unit",
     "test:watch": "vitest --project unit",
-    "test:stories": "vitest run --project storybook --passWithNoTests",
+    "test:stories": "vitest run --project storybook",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test",
     "knip": "knip",
     "storybook": "storybook dev -p 6006",
@@ -46,6 +46,7 @@
     "playwright": "1.64.0",
     "prettier": "3.9.6",
     "storybook": "10.6.1",
+    "storybook-addon-pseudo-states": "10.6.1",
     "typescript": "5.9.3",
     "vite": "8.3.3",
     "vitest": "4.1.11"

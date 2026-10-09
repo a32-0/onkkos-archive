@@ -1,0 +1,15 @@
+.link {
+  composes: body from "../type.module.css";
+  color: var(--link);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+  border-radius: var(--radius-xs);
+}
