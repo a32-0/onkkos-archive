@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-6);
+  box-sizing: border-box;
   width: 100%;
   min-height: var(--button-height);
   padding: var(--space-5);

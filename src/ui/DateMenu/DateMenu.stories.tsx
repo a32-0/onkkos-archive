@@ -18,16 +18,19 @@ const meta = {
     label: "Date",
     heading: "Month you last played",
     months: MONTHS,
+    dayHeading: "Or the exact day",
+    dayPlaceholder: "YYYY-MM-DD",
     open: false,
     menuId: "date-menu",
     onToggle: () => {},
     onChoose: () => {},
+    onDay: () => {},
   },
   decorators: [
     (Story) => (
       <div
         style={{
-          minHeight: "calc(var(--space-8) * 11)",
+          minHeight: "calc(var(--space-8) * 14)",
           padding: "var(--space-6)",
           background: "var(--surface)",
         }}

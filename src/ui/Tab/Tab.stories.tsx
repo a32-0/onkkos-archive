@@ -34,4 +34,7 @@ export const Hover: Story = {
   parameters: { pseudo: { hover: true } },
 };
 
-export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };
+export const Focus: Story = {
+  args: { icon: "hourglass", label: "Resume", active: false },
+  parameters: { pseudo: { focusVisible: true } },
+};

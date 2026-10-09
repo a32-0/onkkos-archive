@@ -45,6 +45,7 @@
 
 .heading {
   composes: badge from "../type.module.css";
+  display: block;
   margin: 0;
   color: var(--ink);
 }
@@ -78,4 +79,12 @@
 .month:focus-visible {
   outline: var(--border-2) solid var(--focus);
   outline-offset: var(--space-1);
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding-top: var(--space-5);
 }

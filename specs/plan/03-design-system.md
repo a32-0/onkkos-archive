@@ -322,6 +322,15 @@ all three component properties. Four frames use it: the Summary with nothing
 new, Goal with every goal done, the map with everything mastered, and the
 place list with no match.
 
+On 2026-10-08 the page was brought level with the code of T-06 and T-07. The
+owner redesigned Resume's date menu, with the exact day as a field under the
+months, and the menu took its title, "Or the exact day", and the placeholder
+"YYYY-MM-DD". The page gained the icons `close` and `check-box`, Field's
+Filled state, Checkbox's Focus, Tab's Hover and Focus, and two component
+sets built from the screens' own layers: **Wiki link** (Wiki, Our page, Focus)
+and **Date menu** (Closed, Open). Button's description says that Loading is
+drawn as Disabled.
+
 ### The screens are built from the components
 
 The owner first chose to keep the screens' own layers, then asked on
