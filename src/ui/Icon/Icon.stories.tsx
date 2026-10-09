@@ -24,6 +24,8 @@ const Every = ({ size }: { size: IconSize }) => (
   </div>
 );
 
+export const Size40: Story = { render: () => <Every size={40} /> };
+
 export const Size24: Story = { render: () => <Every size={24} /> };
 
 export const Size20: Story = { render: () => <Every size={20} /> };

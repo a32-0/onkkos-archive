@@ -10,9 +10,13 @@ The cards the screens stack: the two ways in and the goal cards (`ChoiceCard`), 
 
 ## What crosses
 
-| File                                                                                                           | Origin | Note |
-| -------------------------------------------------------------------------------------------------------------- | ------ | ---- |
-| `src/ui/{ChoiceCard,SearchCard,UpdateCard,FeaturedCard,UpdateList,ShowMore,ErrorBand,LoadingCard,EmptyState}/` | New    |      |
+| File                                                                                                           | Origin   | Note                                                                                           |
+| -------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------- |
+| `src/ui/{ChoiceCard,SearchCard,UpdateCard,FeaturedCard,UpdateList,ShowMore,ErrorBand,LoadingCard,EmptyState}/` | New      |                                                                                                |
+| `src/ui/Icon/`                                                                                                 | Reworked | Size 40, the cards' icons                                                                      |
+| `src/ui/stories/art.ts`                                                                                        | New      | Sample art for stories: gradients, so no game art is rehosted and no story reaches the network |
+| `src/ui/DateMenu/DateMenu.tsx`                                                                                 | Reworked | `aria-controls` only while open, as `FeaturedCard`                                             |
+| `tests/tokens.test.ts`                                                                                         | Reworked | The tokens these components apply leave the allowance list                                     |
 
 ## Acceptance
 

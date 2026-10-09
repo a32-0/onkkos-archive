@@ -329,7 +329,9 @@ months, and the menu took its title, "Or the exact day", and the placeholder
 Filled state, Checkbox's Focus, Tab's Hover and Focus, and two component
 sets built from the screens' own layers: **Wiki link** (Wiki, Our page, Focus)
 and **Date menu** (Closed, Open). Button's description says that Loading is
-drawn as Disabled.
+drawn as Disabled. Error band, Field's Error state and the Danger button were bound to
+`--danger` instead of `--brand`, which they had used for the same colour, so
+the mark and the rules keep `--brand` and every failure reads `--danger`.
 
 ### The screens are built from the components
 

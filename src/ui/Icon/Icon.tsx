@@ -1,7 +1,7 @@
 import { GLYPHS, type IconName } from "./glyphs";
 import styles from "./Icon.module.css";
 
-export type IconSize = 16 | 20 | 24;
+export type IconSize = 16 | 20 | 24 | 40;
 
 export function Icon({
   name,

@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-left: var(--border-1) solid var(--accent);
+  background: var(--surface-card);
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.quill {
+  display: block;
+  width: var(--space-8);
+  height: calc(var(--space-8) + var(--space-6));
+}
+
+.line {
+  composes: body-l from "../type.module.css";
+  margin: 0;
+  color: var(--ink);
+}

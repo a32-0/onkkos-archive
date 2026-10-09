@@ -34,7 +34,7 @@ export function DateMenu({
         type="button"
         className={styles.trigger}
         aria-expanded={open}
-        aria-controls={menuId}
+        aria-controls={open ? menuId : undefined}
         onClick={onToggle}
       >
         {label}

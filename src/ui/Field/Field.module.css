@@ -25,5 +25,5 @@
 
 .field[aria-invalid] {
   border-width: var(--border-2);
-  border-color: var(--brand);
+  border-color: var(--danger);
 }

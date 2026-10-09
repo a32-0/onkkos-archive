@@ -19,3 +19,8 @@
   width: var(--space-7);
   height: var(--space-7);
 }
+
+.s40 {
+  width: calc(var(--space-7) + var(--space-6));
+  height: calc(var(--space-7) + var(--space-6));
+}

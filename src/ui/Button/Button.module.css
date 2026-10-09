@@ -46,8 +46,8 @@
 
 .danger {
   composes: button;
-  border-color: var(--brand);
-  color: var(--brand);
+  border-color: var(--danger);
+  color: var(--danger);
 }
 
 .text {
