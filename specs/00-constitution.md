@@ -113,7 +113,7 @@ cannot produce the frame, the code changes.
 
 Warframe ends when you have everything. The app serves that, but its point is
 that the player should also understand what they are chasing, which is why
-quests and the curated prose sit beside the item data. Four rules follow, and
+quests and the curated prose sit beside the item data. Five rules follow, and
 they govern every screen:
 
 - **Never a warehouse clerk, and never an essay.** Copy speaks in terms of the
@@ -137,6 +137,16 @@ they govern every screen:
   place is named as a fact, its art rides with it: the catalog's for items, the
   wiki's for places. A name with no art available renders as a name, never as
   a placeholder box.
+- **Show what the player can reach; count what lies beyond.** The wiki hands
+  over the whole game at once, to a player who does not yet know what any of
+  it is. The app shows what the player's progress and Mastery Rank allow, and
+  turns the rest into a count that names what it counts and what stands in
+  the way ("4 more primary weapons need Mastery Rank 8 or higher. You are
+  Mastery Rank 5."). Exploring hides and counts; a search shows everything,
+  because the player asked; a plan dims the steps that wait on an unmet
+  prerequisite and never hides them. What cannot be read is in reach
+  ([BR-59](../docs/business-rules.md#br-59--what-the-player-can-reach) to
+  [BR-63](../docs/business-rules.md#br-63--a-plan-dims-what-waits-on-an-unmet-prerequisite)).
 
 ## What cannot be read
 

@@ -21,6 +21,10 @@ describes and no earlier frame drew. Their texts are sample values:
 
 - [`474:778` Summary — Nothing new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-778): the card, then the empty state (hourglass, "Nothing new since {Mon}, {year}", "The arsenal and the collection are as you left them."), Onkko's line and Next; no lead, no divider, no group.
 
+Drawn on 2026-10-08 under **Documented states**, for BR-61:
+
+- [`533:4813` Summary — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-4813): the first open group ends in the More line.
+
 ## Rules
 
 - [BR-11](../docs/business-rules.md#br-11--say-plainly-where-the-game-stands-now):
@@ -33,6 +37,9 @@ describes and no earlier frame drew. Their texts are sample values:
   closed; the chevron points down closed and up open.
 - [BR-15](../docs/business-rules.md#br-15--no-mastered-or-rank-here-only-new):
   no Mastered or Rank here, only NEW.
+- [BR-59](../docs/business-rules.md#br-59--what-the-player-can-reach) and
+  [BR-61](../docs/business-rules.md#br-61--a-group-shows-what-is-in-reach-and-counts-the-rest):
+  a group's tiles are what the player can reach; the rest is counted.
 - [BR-16](../docs/business-rules.md#br-16--what-each-arsenal-group-holds):
   what each Arsenal group holds.
 - [BR-35](../docs/business-rules.md#br-35--catch-me-up-is-what-the-summary-draws):
@@ -69,6 +76,14 @@ A row with the category's game icon (BR-42), its name, "{n} NEW" in the accent
 colour and a chevron. Closed by default (BR-14). Opening it shows a rail of
 tiles that scrolls sideways (`206:774`); closing it hides the rail. Each group
 opens and closes on its own.
+
+The rail holds what is new and in the player's reach (BR-59). What is new and
+beyond it is not drawn: the open group ends in a More line that says how
+many, of what, and what stands in the way, "4 more primary weapons need
+Mastery Rank 8 or higher. You are Mastery Rank 5." (BR-61), and opens
+nothing.
+"{n} NEW" counts both. A group whose new things are all beyond reach renders
+with only the More line.
 
 A group with nothing new does not render, and a divider with no group under it
 does not render either. The frames draw every group with sample data; which
@@ -107,6 +122,7 @@ Opens the map on the frontier, or on the focus when there is no frontier
 | Every group closed (default) | `257:653`                                                                       |
 | One or more groups open      | `206:774`                                                                       |
 | Update list open             | `264:67`                                                                        |
+| Something new beyond reach   | The open group ends in `More line` (`526:117`, BR-61)                           |
 | Up to date                   | `257:1090`                                                                      |
 | Nothing new since the month  | The card, the empty state, Onkko's line and Next; no lead, no divider, no group |
 
@@ -132,7 +148,7 @@ card's width.
 ## Components
 
 `FeaturedCard` (last played, up to date, open), `UpdateList`, `Divider`,
-`GroupRow` (closed, open), `ItemTile` (plain), `Rail`, `EmptyState`,
+`GroupRow` (closed, open), `ItemTile` (plain), `Rail`, `MoreLine`, `EmptyState`,
 `OnkkoLine`, and `Button` (primary), each with its stories.
 
 ## Acceptance
@@ -146,8 +162,11 @@ card's width.
    frontier or the focus.
 5. Choosing an update in the list re-measures from its month.
 6. No quests, no Nightwave, no suggested goal anywhere on the screen.
-7. `pnpm check` passes, with tests for which groups render and for the tile's
-   lines.
+7. With the Ordis fixture (Mastery Rank 2), a group shows only what is in
+   reach and ends in its More line, and "{n} NEW" counts both. With no
+   `PlayerLevel` and no `Missions[]`, nothing is counted away (BR-59, BR-61).
+8. `pnpm check` passes, with tests for which groups render, for the tile's
+   lines and for what the More line counts.
 
 ## Divergences from the code
 

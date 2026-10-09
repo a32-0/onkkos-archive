@@ -1,10 +1,10 @@
 # T-27 · Screen: Goal
 
-|          |                                                                                           |
-| -------- | ----------------------------------------------------------------------------------------- |
-| Phase    | 4. Screens                                                                                |
-| Serves   | [spec 08](../08-goals.md); [plan 1](../plan/01-repository.md); BR-05, BR-37, BR-53, BR-54 |
-| Waits on | [T-26](T-26-map.md)                                                                       |
+|          |                                                                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------- |
+| Phase    | 4. Screens                                                                                              |
+| Serves   | [spec 08](../08-goals.md); [plan 1](../plan/01-repository.md); BR-05, BR-37, BR-53, BR-54, BR-59, BR-62 |
+| Waits on | [T-26](T-26-map.md)                                                                                     |
 
 The search with its suggestions, and the curated goal cards.
 

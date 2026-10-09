@@ -1,10 +1,10 @@
 # T-28 · Screen: the item and its Summary
 
-|          |                                                                                    |
-| -------- | ---------------------------------------------------------------------------------- |
-| Phase    | 4. Screens                                                                         |
-| Serves   | [spec 09](../09-item-summary.md); [plan 1](../plan/01-repository.md); BR-55, BR-56 |
-| Waits on | [T-27](T-27-goal.md)                                                               |
+|          |                                                                                           |
+| -------- | ----------------------------------------------------------------------------------------- |
+| Phase    | 4. Screens                                                                                |
+| Serves   | [spec 09](../09-item-summary.md); [plan 1](../plan/01-repository.md); BR-55, BR-56, BR-62 |
+| Waits on | [T-27](T-27-goal.md)                                                                      |
 
 An item's page: the hero with its state, the crumb, and the Summary that is Step by step in short form.
 

@@ -1,14 +1,16 @@
 # T-10 · The item's parts: hero, crumb, Summary rows, sections, the timeline
 
-|          |                                                                                                                                |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Phase    | 2. Design system                                                                                                               |
-| Serves   | [spec 09](../09-item-summary.md), [spec 10](../10-step-by-step.md); [plan 3](../plan/03-design-system.md); BR-48, BR-55, BR-56 |
-| Waits on | [T-09](T-09-lists-and-map-parts.md)                                                                                            |
+|          |                                                                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Phase    | 2. Design system                                                                                                                      |
+| Serves   | [spec 09](../09-item-summary.md), [spec 10](../10-step-by-step.md); [plan 3](../plan/03-design-system.md); BR-48, BR-55, BR-56, BR-63 |
+| Waits on | [T-09](T-09-lists-and-map-parts.md)                                                                                                   |
 
 The last components: the item page's hero, crumb and Summary rows, and Step by step's sections, timeline, rows, prose and component rows. With them every token a component applies is applied; what is left on the allowance list is what only screens apply, and the list goes with the last of them (plan part 3, Checks).
 
 Corrected on 2026-10-08, before the work: the divider between groups of steps is the `Divider` component itself (Ash and Bhaira Hound use it with its own padding), so `GroupDivider` is not built; and the allowance list cannot be deleted here, since `.numeral`, `.mono-label`, `.heading` and `--scrim` are applied only by screens.
+
+Corrected again on 2026-10-08: `StepRow` and `ComponentRow` gain the Locked state of BR-63 (`526:96` and `528:97` with art, `526:102`), half opacity, a locked component still tickable.
 
 ## What crosses
 

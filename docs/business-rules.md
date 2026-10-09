@@ -267,6 +267,8 @@ a reading of the earlier build against it was put to them.
 - The frame draws three options (All / Mastered / New); the owner corrects it
   to the two. The `All` view leaves: the default is what is
   left.
+- Under the default and New, what is left is also what is in reach; the rest
+  is counted in the group's More line (BR-61).
 
 ### BR-46 · The map reopens where the player left it
 
@@ -288,6 +290,8 @@ a reading of the earlier build against it was put to them.
 - Rule: the systems are listed in this order: Origin, Pom-2 PC, Duviri,
   Empyrean Proxima, Dark Refractory, Tau. A system not in the game yet (Tau)
   reads "Soon™" and cannot be opened.
+- The list holds the systems with a place in the player's reach, in this
+  order, and counts the rest (BR-60).
 
 ## Onboarding and the account
 
@@ -321,6 +325,8 @@ a reading of the earlier build against it was put to them.
   `null`, never "low level" ([`system.md`](system.md#the-join-and-the-third-value)).
 - The flow map (BR-34) sends that player straight to the goals: "if player
   > 0?" answers no, and the arrow goes to "What are you after?".
+- It is the first instance of BR-59: what the player cannot use yet is not
+  put in front of them.
 
 ### BR-04 · Explain each choice so a player can act on it
 
@@ -434,6 +440,8 @@ in force: BR-12, BR-13 and BR-14.
   Warframes · comment `1933213824`
 - Type: content.
 - Rule: every new thing the endpoints can record is shown.
+- What lies beyond the player's reach is counted instead, in the group's More
+  line, and still counts in the group's "{n} NEW" (BR-61).
 
 ### BR-13 · The last-played card opens the update list
 
@@ -833,6 +841,144 @@ settled where the frames disagreed with each other or with the docs.
 - Figma: the vector replaced the emblem on 2026-10-07 in `Wordmark` (three
   sizes), `Imagotipo`, `Loading card` and `Header`, and so in every screen.
 
+## Progressive disclosure: settled on 2026-10-08
+
+The owner set it on 2026-10-08 as one of the app's central rules, and accepted
+three adjustments the same day: exploring hides and counts, a plan dims and
+never hides, a search shows everything. It applies the comment `1905320490`
+("Content depends on the player's level"), whose screen was deleted. The
+constitution states it in
+[The anchor holds](../specs/00-constitution.md#the-anchor-holds). The pieces
+it adds are on the Design System page, under New designs, and the screens
+that use them under Documented states (2026-10-08). The owner approved both
+on 2026-10-08.
+
+### BR-59 · What the player can reach
+
+- Comment `1905320490` on `10:16` Home, applied on 2026-10-08.
+- Type: behaviour.
+- Rule: the app shows what the player can reach and counts what lies beyond
+  it, so a player is never handed the whole game before they know what any of
+  it is. Reach has two measures, each read from the profile:
+  - **A place** is in reach when its planet is behind the player on
+    `star_chart_order` or is the frontier (`reachedPlaces`). A place off the
+    chart is in reach when the planet it sits `after` in `grafo.yaml` is. A
+    player with no frontier has every place on the chart and off it in reach.
+  - **Three places** have a gate of their own, settled by the owner on
+    2026-10-08 from the wiki:
+
+    | Place           | What opens it                                                                   | Reach                                |
+    | --------------- | ------------------------------------------------------------------------------- | ------------------------------------ |
+    | Sanctuary       | The New Strange, which needs Stolen Dreams and the Europa Junction              | `after: Europa`                      |
+    | Dark Refractory | The Old Peace, which needs The Lotus Eaters, the quest that opens Höllvania     | `after: Sedna`, as Höllvania         |
+    | Dojo            | Joining a clan, which gives the Clan Key's blueprint; the key is built to enter | The profile names a clan (`GuildId`) |
+
+    The quests themselves cannot be read, so the planet before them is the
+    measure, and a player who has reached it sees the place.
+
+  - **An item** is in reach when the player's Mastery Rank (`PlayerLevel`)
+    meets the item's (`masteryReq`) and its place is in reach. On the map its
+    place is the place on view, in reach by being shown, so there only the
+    rank counts; everywhere else it is the place BR-51 names. An item with no
+    place is measured by its rank alone.
+  - A quest has no reach of its own: its prerequisites say what stands before
+    it (BR-28), and it is never hidden.
+- What cannot be read is in reach. Without `Missions[]` every place is, and
+  without `PlayerLevel` every rank is, as BR-03 shows the option to a profile
+  it cannot read. Reach is never inferred.
+- Three treatments, one per context: exploring hides and counts (BR-60,
+  BR-61), a search shows everything (BR-62), a plan dims and never hides
+  (BR-63).
+- The gap is said in full words, the same everywhere, and names what is
+  counted. The owner asked on 2026-10-08 that no line leave the player asking
+  "4 more what?":
+
+  | Gap      | Words                                              |
+  | -------- | -------------------------------------------------- |
+  | A rank   | "Needs Mastery Rank 8. You are Mastery Rank 5."    |
+  | A place  | "Clear the Venus Junction, on Earth, to reach it." |
+  | The Dojo | "Join a clan to enter its Dojo."                   |
+
+  The junction is the one the frontier needs: every place beyond reach lies
+  past it.
+
+- BR-03 and BR-22 were the first instances of this rule.
+
+### BR-60 · The map lists the places in reach
+
+- Frames `215:610` (the place list) and `270:786` (the system list);
+  `Place row` Beyond reach (`526:112`) and `More line` (`526:117`) on the Design
+  System page.
+- Type: behaviour.
+- Rule: the place list shows the system's places in reach, in their order,
+  then a More line: "3 more places open as you clear the junctions. Next: the
+  Venus Junction, on Earth." The system list shows the systems with a place
+  in reach, then "2 more systems open as you go further." Tau keeps "Soon™":
+  it is in no one's reach yet.
+- The place list's search filters every place of the system. A place beyond
+  reach shows in its hits as the Beyond reach row, the gap in place of the
+  mastered count.
+- A place beyond reach opened on purpose (from a search, from You're on, or
+  reopened by `wf_place`) shows whole, its catalog with nothing hidden, and
+  stays in the place list, on view, while it is on view.
+
+### BR-61 · A group shows what is in reach, and counts the rest
+
+- Frames `212:159` (a group on the map) and `206:774` (a group in the
+  Summary); `More line` (`526:117`).
+- Type: behaviour.
+- Rule: in a group, on the map and in the Summary, the tiles are what is in
+  reach. What lies beyond is not drawn: the open group ends in a More line
+  that says how many, of what, and what stands in the way. {kind} is the
+  group's own noun ("primary weapons", "warframes", "mods"), singular for one;
+  {r} is the lowest rank among them:
+
+  | Beyond by | Words                                                                                    |
+  | --------- | ---------------------------------------------------------------------------------------- |
+  | Rank      | "4 more primary weapons need Mastery Rank 8 or higher. You are Mastery Rank 5."          |
+  | Place     | "3 more mods come from places past Venus. Clear the Venus Junction, on Earth, to go on." |
+  | Both      | "6 more warframes need Mastery Rank 8 or a place past Venus."                            |
+
+  The line informs. It opens nothing; a search is the way to one of them
+  (BR-62).
+
+- The group's count ("{n} NEW" in the Summary, "{n} New" on the map) counts
+  everything new, in reach or not, so it adds up to the tiles and the line.
+- A group with nothing in reach and something beyond renders, its rail
+  holding only the More line.
+- On the map this holds under the default lens and New. Mastered shows what
+  the player has mastered, in reach by proof.
+
+### BR-62 · A search shows everything, and says the gap
+
+- Frames `474:920` (Goal, results) and `215:610` (the place list's search);
+  `Suggestion row` Beyond reach (`526:107`).
+- Type: behaviour.
+- Rule: a search is how the player lifts BR-59 for one thing. The Goal search
+  and the place list's search reach everything they reached before (BR-53,
+  spec 07), what is in reach first. A result beyond reach is the Beyond reach
+  row: its catalogue, then the gap, short enough for one line: "Sniper ·
+  Needs Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on
+  Earth", "Place · Join a clan".
+- An item beyond reach opens with Step by step chosen, so the first thing the
+  player reads is the prerequisite in the way (BR-63).
+- A curated goal that names an item beyond reach is not offered (spec 08);
+  the search still reaches it.
+
+### BR-63 · A plan dims what waits on an unmet prerequisite
+
+- `Step row` Locked (`526:96`, `528:97` with art) and `Component row` Locked (`526:102`), over the
+  scenario frames of spec 10.
+- Type: state.
+- Rule: when a prerequisite the profile proves unmet stands in Prerequisites,
+  a Mastery Rank above the player's or a junction whose tag `Missions[]` lacks,
+  that row keeps full contrast with the gap as its detail ("Needs Mastery
+  Rank 8. You are Mastery Rank 5."), and
+  every row after it, in every section, is drawn Locked: at half opacity,
+  open, readable, never hidden. A locked component can still be ticked.
+- A quest with no evidence locks nothing, and neither does any prerequisite
+  the profile cannot read: absence of evidence is never "not done" (BR-28).
+
 ## Not applied
 
 Two comments were set aside by the owner on 2026-10-04 and carry no rule:
@@ -842,11 +988,12 @@ Two comments were set aside by the owner on 2026-10-04 and carry no rule:
 ### Frames from deleted screens
 
 These frames are the desktop Home and star chart. The screens were removed,
-so the comments are kept here and not applied:
+so the comments are kept here and not applied. The first of them,
+`1905320490` on `10:16` ("Content depends on the player's level"), was
+applied on 2026-10-08 as BR-59.
 
 | Frame                 | Pin         | Comment      | Text                                                                            |
 | --------------------- | ----------- | ------------ | ------------------------------------------------------------------------------- |
-| `10:16` Home - 0.0.0  | (194, 153)  | `1905320490` | Content depends on the player's level; this design is the top level             |
 | `94:156` Home - 0.0.0 | (1400, 275) | `1918281689` | Use more symbols on labels                                                      |
 | `94:156` Home - 0.0.0 | (633, 227)  | `1918287698` | Nodes?                                                                          |
 | `94:156` Home - 0.0.0 | (1221, 478) | `1918287884` | A "platinum" completion system for free items, to find, track and guide to them |

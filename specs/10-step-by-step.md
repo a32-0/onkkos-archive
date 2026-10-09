@@ -45,12 +45,18 @@ describes and no earlier frame drew. Their texts are sample values:
 
 - [`474:2152` Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-2152): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it; How to get with where it starts and the wiki's passage.
 
+Drawn on 2026-10-08 under **Documented states**, for BR-63:
+
+- [`533:5136` Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-5136): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.
+
 ## Rules
 
 - The grammar: [`scenario-guidelines.md`](../docs/scenario-guidelines.md), and
   [`step-by-step.md`](../docs/step-by-step.md).
 - Row states: [BR-20](../docs/business-rules.md#br-20--a-collapsed-row),
-  [BR-21](../docs/business-rules.md#br-21--a-ticked-component).
+  [BR-21](../docs/business-rules.md#br-21--a-ticked-component),
+  [BR-63](../docs/business-rules.md#br-63--a-plan-dims-what-waits-on-an-unmet-prerequisite)
+  (locked).
 - By scenario: [BR-22](../docs/business-rules.md#br-22--mastery-rank-0-is-not-shown)
   to [BR-32](../docs/business-rules.md#br-32--components-gather-everything-the-plan-names).
 - Settled for this spec: [BR-48](../docs/business-rules.md#br-48--the-wikis-prose-runs-as-the-frames-draw-it-in-paragraphs)
@@ -131,6 +137,17 @@ Unticking brings the row back as it was.
 Only the title and a chevron pointing down. The chevron opens it. A fold is per
 visit and is not kept.
 
+### Locked rows (BR-63)
+
+When Prerequisites holds a step the profile proves unmet, a Mastery Rank above
+the player's or a junction whose tag `Missions[]` lacks, that row keeps full
+contrast with the gap as its detail ("Needs Mastery Rank 8. You are Mastery
+Rank 5."), and every row after it, in
+every section, is drawn Locked: `Step row` Locked (`526:96`, `528:97` with art) and
+`Component row` Locked (`526:102`), at half opacity, open and readable, never hidden. A
+locked component can still be ticked. A quest with no evidence, or anything
+else the profile cannot read, locks nothing.
+
 ## A quest's Step by step (BR-37)
 
 A quest has no frame of its own and is placed in the grammar: the page's hero
@@ -160,8 +177,9 @@ reading measure of at most 62 characters.
 ## Components
 
 `SectionHeader` (icon kinds: game icon, part art), `Timeline`, `StepRow`
-(step, optional, alternative, best; open, collapsed), `RowDetail`, `RowProse`,
-`WikiLink` (wiki, our page), `ComponentRow` (open, collapsed, ticked),
+(step, optional, alternative, best; open, collapsed, locked), `RowDetail`,
+`RowProse`, `WikiLink` (wiki, our page), `ComponentRow` (open, collapsed,
+ticked, locked),
 `GroupDivider`, `Checkbox`, each with its stories, and a story per scenario
 frame above, built from fixture plans.
 
@@ -177,8 +195,11 @@ frame above, built from fixture plans.
 4. Relic rows read Open and Or; the best route reads "(Highest chance)" in
    gold.
 5. A quest opened from Goal renders in the grammar above.
-6. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut.
-7. `pnpm check` passes, with a test per scenario that the plan has the sections
+6. With the Ordis fixture, Kuva Sobek's Mastery Rank row reads its gap at full
+   contrast and every row after it is locked; with no `PlayerLevel` nothing is
+   locked; a prerequisite quest with no evidence locks nothing (BR-63).
+7. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut.
+8. `pnpm check` passes, with a test per scenario that the plan has the sections
    and row types its frame draws.
 
 ## Divergences from the code

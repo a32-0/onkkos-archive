@@ -1,10 +1,10 @@
 # T-29 · Screen: Step by step
 
-|          |                                                                                           |
-| -------- | ----------------------------------------------------------------------------------------- |
-| Phase    | 4. Screens                                                                                |
-| Serves   | [spec 10](../10-step-by-step.md); [plan 1](../plan/01-repository.md); BR-28, BR-37, BR-48 |
-| Waits on | [T-28](T-28-item.md)                                                                      |
+|          |                                                                                                  |
+| -------- | ------------------------------------------------------------------------------------------------ |
+| Phase    | 4. Screens                                                                                       |
+| Serves   | [spec 10](../10-step-by-step.md); [plan 1](../plan/01-repository.md); BR-28, BR-37, BR-48, BR-63 |
+| Waits on | [T-28](T-28-item.md)                                                                             |
 
 The plan of an item or a quest, section by section, with the wiki's prose and the ticks the player keeps in the browser.
 
