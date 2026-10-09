@@ -1,0 +1,41 @@
+.segmented {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2);
+  border: var(--border-1) solid var(--line-subtle);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+}
+
+.segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-6);
+  border: none;
+  border-radius: var(--radius-l);
+  background: transparent;
+  color: var(--ink);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.segment:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.segment:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.option {
+  composes: segment;
+  composes: body-l from "../type.module.css";
+}
+
+.chosen {
+  composes: segment;
+  composes: label from "../type.module.css";
+  background-color: var(--surface-raised);
+}

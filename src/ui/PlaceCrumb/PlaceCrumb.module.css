@@ -1,0 +1,50 @@
+.crumb {
+  --crumb-height: 84px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--crumb-height);
+  padding: var(--space-5) var(--space-6);
+  border-left: var(--border-1) solid var(--accent);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.crumb:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.crumb:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.art {
+  --crumb-art-size: 32px;
+  display: block;
+  flex: none;
+  width: var(--crumb-art-size);
+  height: var(--crumb-art-size);
+  border-radius: var(--radius-full);
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  composes: eyebrow-s from "../type.module.css";
+}
+
+.place {
+  composes: name from "../type.module.css";
+}

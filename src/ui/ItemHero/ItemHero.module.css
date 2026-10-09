@@ -1,0 +1,85 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+  text-align: center;
+}
+
+.kicker {
+  composes: kicker from "../type.module.css";
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.name {
+  composes: title from "../type.module.css";
+  margin: 0;
+}
+
+.frame {
+  --hero-art-size: 200px;
+  position: relative;
+  box-sizing: border-box;
+  width: var(--hero-art-size);
+  height: var(--hero-art-size);
+  border: var(--border-1) solid var(--state-absent);
+}
+
+.rank {
+  composes: frame;
+  border-color: var(--state-rank);
+}
+
+.mastered {
+  composes: frame;
+  border-color: var(--state-mastered);
+}
+
+.absent {
+  composes: frame;
+}
+
+.none {
+  composes: frame;
+}
+
+.prime {
+  composes: frame;
+  border-color: var(--state-prime);
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rank .badge {
+  background: var(--state-rank-tint);
+}
+
+.mastered .badge {
+  background: var(--state-mastered-tint);
+}

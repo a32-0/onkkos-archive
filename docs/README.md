@@ -17,8 +17,11 @@ arrives with the task that builds what it describes.
   profile, why DE refuses an address rather than an account, why serverless
   memory breaks the locks, the host chosen against the free tiers, why a read
   lasts twelve hours, and what the shared store spends.
-- [`development.md`](development.md): the tooling, what CI runs, the layers
-  and the rule that enforces them, the conventions, and the environment
-  variables.
+- [`cetus.md`](cetus.md): why the app looks as it does. It covers the Cetus
+  direction, how every colour is measured for a colour blind owner, the three
+  typefaces and what each carries, and where the icons come from.
+- [`development.md`](development.md): the tooling, what CI runs, the palette
+  check, the layers and the rule that enforces them, the conventions, and the
+  environment variables.
 
 All documentation is written in English.

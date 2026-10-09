@@ -1,0 +1,62 @@
+.row {
+  composes: row from "../PlaceRow/PlaceRow.module.css";
+}
+
+.row[aria-current] {
+  background-color: var(--surface-raised-strong);
+}
+
+.static {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-6);
+  color: var(--ink);
+}
+
+.arts {
+  position: relative;
+  flex: none;
+}
+
+.art {
+  composes: art from "../PlaceRow/PlaceRow.module.css";
+}
+
+.satellite {
+  --satellite-size: 16px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--satellite-size);
+  height: var(--satellite-size);
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.text {
+  composes: text from "../PlaceRow/PlaceRow.module.css";
+}
+
+.inline {
+  composes: inline from "../PlaceRow/PlaceRow.module.css";
+}
+
+.name {
+  composes: name from "../PlaceRow/PlaceRow.module.css";
+}
+
+.count {
+  composes: count from "../PlaceRow/PlaceRow.module.css";
+}
+
+.strong {
+  composes: strong from "../PlaceRow/PlaceRow.module.css";
+}
+
+.soon {
+  composes: body from "../type.module.css";
+  color: var(--ink-dim);
+}

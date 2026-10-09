@@ -1,0 +1,55 @@
+.timeline {
+  --timeline-marker: 24px;
+  --timeline-diamond: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  gap: var(--space-6);
+  padding-bottom: var(--space-7);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.rail {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: var(--timeline-marker);
+}
+
+.marker {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--timeline-marker);
+  height: var(--timeline-marker);
+}
+
+.diamond {
+  width: var(--timeline-diamond);
+  height: var(--timeline-diamond);
+  border-radius: var(--radius-xs);
+  background: var(--fill-strong);
+  transform: rotate(45deg);
+}
+
+.line {
+  flex: 1 0 0;
+  width: var(--border-2);
+  border-radius: var(--radius-full);
+  background: var(--timeline);
+}
+
+.content {
+  flex: 1 0 0;
+  min-width: 0;
+}

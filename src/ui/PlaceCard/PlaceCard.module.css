@@ -1,0 +1,117 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-6);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.head {
+  --place-head-height: 84px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--place-head-height);
+  padding: var(--space-5) var(--space-6);
+  border: none;
+  border-left: var(--border-1) solid var(--accent);
+  background: var(--surface-raised-strong);
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.head:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.head:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.heading {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.system {
+  composes: eyebrow from "../type.module.css";
+  color: var(--ink-muted);
+}
+
+.name {
+  composes: place from "../type.module.css";
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+  transform: rotate(180deg);
+}
+
+.art {
+  --place-art-size: 120px;
+  display: block;
+  width: var(--place-art-size);
+  height: var(--place-art-size);
+  border-radius: var(--radius-full);
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.state {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  text-align: center;
+}
+
+.done {
+  composes: state;
+  gap: var(--space-5);
+}
+
+.title {
+  composes: name-s from "../type.module.css";
+  margin: 0;
+}
+
+.nodes {
+  composes: eyebrow from "../type.module.css";
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.items {
+  composes: eyebrow from "../type.module.css";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.count {
+  composes: label-s-upper from "../type.module.css";
+}
+
+.word {
+  composes: quiet-upper from "../type.module.css";
+}

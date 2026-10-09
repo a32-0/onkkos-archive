@@ -1,0 +1,18 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--surface-card);
+  color: var(--ink);
+}
+
+.title {
+  composes: name from "../type.module.css";
+  margin: 0;
+}
+
+.line {
+  composes: body-l from "../type.module.css";
+  margin: 0;
+}

@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-left: var(--border-1) solid var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.card:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.card:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.two-ways-in {
+  composes: card;
+  background-color: var(--surface);
+}
+
+.goal {
+  composes: card;
+  background-color: var(--surface-card);
+}
+
+.titleCaps {
+  composes: name-caps from "../type.module.css";
+}
+
+.titleUpper {
+  composes: name from "../type.module.css";
+}
+
+.line {
+  composes: body-l from "../type.module.css";
+}

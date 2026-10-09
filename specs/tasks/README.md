@@ -105,7 +105,8 @@ These files are touched by more than one task, each adding its part:
 `src/app/page.tsx`, `src/app/actions.ts`, `src/app/catch-up/page.tsx`,
 `src/app/item/page.tsx`, `src/content/onboarding.ts`,
 `src/content/catch-up.ts`, `.github/workflows/check.yml`,
-`tests/tokens.test.ts`, `docs/development.md` and `docs/README.md`.
+`tests/tokens.test.ts`, `tests/language.test.ts`, `eslint.config.mjs`,
+`docs/development.md` and `docs/README.md`.
 
 **Order.** Every import of every module and test that travels was read and
 matched to the task that brings what it imports. No task needs a module that

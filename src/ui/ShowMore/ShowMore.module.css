@@ -1,0 +1,24 @@
+.more {
+  composes: body from "../type.module.css";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-5);
+  border: none;
+  border-radius: var(--radius-l);
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+}
+
+.more:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.more:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}

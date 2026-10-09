@@ -1,0 +1,18 @@
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0 var(--space-6);
+}
+
+.label {
+  composes: name-s from "../type.module.css";
+  color: var(--ink-dim);
+  white-space: nowrap;
+}
+
+.line {
+  flex: 1 0 0;
+  border-top: var(--border-1) solid var(--line);
+}

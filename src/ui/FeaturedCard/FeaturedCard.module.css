@@ -1,0 +1,69 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  border: none;
+  border-left: var(--border-1) solid var(--accent);
+  background-color: var(--surface);
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.card:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.card:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.art {
+  --featured-art-width: 108px;
+  --featured-art-height: 60px;
+  flex: none;
+  width: var(--featured-art-width);
+  height: var(--featured-art-height);
+  object-fit: cover;
+}
+
+.blank {
+  composes: art;
+  background: var(--surface-sunken);
+}
+
+.text {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.last-played {
+  composes: badge from "../type.module.css";
+}
+
+.up-to-date {
+  composes: badge from "../type.module.css";
+  color: var(--accent);
+}
+
+.name {
+  composes: name-s from "../type.module.css";
+}
+
+.meta {
+  composes: body from "../type.module.css";
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+  transform: rotate(-90deg);
+}

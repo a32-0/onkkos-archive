@@ -1,0 +1,17 @@
+.art {
+  --blueprint-art-size: 100px;
+  position: relative;
+  display: block;
+  flex: none;
+  width: var(--blueprint-art-size);
+  height: var(--blueprint-art-size);
+  background: var(--surface-sunken);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

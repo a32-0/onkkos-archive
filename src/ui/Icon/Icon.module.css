@@ -1,0 +1,26 @@
+.icon {
+  --icon-20: 20px;
+  flex: none;
+  display: block;
+  fill: currentColor;
+}
+
+.s16 {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
+.s20 {
+  width: var(--icon-20);
+  height: var(--icon-20);
+}
+
+.s24 {
+  width: var(--space-7);
+  height: var(--space-7);
+}
+
+.s40 {
+  width: calc(var(--space-7) + var(--space-6));
+  height: calc(var(--space-7) + var(--space-6));
+}

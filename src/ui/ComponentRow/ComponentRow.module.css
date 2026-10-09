@@ -1,0 +1,81 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ticked {
+  composes: row;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.art {
+  --component-art-size: 32px;
+  display: block;
+  flex: none;
+  width: var(--component-art-size);
+  height: var(--component-art-size);
+  background: var(--surface-sunken);
+  object-fit: cover;
+}
+
+.ticked .art {
+  background: var(--art-done);
+}
+
+.toggle {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+}
+
+.toggle:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-2);
+}
+
+.title {
+  composes: label from "../type.module.css";
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.ticked .title {
+  color: var(--ink-dim);
+  text-decoration: line-through;
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+}
+
+.up {
+  composes: chevron;
+  transform: rotate(90deg);
+}
+
+.down {
+  composes: chevron;
+  transform: rotate(-90deg);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-right: var(--space-7);
+}

@@ -1,0 +1,65 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+}
+
+.head:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-2);
+}
+
+.art {
+  --step-art-size: 32px;
+  display: block;
+  flex: none;
+  width: var(--step-art-size);
+  height: var(--step-art-size);
+  object-fit: cover;
+}
+
+.title {
+  composes: label from "../type.module.css";
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.best {
+  composes: title;
+  color: var(--accent);
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+}
+
+.up {
+  composes: chevron;
+  transform: rotate(90deg);
+}
+
+.down {
+  composes: chevron;
+  transform: rotate(-90deg);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-right: var(--space-7);
+}

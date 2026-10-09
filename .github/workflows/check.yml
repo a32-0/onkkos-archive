@@ -36,6 +36,15 @@ jobs:
       - name: Dead code
         run: pnpm knip
 
+      - name: Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Stories
+        run: pnpm test:stories
+
+      - name: Storybook
+        run: pnpm storybook:build
+
       - name: App
         run: pnpm build
         env:

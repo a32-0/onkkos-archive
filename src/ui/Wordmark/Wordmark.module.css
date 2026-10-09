@@ -1,0 +1,29 @@
+.wordmark {
+  --wordmark-splash: 80px;
+  --wordmark-header: 48px;
+  --wordmark-overhang: -0.08333;
+  display: block;
+  flex: none;
+  width: auto;
+  height: var(--wordmark-height);
+  margin-inline-start: calc(var(--wordmark-height) * var(--wordmark-overhang));
+}
+
+.letters {
+  fill: var(--ink);
+}
+
+.splash {
+  composes: wordmark;
+  --wordmark-height: var(--wordmark-splash);
+}
+
+.header {
+  composes: wordmark;
+  --wordmark-height: var(--wordmark-header);
+}
+
+.sheet {
+  composes: wordmark;
+  --wordmark-height: var(--space-8);
+}

@@ -1,0 +1,48 @@
+.boxed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-m);
+  border: var(--border-1) solid;
+  white-space: nowrap;
+}
+
+.newest {
+  composes: label-upper from "../type.module.css";
+  display: inline-flex;
+  padding: var(--space-4);
+  background: var(--accent);
+  color: var(--ink-inverse);
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+  white-space: nowrap;
+}
+
+.start-here {
+  composes: boxed;
+  composes: badge from "../type.module.css";
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.new {
+  composes: badge from "../type.module.css";
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.mastered {
+  composes: boxed;
+  composes: badge from "../type.module.css";
+  background: var(--state-mastered-ground);
+  border-color: var(--state-mastered-border);
+  color: var(--state-mastered);
+}
+
+.rank {
+  composes: boxed;
+  composes: badge from "../type.module.css";
+  background: var(--state-rank-ground);
+  border-color: var(--state-rank-border);
+  color: var(--state-rank);
+}

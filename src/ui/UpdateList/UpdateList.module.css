@@ -1,0 +1,69 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding: var(--space-6);
+  background: var(--surface-raised-strong);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.item:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+}
+
+.art {
+  --update-list-art-width: 108px;
+  --update-list-art-height: 60px;
+  flex: none;
+  width: var(--update-list-art-width);
+  height: var(--update-list-art-height);
+  object-fit: cover;
+}
+
+.blank {
+  composes: art;
+  background: var(--surface-sunken);
+}
+
+.text {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.name {
+  composes: name-s from "../type.module.css";
+}
+
+.meta {
+  composes: body-s from "../type.module.css";
+}

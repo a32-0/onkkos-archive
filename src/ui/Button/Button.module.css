@@ -1,0 +1,55 @@
+.button {
+  composes: label from "../type.module.css";
+  --button-height: 45px;
+  --button-disabled-opacity: 0.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--button-height);
+  padding: var(--space-5);
+  border: var(--border-1) solid transparent;
+  border-radius: var(--radius-l);
+  background-color: transparent;
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.button:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.button:disabled {
+  opacity: var(--button-disabled-opacity);
+  cursor: default;
+}
+
+.primary {
+  composes: button;
+  border-color: var(--fill-strong);
+  background-color: var(--fill-strong);
+  color: var(--ink-inverse);
+}
+
+.secondary {
+  composes: button;
+  border-color: var(--line-strong);
+}
+
+.danger {
+  composes: button;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.text {
+  composes: button;
+}

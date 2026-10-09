@@ -10,9 +10,13 @@ What the Summary and the map list: dividers, group rows and their rails of tiles
 
 ## What crosses
 
-| File                                                                                                             | Origin | Note |
-| ---------------------------------------------------------------------------------------------------------------- | ------ | ---- |
-| `src/ui/{Divider,GroupRow,ItemTile,Rail,PlaceCard,ProgressBar,PlaceRow,SystemRow,SuggestionList,SuggestionRow}/` | New    |      |
+| File                                                                                                             | Origin   | Note                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| `src/ui/{Divider,GroupRow,ItemTile,Rail,PlaceCard,ProgressBar,PlaceRow,SystemRow,SuggestionList,SuggestionRow}/` | New      |                                                                                                         |
+| `src/ui/stories/art.ts`                                                                                          | Reworked | Round sample art for places and systems, gradients like the rest                                        |
+| `src/ui/SearchField/SearchField.stories.tsx`                                                                     | Reworked | `WithSuggestions` shows `SuggestionList` instead of a list built in the story (owner, 2026-10-08)       |
+| `tests/tokens.test.ts`                                                                                           | Reworked | The tokens these components apply leave the allowance list                                              |
+| `scripts/palette.mjs`                                                                                            | Reworked | Measures the system name on the place card's band, `--ink-muted` since the owner chose it on 2026-10-08 |
 
 ## Acceptance
 
@@ -21,5 +25,5 @@ What the Summary and the map list: dividers, group rows and their rails of tiles
 - [ ] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
 - [ ] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
 - [ ] `Rail` is a sideways rail below 840 and a grid from 840 (BR-39).
-- [ ] `SuggestionList` is a list box, navigable by keyboard, in its stories.
+- [ ] `SuggestionList` is a list box, navigable by keyboard, in its stories: the Keyboard story's play function moves with the arrows, chooses with Enter and closes with Escape.
 - [ ] `check.yml` passes on `dev`.
