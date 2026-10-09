@@ -1,7 +1,11 @@
 # 00 — Constitution
 
-The rules every later spec answers to. Where a later spec and this document
-disagree, this document wins and the other is wrong until amended here.
+This page holds the rules for Onkko's Archive, a fan app for Warframe players
+coming back after a break. The app does two things, catching a player up and
+leading them to one goal, and the rules below keep it to those two. Every spec,
+plan part and task written after this page answers to it. Where one of them
+disagrees with this page, this page wins, and the other is wrong until this
+page is changed.
 
 ## What it is
 

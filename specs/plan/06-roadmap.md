@@ -45,31 +45,30 @@ is nothing to clean up before it is opened.
 Every piece points to the one before it, and back:
 
 ```
-Business rule ──► Spec ──► Task ──► Issue ──► Pull request ──► Commit
-   BR-46          07       T-26      #26        closes #26      the owner's
-                                                    │
-                                          Vercel preview, Storybook
+Business rule ──► Spec ──► Task ──► Commit on dev ──► Phase pull request ──► main
+   BR-46          07       T-26     T-26: …           4. Screens
+                                         │
+                               Vercel preview, Storybook
 ```
 
 - **A task** is written here, in `specs/tasks/`, with its id, the spec and rules
   it serves, its acceptance and the tasks it waits on.
-- **An issue** in the public repository carries the task: the same title, its
-  acceptance as a checklist, and the paths of its spec and task. The owner
-  creates every issue (set on 2026-10-06), in order and before anything else, so
-  issue #n is task T-n; the task's text is written to be pasted
-  ([`specs/tasks/README.md`](../tasks/README.md)).
-- **A pull request** closes its issue, and its Vercel preview and Storybook
-  build are linked from it. The owner commits and merges.
-- **A GitHub Project** on the public repository shows every issue on one board,
-  with the phases above as milestones: what is done, in progress and next.
+- **A commit** on `dev` starts its subject with the task's id. The owner
+  commits; every push builds a preview.
+- **A pull request** per phase takes `dev` into `main` and lists the tasks it
+  carries, with the preview and the Storybook build linked. The owner merges it,
+  and the merge deploys production
+  ([`specs/tasks/README.md`](../tasks/README.md#branches)).
 
-Read the other way, from a line of code: its commit names the pull request, the
-pull request its issue, the issue its spec, and the spec the rule and the frame
-it builds.
+The owner set this on 2026-10-08, in place of one issue per task, milestones
+and a GitHub Project, which cost more time than they gave back.
+
+Read the other way, from a line of code: its commit names the task, the task
+its spec, and the spec the rule and the frame it builds.
 
 ## After the launch
 
 A content update follows the same chain. The report in `docs/updates/` lists
-what arrived; anything new to the app becomes an issue the owner opens, and from
+what arrived; anything new to the app goes to the owner first, and from
 there a rule, a frame if one is needed, a spec, a task and code, like everything
 before it.

@@ -1,7 +1,9 @@
 # 07 · Map
 
-One place at a time, and what it holds for this player: what is left, what is
-mastered, what is new.
+The game's map, one place at a time, and what each place holds for this
+player. By default it shows what they still have left to get there; they can
+switch to what they have already mastered, or to what is new since they last
+played. It opens where the player left it, or where they should start.
 
 ## Frames
 

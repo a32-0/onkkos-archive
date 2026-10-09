@@ -1,7 +1,8 @@
 # 05 · Resume
 
-Where a returning player names the last update they played, so Catch me up has
-a day to measure from.
+Where a returning player says which game update they last played, by picking
+it from the list of updates, choosing a month or typing a date. Catch me up
+then measures everything from that day.
 
 ## Frames
 

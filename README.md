@@ -5,7 +5,7 @@ Warframe profile, lists what shipped since you last played, and shows what you
 still need to get the thing you want next.
 
 It is being built in the open with spec-driven development: every line of code
-answers to a written spec. The app is not deployed yet.
+answers to a written spec.
 
 ## How it is built: spec-driven development
 
@@ -19,8 +19,8 @@ The work follows one order, and each step answers to the one before it:
    them.
 4. [Plan](specs/plan/): the repository, the architecture, the design system,
    the deployment, the documents and the roadmap.
-5. [Tasks](specs/tasks/): the work cut into pieces, each one an issue and one
-   pull request.
+5. [Tasks](specs/tasks/): the work cut into pieces, grouped in phases. Each
+   task is committed on `dev`, and each phase reaches `main` in one pull request.
 6. Code, which comes last.
 
 [`docs/spec-driven-order.md`](docs/spec-driven-order.md) explains the order,
@@ -42,8 +42,8 @@ app ──► screens ──► ui
 the only code that reaches the outside. `ui/` is the design system, and it
 renders with nothing behind it.
 
-Progress is tracked as issues, one per task, grouped by phase in the
-milestones.
+Progress shows in [the task list](specs/tasks/README.md#the-tasks) and in the
+commits, each one named after its task.
 
 Claude assisted with research, implementation, debugging and documentation.
 

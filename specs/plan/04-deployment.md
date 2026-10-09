@@ -23,11 +23,11 @@ every credential. No token, project id or URL is committed.
 
 ## Three environments
 
-| Environment | When                                     | Profile source                          | Store   |
-| ----------- | ---------------------------------------- | --------------------------------------- | ------- |
-| Production  | A push to `main`                         | Live, through the locks                 | Upstash |
-| Preview     | Any other branch, and every pull request | Fixtures                                | Memory  |
-| Development | `pnpm dev` on a machine                  | Fixtures, unless set to live on purpose | Memory  |
+| Environment | When                          | Profile source                          | Store   |
+| ----------- | ----------------------------- | --------------------------------------- | ------- |
+| Production  | A phase merged into `main`    | Live, through the locks                 | Upstash |
+| Preview     | `dev`, and every pull request | Fixtures                                | Memory  |
+| Development | `pnpm dev` on a machine       | Fixtures, unless set to live on purpose | Memory  |
 
 - **Only production reads DE.** A preview is public by URL and runs on Vercel's
   addresses, the same ones production uses; letting it read live would let any

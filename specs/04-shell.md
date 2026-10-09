@@ -1,7 +1,9 @@
 # 04 · Shell
 
-What surrounds every screen once onboarding ends: the header, the tab bar and
-the player menu.
+What stays around every screen once onboarding ends: the header, the tab bar
+with the app's three sections, and the player menu, which shows who is
+connected and when their profile will be read again, and lets them
+disconnect.
 
 ## Frames
 

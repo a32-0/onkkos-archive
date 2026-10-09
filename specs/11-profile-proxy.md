@@ -1,7 +1,10 @@
 # 11 · The profile proxy
 
-How a player's public profile is read, held and protected. No frame draws it;
-every screen depends on it. What a failure looks like is spec 02.
+Every screen depends on the player's public profile, which the app reads from
+Digital Extremes (DE), the game's maker. This spec covers how that read
+happens, how long the result is kept, and how the app avoids calling DE so
+often that DE blocks it, which would take the app down for every player. No
+frame draws it. What a failed read looks like is in spec 02.
 
 ## Rules
 

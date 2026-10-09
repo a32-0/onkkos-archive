@@ -29,22 +29,4 @@ Spec 11 whole: shape, demo, stored, circuit, lock, budget, read, classify, keep,
 
 - [ ] Every acceptance item of spec 11 holds against the memory store.
 - [ ] No test reaches DE; with `WF_PROFILE_SOURCE=fixture` no code path can.
-- [ ] `check.yml` passes on the pull request.
-
-## The issue
-
-Title: `T-18 · The profile proxy: the read order and every lock` · Milestone: `3. Domain and infra`
-
-```markdown
-Spec 11 whole: shape, demo, stored, circuit, lock, budget, read, classify, keep, in that order, every lock shared through the store. The demos are the two fixtures. A failed read returns its BR-38 reason, never a sentence: `client.ts` no longer imports `content/failures`.
-
-- **Serves:** `specs/11-profile-proxy.md`, `specs/02-connect.md`, `specs/plan/02-architecture.md`; BR-38
-- **Waits on:** T-13, T-17
-- **Task:** `specs/tasks/T-18-profile-proxy.md`
-
-### Acceptance
-
-- [ ] Every acceptance item of spec 11 holds against the memory store.
-- [ ] No test reaches DE; with `WF_PROFILE_SOURCE=fixture` no code path can.
-- [ ] `check.yml` passes on the pull request.
-```
+- [ ] `check.yml` passes on `dev`.

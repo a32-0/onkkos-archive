@@ -1,7 +1,9 @@
 # 10 · Step by step
 
-The long answer to one question, for this player: what do I need, in what
-order, and where do I go. Built exactly as the frames draw it.
+The full route to one item or quest for this player: what they need first, in
+what order, and where to go for each part, best odds first. Each component can
+be ticked off as the player gathers it. It is the long version of the short
+answer on the item's page, and it is built exactly as the frames draw it.
 
 ## Frames
 
