@@ -37,6 +37,8 @@ describes and no earlier frame drew. Their texts are sample values:
   "You're on".
 - [BR-55](../docs/business-rules.md#br-55--the-items-summary-is-blueprints-and-components):
   what the Summary holds.
+- [BR-62](../docs/business-rules.md#br-62--a-search-shows-everything-and-says-the-gap):
+  an item beyond the player's reach opens on Step by step.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes),
   [BR-42](../docs/business-rules.md#br-42--the-placeholder-circles-are-the-games-icons).
 
@@ -65,7 +67,9 @@ it was opened from lit (`from`, spec 04). From the top:
 
 3. **View**: a segmented control, **Summary** and **Step by step**. Summary is
    the default; the choice is kept in `?view=steps` so a link can open either.
-   Step by step is spec 10.
+   Step by step is spec 10. An item beyond the player's reach (BR-59) opens
+   with Step by step chosen, where the prerequisite in the way leads (BR-62);
+   Summary is one tap away and shows as it always does.
 4. The Summary view (BR-55):
    - **Blueprints**, open: one row per blueprint, the main Blueprint first,
      then the parts in the order Step by step gives them. Each row is the
@@ -119,7 +123,8 @@ obtained Prime, no state, collectible), `Badge`, `Segmented`, `SectionHeader`
 5. Summary shows Blueprints and Components, or How to get when it has neither;
    its facts never contradict Step by step.
 6. Every part's art sits on the blueprint ground.
-7. `pnpm check` passes.
+7. An item beyond reach opens on Step by step unless `?view=` says otherwise.
+8. `pnpm check` passes.
 
 ## Divergences from the code
 

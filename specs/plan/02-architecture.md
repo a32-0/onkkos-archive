@@ -246,6 +246,7 @@ checks, never off today's whole `src/`:
 | `Affiliations`     | Goal checks and quest evidence                                |
 | `LoadOutInventory` | Mastery per item (`XPInfo`), quest evidence, every item state |
 | `UnlockedOperator` | Quest evidence                                                |
+| `GuildId`          | The Dojo's reach (BR-59); kept as `true`, never the clan's id |
 
 Left out, because only code that stays reads them: `PlayerSkills` (the
 Intrinsics goal, deferred), `ChallengeProgress` (Nightwave, BR-35), `Stats`

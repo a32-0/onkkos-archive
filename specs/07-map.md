@@ -29,6 +29,12 @@ describes and no earlier frame drew. Their texts are sample values:
 - [`474:1648` Navigation — Everything mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1648): the mastered card, then the empty state (explore, "Nothing left on {place}", "Every item it gives is mastered. Choose another place from the card above."); no Show, no group.
 - [`474:1927` Navigation Menu — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1927): the place list's search with no hit: the empty state (explore, "No place by that name", "None of the {system}'s places is called “{query}”. Try another system."). The sample query is a place of another system.
 
+Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
+
+- [`533:4285` Navigation Menu — New player](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-4285): the place list up to the frontier, then the More line.
+- [`533:4354` Navigation Menu — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-4354): a search hit beyond reach, its gap in place of the count.
+- [`533:4426` Navigation — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-4426): the first open group ends in the More line, by rank.
+
 ## Rules
 
 - [BR-05](../docs/business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus)
@@ -52,6 +58,10 @@ describes and no earlier frame drew. Their texts are sample values:
   the Dojo, a place in the Origin System for everything researched.
 - [BR-47](../docs/business-rules.md#br-47--the-systems-in-the-frames-order):
   the systems and their order.
+- [BR-59](../docs/business-rules.md#br-59--what-the-player-can-reach) to
+  [BR-62](../docs/business-rules.md#br-62--a-search-shows-everything-and-says-the-gap):
+  the lists hold the places and systems in reach, a group the items in reach,
+  and the rest is counted; the place list's search reaches every place.
 - Threads `1933693172` (the system is chosen here, not from the tab bar) and
   `1933718008` (every catalogue: primaries, secondaries, melee…).
 
@@ -95,7 +105,11 @@ As on the Summary: the catalogue's game icon (BR-42), its name, "{n} New" when
 the place holds something new since the month, and a chevron; closed by
 default, a sideways rail of tiles when open (`212:159`). What a group holds
 follows the lens (BR-45); a group or divider with nothing to show does not
-render.
+render. Under the default and New, the rail holds what is in reach, and the
+open group ends in a More line that counts the rest by rank alone, the place
+being on view: "4 more primary weapons need Mastery Rank 8 or higher. You
+are Mastery Rank 5." (BR-61). A group with nothing in reach and something beyond holds
+only the line. A place beyond reach opened on purpose shows whole (BR-60).
 
 ### A tile
 
@@ -120,11 +134,18 @@ header (spec 04):
 1. The **system card**: the system's icon, "System" and its name, and a chevron
    that opens the system list.
 2. A search field, "Search a planet, location or celestial body...", which
-   filters the list by name as the player types.
-3. The system's places in `star_chart_order`, each with its art, its name and
-   "{n}/{m} Mastered", or the **Mastered** badge in its place when all are. A
-   place may also carry **Start here** (BR-44) and **New** when it holds
-   something new since the month. The place on view is highlighted.
+   filters the list by name as the player types. It reaches every place of
+   the system; a place beyond reach shows as the Beyond reach row
+   (`526:112`), the gap in place of its count: "Clear the Venus Junction, on
+   Earth, to reach it." or, for the Dojo, "Join a clan to enter its Dojo."
+   (BR-59, BR-62).
+3. The system's places in reach (BR-59, BR-60), in `star_chart_order`, each
+   with its art, its name and "{n}/{m} Mastered", or the **Mastered** badge in
+   its place when all are. A place may also carry **Start here** (BR-44) and
+   **New** when it holds something new since the month. The place on view is
+   highlighted, and stays listed while on view even beyond reach. Then, when
+   any place is beyond, a More line: "3 more places open as you clear the
+   junctions. Next: the Venus Junction, on Earth."
 4. Onkko's line, "Ah, the history you will have."
 
 Choosing a place closes the sheet and opens it.
@@ -135,7 +156,10 @@ The system card's chevron opens `270:786`: **Choose a system**, "You can switch
 at any time.", and the systems in BR-47's order, each with its symbol (a large orb and a
 small one beside it, its satellite; the owner, 2026-10-08), its name
 and its mastered count or badge, **Start here** on the system that holds it,
-and the system on view highlighted. Tau reads "Soon™" and cannot be chosen.
+and the system on view highlighted. Only the systems with a place in reach
+are listed, then a More line, "2 more systems open as you go further."
+(BR-60). Tau reads
+"Soon™" and cannot be chosen.
 Choosing a system returns to the place list, now listing that system's places.
 
 ## States
@@ -148,6 +172,10 @@ Choosing a system returns to the place list, now listing that system's places.
 | Everything mastered, no collectibles | The mastered card, then the empty state                    |
 | A place with no nodes of its own     | The card without the Nodes lines                           |
 | Search with no match (place list)    | The empty state under the field                            |
+| Places or systems beyond reach       | The lists end in `More line` (`526:117`, BR-60)            |
+| A hit beyond reach (place list)      | `Place row` Beyond reach (`526:112`, BR-62)                |
+| Items beyond reach in a group        | The open group ends in `More line` (BR-61)                 |
+| A place beyond reach on view         | The place whole, still listed while on view (BR-60)        |
 
 ## Data and sources
 
@@ -161,6 +189,9 @@ Choosing a system returns to the place list, now listing that system's places.
 - New: `releasesSince()` from the month in `wf_since`.
 - The frontier: `findNextPlanet`; the focus: a new function beside it, as
   defined above, with tests.
+- Reach: one predicate in `src/domain/place/reach.ts` over `reachedPlaces`,
+  the `after` of `off_chart_places`, `PlayerLevel` and the catalog's
+  `masteryReq` (BR-59).
 - Art and icons: the wiki and `@wfcd/items`, never rehosted.
 
 ## Desktop (BR-39)
@@ -177,7 +208,8 @@ Choosing a system returns to the place list, now listing that system's places.
 
 `PlaceCard` (in progress, mastered), `ProgressBar` (in progress, mastered),
 `Segmented` (none chosen, one chosen), `PlaceRow` and `SystemRow` (plain, on
-view, Start here, New, Mastered, Soon), `SearchField`, `Badge` (Start here,
+view, Start here, New, Mastered, Soon; `PlaceRow` also beyond reach),
+`MoreLine`, `SearchField`, `Badge` (Start here,
 New, Mastered, Rank), `ItemTile` (plain, Rank, Mastered), `GroupRow`, `Rail`,
 `Divider`, `FeaturedCard`, `Sheet`, `EmptyState`, each with its stories.
 
@@ -194,7 +226,15 @@ New, Mastered, Rank), `ItemTile` (plain, Rank, Mastered), `GroupRow`, `Rail`,
    first Navigation tab land there.
 5. The Navigation tab reopens the last place viewed.
 6. Tau cannot be opened.
-7. `pnpm check` passes, with tests for the focus, the lens and `wf_place`.
+7. With the Ordis fixture, the place list holds the places up to the frontier
+   and the ones off the chart after them, then the More line; the system
+   list holds the systems with a place in reach; a group holds only what is
+   in reach. A search in the place list finds a place beyond reach and shows
+   its gap; opened, it shows whole (BR-59 to BR-62).
+8. With no `Missions[]` and no `PlayerLevel`, every place, system and item
+   shows and no More line renders.
+9. `pnpm check` passes, with tests for the focus, the lens, reach and
+   `wf_place`.
 
 ## Divergences from the code
 

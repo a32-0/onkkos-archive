@@ -92,7 +92,7 @@ crosses", "Documents that cross" and component lists:
 
 | What                                                           | Count | Where                    |
 | -------------------------------------------------------------- | ----- | ------------------------ |
-| Components in plan part 3's table                              | 49    | T-06 to T-10             |
+| Components in plan part 3's table                              | 50    | T-06 to T-10             |
 | Modules of `src/lib/` that plan part 1 marks Moves or Reworked | 63    | T-01, T-12 to T-19, T-29 |
 | Test files that travel                                         | 27    | Beside their modules     |
 | Content files that travel                                      | 13    | T-13, T-20 to T-29       |

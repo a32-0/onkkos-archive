@@ -210,14 +210,14 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `Rail`                  | sideways (compact), grid (from 840)                                                                                                                                     | 06, 07         |
 | `PlaceCard`             | in progress, mastered, no nodes                                                                                                                                         | 07             |
 | `ProgressBar`           | in progress, mastered                                                                                                                                                   | 07             |
-| `PlaceRow`, `SystemRow` | plain, on view, Start here, New, Mastered, Soon; hover, focus                                                                                                           | 07             |
+| `PlaceRow`, `SystemRow` | plain, on view, Start here, New, Mastered, Soon, beyond reach (`PlaceRow`, BR-62); hover, focus                                                                         | 07             |
 | `PlaceCrumb`            | "You're on"                                                                                                                                                             | 09, 10         |
 | `ItemHero`              | Rank, Mastered, Not obtained, Not obtained Prime, no state, collectible                                                                                                 | 09             |
 | `BlueprintArt`          | the part over the blueprint                                                                                                                                             | 09, 10         |
 | `SummaryRow`            | blueprint, component, route                                                                                                                                             | 09             |
 | `SectionHeader`         | game icon, part art; open, closed                                                                                                                                       | 09, 10         |
-| `StepRow`               | step, optional, alternative, best; open, collapsed                                                                                                                      | 10             |
-| `ComponentRow`          | open, collapsed, ticked                                                                                                                                                 | 10             |
+| `StepRow`               | step, optional, alternative, best; open, collapsed, locked (BR-63)                                                                                                      | 10             |
+| `ComponentRow`          | open, collapsed, ticked, locked (BR-63)                                                                                                                                 | 10             |
 | `Checkbox`              | off, on                                                                                                                                                                 | 10             |
 | `ErrorBand`             |                                                                                                                                                                         | 02             |
 | `LoadingCard`           | the quill                                                                                                                                                               | 02             |
@@ -226,8 +226,9 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `SheetHeader`           | wordmark and close                                                                                                                                                      | 04, 07         |
 | `DateMenu`              | closed, open                                                                                                                                                            | 05             |
 | `ShowMore`              | "Show {n} older"                                                                                                                                                        | 05, 06         |
+| `MoreLine`              | the count of what lies beyond reach and its gap (BR-60, BR-61); one line, opens nothing                                                                                 | 06, 07         |
 | `SearchCard`            | title, line, field and Continue                                                                                                                                         | 08             |
-| `SuggestionRow`         | art, name, catalogue; default, active (the option the arrow keys or the pointer are on)                                                                                 | 08             |
+| `SuggestionRow`         | art, name, catalogue; default, active (the option the arrow keys or the pointer are on), beyond reach (BR-62)                                                           | 08             |
 | `Timeline`              | the diamonds and the line of a section                                                                                                                                  | 10             |
 | `RowDetail`             | the reading under a step                                                                                                                                                | 10             |
 | `RowProse`              | the wiki's paragraphs under a step                                                                                                                                      | 10             |
@@ -373,6 +374,20 @@ component: an empty box, the art and the title, the chevron down. The screens
 compose a component row from the set's head, a chevron and the passage;
 `ComponentRow` is that whole row. The divider between groups of components is
 `Divider` itself, so `GroupDivider` was dropped from the table.
+
+On 2026-10-08, for progressive disclosure (BR-59 to BR-63), New designs gained
+**More line** (`526:117`): a full-width line in `Body/Small` and `--ink-muted`
+under a `--line-subtle` rule, its text a component property, its paddings
+`space/5`. Four sets gained a state, each cloned from its Open or Default
+variant: **Step row** Locked (`526:96`, and `528:97` with art) and **Component row** Locked
+(`526:102`), at half opacity; **Suggestion row** Beyond reach (`526:107`),
+the catalogue followed by the gap; **Place row** Beyond reach (`526:112`), the
+gap in place of the mastered count. The owner approved them, and their copy,
+the same day. A second row under Documented states, dated 2026-10-08, draws
+them in six screens cloned from the pinned ones: the place list of a new
+player, a search hit beyond reach, a group ending in the More line on the map
+and in the Summary, Goal with a match beyond reach, and Kuva Sobek locked
+behind its Mastery Rank. Each spec links its own.
 
 ### The screens are built from the components
 

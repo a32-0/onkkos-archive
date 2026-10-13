@@ -1,10 +1,10 @@
 # T-26 · Screen: the map
 
-|          |                                                                                                              |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| Phase    | 4. Screens                                                                                                   |
-| Serves   | [spec 07](../07-map.md); [plan 1](../plan/01-repository.md); BR-05, BR-36, BR-44, BR-45, BR-46, BR-47, BR-57 |
-| Waits on | [T-25](T-25-summary.md), [T-15](T-15-places.md), [T-13](T-13-engine.md)                                      |
+|          |                                                                                                                              |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Phase    | 4. Screens                                                                                                                   |
+| Serves   | [spec 07](../07-map.md); [plan 1](../plan/01-repository.md); BR-05, BR-36, BR-44, BR-45, BR-46, BR-47, BR-57, BR-59 to BR-62 |
+| Waits on | [T-25](T-25-summary.md), [T-15](T-15-places.md), [T-13](T-13-engine.md)                                                      |
 
 One place at a time: the place card, the lens, the groups, the place list and the system list, and where the map opens.
 

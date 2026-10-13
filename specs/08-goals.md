@@ -15,6 +15,10 @@ describes and no earlier frame drew. Their texts are sample values:
 - [`474:1013` Goal — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1013): typing, "Nothing by that name."
 - [`474:1090` Goal — Every goal done](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1090): the search card, then the empty state (flag, "Nothing left to suggest", "Every goal we curate is behind you. Name anything above and chase it.") where the goal cards would be.
 
+Drawn on 2026-10-08 under **Documented states**, for BR-62:
+
+- [`533:5041` Goal — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-5041): the last match beyond reach, after those in reach, with its gap.
+
 ## Rules
 
 - [BR-05](../docs/business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
@@ -25,6 +29,10 @@ describes and no earlier frame drew. Their texts are sample values:
   the search suggests as the player types.
 - [BR-54](../docs/business-rules.md#br-54--build-a-necramech-names-the-one-the-player-lacks):
   the Necramech the player lacks.
+- [BR-59](../docs/business-rules.md#br-59--what-the-player-can-reach) and
+  [BR-62](../docs/business-rules.md#br-62--a-search-shows-everything-and-says-the-gap):
+  the search reaches everything and says the gap; a goal beyond reach is not
+  offered.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes),
   [BR-42](../docs/business-rules.md#br-42--the-placeholder-circles-are-the-games-icons).
 - [`deferred.md`](../docs/deferred.md): Mastery Rank, syndicate and Intrinsics
@@ -54,8 +62,13 @@ from `/connect` (BR-03). From the top, as `208:90` draws it:
 - It reaches only what has a known source: an arsenal item, a mod, arcane,
   resource or other entry with a drop, a region or a vendor, every relic, and
   every place. About 8,000 cosmetics with no source never appear.
+- What is in the player's reach comes first. A match beyond reach is the
+  Beyond reach row (`526:107`): its catalogue, then the gap, "Sniper · Needs
+  Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on Earth" or
+  "Place · Join a clan" (BR-62).
 - Choosing a row opens it: a place opens the map on it (BR-37), anything else
-  its item page with Goal as its origin (spec 04). **Continue** opens the first
+  its item page with Goal as its origin (spec 04). An item beyond reach opens
+  with Step by step chosen (BR-62). **Continue** opens the first
   row. With no match, the list shows one line, "Nothing by that name.", and
   Continue does nothing.
 - The list closes on Escape, on a click outside, and when the field is
@@ -74,6 +87,10 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 - A goal the profile already proves done is not offered: no frontier hides
   the first, every Necramech owned hides the second, and the quest confirmed
   by `quest_evidence.yaml` hides the third.
+- A goal that names an item beyond the player's reach is not offered
+  (BR-59): the Necramech when its rank or its place is beyond. A quest has no
+  reach, so "Play the Hex Quest" follows only the rule above. The search
+  still reaches everything.
 - Order: the goal on the frontier or the focus first (BR-05), then by Mastery
   Rank band (`suggestedGoals`).
 - Each card carries its icon, as the frame draws it: `precision_manufacturing`
@@ -87,6 +104,7 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 | At rest          | The search card and the goals offered |
 | Typing, matches  | The list under the field              |
 | Typing, no match | "Nothing by that name."               |
+| A match beyond   | `Suggestion row` Beyond reach (BR-62) |
 | Every goal done  | The search card, then the empty state |
 
 ## Data and sources
@@ -106,7 +124,8 @@ the field's width.
 
 ## Components
 
-`SearchCard`, `SearchField`, `SuggestionList` and `SuggestionRow`, `ChoiceCard`
+`SearchCard`, `SearchField`, `SuggestionList` and `SuggestionRow` (default,
+active, beyond reach), `ChoiceCard`
 (goal),
 `EmptyState`, `Button` (primary), each with its stories.
 
@@ -119,7 +138,10 @@ the field's width.
    page; Continue opens the first.
 4. Each card opens what the table says; a goal already done is not offered.
 5. "Build a Necramech" opens the first Necramech the profile lacks.
-6. `pnpm check` passes, with tests for the goals offered and BR-54.
+6. With the Ordis fixture, a match beyond reach comes after those in reach
+   and reads its gap; choosing an item beyond reach opens its Step by step;
+   no goal beyond reach is offered (BR-62).
+7. `pnpm check` passes, with tests for the goals offered, BR-54 and BR-62.
 
 ## Divergences from the code
 

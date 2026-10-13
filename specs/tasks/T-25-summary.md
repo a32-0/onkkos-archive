@@ -1,10 +1,10 @@
 # T-25 · Screen: the Summary
 
-|          |                                                                                                                                  |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Phase    | 4. Screens                                                                                                                       |
-| Serves   | [spec 06](../06-catch-up-summary.md); [plan 1](../plan/01-repository.md); BR-11, BR-12, BR-13, BR-14, BR-15, BR-16, BR-35, BR-36 |
-| Waits on | [T-24](T-24-resume.md)                                                                                                           |
+|          |                                                                                                                                                |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Phase    | 4. Screens                                                                                                                                     |
+| Serves   | [spec 06](../06-catch-up-summary.md); [plan 1](../plan/01-repository.md); BR-11, BR-12, BR-13, BR-14, BR-15, BR-16, BR-35, BR-36, BR-59, BR-61 |
+| Waits on | [T-24](T-24-resume.md)                                                                                                                         |
 
 What shipped since the month chosen, its groups and tiles, the last-played card and Next, including the empty state when nothing is new.
 
