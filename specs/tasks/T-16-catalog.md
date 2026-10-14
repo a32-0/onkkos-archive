@@ -45,6 +45,7 @@ Everything else the app knows about where things come from. `releases.ts` loses 
 - `briefOf()` returns Blueprints and Components, or How to get when an item has neither (BR-55).
 - The search returns one list, best first, with every place of the index (spec 08); reach orders it on its screen (T-27).
 - `bannerUpdates()` stays, for the last-played card (spec 06).
+- `places.ts` holds the place vocabulary only. A place's reach is `place/reach.ts`'s (T-15, BR-59), so `reachedState()` and its `reached_by` reading are out (corrected 2026-10-13).
 - The Circuit's week takes `now` as an argument, and Varzia's stock is a value handed in (T-19 reads it).
 - Exports only T-19's tests read (`parseRequirements`, `namesItem` and the scenario's inner functions) are not exported yet; T-19 exports them with its tests.
 

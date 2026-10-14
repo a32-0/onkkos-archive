@@ -1,4 +1,5 @@
 import type { Graph, StarChartEntry } from "@/domain/graph/schema";
+import { regionsPlayed } from "@/domain/profile/nodes";
 import type { RawProfile } from "@/domain/types/profile";
 
 interface NextPlanetResult {
@@ -33,6 +34,7 @@ export function missionTags(profile: RawProfile): Set<string> {
 
 export function findNextPlanet(graph: Graph, profile: RawProfile): NextPlanetResult {
   const tags = missionTags(profile);
+  const regions = regionsPlayed(profile);
   const unlocked: string[] = [];
   const junctionsTotal = graph.starChartOrder.filter((entry) => entry.junctionTag !== null).length;
   let junctionsCompleted = 0;
@@ -45,6 +47,10 @@ export function findNextPlanet(graph: Graph, profile: RawProfile): NextPlanetRes
     if (tags.has(entry.junctionTag)) {
       unlocked.push(entry.planet);
       junctionsCompleted += 1;
+      continue;
+    }
+    if (regions.has(entry.planet)) {
+      unlocked.push(entry.planet);
       continue;
     }
     return { entry, unlocked, junctionsCompleted, junctionsTotal };
@@ -89,7 +95,7 @@ export function asksWhenLastPlayed(graph: Graph, profile: RawProfile): boolean {
   if (!Array.isArray(profile.Missions)) return true;
   const second = graph.starChartOrder[1];
   if (!second || second.junctionTag === null) return true;
-  return missionTags(profile).has(second.junctionTag);
+  return findNextPlanet(graph, profile).unlocked.includes(second.planet);
 }
 
 export function starChartProgress(graph: Graph, profile: RawProfile): PlanetProgress[] {

@@ -46,18 +46,9 @@ describe("findNextPlanet", () => {
     expect(findNextPlanet(graph, veteran).entry).toBeNull();
   });
 
-  it("never proposes Earth as the next step", () => {
-    expect(findNextPlanet(graph, newPlayer).entry?.planet).not.toBe("Earth");
-    expect(findNextPlanet(graph, withJunctions()).entry?.planet).not.toBe("Earth");
-  });
-
   it("a player without junctions gets Venus, not Mercury", () => {
     expect(findNextPlanet(graph, withJunctions()).entry?.planet).toBe("Venus");
     expect(findNextPlanet(graph, newPlayer).entry?.planet).toBe("Venus");
-  });
-
-  it("counts Earth as unlocked from the start", () => {
-    expect(findNextPlanet(graph, withJunctions()).unlocked).toContain("Earth");
   });
 
   it("every junction_tag names a planet earlier in the list", () => {
@@ -78,6 +69,14 @@ describe("findNextPlanet", () => {
     const complete = findNextPlanet(graph, veteran);
     expect(complete.unlocked).toHaveLength(14);
     expect(complete.junctionsCompleted).toBe(13);
+  });
+
+  it("unlocks a planet whose nodes an account older than junctions played, without counting a junction", () => {
+    const old: RawProfile = { Missions: [{ Tag: "SolNode2" }, { Tag: "SolNode12" }] };
+    const result = findNextPlanet(graph, old);
+    expect(result.unlocked).toEqual(["Earth", "Venus", "Mercury"]);
+    expect(result.junctionsCompleted).toBe(0);
+    expect(result.entry?.planet).toBe("Mars");
   });
 });
 
@@ -177,6 +176,10 @@ describe("asksWhenLastPlayed", () => {
   it("does not ask a player still short of the second planet", () => {
     expect(asksWhenLastPlayed(graph, withJunctions())).toBe(false);
     expect(asksWhenLastPlayed(graph, withJunctions("EarthToMarsJunction"))).toBe(false);
+  });
+
+  it("asks an account older than junctions that played the second planet", () => {
+    expect(asksWhenLastPlayed(graph, { Missions: [{ Tag: "SolNode2" }] })).toBe(true);
   });
 
   it("asks when the profile carries no missions to read", () => {

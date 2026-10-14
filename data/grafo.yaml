@@ -46,69 +46,51 @@ off_chart_places:
   - place: Duviri
     after: Earth
     unlocked_by: "The Duviri Paradox"
-    reached_by: region
   - place: Deimos
     after: Mars
     unlocked_by: "Heart of Deimos"
-    reached_by: mission_tag
-    reached_tag: DeimosHub
   - place: Void
     after: Phobos
     unlocked_by: null
-    reached_by: region
   - place: Sanctuary
     after: Europa
     unlocked_by: "The New Strange"
-    reached_by: unreadable
   - place: Lua
     after: Neptune
     unlocked_by: "The Second Dream"
-    reached_by: region
   - place: Kuva Fortress
     after: Sedna
     unlocked_by: "The War Within"
-    reached_by: region
   - place: Zariman
     after: Sedna
     unlocked_by: "Angels of the Zariman"
-    reached_by: region
   - place: Höllvania
     after: Sedna
     unlocked_by: "The Lotus Eaters"
-    reached_by: mission_tag
-    reached_tag: 1999Hub
   - place: Dark Refractory
     after: Sedna
     unlocked_by: "The Old Peace"
-    reached_by: unreadable
   - place: Earth Proxima
     after: Sedna
     unlocked_by: "Rising Tide"
-    reached_by: unreadable
   - place: Venus Proxima
     after: Sedna
     unlocked_by: "Rising Tide"
-    reached_by: unreadable
   - place: Saturn Proxima
     after: Sedna
     unlocked_by: "Rising Tide"
-    reached_by: unreadable
   - place: Uranus Proxima
     after: Sedna
     unlocked_by: "Jade Shadows: Constellations"
-    reached_by: unreadable
   - place: Neptune Proxima
     after: Sedna
     unlocked_by: "Rising Tide"
-    reached_by: unreadable
   - place: Pluto Proxima
     after: Sedna
     unlocked_by: "Rising Tide"
-    reached_by: unreadable
   - place: Veil Proxima
     after: Sedna
     unlocked_by: "Rising Tide"
-    reached_by: unreadable
 
 update_names:
   - version: 17

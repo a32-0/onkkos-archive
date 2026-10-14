@@ -52,5 +52,11 @@ in `Missions[]`; accounts older than junctions (2016) carry the nodes
 without the tag. Access never feeds the proofs map: a reachable gate says
 the quest can be started, not that it was.
 
+A profile whose `Missions[]` cannot be read has no readable access, as a
+quest without a gate has none: `questAccess()` returns `null`, so what cannot
+be read never reads as out of reach (BR-59). The frontier is not a reached
+planet here: a quest on Venus starts once the Venus Junction is cleared, while
+BR-59 already shows Venus to a player working towards it.
+
 Quests gated by another quest, an Orbiter segment or a meeting carry no
 `available_at`, because the profile cannot read those gates.

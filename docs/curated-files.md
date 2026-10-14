@@ -79,17 +79,17 @@ The places that exist in the game but not on the junction chain: Duviri,
 Deimos, Void, Sanctuary, Lua, Kuva Fortress, Zariman, Höllvania, Dark
 Refractory and the seven Empyrean Proximas (Earth, Venus, Saturn, Uranus,
 Neptune, Pluto and Veil), in the order the game's Empyrean chart lists them.
-Each has `after` (the chain planet it is displayed beside), `unlocked_by` (the
-quest that opens it, or `null`) and `reached_by` (`region`, `mission_tag` with
-a `reached_tag`, or `unreadable`).
+Each has `after` (the chain planet it is displayed beside) and `unlocked_by`
+(the quest that opens it, or `null`). A place off the chart is in reach when
+its `after` is (BR-59), so nothing else is read of it.
 
-Sanctuary and Dark Refractory came with BR-59, settled on 2026-10-08. Neither has
-a node in the community node catalog, so both are `unreadable`, and the
-planet before their quest is the measure of reach: Europa for Sanctuary (The
-New Strange), Sedna for Dark Refractory (The Old Peace), as for Höllvania.
+Sanctuary and Dark Refractory came with BR-59, settled on 2026-10-08. Neither
+quest can be read, so the planet before it is the measure of reach: Europa for
+Sanctuary (The New Strange), Sedna for Dark Refractory (The Old Peace), as for
+Höllvania.
 
-The schema rejects a place that duplicates a `star_chart_order` planet, one
-whose `after` is not a chain planet, and a `mission_tag` place with no tag.
+The schema rejects a place that duplicates a `star_chart_order` planet and one
+whose `after` is not a chain planet.
 
 ### `update_names`
 

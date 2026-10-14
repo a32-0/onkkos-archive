@@ -21,8 +21,8 @@ arrives with the task that builds what it describes.
   direction, how every colour is measured for a colour blind owner, the three
   typefaces and what each carries, and where the icons come from.
 - [`development.md`](development.md): the tooling, what CI runs, the palette
-  check, the layers and the rule that enforces them, the conventions, and the
-  environment variables.
+  check, the layers and the rule that enforces them, the conventions, the
+  environment variables, and the shared store's two backends.
 - [`curated-files.md`](curated-files.md): the hand-written files in `data/`,
   field by field, the invariants the tests hold them to, and the vendored
   snapshots with the source and licence of each.

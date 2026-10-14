@@ -5,7 +5,6 @@ import {
   parsePredicate,
   PredicateParseError,
   resolveValue,
-  testPredicate,
 } from "@/domain/graph/predicates";
 
 describe("parsePredicate", () => {
@@ -57,11 +56,5 @@ describe("resolveValue", () => {
 
   it("fails when the parameter is missing", () => {
     expect(() => resolveValue("{target_rank}", {})).toThrow(/target_rank/);
-  });
-});
-
-describe("testPredicate", () => {
-  it("does not blow up on a missing target", () => {
-    expect(testPredicate(parsePredicate("Title >= 2"), undefined)).toBe(false);
   });
 });

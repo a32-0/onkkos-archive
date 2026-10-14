@@ -15,6 +15,7 @@ The store of plan part 2: `getMany`, `set`, `setIfAbsent`, `increment`, `remove`
 | `src/infra/store/store.ts`   | The interface and the keys table of plan part 2 |
 | `src/infra/store/upstash.ts` | `@upstash/redis`, from its two variables        |
 | `src/infra/store/memory.ts`  | On `globalThis`, with `flush()` for tests       |
+| `src/infra/store/index.ts`   | Picks the backend; fails closed in production   |
 | `tests/store.test.ts`        | The contract, run against the memory backend    |
 
 ## Documents

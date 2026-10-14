@@ -26,6 +26,7 @@
     "fixture": "node scripts/trim-profile.mjs"
   },
   "dependencies": {
+    "@upstash/redis": "1.39.0",
     "@wfcd/items": "1.1275.72",
     "next": "16.3.2",
     "react": "19.2.8",
@@ -62,5 +63,12 @@
   "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=20.9"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "semi": true,
+    "endOfLine": "lf"
   }
 }

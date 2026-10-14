@@ -17,7 +17,9 @@ Corrected on 2026-10-13, when the task was built. Each module arrives with somet
 - The rank title arrives with the shell's content (T-20).
 - The focus needs each place's share of mastered items, which T-15 reads. It takes the shares and the systems' order as values, so it is proved here.
 - A goal that names a quest is done when quest evidence confirms the quest (spec 08), so `unlock_1999` names The Hex. Whether every Necramech is owned needs the catalog, so the caller passes it in (T-27).
-- Sanctuary and Dark Refractory have no node in the community catalog, so both are `reached_by: unreadable` and reached through their `after` (BR-59).
+- Sanctuary and Dark Refractory are reached through their `after` (BR-59), as every place off the chart is; `off_chart_places` carries no `reached_by` (corrected 2026-10-13).
+- The frontier reads a planet's played nodes as well as its junction tag, so an account older than junctions is not sent back to Venus (corrected 2026-10-13).
+- `questAccess()` returns `null` when `Missions[]` cannot be read, so a quest is never out of reach for want of data (BR-59; corrected 2026-10-13).
 
 ## What it builds
 

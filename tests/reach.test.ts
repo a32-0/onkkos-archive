@@ -44,6 +44,13 @@ describe("a place's reach", () => {
     expect(placeGap(reach, "Dark Refractory")).not.toBeNull();
   });
 
+  it("reaches the planets an account older than junctions played", () => {
+    const reach = readReach(graph, { Missions: [{ Tag: "SolNode2" }, { Tag: "SolNode12" }] });
+    expect(placeGap(reach, "Mercury")).toBeNull();
+    expect(placeGap(reach, "Mars")).toBeNull();
+    expect(placeGap(reach, "Phobos")).toEqual({ kind: "junction", from: "Earth", to: "Mars" });
+  });
+
   it("opens the Dojo to a profile that names a clan, and only to one", () => {
     expect(placeGap(readReach(graph, throughMars), DOJO)).toBeNull();
     expect(placeGap(readReach(graph, newPlayer), DOJO)).toEqual({ kind: "clan" });

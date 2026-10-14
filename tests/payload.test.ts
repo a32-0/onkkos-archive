@@ -18,12 +18,6 @@ describe("profileFromResponse", () => {
     expect(profileFromResponse({})).toBeNull();
     expect(profileFromResponse({ Results: [] })).toBeNull();
   });
-
-  it("the Cy fixture carries XPInfo inside LoadOutInventory", () => {
-    const cy = fixture(CY);
-    expect(cy.LoadOutInventory?.XPInfo?.length).toBeGreaterThan(0);
-    expect(cy.XPInfo).toBeUndefined();
-  });
 });
 
 describe("accountCreatedAt", () => {

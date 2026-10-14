@@ -67,8 +67,9 @@ Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
 
 ## The frontier and the focus
 
-- **The frontier** is the first planet on `star_chart_order` whose junction the
-  profile cannot prove (`findNextPlanet`).
+- **The frontier** is the first planet on `star_chart_order` the profile
+  cannot prove, by its junction tag or by a played node on it, as accounts
+  older than junctions show (`findNextPlanet`).
 - **The focus** is for a player with no frontier: the place, in any system,
   with the highest share of its readable arsenal items mastered, short of all
   of them. A tie goes to the earlier place in system order (BR-47), then in

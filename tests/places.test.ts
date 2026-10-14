@@ -3,11 +3,9 @@ import worldstateData from "warframe-worldstate-data";
 import { describe, expect, it } from "vitest";
 
 import { classify } from "@/domain/catalog/acquisition";
-import { allPlaces, placeFromLocation, reachedState } from "@/domain/catalog/places";
-import { missionTags } from "@/domain/graph/star-chart";
-import { regionsPlayed } from "@/domain/profile/nodes";
+import { allPlaces, placeFromLocation } from "@/domain/catalog/places";
 
-import { CY, fixture, NEW_PLAYER, testGraph, VETERAN } from "./helpers";
+import { testGraph } from "./helpers";
 
 const graph = testGraph();
 const places = allPlaces(graph);
@@ -17,10 +15,6 @@ const placeNamed = (name: string) => {
   if (!place) throw new Error(`${name} is not a known place`);
   return place;
 };
-
-const PROXIMAS = ["Earth", "Venus", "Saturn", "Uranus", "Neptune", "Pluto", "Veil"].map(
-  (planet) => `${planet} Proxima`,
-);
 
 const STAR_CHART_TAG = /^(SolNode|SettlementNode|ClanNode)\d+$/;
 const REGION_RE = /\(([^)]+)\)$/;
@@ -96,38 +90,6 @@ describe("the place vocabulary", () => {
     expect(placeFromLocation("Earth/Cetus (Bounty)", known)).toBe("Earth");
     expect(placeFromLocation("Deimos/Cambion Drift", known)).toBe("Deimos");
     expect(placeFromLocation("Somewhere Else/Node", known)).toBeNull();
-  });
-});
-
-describe("reaching a place", () => {
-  const reachedFor = (name: string, profile: Parameters<typeof missionTags>[0]) =>
-    reachedState(placeNamed(name), missionTags(profile), regionsPlayed(profile));
-
-  it("treats Earth as always open and every Proxima as unreadable", () => {
-    const empty = {} as Parameters<typeof missionTags>[0];
-    expect(reachedFor("Earth", empty)).toBe(true);
-    for (const proxima of PROXIMAS) {
-      expect(reachedFor(proxima, empty)).toBeNull();
-      expect(reachedFor(proxima, fixture(VETERAN))).toBeNull();
-      expect(reachedFor(proxima, fixture(CY))).toBeNull();
-    }
-  });
-
-  it("says nothing about a hub the profile does not mention", () => {
-    expect(reachedFor("Deimos", fixture(NEW_PLAYER))).toBeNull();
-    expect(reachedFor("Höllvania", fixture(NEW_PLAYER))).toBeNull();
-  });
-
-  it("confirms a junction planet from the veteran's mission tags", () => {
-    const veteran = fixture(VETERAN);
-    expect(reachedFor("Venus", veteran)).toBe(true);
-    expect(reachedFor("Neptune", veteran)).toBe(true);
-  });
-
-  it("leaves a new player short of the later chain", () => {
-    const newPlayer = fixture(NEW_PLAYER);
-    expect(reachedFor("Earth", newPlayer)).toBe(true);
-    expect(reachedFor("Sedna", newPlayer)).toBe(false);
   });
 });
 

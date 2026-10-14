@@ -6,11 +6,7 @@ export interface Place {
   onChart: boolean;
   junctionTag: string | null;
   unlockedBy: string | null;
-  reachedBy: "region" | "mission_tag" | "junction" | "open" | "unreadable";
-  reachedTag: string | null;
 }
-
-export type Reached = boolean | null;
 
 const ALIASES: Record<string, string> = {
   "Orb Vallis": "Venus",
@@ -30,8 +26,6 @@ export function allPlaces(graph: Graph): Place[] {
     onChart: true,
     junctionTag: entry.junctionTag,
     unlockedBy: null,
-    reachedBy: entry.junctionTag === null ? "open" : "junction",
-    reachedTag: entry.junctionTag,
   }));
 
   const anchored: Place[] = [];
@@ -43,8 +37,6 @@ export function allPlaces(graph: Graph): Place[] {
       onChart: false,
       junctionTag: null,
       unlockedBy: extra.unlockedBy,
-      reachedBy: extra.reachedBy,
-      reachedTag: extra.reachedTag,
     });
   }
 
@@ -65,16 +57,4 @@ export function placeFromLocation(location: string, known: ReadonlySet<string>):
   if (direct) return direct;
   const afterComma = head.includes(",") ? head.slice(head.lastIndexOf(",") + 1) : null;
   return afterComma ? normalizePlace(afterComma, known) : null;
-}
-
-export function reachedState(
-  place: Place,
-  tags: ReadonlySet<string>,
-  regions: ReadonlySet<string>,
-): Reached {
-  if (place.reachedBy === "open") return true;
-  if (place.reachedBy === "unreadable") return null;
-  if (place.reachedTag !== null && tags.has(place.reachedTag)) return true;
-  if (place.reachedBy === "mission_tag") return regions.has(place.name) ? true : null;
-  return regions.has(place.name);
 }

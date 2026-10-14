@@ -53,11 +53,10 @@ them:
 /
 ├── README.md                  The two readers of the constitution (part 5)
 ├── LICENSE                    MIT
-├── package.json, pnpm-lock.yaml
+├── package.json, pnpm-lock.yaml  With the Prettier options
 ├── next.config.ts, tsconfig.json, vitest.config.ts
 ├── eslint.config.mjs          The layer boundaries
-├── knip.json                  No dead file or export
-├── .prettierrc, .prettierignore, .editorconfig, .gitattributes
+├── .prettierignore, .editorconfig, .gitattributes
 ├── .gitignore                 CLAUDE.md and .claude/ ignored
 ├── .env.example               The store's variables and the profile source
 ├── .github/workflows/         check.yml on every push, smoke.yml on every deployment (part 4)

@@ -11,7 +11,7 @@ export interface QuestAccess {
 }
 
 export function questAccess(quest: Quest, profile: RawProfile, graph: Graph): QuestAccess | null {
-  if (quest.availableAt.length === 0) return null;
+  if (quest.availableAt.length === 0 || !Array.isArray(profile.Missions)) return null;
   const tags = missionTags(profile);
   const regions = regionsPlayed(profile);
   const missing = quest.availableAt.filter(

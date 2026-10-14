@@ -53,8 +53,6 @@ const rawOffChartPlace = z.object({
   place: z.string(),
   after: z.string(),
   unlocked_by: z.string().nullable(),
-  reached_by: z.enum(["region", "mission_tag", "unreadable"]),
-  reached_tag: z.string().optional(),
 });
 
 const rawUpdateName = z.object({
@@ -119,8 +117,6 @@ interface OffChartPlace {
   place: string;
   after: string;
   unlockedBy: string | null;
-  reachedBy: "region" | "mission_tag" | "unreadable";
-  reachedTag: string | null;
 }
 
 interface UpdateName {
@@ -204,8 +200,6 @@ export function normalizeGraph(input: unknown): Graph {
       place: entry.place,
       after: entry.after,
       unlockedBy: entry.unlocked_by,
-      reachedBy: entry.reached_by,
-      reachedTag: entry.reached_tag ?? null,
     })),
     updateNames: raw.update_names,
     nodes,
@@ -244,9 +238,6 @@ function assertReferencesResolve(graph: Graph): void {
       problems.push(`off_chart_places.${place.place} is already a planet`);
     if (!chart.has(place.after))
       problems.push(`off_chart_places.${place.place}.after -> ${place.after}`);
-    if (place.reachedBy === "mission_tag" && place.reachedTag === null) {
-      problems.push(`off_chart_places.${place.place} needs reached_tag`);
-    }
   }
 
   for (const node of Object.values(graph.nodes)) {

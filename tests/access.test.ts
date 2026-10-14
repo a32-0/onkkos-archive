@@ -119,9 +119,9 @@ describe("questAccess", () => {
     expect(questAccess(questNamed("The Second Dream"), oldAccount, graph)?.reached).toBe(true);
   });
 
-  it("a profile without missions reaches nothing but Earth", () => {
-    expect(questAccess(questNamed("Saya's Vigil"), {}, graph)?.reached).toBe(true);
-    expect(questAccess(questNamed("The Duviri Paradox"), {}, graph)?.reached).toBe(false);
+  it("a profile whose missions cannot be read has no readable access, never a missing planet", () => {
+    expect(questAccess(questNamed("Saya's Vigil"), {}, graph)).toBeNull();
+    expect(questAccess(questNamed("The Duviri Paradox"), {}, graph)).toBeNull();
   });
 });
 

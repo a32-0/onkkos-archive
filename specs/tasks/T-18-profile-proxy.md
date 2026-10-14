@@ -25,6 +25,12 @@ Spec 11 whole: shape, demo, stored, circuit, lock, budget, read, classify, keep,
 
 - `docs/api.md`: the endpoint's verified behaviour
 
+## From T-17
+
+- `store()` from `@/infra/store` returns the backend. In a production build reading live with no Upstash variable it throws: `read.ts` turns that into a BR-38 reason, never a 500.
+- `storeKeys` in `infra/store/store.ts` names every key; the lifetimes are this task's, from the keys table of plan part 2.
+- `flush()` from `infra/store/memory.ts` replaces `resetBudget`, `resetCircuit` and `clearMemoryCache` in the tests.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 11 holds against the memory store.

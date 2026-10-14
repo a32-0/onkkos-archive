@@ -112,8 +112,9 @@ complete; zero of zero is not done.
 
 Neither is a property of a thing. Both reshape what a level shows.
 
-**The frontier** is the first planet on `star_chart_order` whose junction the
-profile cannot prove (`findNextPlanet` in `src/domain/graph/star-chart.ts`).
+**The frontier** is the first planet on `star_chart_order` the profile cannot
+prove, by its junction tag or by a played node on it (`findNextPlanet` in
+`src/domain/graph/star-chart.ts`).
 For a player with no frontier, **the focus** takes its place: the place with
 the highest share of its readable items mastered, short of all of them
 (`findFocus`, beside it). Start here marks one or the other (BR-44), and a
@@ -134,6 +135,11 @@ without `PlayerLevel` every rank is. What lies beyond is said as a gap, a
 value the screens word: the rank needed and held, the junction the frontier
 needs, or the clan. Exploring hides and counts it, a search shows it, and a
 plan dims it (BR-60 to BR-63).
+
+This module is the only reader of a place's reach. Whether a quest can be
+started is a narrower question, answered by `questAccess()`
+([`narrative.md`](narrative.md#access)), and it keeps the same rule for what
+cannot be read.
 
 **Mastery Rank** therefore does two things. It orders the suggested goals:
 `suggestedGoals` crosses each goal's audience with the player's rank (new below

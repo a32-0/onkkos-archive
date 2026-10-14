@@ -67,8 +67,11 @@ deferred goals (`deferred.md`) come back without touching it.
   proves it, `manual` otherwise. Never `todo`, because absence of proof is
   not absence of the quest.
 - `unlock_next_planet` is dynamic: it walks `star_chart_order` and returns
-  the first junction tag missing from `Missions[]`. `findNextPlanet` returns
-  two counts on purpose: `unlocked` (planets, Earth included, 14 max) and
+  the first planet the profile cannot prove, by its junction tag or by a
+  played node on it. Accounts older than junctions (2016) carry the nodes
+  without the tag, as quest access reads them
+  ([`narrative.md`](narrative.md#access)). `findNextPlanet` returns two
+  counts on purpose: `unlocked` (planets, Earth included, 14 max) and
   `junctionsCompleted` / `junctionsTotal` (tags actually present, 13 max).
   Collapsing them makes one of the two screens lie.
 

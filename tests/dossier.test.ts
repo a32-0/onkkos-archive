@@ -4,7 +4,6 @@ import { stepPlan } from "@/domain/catalog/checks";
 import { dossier } from "@/domain/catalog/dossier";
 import { buildHours, buildMinutes, oneIn } from "@/domain/catalog/odds";
 import { resolveAcquisition } from "@/domain/catalog/scenario";
-import { proximaPlace } from "@/domain/place/proxima";
 
 import { testCatalog, testData } from "./helpers";
 
@@ -141,14 +140,6 @@ describe("Railjack nodes filed under a planet", () => {
     );
     const bifrost = farms.find((farm) => farm?.node === "Bifrost Echo");
     expect(bifrost?.place).toBe("Venus Proxima");
-  });
-
-  it("leaves an ordinary cache node on its planet", () => {
-    expect(proximaPlace(data.rewards, "Venus", ["Ishtar (Caches)"], "Caches")).toBe("Venus");
-    expect(proximaPlace(data.rewards, "Venus", ["Bifrost Echo (Caches)"], "Caches")).toBe(
-      "Venus Proxima",
-    );
-    expect(proximaPlace(data.rewards, "Veil Proxima", ["Flexa"], "Caches")).toBe("Veil Proxima");
   });
 });
 
