@@ -154,6 +154,10 @@ describe("findFocus", () => {
     );
   });
 
+  it("never focuses the Dojo, which is on no chart (BR-57)", () => {
+    expect(findFocus(graph, [share("Dojo", 9, 10), share("Mars", 1, 4)], SYSTEMS)).toBe("Mars");
+  });
+
   it("leaves out a place with nothing readable", () => {
     expect(findFocus(graph, [share("Earth", 0, 0), share("Mars", 1, 4)], SYSTEMS)).toBe("Mars");
   });

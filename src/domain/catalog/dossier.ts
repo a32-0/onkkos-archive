@@ -16,7 +16,7 @@ interface Component {
   imageUrl: string | null;
 }
 
-interface Dossier {
+export interface Dossier {
   item: CatalogItem;
   parts: PartRow[];
   builtFrom: Component[];

@@ -17,6 +17,10 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 | `src/content/catch-up.ts`   | Reworked | The Summary's strings               |
 | `tests/tokens.test.ts`      | Reworked | `--scrim` leaves the allowance list |
 
+## From T-15
+
+- A group is the place index's `group` gathered by `summaryGroupOf` into BR-16's: Warframes, Weapons, Companions, Vehicles, and the Collection's as they are (`docs/place-index.md`).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 06 holds.

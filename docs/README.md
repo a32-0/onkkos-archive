@@ -34,6 +34,12 @@ arrives with the task that builds what it describes.
 - [`equipment-unlock-requirements.md`](equipment-unlock-requirements.md): the
   research behind every gate an item can have, which source states it, and
   whether the profile can show the player passed it.
+- [`place-index.md`](place-index.md): where the place index comes from, the
+  systems and how their places are named, the Dojo, and what the index cannot
+  answer.
+- [`system.md`](system.md): how the world and the player join, the states of an
+  item, a place, a quest and a step, and the lenses that cut every level: the
+  frontier, the focus and reach.
 - [`deferred.md`](deferred.md): what was set aside for a later version, and how
   to bring it back.
 

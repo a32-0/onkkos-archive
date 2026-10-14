@@ -18,6 +18,11 @@ One place at a time: the place card, the lens, the groups, the place list and th
 | `src/content/engine.ts`   | Reworked | The words of the engine's values: the junction a frontier needs; without the Intrinsics trees and the placement (T-13's correction) |
 | `tests/tokens.test.ts`    | Reworked | The allowance list is deleted                                                                                                       |
 
+## From T-15
+
+- A group is the place index's `group`, one per catalogue as the frames draw them (`docs/place-index.md`).
+- Tau is listed as Soon™ and is never counted in the system list's More line: it is in no one's reach, and with no `Missions[]` and no `PlayerLevel` no More line renders (spec 07, acceptance 8). `systemInReach` is false for an unreleased system.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 07 holds.

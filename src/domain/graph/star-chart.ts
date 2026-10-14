@@ -59,7 +59,8 @@ export function findFocus(
   systemOrder: readonly string[],
 ): string | null {
   const candidates = shares.filter(
-    (share) => share.readable > 0 && share.mastered < share.readable,
+    (share) =>
+      share.readable > 0 && share.mastered < share.readable && onTheChart(graph, share.place),
   );
   const rank = (share: PlaceShare): [number, number] => [
     systemRank(share.system, systemOrder),
@@ -113,6 +114,13 @@ export function reachedPlaces(graph: Graph, profile: RawProfile): Set<string> {
 export function junctionOf(tag: string): { from: string; to: string } | null {
   const match = JUNCTION_TAG_RE.exec(tag);
   return match?.[1] && match[2] ? { from: match[1], to: match[2] } : null;
+}
+
+function onTheChart(graph: Graph, place: string): boolean {
+  return (
+    graph.starChartOrder.some((entry) => entry.planet === place) ||
+    graph.offChartPlaces.some((entry) => entry.place === place)
+  );
 }
 
 function systemRank(system: string, systemOrder: readonly string[]): number {

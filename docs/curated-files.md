@@ -257,8 +257,16 @@ Thirty-seven companions and vehicles are incubated, built, captured or
 researched rather than dropped, so no machine source places them. Each row
 has `item`, `place`, `verb` (how it is obtained) and `from`, and `verify`
 marks the rows still waiting on a player's eye. A row with `place: null`
-belongs to its system rather than a planet. `place-index.md` explains where the
-rows are read.
+has no place on the map. `place-index.md` explains where the rows are read.
+
+## `systems.yaml`: the systems and their places
+
+The systems in BR-47's order, each with `id`, `name`, `released` and its
+`places`. The Origin System's places follow `star_chart_order`, each place off
+the chart after the planet it sits `after` in `grafo.yaml`, and the Dojo
+(BR-57) last. Tau is `released: false` with no places. `aliases` maps a
+source's spelling of a place to the one used here, applied as the drop tables
+and the wiki's region resources are read. `place-index.md` explains why.
 
 ## Invariants the tests enforce
 
@@ -274,7 +282,11 @@ rows are read.
   as the spine spells it.
 - `sources.yaml` parses against its schema, names no item twice, and leaves no
   arsenal item or collectible answered by prose alone.
-- `acquisition.yaml` names no item twice.
+- `acquisition.yaml` names no item twice, and only items the catalog has.
+- `systems.yaml` lists the systems in BR-47's order and every place once;
+  every place is on `star_chart_order`, in `off_chart_places` or the Dojo,
+  and every place there is in a system; the Origin System's places follow the
+  chart, the Dojo last.
 
 ## Vendored snapshots
 

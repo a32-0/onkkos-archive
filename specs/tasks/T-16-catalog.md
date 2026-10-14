@@ -28,6 +28,12 @@ Everything else the app knows about where things come from. `releases.ts` loses 
 
 - `docs/items.md`, `docs/scenario-guidelines.md`, `docs/acquisition-scenarios.md`: Move, paths per plan part 1
 
+## From T-15
+
+- The place index is built once in `infra/place/load.ts` (`placeIndex()`, `placeCatalog()`), and `proximaPlace` takes the drop tables as its first argument: the modules that read `placeView`, `catalogEntries` or `rewardIndex` take them as arguments instead.
+- A place named by an item's drop string, as BR-51's "You're on" reads it, goes through `canonicalPlace` with `systems.yaml`'s `aliases`, so `Dark Refractory, Deimos` reads as `Dark Refractory`.
+- `infra/wiki/modules.ts` reads `wiki-research.json` through the schema `domain/place/schema.ts` already holds (`normalizeResearch`), extended, not a second one.
+
 ## Acceptance
 
 - [ ] `tests/coverage.test.ts` passes: every arsenal item and collectible answered from data.

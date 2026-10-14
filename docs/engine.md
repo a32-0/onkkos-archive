@@ -100,8 +100,9 @@ of all of them. It takes each place's counts and the systems' order as values,
 because the place index reads them, and compares shares exactly by
 cross-multiplying, so a third and two sixths tie. A tie goes to the earlier
 system (BR-47), then to the earlier place on `star_chart_order`, a place off
-the chart sitting just after the planet it is drawn beside. With everything
-readable mastered there is no focus.
+the chart sitting just after the planet it is drawn beside. A place on no
+chart, the Dojo, is never the focus (BR-57). With everything readable mastered
+there is no focus.
 
 ## Goal suggestion
 
