@@ -19,7 +19,9 @@ Everything else the app knows about where things come from. `releases.ts` loses 
 | `src/domain/narrative/chain.ts`                                                                            | Reworked | From `src/lib/narrative/`, with `checks.ts`, its only reader; takes the spine as an argument (T-13's correction) |
 | `src/infra/wiki/modules.ts`                                                                                | Moves    | Reads the vendored wiki modules                                                                                  |
 | `src/infra/catalog/update-art.ts`                                                                          | Moves    | The file read of `update-art.ts`                                                                                 |
-| `tests/acquisition`, `coverage`, `updates`, `dossier` `.test.ts`                                           | Moves    |                                                                                                                  |
+| `tests/acquisition`, `coverage`, `updates` `.test.ts`                                                      | Moves    |                                                                                                                  |
+| `tests/dossier.test.ts`                                                                                    | Reworked | The relic, Proxima and step-plan cases join the ones T-14 brought                                                |
+| `src/domain/catalog/items.ts`, `src/infra/catalog/items.ts`                                                | Reworked | Gain `resourceCatalog` and its read, with `checks.ts`, its only reader (T-14's correction)                       |
 | `tests/releases`, `search`, `places` `.test.ts`                                                            | Reworked | With their modules                                                                                               |
 
 ## Documents that cross

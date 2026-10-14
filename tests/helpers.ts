@@ -1,9 +1,11 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import type { CatalogItem } from "@/domain/catalog/items";
 import type { Graph } from "@/domain/graph/schema";
 import { profileFromResponse } from "@/domain/profile/payload";
 import type { RawProfile, RawProfileResponse } from "@/domain/types/profile";
+import { arsenalCatalog } from "@/infra/catalog/items";
 import { loadGraph } from "@/infra/graph/load";
 
 const root = process.cwd();
@@ -14,6 +16,10 @@ export const CY = "profile-cy";
 
 export function testGraph(): Graph {
   return loadGraph();
+}
+
+export function testCatalog(): CatalogItem[] {
+  return arsenalCatalog();
 }
 
 export function fixture(name: string): RawProfile {
