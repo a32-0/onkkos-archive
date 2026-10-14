@@ -10,16 +10,16 @@ Spec 11 whole: shape, demo, stored, circuit, lock, budget, read, classify, keep,
 
 ## What crosses
 
-| File                                                    | Origin   | Note                                                                                      |
-| ------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------- |
-| `src/infra/profile/visitor.ts`                          | Moves    | From `src/lib/warframe/`                                                                  |
-| `src/infra/profile/client.ts`                           | Reworked | Returns the reason; no `content/` import                                                  |
-| `src/infra/profile/cache.ts`, `budget.ts`, `circuit.ts` | Reworked | On the store; the fixed window; the lock of plan part 2                                   |
-| `src/infra/profile/fixture-source.ts`                   | Reworked | Two demos only                                                                            |
-| `src/infra/profile/read.ts`                             | New      | The read order, with React `cache()` per request                                          |
-| `src/app/api/profile/[accountId]/route.ts`              | Moves    |                                                                                           |
-| `tests/client.test.ts`, `resilience.test.ts`            | Reworked | Against the memory store; the real account id they use today is replaced by a made-up one |
-| `tests/demo-fixtures.test.ts`                           | Reworked | Two demos                                                                                 |
+| File                                                    | Origin   | Note                                                                                                                       |
+| ------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `src/infra/profile/visitor.ts`                          | Moves    | From `src/lib/warframe/`                                                                                                   |
+| `src/infra/profile/client.ts`                           | Reworked | Returns the reason; no `content/` import                                                                                   |
+| `src/infra/profile/cache.ts`, `budget.ts`, `circuit.ts` | Reworked | On the store; the fixed window; the lock of plan part 2                                                                    |
+| `src/infra/profile/fixture-source.ts`                   | Reworked | Two demos only                                                                                                             |
+| `src/infra/profile/read.ts`                             | New      | The read order, with React `cache()` per request                                                                           |
+| `src/app/api/profile/[accountId]/route.ts`              | Moves    |                                                                                                                            |
+| `tests/client.test.ts`, `resilience.test.ts`            | Reworked | Against the memory store; the real account id they use today is replaced by a made-up one                                  |
+| `tests/demo-fixtures.test.ts`                           | Reworked | Two demos; their keys checked against `PROFILE_FIELDS`, not the old list that named `AccountId` and `PlatformNames` (T-12) |
 
 ## Documents that cross
 

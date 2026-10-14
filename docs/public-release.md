@@ -44,7 +44,8 @@ options were weighed: ship it as the owner's own, synthesize every fixture, or
 ship only the trimmed and anonymised output of `pnpm fixture`.
 
 The decision: only trimmed and anonymised fixtures travel. The fields are
-whitelisted, and the account id, display name and platform names replaced. The
+whitelisted, the display name replaced, and the account id and platform names
+removed. The
 values remain realistic, which keeps the tests honest, and they no longer
 identify anyone.
 

@@ -10,19 +10,31 @@ The base of the domain, which imports nothing else of it: the account-id check, 
 
 Corrected on 2026-10-13 by T-11: `tests/helpers.ts` crosses here, with its first tests. `nodes.test.ts` reads the graph through `testGraph()`, whose schema arrives in T-13, so it crosses there.
 
+Corrected on 2026-10-13, when the task was built. Each module crosses with something that reads it, as knip requires:
+
+- `types/plan.ts` and `types/next.ts` are first read by `graph/resolve.ts`, so they cross with T-13. So does `nodesOfType()`, first read by quest evidence.
+- `display.ts` cannot import `server-only` from the domain, and it reads only the name and the Mastery Rank. Plan part 2 leaves out the clan's name and the platform names, as no frame draws them. WFCD's profile parser does not cross: it throws on a profile without `AccountId` or `ChallengeProgress`, so on a trimmed profile it always fell back, and the fallback reads the same two fields it did.
+- The cookie's read and write in `lib/manual/since.ts` are input and output, which plan part 1 puts in `infra/`. They do not cross here: the server reads `wf_since` in `infra/session.ts` (T-19). Plan part 2 has the Resume picker writing the cookie in the client, which the layers do not allow, so where that write lives is open for T-24.
+- The trim keeps `XPInfo` alone inside `LoadOutInventory`, as `trim-profile.mjs` already did. Nothing that travels reads the rest.
+- `trim-profile.mjs` reads `grafo.yaml` before it cuts, so the fixtures are cut again in T-13.
+
 ## What crosses
 
-| File                                                           | Origin   | Note                                                                                                                           |
-| -------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| `src/domain/profile/account-id.ts`, `payload.ts`, `display.ts` | Moves    | From `src/lib/warframe/`                                                                                                       |
-| `src/domain/profile/nodes.ts`                                  | Moves    | From `src/lib/profile/`                                                                                                        |
-| `src/domain/profile/fields.ts`, `trim.ts`                      | New      | The eight fields of plan part 2, confirmed against every reading that travels                                                  |
-| `src/domain/since.ts`                                          | Reworked | From `src/lib/manual/since.ts`, with `isYearMonth` and the month parsing taken out of `lib/narrative/catch-up.ts`, which stays |
-| `src/domain/types/*`                                           | Moves    | From `src/types/`                                                                                                              |
-| `scripts/trim-profile.mjs`                                     | Reworked | Imports `fields.ts`, so the fixtures keep the same fields as the store                                                         |
-| `tests/helpers.ts`                                             | Reworked | `fixture()` and the profile names, from T-11; without `FULL_PROFILE`, as the real capture does not travel                      |
-| `tests/payload.test.ts`                                        | Reworked | Reads Cy where it read the real capture                                                                                        |
-| `tests/trim.test.ts`                                           | New      | A trimmed fixture reads the same as the whole one, for every reading                                                           |
+| File                                      | Origin   | Note                                                                                                                                                                                                                 |
+| ----------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/domain/profile/account-id.ts`        | Moves    | From `src/lib/warframe/`                                                                                                                                                                                             |
+| `src/domain/profile/payload.ts`           | Moves    | From `src/lib/warframe/`                                                                                                                                                                                             |
+| `src/domain/profile/display.ts`           | Reworked | From `src/lib/warframe/`; no `server-only` and no profile parser; the name and the Mastery Rank, read directly                                                                                                       |
+| `src/domain/profile/nodes.ts`             | Reworked | From `src/lib/profile/`; without `nodesOfType()`, which crosses with quest evidence (T-13)                                                                                                                           |
+| `src/domain/profile/fields.ts`, `trim.ts` | New      | The eight fields of plan part 2, confirmed against every reading that travels, and `XPInfo` alone in `LoadOutInventory`                                                                                              |
+| `src/domain/since.ts`                     | Reworked | `isYearMonth`, `toYearMonth` and `describeMonth`, taken out of `lib/narrative/catch-up.ts`, which stays; no cookie                                                                                                   |
+| `src/domain/types/profile.ts`             | Reworked | From `src/types/`; gains `GuildId`; the types read only inside the file are not exported                                                                                                                             |
+| `scripts/trim-profile.mjs`                | Reworked | Imports `fields.ts`, so the fixtures keep the same fields as the store, and fails on a field it does not build; no `--intrinsics` and no `--id`, so `AccountId` and `PlatformNames` are removed rather than replaced |
+| `tests/helpers.ts`                        | Reworked | `fixture()` and the names of Cy and the new player, from T-11; without `FULL_PROFILE`, as the real capture does not travel                                                                                           |
+| `tests/payload.test.ts`                   | Reworked | Reads Cy where it read the real capture, without the fields the trim leaves out                                                                                                                                      |
+| `tests/account-id.test.ts`                | New      | A malformed id is refused (spec 11, acceptance 1)                                                                                                                                                                    |
+| `tests/since.test.ts`                     | New      | The month's cases, from `tests/catch-up.test.ts`, which stays                                                                                                                                                        |
+| `tests/trim.test.ts`                      | New      | A trimmed fixture reads the same as the whole one, for every reading, on Cy, the new player and a synthetic profile with every field                                                                                 |
 
 ## Acceptance
 

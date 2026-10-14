@@ -84,7 +84,8 @@ The visitor is the host's own client address. The host overwrites
 
 - `profile-cy.json` and `profile-ordis.json` are the demos, and the only
   profiles that travel. Both are the output of `pnpm fixture`: whitelisted
-  fields, with the account id, display name and platform names replaced.
+  fields, with the display name replaced and the account id and platform
+  names removed.
 - Tests read fixtures, never DE.
 - `profile-full.json`, the real capture, does not travel, nor does the
   `full` demo id that reads it.

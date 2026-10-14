@@ -8,6 +8,8 @@
 
 Choosing the update last played: the cards, the search, the date menu, and both entrances.
 
+Open since 2026-10-13 (T-12): plan part 2 has the Resume picker set `wf_since` in the client, but `screens/` and `ui/` read and write no cookie, and the private repository's `readSince` and `writeSince` did not cross. A server function that sets the cookie, as the connect action sets `wf_account`, fits the layers. The owner settles it before this task starts.
+
 ## What crosses
 
 | File                        | Origin   | Note                                                                                                  |

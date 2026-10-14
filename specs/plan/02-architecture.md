@@ -252,7 +252,12 @@ Left out, because only code that stays reads them: `PlayerSkills` (the
 Intrinsics goal, deferred), `ChallengeProgress` (Nightwave, BR-35), `Stats`
 (read by nothing), and `GuildName` and `PlatformNames` (no frame draws them).
 The task that builds the trim confirms the list against every reading that
-travels, the profile parser's included.
+travels, the profile parser's included. T-12 did, on 2026-10-13: inside
+`LoadOutInventory` only `XPInfo` is read, so the trim keeps `XPInfo` alone and
+drops the presets, skins and equipped gear DE sends beside it, as the fixture
+cutter already did. The profile parser does not travel: it throws on a profile
+without `AccountId` or `ChallengeProgress`, and the player chip reads
+`DisplayName` and `PlayerLevel` directly.
 `scripts/trim-profile` imports the same list, so the fixtures and the store can
 never keep different fields. The file has no imports, so Node's type stripping
 runs the script without a build step.

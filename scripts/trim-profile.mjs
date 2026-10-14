@@ -7,14 +7,15 @@ import Items from "@wfcd/items";
 import worldstateData from "warframe-worldstate-data";
 import { parse as parseYaml } from "yaml";
 
+import { INVENTORY_FIELDS, PRESENCE_FIELDS, PROFILE_FIELDS } from "../src/domain/profile/fields.ts";
+
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const say = (line) => process.stdout.write(`${line}\n`);
 
 const PRESETS = {
-  cy: { name: "Cy", id: "000000000000000000000001", out: "fixtures/profile-cy.json" },
+  cy: { name: "Cy", out: "fixtures/profile-cy.json" },
   ordis: {
     name: "Ordis",
-    id: "000000000000000000000002",
     until: "Mercury",
     mr: "2",
     created: "2026-08-01",
@@ -60,19 +61,17 @@ const { values } = parseArgs({
     from: { type: "string" },
     out: { type: "string" },
     name: { type: "string" },
-    id: { type: "string" },
     until: { type: "string" },
     mr: { type: "string" },
     created: { type: "string" },
     operator: { type: "boolean", default: false },
-    intrinsics: { type: "boolean", default: false },
   },
 });
 
 const options = { ...(values.preset ? PRESETS[values.preset] : {}), ...definedOnly(values) };
 if (values.preset && !PRESETS[values.preset]) fail(`unknown preset ${values.preset}`);
-if (!options.from || !options.out || !options.name || !/^[0-9a-f]{24}$/.test(options.id ?? "")) {
-  fail("needs --from, --out, --name and a 24-hex --id (or --preset cy|ordis with --from)");
+if (!options.from || !options.out || !options.name) {
+  fail("needs --from, --out and --name (or --preset cy|ordis with --from)");
 }
 
 const source = JSON.parse(readFileSync(path.resolve(ROOT, options.from), "utf8"));
@@ -91,26 +90,31 @@ const evidence = evidenceOf(
 );
 if (mastery !== null && !(mastery >= 0 && mastery <= 40)) fail("--mr must be 0..40");
 
-const out = {
-  AccountId: { $oid: options.id },
+const inventory = { XPInfo: trimArsenal(full.LoadOutInventory?.XPInfo ?? []) };
+const kept = {
   DisplayName: options.name,
-  PlatformNames: [options.name],
   PlayerLevel: mastery ?? full.PlayerLevel,
   Created: options.created ? mongoDate(options.created) : full.Created,
   Missions: cut ? trimMissions(full.Missions ?? []) : (full.Missions ?? []),
   Affiliations: trimAffiliations(full.Affiliations ?? []),
-  LoadOutInventory: { XPInfo: trimArsenal(full.LoadOutInventory?.XPInfo ?? []) },
+  LoadOutInventory: Object.fromEntries(INVENTORY_FIELDS.map((field) => [field, inventory[field]])),
+  UnlockedOperator:
+    (!cut || options.operator) && typeof full.UnlockedOperator === "boolean"
+      ? full.UnlockedOperator
+      : undefined,
+  GuildId: !cut && full.GuildId ? full.GuildId : undefined,
 };
+const unbuilt = [
+  ...PROFILE_FIELDS.filter((field) => !(field in kept)),
+  ...INVENTORY_FIELDS.filter((field) => !(field in inventory)),
+];
+if (unbuilt.length > 0)
+  fail(`fields.ts lists ${unbuilt.join(", ")}, which this script does not build`);
 
-if (!cut || options.intrinsics) {
-  if (full.PlayerSkills) out.PlayerSkills = full.PlayerSkills;
-}
-if (!cut) {
-  if (full.ChallengeProgress) out.ChallengeProgress = full.ChallengeProgress;
-}
-if (!cut || options.operator) {
-  if (typeof full.UnlockedOperator === "boolean") out.UnlockedOperator = full.UnlockedOperator;
-}
+for (const field of PRESENCE_FIELDS) if (kept[field] !== undefined) kept[field] = true;
+const out = Object.fromEntries(
+  PROFILE_FIELDS.filter((field) => kept[field] !== undefined).map((field) => [field, kept[field]]),
+);
 
 writeFileSync(
   path.join(ROOT, options.out),

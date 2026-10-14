@@ -189,8 +189,8 @@ The host and the shared store are named in the plan.
 ## Nothing real about a person ships
 
 - **No real profile travels.** Fixtures in the public repository are the output
-  of `pnpm fixture`: whitelisted fields, with the account id, display name and
-  platform names replaced.
+  of `pnpm fixture`: whitelisted fields, with the display name replaced and the
+  account id and platform names removed.
 - **No local configuration, secret or personal id travels**, in the tree or in
   its history.
 - **Third-party material keeps its own terms.** The MIT licence covers our code
