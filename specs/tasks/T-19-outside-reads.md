@@ -22,6 +22,12 @@ Everything else that touches the outside: the wiki's prose and icons, Varzia's s
 | `next.config.ts`                           | `logging.fetches`; `outputFileTracingIncludes` for `data/` and `fixtures/`           |
 | `tests/checks.test.ts`, `scenario.test.ts` | They read through the wiki client                                                    |
 
+## From T-16
+
+- The catalog's data is one value, `catalogData()` in `infra/catalog/data.ts`; every catalog function takes it first. The step plan takes `{ now, masteryRank, varzia, done }`: `infra/worldstate/client.ts` returns Varzia's stock in the shape `checks.ts` reads (`location`, `expiry`, `offers` with `uniqueName`, `aya`, `regalAya`).
+- `parseRequirements`, `namesItem` and the scenario's inner functions (`layoutOf`, `scenarioOf`, `totalsOf`, `wikiNode`, `hubRequirements`, `companionOf`, `systemOf`) are not exported: no T-16 test read them. Export each one `tests/checks.test.ts` or `scenario.test.ts` reads, with the test.
+- A prose ask carries its `source` (mechanics, acquisition or lead, BR-48), so `prose.ts` reads the section it names.
+
 ## Acceptance
 
 - [ ] In development, `logging.fetches` shows the wiki and worldstate reads as hits on a second render; the commit message records what it showed.

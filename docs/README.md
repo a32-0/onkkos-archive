@@ -40,6 +40,15 @@ arrives with the task that builds what it describes.
 - [`system.md`](system.md): how the world and the player join, the states of an
   item, a place, a quest and a step, and the lenses that cut every level: the
   frontier, the focus and reach.
+- [`items.md`](items.md): the item catalog under the item page and the
+  Summary, why the runs sit beside their rotation, how a part is told from a
+  resource, relics as places, and weapons inside a recipe.
+- [`acquisition-scenarios.md`](acquisition-scenarios.md): how an item's parts
+  group into a scenario, the kinds of route, the systems, the curated sources
+  that leave nothing to prose alone, and the vendored wiki modules.
+- [`scenario-guidelines.md`](scenario-guidelines.md): the grammar every item
+  view shares, the two densities of one answer, and how a family with no frame
+  of its own is drawn.
 - [`deferred.md`](deferred.md): what was set aside for a later version, and how
   to bring it back.
 

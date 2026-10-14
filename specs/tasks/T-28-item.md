@@ -16,6 +16,10 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
 | `src/screens/item/`                |         |
 | `src/content/item.ts`, `states.ts` | Spec 09 |
 
+## From T-16
+
+- `briefOf()` returns blocks `blueprints` and `components`, or `how` when an item has neither (BR-55). Each line carries its `title`, its best `route`, its `reading` (the runs as a value, BR-56) and its `where` (node and mission).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.

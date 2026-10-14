@@ -4,9 +4,9 @@ type ArsenalGroup = "Warframes" | "Primary" | "Secondary" | "Melee" | "Archwing"
 
 type ArsenalKind = ArsenalGroup | "Necramech";
 
-type SlotKind = "Warframe" | "Weapon" | "Archwing" | "Companion";
+export type SlotKind = "Warframe" | "Weapon" | "Archwing" | "Companion";
 
-interface CatalogDrop {
+export interface CatalogDrop {
   location: string;
   type: string | null;
   chance: number | null;
@@ -113,6 +113,14 @@ const SOURCE_CATEGORIES: Record<string, ArsenalGroup> = {
 
 export const ARSENAL_SOURCES = Object.keys(SOURCE_CATEGORIES);
 
+export const RESOURCE_SOURCES = ["Resources"];
+
+export interface CatalogResource {
+  uniqueName: string;
+  name: string;
+  imageUrl: string | null;
+}
+
 const ICON_BASE = "https://cdn.warframestat.us/img";
 const ACQUISITION_ANCHOR = "#Acquisition";
 
@@ -126,6 +134,18 @@ export function buildArsenalCatalog(raw: RawItem[]): CatalogItem[] {
       seen.add(item.uniqueName);
       return true;
     })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function buildResourceCatalog(raw: RawItem[]): CatalogResource[] {
+  const seen = new Set<string>();
+  return raw
+    .filter((item) => Boolean(item.name) && !seen.has(item.uniqueName) && seen.add(item.uniqueName))
+    .map((item) => ({
+      uniqueName: item.uniqueName,
+      name: item.name,
+      imageUrl: iconUrl(item.imageName),
+    }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 

@@ -126,14 +126,22 @@ export function withCanonicalPlaces<T>(
   return out;
 }
 
-const rawResearch = z.object({
-  research: z.record(z.string(), z.object({ lab: z.string().min(1) })),
+const rawResearchEntry = z.object({
+  lab: z.string().min(1),
+  prereq: z.string().nullable(),
+  credits: z.number().nullable(),
+  seconds: z.number().nullable(),
+  resources: z.array(z.object({ name: z.string(), count: z.number() })),
 });
 
-export type Research = Record<string, string>;
+const rawResearch = z.object({
+  research: z.record(z.string(), rawResearchEntry),
+});
+
+export type ResearchEntry = z.infer<typeof rawResearchEntry>;
+
+export type Research = Record<string, ResearchEntry>;
 
 export function normalizeResearch(input: unknown): Research {
-  return Object.fromEntries(
-    Object.entries(rawResearch.parse(input).research).map(([name, entry]) => [name, entry.lab]),
-  );
+  return rawResearch.parse(input).research;
 }

@@ -124,22 +124,22 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 
 ## `src/domain/`
 
-| Folder or file  | Holds                                                                                                 | Task             |
-| --------------- | ----------------------------------------------------------------------------------------------------- | ---------------- |
-| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal           | T-12, T-14       |
-| `since.ts`      | The month a player last played                                                                        | T-12             |
-| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                | T-12, T-13, T-22 |
-| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion, the frontier and the focus                | T-13             |
-| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                      | T-13, T-16       |
-| `catalog/`      | Items, mastery, odds, the dossier; sources, relics, releases, updates, the Summary, checks and search | T-14, T-16       |
-| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59)                                           | T-15             |
-| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                              | T-16             |
+| Folder or file  | Holds                                                                                                                                                            | Task             |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal                                                                      | T-12, T-14       |
+| `since.ts`      | The month a player last played                                                                                                                                   | T-12             |
+| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                           | T-12, T-13, T-22 |
+| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion, the frontier and the focus                                                                           | T-13             |
+| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                 | T-13, T-16       |
+| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, the Summary, checks and search | T-14, T-16       |
+| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59)                                                                                                      | T-15             |
+| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                         | T-16             |
 
 ## `src/infra/`
 
 | Folder or file                   | Holds                                                                                                  | Task       |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------ | ---------- |
-| `catalog/`                       | The read of `@wfcd/items` and of the update art                                                        | T-14, T-16 |
+| `catalog/`                       | The read of `@wfcd/items`, of `sources.yaml` and of the update art; the catalog's data, read once      | T-14, T-16 |
 | `graph/`, `narrative/`, `place/` | The loaders of `data/`                                                                                 | T-13, T-15 |
 | `store/`                         | One store interface: Upstash in production, memory in tests and development (spec 11)                  | T-17       |
 | `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read | T-18       |

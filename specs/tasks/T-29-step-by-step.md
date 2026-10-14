@@ -21,6 +21,10 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 
 - `docs/step-by-step.md`: what Step by step draws and why
 
+## From T-16
+
+- The step plan holds no words: every title, detail, reading and group heading is a phrase, `{ say, …values }`. `content/checks.ts` holds one function per `say`, typed against `Phrase` in `domain/catalog/checks.ts`, and a row's `best`, `alternative` and `optional` add "(Highest chance)", "Or" and "(Optional)". A detail joins its parts with a space, a reading with " · ".
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

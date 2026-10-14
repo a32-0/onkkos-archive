@@ -1,10 +1,13 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import type { CatalogData } from "@/domain/catalog/data";
 import type { CatalogItem } from "@/domain/catalog/items";
+import type { UpdateSources } from "@/domain/catalog/updates";
 import type { Graph } from "@/domain/graph/schema";
 import { profileFromResponse } from "@/domain/profile/payload";
 import type { RawProfile, RawProfileResponse } from "@/domain/types/profile";
+import { catalogData, updateSources } from "@/infra/catalog/data";
 import { arsenalCatalog } from "@/infra/catalog/items";
 import { loadGraph } from "@/infra/graph/load";
 
@@ -20,6 +23,14 @@ export function testGraph(): Graph {
 
 export function testCatalog(): CatalogItem[] {
   return arsenalCatalog();
+}
+
+export function testData(): CatalogData {
+  return catalogData();
+}
+
+export function testUpdates(): UpdateSources {
+  return updateSources();
 }
 
 export function fixture(name: string): RawProfile {

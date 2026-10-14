@@ -17,6 +17,10 @@ The search with its suggestions, and the curated goal cards.
 | `src/screens/goals/`          | `suggestedGoals()` takes, with the goals the engine proves done, `build_necramech` once every Necramech is owned, read from the catalog (T-13's correction) |
 | `src/content/goals.ts`        | Cards and search only                                                                                                                                       |
 
+## From T-16
+
+- `searchCatalog(data, placeIndex(), term)` returns every match, best first, places among them: each hit with its `kind`, `group`, `name`, `type` and `family`. The route orders it by reach (spec 08, BR-62) and keeps eight.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 08 holds.

@@ -152,7 +152,7 @@ export function buildPlaceIndex(sources: PlaceSources): Map<string, PlaceView> {
     }
   }
 
-  for (const [name, lab] of Object.entries(sources.research)) {
+  for (const [name, { lab }] of Object.entries(sources.research)) {
     const target = resolveReward(index, name);
     const entry = target ? entries.get(target.name) : undefined;
     if (!entry) continue;
