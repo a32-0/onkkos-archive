@@ -26,5 +26,15 @@ arrives with the task that builds what it describes.
 - [`curated-files.md`](curated-files.md): the hand-written files in `data/`,
   field by field, the invariants the tests hold them to, and the vendored
   snapshots with the source and licence of each.
+- [`engine.md`](engine.md): the rules engine over `grafo.yaml`, why it reads
+  the raw payload and returns values rather than words, the frontier and the
+  focus, and which goals it offers.
+- [`narrative.md`](narrative.md): what the profile can prove of the story, the
+  evidence rejected and why, and when a quest can be started.
+- [`equipment-unlock-requirements.md`](equipment-unlock-requirements.md): the
+  research behind every gate an item can have, which source states it, and
+  whether the profile can show the player passed it.
+- [`deferred.md`](deferred.md): what was set aside for a later version, and how
+  to bring it back.
 
 All documentation is written in English.

@@ -1,4 +1,4 @@
-# Plan · 1 · The public repository
+| `lib/narrative/` load, schema, chain, evidence, evidence-load, access | Moves; `chain.ts` with `checks.ts` (T-16) || `engine.ts` | Reworked: the words of the engine's values, with the map (T-26) || `lib/worldstate/rotations.ts` | Reworked, to `infra/worldstate/client.ts` | Varzia's stock only (T-19); the Circuit's week is computed in `catalog/circuit.ts` || `lib/worldstate/client.ts` | Stays | Nightwave (BR-35); corrected by T-13, the two rows had been swapped |# Plan · 1 · The public repository
 
 The tree of the public repository, and where every file in it comes from. The
 cut rule decides (constitution): a file travels when a spec names it, when
@@ -161,7 +161,7 @@ Old components with no successor, because no spec draws what they did:
 | `lib/manual/since.ts`                                                         | Moves; the cookie's read and write go to `infra/` (T-12)                                                                                                        |                                                       |
 | `lib/warframe/` account-id, payload, display                                  | Moves                                                                                                                                                           |                                                       |
 | `lib/lore/*`, `lib/glossary/*`, `lib/goal/solve.ts`                           | Stays                                                                                                                                                           | No screen reaches them                                |
-| `types/*`                                                                     | Moves                                                                                                                                                           |                                                       |
+| `types/*`                                                                     | Moves; `plan.ts` Reworked, the reasons as values (T-13); `next.ts` with Connect (T-22)                                                                          |                                                       |
 
 ## `src/infra/`
 

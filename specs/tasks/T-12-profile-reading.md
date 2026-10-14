@@ -12,7 +12,7 @@ Corrected on 2026-10-13 by T-11: `tests/helpers.ts` crosses here, with its first
 
 Corrected on 2026-10-13, when the task was built. Each module crosses with something that reads it, as knip requires:
 
-- `types/plan.ts` and `types/next.ts` are first read by `graph/resolve.ts`, so they cross with T-13. So does `nodesOfType()`, first read by quest evidence.
+- `types/plan.ts` is first read by `graph/resolve.ts`, so it crosses with T-13; `types/next.ts` crosses with the first screen that reads a query (T-22, T-13's correction). So does `nodesOfType()`, first read by quest evidence.
 - `display.ts` cannot import `server-only` from the domain, and it reads only the name and the Mastery Rank. Plan part 2 leaves out the clan's name and the platform names, as no frame draws them. WFCD's profile parser does not cross: it throws on a profile without `AccountId` or `ChallengeProgress`, so on a trimmed profile it always fell back, and the fallback reads the same two fields it did.
 - The cookie's read and write in `lib/manual/since.ts` are input and output, which plan part 1 puts in `infra/`. They do not cross here: the server reads `wf_since` in `infra/session.ts` (T-19). Plan part 2 has the Resume picker writing the cookie in the client, which the layers do not allow, so where that write lives is open for T-24.
 - The trim keeps `XPInfo` alone inside `LoadOutInventory`, as `trim-profile.mjs` already did. Nothing that travels reads the rest.

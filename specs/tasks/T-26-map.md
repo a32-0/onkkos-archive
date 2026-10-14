@@ -10,12 +10,13 @@ One place at a time: the place card, the lens, the groups, the place list and th
 
 ## What crosses
 
-| File                      | Origin   | Note                          |
-| ------------------------- | -------- | ----------------------------- |
-| `src/app/system/page.tsx` | Rebuilt  | Spec 07                       |
-| `src/screens/map/`        | Rebuilt  |                               |
-| `src/content/system.ts`   | Reworked | Spec 07                       |
-| `tests/tokens.test.ts`    | Reworked | The allowance list is deleted |
+| File                      | Origin   | Note                                                                                                                                |
+| ------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `src/app/system/page.tsx` | Rebuilt  | Spec 07                                                                                                                             |
+| `src/screens/map/`        | Rebuilt  |                                                                                                                                     |
+| `src/content/system.ts`   | Reworked | Spec 07                                                                                                                             |
+| `src/content/engine.ts`   | Reworked | The words of the engine's values: the junction a frontier needs; without the Intrinsics trees and the placement (T-13's correction) |
+| `tests/tokens.test.ts`    | Reworked | The allowance list is deleted                                                                                                       |
 
 ## Acceptance
 

@@ -10,16 +10,17 @@ Everything else the app knows about where things come from. `releases.ts` loses 
 
 ## What crosses
 
-| File                                                                                                       | Origin   | Note                                                                                              |
-| ---------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------- |
-| `src/domain/catalog/acquisition.ts`, `places.ts`                                                           | Moves    | From `src/lib/catalog/`                                                                           |
-| `src/domain/catalog/circuit.ts`, `collectibles.ts`, `relics.ts`, `rewards.ts`, `scenario.ts`, `sources.ts` | Reworked | Their data as arguments: the wiki's modules, the place index and the spine; no `content/` import  |
-| `src/domain/catalog/summary.ts`, `checks.ts`, `search.ts`, `updates.ts`, `releases.ts`                     | Reworked | BR-55 and BR-56; BR-48 to BR-50; places (spec 08); BR-43; no quests (BR-35); no `content/` import |
-| `src/domain/wiki-links.ts`                                                                                 | Moves    | From `src/lib/wiki/links.ts`: it builds a URL and reads nothing, so it is domain                  |
-| `src/infra/wiki/modules.ts`                                                                                | Moves    | Reads the vendored wiki modules                                                                   |
-| `src/infra/catalog/update-art.ts`                                                                          | Moves    | The file read of `update-art.ts`                                                                  |
-| `tests/acquisition`, `coverage`, `updates`, `dossier` `.test.ts`                                           | Moves    |                                                                                                   |
-| `tests/releases`, `search`, `places` `.test.ts`                                                            | Reworked | With their modules                                                                                |
+| File                                                                                                       | Origin   | Note                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
+| `src/domain/catalog/acquisition.ts`, `places.ts`                                                           | Moves    | From `src/lib/catalog/`                                                                                          |
+| `src/domain/catalog/circuit.ts`, `collectibles.ts`, `relics.ts`, `rewards.ts`, `scenario.ts`, `sources.ts` | Reworked | Their data as arguments: the wiki's modules, the place index and the spine; no `content/` import                 |
+| `src/domain/catalog/summary.ts`, `checks.ts`, `search.ts`, `updates.ts`, `releases.ts`                     | Reworked | BR-55 and BR-56; BR-48 to BR-50; places (spec 08); BR-43; no quests (BR-35); no `content/` import                |
+| `src/domain/wiki-links.ts`                                                                                 | Moves    | From `src/lib/wiki/links.ts`: it builds a URL and reads nothing, so it is domain                                 |
+| `src/domain/narrative/chain.ts`                                                                            | Reworked | From `src/lib/narrative/`, with `checks.ts`, its only reader; takes the spine as an argument (T-13's correction) |
+| `src/infra/wiki/modules.ts`                                                                                | Moves    | Reads the vendored wiki modules                                                                                  |
+| `src/infra/catalog/update-art.ts`                                                                          | Moves    | The file read of `update-art.ts`                                                                                 |
+| `tests/acquisition`, `coverage`, `updates`, `dossier` `.test.ts`                                           | Moves    |                                                                                                                  |
+| `tests/releases`, `search`, `places` `.test.ts`                                                            | Reworked | With their modules                                                                                               |
 
 ## Documents that cross
 

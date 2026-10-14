@@ -1,13 +1,7 @@
 {
   "Results": [
     {
-      "AccountId": {
-        "$oid": "000000000000000000000002"
-      },
       "DisplayName": "Ordis",
-      "PlatformNames": [
-        "Ordis"
-      ],
       "PlayerLevel": 2,
       "Created": {
         "$date": {

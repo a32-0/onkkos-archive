@@ -20,6 +20,10 @@ interface CatalogNode {
 
 let catalog: CatalogNode[] | undefined;
 
+export function nodesOfType(type: string): CatalogNode[] {
+  return nodeCatalog().filter((node) => node.type.includes(type));
+}
+
 export function regionsPlayed(profile: RawProfile): Set<string> {
   const played = new Set<string>();
   const missions = profile.Missions;

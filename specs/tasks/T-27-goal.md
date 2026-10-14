@@ -10,12 +10,12 @@ The search with its suggestions, and the curated goal cards.
 
 ## What crosses
 
-| File                          | Origin   | Note                  |
-| ----------------------------- | -------- | --------------------- |
-| `src/app/goals/page.tsx`      | Rebuilt  | Spec 08               |
-| `src/app/api/search/route.ts` | Reworked | Places too            |
-| `src/screens/goals/`          | Rebuilt  |                       |
-| `src/content/goals.ts`        | Reworked | Cards and search only |
+| File                          | Origin   | Note                                                                                                                                                        |
+| ----------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/app/goals/page.tsx`      | Rebuilt  | Spec 08                                                                                                                                                     |
+| `src/app/api/search/route.ts` | Reworked | Places too                                                                                                                                                  |
+| `src/screens/goals/`          | Rebuilt  | `suggestedGoals()` takes, with the goals the engine proves done, `build_necramech` once every Necramech is owned, read from the catalog (T-13's correction) |
+| `src/content/goals.ts`        | Reworked | Cards and search only                                                                                                                                       |
 
 ## Acceptance
 

@@ -12,6 +12,127 @@ cross-file invariants listed below.
 `data/vendor/` holds the other half: snapshots of outside sources, written by
 two scripts and never at runtime. Their sources and licences close this page.
 
+## `grafo.yaml`: the dependency model
+
+Data source: `api.warframe.com/cdn/getProfileViewingData.php`, the public
+profile, read as DE sends it. [`engine.md`](engine.md) explains how the engine
+walks this file.
+
+### `star_chart_order`
+
+The junction chain, used by the `unlock_next_planet` goal and by the
+frontier. The engine walks the list in order and returns the first
+`junction_tag` missing from the profile's `Missions[].Tag`.
+
+The order is **progression order, not solar distance**: every `junction_tag`
+names its own prerequisite (`VenusToMercuryJunction` means Venus precedes
+Mercury), so the list is the topological sort of those tags. In solar
+distance order a player with zero junctions was told "Mercury", which itself
+needs Venus first. The branch points (Earth → Venus/Mars, Mars →
+Phobos/Ceres, Jupiter → Europa/Saturn) are flattened into one line; the
+engine only needs a valid order, not the tree. Earth has `junction_tag: null`
+and is always unlocked.
+
+### `nodes`
+
+Reusable pieces. Each answers what it is (`label`, `type`), how it is
+verified (`check`) and what it needs beforehand (`requires`, node ids).
+Goals reference nodes by id.
+
+`check` takes one of four shapes:
+
+| Shape          | Fields                        | Example                                                                    |
+| -------------- | ----------------------------- | -------------------------------------------------------------------------- |
+| array-contains | `field`, `equals`             | `Missions[].Tag` equals `DeimosHub`                                        |
+| array-where    | `field`, `where`, `condition` | `Affiliations[]` where `Tag == 'EntratiSyndicate'`, condition `Title >= 2` |
+| scalar         | `field`, `compare`, `value`   | `PlayerLevel` `>=` `8`                                                     |
+| manual         | `manual: true`, `question`    | Asked to the player, never inferred                                        |
+
+A node may also carry an optional **`item`**: the catalog name of the thing
+the step is actually about. `necramech_components` carries `item: "Voidrig"`.
+It is a name, not a uniqueName, so the file stays readable; a name that
+matches no catalog entry simply yields nothing. Only add it where the node
+really is one buildable item: a node covering a category would silently show
+one arbitrary member of it.
+
+### `goals`
+
+The three goals of the first version, each naming an item, a quest or a place
+(BR-37); the goals that named none of those are in `deferred.md`. Fields:
+
+- `label`: the goal's name in the file. The card's title is Goal's own copy.
+- `audience` (`new` / `mid` / `veteran` / `both`): ordering only.
+- `pathway`: one of the four paths DE's new-player guide sorts the game into
+  (`star_chart`, `collect`, `grow`, `explore`).
+- `place`: the place the goal is about, when it has one.
+- `quest`: the quest the goal is about, spelled as `narrative_spine.yaml`
+  spells it. The goal is done once quest evidence confirms it (spec 08).
+- `requires`: node ids; `check`: an optional check on the goal itself.
+- `resolution: dynamic` + `source: star_chart_order`: the star chart goal.
+- `manual_checklist_if_missing`: quest names, spelled exactly as
+  `narrative_spine.yaml` does. The engine marks one done when
+  `quest_evidence.yaml` proves it and asks about the rest.
+
+### `off_chart_places`
+
+The places that exist in the game but not on the junction chain: Duviri,
+Deimos, Void, Sanctuary, Lua, Kuva Fortress, Zariman, Höllvania, Dark
+Refractory and the seven Empyrean Proximas (Earth, Venus, Saturn, Uranus,
+Neptune, Pluto and Veil), in the order the game's Empyrean chart lists them.
+Each has `after` (the chain planet it is displayed beside), `unlocked_by` (the
+quest that opens it, or `null`) and `reached_by` (`region`, `mission_tag` with
+a `reached_tag`, or `unreadable`).
+
+Sanctuary and Dark Refractory came with BR-59, settled on 2026-10-08. Neither has
+a node in the community node catalog, so both are `unreadable`, and the
+planet before their quest is the measure of reach: Europa for Sanctuary (The
+New Strange), Sedna for Dark Refractory (The Old Peace), as for Höllvania.
+
+The schema rejects a place that duplicates a `star_chart_order` planet, one
+whose `after` is not a chain planet, and a `mission_tag` place with no tag.
+
+### `update_names`
+
+Seven rows, each `version` and `name`. They are corrections, not a model:
+the list of major updates a returning player can pick from is derived from
+the catalog, and only the names the catalog gets wrong or omits are curated.
+
+`@wfcd/items` carries an `introduced` object on most items:
+
+```
+{ name: "Update 31.5", aliases: ["31.5", "Angels of the Zariman"],
+  parent: "31.0", date: "2022-04-27",
+  url: "https://wiki.warframe.com/w/Update_31#Update_31.5" }
+```
+
+The list of updates keys on the entry whose `name` is exactly `Update N.0`
+and takes that entry's own `date`. The obvious alternative, the earliest date
+among items whose `parent` major is N, is wrong: `parent` carries
+retro-tagged noise and puts Fortuna in January 2018 instead of November. That
+date is not cosmetic; it becomes the month that drives what is new since, so
+a test pins Fortuna at `2018-11-08`.
+
+That yields 29 majors, U15 to U43. Twenty-five carry a usable title in
+`aliases`; the other four have none, and three more are unusable (`OA`,
+`CH`, and `Whispers in the Wall`, truncated). Those seven are the curated
+rows, each resolved against the wiki's own update page:
+
+| Version | Name                   | Why curated      |
+| ------- | ---------------------- | ---------------- |
+| 17      | Echoes of the Sentient | no alias         |
+| 18      | The Second Dream       | no alias         |
+| 20      | Octavia's Anthem       | alias reads `OA` |
+| 21      | Chains of Harrow       | alias reads `CH` |
+| 33      | The Duviri Paradox     | no alias         |
+| 35      | Whispers in the Walls  | alias truncated  |
+| 40      | The Vallis Undermind   | no alias         |
+
+**The catalog is the authority on dates, the wiki on names.** They disagree
+on U33: the catalog says 2023-04-26 and the wiki's page reads July. Duviri
+launched on 26 April, and a date is what the rest of the app computes from,
+so the catalog wins. A name is a proper noun nobody computes with, so the
+wiki wins.
+
 ## `narrative_spine.yaml`: story arcs
 
 Source: `https://wiki.warframe.com/w/Quest` ("Available Quests" for the
@@ -141,6 +262,11 @@ rows are read.
 
 ## Invariants the tests enforce
 
+- Every `requires` in `grafo.yaml` points at an existing node.
+- Every `junction_tag` names a planet earlier in `star_chart_order`.
+- Every goal carries one of the four pathways.
+- Every goal's `quest` and `manual_checklist_if_missing` use the spine's
+  spelling.
 - Every `available_at` planet exists in `star_chart_order`.
 - Every main-path quest has a release date.
 - Every quest has `wiki`, `start`, `requirement` and at least one location.

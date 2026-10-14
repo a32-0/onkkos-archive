@@ -17,6 +17,7 @@ The header, the player chip and its menu with Disconnect, the tab bar and its or
 | `src/app/actions.ts`                       | Reworked | Disconnect                                                                                                                      |
 | `src/screens/shell/`                       | Rebuilt  |                                                                                                                                 |
 | `src/content/app.ts`, `voice.ts`, `nav.ts` | Reworked | Spec 04                                                                                                                         |
+| `tests/content.test.ts`                    | Reworked | The player's rank title only, from `content/nav.ts`; the rest of the file stays (T-13's correction)                             |
 | `tests/language.test.ts`                   | Reworked | Onkko speaks on every screen: each page opens or closes with a line from `voice.ts`; each screen task after it is checked by it |
 
 ## Acceptance

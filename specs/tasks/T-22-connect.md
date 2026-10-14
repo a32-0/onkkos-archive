@@ -14,6 +14,7 @@ The id form, its loading card, the five error bands and the demo entrance. A fai
 | ------------------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | `src/app/connect/page.tsx`     | Rebuilt  | Spec 02                                                                                                                                        |
 | `src/app/actions.ts`           | Reworked | Connect and demo; no `?step=start`                                                                                                             |
+| `src/domain/types/next.ts`     | Moves    | From `src/types/`: the screen reads `?reason=` and `?retry=` (T-13's correction)                                                               |
 | `src/screens/connect/`         | Rebuilt  |                                                                                                                                                |
 | `src/content/failures.ts`      | Reworked | The five band messages (BR-38)                                                                                                                 |
 | `src/content/onboarding.ts`    | Reworked | The form's strings and `connectError`; the field's placeholder, a real account id today, becomes `000000000000000000000001` as the frames show |

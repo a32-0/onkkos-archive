@@ -1,0 +1,194 @@
+version: 1
+
+meta:
+  game: "Warframe"
+  source_endpoint: "https://api.warframe.com/cdn/getProfileViewingData.php?playerId={account_id}"
+  limitations: >
+    This endpoint does NOT expose: (1) which individual story quests were
+    completed; some are confirmed by proxy through quest_evidence.yaml,
+    the rest stay unreadable, (2) the Foundry inventory (blueprints in the
+    build queue). Steel Path IS readable: Missions[].Tier marks nodes also
+    cleared in Steel Path, counted against the community node catalog. Any
+    node marked with "check.manual: true" can't be verified automatically;
+    the app must ask the player directly.
+
+star_chart_order:
+  - planet: Earth
+    junction_tag: null
+  - planet: Venus
+    junction_tag: EarthToVenusJunction
+  - planet: Mercury
+    junction_tag: VenusToMercuryJunction
+  - planet: Mars
+    junction_tag: EarthToMarsJunction
+  - planet: Phobos
+    junction_tag: MarsToPhobosJunction
+  - planet: Ceres
+    junction_tag: MarsToCeresJunction
+  - planet: Jupiter
+    junction_tag: CeresToJupiterJunction
+  - planet: Europa
+    junction_tag: JupiterToEuropaJunction
+  - planet: Saturn
+    junction_tag: JupiterToSaturnJunction
+  - planet: Uranus
+    junction_tag: SaturnToUranusJunction
+  - planet: Neptune
+    junction_tag: UranusToNeptuneJunction
+  - planet: Pluto
+    junction_tag: NeptuneToPlutoJunction
+  - planet: Eris
+    junction_tag: PlutoToErisJunction
+  - planet: Sedna
+    junction_tag: ErisToSednaJunction
+
+off_chart_places:
+  - place: Duviri
+    after: Earth
+    unlocked_by: "The Duviri Paradox"
+    reached_by: region
+  - place: Deimos
+    after: Mars
+    unlocked_by: "Heart of Deimos"
+    reached_by: mission_tag
+    reached_tag: DeimosHub
+  - place: Void
+    after: Phobos
+    unlocked_by: null
+    reached_by: region
+  - place: Sanctuary
+    after: Europa
+    unlocked_by: "The New Strange"
+    reached_by: unreadable
+  - place: Lua
+    after: Neptune
+    unlocked_by: "The Second Dream"
+    reached_by: region
+  - place: Kuva Fortress
+    after: Sedna
+    unlocked_by: "The War Within"
+    reached_by: region
+  - place: Zariman
+    after: Sedna
+    unlocked_by: "Angels of the Zariman"
+    reached_by: region
+  - place: Höllvania
+    after: Sedna
+    unlocked_by: "The Lotus Eaters"
+    reached_by: mission_tag
+    reached_tag: 1999Hub
+  - place: Dark Refractory
+    after: Sedna
+    unlocked_by: "The Old Peace"
+    reached_by: unreadable
+  - place: Earth Proxima
+    after: Sedna
+    unlocked_by: "Rising Tide"
+    reached_by: unreadable
+  - place: Venus Proxima
+    after: Sedna
+    unlocked_by: "Rising Tide"
+    reached_by: unreadable
+  - place: Saturn Proxima
+    after: Sedna
+    unlocked_by: "Rising Tide"
+    reached_by: unreadable
+  - place: Uranus Proxima
+    after: Sedna
+    unlocked_by: "Jade Shadows: Constellations"
+    reached_by: unreadable
+  - place: Neptune Proxima
+    after: Sedna
+    unlocked_by: "Rising Tide"
+    reached_by: unreadable
+  - place: Pluto Proxima
+    after: Sedna
+    unlocked_by: "Rising Tide"
+    reached_by: unreadable
+  - place: Veil Proxima
+    after: Sedna
+    unlocked_by: "Rising Tide"
+    reached_by: unreadable
+
+update_names:
+  - version: 17
+    name: "Echoes of the Sentient"
+  - version: 18
+    name: "The Second Dream"
+  - version: 20
+    name: "Octavia's Anthem"
+  - version: 21
+    name: "Chains of Harrow"
+  - version: 33
+    name: "The Duviri Paradox"
+  - version: 35
+    name: "Whispers in the Walls"
+  - version: 40
+    name: "The Vallis Undermind"
+
+nodes:
+  planet_deimos:
+    label: "Deimos"
+    type: hub
+    requires: []
+    check:
+      field: "Missions[].Tag"
+      equals: "DeimosHub"
+
+  entrati_rank_2:
+    label: "Rank 2+ with the Entrati (Cordon)"
+    type: syndicate_rank
+    requires: [planet_deimos]
+    check:
+      field: "Affiliations[]"
+      where: "Tag == 'EntratiSyndicate'"
+      condition: "Title >= 2"
+
+  necramech_components:
+    label: "Necramech components in the Foundry"
+    type: resource
+    item: "Voidrig"
+    requires: [entrati_rank_2]
+    check:
+      manual: true
+      question: "Do you already have the Necramech components in your Foundry?"
+
+  hub_1999:
+    label: "Höllvania (1999) access"
+    type: hub
+    requires: []
+    check:
+      field: "Missions[].Tag"
+      equals: "1999Hub"
+
+goals:
+  unlock_next_planet:
+    label: "Unlock the next planet"
+    audience: new
+    pathway: star_chart
+    resolution: dynamic
+    source: star_chart_order
+    logic: >
+      Walk star_chart_order in order. For each entry, look up junction_tag
+      in the profile's Missions[].Tag. Return the first entry whose
+      junction_tag does NOT appear: that's the next step.
+
+  build_necramech:
+    label: "Build a Necramech"
+    place: Deimos
+    audience: veteran
+    pathway: collect
+    requires: [planet_deimos, entrati_rank_2, necramech_components]
+
+  unlock_1999:
+    label: "Play the Hex Quest"
+    quest: "The Hex"
+    place: Höllvania
+    audience: veteran
+    pathway: star_chart
+    requires: [hub_1999]
+    manual_checklist_if_missing:
+      - "The Duviri Paradox"
+      - "The Lotus Eaters"
+      - "Whispers in the Walls"
+      - "The Hex"

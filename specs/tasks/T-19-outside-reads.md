@@ -10,16 +10,17 @@ Everything else that touches the outside: the wiki's prose and icons, Varzia's s
 
 ## What crosses
 
-| File                                       | Origin   | Note                                                                                         |
-| ------------------------------------------ | -------- | -------------------------------------------------------------------------------------------- |
-| `src/infra/wiki/client.ts`, `icons.ts`     | Moves    |                                                                                              |
-| `src/infra/wiki/prose.ts`                  | Reworked | BR-48: paragraphs, Mechanics for missions                                                    |
-| `src/infra/worldstate/client.ts`           | Reworked | Varzia's stock only                                                                          |
-| `src/infra/session.ts`                     | Reworked | `wf_account`, `wf_since`, `wf_place`; the lore cookie goes; the month from `domain/since.ts` |
-| `src/infra/screen.ts`                      | Reworked | A failed read redirects to `/connect?reason=…&retry=…` (BR-38); no `content/` import         |
-| `src/proxy.ts`                             | New      | Writes `wf_place`; skips prefetches                                                          |
-| `next.config.ts`                           | Reworked | `logging.fetches`; `outputFileTracingIncludes` for `data/` and `fixtures/`                   |
-| `tests/checks.test.ts`, `scenario.test.ts` | Moves    | They read through the wiki client                                                            |
+| File                                       | Origin   | Note                                                                                                                              |
+| ------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `src/infra/wiki/client.ts`, `icons.ts`     | Moves    |                                                                                                                                   |
+| `src/infra/wiki/prose.ts`                  | Reworked | BR-48: paragraphs, Mechanics for missions                                                                                         |
+| `src/infra/worldstate/client.ts`           | Reworked | Varzia's stock only: from `lib/worldstate/rotations.ts`; `lib/worldstate/client.ts` reads Nightwave and stays (T-13's correction) |
+| `tests/rotations.test.ts`                  | Moves    | With Varzia's stock                                                                                                               |
+| `src/infra/session.ts`                     | Reworked | `wf_account`, `wf_since`, `wf_place`; the lore cookie goes; the month from `domain/since.ts`                                      |
+| `src/infra/screen.ts`                      | Reworked | A failed read redirects to `/connect?reason=…&retry=…` (BR-38); no `content/` import                                              |
+| `src/proxy.ts`                             | New      | Writes `wf_place`; skips prefetches                                                                                               |
+| `next.config.ts`                           | Reworked | `logging.fetches`; `outputFileTracingIncludes` for `data/` and `fixtures/`                                                        |
+| `tests/checks.test.ts`, `scenario.test.ts` | Moves    | They read through the wiki client                                                                                                 |
 
 ## Acceptance
 
