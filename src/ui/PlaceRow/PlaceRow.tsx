@@ -9,6 +9,7 @@ export function PlaceRow({
   name,
   art,
   count,
+  gap,
   mastered,
   startHere,
   isNew,
@@ -19,6 +20,7 @@ export function PlaceRow({
   name: string;
   art: string | null;
   count?: RowCount;
+  gap?: string;
   mastered?: string;
   startHere?: string;
   isNew?: string;
@@ -33,6 +35,8 @@ export function PlaceRow({
         <span className={styles.name}>{name}</span>
         {mastered ? (
           <Badge kind="mastered" label={mastered} />
+        ) : gap ? (
+          <span className={styles.gap}>{gap}</span>
         ) : (
           count && (
             <span className={styles.count}>

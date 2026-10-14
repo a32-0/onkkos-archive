@@ -44,3 +44,11 @@ export const Place: Story = {
 };
 
 export const NoArt: Story = { args: { name: "Embolist", catalogue: "Secondary", art: null } };
+
+export const BeyondReach: Story = {
+  args: {
+    name: "Rubico",
+    catalogue: "Sniper · Needs Mastery Rank 8, you are 5",
+    art: SAMPLE_ART[1],
+  },
+};

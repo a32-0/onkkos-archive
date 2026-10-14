@@ -205,7 +205,7 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `FeaturedCard`          | last played, up to date; closed, open                                                                                                                                   | 06, 07         |
 | `UpdateList`            | with "Show older"                                                                                                                                                       | 06, 07         |
 | `Divider`               | with label                                                                                                                                                              | 06, 07, 10     |
-| `GroupRow`              | closed, open; with count; focus                                                                                                                                         | 06, 07         |
+| `GroupRow`              | closed, open; with count; one tile; focus                                                                                                                               | 06, 07         |
 | `ItemTile`              | plain, Rank, Mastered; hover, focus                                                                                                                                     | 06, 07         |
 | `Rail`                  | sideways (compact), grid (from 840)                                                                                                                                     | 06, 07         |
 | `PlaceCard`             | in progress, mastered, no nodes                                                                                                                                         | 07             |
@@ -388,6 +388,16 @@ them in six screens cloned from the pinned ones: the place list of a new
 player, a search hit beyond reach, a group ending in the More line on the map
 and in the Summary, Goal with a match beyond reach, and Kuva Sobek locked
 behind its Mastery Rank. Each spec links its own.
+
+On 2026-10-13 the owner found that a group with one item was drawn as a
+section of its own, a Summary row beside a hidden tile: Vehicles in the
+Summary (`206:774`) and Necramech, Archwing and Railjack on the map
+(`212:159`). Group row's Open state held two loose Card frames, not the Item
+tile it looked like; they were replaced with Item tile instances (Plain), and
+the 23 instances kept their names and art as overrides. The four sections
+became Group row instances, Open, with the second tile hidden, so one item
+reads as one tile at the size of the others. In code a group with one item is
+a `Rail` holding one `ItemTile`, as before; `GroupRow` gained the story.
 
 ### The screens are built from the components
 

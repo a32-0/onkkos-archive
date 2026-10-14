@@ -59,6 +59,7 @@ into `main`.
 | [T-08 · Cards: choice, search, update, featured, error band, loading, empty state](T-08-cards.md)             | 2     | 02, 03, 05, 06, 07, 08     | T-07             |
 | [T-09 · Lists and the map's parts: groups, tiles, place card, rows, suggestions](T-09-lists-and-map-parts.md) | 2     | 05, 06, 07, 08             | T-08             |
 | [T-10 · The item's parts: hero, crumb, Summary rows, sections, the timeline](T-10-item-parts.md)              | 2     | 09, 10                     | T-09             |
+| [T-10b · The reach states: More line, Beyond reach, Locked](T-10b-reach-states.md)                            | 2     | 06, 07, 08, 10             | T-10             |
 | [T-11 · The data, the fixtures and the scripts that refresh them](T-11-data-and-fixtures.md)                  | 3     | 00, 11                     | T-01             |
 | [T-12 · Reading a profile: id, payload, nodes, the month, the trim](T-12-profile-reading.md)                  | 3     | 02, 11                     | T-11             |
 | [T-13 · The engine and quest evidence: goals, the frontier, the focus](T-13-engine.md)                        | 3     | 03, 07, 08, 10             | T-12             |
@@ -68,7 +69,7 @@ into `main`.
 | [T-17 · The shared store: one interface, Upstash and memory](T-17-store.md)                                   | 3     | 11                         | T-01             |
 | [T-18 · The profile proxy: the read order and every lock](T-18-profile-proxy.md)                              | 3     | 11, 02                     | T-13, T-17       |
 | [T-19 · Outside reads and the request: wiki, Varzia, cookies, the screen read](T-19-outside-reads.md)         | 3     | 04, 07, 09, 10             | T-16, T-18       |
-| [T-20 · Screen: the shell](T-20-shell.md)                                                                     | 4     | 04                         | T-10, T-19       |
+| [T-20 · Screen: the shell](T-20-shell.md)                                                                     | 4     | 04                         | T-10b, T-19      |
 | [T-21 · Screen: Onboarding](T-21-onboarding.md)                                                               | 4     | 01                         | T-20             |
 | [T-22 · Screen: Connect](T-22-connect.md)                                                                     | 4     | 02                         | T-21, T-18       |
 | [T-23 · Screen: Two ways in](T-23-two-ways-in.md)                                                             | 4     | 03                         | T-22, T-13       |
@@ -92,7 +93,7 @@ crosses", "Documents that cross" and component lists:
 
 | What                                                           | Count | Where                    |
 | -------------------------------------------------------------- | ----- | ------------------------ |
-| Components in plan part 3's table                              | 50    | T-06 to T-10             |
+| Components in plan part 3's table                              | 50    | T-06 to T-10b            |
 | Modules of `src/lib/` that plan part 1 marks Moves or Reworked | 63    | T-01, T-12 to T-19, T-29 |
 | Test files that travel                                         | 27    | Beside their modules     |
 | Content files that travel                                      | 13    | T-13, T-20 to T-29       |

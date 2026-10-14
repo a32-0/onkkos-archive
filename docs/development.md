@@ -47,7 +47,8 @@ pnpm test:stories     # every story in Chromium, with the accessibility checks
 `pnpm exec playwright install chromium`. Each story is checked by axe, and a
 violation fails the story; a run with no story fails too. A story turns one
 rule off only where the frame itself falls below that rule, and the owner has
-been told: the red label of Disconnect (`color-contrast`), and the wiki link,
+been told: the red label of Disconnect and the Locked rows of Step by step, drawn at
+half opacity by BR-63 (`color-contrast`), and the wiki link,
 which its colour and its arrow set apart from the prose with no underline
 (`link-in-text-block`; the owner kept the frame on 2026-10-08), in its own
 stories and wherever it closes a row's passage on Step by step. The

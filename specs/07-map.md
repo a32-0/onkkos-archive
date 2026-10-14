@@ -103,7 +103,9 @@ Viewing a place writes it to `wf_place` (BR-46).
 
 As on the Summary: the catalogue's game icon (BR-42), its name, "{n} New" when
 the place holds something new since the month, and a chevron; closed by
-default, a sideways rail of tiles when open (`212:159`). What a group holds
+default, a sideways rail of tiles when open (`212:159`). A group with one item shows
+that one tile, at the same size, never a Summary row or a wider card
+(`212:159`, Necramech, Archwing, Railjack). What a group holds
 follows the lens (BR-45); a group or divider with nothing to show does not
 render. Under the default and New, the rail holds what is in reach, and the
 open group ends in a More line that counts the rest by rank alone, the place

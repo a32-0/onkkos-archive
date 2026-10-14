@@ -75,7 +75,8 @@ draws it:
 A row with the category's game icon (BR-42), its name, "{n} NEW" in the accent
 colour and a chevron. Closed by default (BR-14). Opening it shows a rail of
 tiles that scrolls sideways (`206:774`); closing it hides the rail. Each group
-opens and closes on its own.
+opens and closes on its own. A group with one thing shows that one tile, at
+the same size, never a Summary row or a wider card (`206:774`, Vehicles).
 
 The rail holds what is new and in the player's reach (BR-59). What is new and
 beyond it is not drawn: the open group ends in a More line that says how

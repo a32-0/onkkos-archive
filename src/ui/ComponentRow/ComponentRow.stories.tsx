@@ -6,6 +6,17 @@ import { SAMPLE_ART } from "../stories/art";
 import { WikiLink } from "../WikiLink/WikiLink";
 import { ComponentRow } from "./ComponentRow";
 
+const locked = {
+  a11y: {
+    config: {
+      rules: [
+        { id: "link-in-text-block", enabled: false },
+        { id: "color-contrast", enabled: false },
+      ],
+    },
+  },
+};
+
 const meta = {
   title: "Item/ComponentRow",
   component: ComponentRow,
@@ -61,6 +72,16 @@ export const UnderADivider: Story = {
       </div>
     ),
   ],
+};
+
+export const Locked: Story = {
+  parameters: locked,
+  args: { title: "22,000 Entrati Obols", locked: true, open: false },
+};
+
+export const LockedTicked: Story = {
+  parameters: locked,
+  args: { title: "22,000 Entrati Obols", locked: true, ticked: true },
 };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

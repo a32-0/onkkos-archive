@@ -1,0 +1,9 @@
+.line {
+  composes: body-s from "../type.module.css";
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: var(--space-5) 0;
+  border-top: var(--border-1) solid var(--line-subtle);
+  color: var(--ink-muted);
+}

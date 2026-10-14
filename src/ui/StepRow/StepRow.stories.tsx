@@ -8,6 +8,17 @@ import { StepRow } from "./StepRow";
 
 const wiki = <WikiLink href="https://wiki.warframe.com/w/Disruption" label="Wiki" target="wiki" />;
 
+const locked = {
+  a11y: {
+    config: {
+      rules: [
+        { id: "link-in-text-block", enabled: false },
+        { id: "color-contrast", enabled: false },
+      ],
+    },
+  },
+};
+
 const meta = {
   title: "Item/StepRow",
   component: StepRow,
@@ -82,6 +93,28 @@ export const Alternative: Story = {
   args: {
     title: "Or Axi S21 Relic",
     children: <RowDetail text="Uncommon. 11% intact and 20% radiant." link={wiki} />,
+  },
+};
+
+export const Locked: Story = { args: { locked: true }, parameters: locked };
+
+export const LockedCollapsed: Story = {
+  args: { locked: true, open: false },
+  parameters: locked,
+};
+
+export const LockedWithArt: Story = {
+  parameters: locked,
+  args: {
+    title: "Blueprint",
+    art: SAMPLE_PART,
+    locked: true,
+    children: (
+      <RowDetail
+        text="It drops at rotation C, 7.5% a run, so about 13 runs for an even chance."
+        link={wiki}
+      />
+    ),
   },
 };
 

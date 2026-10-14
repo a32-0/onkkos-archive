@@ -4,7 +4,7 @@
 | -------- | --------------------------------------------------------------------------- |
 | Phase    | 4. Screens                                                                  |
 | Serves   | [spec 04](../04-shell.md); [plan 1](../plan/01-repository.md); BR-39, BR-41 |
-| Waits on | [T-10](T-10-item-parts.md), [T-19](T-19-outside-reads.md)                   |
+| Waits on | [T-10b](T-10b-reach-states.md), [T-19](T-19-outside-reads.md)               |
 
 The header, the player chip and its menu with Disconnect, the tab bar and its origin rule, and the sheet header: what every later screen sits in.
 
