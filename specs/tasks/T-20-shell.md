@@ -8,17 +8,17 @@
 
 The header, the player chip and its menu with Disconnect, the tab bar and its origin rule, and the sheet header: what every later screen sits in.
 
-## What crosses
+## What it builds
 
-| File                                       | Origin   | Note                                                                                                                            |
-| ------------------------------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `src/app/layout.tsx`                       | Rebuilt  | Spec 04                                                                                                                         |
-| `src/routes.ts`                            | Moves    | From `src/lib/routes.ts`, with only the routes that exist; each screen task adds its own                                        |
-| `src/app/actions.ts`                       | Reworked | Disconnect                                                                                                                      |
-| `src/screens/shell/`                       | Rebuilt  |                                                                                                                                 |
-| `src/content/app.ts`, `voice.ts`, `nav.ts` | Reworked | Spec 04                                                                                                                         |
-| `tests/content.test.ts`                    | Reworked | The player's rank title only, from `content/nav.ts`; the rest of the file stays (T-13's correction)                             |
-| `tests/language.test.ts`                   | Reworked | Onkko speaks on every screen: each page opens or closes with a line from `voice.ts`; each screen task after it is checked by it |
+| File                                       | Note                                                                                                                            |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `src/app/layout.tsx`                       | Spec 04                                                                                                                         |
+| `src/routes.ts`                            | With only the routes that exist; each screen task adds its own                                                                  |
+| `src/app/actions.ts`                       | Disconnect                                                                                                                      |
+| `src/screens/shell/`                       |                                                                                                                                 |
+| `src/content/app.ts`, `voice.ts`, `nav.ts` | Spec 04                                                                                                                         |
+| `tests/content.test.ts`                    | The player's rank title (T-13's correction)                                                                                     |
+| `tests/language.test.ts`                   | Onkko speaks on every screen: each page opens or closes with a line from `voice.ts`; each screen task after it is checked by it |
 
 ## Acceptance
 

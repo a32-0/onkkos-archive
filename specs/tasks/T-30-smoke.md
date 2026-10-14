@@ -12,11 +12,11 @@
 
 - If T-03 found previews behind a login wall, sets Vercel's bypass for automation where Hobby offers it.
 
-## What crosses
+## What it builds
 
-| File                          | Origin | Note |
-| ----------------------------- | ------ | ---- |
-| `.github/workflows/smoke.yml` | New    |      |
+| File                          | Note |
+| ----------------------------- | ---- |
+| `.github/workflows/smoke.yml` |      |
 
 ## Acceptance
 

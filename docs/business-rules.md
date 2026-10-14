@@ -337,7 +337,7 @@ a reading of the earlier build against it was put to them.
 - Rule: where the player must take a concrete action, each option's text
   explains what the option does more clearly, in the player's terms.
 - The frame still carried the old words when spec 03 was written on
-  2026-10-05, and the first sentence then built still promised quests, which
+  2026-10-05, and the line then drafted still promised quests, which
   BR-35 took out of Catch me up. The owner chose to correct the frame with
   these two lines, which the build then follows:
   - "Pick up where you left off": "Name the last update you played and see
@@ -833,7 +833,7 @@ settled where the frames disagreed with each other or with the docs.
   work, and forbids the Warframe and Digital Extremes logos without written
   consent. The Quills' emblem is neither logo, so the policy allows it, but as
   the app's own mark it would read as official, and it could never be the
-  owner's. The quill drawn for the first build is original, and the owner chose
+  owner's. The quill the app draws is original, and the owner chose
   it.
 - The game's art is still used where it names a thing (BR-42): non-commercial,
   served from DE's and the wiki's hosts, never rehosted. The wiki's licence

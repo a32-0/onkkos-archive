@@ -10,7 +10,7 @@ player's id when this device remembers them.
   in the pinned section `421:590`. It is the only frame for this screen.
 
 The frame is the design (BR-33). This spec says what the frame cannot:
-behaviour, where things come from, and what in the code has to change.
+behaviour and where things come from.
 
 ## Rules
 
@@ -56,21 +56,3 @@ One. The screen has no data, so it has no loading, empty or error state.
 3. Begin opens `/connect`; with `wf_account` set, the field holds that id.
 4. `/` makes no request to DE's endpoint.
 5. `pnpm check` passes.
-
-## Divergences from the code
-
-Each becomes a task.
-
-| Today                                                              | The frame                                     |
-| ------------------------------------------------------------------ | --------------------------------------------- |
-| An intro paragraph ("We read your public profile…") under the line | No paragraph                                  |
-| The tagline "What's left, and in what order" under the button      | No tagline                                    |
-| Onkko's line above the button                                      | The line under the button                     |
-| Everything aligned left                                            | Everything centred                            |
-| The art is `SystemArt system="origin"`                             | The frame's own image, with a thin frame line |
-
-## Does not travel
-
-- The intro paragraph and the tagline leave this screen. `ONBOARDING.intro`
-  is also used on `/connect`, where spec 02 decides its words; `APP.tagline`
-  travels only if another spec names it.

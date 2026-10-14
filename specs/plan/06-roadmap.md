@@ -35,10 +35,9 @@ Set by the owner on 2026-10-08 ([T-02b](../tasks/T-02b-humanise.md)).
 Upstash is created last on purpose: until phase 5 nothing reads DE, so nothing
 needs the shared store, and no secret exists before it is used.
 
-The public repository is **public from its first commit**, set by the owner on
+The repository is **public from its first commit**, set by the owner on
 2026-10-06: the history, from an empty tree to the launch, is part of what the
-work shows. Nothing enters it that the cut rule would not let travel, so there
-is nothing to clean up before it is opened.
+work shows. Nothing enters it that the cut rule would not let in.
 
 ## Tracing the work
 

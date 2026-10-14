@@ -2,8 +2,7 @@
 
 What the owner set aside on 2026-10-04 as not part of the first version, kept
 so a later version can bring it back without rediscovering it. None of it is
-built here (the cut rule in [`specs/00-constitution.md`](../specs/00-constitution.md));
-the private repository the app was first built in keeps the code.
+built (the cut rule in [`specs/00-constitution.md`](../specs/00-constitution.md)).
 
 ## Goals that are not an item, a quest or a place
 

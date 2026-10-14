@@ -109,7 +109,7 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 
 ## Data and sources
 
-- Search: `GET /api/search?q=` over `src/lib/catalog/search.ts`, so the page
+- Search: `GET /api/search?q=` over `src/domain/catalog/search.ts`, so the page
   never ships the whole index.
 - Goals: `data/grafo.yaml` through `suggestedGoals()`; the frontier and the
   focus as in spec 07.
@@ -142,23 +142,6 @@ active, beyond reach), `ChoiceCard`
    and reads its gap; choosing an item beyond reach opens its Step by step;
    no goal beyond reach is offered (BR-62).
 7. `pnpm check` passes, with tests for the goals offered, BR-54 and BR-62.
-
-## Divergences from the code
-
-| Today                                                    | The frame and rules                                   |
-| -------------------------------------------------------- | ----------------------------------------------------- |
-| A goal opens `/goal?id=`, a plan of its own              | The Step by step of what it names, or the map (BR-37) |
-| Mastery Rank, syndicate and Intrinsics goals and targets | Deferred                                              |
-| "Unlock Warframe: 1999"                                  | "Play the Hex Quest"                                  |
-| The search's hits as built                               | The list of BR-53                                     |
-| The search reaches items and collectibles only           | Places too, as the field's placeholder promises       |
-| `ProfileFailure` on a failed read                        | Back to `/connect` (BR-38)                            |
-| No goals offered: nothing in their place                 | The empty state of `474:1090`                         |
-
-## Does not travel
-
-`/goal`, `/target`, `GoalParameters`, the syndicate picker and the plan
-components that only they render (spec 10 keeps what Step by step uses).
 
 ## Drawn on the Design System page
 

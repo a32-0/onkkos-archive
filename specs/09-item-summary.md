@@ -92,8 +92,8 @@ it was opened from lit (`from`, spec 04). From the top:
 ## Data and sources
 
 - The plan: `stepPlan()` / `collectibleStepPlan()`, and the Summary through
-  `briefOf()` in `src/lib/catalog/summary.ts`, never a second engine.
-- State: `XPInfo` through `src/lib/place/state.ts`.
+  `briefOf()` in `src/domain/catalog/summary.ts`, never a second engine.
+- State: `XPInfo` through `src/domain/place/state.ts`.
 - Art: `@wfcd/items` on `cdn.warframestat.us`, the blueprint ground from the
   catalog's `blueprint.png`; place art from the wiki.
 - The catalogue kicker: the catalog's category, named as the map names its
@@ -125,15 +125,3 @@ obtained Prime, no state, collectible), `Badge`, `Segmented`, `SectionHeader`
 6. Every part's art sits on the blueprint ground.
 7. An item beyond reach opens on Step by step unless `?view=` says otherwise.
 8. `pnpm check` passes.
-
-## Divergences from the code
-
-| Today                                                    | The frames and rules                      |
-| -------------------------------------------------------- | ----------------------------------------- |
-| Art beside the title with MR, build time and a wiki link | The centred hero of `208:287`             |
-| State colours from the palette                           | The drawn ones (BR-17)                    |
-| No You're on                                             | BR-51                                     |
-| View as two buttons                                      | One segmented control                     |
-| Summary renders every section; Components as chips       | Blueprints and Components as rows (BR-55) |
-| Part cards with "+N other"                               | One row per blueprint                     |
-| The page has no origin                                   | `from` lights the tab it came from        |

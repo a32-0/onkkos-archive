@@ -8,18 +8,18 @@
 
 The plan of an item or a quest, section by section, with the wiki's prose and the ticks the player keeps in the browser.
 
-## What crosses
+## What it builds
 
-| File                    | Origin   | Note                             |
-| ----------------------- | -------- | -------------------------------- |
-| `src/app/item/page.tsx` | Reworked | Spec 10's view                   |
-| `src/screens/steps/`    | Rebuilt  |                                  |
-| `src/infra/ticks.ts`    | Moves    | From `src/lib/manual/storage.ts` |
-| `src/content/checks.ts` | Reworked | Spec 10                          |
+| File                    | Note           |
+| ----------------------- | -------------- |
+| `src/app/item/page.tsx` | Spec 10's view |
+| `src/screens/steps/`    |                |
+| `src/infra/ticks.ts`    |                |
+| `src/content/checks.ts` | Spec 10        |
 
-## Documents that cross
+## Documents
 
-- `docs/step-by-step.md`: Moves
+- `docs/step-by-step.md`: what Step by step draws and why
 
 ## Acceptance
 

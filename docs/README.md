@@ -12,8 +12,8 @@ arrives with the task that builds what it describes.
 - [`spec-driven-order.md`](spec-driven-order.md): the order the work follows
   (constitution, design, spec, plan, tasks, code) and how a spec carries the
   visuals.
-- [`public-release.md`](public-release.md): why the app is released from a new
-  public repository, and what was decided on the way. It covers the real
+- [`public-release.md`](public-release.md): what was decided on the way to
+  releasing the app publicly. It covers the real
   profile, why DE refuses an address rather than an account, why serverless
   memory breaks the locks, the host chosen against the free tiers, why a read
   lasts twelve hours, and what the shared store spends.

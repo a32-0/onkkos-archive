@@ -130,12 +130,12 @@ Opens the map on the frontier, or on the focus when there is no frontier
 ## Data and sources
 
 - What shipped: `releasesSince()` and `shelfOf()` in
-  `src/lib/catalog/releases.ts`, from `releaseDate` and `introduced` in
+  `src/domain/catalog/releases.ts`, from `releaseDate` and `introduced` in
   `@wfcd/items`, and Prime parts for relics (BR-12).
 - The tile's lines: the item's plan through `briefOf()` in
-  `src/lib/catalog/summary.ts`, the same answer as its page.
+  `src/domain/catalog/summary.ts`, the same answer as its page.
 - The card: `updateStanding()` and `bannerUpdates()` in
-  `src/lib/catalog/updates.ts`; art from `data/vendor/update-art.json`.
+  `src/domain/catalog/updates.ts`; art from `data/vendor/update-art.json`.
 - The frontier and the focus: as on Two ways in (spec 03, spec 07).
 - Category icons: the wiki, never rehosted.
 
@@ -168,25 +168,6 @@ card's width.
    `PlayerLevel` and no `Missions[]`, nothing is counted away (BR-59, BR-61).
 8. `pnpm check` passes, with tests for which groups render, for the tile's
    lines and for what the More line counts.
-
-## Divergences from the code
-
-| Today                                                    | The frames and rules                             |
-| -------------------------------------------------------- | ------------------------------------------------ |
-| A Quests rail above the shelves                          | No quests (BR-35)                                |
-| `RunningNow` (Nightwave) and `PickUp` (a suggested goal) | Neither (BR-35)                                  |
-| A link to the map with no place chosen                   | Next to the frontier or the focus (BR-36)        |
-| Titled "Catch me up"                                     | "Summary", with the lead                         |
-| Tiles with other lines                                   | The gold reading and the place, from `briefOf()` |
-| The banner carries "Clear"                               | No Clear                                         |
-| The full month name                                      | "Mar, 2026" (BR-43)                              |
-| `gearNone`, "Nothing new in the arsenal since then."     | The empty state of `474:778`                     |
-| Always inside the shell                                  | The tab bar follows the entrance (BR-41)         |
-
-## Does not travel
-
-`PickUp`, `RunningNow`, the Quests rail, `pickUpGoal` in
-`src/lib/graph/pickup.ts`, and the worldstate's Nightwave read.
 
 ## Frame corrections
 

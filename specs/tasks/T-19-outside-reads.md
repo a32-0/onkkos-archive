@@ -8,19 +8,19 @@
 
 Everything else that touches the outside: the wiki's prose and icons, Varzia's stock, the cookies, the one read every screen makes (`readScreen()`), and `proxy.ts`, which writes the last place visited. Wiki and worldstate reads stay in Next's data cache (`force-cache` with `revalidate`), and no route exports `force-dynamic`.
 
-## What crosses
+## What it builds
 
-| File                                       | Origin   | Note                                                                                                                              |
-| ------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `src/infra/wiki/client.ts`, `icons.ts`     | Moves    |                                                                                                                                   |
-| `src/infra/wiki/prose.ts`                  | Reworked | BR-48: paragraphs, Mechanics for missions                                                                                         |
-| `src/infra/worldstate/client.ts`           | Reworked | Varzia's stock only: from `lib/worldstate/rotations.ts`; `lib/worldstate/client.ts` reads Nightwave and stays (T-13's correction) |
-| `tests/rotations.test.ts`                  | Moves    | With Varzia's stock                                                                                                               |
-| `src/infra/session.ts`                     | Reworked | `wf_account`, `wf_since`, `wf_place`; the lore cookie goes; the month from `domain/since.ts`                                      |
-| `src/infra/screen.ts`                      | Reworked | A failed read redirects to `/connect?reason=…&retry=…` (BR-38); no `content/` import                                              |
-| `src/proxy.ts`                             | New      | Writes `wf_place`; skips prefetches                                                                                               |
-| `next.config.ts`                           | Reworked | `logging.fetches`; `outputFileTracingIncludes` for `data/` and `fixtures/`                                                        |
-| `tests/checks.test.ts`, `scenario.test.ts` | Moves    | They read through the wiki client                                                                                                 |
+| File                                       | Note                                                                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `src/infra/wiki/client.ts`, `icons.ts`     |                                                                                      |
+| `src/infra/wiki/prose.ts`                  | BR-48: paragraphs, Mechanics for missions                                            |
+| `src/infra/worldstate/client.ts`           | Varzia's stock only; Nightwave is not read (BR-35)                                   |
+| `tests/rotations.test.ts`                  | With Varzia's stock                                                                  |
+| `src/infra/session.ts`                     | `wf_account`, `wf_since`, `wf_place`; the month from `domain/since.ts`               |
+| `src/infra/screen.ts`                      | A failed read redirects to `/connect?reason=…&retry=…` (BR-38); no `content/` import |
+| `src/proxy.ts`                             | Writes `wf_place`; skips prefetches                                                  |
+| `next.config.ts`                           | `logging.fetches`; `outputFileTracingIncludes` for `data/` and `fixtures/`           |
+| `tests/checks.test.ts`, `scenario.test.ts` | They read through the wiki client                                                    |
 
 ## Acceptance
 

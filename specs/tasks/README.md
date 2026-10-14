@@ -1,7 +1,7 @@
 # Tasks
 
 Step 5 of the [spec-driven order](../../docs/spec-driven-order.md): the work that
-builds the public repository from the specs and the plan, cut into pieces. The
+builds the repository from the specs and the plan, cut into pieces. The
 constitution sets the first one, the scaffold; the rest follow the plan's phases
 ([plan part 6](../plan/06-roadmap.md)).
 
@@ -15,10 +15,10 @@ asking the owner to restate a decision:
 - **Waits on**: earlier tasks only. No task waits on a later one.
 - **The owner**: what only the owner does (accounts, projects, secrets,
   settings, reviews against Figma). Claude never does these.
-- **What crosses**: each file with its origin from plan part 1 (Moves,
-  Reworked, Rebuilt, New), and the tests that move with each module.
-- **Documents that cross**: plan part 5 has each document reworked in the task
-  that moves the code it describes, so the two cross together.
+- **What it builds**: each file, with what it holds, and the tests written
+  with each module.
+- **Documents**: plan part 5 has each document written in the task that
+  builds the code it describes, so the two match.
 - **Acceptance**: the spec's acceptance by reference, never copied, plus the
   task's own. A screen task points at its spec; the frames are in the spec.
 
@@ -65,6 +65,7 @@ into `main`.
 | [T-13 · The engine and quest evidence: goals, the frontier, the focus](T-13-engine.md)                        | 3     | 03, 07, 08, 10             | T-12             |
 | [T-14 · Items and mastery: the catalog's base and the arsenal](T-14-items.md)                                 | 3     | 06, 07, 09                 | T-12             |
 | [T-15 · Places and systems: the place index, item state, the Dojo](T-15-places.md)                            | 3     | 07                         | T-13, T-14       |
+| [T-15b · The specs speak of this repository alone](T-15b-one-repository.md)                                   | 3     | 00                         | T-15             |
 | [T-16 · The catalog: sources, relics, releases, updates, search](T-16-catalog.md)                             | 3     | 05, 06, 08, 09, 10         | T-15             |
 | [T-17 · The shared store: one interface, Upstash and memory](T-17-store.md)                                   | 3     | 11                         | T-01             |
 | [T-18 · The profile proxy: the read order and every lock](T-18-profile-proxy.md)                              | 3     | 11, 02                     | T-13, T-17       |
@@ -88,18 +89,17 @@ into `main`.
 
 Both checks ran on 2026-10-07 against the tasks as written here.
 
-**Coverage.** Every item below has a task, read from the tasks' "What
-crosses", "Documents that cross" and component lists:
+**Coverage.** Every item below has a task, read from the tasks' "What it
+builds", "Documents" and component lists:
 
-| What                                                           | Count | Where                    |
-| -------------------------------------------------------------- | ----- | ------------------------ |
-| Components in plan part 3's table                              | 50    | T-06 to T-10b            |
-| Modules of `src/lib/` that plan part 1 marks Moves or Reworked | 63    | T-01, T-12 to T-19, T-29 |
-| Test files that travel                                         | 27    | Beside their modules     |
-| Content files that travel                                      | 13    | T-13, T-20 to T-29       |
-| Documents in plan part 5's table                               | 20    | Beside their code        |
-| Curated files, vendored snapshots, fixtures, scripts           | all   | T-04, T-11, T-13, T-15   |
-| `pnpm content:update` and its files                            | 3     | T-31                     |
+| What                                                 | Count | Where                  |
+| ---------------------------------------------------- | ----- | ---------------------- |
+| Components in plan part 3's table                    | 50    | T-06 to T-10b          |
+| Domain and infra modules in plan part 1              | all   | T-12 to T-19, T-29     |
+| Content files                                        | 13    | T-13, T-20 to T-29     |
+| Documents in plan part 5's table                     | 20    | Beside their code      |
+| Curated files, vendored snapshots, fixtures, scripts | all   | T-04, T-11, T-13, T-15 |
+| `pnpm content:update` and its files                  | 3     | T-31                   |
 
 These files are touched by more than one task, each adding its part:
 `package.json`, `next.config.ts`, `README.md`, `src/app/layout.tsx`,
@@ -109,18 +109,8 @@ These files are touched by more than one task, each adding its part:
 `tests/tokens.test.ts`, `tests/language.test.ts`, `eslint.config.mjs`,
 `docs/development.md` and `docs/README.md`.
 
-**Order.** Every import of every module and test that travels was read and
-matched to the task that brings what it imports. No task needs a module that
-a later task brings, once two kinds of import are taken out:
-
-- **Imports the layers forbid** (28, in 20 modules): a domain module that
-  imports `content/` or a file loader, or an infra module that imports
-  `content/`. Plan part 1's "What a move changes" sets how each is turned
-  round, and the task marks the module Reworked.
-- **Imports of what stays behind**, each reworked by its task: the month's
-  check in `since.ts` and `session.ts`, the lore cookie in `session.ts`, the
-  quest rail's words in `catch-up.ts`, and `connectError` in `onboarding.ts`,
-  which crosses with Connect (T-22). Tests that read a staying module or a
-  later task's strings are marked Reworked.
-
-What stays behind is what plan part 1 marks Stays, and nothing else.
+**Order.** Every module's imports were matched to the task that brings what
+they import, and no task needs a module that a later task brings. Where a
+module would import across the layers, plan part 1's "What the layers forbid"
+sets how it is turned round: a typed value instead of words, data handed in
+instead of a file read.

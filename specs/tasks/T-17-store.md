@@ -8,16 +8,16 @@
 
 The store of plan part 2: `getMany`, `set`, `setIfAbsent`, `increment`, `remove`, behind one interface, with the Upstash backend for production and a memory backend on `globalThis` for tests and development.
 
-## What crosses
+## What it builds
 
-| File                         | Origin | Note                                            |
-| ---------------------------- | ------ | ----------------------------------------------- |
-| `src/infra/store/store.ts`   | New    | The interface and the keys table of plan part 2 |
-| `src/infra/store/upstash.ts` | New    | `@upstash/redis`, from its two variables        |
-| `src/infra/store/memory.ts`  | New    | On `globalThis`, with `flush()` for tests       |
-| `tests/store.test.ts`        | New    | The contract, run against the memory backend    |
+| File                         | Note                                            |
+| ---------------------------- | ----------------------------------------------- |
+| `src/infra/store/store.ts`   | The interface and the keys table of plan part 2 |
+| `src/infra/store/upstash.ts` | `@upstash/redis`, from its two variables        |
+| `src/infra/store/memory.ts`  | On `globalThis`, with `flush()` for tests       |
+| `tests/store.test.ts`        | The contract, run against the memory backend    |
 
-## Documents that cross
+## Documents
 
 - `docs/development.md`: The two backends and when each is used
 

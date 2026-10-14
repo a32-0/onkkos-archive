@@ -8,15 +8,16 @@
 
 Choosing the update last played: the cards, the search, the date menu, and both entrances.
 
-Open since 2026-10-13 (T-12): plan part 2 has the Resume picker set `wf_since` in the client, but `screens/` and `ui/` read and write no cookie, and the private repository's `readSince` and `writeSince` did not cross. A server function that sets the cookie, as the connect action sets `wf_account`, fits the layers. The owner settles it before this task starts.
+Settled by the owner on 2026-10-13: a server action sets `wf_since` and opens the Summary, as the connect action sets `wf_account`. `screens/` and `ui/` read and write no cookie.
 
-## What crosses
+## What it builds
 
-| File                        | Origin   | Note                                                                                                  |
-| --------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| `src/app/catch-up/page.tsx` | Rebuilt  | Spec 05, with no month chosen                                                                         |
-| `src/screens/resume/`       | Rebuilt  |                                                                                                       |
-| `src/content/catch-up.ts`   | Reworked | Resume's strings; without the quest rail's `Relation`, and the month's wording from `domain/since.ts` |
+| File                        | Note                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `src/app/catch-up/page.tsx` | Spec 05, with no month chosen                                                                         |
+| `src/screens/resume/`       |                                                                                                       |
+| `src/app/actions.ts`        | The action that writes `wf_since` through `infra/session.ts` and opens the Summary                    |
+| `src/content/catch-up.ts`   | Resume's strings; without the quest rail's `Relation`, and the month's wording from `domain/since.ts` |
 
 ## Acceptance
 

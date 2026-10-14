@@ -8,15 +8,15 @@
 
 What the player types into and what frames every screen: the header with the player chip and its menu, the tab bar, the sheet and its header, and the date menu of Resume.
 
-## What crosses
+## What it builds
 
-| File                                                                                                       | Origin   | Note                                                                                                 |
-| ---------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
-| `src/ui/{Field,SearchField,Segmented,Tab,TabBar,Header,PlayerChip,PlayerMenu,Sheet,SheetHeader,DateMenu}/` | New      |                                                                                                      |
-| `src/ui/link.ts`                                                                                           | New      | The link type a navigating component takes, so a screen passes `next/link` and `ui/` imports no Next |
-| `src/ui/Icon/glyphs.ts`                                                                                    | Reworked | Adds `close`, from the sheet header                                                                  |
-| `src/ui/Button/Button.tsx`                                                                                 | Reworked | Carries `data-variant`, so a story can leave the danger label out of the contrast check alone        |
-| `tests/tokens.test.ts`                                                                                     | Reworked | The tokens these components apply leave the allowance list                                           |
+| File                                                                                                       | Note                                                                                                 |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `src/ui/{Field,SearchField,Segmented,Tab,TabBar,Header,PlayerChip,PlayerMenu,Sheet,SheetHeader,DateMenu}/` |                                                                                                      |
+| `src/ui/link.ts`                                                                                           | The link type a navigating component takes, so a screen passes `next/link` and `ui/` imports no Next |
+| `src/ui/Icon/glyphs.ts`                                                                                    | Adds `close`, from the sheet header                                                                  |
+| `src/ui/Button/Button.tsx`                                                                                 | Carries `data-variant`, so a story can leave the danger label out of the contrast check alone        |
+| `tests/tokens.test.ts`                                                                                     | The tokens these components apply leave the allowance list                                           |
 
 ## Acceptance
 

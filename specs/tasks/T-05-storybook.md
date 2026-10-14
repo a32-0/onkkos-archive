@@ -12,20 +12,20 @@ The catalogue the constitution asks for, its tests in CI, and a Foundations page
 
 - Creates the `onkkos-archive-storybook` Vercel project: build `pnpm storybook:build`, output `storybook-static/`.
 
-## What crosses
+## What it builds
 
-| File                                                 | Origin   | Note                                                                                                                                 |
-| ---------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `.storybook/`                                        | New      | `@storybook/nextjs-vite`, the accessibility addon, viewports at 360, 390, 600, 840, 1280 and 1440, the fonts and `tokens.css` loaded |
-| `src/ui/Foundations.mdx`                             | New      | Swatches with their role, the type ramp, radii and spaces                                                                            |
-| `package.json`                                       | Reworked | `storybook`, `storybook:build` and `test:stories`                                                                                    |
-| `.github/workflows/check.yml`                        | Reworked | Adds the Stories and Storybook steps; installs Chromium                                                                              |
-| `vitest.config.ts`                                   | Reworked | Two projects, `unit` in Node and `storybook` in Chromium                                                                             |
-| `src/app/fonts.ts`                                   | New      | The three fonts, loaded once and shared by the root layout and Storybook                                                             |
-| `src/app/layout.tsx`                                 | Reworked | Takes its fonts from `fonts.ts`                                                                                                      |
-| `eslint.config.mjs`, `.prettierignore`, `.gitignore` | Reworked | `storybook-static/` is ignored                                                                                                       |
+| File                                                 | Note                                                                                                                                 |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `.storybook/`                                        | `@storybook/nextjs-vite`, the accessibility addon, viewports at 360, 390, 600, 840, 1280 and 1440, the fonts and `tokens.css` loaded |
+| `src/ui/Foundations.mdx`                             | Swatches with their role, the type ramp, radii and spaces                                                                            |
+| `package.json`                                       | `storybook`, `storybook:build` and `test:stories`                                                                                    |
+| `.github/workflows/check.yml`                        | Adds the Stories and Storybook steps; installs Chromium                                                                              |
+| `vitest.config.ts`                                   | Two projects, `unit` in Node and `storybook` in Chromium                                                                             |
+| `src/app/fonts.ts`                                   | The three fonts, loaded once and shared by the root layout and Storybook                                                             |
+| `src/app/layout.tsx`                                 | Takes its fonts from `fonts.ts`                                                                                                      |
+| `eslint.config.mjs`, `.prettierignore`, `.gitignore` | `storybook-static/` is ignored                                                                                                       |
 
-## Documents that cross
+## Documents
 
 - `docs/development.md`: How to run Storybook and the story tests
 

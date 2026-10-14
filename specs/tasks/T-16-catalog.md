@@ -6,27 +6,27 @@
 | Serves   | [spec 05](../05-resume.md), [spec 06](../06-catch-up-summary.md), [spec 08](../08-goals.md), [spec 09](../09-item-summary.md), [spec 10](../10-step-by-step.md); [plan 1](../plan/01-repository.md); BR-12, BR-35, BR-43, BR-48, BR-49, BR-50, BR-53, BR-55, BR-56 |
 | Waits on | [T-15](T-15-places.md)                                                                                                                                                                                                                                             |
 
-Everything else the app knows about where things come from. `releases.ts` loses the quests (BR-35), `updates.ts` takes BR-43's date, `summary.ts` the Summary's densities and readings, `checks.ts` the wiki's paragraphs, and `search.ts` gains places. The move follows plan part 1's "What a move changes": no import of `content/` or of a loader stays in `domain/`. The wiki's vendored modules are read in `infra/` and handed in.
+Everything else the app knows about where things come from. `releases.ts` loses the quests (BR-35), `updates.ts` takes BR-43's date, `summary.ts` the Summary's densities and readings, `checks.ts` the wiki's paragraphs, and `search.ts` gains places. Plan part 1's "What the layers forbid" holds: no import of `content/` or of a loader stays in `domain/`. The wiki's vendored modules are read in `infra/` and handed in.
 
-## What crosses
+## What it builds
 
-| File                                                                                                       | Origin   | Note                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| `src/domain/catalog/acquisition.ts`, `places.ts`                                                           | Moves    | From `src/lib/catalog/`                                                                                          |
-| `src/domain/catalog/circuit.ts`, `collectibles.ts`, `relics.ts`, `rewards.ts`, `scenario.ts`, `sources.ts` | Reworked | Their data as arguments: the wiki's modules, the place index and the spine; no `content/` import                 |
-| `src/domain/catalog/summary.ts`, `checks.ts`, `search.ts`, `updates.ts`, `releases.ts`                     | Reworked | BR-55 and BR-56; BR-48 to BR-50; places (spec 08); BR-43; no quests (BR-35); no `content/` import                |
-| `src/domain/wiki-links.ts`                                                                                 | Moves    | From `src/lib/wiki/links.ts`: it builds a URL and reads nothing, so it is domain                                 |
-| `src/domain/narrative/chain.ts`                                                                            | Reworked | From `src/lib/narrative/`, with `checks.ts`, its only reader; takes the spine as an argument (T-13's correction) |
-| `src/infra/wiki/modules.ts`                                                                                | Moves    | Reads the vendored wiki modules                                                                                  |
-| `src/infra/catalog/update-art.ts`                                                                          | Moves    | The file read of `update-art.ts`                                                                                 |
-| `tests/acquisition`, `coverage`, `updates` `.test.ts`                                                      | Moves    |                                                                                                                  |
-| `tests/dossier.test.ts`                                                                                    | Reworked | The relic, Proxima and step-plan cases join the ones T-14 brought                                                |
-| `src/domain/catalog/items.ts`, `src/infra/catalog/items.ts`                                                | Reworked | Gain `resourceCatalog` and its read, with `checks.ts`, its only reader (T-14's correction)                       |
-| `tests/releases`, `search`, `places` `.test.ts`                                                            | Reworked | With their modules                                                                                               |
+| File                                                                                                       | Note                                                                                              |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `src/domain/catalog/acquisition.ts`, `places.ts`                                                           |                                                                                                   |
+| `src/domain/catalog/circuit.ts`, `collectibles.ts`, `relics.ts`, `rewards.ts`, `scenario.ts`, `sources.ts` | Their data as arguments: the wiki's modules, the place index and the spine; no `content/` import  |
+| `src/domain/catalog/summary.ts`, `checks.ts`, `search.ts`, `updates.ts`, `releases.ts`                     | BR-55 and BR-56; BR-48 to BR-50; places (spec 08); BR-43; no quests (BR-35); no `content/` import |
+| `src/domain/wiki-links.ts`                                                                                 | It builds a URL and reads nothing, so it is domain                                                |
+| `src/domain/narrative/chain.ts`                                                                            | With `checks.ts`, its only reader; takes the spine as an argument (T-13's correction)             |
+| `src/infra/wiki/modules.ts`                                                                                | Reads the vendored wiki modules                                                                   |
+| `src/infra/catalog/update-art.ts`                                                                          | The file read of `update-art.ts`                                                                  |
+| `tests/acquisition`, `coverage`, `updates` `.test.ts`                                                      |                                                                                                   |
+| `tests/dossier.test.ts`                                                                                    | The relic, Proxima and step-plan cases join the ones T-14 brought                                 |
+| `src/domain/catalog/items.ts`, `src/infra/catalog/items.ts`                                                | Gain `resourceCatalog` and its read, with `checks.ts`, its only reader (T-14's correction)        |
+| `tests/releases`, `search`, `places` `.test.ts`                                                            | With their modules                                                                                |
 
-## Documents that cross
+## Documents
 
-- `docs/items.md`, `docs/scenario-guidelines.md`, `docs/acquisition-scenarios.md`: Move, paths per plan part 1
+- `docs/items.md`, `docs/scenario-guidelines.md`, `docs/acquisition-scenarios.md`: paths per plan part 1
 
 ## From T-15
 

@@ -12,17 +12,17 @@
 
 - Runs `pnpm content:update --dry-run` once and reads the report.
 
-## What crosses
+## What it builds
 
-| File                        | Origin | Note                                |
-| --------------------------- | ------ | ----------------------------------- |
-| `scripts/content-update.ts` | New    |                                     |
-| `data/reviewed-update.json` | New    | Set to the update current at launch |
-| `docs/updates/`             | New    |                                     |
+| File                        | Note                                |
+| --------------------------- | ----------------------------------- |
+| `scripts/content-update.ts` |                                     |
+| `data/reviewed-update.json` | Set to the update current at launch |
+| `docs/updates/`             |                                     |
 
-## Documents that cross
+## Documents
 
-- `docs/content-updates.md`: Moves
+- `docs/content-updates.md`: how a mainline or an update enters the app
 
 ## Acceptance
 

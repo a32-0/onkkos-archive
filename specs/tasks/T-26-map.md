@@ -8,15 +8,15 @@
 
 One place at a time: the place card, the lens, the groups, the place list and the system list, and where the map opens.
 
-## What crosses
+## What it builds
 
-| File                      | Origin   | Note                                                                                                                                |
-| ------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `src/app/system/page.tsx` | Rebuilt  | Spec 07                                                                                                                             |
-| `src/screens/map/`        | Rebuilt  |                                                                                                                                     |
-| `src/content/system.ts`   | Reworked | Spec 07                                                                                                                             |
-| `src/content/engine.ts`   | Reworked | The words of the engine's values: the junction a frontier needs; without the Intrinsics trees and the placement (T-13's correction) |
-| `tests/tokens.test.ts`    | Reworked | The allowance list is deleted                                                                                                       |
+| File                      | Note                                                                                                                                |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `src/app/system/page.tsx` | Spec 07                                                                                                                             |
+| `src/screens/map/`        |                                                                                                                                     |
+| `src/content/system.ts`   | Spec 07                                                                                                                             |
+| `src/content/engine.ts`   | The words of the engine's values: the junction a frontier needs; without the Intrinsics trees and the placement (T-13's correction) |
+| `tests/tokens.test.ts`    | The allowance list is deleted                                                                                                       |
 
 ## From T-15
 

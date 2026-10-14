@@ -1,49 +1,29 @@
 # The public release: decisions and why
 
-Onkko's Archive first ran only on the developer's machine. On 2026-10-04 the
-owner decided to release it from a new public repository, deployed for anyone
-to use and built through the spec-driven order. This page records each
-decision made on the way: the question that raised it, the options weighed and
-the measurement that settled it, so the reasoning is still there for the
+On 2026-10-04 the owner decided to release Onkko's Archive from this public
+repository, deployed for anyone to use and built through the
+[spec-driven order](spec-driven-order.md). This page records each decision
+made on the way: the question that raised it, the options weighed and the
+measurement that settled it, so the reasoning is still there for the
 project's case study. The rules that came out of it are in
 [`specs/00-constitution.md`](../specs/00-constitution.md).
 
-## Which process
+## Who it serves
 
-Two plans existed for the same work:
-
-- A seven-file migration pack, proposed when the release was first discussed:
-  an inventory of every file, data contracts, the engine, the UI, a public
-  posture and a migration plan.
-- The order in [`spec-driven-order.md`](spec-driven-order.md): constitution,
-  design, spec, plan, tasks, code.
-
-Neither works alone. The spec-driven order has no step that decides what
-travels, what to do with real data or what the deployment needs. The migration
-pack is organised by layer, so it would have restated by hand what
-[`business-rules.md`](business-rules.md) already holds against frame node-ids.
-
-The decision: the spec-driven order is the spine, and the release lives inside
-its steps. The inventory stops being a hand-judged table of 275 files. It falls
-out of the specs: a file travels when a spec needs it. The cut rule becomes
-mechanical.
-
-## Where the code goes
-
-A new public repository, deployed at a public URL. This repository keeps its
-history; the public one starts from the specs. The owner chose it to serve two
-readers at once, a player who uses the app and someone who reads the source to
-evaluate the work, which is why every piece has to pass both tests.
+A player who uses the app, and someone who reads the source to evaluate the
+work. The owner chose to serve both at once, which is why every piece has to
+pass both tests. The release lives inside the spec-driven order's steps: a
+file is here when a spec needs it, so the cut rule is mechanical.
 
 ## The real profile
 
-`fixtures/profile-full.json` is a full real capture of a public profile: 406
-missions, 495 mastered items, career stats. The demo profile Cy is the same
-capture under another name, so its values are still a real person's. Three
-options were weighed: ship it as the owner's own, synthesize every fixture, or
-ship only the trimmed and anonymised output of `pnpm fixture`.
+The demos needed realistic data, and the one at hand was a full real capture
+of a public profile: 406 missions, 495 mastered items, career stats. Under
+another name its values were still a real person's. Three options were
+weighed: ship it as the owner's own, synthesize every fixture, or ship only
+the trimmed and anonymised output of `pnpm fixture`.
 
-The decision: only trimmed and anonymised fixtures travel. The fields are
+The decision: only trimmed and anonymised fixtures are committed. The fields are
 whitelisted, the display name replaced, and the account id and platform names
 removed. The
 values remain realistic, which keeps the tests honest, and they no longer
@@ -64,7 +44,7 @@ from correcting it:
   game's. A refusal there locks the developer out of Warframe, which is why
   development reads fixtures by default.
 
-What protects the endpoint today, verified in `src/lib/warframe/`:
+The locks that protect the endpoint:
 
 | Lock                 | Value                                               |
 | -------------------- | --------------------------------------------------- |
@@ -75,8 +55,8 @@ What protects the endpoint today, verified in `src/lib/warframe/`:
 
 ## Why serverless breaks those locks
 
-All four locks live in the server's memory, in `Map`s and variables. On a
-single server that is one memory, and the locks hold. A serverless host has no
+Kept in a server's memory, in `Map`s and variables, the four locks hold on a
+single server, because that is one memory. A serverless host has no
 single server: it starts copies of the app as traffic arrives and stops them
 when it leaves, and each copy has its own memory. Copy A knows it read a
 profile an hour ago; copy B, just started, does not, and calls DE again. A
@@ -105,12 +85,10 @@ The decision: Vercel Hobby with Upstash Redis, confirmed in
   would wait a minute on a loading page. For the reader evaluating the work,
   that is the first impression.
 - Vercel is Next.js's own host, and it overwrites `x-forwarded-for` with the
-  client's real address to prevent spoofing. That closes the hole
-  [`api.md`](api.md) records as open: on a host that passes the header through,
-  rotating it bypasses the visitor budget.
-- The cost is code: the cache, the budget and the breaker move from memory to
-  Upstash. The cache already reads and writes through `readEntry` and
-  `writeEntry`, which is where the store plugs in.
+  client's real address to prevent spoofing. That closes a hole: on a host
+  that passes the header through, rotating it bypasses the visitor budget.
+- The cost is code: the cache, the budget and the breaker live in Upstash,
+  behind one store interface ([spec 11](../specs/11-profile-proxy.md)).
 
 Upstash's free plan, as published that day: 500,000 commands a month, 256 MB of
 data, 10 GB of transfer a month.
@@ -150,8 +128,8 @@ item changes faster than its build. The rest of what it reads moves by the day
 as well: the Mastery Rank test can be taken once every 24 hours, and syndicate
 standing has a daily cap.
 
-The decision: twelve hours, which is also what the code, BR-07 and the
-player menu already said. The Figma frame `270:1145` drew 24, and the owner
+The decision: twelve hours, which is also what BR-07 and the player menu
+already said. The Figma frame `270:1145` drew 24, and the owner
 corrected it to 12 the same day.
 
 The cost, accepted knowingly: progress on the star chart is fast. A new player
@@ -183,7 +161,7 @@ The lever that matters is the size of the profile, measured on the fixtures:
 | The same, compressed                           | 18 KB  |
 
 Plan part 2 re-measured it on 2026-10-06 against the seven fields the
-travelling code reads, and counted the base64 Upstash stores: 15 KB for the
+app reads, and counted the base64 Upstash stores: 15 KB for the
 real capture. At that size the 256 MB hold about 17,000 profiles at once and
 the 10 GB of transfer covers about 660,000 reads a month, so the 500,000
 commands are what binds. Keeping only what the
@@ -197,8 +175,8 @@ the page Wireframes, as it stood on 2026-10-04, after correcting the two slips
 in the drawing that day: the player menu now reads twelve hours, and closed
 groups in `257:653` point down like the collapsed row in `367:291`.
 
-The file stays private, for design and development. A spec in the public
-repository still links its frames by node-id, and those links open only for
+The file stays private, for design and development. A spec still links its
+frames by node-id, and those links open only for
 the owner. That is deliberate: the spec's behaviour and acceptance criteria
 have to stand without the picture, and the frames draw a real display name and
 Mastery Rank as sample values, so publishing the file would publish them.
@@ -214,62 +192,16 @@ a second Summary (`264:67`) and three more Navigation frames (`312:199`,
 design whether or not a comment sits on it. Each one is covered by the spec of
 the screen it belongs to, which reads it directly.
 
-## Documents that describe the app as it is
-
-The constitution closed with a rule: every document in `docs/` describes the
-app as it is, before any spec cites it. A spec that cited a document describing
-a deleted screen would inherit the contradiction. Each document was checked on
-2026-10-04 against the code, by every file path and identifier it names.
-
-Removed, because they described screens or a direction that no longer exist:
-
-- `star-chart.md`, which called itself superseded. The star-chart Home it
-  documented was deleted in the Cetus redesign.
-- `design-system.md`, superseded by `cetus.md`. Its measuring method lives on
-  in `scripts/palette.mjs`.
-- `lore.md`. The story timeline that rendered `lore.yaml` was deleted, and no
-  screen reads the file. `src/lib/lore/` survives only as an unused cookie
-  reader, so by the cut rule neither the code nor the file travels.
-
-Corrected, because a spec will cite them:
-
-- `ui.md`, rewritten. It opened on the "Orokin Terminal" direction, its route
-  map still had Home as the star chart and `?view=story`, and it described
-  mobile as a fallback when the frames are drawn at 390 px. It now carries the
-  current routes with each screen's frame.
-- `system.md`, rewritten. It cited the removed source badges and
-  `src/lib/starchart/guide.ts`. The item and place states are now the ones in
-  `src/lib/place/state.ts`.
-- `narrative.md`, without the timeline view and the lore layer, and with `since`
-  kept in a cookie rather than browser storage.
-- `development.md`, which said `pnpm palette` fails below its floors. It
-  reports and exits clean.
-- `api.md`, `items.md`, `place-index.md`, `curated-files.md`, `cetus.md`,
-  `step-by-step.md` and `equipment-unlock-requirements.md`, each for a
-  paragraph or a link that pointed at something removed.
-
-The check found one rule whose code had fallen behind: BR-05 asks for the goal
-behind "Set a goal" to follow the frontier and focus, and focus was removed with
-the star-chart Home. `business-rules.md` now records BR-05 as partial, so the
-spec for `/goals` carries it as acceptance criteria.
-
-It also found code no screen reaches, recorded here so the plan does not port
-it: the lore layer, `fetchWikiExtract` and `fetchWikiImage` (the quest card's
-synopsis, gone with the timeline), `NO_DATA` in `src/content/states.ts`, and
-`NAV` in `src/content/nav.ts`. None of it travels, because no spec names it.
-
 ## Figma is the only source of truth
 
-Drafting the list of specs meant reading each pinned frame against the code,
-and two screens did not match what the code and the scope said.
+Drafting the list of specs meant reading each pinned frame against the scope,
+and two screens did not match it.
 
 The first was Catch me up. The Summary frame draws Arsenal and Collection and
-ends in "Next". The code, the project's instructions and the first draft of the constitution
-also had story quests, the live Nightwave and a suggested goal. Asked which
-was Catch me up, the owner answered that Figma is respected exactly as drawn:
-it is the only source of truth, and where the project differs, the project
-changes. The visual layer of the code is behind the latest frames, and many
-changes follow from that.
+ends in "Next". The first draft of the constitution also had story quests, the
+live Nightwave and a suggested goal. Asked which was Catch me up, the owner
+answered that Figma is respected exactly as drawn: it is the only source of
+truth, and where the project differs, the project changes.
 
 The owner also pointed to the flow map, the section `421:614` "Lo-fi
 Wireframes", where connectors draw which screen leads to which. Two decisions
@@ -281,20 +213,19 @@ came out of it, and they are separate:
 - A goal leads to the Step by step of the item or the quest it names. Goals
   have no plan screen of their own.
 
-The second mismatch was those plan screens: `/goal` and `/target` render a
-plan with Done / Next / Locked steps and Yes / No questions, and no frame draws
-them. The answer above removes them rather than designing them.
+The second was a plan screen of a goal's own, with Done / Next / Locked steps
+and Yes / No questions. No frame draws one, so the answer above leaves it out
+rather than designing it.
 
 All of this is recorded as BR-34 to BR-37 in
 [`business-rules.md`](business-rules.md#the-flow-between-screens), and the
-feature definitions in the project's instructions, the README and the constitution were
-corrected the same day. Story quests leave Catch me up but not the app: a quest
+constitution's feature definitions were corrected the same day. Story quests leave Catch me up but not the app: a quest
 still has its Step by step, and its chain still comes from the spine (BR-28).
 
 ## What follows for the plan
 
-- The cache, the visitor budget and the circuit breaker move to the shared
-  store, behind the interfaces they already have.
+- The cache, the visitor budget and the circuit breaker live in the shared
+  store.
 - The stored profile is the whitelisted, compressed form, not the raw payload.
 - The budget can stay as it is: with a twelve-hour window, re-reading one's own
   profile costs at most one lookup per window.

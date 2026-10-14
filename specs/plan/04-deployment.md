@@ -136,12 +136,3 @@ task that creates the projects (T-03, on 2026-10-08), not assumed here:
   The owner keeps previews protected; `smoke.yml` then sends that header,
   its secret held in the repository's Actions secrets by the owner (T-30).
   That secret is `smoke.yml`'s only one; `check.yml` still holds none.
-
-## Divergences from the code
-
-| Today                                                   | This plan                                                  |
-| ------------------------------------------------------- | ---------------------------------------------------------- |
-| Runs on the developer's machine only                    | Production on Vercel, Storybook as a second project        |
-| `.env.example` pre-fills an account id and a disk cache | `WF_PROFILE_SOURCE=fixture` and the two store names, empty |
-| No CI                                                   | `check.yml` on every push, `smoke.yml` on every deployment |
-| `pnpm check` is the only gate                           | Plus `knip`, the story tests and both builds               |

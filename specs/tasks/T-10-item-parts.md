@@ -12,14 +12,14 @@ Corrected on 2026-10-08, before the work: the divider between groups of steps is
 
 Corrected again on 2026-10-08: `StepRow` and `ComponentRow` gain the Locked state of BR-63 (`526:96` and `528:97` with art, `526:102`), half opacity, a locked component still tickable.
 
-## What crosses
+## What it builds
 
-| File                                                                                                                   | Origin   | Note                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------- |
-| `src/ui/{PlaceCrumb,ItemHero,BlueprintArt,SummaryRow,SectionHeader,Timeline,StepRow,RowDetail,RowProse,ComponentRow}/` | New      |                                                                                               |
-| `src/ui/stories/art.ts`                                                                                                | Reworked | A sample blueprint and part, drawn, for BlueprintArt                                          |
-| `tests/tokens.test.ts`                                                                                                 | Reworked | The allowance list keeps only what screens apply                                              |
-| `docs/development.md`                                                                                                  | Reworked | The wiki link closing a row's passage joins the `link-in-text-block` exception the owner kept |
+| File                                                                                                                   | Note                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `src/ui/{PlaceCrumb,ItemHero,BlueprintArt,SummaryRow,SectionHeader,Timeline,StepRow,RowDetail,RowProse,ComponentRow}/` |                                                                                               |
+| `src/ui/stories/art.ts`                                                                                                | A sample blueprint and part, drawn, for BlueprintArt                                          |
+| `tests/tokens.test.ts`                                                                                                 | The allowance list keeps only what screens apply                                              |
+| `docs/development.md`                                                                                                  | The wiki link closing a row's passage joins the `link-in-text-block` exception the owner kept |
 
 ## Acceptance
 

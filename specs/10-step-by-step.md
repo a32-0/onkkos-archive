@@ -158,7 +158,7 @@ no Components unless the quest asks for an item to be built.
 
 ## Data and sources
 
-- The plan: `stepPlan()` and `collectibleStepPlan()` in `src/lib/catalog/`,
+- The plan: `stepPlan()` and `collectibleStepPlan()` in `src/domain/catalog/`,
   over the vendored wiki modules, DE's drop tables and the curated files.
 - Prose: for a mission its type's Mechanics section, for a prose-only route
   the item's Acquisition section, otherwise the page's lead (BR-48); cached a
@@ -201,17 +201,6 @@ frame above, built from fixture plans.
 7. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut.
 8. `pnpm check` passes, with a test per scenario that the plan has the sections
    and row types its frame draws.
-
-## Divergences from the code
-
-| Today                          | The frames and rules                                          |
-| ------------------------------ | ------------------------------------------------------------- |
-| Section heads as mono eyebrows | A game icon or part art and a display-face title              |
-| Plain rows                     | Diamonds on a gold line; alternatives without diamonds        |
-| "Wiki" as a separate link      | "Wiki ↗" inline at the end of the passage, in the link colour |
-| One sentence of prose          | The passage in paragraphs (BR-48)                             |
-| Relic rows as built            | Open and Or (BR-49)                                           |
-| No quest Step by step          | The quest placed in the grammar (BR-37)                       |
 
 ## Frame corrections
 

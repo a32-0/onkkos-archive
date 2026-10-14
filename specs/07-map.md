@@ -182,10 +182,10 @@ Choosing a system returns to the place list, now listing that system's places.
 ## Data and sources
 
 - Places and systems: `data/systems.yaml` and the place index
-  (`src/lib/place/`), with node names from `warframe-worldstate-data`.
+  (`src/domain/place/`), with node names from `warframe-worldstate-data`.
 - What a place holds and each tile's reading: the place index's tiles
-  (`src/lib/place/tile.ts`) over DE's drop tables and the wiki's modules.
-- Item state: `src/lib/place/state.ts` (`done | ranked | absent | unknown`),
+  (`src/domain/place/tile.ts`) over DE's drop tables and the wiki's modules.
+- Item state: `src/domain/place/state.ts` (`done | ranked | absent | unknown`),
   from `XPInfo`.
 - Nodes: `Missions[]` and `Missions[].Tier` counted against the node catalog.
 - New: `releasesSince()` from the month in `wf_since`.
@@ -237,21 +237,6 @@ New, Mastered, Rank), `ItemTile` (plain, Rank, Mastered), `GroupRow`, `Rail`,
    shows and no More line renders.
 9. `pnpm check` passes, with tests for the focus, the lens, reach and
    `wf_place`.
-
-## Divergences from the code
-
-| Today                                                | The frames and rules                                  |
-| ---------------------------------------------------- | ----------------------------------------------------- |
-| All / Missing / New, All by default                  | What is left by default; Mastered / New (BR-45)       |
-| A drawer "Where to" with systems and places together | The place list and the system list, two sheets        |
-| Opens on the system's first place                    | The last place viewed, else Start here (BR-46)        |
-| No focus                                             | The focus, as defined above                           |
-| The tile's state as built                            | The Mastered and Rank badges of `257:1124`, `269:364` |
-| The suggested goals on the map                       | None; goals live on Goal (spec 08)                    |
-| A note that the collection cannot be read            | No note (never explain the machine)                   |
-| Pom-2 PC after Empyrean Proxima; "Soon"              | BR-47's order; "Soon™"                                |
-| No Dojo                                              | The Dojo in the Origin System (BR-57)                 |
-| "No location matches that." in the drawer            | The empty state of `474:1927`                         |
 
 ## Frame corrections
 

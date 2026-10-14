@@ -8,13 +8,13 @@
 
 The choice between Catch me up and Reach a goal after connecting.
 
-## What crosses
+## What it builds
 
-| File                        | Origin   | Note    |
-| --------------------------- | -------- | ------- |
-| `src/app/features/page.tsx` | Rebuilt  | Spec 03 |
-| `src/screens/two-ways-in/`  | Rebuilt  |         |
-| `src/content/features.ts`   | Reworked | Spec 03 |
+| File                        | Note    |
+| --------------------------- | ------- |
+| `src/app/features/page.tsx` | Spec 03 |
+| `src/screens/two-ways-in/`  |         |
+| `src/content/features.ts`   | Spec 03 |
 
 ## Acceptance
 

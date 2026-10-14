@@ -92,12 +92,12 @@ draws a failure.
 
 ## Data and sources
 
-- The read: `fetchProfile()` in `src/lib/warframe/client.ts`, with the shared
+- The read: `fetchProfile()` in `src/infra/profile/client.ts`, with the shared
   locks the constitution names. Its `FailureReason` picks the band's message;
   its `retryAfterSeconds` gives the time in it, shown as `HH:MM UTC`.
 - The demos: `fixtures/profile-ordis.json` and `fixtures/profile-cy.json`,
   both output of `pnpm fixture`, matched by the ids `…0002` and `…0001` in
-  `src/lib/warframe/fixture-source.ts`. The Mastery Rank on each button is
+  `src/infra/profile/fixture-source.ts`. The Mastery Rank on each button is
   read from its fixture's `PlayerLevel`, so the label cannot drift from the
   data.
 - The frame's example id is Cy's demo id. Typing it opens Cy, which is
@@ -123,30 +123,3 @@ draws a failure.
    reason's band and the remembered id in the field.
 8. `pnpm check` passes, with tests for the reason-to-message mapping and the
    BR-03 routing.
-
-## Divergences from the code
-
-Each becomes a task.
-
-| Today                                                                                         | The frames and rules                                     |
-| --------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| The placeholder is the real captured account id                                               | `000000000000000000000001`                               |
-| A hint "24 hexadecimal characters" under the field                                            | No hint                                                  |
-| Errors in muted red text under the field                                                      | The red band of `428:616`                                |
-| Four error messages in `connectError()`; the other reasons share "aren't answering"           | The five messages of BR-38                               |
-| Loading is Connect's label changing to "Reading your profile…"                                | The dimmed page and the quill card of `428:743`          |
-| Success goes through `/connect?step=start`, which sends a new player to the map               | Straight to `/features` or `/goals` (BR-03)              |
-| The lead "We read your public profile…" plus a separate public-endpoint note under the header | The frame's lead, and the note at the end of the steps   |
-| Steps in plain text with one link; a note about usernames and the `gid` cookie                | Three numbered steps with two links and the example JSON |
-| Demo buttons "Cy · Veteran" then "Ordis · New player", secondary style                        | "Ordis (Mastery Rank 2)" then "Cy (Mastery Rank 27)"     |
-| Any other screen renders `ProfileFailure` when a read fails                                   | The player is sent to `/connect` with the band           |
-| The field falls back to `NEXT_PUBLIC_DEFAULT_ACCOUNT_ID`                                      | The remembered id or nothing                             |
-
-## Does not travel
-
-- `ProfileFailure`, `FAILURES` and `FAILURE_SCREEN`: the band replaces them.
-- The `?step=start` redirect and `startHref()`.
-- `NEXT_PUBLIC_DEFAULT_ACCOUNT_ID`: local configuration.
-- The `full` demo id (`…0003`) and `fixtures/profile-full.json`: the real
-  capture.
-- `ONBOARDING.fieldHint`, `whereNote` and `publicNote` as they read today.

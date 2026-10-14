@@ -12,15 +12,15 @@ The public README's seven sections as plan part 5 sets them, `ui.md` checked aga
 
 - Writes, in their own words, the line saying the work was done with Claude's help.
 
-## What crosses
+## What it builds
 
-| File        | Origin   | Note                                                   |
-| ----------- | -------- | ------------------------------------------------------ |
-| `README.md` | Reworked | All seven sections; the licences read from each source |
+| File        | Note                                                   |
+| ----------- | ------------------------------------------------------ |
+| `README.md` | All seven sections; the licences read from each source |
 
-## Documents that cross
+## Documents
 
-- `docs/ui.md`: Reworked: the routes, their frames and the link rules, line by line against the specs. Its paragraph on progressive disclosure, which tied it to `since` alone, and its four states, whose Locked is BR-63's, follow BR-59 to BR-63
+- `docs/ui.md`: the routes, their frames and the link rules, line by line against the specs. Its paragraph on progressive disclosure, which tied it to `since` alone, and its four states, whose Locked is BR-63's, follow BR-59 to BR-63
 - `docs/README.md`: Every document of plan part 5, in its order
 
 ## Acceptance

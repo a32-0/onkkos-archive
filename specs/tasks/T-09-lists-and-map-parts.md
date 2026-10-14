@@ -10,15 +10,15 @@ What the Summary and the map list: dividers, group rows and their rails of tiles
 
 Corrected on 2026-10-08, before the work: progressive disclosure (BR-59 to BR-63) adds `MoreLine` (`526:117`), the count of what lies beyond the player's reach, and the Beyond reach state of `PlaceRow` (`526:112`) and `SuggestionRow` (`526:107`).
 
-## What crosses
+## What it builds
 
-| File                                                                                                                      | Origin   | Note                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------- |
-| `src/ui/{Divider,GroupRow,ItemTile,Rail,PlaceCard,ProgressBar,PlaceRow,SystemRow,SuggestionList,SuggestionRow,MoreLine}/` | New      |                                                                                                         |
-| `src/ui/stories/art.ts`                                                                                                   | Reworked | Round sample art for places and systems, gradients like the rest                                        |
-| `src/ui/SearchField/SearchField.stories.tsx`                                                                              | Reworked | `WithSuggestions` shows `SuggestionList` instead of a list built in the story (owner, 2026-10-08)       |
-| `tests/tokens.test.ts`                                                                                                    | Reworked | The tokens these components apply leave the allowance list                                              |
-| `scripts/palette.mjs`                                                                                                     | Reworked | Measures the system name on the place card's band, `--ink-muted` since the owner chose it on 2026-10-08 |
+| File                                                                                                                      | Note                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `src/ui/{Divider,GroupRow,ItemTile,Rail,PlaceCard,ProgressBar,PlaceRow,SystemRow,SuggestionList,SuggestionRow,MoreLine}/` |                                                                                                         |
+| `src/ui/stories/art.ts`                                                                                                   | Round sample art for places and systems, gradients like the rest                                        |
+| `src/ui/SearchField/SearchField.stories.tsx`                                                                              | `WithSuggestions` shows `SuggestionList` instead of a list built in the story (owner, 2026-10-08)       |
+| `tests/tokens.test.ts`                                                                                                    | The tokens these components apply leave the allowance list                                              |
+| `scripts/palette.mjs`                                                                                                     | Measures the system name on the place card's band, `--ink-muted` since the owner chose it on 2026-10-08 |
 
 ## Acceptance
 

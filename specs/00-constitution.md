@@ -20,11 +20,8 @@ measurements that settled it, is in [`docs/public-release.md`](../docs/public-re
 
 ## Where the work ends
 
-In a **new public repository**, deployed at a public URL. The specs are written
-in this repository; the code step builds the public one from them. This
-repository stays behind as the history of how the product was reasoned.
-
-The public repository serves two readers, and neither is optional:
+In this repository, which is public, and at the public URL it is deployed to.
+It serves two readers, and neither is optional:
 
 - **A returning player.** Someone back after months opens the URL, pastes an
   account id, and learns what the Origin System did while they were away and
@@ -36,7 +33,7 @@ Both readers apply one test twice: a piece ships only if it earns its place on
 both counts. Code that works but cannot be explained is filler. A document that
 reads well but governs nothing a player reaches is filler too.
 
-**The owner writes the public history.** Every commit and push in the public
+**The owner writes the public history.** Every commit and push in this
 repository and its Storybook is the owner's. Claude prepares the changes and
 never commits, pushes or signs there, and no file, commit or pull request
 carries an AI attribution line. The owner says openly, in their own words, that
@@ -46,16 +43,9 @@ history raises no doubt about who controls it.
 ## The order
 
 Constitution, design, spec, plan, tasks, code, as
-[`docs/spec-driven-order.md`](../docs/spec-driven-order.md) sets out. The
-release adds no step of its own; it lives inside the six:
-
-| Step   | What the release adds                                                     |
-| ------ | ------------------------------------------------------------------------- |
-| Design | The Figma version every spec is written against is pinned                 |
-| Spec   | What a spec names travels to the public repository                        |
-| Plan   | The tree of the public repository, each file with its origin here         |
-| Tasks  | The first task scaffolds the public repository; the rest follow the specs |
-| Code   | Written in the public repository, never here                              |
+[`docs/spec-driven-order.md`](../docs/spec-driven-order.md) sets out. Every
+spec is written against one pinned version of the Figma file, the plan sets
+the repository's tree, and each task builds one piece of it.
 
 ## Scope: two features, and nothing beside them
 
@@ -68,14 +58,13 @@ release adds no step of its own; it lives inside the six:
 Both end on the map, at one place (BR-36). The flow between screens is the one
 the Figma section `421:614` draws (BR-34).
 
-The shell both features live in, and whatever either depends on, travel with
-them. Anything else is filler by definition, however well it works.
+The shell both features live in, and whatever either depends on, are built
+with them. Anything else is filler by definition, however well it works.
 
 ## The cut rule
 
-**The default is out.** Nothing travels because it already exists. A file,
-route, document, token, fixture or dependency travels for one of three reasons,
-and only these:
+**The default is out.** A file, route, document, token, fixture or dependency
+is in this repository for one of three reasons, and only these:
 
 1. A spec names it.
 2. Something a spec names depends on it.
@@ -83,9 +72,9 @@ and only these:
 
 These are not reasons: it works; it took effort; it might be useful later. A
 document that marks itself superseded fails reason 3 by its own admission. A
-document that describes a screen that no longer exists is corrected before it
-travels, or it does not travel. Whatever stays behind remains in this
-repository's history, which is where history belongs.
+document that describes a screen that no longer exists is corrected or
+removed. What is removed remains in the history, which is where history
+belongs.
 
 ## The design is the frames
 
@@ -188,15 +177,14 @@ The host and the shared store are named in the plan.
 
 ## Nothing real about a person ships
 
-- **No real profile travels.** Fixtures in the public repository are the output
-  of `pnpm fixture`: whitelisted fields, with the display name replaced and the
+- **No real profile is committed.** Fixtures are the output of `pnpm fixture`: whitelisted fields, with the display name replaced and the
   account id and platform names removed.
-- **No local configuration, secret or personal id travels**, in the tree or in
-  its history.
+- **No local configuration, secret or personal id is committed**, in the tree
+  or in its history.
 - **Third-party material keeps its own terms.** The MIT licence covers our code
   and curated files only. Images are served from the wiki and DE's CDN, never
-  rehosted. Data vendored from the wiki's modules or DE's tables travels with
-  its source named and under that source's licence.
+  rehosted. Data vendored from the wiki's modules or DE's tables is committed
+  with its source named and under that source's licence.
 
 ## The design system
 
@@ -232,8 +220,8 @@ implementation.
 ## The code is built to be read
 
 The owner asked on 2026-10-05 that the front and the back both be
-componentised, organised and written to read well. That is a rule of the
-public repository, not a wish:
+componentised, organised and written to read well. That is a rule of this
+repository, not a wish:
 
 - **Layers that point one way.** The domain (profile parsing, the rules engine,
   the catalog, the place index) is plain TypeScript with no React, no Next and
@@ -281,14 +269,12 @@ Nothing is left open. These were the last questions, closed by the owner on
   2026-10-04. Every spec is written against it. A frame changed inside it after
   that date is a design change: the spec is updated before the code follows.
 - **The Figma file is private**, for the owner's design and development use. It
-  is never linked from the README. A spec in the public repository still links
-  its frames by node-id; a reader without access reads the spec's behaviour and
+  is never linked from the README. A spec still links its frames by node-id; a reader without access reads the spec's behaviour and
   acceptance criteria, which stand without the picture. Publishing the file to
   make those links open is not a fix; it would publish the real display name
   and rank the frames draw as sample values.
 - **Every slip in the drawing is corrected.** Where a frame and a rule
   disagreed, the owner said which wins and corrected the frame. The corrections
   were applied in Figma on 2026-10-06, and no slip remains.
-- **Every document in `docs/` describes the app as it is.** Superseded documents
-  were removed and the rest corrected on 2026-10-04. Which of them travel is
-  decided by the cut rule, spec by spec.
+- **Every document in `docs/` describes the app as it is**, and each one is
+  here by the cut rule.

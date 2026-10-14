@@ -8,13 +8,13 @@
 
 The first screen a new visitor sees, as spec 01 sets it.
 
-## What crosses
+## What it builds
 
-| File                        | Origin   | Note                                                                     |
-| --------------------------- | -------- | ------------------------------------------------------------------------ |
-| `src/app/page.tsx`          | Rebuilt  | Spec 01                                                                  |
-| `src/screens/onboarding/`   | Rebuilt  |                                                                          |
-| `src/content/onboarding.ts` | Reworked | Spec 01's strings; the form's strings and `connectError` cross with T-22 |
+| File                        | Note                                                                      |
+| --------------------------- | ------------------------------------------------------------------------- |
+| `src/app/page.tsx`          | Spec 01                                                                   |
+| `src/screens/onboarding/`   |                                                                           |
+| `src/content/onboarding.ts` | Spec 01's strings; the form's strings and `connectError` arrive with T-22 |
 
 ## Acceptance
 

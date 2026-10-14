@@ -1,7 +1,7 @@
 # Equipment unlock requirements: what the available sources can and cannot state
 
 Research pass, 2026-09-20. Offline only: `node_modules/@wfcd/items@1.1275.72`,
-a full capture of a real profile (which does not travel) and
+a full capture of a real profile (never committed) and
 `warframe-worldstate-data`. No call was made to
 DE's endpoints.
 
@@ -271,6 +271,6 @@ ten missing prices.
 ## Sources
 
 - `@wfcd/items@1.1275.72`, `data/json/*.json`, read directly.
-- A full capture of a real profile, taken on 2026-09-04, which does not travel.
+- A full capture of a real profile, taken on 2026-09-04, never committed.
 - `api.md` for endpoint behaviour and the loading policy.
 - `narrative_spine.yaml` and `quest_evidence.yaml` for the curated quest layer.

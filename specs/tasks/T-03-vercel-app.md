@@ -13,7 +13,7 @@ The first preview. While it is set up, the two limits plan part 4 leaves open ar
 - Creates the Vercel account and the `onkkos-archive` project, connected to the repository.
 - Sets `WF_PROFILE_SOURCE=fixture` for Preview and Development. Production gets `live` only in T-33.
 
-## Documents that cross
+## Documents
 
 - `specs/plan/04-deployment.md`: "Checked when the deployment is set up" answered: Hobby's longest function run, and whether previews sit behind Deployment Protection
 - `specs/plan/02-architecture.md`: The lock wait and DE's timeout shrunk to fit, if Hobby's limit is shorter than their sum

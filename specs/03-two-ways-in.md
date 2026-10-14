@@ -54,7 +54,7 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
 
 - The display name: the profile's `DisplayName`, through the screen context.
 - Whether the player is past Venus: `asksWhenLastPlayed()` in
-  `src/lib/graph/star-chart.ts`.
+  `src/domain/graph/star-chart.ts`.
 - The frontier: `findNextPlanet`. The focus does not exist in code yet
   (BR-05); spec 07 defines it, and Skip and Next use the same one.
 - Copy lives in `src/content/` (`VOICE.features`, `FEATURES`).
@@ -71,26 +71,6 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
    with no frontier. Go back opens `/connect` with the id in the field.
 4. A new player opening `/features` lands on `/goals`.
 5. `pnpm check` passes.
-
-## Divergences from the code
-
-Each becomes a task.
-
-| Today                                                                    | The frame and rules                                     |
-| ------------------------------------------------------------------------ | ------------------------------------------------------- |
-| Inside the shell, with tabs and the player chip                          | Outside the shell, wordmark only                        |
-| The line reads "We have and shall have…", falling back to the account id | "We have, and shall have…", the display name or nothing |
-| Card titles "When did you last play?" and "What are you after?"          | "Pick up where you left off" and "Set a goal"           |
-| The first card's line promises quests                                    | The BR-04 line, arsenal and collection only             |
-| A diamond mark on each card                                              | `hourglass` and `flag`, Material Symbols                |
-| "Next, just show me the map" with a note, opening the map with no place  | **Skip**, opening the map on the frontier or the focus  |
-| No way back                                                              | **Go back** to `/connect`                               |
-| A new player sees a one-card form titled "Start with a goal"             | A new player is sent to `/goals`                        |
-| `ProfileFailure` when the read fails                                     | Back to `/connect` with the band (BR-38)                |
-
-## Does not travel
-
-- `FEATURES.soloTitle`, `soloIntro` and `skipNote`, and the one-card form.
 
 ## Frame corrections
 

@@ -8,13 +8,13 @@
 
 An item's page: the hero with its state, the crumb, and the Summary that is Step by step in short form.
 
-## What crosses
+## What it builds
 
-| File                               | Origin   | Note    |
-| ---------------------------------- | -------- | ------- |
-| `src/app/item/page.tsx`            | Rebuilt  | Spec 09 |
-| `src/screens/item/`                | Rebuilt  |         |
-| `src/content/item.ts`, `states.ts` | Reworked | Spec 09 |
+| File                               | Note    |
+| ---------------------------------- | ------- |
+| `src/app/item/page.tsx`            | Spec 09 |
+| `src/screens/item/`                |         |
+| `src/content/item.ts`, `states.ts` | Spec 09 |
 
 ## Acceptance
 

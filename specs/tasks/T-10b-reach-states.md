@@ -12,19 +12,19 @@ What progressive disclosure (BR-59 to BR-63) asks of the components. T-09 and T-
 
 - Checks each new story against its Figma state in Storybook.
 
-## What crosses
+## What it builds
 
-Nothing crosses from the private repository; the states are new here.
+The states are new here.
 
-| File                                             | Origin   | Note                                                                                                       |
-| ------------------------------------------------ | -------- | ---------------------------------------------------------------------------------------------------------- |
-| `src/ui/MoreLine/`                               | New      | `526:117`: the count of what lies beyond reach and its gap, one line that opens nothing                    |
-| `src/ui/PlaceRow/`                               | Reworked | Beyond reach (`526:112`): `gap` in place of the mastered count                                             |
-| `src/ui/SuggestionRow/SuggestionRow.stories.tsx` | Reworked | Beyond reach (`526:107`): the catalogue followed by the gap, which arrives as part of the catalogue's text |
-| `src/ui/StepRow/`                                | Reworked | Locked (`526:96`, `528:97` with art): `locked`, at half opacity                                            |
-| `src/ui/ComponentRow/`                           | Reworked | Locked (`526:102`): `locked`, at half opacity, still tickable                                              |
+| File                                             | Note                                                                                                       |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `src/ui/MoreLine/`                               | `526:117`: the count of what lies beyond reach and its gap, one line that opens nothing                    |
+| `src/ui/PlaceRow/`                               | Beyond reach (`526:112`): `gap` in place of the mastered count                                             |
+| `src/ui/SuggestionRow/SuggestionRow.stories.tsx` | Beyond reach (`526:107`): the catalogue followed by the gap, which arrives as part of the catalogue's text |
+| `src/ui/StepRow/`                                | Locked (`526:96`, `528:97` with art): `locked`, at half opacity                                            |
+| `src/ui/ComponentRow/`                           | Locked (`526:102`): `locked`, at half opacity, still tickable                                              |
 
-## Documents that cross
+## Documents
 
 - `docs/development.md`: The Locked stories turn `color-contrast` off, since BR-63 draws them at half opacity
 
