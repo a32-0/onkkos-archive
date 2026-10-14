@@ -24,6 +24,8 @@ The rules engine over `grafo.yaml`, the star chart with the new focus (spec 07),
 | `tests/stubs/server-only.ts`, `vitest.config.ts`                             | Moves, Reworked | The `server-only` stub and its alias, with the first module that imports it                                                                                                          |
 | `src/content/engine.ts`                                                      | Moves           | Read by the screens, no longer by the engine                                                                                                                                         |
 | `tests/evaluate`, `predicates`, `resolve`, `rotations` `.test.ts`            | Moves           |                                                                                                                                                                                      |
+| `tests/helpers.ts`                                                           | Reworked        | Gains `testGraph()`, now that the graph's schema is here (T-11's correction)                                                                                                         |
+| `tests/nodes.test.ts`                                                        | Reworked        | From T-12, as it reads the graph; Cy where it read the real capture                                                                                                                  |
 | `tests/star-chart.test.ts`                                                   | Reworked        | Gains the focus's cases                                                                                                                                                              |
 | `tests/access`, `evidence`, `content` `.test.ts`                             | Reworked        | Without `placeOnSpine` and the glossary, which stay, and without goal titles                                                                                                         |
 
@@ -31,6 +33,7 @@ The rules engine over `grafo.yaml`, the star chart with the new focus (spec 07),
 
 - `docs/engine.md`, `docs/narrative.md`: Reworked as plan part 5 sets
 - `docs/deferred.md`, `docs/equipment-unlock-requirements.md`: Move
+- `docs/curated-files.md`: gains the `grafo.yaml` section and its invariants, as the reworked file has them, without the deferred goals' `parameters`, `picker_options` and `trees` (T-11 left the section to this task)
 
 ## Acceptance
 

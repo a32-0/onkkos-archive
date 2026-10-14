@@ -23,5 +23,8 @@ arrives with the task that builds what it describes.
 - [`development.md`](development.md): the tooling, what CI runs, the palette
   check, the layers and the rule that enforces them, the conventions, and the
   environment variables.
+- [`curated-files.md`](curated-files.md): the hand-written files in `data/`,
+  field by field, the invariants the tests hold them to, and the vendored
+  snapshots with the source and licence of each.
 
 All documentation is written in English.

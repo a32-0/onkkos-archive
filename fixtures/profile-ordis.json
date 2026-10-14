@@ -1,0 +1,230 @@
+{
+  "Results": [
+    {
+      "AccountId": {
+        "$oid": "000000000000000000000002"
+      },
+      "DisplayName": "Ordis",
+      "PlatformNames": [
+        "Ordis"
+      ],
+      "PlayerLevel": 2,
+      "Created": {
+        "$date": {
+          "$numberLong": "1785542400000"
+        }
+      },
+      "Missions": [
+        {
+          "Tag": "ClanNode1",
+          "Completes": 3
+        },
+        {
+          "Tag": "ClanNode2",
+          "Completes": 3
+        },
+        {
+          "Tag": "ClanNode3",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode101",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode103",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode104",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode107",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode108",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode109",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode119",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode12",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode123",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode128",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode130",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode15",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode2",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode22",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode221",
+          "Completes": 2
+        },
+        {
+          "Tag": "SolNode222",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode223",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode224",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode225",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode226",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode227",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode23",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode24",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode26",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode27",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode28",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode39",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode59",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode61",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode63",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode66",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode71",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode75",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode79",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode85",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode89",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode94",
+          "Completes": 3
+        },
+        {
+          "Tag": "ClanNode0",
+          "Completes": 3
+        },
+        {
+          "Tag": "VenusToMercuryJunction",
+          "Completes": 2
+        },
+        {
+          "Tag": "EarthToVenusJunction",
+          "Completes": 2
+        },
+        {
+          "Tag": "SolNode228",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode129",
+          "Completes": 3
+        },
+        {
+          "Tag": "SolNode239",
+          "Completes": 2
+        }
+      ],
+      "Affiliations": [],
+      "LoadOutInventory": {
+        "XPInfo": [
+          {
+            "ItemType": "/Lotus/Powersuits/Excalibur/Excalibur",
+            "XP": 289000
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/StartingRifle",
+            "XP": 144500
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Paris",
+            "XP": 144500
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Strun",
+            "XP": 144500
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Kunai",
+            "XP": 144500
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { PlayerChip } from "./PlayerChip";
 const meta = {
   title: "Chrome/PlayerChip",
   component: PlayerChip,
-  args: { name: "00111000", open: false },
+  args: { name: "Cy", open: false },
   decorators: [
     (Story) => (
       <div

@@ -8,6 +8,8 @@
 
 The base of the domain, which imports nothing else of it: the account-id check, the payload's parse, the node readings, the month a player last played, and the trim to the eight fields plan part 2 lists. `GuildId` was added on 2026-10-08 for the Dojo's reach (BR-59), and the trim keeps it as `true`.
 
+Corrected on 2026-10-13 by T-11: `tests/helpers.ts` crosses here, with its first tests. `nodes.test.ts` reads the graph through `testGraph()`, whose schema arrives in T-13, so it crosses there.
+
 ## What crosses
 
 | File                                                           | Origin   | Note                                                                                                                           |
@@ -17,7 +19,9 @@ The base of the domain, which imports nothing else of it: the account-id check, 
 | `src/domain/profile/fields.ts`, `trim.ts`                      | New      | The eight fields of plan part 2, confirmed against every reading that travels                                                  |
 | `src/domain/since.ts`                                          | Reworked | From `src/lib/manual/since.ts`, with `isYearMonth` and the month parsing taken out of `lib/narrative/catch-up.ts`, which stays |
 | `src/domain/types/*`                                           | Moves    | From `src/types/`                                                                                                              |
-| `tests/payload.test.ts`, `nodes.test.ts`                       | Moves    |                                                                                                                                |
+| `scripts/trim-profile.mjs`                                     | Reworked | Imports `fields.ts`, so the fixtures keep the same fields as the store                                                         |
+| `tests/helpers.ts`                                             | Reworked | `fixture()` and the profile names, from T-11; without `FULL_PROFILE`, as the real capture does not travel                      |
+| `tests/payload.test.ts`                                        | Reworked | Reads Cy where it read the real capture                                                                                        |
 | `tests/trim.test.ts`                                           | New      | A trimmed fixture reads the same as the whole one, for every reading                                                           |
 
 ## Acceptance

@@ -1,0 +1,876 @@
+vendors:
+  - { vendor: Amir, quests: [The Hex], cite: Höllvania Central Mall }
+  - { vendor: Aoi, quests: [The Hex], cite: Höllvania Central Mall }
+  - { vendor: Eleanor, quests: [The Hex], cite: Höllvania Central Mall }
+  - { vendor: Minerva, quests: [The Hex], cite: Höllvania Central Mall }
+  - { vendor: Quincy, quests: [The Hex], cite: Höllvania Central Mall }
+  - { vendor: Flare, quests: [The Hex], cite: Höllvania Central Mall }
+  - { vendor: Cavalero, quests: [Angels of the Zariman], cite: Cavalero }
+  - { vendor: Roathe, quests: [The Old Peace], cite: Roathe }
+  - { vendor: Marie, quests: [The Old Peace], cite: Honoria }
+  - {
+      vendor: Cephalon Melica,
+      quests: [Angels of the Zariman, Whispers in the Walls],
+      cite: Cephalon Melica,
+    }
+  - { vendor: Hunhow, quests: ["Jade Shadows: Constellations"], cite: Honoria }
+  - { vendor: Acrithis, quests: [The Duviri Paradox], cite: Acrithis }
+  - { vendor: Father, quests: [Heart of Deimos], cite: Heart of Deimos }
+  - { vendor: Son, quests: [Heart of Deimos], cite: Heart of Deimos }
+  - { vendor: Mother, quests: [Heart of Deimos], cite: Heart of Deimos }
+  - { vendor: Grandmother, quests: [Heart of Deimos], cite: Heart of Deimos }
+  - { vendor: Daughter, quests: [Heart of Deimos], cite: Heart of Deimos }
+  - { vendor: Otak, quests: [Heart of Deimos], cite: Heart of Deimos }
+
+items:
+  - item: Argo & Vel
+    cite: Argo & Vel
+    routes:
+      - type: vendor
+        vendor: Teshin's Cave
+        place: Duviri
+        costs: [{ currency: Pathos Clamp, amount: 60 }]
+        quest: The Duviri Paradox
+      - type: market
+        platinum: 225
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Azothane
+    cite: Azothane
+    routes:
+      - type: vendor
+        vendor: Teshin's Cave
+        place: Duviri
+        costs: [{ currency: Pathos Clamp, amount: 50 }]
+        quest: The Duviri Paradox
+      - type: market
+        platinum: 250
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Edun
+    cite: Edun
+    routes:
+      - type: vendor
+        vendor: Teshin's Cave
+        place: Duviri
+        costs: [{ currency: Pathos Clamp, amount: 50 }]
+        quest: The Duviri Paradox
+      - type: market
+        platinum: 250
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Sampotes
+    cite: Sampotes
+    routes:
+      - type: vendor
+        vendor: Teshin's Cave
+        place: Duviri
+        costs: [{ currency: Pathos Clamp, amount: 60 }]
+        quest: The Duviri Paradox
+      - type: market
+        platinum: 275
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Syam
+    cite: Syam
+    routes:
+      - type: vendor
+        vendor: Teshin's Cave
+        place: Duviri
+        costs: [{ currency: Pathos Clamp, amount: 50 }]
+        quest: The Duviri Paradox
+      - type: market
+        platinum: 250
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Braton
+    cite: Braton
+    routes:
+      - type: market
+        credits: 25000
+
+  - item: Lato
+    cite: Lato
+    routes:
+      - type: quest
+        quest: Awakening
+        choice: true
+      - type: market
+        credits: 10000
+
+  - item: Sicarus
+    cite: Sicarus
+    routes:
+      - type: market
+        credits: 20000
+
+  - item: Mk1-Bo
+    cite: Mk1-Bo
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Mk1-Braton
+    cite: Mk1-Braton
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Mk1-Furax
+    cite: Mk1-Furax
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Mk1-Furis
+    cite: Mk1-Furis
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Mk1-Kunai
+    cite: Mk1-Kunai
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Mk1-Paris
+    cite: Mk1-Paris
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Mk1-Strun
+    cite: Mk1-Strun
+    routes:
+      - type: market
+        credits: 15000
+
+  - item: Carrier
+    cite: Sentinel
+    routes:
+      - type: market
+        credits: 100000
+        blueprint: true
+
+  - item: Dethcube
+    cite: Sentinel
+    routes:
+      - type: market
+        credits: 100000
+        blueprint: true
+
+  - item: Diriga
+    cite: Sentinel
+    routes:
+      - type: market
+        credits: 100000
+        blueprint: true
+
+  - item: Shade
+    cite: Sentinel
+    routes:
+      - type: market
+        credits: 100000
+        blueprint: true
+
+  - item: Wyrm
+    cite: Sentinel
+    routes:
+      - type: market
+        credits: 100000
+        blueprint: true
+
+  - item: Taxon
+    cite: Sentinel
+    routes:
+      - type: junction
+        junction: Venus Junction
+      - type: market
+        credits: 5000
+        blueprint: true
+
+  - item: Cinta
+    cite: Cinta
+    routes:
+      - type: enigma
+        chance: 30
+        quest: The Duviri Paradox
+
+  - item: Dera Vandal
+    cite: Dera Vandal
+    routes:
+      - type: invasion
+
+  - item: Dex Dakra
+    cite: Dex Dakra
+    routes:
+      - type: anniversary
+        year: 2
+
+  - item: Dex Furis
+    cite: Dex Furis
+    routes:
+      - type: anniversary
+        year: 1
+
+  - item: Dex Nikana
+    cite: Dex Nikana
+    routes:
+      - type: anniversary
+        year: 11
+
+  - item: Dex Sybaris
+    cite: Dex Sybaris
+    routes:
+      - type: anniversary
+        year: 3
+
+  - item: Excalibur Prime
+    cite: Excalibur Prime
+    routes:
+      - type: unavailable
+        reason: founders
+        until: "2013-11-01"
+
+  - item: Lato Prime
+    cite: Lato Prime
+    routes:
+      - type: unavailable
+        reason: founders
+        until: "2013-11-01"
+
+  - item: Skana Prime
+    cite: Skana Prime
+    routes:
+      - type: unavailable
+        reason: founders
+        until: "2013-11-01"
+
+  - item: Excalibur Umbra
+    cite: Excalibur Umbra
+    routes:
+      - type: quest
+        quest: The Sacrifice
+
+  - item: Skiajati
+    cite: Skiajati
+    routes:
+      - type: quest
+        quest: The Sacrifice
+
+  - item: Paracesis
+    cite: Paracesis
+    routes:
+      - type: quest
+        quest: Chimera Prologue
+
+  - item: Sun & Moon
+    cite: Sun & Moon
+    routes:
+      - type: quest
+        quest: The Duviri Paradox
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Thornbak
+    cite: Thornbak
+    routes:
+      - type: quest
+        quest: The Teacher
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 100000 }]
+
+  - item: Feverspine
+    cite: Feverspine
+    routes:
+      - type: race
+        race: Dead Drop
+        place: Cambion Drift
+
+  - item: Haalvu
+    cite: Haalvu
+    routes:
+      - type: unavailable
+        reason: stream
+        event: TennoCon 2026
+        until: "2026-07-11"
+
+  - item: Mausolon
+    cite: Mausolon
+    routes:
+      - type: bundled
+        with: [Voidrig, Bonewidow]
+
+  - item: War Prime
+    cite: War Prime
+    routes:
+      - type: vendor
+        vendor: Hunhow
+        place: Pontis Tower
+        thing: Hunhow's Trinket
+        costs:
+          - { currency: Emerald Talent, amount: 12 }
+          - { currency: Crimson Talent, amount: 12 }
+        quest: "Jade Shadows: Constellations"
+
+  - item: Chroma
+    cite: Chroma
+    routes:
+      - type: junction
+        junction: Uranus Junction
+        part: Volt Neuroptics
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 25000 }]
+        part: Volt Neuroptics
+
+  - item: Baurahn Prime Ephemera
+    cite: Baurahn Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Nezha Prime
+        from: "2020-10-27"
+        until: "2021-02-23"
+
+  - item: Catena Prime Ephemera
+    cite: Catena Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Gara Prime
+        from: "2021-05-25"
+        until: "2021-09-08"
+
+  - item: Corposant Prime Ephemera
+    cite: Corposant Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Wukong Prime
+        from: "2019-07-06"
+        until: "2019-10-01"
+        resurgence: true
+
+  - item: Okuri Tails Prime Ephemera
+    cite: Okuri Tails Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Voruna Prime
+        from: "2026-04-08"
+
+  - item: Oni Prime Ephemera
+    cite: Oni Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Grendel Prime
+        from: "2023-10-18"
+        until: "2024-01-17"
+
+  - item: Sanguinax Prime Ephemera
+    cite: Sanguinax Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Garuda Prime
+        from: "2022-03-28"
+        until: "2022-07-16"
+
+  - item: Temporal Prime Ephemera
+    cite: Temporal Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Protea Prime
+        from: "2024-05-01"
+        until: "2024-08-21"
+
+  - item: Thalassa Prime Ephemera
+    cite: Thalassa Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Yareli Prime
+        from: "2025-05-21"
+
+  - item: Vaaditum Prime Ephemera
+    cite: Vaaditum Prime Ephemera
+    routes:
+      - type: primeAccess
+        warframe: Baruuk Prime
+        from: "2022-12-14"
+        until: "2023-03-15"
+
+  - item: Vengeful Charge Ephemera
+    cite: Vengeful Charge Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Electricity, chance: 20 }
+
+  - item: Vengeful Chill Ephemera
+    cite: Vengeful Chill Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Cold, chance: 20 }
+
+  - item: Vengeful Flame Ephemera
+    cite: Vengeful Flame Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Heat, chance: 20 }
+
+  - item: Vengeful Pull Ephemera
+    cite: Vengeful Pull Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Magnetic, chance: 20 }
+
+  - item: Vengeful Shockwave Ephemera
+    cite: Vengeful Shockwave Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Impact, chance: 20 }
+
+  - item: Vengeful Toxin Ephemera
+    cite: Vengeful Toxin Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Toxin, chance: 20 }
+
+  - item: Vengeful Trickster Ephemera
+    cite: Vengeful Trickster Ephemera
+    routes:
+      - { type: adversary, adversary: Kuva Lich, element: Radiation, chance: 20 }
+
+  - item: Gloriana Ephemera
+    cite: Gloriana Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Cold, chance: 20 }
+
+  - item: Hypatia Ephemera
+    cite: Hypatia Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Radiation, chance: 20 }
+
+  - item: Kyruna Ephemera
+    cite: Kyruna Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Impact, chance: 20 }
+
+  - item: Lucretia Ephemera
+    cite: Lucretia Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Toxin, chance: 20 }
+
+  - item: Solena Ephemera
+    cite: Solena Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Magnetic, chance: 20 }
+
+  - item: Sybillina Ephemera
+    cite: Sybillina Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Electricity, chance: 20 }
+
+  - item: Zarina Ephemera
+    cite: Zarina Ephemera
+    routes:
+      - { type: adversary, adversary: Sister of Parvos, element: Heat, chance: 20 }
+
+  - item: Embracer Ephemera
+    cite: Embracer Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Heart-Beat Ephemera
+    cite: Heart-Beat Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Heart-Throb Ephemera
+    cite: Heart-Throb Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Lovestruck Ephemera
+    cite: Lovestruck Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Luv-Byte Ephemera
+    cite: Luv-Byte Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Pins-N-Needles Ephemera
+    cite: Pins-N-Needles Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Soul-Eye Ephemera
+    cite: Soul-Eye Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Tail Feather Ephemera
+    cite: Tail Feather Ephemera
+    routes:
+      - { type: adversary, adversary: Technocyte Coda, chance: 57 }
+
+  - item: Eidolon Ephemera
+    cite: Eidolon Ephemera
+    routes:
+      - type: nightwave
+        ranks:
+          - { season: Intermission I, rank: 15 }
+          - { season: Intermission II, rank: 15 }
+          - { season: "Nora's Mix Volume 5", rank: 17 }
+
+  - item: Raya Aurora Ephemera
+    cite: Raya Aurora Ephemera
+    routes:
+      - type: nightwave
+        ranks:
+          - { season: "Nora's Mix Volume 9", rank: 28 }
+
+  - item: Spore Ephemera
+    cite: Spore Ephemera
+    routes:
+      - type: nightwave
+        ranks:
+          - { season: "Series 2: The Emissary", rank: 19 }
+          - { season: Intermission III, rank: 18 }
+          - { season: "Nora's Mix Volume 4", rank: 27 }
+          - { season: "Nora's Mix: Dreams of the Dead", rank: 7 }
+
+  - item: Tealtrian Ephemera
+    cite: Tealtrian Ephemera
+    routes:
+      - type: nightwave
+        ranks:
+          - { season: "Nora's Mix: Time Tempests", rank: 28 }
+
+  - item: Waveform Ephemera
+    cite: Waveform Ephemera
+    routes:
+      - type: nightwave
+        ranks:
+          - { season: "Nora's Choice", rank: 19 }
+          - { season: "Nora's Mix Volume 3", rank: 5 }
+          - { season: "Nora's Mix Volume 7", rank: 19 }
+
+  - item: Wirematrix Ephemera
+    cite: Wirematrix Ephemera
+    routes:
+      - type: nightwave
+        ranks:
+          - { season: "Nora's Mix Volume 8", rank: 28 }
+          - { season: "Amir's Shockwave", rank: 23 }
+
+  - item: Freezing Step Ephemera
+    cite: Freezing Step Ephemera
+    routes:
+      - { type: drop, source: Exploiter Orb, chance: 5 }
+
+  - item: Shocking Step Ephemera
+    cite: Shocking Step Ephemera
+    routes:
+      - { type: drop, source: Exploiter Orb, chance: 5 }
+
+  - item: Smoking Body Ephemera
+    cite: Smoking Body Ephemera
+    routes:
+      - { type: drop, source: Shadow Stalker, chance: 5 }
+      - { type: drop, source: Protector Stalker, chance: 5 }
+
+  - item: Heaven Stones Ephemera
+    cite: Heaven Stones Ephemera
+    routes:
+      - { type: market, platinum: 60 }
+
+  - item: Malaen Ephemera
+    cite: Malaen Ephemera
+    routes:
+      - { type: market, platinum: 60 }
+
+  - item: Neviti Ephemera
+    cite: Neviti Ephemera
+    routes:
+      - { type: market, platinum: 90 }
+
+  - item: Peach Blossom Ephemera
+    cite: Peach Blossom Ephemera
+    routes:
+      - { type: market, platinum: 60 }
+
+  - item: Purified Bloom Ephemera
+    cite: Purified Bloom Ephemera
+    routes:
+      - { type: market, platinum: 60 }
+
+  - item: Xianglong Ephemera
+    cite: Xianglong Ephemera
+    routes:
+      - { type: market, platinum: 60 }
+
+  - item: Lohk's Embrace Ephemera
+    cite: Lohk's Embrace Ephemera
+    routes:
+      - { type: market, platinum: 430, bundle: Golden Mend Collection }
+
+  - item: Kudzon Ephemera
+    cite: Kudzon Ephemera
+    routes:
+      - type: vendor
+        vendor: Varzia
+        place: Maroo's Bazaar
+        costs: [{ currency: Aya, amount: 10 }]
+
+  - item: Opula Ephemera
+    cite: Opula Ephemera
+    routes:
+      - type: vendor
+        vendor: Varzia
+        place: Maroo's Bazaar
+        costs: [{ currency: Aya, amount: 10 }]
+
+  - item: Verv Ephemera
+    cite: Verv Ephemera
+    routes:
+      - type: vendor
+        vendor: Varzia
+        place: Maroo's Bazaar
+        costs: [{ currency: Regal Aya, amount: 1 }]
+
+  - item: Liftbalon Ephemera
+    cite: Liftbalon Ephemera
+    routes:
+      - type: event
+        event: "Operation: Atramentum"
+        vendor: Aspirant Zorba
+        costs: [{ currency: Nightmare Tatters, amount: 65 }]
+        progress: 90
+
+  - item: Pareidola Ephemera
+    cite: Pareidola Ephemera
+    routes:
+      - type: event
+        event: "Operation: Atramentum"
+        vendor: Aspirant Zorba
+        costs: [{ currency: Nightmare Tatters, amount: 65 }]
+        progress: 60
+
+  - item: Primatura Ephemera
+    cite: Primatura Ephemera
+    routes:
+      - type: event
+        event: "Operation: Atramentum"
+        vendor: Aspirant Zorba
+        costs: [{ currency: Nightmare Tatters, amount: 65 }]
+        progress: 30
+
+  - item: Soaker Ephemera
+    cite: Soaker Ephemera
+    routes:
+      - type: event
+        event: Dog Days
+        vendor: Nakak
+        costs: [{ currency: Nakak Pearl, amount: 490 }]
+
+  - item: Conquera Ephemera
+    cite: Conquera Ephemera
+    routes:
+      - { type: event, event: Conquera }
+
+  - item: Conquera Ii Ephemera
+    cite: Conquera II Ephemera
+    routes:
+      - { type: event, event: Conquera }
+
+  - item: Dex Laurus Ephemera
+    cite: Dex Laurus Ephemera
+    routes:
+      - type: anniversary
+
+  - item: Syndir Ephemera
+    cite: Syndir Ephemera
+    routes:
+      - type: vendor
+        vendor: Hunhow
+        place: Pontis Tower
+        costs: [{ currency: Emerald Talent, amount: 100 }]
+        quest: "Jade Shadows: Constellations"
+
+  - item: Viserakta Ephemera
+    cite: Viserakta Ephemera
+    routes:
+      - type: vendor
+        vendor: Hunhow
+        place: Pontis Tower
+        costs: [{ currency: Crimson Talent, amount: 100 }]
+        quest: "Jade Shadows: Constellations"
+
+  - item: Tenebrous Ephemera
+    cite: Tenebrous Ephemera
+    routes:
+      - type: vendor
+        vendor: Little Duck
+        place: Fortuna
+        costs: [{ currency: Anomaly Shard, amount: 15 }]
+        earned: Sentient Anomaly
+
+  - item: Protovyre Emergent Ephemera
+    cite: Protovyre Emergent Ephemera
+    routes:
+      - type: goal
+        focus: 250000
+        wearing: Protovyre Ephemera
+
+  - item: Protovyre Apex Ephemera
+    cite: Protovyre Apex Ephemera
+    routes:
+      - type: goal
+        focus: 500000
+        wearing: Protovyre Emergent Ephemera
+
+  - item: Obsidian Ephemera
+    cite: Obsidian Ephemera
+    routes:
+      - type: unavailable
+        reason: exclusive
+        event: Renown Pack XVII Bundle
+        until: "2020-03-10"
+
+  - item: Hunhullus Ephemera
+    cite: Hunhullus Ephemera
+    routes:
+      - type: unavailable
+        reason: pack
+        event: TennoCon 2026 Digital Pack
+
+  - item: Tennocon 2021 Ephemera
+    cite: TennoCon 2021 Ephemera
+    routes:
+      - type: unavailable
+        reason: pack
+        event: TennoCon 2021 Digital Pack
+
+  - item: Spring Step Ephemera
+    cite: Spring Step Ephemera
+    routes:
+      - type: unavailable
+        reason: seasonal
+        until: "2021-04-07"
+
+  - item: Nemesis Of Eris Honoria
+    cite: Honoria
+    routes:
+      - type: unavailable
+        reason: promotion
+        event: Taubound teaser
+
+  - item: Shadow Conservator Honoria
+    cite: Honoria
+    routes:
+      - type: event
+        event: "Operation: Atramentum"
+        vendor: Aspirant Zorba
+        costs: [{ currency: Nightmare Tatters, amount: 200 }]
+
+  - item: Of Golden Valor Honoria
+    cite: Honoria
+    routes:
+      - type: event
+        event: "Operation: Blood of Perita"
+        vendor: Roathe
+        costs: [{ currency: Marks of Valiance, amount: 80 }]
+
+  - item: Dagath
+    cite: Dagath
+    routes:
+      - type: dojo
+        room: Dagath's Hollow
+
+  - item: Dorrclave
+    cite: Dorrclave
+    routes:
+      - type: dojo
+        room: Dagath's Hollow
+
+  - item: Dual Decurion
+    cite: Dual Decurion
+    routes:
+      - type: vendor
+        vendor: Arbiters of Hexis
+        costs: [{ currency: Standing, amount: 20000 }]
+        rank: Authentic
+        part: Decurion Barrel
+      - type: vendor
+        vendor: Cephalon Suda
+        costs: [{ currency: Standing, amount: 20000 }]
+        rank: Intriguing
+        part: Decurion Receiver
+
+  - item: Broken War
+    cite: Broken War
+    routes:
+      - type: quest
+        quest: The Second Dream
+        part: Blueprint
+      - type: drop
+        source: Shadow Stalker
+        part: Blueprint
+      - type: drop
+        source: Protector Stalker
+        part: Blueprint
+      - type: drop
+        source: Sentients
+        part: War Hilt
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 50000 }]
+        part: War Hilt
+      - type: drop
+        source: Sentients
+        part: War Blade
+      - type: copies
+        vendor: Cephalon Simaris
+        costs: [{ currency: Standing, amount: 50000 }]
+        part: War Blade
+
+  - item: Incubator Power Core
+    cite: Incubator Power Core
+    routes:
+      - type: market
+        credits: 50000
+        blueprint: true
+      - type: market
+        platinum: 35
+      - type: junction
+        junction: Mercury Junction
+
+  - item: Genetic Code Template
+    cite: Genetic Code Template
+    routes:
+      - type: market
+        credits: 50000
+        blueprint: true
+      - type: market
+        platinum: 15
+
+  - item: Kavat Genetic Code
+    cite: Kavat Genetic Code
+    routes:
+      - type: scan
+        target: Feral Kavat
+        chance: 25
+      - type: market
+        platinum: 5
+
+  - item: Helminth Cyst
+    cite: Helminth Charger
+    routes:
+      - type: cyst
+        warframe: Nidus
+        days: 7

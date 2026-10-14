@@ -1,0 +1,186 @@
+acquisition:
+  - item: Sahasa Kubrow
+    place: Earth
+    verb: incubate
+    from: Kubrow Egg
+    verify: false
+  - item: Sunika Kubrow
+    place: Earth
+    verb: incubate
+    from: Kubrow Egg
+    verify: false
+  - item: Raksa Kubrow
+    place: Earth
+    verb: incubate
+    from: Kubrow Egg
+    verify: false
+  - item: Huras Kubrow
+    place: Earth
+    verb: incubate
+    from: Kubrow Egg
+    verify: false
+  - item: Chesa Kubrow
+    place: Earth
+    verb: incubate
+    from: Kubrow Egg
+    verify: false
+  - item: Adarza Kavat
+    place: Deimos
+    verb: incubate
+    from: Genetic Code
+    verify: false
+  - item: Smeeta Kavat
+    place: Deimos
+    verb: incubate
+    from: Genetic Code
+    verify: false
+  - item: Helminth Charger
+    place: Deimos
+    verb: incubate
+    from: Helminth Cyst
+    verify: true
+  - item: Crescent Vulpaphyla
+    place: Deimos
+    verb: conservation
+    from: Son, Necralisk
+    verify: false
+  - item: Panzer Vulpaphyla
+    place: Deimos
+    verb: conservation
+    from: Son, Necralisk
+    verify: false
+  - item: Sly Vulpaphyla
+    place: Deimos
+    verb: conservation
+    from: Son, Necralisk
+    verify: false
+  - item: Medjay Predasite
+    place: Deimos
+    verb: conservation
+    from: Son, Necralisk
+    verify: false
+  - item: Pharaoh Predasite
+    place: Deimos
+    verb: conservation
+    from: Son, Necralisk
+    verify: false
+  - item: Vizier Predasite
+    place: Deimos
+    verb: conservation
+    from: Son, Necralisk
+    verify: false
+  - item: Bhaira Hound
+    place: null
+    verb: granum
+    from: Granum Void, Corpus Ship
+    verify: true
+  - item: Dorma Hound
+    place: null
+    verb: granum
+    from: Granum Void, Corpus Ship
+    verify: true
+  - item: Hec Hound
+    place: null
+    verb: granum
+    from: Granum Void, Corpus Ship
+    verify: true
+  - item: Carrier
+    place: null
+    verb: market
+    from: Market
+    verify: true
+  - item: Dethcube
+    place: null
+    verb: market
+    from: Market
+    verify: true
+  - item: Shade
+    place: null
+    verb: market
+    from: Market
+    verify: true
+  - item: Wyrm
+    place: null
+    verb: market
+    from: Market
+    verify: true
+  - item: Taxon
+    place: null
+    verb: market
+    from: Market
+    verify: true
+  - item: Helios
+    place: null
+    verb: research
+    from: Clan Dojo, Energy Lab
+    verify: true
+  - item: Djinn
+    place: null
+    verb: research
+    from: Clan Dojo, Bio Lab
+    verify: true
+  - item: Diriga
+    place: null
+    verb: vendor
+    from: Cephalon Simaris
+    verify: true
+  - item: Prisma Shade
+    place: null
+    verb: vendor
+    from: Baro Ki'Teer
+    verify: false
+  - item: Itzal
+    place: null
+    verb: research
+    from: Clan Dojo, Tenno Lab
+    verify: true
+  - item: Elytron
+    place: null
+    verb: research
+    from: Clan Dojo, Tenno Lab
+    verify: true
+  - item: Amesha
+    place: null
+    verb: research
+    from: Clan Dojo, Tenno Lab
+    verify: true
+  - item: Dual Decurion
+    place: null
+    verb: market
+    from: Market
+    verify: true
+  - item: Grattler
+    place: null
+    verb: research
+    from: Clan Dojo, Tenno Lab
+    verify: true
+  - item: Larkspur
+    place: null
+    verb: research
+    from: Clan Dojo, Tenno Lab
+    verify: true
+  - item: Mausolon
+    place: Deimos
+    verb: vendor
+    from: Father, Necralisk
+    verify: true
+  - item: Kuva Ayanga
+    place: null
+    verb: lich
+    from: Kuva Lich
+    verify: true
+  - item: Kuva Grattler
+    place: null
+    verb: lich
+    from: Kuva Lich
+    verify: true
+  - item: Prisma Dual Decurions
+    place: null
+    verb: vendor
+    from: Baro Ki'Teer
+    verify: false
+  - item: Prisma Veritux
+    place: null
+    verb: vendor
+    from: Baro Ki'Teer
+    verify: false

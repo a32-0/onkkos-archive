@@ -1,0 +1,994 @@
+{
+ "incarnons": {
+  "Braton Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Lato Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Nacreous Pebble",
+     "count": 100
+    }
+   ],
+   "platinum": 120
+  },
+  "Skana Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Connla Sprout",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Paris Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Silphsela",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Kunai Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Eevani",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Boar Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Gammacor Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Ueymag",
+     "count": 70
+    },
+    {
+     "name": "Lamentus",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Angstrum Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Ueymag",
+     "count": 70
+    },
+    {
+     "name": "Lamentus",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Gorgon Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Anku Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Ueymag",
+     "count": 70
+    },
+    {
+     "name": "Ariette Scale",
+     "count": 300
+    }
+   ],
+   "platinum": 120
+  },
+  "Bo Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Kovnik",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Latron Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Maw Fang",
+     "count": 20
+    }
+   ],
+   "platinum": 120
+  },
+  "Furis Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Lamentus",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Furax Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Ariette Scale",
+     "count": 300
+    }
+   ],
+   "platinum": 120
+  },
+  "Strun Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Lex Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Saggen Pearl",
+     "count": 150
+    }
+   ],
+   "platinum": 120
+  },
+  "Magistar Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Aggristone",
+     "count": 150
+    }
+   ],
+   "platinum": 120
+  },
+  "Boltor Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Silphsela",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Bronco Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Nacreous Pebble",
+     "count": 100
+    }
+   ],
+   "platinum": 120
+  },
+  "Ceramic Dagger Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Connla Sprout",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Torid Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Maw Fang",
+     "count": 20
+    }
+   ],
+   "platinum": 120
+  },
+  "Dual Toxocyst Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Eevani",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Dual Ichor Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Kovnik",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Miter Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Atomos Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Lamentus",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Ack & Brunt Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Ariette Scale",
+     "count": 300
+    }
+   ],
+   "platinum": 120
+  },
+  "Soma Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Silphsela",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Vasto Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Saggen Pearl",
+     "count": 150
+    }
+   ],
+   "platinum": 120
+  },
+  "Nami Solo Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Aggristone",
+     "count": 150
+    }
+   ],
+   "platinum": 120
+  },
+  "Burston Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Maw Fang",
+     "count": 20
+    }
+   ],
+   "platinum": 120
+  },
+  "Zylok Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    },
+    {
+     "name": "Nacreous Pebble",
+     "count": 100
+    }
+   ],
+   "platinum": 120
+  },
+  "Sibear Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Connla Sprout",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Dread Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Despair Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Silphsela",
+     "count": 60
+    },
+    {
+     "name": "Yao Shrub",
+     "count": 70
+    }
+   ],
+   "platinum": 120
+  },
+  "Hate Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Maw Fang",
+     "count": 20
+    }
+   ],
+   "platinum": 120
+  },
+  "Dera Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Eevani",
+     "count": 80
+    },
+    {
+     "name": "Ueymag",
+     "count": 70
+    }
+   ],
+   "platinum": 120
+  },
+  "Sybaris Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Saggen Pearl",
+     "count": 150
+    },
+    {
+     "name": "Ueymag",
+     "count": 70
+    }
+   ],
+   "platinum": 120
+  },
+  "Cestra Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Saggen Pearl",
+     "count": 150
+    },
+    {
+     "name": "Kovnik",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Sicarus Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Nacreous Pebble",
+     "count": 100
+    },
+    {
+     "name": "Aggristone",
+     "count": 150
+    }
+   ],
+   "platinum": 120
+  },
+  "Okina Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Maw Fang",
+     "count": 20
+    },
+    {
+     "name": "Lamentus",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  },
+  "Vectis Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Eevani",
+     "count": 80
+    },
+    {
+     "name": "Saggen Pearl",
+     "count": 150
+    }
+   ],
+   "platinum": 120
+  },
+  "Stug Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Aggristone",
+     "count": 150
+    },
+    {
+     "name": "Tasoma Extract",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Ballistica Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Kovnik",
+     "count": 80
+    },
+    {
+     "name": "Silphsela",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Destreza Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Dracroot",
+     "count": 70
+    },
+    {
+     "name": "Rune Marrow",
+     "count": 60
+    }
+   ],
+   "platinum": 120
+  },
+  "Obex Incarnon Genesis": {
+   "requires": [
+    "The Duviri Paradox",
+    "Angels of the Zariman",
+    "The Steel Path"
+   ],
+   "install": [
+    {
+     "name": "Pathos Clamp",
+     "count": 20
+    },
+    {
+     "name": "Nacreous Pebble",
+     "count": 100
+    },
+    {
+     "name": "Lamentus",
+     "count": 80
+    }
+   ],
+   "platinum": 120
+  }
+ }
+}

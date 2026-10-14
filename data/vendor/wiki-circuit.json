@@ -1,0 +1,198 @@
+{
+ "tiers": {
+  "Neuroptics": 2,
+  "Chassis": 5,
+  "Systems": 8,
+  "Blueprint": 10
+ },
+ "normal": {
+  "anchor": "2023-4-24",
+  "period": 11,
+  "weeks": [
+   {
+    "index": 1,
+    "choices": [
+     "Excalibur",
+     "Trinity",
+     "Ember"
+    ]
+   },
+   {
+    "index": 2,
+    "choices": [
+     "Loki",
+     "Mag",
+     "Rhino"
+    ]
+   },
+   {
+    "index": 3,
+    "choices": [
+     "Ash",
+     "Frost",
+     "Nyx"
+    ]
+   },
+   {
+    "index": 4,
+    "choices": [
+     "Saryn",
+     "Vauban",
+     "Nova"
+    ]
+   },
+   {
+    "index": 5,
+    "choices": [
+     "Nekros",
+     "Valkyr",
+     "Oberon"
+    ]
+   },
+   {
+    "index": 6,
+    "choices": [
+     "Hydroid",
+     "Mirage",
+     "Limbo"
+    ]
+   },
+   {
+    "index": 7,
+    "choices": [
+     "Mesa",
+     "Chroma",
+     "Atlas"
+    ]
+   },
+   {
+    "index": 8,
+    "choices": [
+     "Ivara",
+     "Inaros",
+     "Titania"
+    ]
+   },
+   {
+    "index": 9,
+    "choices": [
+     "Nidus",
+     "Octavia",
+     "Harrow"
+    ]
+   },
+   {
+    "index": 10,
+    "choices": [
+     "Gara",
+     "Khora",
+     "Revenant"
+    ]
+   },
+   {
+    "index": 0,
+    "choices": [
+     "Garuda",
+     "Baruuk",
+     "Hildryn"
+    ]
+   }
+  ]
+ },
+ "steelPath": {
+  "anchor": "2026-4-20",
+  "period": 9,
+  "weeks": [
+   {
+    "index": 1,
+    "choices": [
+     "Braton Incarnon Genesis",
+     "Lato Incarnon Genesis",
+     "Skana Incarnon Genesis",
+     "Paris Incarnon Genesis",
+     "Kunai Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 2,
+    "choices": [
+     "Boar Incarnon Genesis",
+     "Gammacor Incarnon Genesis",
+     "Angstrum Incarnon Genesis",
+     "Gorgon Incarnon Genesis",
+     "Anku Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 3,
+    "choices": [
+     "Bo Incarnon Genesis",
+     "Latron Incarnon Genesis",
+     "Furis Incarnon Genesis",
+     "Furax Incarnon Genesis",
+     "Strun Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 4,
+    "choices": [
+     "Lex Incarnon Genesis",
+     "Magistar Incarnon Genesis",
+     "Boltor Incarnon Genesis",
+     "Bronco Incarnon Genesis",
+     "Ceramic Dagger Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 5,
+    "choices": [
+     "Torid Incarnon Genesis",
+     "Dual Toxocyst Incarnon Genesis",
+     "Dual Ichor Incarnon Genesis",
+     "Miter Incarnon Genesis",
+     "Atomos Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 6,
+    "choices": [
+     "Ack & Brunt Incarnon Genesis",
+     "Soma Incarnon Genesis",
+     "Vasto Incarnon Genesis",
+     "Nami Solo Incarnon Genesis",
+     "Burston Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 7,
+    "choices": [
+     "Zylok Incarnon Genesis",
+     "Sibear Incarnon Genesis",
+     "Dread Incarnon Genesis",
+     "Despair Incarnon Genesis",
+     "Hate Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 8,
+    "choices": [
+     "Dera Incarnon Genesis",
+     "Sybaris Incarnon Genesis",
+     "Cestra Incarnon Genesis",
+     "Sicarus Incarnon Genesis",
+     "Okina Incarnon Genesis"
+    ]
+   },
+   {
+    "index": 0,
+    "choices": [
+     "Vectis Incarnon Genesis",
+     "Stug Incarnon Genesis",
+     "Ballistica Incarnon Genesis",
+     "Destreza Incarnon Genesis",
+     "Obex Incarnon Genesis"
+    ]
+   }
+  ]
+ }
+}

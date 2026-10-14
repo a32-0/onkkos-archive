@@ -1,0 +1,18 @@
+{
+  "_comment": "Fixture SINTETICO hecho a mano. Jugador recien empezado: solo nodos de Earth, CERO junctions completadas. Es el caso que discrimina el orden de star_chart_order — ver tests/star-chart.test.ts.",
+  "Results": [
+    {
+      "AccountId": { "$oid": "000000000000000000000002" },
+      "DisplayName": "TestNovato",
+      "PlatformNames": ["PC"],
+      "PlayerLevel": 2,
+      "Created": { "$date": { "$numberLong": "1740000000000" } },
+      "Missions": [
+        { "Completes": 3, "Tag": "SolNode27" },
+        { "Completes": 1, "Tag": "SolNode26" },
+        { "Completes": 1, "Tag": "SolNode39" }
+      ],
+      "Affiliations": []
+    }
+  ]
+}

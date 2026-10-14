@@ -1,0 +1,2344 @@
+{
+ "baro": {
+  "10 x Ki'Teer Fireworks": {
+   "credits": 100000,
+   "ducats": 50,
+   "lastOffered": "2026-01-09"
+  },
+  "10th Anniversary Login Music": {
+   "credits": 165000,
+   "ducats": 145,
+   "lastOffered": "2026-03-20"
+  },
+  "1999 Drippy Glyph": {
+   "credits": 1,
+   "ducats": null,
+   "lastOffered": "2026-05-01"
+  },
+  "3 Day Affinity Booster": {
+   "credits": 200000,
+   "ducats": 450,
+   "lastOffered": "2026-10-02"
+  },
+  "3 Day Credit Booster": {
+   "credits": 75000,
+   "ducats": 350,
+   "lastOffered": "2025-12-26"
+  },
+  "3 Day Mod Drop Chance Booster": {
+   "credits": 175000,
+   "ducats": 500,
+   "lastOffered": "2025-11-14"
+  },
+  "3 Day Resource Booster": {
+   "credits": 150000,
+   "ducats": 400,
+   "lastOffered": "2025-08-22"
+  },
+  "5 x Corrupted Bombard Specter": {
+   "credits": 50000,
+   "ducats": 100,
+   "lastOffered": "2025-02-07"
+  },
+  "5 x Corrupted Heavy Gunner Specter": {
+   "credits": 40000,
+   "ducats": 100,
+   "lastOffered": "2026-05-01"
+  },
+  "Abyss of Dagath Login Music": {
+   "credits": 155000,
+   "ducats": 150,
+   "lastOffered": "2026-09-18"
+  },
+  "Aged Claret of Denas": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-05-29"
+  },
+  "Akka Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-05-29"
+  },
+  "Altra Sentinel Mask": {
+   "credits": 400000,
+   "ducats": 450,
+   "lastOffered": "2026-04-17"
+  },
+  "Altra Sentinel Skin": {
+   "credits": 425000,
+   "ducats": 500,
+   "lastOffered": "2026-06-26"
+  },
+  "Altra Sentinel Tail": {
+   "credits": 500000,
+   "ducats": 400,
+   "lastOffered": "2026-07-10"
+  },
+  "Altra Sentinel Wings": {
+   "credits": 500000,
+   "ducats": 400,
+   "lastOffered": "2026-05-15"
+  },
+  "Angels of the Zariman Login Music": {
+   "credits": 180000,
+   "ducats": 160,
+   "lastOffered": "2026-05-15"
+  },
+  "Anpu Staff Skin": {
+   "credits": 250000,
+   "ducats": 325,
+   "lastOffered": "2026-08-21"
+  },
+  "Anpu Sugatra": {
+   "credits": 250000,
+   "ducats": 250,
+   "lastOffered": "2026-08-21"
+  },
+  "Archwing Articula": {
+   "credits": 330000,
+   "ducats": 100,
+   "lastOffered": "2026-05-29"
+  },
+  "Asra Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-05-01"
+  },
+  "Astral Twilight": {
+   "credits": 175000,
+   "ducats": 385,
+   "lastOffered": "2026-10-02"
+  },
+  "Atrox Gene-Masking Kit": {
+   "credits": 150000,
+   "ducats": 285,
+   "lastOffered": "2026-02-06"
+  },
+  "Ava-Clem Community Glyph": {
+   "credits": 33333,
+   "ducats": 20,
+   "lastOffered": "2026-07-10"
+  },
+  "Axi A2 Relic": {
+   "credits": 45000,
+   "ducats": 50,
+   "lastOffered": "2026-10-02"
+  },
+  "Axi A5 Relic": {
+   "credits": 55000,
+   "ducats": 125,
+   "lastOffered": "2026-09-18"
+  },
+  "Axi A8 Relic": {
+   "credits": 55000,
+   "ducats": 125,
+   "lastOffered": null
+  },
+  "Axi M5 Relic": {
+   "credits": 55000,
+   "ducats": 125,
+   "lastOffered": "2026-09-04"
+  },
+  "Axi V8 Relic": {
+   "credits": 55000,
+   "ducats": 125,
+   "lastOffered": "2026-01-23"
+  },
+  "Baro Ki'Teer Floof": {
+   "credits": 125000,
+   "ducats": 100,
+   "lastOffered": "2026-10-02"
+  },
+  "Baro Ki'Teer Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-02-20"
+  },
+  "Baruuk Doan Silhouette Glyph": {
+   "credits": 60000,
+   "ducats": 75,
+   "lastOffered": "2026-10-02"
+  },
+  "Baruuk Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-09-04"
+  },
+  "Basilisk Fighter Decoration": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-09-18"
+  },
+  "Beachcomber Domestik Drone": {
+   "credits": 625000,
+   "ducats": 800,
+   "lastOffered": "2026-01-09"
+  },
+  "Bekran Zaft's Equipment": {
+   "credits": 125000,
+   "ducats": 100,
+   "lastOffered": "2026-10-02"
+  },
+  "Blue Ki'Teer Safari K-Drive Scrawl": {
+   "credits": 75000,
+   "ducats": 75,
+   "lastOffered": "2026-08-21"
+  },
+  "Boar Elixis Skin": {
+   "credits": 300000,
+   "ducats": 330,
+   "lastOffered": "2026-07-10"
+  },
+  "Bronze Kavat Bust": {
+   "credits": 250000,
+   "ducats": 220,
+   "lastOffered": "2026-05-29"
+  },
+  "Bronze Kubrow Bust": {
+   "credits": 250000,
+   "ducats": 220,
+   "lastOffered": "2025-12-12"
+  },
+  "Buzz Kill": {
+   "credits": 150000,
+   "ducats": 375,
+   "lastOffered": "2026-07-24"
+  },
+  "Chroma Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-08-21"
+  },
+  "Class of Ten Zero Poster": {
+   "credits": 120000,
+   "ducats": 90,
+   "lastOffered": "2026-04-10"
+  },
+  "Clatharc Planter": {
+   "credits": 100000,
+   "ducats": 125,
+   "lastOffered": "2026-03-20"
+  },
+  "Coccyst Sugatra": {
+   "credits": 200000,
+   "ducats": 250,
+   "lastOffered": "2026-09-04"
+  },
+  "Collision Force": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-08-21"
+  },
+  "Combo Fury": {
+   "credits": 115000,
+   "ducats": 300,
+   "lastOffered": "2026-06-26"
+  },
+  "Combo Killer": {
+   "credits": 115000,
+   "ducats": 300,
+   "lastOffered": "2026-05-15"
+  },
+  "Community Clem Comic Glyph": {
+   "credits": 1,
+   "ducats": null,
+   "lastOffered": "2026-05-01"
+  },
+  "Condrix Sigil": {
+   "credits": 45000,
+   "ducats": 45,
+   "lastOffered": "2026-09-04"
+  },
+  "Cookie Kavat Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2025-12-26"
+  },
+  "Cookie Kubrow Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2025-12-26"
+  },
+  "Corpus Glyph": {
+   "credits": 55000,
+   "ducats": 70,
+   "lastOffered": "2026-06-26"
+  },
+  "Corrupted Bombard Specter Blueprint": {
+   "credits": 50000,
+   "ducats": 100,
+   "lastOffered": "2026-05-29"
+  },
+  "Crash Course": {
+   "credits": 200000,
+   "ducats": 330,
+   "lastOffered": "2026-06-12"
+  },
+  "Cutter Fighter Decoration": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2025-11-28"
+  },
+  "Dagath Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-09-18"
+  },
+  "Dante Unbound Login Music": {
+   "credits": 150000,
+   "ducats": 150,
+   "lastOffered": "2026-08-21"
+  },
+  "Dark Sword Day of the Dead Skin": {
+   "credits": 250000,
+   "ducats": 320,
+   "lastOffered": "2025-10-31"
+  },
+  "De Nas Pistol Skin": {
+   "credits": 300000,
+   "ducats": 400,
+   "lastOffered": "2026-10-02"
+  },
+  "Deimos Carnis Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-09-04"
+  },
+  "Deimos Fass Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-04-17"
+  },
+  "Deimos Flagellocanth Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-08-21"
+  },
+  "Deimos Jugulus Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-07-10"
+  },
+  "Deimos Kymaeros Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2025-11-28"
+  },
+  "Deimos Lobotriscid Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-07-24"
+  },
+  "Deimos Saxum Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-01-09"
+  },
+  "Deimos Scissus Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-09-18"
+  },
+  "Deimos Velocipod Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-06-26"
+  },
+  "Desert Skate Floof": {
+   "credits": 100000,
+   "ducats": 125,
+   "lastOffered": "2026-04-10"
+  },
+  "Despair Emblem": {
+   "credits": 60000,
+   "ducats": 55,
+   "lastOffered": "2025-11-07"
+  },
+  "Diriga Desert-Camo Skin": {
+   "credits": 150000,
+   "ducats": 225,
+   "lastOffered": "2025-12-12"
+  },
+  "Display - Argyle": {
+   "credits": 75000,
+   "ducats": 100,
+   "lastOffered": "2026-09-04"
+  },
+  "Dog Days Protea Display": {
+   "credits": 125000,
+   "ducats": 90,
+   "lastOffered": "2026-05-01"
+  },
+  "Domestik Dais Drone": {
+   "credits": 650000,
+   "ducats": 800,
+   "lastOffered": "2026-05-01"
+  },
+  "Domestik Ki'Teer Drone": {
+   "credits": 500000,
+   "ducats": 700,
+   "lastOffered": "2026-02-20"
+  },
+  "Domestik Ki'Teer Drone (Lavender Ice)": {
+   "credits": 650000,
+   "ducats": 800,
+   "lastOffered": "2026-06-26"
+  },
+  "Domestik Soag Drone": {
+   "credits": 650000,
+   "ducats": 500,
+   "lastOffered": "2026-07-24"
+  },
+  "Domus Syandana": {
+   "credits": 400000,
+   "ducats": 600,
+   "lastOffered": "2026-09-04"
+  },
+  "Don't Be Afraid Poster": {
+   "credits": 110000,
+   "ducats": 100,
+   "lastOffered": "2026-08-07"
+  },
+  "Dragon Mod Pack": {
+   "credits": 100000,
+   "ducats": 500,
+   "lastOffered": "2019-01-25"
+  },
+  "Dread Day of the Dead Skin": {
+   "credits": 275000,
+   "ducats": 300,
+   "lastOffered": "2025-10-31"
+  },
+  "Drippy Sigil": {
+   "credits": 45000,
+   "ducats": 50,
+   "lastOffered": "2025-08-08"
+  },
+  "Dual Sword Lemnas Skin": {
+   "credits": 300000,
+   "ducats": 350,
+   "lastOffered": "2026-05-29"
+  },
+  "Dvad Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-05-29"
+  },
+  "Elixis Latron Chest Plate": {
+   "credits": 200000,
+   "ducats": 275,
+   "lastOffered": null
+  },
+  "Elixis Latron Leg Plate": {
+   "credits": 175000,
+   "ducats": 300,
+   "lastOffered": null
+  },
+  "Elixis Latron Pistol Skin": {
+   "credits": 215000,
+   "ducats": 400,
+   "lastOffered": "2026-09-04"
+  },
+  "Elixis Latron Shoulder Plate (Left)": {
+   "credits": 220000,
+   "ducats": 325,
+   "lastOffered": null
+  },
+  "Eminence": {
+   "credits": 220000,
+   "ducats": 220,
+   "lastOffered": "2026-03-06"
+  },
+  "Empyrean Login Music": {
+   "credits": 155000,
+   "ducats": 160,
+   "lastOffered": "2026-05-29"
+  },
+  "Empyrean Vignette": {
+   "credits": 200000,
+   "ducats": 155,
+   "lastOffered": "2026-02-20"
+  },
+  "Entrati Eye Glyph": {
+   "credits": 1900,
+   "ducats": 99,
+   "lastOffered": "2026-04-10"
+  },
+  "Eos Prime Armor Set": {
+   "credits": 260000,
+   "ducats": 285,
+   "lastOffered": "2026-05-29"
+  },
+  "Eos Prime Chest Plate": {
+   "credits": 75000,
+   "ducats": 125,
+   "lastOffered": "2026-05-15"
+  },
+  "Eskhatos Grimoire Skin": {
+   "credits": 302000,
+   "ducats": 227,
+   "lastOffered": "2025-11-07"
+  },
+  "Eskhatos Ki'Teer Chest Guard": {
+   "credits": 294000,
+   "ducats": 196,
+   "lastOffered": "2025-11-07"
+  },
+  "Eskhatos Ki'Teer Ephemera": {
+   "credits": 109000,
+   "ducats": 69,
+   "lastOffered": "2025-11-07"
+  },
+  "Eskhatos Ki'Teer Knee Guards": {
+   "credits": 251000,
+   "ducats": 184,
+   "lastOffered": "2025-11-07"
+  },
+  "Eskhatos Ki'Teer Shoulder Guards": {
+   "credits": 278000,
+   "ducats": 109,
+   "lastOffered": "2025-11-07"
+  },
+  "Eskhatos Necraloid Sigil": {
+   "credits": 61000,
+   "ducats": 34,
+   "lastOffered": "2025-11-07"
+  },
+  "Excalibur Proto-Armor in Action Glyph": {
+   "credits": 60000,
+   "ducats": 75,
+   "lastOffered": "2025-12-12"
+  },
+  "Exo-Sac Archwing Skin": {
+   "credits": 300000,
+   "ducats": 400,
+   "lastOffered": "2026-04-10"
+  },
+  "Exploration Poster": {
+   "credits": 2026,
+   "ducats": 20,
+   "lastOffered": "2026-08-21"
+  },
+  "Fae Path Ephemera": {
+   "credits": 1000,
+   "ducats": 15,
+   "lastOffered": null
+  },
+  "Falcon Mod Pack": {
+   "credits": 50000,
+   "ducats": 250,
+   "lastOffered": "2019-01-25"
+  },
+  "Fanged Fusillade": {
+   "credits": 150000,
+   "ducats": 375,
+   "lastOffered": "2026-05-29"
+  },
+  "Fass Floof": {
+   "credits": 125000,
+   "ducats": 150,
+   "lastOffered": "2026-04-10"
+  },
+  "Feasting Hamster Glyph": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Flak Fighter Decoration": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-06-26"
+  },
+  "Flare Varleon & Lizzie Poster Display": {
+   "credits": 125000,
+   "ducats": 90,
+   "lastOffered": "2026-08-21"
+  },
+  "Fortuna Login Music": {
+   "credits": 190000,
+   "ducats": 130,
+   "lastOffered": "2026-09-04"
+  },
+  "Full Contact": {
+   "credits": 220000,
+   "ducats": 365,
+   "lastOffered": "2026-07-10"
+  },
+  "Gara Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-06-26"
+  },
+  "Garv & Latrox Poster": {
+   "credits": 100000,
+   "ducats": 80,
+   "lastOffered": "2026-10-02"
+  },
+  "Giving Snake Glyph": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Glaring Emblem": {
+   "credits": 50000,
+   "ducats": 50,
+   "lastOffered": "2025-10-03"
+  },
+  "Glaring Sigil": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-05-15"
+  },
+  "Glaxion Vandal": {
+   "credits": 250000,
+   "ducats": 475,
+   "lastOffered": "2026-09-18"
+  },
+  "Gorgon Towsun Skin": {
+   "credits": 300000,
+   "ducats": 300,
+   "lastOffered": "2026-09-18"
+  },
+  "Gotva Prime": {
+   "credits": 625000,
+   "ducats": 675,
+   "lastOffered": "2026-06-26"
+  },
+  "Grav Lifter Factory": {
+   "credits": 125000,
+   "ducats": 110,
+   "lastOffered": "2026-05-15"
+  },
+  "Green Ki'Teer Safari K-Drive Scrawl": {
+   "credits": 75000,
+   "ducats": 75,
+   "lastOffered": "2026-06-26"
+  },
+  "Grineer Glyph": {
+   "credits": 65000,
+   "ducats": 75,
+   "lastOffered": "2026-06-12"
+  },
+  "Grustrag Three Beacon": {
+   "credits": 125000,
+   "ducats": 200,
+   "lastOffered": "2026-06-12"
+  },
+  "Guimao Glyph": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Halikar Wraith": {
+   "credits": 350000,
+   "ducats": 450,
+   "lastOffered": "2026-06-12"
+  },
+  "Harkonar Wraith Arm Armor": {
+   "credits": 150000,
+   "ducats": 350,
+   "lastOffered": "2026-06-12"
+  },
+  "Harkonar Wraith Chest Armor": {
+   "credits": 250000,
+   "ducats": 300,
+   "lastOffered": "2026-06-12"
+  },
+  "Harkonar Wraith Cloak": {
+   "credits": 500000,
+   "ducats": 400,
+   "lastOffered": "2026-06-12"
+  },
+  "Harkonar Wraith Leg Armor": {
+   "credits": 150000,
+   "ducats": 350,
+   "lastOffered": "2026-06-12"
+  },
+  "Harpi Fighter Decoration": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-04-10"
+  },
+  "Heart of Deimos Login Music": {
+   "credits": 160000,
+   "ducats": 155,
+   "lastOffered": "2026-05-15"
+  },
+  "Helios Elixis Skin": {
+   "credits": 170000,
+   "ducats": 300,
+   "lastOffered": "2026-08-07"
+  },
+  "Hellshell Domestik Drone": {
+   "credits": 650000,
+   "ducats": 750,
+   "lastOffered": "2026-02-06"
+  },
+  "High Voltage": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-07-24"
+  },
+  "Hydroid Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-09-04"
+  },
+  "Ignis Towsun Skin": {
+   "credits": 300000,
+   "ducats": 300,
+   "lastOffered": "2026-06-26"
+  },
+  "Ignis Wraith": {
+   "credits": 250000,
+   "ducats": 550,
+   "lastOffered": "2026-09-04"
+  },
+  "In Mah Belly Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2025-10-31"
+  },
+  "Inaros Floof": {
+   "credits": 90000,
+   "ducats": 120,
+   "lastOffered": "2026-02-20"
+  },
+  "Inaros Tomb Scene": {
+   "credits": 175000,
+   "ducats": 325,
+   "lastOffered": "2026-06-26"
+  },
+  "Ivara in Action Glyph": {
+   "credits": 60000,
+   "ducats": 75,
+   "lastOffered": "2026-05-15"
+  },
+  "Jade Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-06-26"
+  },
+  "Jade Shadows Login Music": {
+   "credits": 170000,
+   "ducats": 150,
+   "lastOffered": "2026-06-12"
+  },
+  "Javi Evolution Scrawling": {
+   "credits": 100000,
+   "ducats": 90,
+   "lastOffered": "2026-09-04"
+  },
+  "Javi Genome Scrawling": {
+   "credits": 100000,
+   "ducats": 90,
+   "lastOffered": "2026-03-06"
+  },
+  "Javi Luminosity Scrawling": {
+   "credits": 100000,
+   "ducats": 90,
+   "lastOffered": "2026-06-26"
+  },
+  "Javi Ophiuchus Scrawling": {
+   "credits": 100000,
+   "ducats": 90,
+   "lastOffered": "2026-06-12"
+  },
+  "Javi's Scrawling": {
+   "credits": 200000,
+   "ducats": 275,
+   "lastOffered": "2026-04-17"
+  },
+  "Jiachen Glyph": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Jolt": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-06-12"
+  },
+  "Karishh's Dinnerware": {
+   "credits": 130000,
+   "ducats": 110,
+   "lastOffered": "2026-05-01"
+  },
+  "Kavat Sentinel Mask": {
+   "credits": 200000,
+   "ducats": 500,
+   "lastOffered": "2026-06-12"
+  },
+  "Kavat Sentinel Tail": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-06-12"
+  },
+  "Kavat Sentinel Wings": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-06-12"
+  },
+  "Ki'Teer": {
+   "credits": 300000,
+   "ducats": 150,
+   "lastOffered": "2026-03-20"
+  },
+  "Ki'Teer Arrow Skin": {
+   "credits": 300000,
+   "ducats": 375,
+   "lastOffered": "2026-04-17"
+  },
+  "Ki'Teer Atmos Diadem": {
+   "credits": 375000,
+   "ducats": 525,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Atmos Earpiece": {
+   "credits": 400000,
+   "ducats": 500,
+   "lastOffered": "2026-06-26"
+  },
+  "Ki'Teer Atmos Mask": {
+   "credits": 400000,
+   "ducats": 500,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Atmos Oculus": {
+   "credits": 375000,
+   "ducats": 525,
+   "lastOffered": "2026-07-10"
+  },
+  "Ki'Teer Chest Plate": {
+   "credits": 250000,
+   "ducats": 150,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Cornu Diadem": {
+   "credits": 375000,
+   "ducats": 525,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Diax Syandana": {
+   "credits": 450000,
+   "ducats": 325,
+   "lastOffered": "2026-10-02"
+  },
+  "Ki'Teer Earpiece": {
+   "credits": 400000,
+   "ducats": 500,
+   "lastOffered": "2026-09-04"
+  },
+  "Ki'Teer Ephemera": {
+   "credits": 150000,
+   "ducats": 100,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Foros Chest Plate": {
+   "credits": 200000,
+   "ducats": 175,
+   "lastOffered": "2026-04-17"
+  },
+  "Ki'Teer Foros Leg Plates": {
+   "credits": 150000,
+   "ducats": 225,
+   "lastOffered": "2026-04-17"
+  },
+  "Ki'Teer Foros Shoulder Plates": {
+   "credits": 100000,
+   "ducats": 310,
+   "lastOffered": "2026-04-17"
+  },
+  "Ki'Teer Greth Chest Plate": {
+   "credits": 300000,
+   "ducats": 350,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Greth Leg Plates": {
+   "credits": 350000,
+   "ducats": 400,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Greth Shoulder Plates": {
+   "credits": 350000,
+   "ducats": 400,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Kavat Armor": {
+   "credits": 275000,
+   "ducats": 500,
+   "lastOffered": "2026-02-20"
+  },
+  "Ki'Teer Kubrow Armor": {
+   "credits": 250000,
+   "ducats": 500,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Leg Plates": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Lux Pedestal": {
+   "credits": 100000,
+   "ducats": 150,
+   "lastOffered": "2026-02-20"
+  },
+  "Ki'Teer Moa Pet Skin": {
+   "credits": 325000,
+   "ducats": 500,
+   "lastOffered": "2026-03-20"
+  },
+  "Ki'Teer Presence": {
+   "credits": 1000000,
+   "ducats": null,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Razza Syandana": {
+   "credits": 350000,
+   "ducats": 400,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Reverence Ephemera": {
+   "credits": 350000,
+   "ducats": 250,
+   "lastOffered": "2026-06-26"
+  },
+  "Ki'Teer Sekhara": {
+   "credits": 200000,
+   "ducats": 400,
+   "lastOffered": "2026-05-29"
+  },
+  "Ki'Teer Sentinel Mask": {
+   "credits": 200000,
+   "ducats": 500,
+   "lastOffered": "2026-05-01"
+  },
+  "Ki'Teer Sentinel Tail": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-01-09"
+  },
+  "Ki'Teer Sentinel Wings": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-03-06"
+  },
+  "Ki'Teer Shoulder Plates": {
+   "credits": 110000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Solo Earpiece": {
+   "credits": 200000,
+   "ducats": 250,
+   "lastOffered": "2026-06-26"
+  },
+  "Ki'Teer Solstice Syandana": {
+   "credits": 200000,
+   "ducats": 425,
+   "lastOffered": "2025-12-26"
+  },
+  "Ki'Teer Stencil": {
+   "credits": 175000,
+   "ducats": 250,
+   "lastOffered": "2026-08-21"
+  },
+  "Ki'Teer Straed Syandana": {
+   "credits": 500000,
+   "ducats": 500,
+   "lastOffered": "2026-05-29"
+  },
+  "Ki'Teer Sugatra": {
+   "credits": 250000,
+   "ducats": 250,
+   "lastOffered": "2026-09-18"
+  },
+  "Ki'Teer Syandana": {
+   "credits": 500000,
+   "ducats": 500,
+   "lastOffered": "2026-06-12"
+  },
+  "Ki'Teer Tribute Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-06-12"
+  },
+  "Koi Sentinel Tail": {
+   "credits": 200000,
+   "ducats": 200,
+   "lastOffered": null
+  },
+  "Koumei Dice Glyph": {
+   "credits": 55000,
+   "ducats": 80,
+   "lastOffered": "2026-01-23"
+  },
+  "Kuva Glyph": {
+   "credits": 50000,
+   "ducats": 75,
+   "lastOffered": "2026-07-10"
+  },
+  "Left Eos Prime Shoulder Plates": {
+   "credits": 75000,
+   "ducats": 50,
+   "lastOffered": "2026-05-15"
+  },
+  "Left Eos Prime Spurs": {
+   "credits": 50000,
+   "ducats": 65,
+   "lastOffered": "2026-05-15"
+  },
+  "Left Prisma Daedalus Knee Plates": {
+   "credits": 75000,
+   "ducats": 65,
+   "lastOffered": "2026-10-02"
+  },
+  "Left Prisma Daedalus Shoulder Guard": {
+   "credits": 75000,
+   "ducats": 65,
+   "lastOffered": "2026-10-02"
+  },
+  "Left Prisma Edo Knee Plates": {
+   "credits": 55000,
+   "ducats": 100,
+   "lastOffered": "2026-09-04"
+  },
+  "Left Prisma Edo Shoulder Plates": {
+   "credits": 55000,
+   "ducats": 100,
+   "lastOffered": "2026-09-04"
+  },
+  "Lemnas Staff Skin": {
+   "credits": 275000,
+   "ducats": 350,
+   "lastOffered": "2026-04-17"
+  },
+  "Limbo Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-03-20"
+  },
+  "Liset Cydonia Skin": {
+   "credits": 300000,
+   "ducats": 400,
+   "lastOffered": "2026-05-29"
+  },
+  "Liset Prisma Skin": {
+   "credits": 150000,
+   "ducats": 120,
+   "lastOffered": "2026-05-01"
+  },
+  "Loid Floof": {
+   "credits": 125000,
+   "ducats": 150,
+   "lastOffered": "2026-04-10"
+  },
+  "Lotus Ephemera": {
+   "credits": 450000,
+   "ducats": 250,
+   "lastOffered": "2026-06-12"
+  },
+  "Lua's Prey Login Music": {
+   "credits": 200000,
+   "ducats": 135,
+   "lastOffered": "2026-08-21"
+  },
+  "Lunar Renewal Dragon Emblem": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Lunar Renewal Horse Emblem": {
+   "credits": 1,
+   "ducats": null,
+   "lastOffered": "2026-03-06"
+  },
+  "Lunar Renewal Ox Sigil": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Lunar Renewal Rabbit Emblem": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Lunar Renewal Snake Emblem": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Lunar Renewal Tiger Emblem": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Lunar Renewal Tiger Sigil": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Machete Syachid Skin": {
+   "credits": 300000,
+   "ducats": 375,
+   "lastOffered": "2026-02-20"
+  },
+  "Machete Wraith": {
+   "credits": 250000,
+   "ducats": 410,
+   "lastOffered": "2026-08-21"
+  },
+  "Mahd Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-09-04"
+  },
+  "Maim": {
+   "credits": 150000,
+   "ducats": 375,
+   "lastOffered": "2026-06-26"
+  },
+  "Mantis Cydonia Skin": {
+   "credits": 320000,
+   "ducats": 425,
+   "lastOffered": "2026-10-02"
+  },
+  "Mantis Prisma Skin": {
+   "credits": 375000,
+   "ducats": 230,
+   "lastOffered": "2025-10-31"
+  },
+  "Mara Detron": {
+   "credits": 200000,
+   "ducats": 500,
+   "lastOffered": "2026-06-26"
+  },
+  "Mark of the Beast": {
+   "credits": 115000,
+   "ducats": 300,
+   "lastOffered": "2026-05-15"
+  },
+  "Masker's Theodolite Crewsuit": {
+   "credits": 275000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Masker's Theodolite Crewsuit Hood": {
+   "credits": 375000,
+   "ducats": 350,
+   "lastOffered": "2026-08-21"
+  },
+  "Masker's Theodolite Crewsuit Leggings": {
+   "credits": 275000,
+   "ducats": 300,
+   "lastOffered": "2026-10-02"
+  },
+  "Masker's Theodolite Crewsuit Sleeves": {
+   "credits": 275000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Mesa Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-04-10"
+  },
+  "Mirage Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-05-15"
+  },
+  "Mulciber Chest Plate": {
+   "credits": 250000,
+   "ducats": 325,
+   "lastOffered": "2026-06-26"
+  },
+  "Mulciber Knee Plate": {
+   "credits": 200000,
+   "ducats": 300,
+   "lastOffered": "2026-06-26"
+  },
+  "Mulciber Shoulder Plate": {
+   "credits": 215000,
+   "ducats": 315,
+   "lastOffered": "2026-06-26"
+  },
+  "Murmur Glyph": {
+   "credits": 75000,
+   "ducats": 60,
+   "lastOffered": "2026-03-06"
+  },
+  "Naberus Floating Candles": {
+   "credits": 88000,
+   "ducats": 21,
+   "lastOffered": "2025-11-07"
+  },
+  "Necraloid Floof": {
+   "credits": 130000,
+   "ducats": 140,
+   "lastOffered": "2026-04-17"
+  },
+  "Neo O1 Relic": {
+   "credits": 55000,
+   "ducats": 125,
+   "lastOffered": "2026-05-29"
+  },
+  "Nexus Fur Pattern": {
+   "credits": 300000,
+   "ducats": 150,
+   "lastOffered": "2026-05-29"
+  },
+  "Nexus Gene-Masking Kit": {
+   "credits": 300000,
+   "ducats": 200,
+   "lastOffered": "2026-04-10"
+  },
+  "Nidus Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2025-06-27"
+  },
+  "Nikana Elixis Skin": {
+   "credits": 275000,
+   "ducats": 375,
+   "lastOffered": "2026-05-15"
+  },
+  "Noggle Statue - Baro Ki'Teer": {
+   "credits": 250000,
+   "ducats": 70,
+   "lastOffered": "2026-06-12"
+  },
+  "Noggle Statue - Erra": {
+   "credits": 300000,
+   "ducats": 75,
+   "lastOffered": "2026-03-20"
+  },
+  "Noggle Statue - Excalibur with Odonata": {
+   "credits": 200000,
+   "ducats": 90,
+   "lastOffered": "2026-07-10"
+  },
+  "Noggle Statue - Mag with Itzal": {
+   "credits": 200000,
+   "ducats": 90,
+   "lastOffered": "2026-04-10"
+  },
+  "Noggle Statue - Octavia": {
+   "credits": 275000,
+   "ducats": 50,
+   "lastOffered": "2026-02-20"
+  },
+  "Noggle Statue - Prime Grineer": {
+   "credits": 200000,
+   "ducats": 80,
+   "lastOffered": "2026-08-07"
+  },
+  "Noggle Statue - Teshin": {
+   "credits": 300000,
+   "ducats": 75,
+   "lastOffered": "2026-09-18"
+  },
+  "Noggle Statue - The New War Teshin": {
+   "credits": 300000,
+   "ducats": 75,
+   "lastOffered": "2025-10-17"
+  },
+  "Noggle Statue - The New War Veso-R": {
+   "credits": 300000,
+   "ducats": 75,
+   "lastOffered": "2026-04-17"
+  },
+  "Noggle Statue - Zealoid Prelate": {
+   "credits": 300000,
+   "ducats": 75,
+   "lastOffered": "2026-05-15"
+  },
+  "Odonata Elixis Skin": {
+   "credits": 250000,
+   "ducats": 350,
+   "lastOffered": "2026-04-17"
+  },
+  "Opticor Elixis Skin": {
+   "credits": 250000,
+   "ducats": 325,
+   "lastOffered": "2026-07-10"
+  },
+  "Opticor Vandal": {
+   "credits": 550000,
+   "ducats": 650,
+   "lastOffered": "2026-09-04"
+  },
+  "Ordis Reified Statue": {
+   "credits": 275000,
+   "ducats": 350,
+   "lastOffered": "2026-03-06"
+  },
+  "Orokin Catalyst": {
+   "credits": 400000,
+   "ducats": 700,
+   "lastOffered": "2016-01-22"
+  },
+  "Orokin Tower Extraction Scene": {
+   "credits": 175000,
+   "ducats": 325,
+   "lastOffered": "2026-04-10"
+  },
+  "Pack Leader Emblem": {
+   "credits": 50000,
+   "ducats": 50,
+   "lastOffered": "2026-06-12"
+  },
+  "Pack Leader Sigil": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-07-10"
+  },
+  "Paracesis Elixis Skin": {
+   "credits": 350000,
+   "ducats": 350,
+   "lastOffered": "2026-03-20"
+  },
+  "Paracyst Zebra Skin": {
+   "credits": 300000,
+   "ducats": 325,
+   "lastOffered": "2026-10-02"
+  },
+  "Parazon Poster": {
+   "credits": 125000,
+   "ducats": 100,
+   "lastOffered": "2026-04-17"
+  },
+  "Paris Abra Skin": {
+   "credits": 275000,
+   "ducats": 315,
+   "lastOffered": "2026-09-18"
+  },
+  "Peculiar Audience": {
+   "credits": 200000,
+   "ducats": 250,
+   "lastOffered": "2026-09-04"
+  },
+  "Peculiar End": {
+   "credits": 1000001,
+   "ducats": 228,
+   "lastOffered": "2025-11-07"
+  },
+  "Pedestal Prime": {
+   "credits": 1000000,
+   "ducats": null,
+   "lastOffered": "2026-03-06"
+  },
+  "Pedestal Umbra": {
+   "credits": 1000000,
+   "ducats": null,
+   "lastOffered": "2026-08-07"
+  },
+  "Primed Ammo Chain": {
+   "credits": 210000,
+   "ducats": 390,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Ammo Stock": {
+   "credits": 200000,
+   "ducats": 280,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Animal Instinct": {
+   "credits": 200000,
+   "ducats": 300,
+   "lastOffered": "2026-06-12"
+  },
+  "Primed Bane of Corpus": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Bane of Grineer": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-05-01"
+  },
+  "Primed Bane of Infested": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Bane of Orokin": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2025-11-28"
+  },
+  "Primed Bane of The Murmur": {
+   "credits": 130000,
+   "ducats": 375,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Chamber": {
+   "credits": 1000000,
+   "ducats": 2995,
+   "lastOffered": "2022-06-17"
+  },
+  "Primed Charged Shell": {
+   "credits": 200000,
+   "ducats": 350,
+   "lastOffered": "2026-06-26"
+  },
+  "Primed Chilling Grasp": {
+   "credits": 125000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Cleanse Corpus": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-05-15"
+  },
+  "Primed Cleanse Grineer": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-04-17"
+  },
+  "Primed Cleanse Infested": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-10-02"
+  },
+  "Primed Cleanse Orokin": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-05-01"
+  },
+  "Primed Cleanse The Murmur": {
+   "credits": 130000,
+   "ducats": 375,
+   "lastOffered": "2026-06-12"
+  },
+  "Primed Combustion Rounds": {
+   "credits": 210000,
+   "ducats": 390,
+   "lastOffered": "2026-05-15"
+  },
+  "Primed Continuity": {
+   "credits": 100000,
+   "ducats": 350,
+   "lastOffered": "2026-07-10"
+  },
+  "Primed Convulsion": {
+   "credits": 175000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Counterbalance": {
+   "credits": 220000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Cryo Rounds": {
+   "credits": 110000,
+   "ducats": 350,
+   "lastOffered": "2026-10-02"
+  },
+  "Primed Deadly Efficiency": {
+   "credits": 300000,
+   "ducats": 375,
+   "lastOffered": "2026-10-02"
+  },
+  "Primed Dual Rounds": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-10-02"
+  },
+  "Primed Expel Corpus": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Expel Grineer": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Expel Infested": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-05-15"
+  },
+  "Primed Expel Orokin": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-06-12"
+  },
+  "Primed Expel The Murmur": {
+   "credits": 130000,
+   "ducats": 375,
+   "lastOffered": "2026-05-15"
+  },
+  "Primed Fast Hands": {
+   "credits": 120000,
+   "ducats": 375,
+   "lastOffered": "2026-05-29"
+  },
+  "Primed Fever Strike": {
+   "credits": 200000,
+   "ducats": 350,
+   "lastOffered": "2026-05-29"
+  },
+  "Primed Firestorm": {
+   "credits": 175000,
+   "ducats": 350,
+   "lastOffered": "2026-06-12"
+  },
+  "Primed Flow": {
+   "credits": 110000,
+   "ducats": 350,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Fulmination": {
+   "credits": 175000,
+   "ducats": 350,
+   "lastOffered": "2026-06-26"
+  },
+  "Primed Heated Charge": {
+   "credits": 175000,
+   "ducats": 350,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Heavy Trauma": {
+   "credits": 100000,
+   "ducats": 350,
+   "lastOffered": "2026-06-26"
+  },
+  "Primed Magazine Warp": {
+   "credits": 200000,
+   "ducats": 280,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Morphic Transformer": {
+   "credits": 150000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Pack Leader": {
+   "credits": 200000,
+   "ducats": 300,
+   "lastOffered": "2026-05-15"
+  },
+  "Primed Pistol Ammo Mutation": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Pistol Gambit": {
+   "credits": 220000,
+   "ducats": 400,
+   "lastOffered": "2026-05-29"
+  },
+  "Primed Point Blank": {
+   "credits": 110000,
+   "ducats": 300,
+   "lastOffered": "2026-06-26"
+  },
+  "Primed Polar Magazine": {
+   "credits": 210000,
+   "ducats": 390,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Pressure Point": {
+   "credits": 300000,
+   "ducats": 385,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Quickdraw": {
+   "credits": 120000,
+   "ducats": 375,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Ravage": {
+   "credits": 100000,
+   "ducats": 280,
+   "lastOffered": "2026-10-02"
+  },
+  "Primed Reach": {
+   "credits": 220000,
+   "ducats": 300,
+   "lastOffered": "2026-05-29"
+  },
+  "Primed Redirection": {
+   "credits": 225000,
+   "ducats": 350,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Regen": {
+   "credits": 220000,
+   "ducats": 300,
+   "lastOffered": "2026-05-01"
+  },
+  "Primed Rifle Ammo Mutation": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-05-29"
+  },
+  "Primed Rubedo-Lined Barrel": {
+   "credits": 175000,
+   "ducats": 350,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Shotgun Ammo Mutation": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Slip Magazine": {
+   "credits": 200000,
+   "ducats": 280,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Smite Corpus": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-05-29"
+  },
+  "Primed Smite Grineer": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Smite Infested": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-09-18"
+  },
+  "Primed Smite Orokin": {
+   "credits": 140000,
+   "ducats": 350,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Smite The Murmur": {
+   "credits": 130000,
+   "ducats": 375,
+   "lastOffered": "2026-10-02"
+  },
+  "Primed Sniper Ammo Mutation": {
+   "credits": 140000,
+   "ducats": 400,
+   "lastOffered": "2026-07-10"
+  },
+  "Primed Stabilizer": {
+   "credits": 220000,
+   "ducats": 300,
+   "lastOffered": "2026-08-07"
+  },
+  "Primed Steady Hands": {
+   "credits": 220000,
+   "ducats": 300,
+   "lastOffered": "2026-07-10"
+  },
+  "Primed Tactical Pump": {
+   "credits": 140000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Primed Target Cracker": {
+   "credits": 150000,
+   "ducats": 400,
+   "lastOffered": "2026-09-04"
+  },
+  "Primed Venomous Clip": {
+   "credits": 210000,
+   "ducats": 390,
+   "lastOffered": "2026-07-10"
+  },
+  "Prisma Angstrum": {
+   "credits": 210000,
+   "ducats": 475,
+   "lastOffered": "2026-06-26"
+  },
+  "Prisma Arrows": {
+   "credits": 75000,
+   "ducats": 350,
+   "lastOffered": "2026-05-29"
+  },
+  "Prisma Avia Ankle Plate": {
+   "credits": 175000,
+   "ducats": 225,
+   "lastOffered": "2026-05-01"
+  },
+  "Prisma Avia Chest Plate": {
+   "credits": 220000,
+   "ducats": 250,
+   "lastOffered": "2026-05-01"
+  },
+  "Prisma Avia Shoulder Plate": {
+   "credits": 200000,
+   "ducats": 300,
+   "lastOffered": "2026-05-01"
+  },
+  "Prisma Companion Poster": {
+   "credits": 110000,
+   "ducats": 90,
+   "lastOffered": "2026-03-20"
+  },
+  "Prisma Daedalus Chest Plate": {
+   "credits": 100000,
+   "ducats": 150,
+   "lastOffered": "2026-10-02"
+  },
+  "Prisma Dual Cleavers": {
+   "credits": 200000,
+   "ducats": 490,
+   "lastOffered": "2026-08-21"
+  },
+  "Prisma Dual Decurions": {
+   "credits": 175000,
+   "ducats": 525,
+   "lastOffered": "2026-02-20"
+  },
+  "Prisma Edo Chest Plate": {
+   "credits": 250000,
+   "ducats": 225,
+   "lastOffered": "2026-09-04"
+  },
+  "Prisma Gorgon": {
+   "credits": 50000,
+   "ducats": 600,
+   "lastOffered": "2026-09-04"
+  },
+  "Prisma Grakata": {
+   "credits": 100000,
+   "ducats": 610,
+   "lastOffered": "2026-07-10"
+  },
+  "Prisma Grinlok": {
+   "credits": 220000,
+   "ducats": 500,
+   "lastOffered": "2026-10-02"
+  },
+  "Prisma Hecate Syandana": {
+   "credits": 300000,
+   "ducats": 250,
+   "lastOffered": "2026-09-18"
+  },
+  "Prisma Jet Sentinel Wings": {
+   "credits": 200000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Prisma Kavat Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-09-04"
+  },
+  "Prisma Koi Sentinel Tail": {
+   "credits": 200000,
+   "ducats": 200,
+   "lastOffered": "2026-10-02"
+  },
+  "Prisma Kubrow Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-05-01"
+  },
+  "Prisma Latron Chest Plate": {
+   "credits": 200000,
+   "ducats": 275,
+   "lastOffered": "2026-07-10"
+  },
+  "Prisma Latron Leg Plate": {
+   "credits": 175000,
+   "ducats": 300,
+   "lastOffered": "2026-07-10"
+  },
+  "Prisma Latron Shoulder Plate (Left)": {
+   "credits": 220000,
+   "ducats": 325,
+   "lastOffered": "2026-07-10"
+  },
+  "Prisma Lenz": {
+   "credits": 200000,
+   "ducats": 575,
+   "lastOffered": "2026-10-02"
+  },
+  "Prisma Livery": {
+   "credits": 380000,
+   "ducats": 300,
+   "lastOffered": "2026-09-18"
+  },
+  "Prisma Lotus Bloom Sigil": {
+   "credits": 60000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Prisma Lotus Emblem": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-01-09"
+  },
+  "Prisma Lotus Flame Sigil": {
+   "credits": 60000,
+   "ducats": 55,
+   "lastOffered": "2026-01-09"
+  },
+  "Prisma Lotus Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-05-15"
+  },
+  "Prisma Lotus Sigil": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-05-01"
+  },
+  "Prisma Machete": {
+   "credits": 200000,
+   "ducats": 400,
+   "lastOffered": "2026-09-18"
+  },
+  "Prisma Mech Head Sentinel Mask": {
+   "credits": 200000,
+   "ducats": 175,
+   "lastOffered": "2026-09-04"
+  },
+  "Prisma Naberus": {
+   "credits": 140000,
+   "ducats": 220,
+   "lastOffered": "2025-12-12"
+  },
+  "Prisma Obex": {
+   "credits": 175000,
+   "ducats": 500,
+   "lastOffered": "2026-05-29"
+  },
+  "Prisma Ohma": {
+   "credits": 175000,
+   "ducats": 450,
+   "lastOffered": "2026-06-12"
+  },
+  "Prisma Rostam Kubrow Armor": {
+   "credits": 175000,
+   "ducats": 400,
+   "lastOffered": "2025-10-24"
+  },
+  "Prisma Shade": {
+   "credits": 300000,
+   "ducats": 500,
+   "lastOffered": "2026-05-29"
+  },
+  "Prisma Sigil": {
+   "credits": 50000,
+   "ducats": 50,
+   "lastOffered": "2026-03-20"
+  },
+  "Prisma Skana": {
+   "credits": 175000,
+   "ducats": 510,
+   "lastOffered": "2026-09-18"
+  },
+  "Prisma Tetra": {
+   "credits": 50000,
+   "ducats": 400,
+   "lastOffered": "2026-05-01"
+  },
+  "Prisma Thrax Sigil": {
+   "credits": 55000,
+   "ducats": 50,
+   "lastOffered": "2026-04-10"
+  },
+  "Prisma Twin Gremlins": {
+   "credits": 220000,
+   "ducats": 500,
+   "lastOffered": "2026-05-29"
+  },
+  "Prisma Uru Syandana": {
+   "credits": 275000,
+   "ducats": 350,
+   "lastOffered": "2026-03-20"
+  },
+  "Prisma Veritux": {
+   "credits": 150000,
+   "ducats": 550,
+   "lastOffered": "2026-04-17"
+  },
+  "Prisma Yamako Syandana": {
+   "credits": 250000,
+   "ducats": 400,
+   "lastOffered": "2026-05-01"
+  },
+  "Prova Vandal": {
+   "credits": 250000,
+   "ducats": 410,
+   "lastOffered": "2026-08-21"
+  },
+  "Pummel": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Puspa Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-09-18"
+  },
+  "Pyra Sugatra": {
+   "credits": 200000,
+   "ducats": 100,
+   "lastOffered": "2026-04-10"
+  },
+  "Quanta Aufeis Skin": {
+   "credits": 300000,
+   "ducats": 300,
+   "lastOffered": "2026-03-06"
+  },
+  "Quanta Vandal": {
+   "credits": 300000,
+   "ducats": 450,
+   "lastOffered": "2026-05-29"
+  },
+  "Railjack Retrofit Login Music": {
+   "credits": 165000,
+   "ducats": 150,
+   "lastOffered": "2026-06-26"
+  },
+  "Rakta Syandana": {
+   "credits": 350000,
+   "ducats": 325,
+   "lastOffered": "2026-07-10"
+  },
+  "Rapier Tributaker Skin": {
+   "credits": 400000,
+   "ducats": 375,
+   "lastOffered": "2026-01-09"
+  },
+  "Rathuum Display": {
+   "credits": 125000,
+   "ducats": 90,
+   "lastOffered": "2026-05-15"
+  },
+  "Redeemer Elixis Skin": {
+   "credits": 250000,
+   "ducats": 325,
+   "lastOffered": "2026-02-20"
+  },
+  "Renayla Sugatra": {
+   "credits": 250000,
+   "ducats": 250,
+   "lastOffered": "2026-03-20"
+  },
+  "Reshantur Child's Tablet": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-07-10"
+  },
+  "Reshantur Cult Spear Skin": {
+   "credits": 325000,
+   "ducats": 350,
+   "lastOffered": "2026-05-01"
+  },
+  "Reshantur Cult Syandana": {
+   "credits": 350000,
+   "ducats": 400,
+   "lastOffered": "2026-06-12"
+  },
+  "Rhapsody in Blue": {
+   "credits": 100000,
+   "ducats": 80,
+   "lastOffered": "2026-06-12"
+  },
+  "Rhino Palatine Sigil": {
+   "credits": 55000,
+   "ducats": 45,
+   "lastOffered": "2026-09-18"
+  },
+  "Right Eos Prime Shoulder Plates": {
+   "credits": 75000,
+   "ducats": 50,
+   "lastOffered": "2026-05-15"
+  },
+  "Right Eos Prime Spurs": {
+   "credits": 50000,
+   "ducats": 65,
+   "lastOffered": "2026-05-15"
+  },
+  "Right Prisma Daedalus Knee Plates": {
+   "credits": 75000,
+   "ducats": 65,
+   "lastOffered": "2026-10-02"
+  },
+  "Right Prisma Daedalus Shoulder Guard": {
+   "credits": 75000,
+   "ducats": 65,
+   "lastOffered": "2026-10-02"
+  },
+  "Right Prisma Edo Knee Plates": {
+   "credits": 55000,
+   "ducats": 100,
+   "lastOffered": "2026-09-04"
+  },
+  "Right Prisma Edo Shoulder Plates": {
+   "credits": 55000,
+   "ducats": 100,
+   "lastOffered": "2026-09-04"
+  },
+  "Sands of Inaros Blueprint": {
+   "credits": 25000,
+   "ducats": 100,
+   "lastOffered": null
+  },
+  "Scaldra Glyph": {
+   "credits": 1906,
+   "ducats": 93,
+   "lastOffered": "2026-09-18"
+  },
+  "Scattering Inferno": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-10-02"
+  },
+  "Scimitar Cydonia Skin": {
+   "credits": 340000,
+   "ducats": 375,
+   "lastOffered": "2026-01-09"
+  },
+  "Scimitar Prisma Skin": {
+   "credits": 450000,
+   "ducats": 210,
+   "lastOffered": "2026-06-12"
+  },
+  "Scorch": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-09-18"
+  },
+  "Scoria Diadem": {
+   "credits": 300000,
+   "ducats": 550,
+   "lastOffered": "2026-07-10"
+  },
+  "Secret History Replica": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2025-11-07"
+  },
+  "Shell Shock": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-08-21"
+  },
+  "Silva & Aegis Eskhatos Skin": {
+   "credits": 298000,
+   "ducats": 132,
+   "lastOffered": "2025-11-07"
+  },
+  "Sima Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-06-26"
+  },
+  "Singing Lotus Community Glyph": {
+   "credits": 2026,
+   "ducats": 20,
+   "lastOffered": "2026-09-04"
+  },
+  "Sisters of Parvos Login Music": {
+   "credits": 155000,
+   "ducats": 150,
+   "lastOffered": "2026-07-24"
+  },
+  "Sonicor Elixis Skin": {
+   "credits": 175000,
+   "ducats": 380,
+   "lastOffered": "2026-04-17"
+  },
+  "Split Flights": {
+   "credits": 200000,
+   "ducats": 300,
+   "lastOffered": "2026-06-12"
+  },
+  "Stalker Beacon": {
+   "credits": 125000,
+   "ducats": 200,
+   "lastOffered": "2026-10-02"
+  },
+  "Supra Vandal": {
+   "credits": 275000,
+   "ducats": 500,
+   "lastOffered": "2026-07-10"
+  },
+  "Sweeping Serration": {
+   "credits": 150000,
+   "ducats": 375,
+   "lastOffered": "2026-06-12"
+  },
+  "Taktis Fighter Decoration": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-06-12"
+  },
+  "Tannukai Chest Plate": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-04-10"
+  },
+  "Tannukai Leg Plates": {
+   "credits": 115000,
+   "ducats": 275,
+   "lastOffered": "2026-04-10"
+  },
+  "Tannukai Longsword Skin": {
+   "credits": 280000,
+   "ducats": 375,
+   "lastOffered": "2026-03-06"
+  },
+  "Tannukai Shoulder Plates": {
+   "credits": 125000,
+   "ducats": 315,
+   "lastOffered": "2026-04-10"
+  },
+  "Taxon Desert-Camo Skin": {
+   "credits": 150000,
+   "ducats": 200,
+   "lastOffered": "2025-11-28"
+  },
+  "Techrot Glyph": {
+   "credits": 1901,
+   "ducats": 98,
+   "lastOffered": "2026-03-20"
+  },
+  "Telamon Dance of Death": {
+   "credits": 100000,
+   "ducats": 125,
+   "lastOffered": "2026-09-04"
+  },
+  "Tempo Royale": {
+   "credits": 175000,
+   "ducats": 385,
+   "lastOffered": "2026-10-02"
+  },
+  "Tenno Kindred Rug": {
+   "credits": 100000,
+   "ducats": 225,
+   "lastOffered": "2026-08-21"
+  },
+  "TennoCon Crt Emote": {
+   "credits": 1000,
+   "ducats": 15,
+   "lastOffered": "2026-03-06"
+  },
+  "TennoCon Crt Glyph": {
+   "credits": 1000,
+   "ducats": 15,
+   "lastOffered": "2026-09-18"
+  },
+  "The Lotus Eaters Login Music": {
+   "credits": 150000,
+   "ducats": 165,
+   "lastOffered": "2026-10-02"
+  },
+  "The New War Login Music": {
+   "credits": 160000,
+   "ducats": 145,
+   "lastOffered": "2026-09-04"
+  },
+  "The Old Blood Login Music": {
+   "credits": 170000,
+   "ducats": 140,
+   "lastOffered": "2026-05-01"
+  },
+  "The Sacrifice Login Music": {
+   "credits": 180000,
+   "ducats": 135,
+   "lastOffered": "2026-03-20"
+  },
+  "The Seven Crimes of Kullervo Login Music": {
+   "credits": 170000,
+   "ducats": 140,
+   "lastOffered": "2026-04-17"
+  },
+  "The Stranger's Hood": {
+   "credits": 500000,
+   "ducats": 550,
+   "lastOffered": "2026-10-02"
+  },
+  "Thermite Rounds": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-07-10"
+  },
+  "Tiberon Elixis Skin": {
+   "credits": 275000,
+   "ducats": 315,
+   "lastOffered": "2026-05-29"
+  },
+  "Tigris Elixis Skin": {
+   "credits": 275000,
+   "ducats": 300,
+   "lastOffered": "2026-04-10"
+  },
+  "Transmuter Operator Hood": {
+   "credits": 450000,
+   "ducats": 450,
+   "lastOffered": "2026-09-04"
+  },
+  "Twin Grakatas Towsun Skin": {
+   "credits": 300000,
+   "ducats": 300,
+   "lastOffered": "2026-10-02"
+  },
+  "Vastilok": {
+   "credits": 325000,
+   "ducats": 550,
+   "lastOffered": "2026-07-10"
+  },
+  "Veilbreaker Login Music": {
+   "credits": 150000,
+   "ducats": 150,
+   "lastOffered": "2026-05-29"
+  },
+  "Vericres": {
+   "credits": 200000,
+   "ducats": 410,
+   "lastOffered": "2026-05-01"
+  },
+  "Vermillion Storm": {
+   "credits": 175000,
+   "ducats": 385,
+   "lastOffered": "2026-08-21"
+  },
+  "Verminia Cosplay Community Display": {
+   "credits": 2026,
+   "ducats": 20,
+   "lastOffered": "2026-09-04"
+  },
+  "Vez Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-05-15"
+  },
+  "Viper Wraith": {
+   "credits": 75000,
+   "ducats": 400,
+   "lastOffered": "2026-06-12"
+  },
+  "Void Angel Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-04-17"
+  },
+  "Void Surplus": {
+   "credits": 50000,
+   "ducats": null,
+   "lastOffered": null
+  },
+  "Void Trader": {
+   "credits": 250000,
+   "ducats": 200,
+   "lastOffered": "2026-04-10"
+  },
+  "Volatile Ogris Skin": {
+   "credits": 325000,
+   "ducats": 350,
+   "lastOffered": "2026-07-10"
+  },
+  "Volcanic Edge": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-06-26"
+  },
+  "Voltaic Strike": {
+   "credits": 150000,
+   "ducats": 300,
+   "lastOffered": "2026-10-02"
+  },
+  "Vome Floof": {
+   "credits": 125000,
+   "ducats": 150,
+   "lastOffered": "2026-02-20"
+  },
+  "Vome-Fass Glyph": {
+   "credits": 50000,
+   "ducats": 80,
+   "lastOffered": "2026-06-26"
+  },
+  "Voruna in Action Glyph": {
+   "credits": 60000,
+   "ducats": 75,
+   "lastOffered": "2026-05-29"
+  },
+  "Vulkar Wraith": {
+   "credits": 300000,
+   "ducats": 450,
+   "lastOffered": "2026-10-02"
+  },
+  "Weaver Fighter Decoration": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-08-21"
+  },
+  "Whispers in the Walls Login Music": {
+   "credits": 170000,
+   "ducats": 165,
+   "lastOffered": "2026-07-10"
+  },
+  "Wintercress Syandana": {
+   "credits": 275000,
+   "ducats": 325,
+   "lastOffered": "2025-12-26"
+  },
+  "Wisp Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-05-15"
+  },
+  "Wysar Day of the Dead Kavat Armor": {
+   "credits": 175000,
+   "ducats": 400,
+   "lastOffered": "2025-10-31"
+  },
+  "Xaku Prex": {
+   "credits": 100000,
+   "ducats": 75,
+   "lastOffered": "2026-05-15"
+  },
+  "Xiphos Prisma Skin": {
+   "credits": 400000,
+   "ducats": 220,
+   "lastOffered": "2026-07-24"
+  },
+  "Xoris Elixis Skin": {
+   "credits": 280000,
+   "ducats": 320,
+   "lastOffered": "2026-05-01"
+  },
+  "Yisi Glyph": {
+   "credits": 45000,
+   "ducats": 55,
+   "lastOffered": "2026-03-06"
+  },
+  "Zag Luxxum Ornament": {
+   "credits": 100000,
+   "ducats": 100,
+   "lastOffered": "2026-06-12"
+  },
+  "Zanuka Hunter Beacon": {
+   "credits": 125000,
+   "ducats": 200,
+   "lastOffered": "2026-07-10"
+  },
+  "Zephyr Immortal Skin": {
+   "credits": 100000,
+   "ducats": 550,
+   "lastOffered": "2026-03-06"
+  },
+  "Zylok": {
+   "credits": 200000,
+   "ducats": 500,
+   "lastOffered": "2026-07-24"
+  },
+  "Zylok Elixis Skin": {
+   "credits": 420000,
+   "ducats": 300,
+   "lastOffered": "2026-10-02"
+  }
+ }
+}

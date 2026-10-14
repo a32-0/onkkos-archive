@@ -1,0 +1,5578 @@
+{
+ "resources": {
+  "[PH]": {
+   "rarity": null,
+   "type": null,
+   "location": null,
+   "link": "WARFRAME_Wiki"
+  },
+  "Nonono": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Nonono"
+  },
+  "Vomval Trumpet": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Vomval Trumpet"
+  },
+  "Devil's Cap": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Devil's Cap"
+  },
+  "Thorn Tooth": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Thorn Tooth"
+  },
+  "Ironwood": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Ironwood"
+  },
+  "Muck Bonnet": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Muck Bonnet"
+  },
+  "Thunder-Button": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Thunder-Button"
+  },
+  "Winter Spear": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Winter Spear"
+  },
+  "Blister Stalk": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Blister Stalk"
+  },
+  "Borica": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Borica"
+  },
+  "Violet's Bane": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Violet's Bane"
+  },
+  "Gamma Berry": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Gamma Berry"
+  },
+  "Reeking Puffball": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Reeking Puffball"
+  },
+  "Ferrofungus": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Ferrofungus"
+  },
+  "Spring Popper": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Spring Popper"
+  },
+  "Dull Button": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Deepmines Bounties on Venus",
+   "link": "Dull Button"
+  },
+  "Fergolyte": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "The Deepmines below Fortuna, Venus.",
+   "link": "Fergolyte"
+  },
+  "Kullervo's Bane": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Earned by confronting Kullervo and defeating the Orowyrm in the same Duviri mission during the Fear, Anger, or Sorrow spiral",
+   "link": "Kullervo's Bane"
+  },
+  "Ueymag": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Ueymag"
+  },
+  "Ack & Brunt Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ack & Brunt Incarnon Genesis"
+  },
+  "Angstrum Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Angstrum Incarnon Genesis"
+  },
+  "Anku Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Anku Incarnon Genesis"
+  },
+  "Bo Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Bo Incarnon Genesis"
+  },
+  "Boar Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Boar Incarnon Genesis"
+  },
+  "Ceramic Dagger Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ceramic Dagger Incarnon Genesis"
+  },
+  "Cestra Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Cestra Incarnon Genesis"
+  },
+  "Dera Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Dera Incarnon Genesis"
+  },
+  "Destreza Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Destreza Incarnon Genesis"
+  },
+  "Dual Ichor Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Dual Ichor Incarnon Genesis"
+  },
+  "Furax Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Furax Incarnon Genesis"
+  },
+  "Gammacor Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Gammacor Incarnon Genesis"
+  },
+  "Gorgon Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Gorgon Incarnon Genesis"
+  },
+  "Hate Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Hate Incarnon Genesis"
+  },
+  "Magistar Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Magistar Incarnon Genesis"
+  },
+  "Nami Solo Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Nami Solo Incarnon Genesis"
+  },
+  "Obex Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Obex Incarnon Genesis"
+  },
+  "Okina Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Okina Incarnon Genesis"
+  },
+  "Sibear Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Sibear Incarnon Genesis"
+  },
+  "Sicarus Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Sicarus Incarnon Genesis"
+  },
+  "Skana Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Skana Incarnon Genesis"
+  },
+  "Sybaris Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Sybaris Incarnon Genesis"
+  },
+  "Boltor Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Boltor Incarnon Genesis"
+  },
+  "Braton Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Braton Incarnon Genesis"
+  },
+  "Burston Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Burston Incarnon Genesis"
+  },
+  "Dread Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Dread Incarnon Genesis"
+  },
+  "Latron Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Latron Incarnon Genesis"
+  },
+  "Miter Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Miter Incarnon Genesis"
+  },
+  "Paris Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Paris Incarnon Genesis"
+  },
+  "Soma Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Soma Incarnon Genesis"
+  },
+  "Strun Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Strun Incarnon Genesis"
+  },
+  "Torid Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Torid Incarnon Genesis"
+  },
+  "Vectis Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Vectis Incarnon Genesis"
+  },
+  "Atomos Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Atomos Incarnon Genesis"
+  },
+  "Ballistica Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ballistica Incarnon Genesis"
+  },
+  "Bronco Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Bronco Incarnon Genesis"
+  },
+  "Despair Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Despair Incarnon Genesis"
+  },
+  "Dual Toxocyst Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Dual Toxocyst Incarnon Genesis"
+  },
+  "Furis Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Furis Incarnon Genesis"
+  },
+  "Kunai Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Kunai Incarnon Genesis"
+  },
+  "Lato Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Lato Incarnon Genesis"
+  },
+  "Lex Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Lex Incarnon Genesis"
+  },
+  "Stug Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Stug Incarnon Genesis"
+  },
+  "Vasto Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Vasto Incarnon Genesis"
+  },
+  "Zylok Incarnon Genesis": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Zylok Incarnon Genesis"
+  },
+  "Ariette Scale": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": "Maw Feeding in The Duviri Experience",
+   "link": "Ariette Scale"
+  },
+  "Pathos Clamp": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Rewarded upon defeating the Orowyrm in Duviri",
+   "link": "Pathos Clamp"
+  },
+  "Lamentus": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Lamentus"
+  },
+  "Eevani": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Eevani"
+  },
+  "Dracroot": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Dracroot"
+  },
+  "Enigma Gyrum": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Earned by completing Enigmas in The Duviri Experience",
+   "link": "Enigma Gyrum"
+  },
+  "Inaak": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Inaak"
+  },
+  "Xiran": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Xiran"
+  },
+  "Haav": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Haav"
+  },
+  "Namaes": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Namaes"
+  },
+  "Seonn": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Seonn"
+  },
+  "Archwing Launcher Segment": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Archwing Launcher Segment"
+  },
+  "Corufell Receiver": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Corufell"
+  },
+  "Corufell Handle": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Corufell"
+  },
+  "Corufell Barrel": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Corufell"
+  },
+  "Rania Crystal Fragment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Crystal Fragment"
+  },
+  "Belric Crystal Fragment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Crystal Fragment"
+  },
+  "Nosam Cutter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Nosam Cutter"
+  },
+  "Focused Nosam Cutter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Focused Nosam Cutter"
+  },
+  "Advanced Nosam Cutter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Advanced Nosam Cutter"
+  },
+  "Sunpoint Plasma Drill": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Sunpoint Plasma Drill"
+  },
+  "Omni": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Omni"
+  },
+  "Glappid Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Glappid Bait"
+  },
+  "Cuthol Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Cuthol Bait"
+  },
+  "Norg Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Norg Bait"
+  },
+  "Murkray Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Murkray Bait"
+  },
+  "Twilight Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Twilight Bait"
+  },
+  "Peppered Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Peppered Bait"
+  },
+  "Synathid Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Synathid Bait"
+  },
+  "Charamote Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Charamote Bait"
+  },
+  "Tromyzon Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Tromyzon Bait"
+  },
+  "Longwinder Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Longwinder Bait"
+  },
+  "Mirewinder Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Mirewinder Bait"
+  },
+  "Kriller Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Kriller Bait"
+  },
+  "Narrow-Spectrum Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Narrow-Spectrum Bait"
+  },
+  "Broad-Spectrum Bait": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Broad-Spectrum Bait"
+  },
+  "Processed Fass Residue": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Processed Fass Residue"
+  },
+  "Processed Vome Residue": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Processed Vome Residue"
+  },
+  "Grendel Neuroptics Locator": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Grendel Neuroptics Locator"
+  },
+  "Grendel Systems Locator": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Grendel Systems Locator"
+  },
+  "Grendel Chassis Locator": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Grendel Chassis Locator"
+  },
+  "Enter Nihil's Oubliette": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Enter Nihil's Oubliette"
+  },
+  "Abyssal Beacon": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Abyssal Beacon"
+  },
+  "Baro Void-Signal": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Baro Void-Signal"
+  },
+  "Mutalist Alad V Assassinate": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Mutalist Alad V Assassinate Key"
+  },
+  "Jordas Golem Assassinate": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Jordas Golem"
+  },
+  "Twilight Apothic": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Twilight Apothic"
+  },
+  "Sunrise Apothic": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Sunrise Apothic"
+  },
+  "Nightfall Apothic": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Nightfall Apothic"
+  },
+  "Squad Ammo Restore (Large)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Ammo Restore"
+  },
+  "Squad Health Restore (Large)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Health Restore"
+  },
+  "Squad Energy Restore (Large)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Energy Restore"
+  },
+  "Squad Shield Restore (Large)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Shield Restore"
+  },
+  "Squad Ammo Restore (Medium)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Ammo Restore"
+  },
+  "Squad Health Restore (Medium)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Health Restore"
+  },
+  "Squad Energy Restore (Medium)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Energy Restore"
+  },
+  "Squad Shield Restore (Medium)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Shield Restore"
+  },
+  "Squad Ammo Restore (Small)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Ammo Restore"
+  },
+  "Squad Health Restore (Small)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Health Restore"
+  },
+  "Squad Energy Restore (Small)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Energy Restore"
+  },
+  "Squad Shield Restore (Small)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Squad Shield Restore"
+  },
+  "Fosfor Blau": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Fosfor#Fosfor Blau"
+  },
+  "Fosfor Rahd": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Fosfor#Fosfor Rahd"
+  },
+  "Calcifin Stim": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stims#Calcifin Stim"
+  },
+  "Adrenal Stim": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stims#Adrenal Stim"
+  },
+  "Refract Stim": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stims#Refract Stim"
+  },
+  "Clotra Stim": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stims#Clotra Stim"
+  },
+  "Amethyst Antitoxin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antitoxin (Gear)#Amethyst"
+  },
+  "Beryl Antitoxin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antitoxin (Gear)#Beryl"
+  },
+  "Citrine Antitoxin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antitoxin (Gear)#Citrine"
+  },
+  "Topaz Antitoxin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antitoxin (Gear)#Topaz"
+  },
+  "Lapis Antitoxin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antitoxin (Gear)#Lapis"
+  },
+  "Vermillion Antitoxin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antitoxin (Gear)#Vermillion"
+  },
+  "Hobbled Dragon Key": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Hobbled Dragon Key"
+  },
+  "Extinguished Dragon Key": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Extinguished Dragon Key"
+  },
+  "Decaying Dragon Key": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Decaying Dragon Key"
+  },
+  "Bleeding Dragon Key": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Bleeding Dragon Key"
+  },
+  "Air Support Charges": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Air Support Charges"
+  },
+  "Atomicycle Summon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Atomicycle Summon"
+  },
+  "Eros Arrow Skin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Eros Arrow Skin"
+  },
+  "Ki'Teer Fireworks": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Ki'Teer Fireworks"
+  },
+  "Glyph Prism": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Glyph Prism"
+  },
+  "Health Restore (Large)": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Health Restore"
+  },
+  "Kaithe Summon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Kaithe Summon"
+  },
+  "K-Drive Launcher": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "K-Drive Launcher"
+  },
+  "Necramech Summon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Necramech Summon"
+  },
+  "On Call Crew": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "On Call Crew"
+  },
+  "Orokin Eye": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Orokin Eye"
+  },
+  "Wolf Beacon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Wolf Beacon"
+  },
+  "Stalker Beacon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stalker Beacon"
+  },
+  "Zanuka Hunter Beacon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Zanuka Hunter Beacon"
+  },
+  "Grustrag Three Beacon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Grustrag Three Beacon"
+  },
+  "Archwing Launcher": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Archwing Launcher"
+  },
+  "Archgun Deployer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Archgun Deployer"
+  },
+  "Tranq Rifle": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Tranq Rifle"
+  },
+  "Echo-Lure": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Echo-Lure"
+  },
+  "Synthesis Scanner": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Synthesis Scanner"
+  },
+  "Thermian RPG": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Thermian RPG"
+  },
+  "Pharoma": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Pharoma"
+  },
+  "Luminous Dye": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Luminous Dye"
+  },
+  "Loc-Pin": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Loc-Pin"
+  },
+  "Remote Observer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Remote Observer"
+  },
+  "OpLink": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "OpLink"
+  },
+  "Razorback Cipher": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Razorback Cipher"
+  },
+  "Infested Catalyst": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Infested Catalyst"
+  },
+  "Eidolon Phylaxis": {
+   "rarity": null,
+   "type": "Gear",
+   "location": "Nakak's Operational Supply in Cetus",
+   "link": "Eidolon Phylaxis"
+  },
+  "Codex Scanner": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Codex Scanner"
+  },
+  "Corpus Void Key": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Corpus Void Key"
+  },
+  "Starburst": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Starburst"
+  },
+  "Grand Finale": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Grand Finale"
+  },
+  "Clan Key": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Clan Key"
+  },
+  "Cipher": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Cipher"
+  },
+  "Health Restore": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Health Restore"
+  },
+  "Omni Ammo Box": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Omni Ammo Box"
+  },
+  "Antiserum Injector": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Antiserum Injector"
+  },
+  "Fomorian Disruptor": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Fomorian Disruptor"
+  },
+  "Kinetic Siphon Trap": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Kinetic Siphon Trap"
+  },
+  "Mod Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Mod Drop Chance Booster"
+  },
+  "30 Day Mod Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Mod Drop Chance Booster"
+  },
+  "3 Day Mod Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Mod Drop Chance Booster"
+  },
+  "7 Day Mod Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Mod Drop Chance Booster"
+  },
+  "90-Day Mod Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Mod Drop Chance Booster"
+  },
+  "Resource Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Drop Chance Booster"
+  },
+  "30 Day Resource Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Drop Chance Booster"
+  },
+  "3 Day Resource Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Drop Chance Booster"
+  },
+  "7 Day Resource Drop Chance Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Drop Chance Booster"
+  },
+  "Credit Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Credit Booster"
+  },
+  "30 Day Credit Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Credit Booster"
+  },
+  "3 Day Credit Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Credit Booster"
+  },
+  "7 Day Credit Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Credit Booster"
+  },
+  "90-Day Credit Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Credit Booster"
+  },
+  "Resource Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Booster"
+  },
+  "30 Day Resource Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Booster"
+  },
+  "3 Day Resource Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Booster"
+  },
+  "7 Day Resource Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Booster"
+  },
+  "90-Day Resource Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Resource Booster"
+  },
+  "Affinity Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Affinity Booster"
+  },
+  "30 Day Affinity Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Affinity Booster"
+  },
+  "3 Day Affinity Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Affinity Booster"
+  },
+  "7 Day Affinity Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Affinity Booster"
+  },
+  "90-Day Affinity Booster": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Affinity Booster"
+  },
+  "Ayatan Sah Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Ayr Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Orta Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Vaya Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Piv Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Kitha Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Anasa Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Valana Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Zambuka Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Hemakara Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Ayatan Chattraka Sculpture": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Ayatan Treasures"
+  },
+  "Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Archon Shard"
+  },
+  "Amber Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Amber Archon Shard"
+  },
+  "Tauforged Amber Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Amber Archon Shard"
+  },
+  "Azure Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Azure Archon Shard"
+  },
+  "Tauforged Azure Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Azure Archon Shard"
+  },
+  "Crimson Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Crimson Archon Shard"
+  },
+  "Tauforged Crimson Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Crimson Archon Shard"
+  },
+  "Emerald Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Emerald Archon Shard"
+  },
+  "Tauforged Emerald Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Emerald Archon Shard"
+  },
+  "Topaz Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Topaz Archon Shard"
+  },
+  "Tauforged Topaz Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Topaz Archon Shard"
+  },
+  "Violet Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Violet Archon Shard"
+  },
+  "Tauforged Violet Archon Shard": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Violet Archon Shard"
+  },
+  "Refacia Kit": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Refacia Kit"
+  },
+  "Amp Arcane Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Amp Arcane Adapter"
+  },
+  "Argozene": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Argozene"
+  },
+  "Secondary Arcane Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Secondary Arcane Adapter"
+  },
+  "Primary Arcane Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Primary Arcane Adapter"
+  },
+  "Melee Arcane Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Melee Arcane Adapter"
+  },
+  "Archgun Arcane Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Archgun Arcane Adapter"
+  },
+  "Exilus Weapon Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Exilus Weapon Adapter"
+  },
+  "Exilus Warframe Adapter": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Exilus Warframe Adapter"
+  },
+  "Orokin Catalyst": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Orokin Catalyst"
+  },
+  "Orokin Reactor": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Orokin Reactor"
+  },
+  "Veiled Riven Cipher": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Veiled Riven Cipher"
+  },
+  "Nutrio Incubator Upgrade Segment": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Nutrio Incubator Upgrade Segment"
+  },
+  "Landing Craft Foundry Segment": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Landing Craft Foundry Segment"
+  },
+  "Gravimag": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Gravimag"
+  },
+  "Aura Forma": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Aura Forma"
+  },
+  "Omni Forma": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Omni Forma"
+  },
+  "Stance Forma": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Stance Forma"
+  },
+  "Umbra Forma": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Umbra Forma"
+  },
+  "Simulacrum Access Key": {
+   "rarity": null,
+   "type": "Key",
+   "location": null,
+   "link": "Simulacrum"
+  },
+  "Nai-Zhen Kubrow Collar": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Kubrow"
+  },
+  "Nautilus Cerebrum": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Nautilus"
+  },
+  "Nautilus Carapace": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Nautilus"
+  },
+  "Nautilus Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Nautilus"
+  },
+  "Animo Nav Beacon": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Animo Nav Beacon"
+  },
+  "Tethra Cipher": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Tethra Cipher"
+  },
+  "Tethra Shield Cipher": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Tethra Shield Cipher"
+  },
+  "Narmer Isoplast": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Narmer Bounties in the Plains of Eidolon (Earth) and Orb Vallis (Venus)",
+   "link": "Narmer Isoplast"
+  },
+  "Credits": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Credits"
+  },
+  "Höllars": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Credits"
+  },
+  "Endo": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Endo"
+  },
+  "Platinum": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Platinum"
+  },
+  "Regal Aya": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Regal Aya"
+  },
+  "Aya": {
+   "rarity": null,
+   "type": "Currency",
+   "location": "Void Missions and Bounties",
+   "link": "Aya"
+  },
+  "Scarlet Credits": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Operation: Scarlet Spear"
+  },
+  "Trading": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Trading"
+  },
+  "Standing": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Standing"
+  },
+  "Nora's Mix Vol. 1 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 1"
+  },
+  "Nora's Mix Vol. 2 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 2"
+  },
+  "Nora's Mix Vol. 3 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 3"
+  },
+  "Nora's Mix Vol. 4 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 4"
+  },
+  "Nora's Mix Vol. 5 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 5"
+  },
+  "Nora's Mix Vol. 6 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 6"
+  },
+  "Nora's Mix Vol. 7 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 7"
+  },
+  "Nora's Mix Vol. 8 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 8"
+  },
+  "Nora's Mix Vol. 9 Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix Volume 9"
+  },
+  "Nora's Mix: Dreams of the Dead Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix: Dreams of the Dead"
+  },
+  "Nora's Mix: Time Tempests Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Mix: Time Tempests"
+  },
+  "Nora's Choice Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Nora's Choice"
+  },
+  "Emissary Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Series 2"
+  },
+  "Wolf Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Series 1"
+  },
+  "Intermission I Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Intermission"
+  },
+  "Intermission II Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Intermission II"
+  },
+  "Intermission III Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Intermission III"
+  },
+  "Crystal Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Series 3"
+  },
+  "Amir's Shockwave Cred": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Nightwave/Amir's Shockwave"
+  },
+  "Ash Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Ash"
+  },
+  "Oberon Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Oberon"
+  },
+  "Volt Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Volt"
+  },
+  "Frost Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Frost"
+  },
+  "Ember Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Ember"
+  },
+  "Garuda Systems": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Garuda"
+  },
+  "Rush Repair Drone": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Rush Repair Drone"
+  },
+  "Tethron Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Tethron Antigen"
+  },
+  "Ibexan Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Ibexan Antigen"
+  },
+  "Elasmun Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Elasmun Antigen"
+  },
+  "Iranon Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Iranon Antigen"
+  },
+  "Poxi Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Poxi Antigen"
+  },
+  "Plagen Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Plagen Antigen"
+  },
+  "Virox Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Virox Antigen"
+  },
+  "Desus Antigen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Desus Antigen"
+  },
+  "Monachod Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Monachod Mutagen"
+  },
+  "Arioli Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Arioli Mutagen"
+  },
+  "Chiten Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Chiten Mutagen"
+  },
+  "Leptosam Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Leptosam Mutagen"
+  },
+  "Phijar Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Phijar Mutagen"
+  },
+  "Zarim Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Zarim Mutagen"
+  },
+  "Elsa Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Elsa Mutagen"
+  },
+  "Adra Mutagen": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Adra Mutagen"
+  },
+  "Kubrow Egg": {
+   "rarity": null,
+   "type": "Component",
+   "location": "Kubrow Dens found in Grineer Forests on Earth",
+   "link": "Kubrow Egg"
+  },
+  "Insignia": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Defender Insignia": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "General Insignia": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Medallion": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Lawful Medallion": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Maxim Medallion": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Datum": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Intriguing Datum": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Genius Datum": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Quittance": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Executive Quittance": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Partner Quittance": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Mark": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Honored Mark": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Exalted Mark": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Seed": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Bountiful Seed": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Flawless Seed": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Syndicate Medallions"
+  },
+  "Universal Medallion": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Universal Medallion"
+  },
+  "Genetic Code Template": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Genetic Code Template"
+  },
+  "DNA Stabilizer": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "DNA Stabilizer"
+  },
+  "Requiem Ultimatum": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Requiem Ultimatum"
+  },
+  "Cosmic Specter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Specter (Tenno)"
+  },
+  "Force Specter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Specter (Tenno)"
+  },
+  "Phase Specter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Specter (Tenno)"
+  },
+  "Vapor Specter": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Specter (Tenno)"
+  },
+  "Cosmic Specter Regiment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Specter Regiment"
+  },
+  "Force Specter Regiment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Specter Regiment"
+  },
+  "Phase Specter Regiment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Specter Regiment"
+  },
+  "Vapor Specter Regiment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Specter Regiment"
+  },
+  "Lich Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lich Token"
+  },
+  "Sisters of Parvos Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Sisters of Parvos Token"
+  },
+  "Orokin Archive": {
+   "rarity": null,
+   "type": "Quest",
+   "location": null,
+   "link": "The Archwing"
+  },
+  "Incubator Power Core": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Incubator Power Core"
+  },
+  "Glappid": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Ocean Hotspot during Night with Glappid Bait, using Peram fishing spear.",
+   "link": "Glappid"
+  },
+  "Cuthol": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Pond Hotspot during Night with Cuthol Bait, using Lanzo fishing spear.",
+   "link": "Cuthol"
+  },
+  "Norg": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Lake Hotspot during Night with Norg Bait, using Peram fishing spear.",
+   "link": "Norg"
+  },
+  "Murkray": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Ocean Hotspot during Day / Night with Murkray Bait, using Lanzo fishing spear.",
+   "link": "Murkray"
+  },
+  "Karkina": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Ocean during Day / Night with Twilight Bait, using Lanzo / Tulok fishing spear.",
+   "link": "Karkina"
+  },
+  "Sharrac": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Ocean during Day / Night with Twilight Bait, using Lanzo / Tulok fishing spear.",
+   "link": "Sharrac"
+  },
+  "Tralok": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Ocean during Day with Peppered Bait, using Tulok fishing spear.",
+   "link": "Tralok"
+  },
+  "Goopolla": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Ocean during Day / Night with Twilight Bait, using Lanzo / Tulok / Peram fishing spear.",
+   "link": "Goopolla"
+  },
+  "Mortus Lungfish": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Pond during Day / Night with Twilight Bait, using Lanzo / Peram fishing spear.",
+   "link": "Mortus Lungfish"
+  },
+  "Yogwun": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Pond during Day with Peppered Bait, using Lanzo / Tulok / Peram fishing spear.",
+   "link": "Yogwun"
+  },
+  "Khut-Khut": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Pond during Day / Night with Twilight Bait, using Lanzo / Tulok / Peram fishing spear.",
+   "link": "Khut-Khut"
+  },
+  "Charc Eel": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Lake during Day / Night with Twilight Bait, using Lanzo / Tulok / Peram fishing spear.",
+   "link": "Charc Eel"
+  },
+  "Mawfish": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Plains of Eidolon (Earth), Lake during Day with Peppered Bait, using Lanzo / Tulok / Peram fishing spear.",
+   "link": "Mawfish"
+  },
+  "Synathid": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Cave Hotspot during Cold / Warm cycle with Synathid Bait (prefers Warm cycle), using Shockprod / Stunna fishing spear.",
+   "link": "Synathid"
+  },
+  "Charamote": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Cave during Cold / Warm cycle with Charamote Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Charamote"
+  },
+  "Tromyzon": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Pond Hotspot during Cold cycle with Tromyzon Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Tromyzon"
+  },
+  "Recaster": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Pond Hotspot during Cold cycle with Narrow-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Recaster"
+  },
+  "Kriller": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Lake during Warm cycle with Kriller Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Kriller"
+  },
+  "Sapcaddy": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Lake during Cold cycle with Broad-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Sapcaddy"
+  },
+  "Tink": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Pond during Cold cycle with Broad-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Tink"
+  },
+  "Brickie": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Pond during Warm cycle with Broad-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Brickie"
+  },
+  "Longwinder": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Lake Hotspot during Warm cycle with Longwinder Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Longwinder"
+  },
+  "Mirewinder": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Cave during Cold / Warm cycle with Mirewinder Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Mirewinder"
+  },
+  "Echowinder": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Lake during Warm cycle with Broad-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Echowinder"
+  },
+  "Scrubber": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Cave during Cold / Warm cycle with Broad-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Scrubber"
+  },
+  "Eye-Eye": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Orb Vallis (Venus), Pond during Warm cycle with Narrow-Spectrum Bait, using Shockprod / Stunna fishing spear.",
+   "link": "Eye-Eye"
+  },
+  "Lobotriscid": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface during Vome cycle, using Spari / Ebisu fishing spear.",
+   "link": "Lobotriscid"
+  },
+  "Kymaeros": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface during Fass / Vome cycle, using Spari / Ebisu fishing spear.",
+   "link": "Kymaeros"
+  },
+  "Glutinox": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface during Vome cycle with Fass Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Glutinox"
+  },
+  "Flagellocanth": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface Hotspot during Fass / Vome cycle with Processed Fass Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Flagellocanth"
+  },
+  "Cryptosuctus": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface during Fass cycle, using Spari / Ebisu fishing spear.",
+   "link": "Cryptosuctus"
+  },
+  "Barbisteo": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Cave during Fass / Vome cycle, using Spari / Ebisu fishing spear.",
+   "link": "Barbisteo"
+  },
+  "Amniophysi": {
+   "rarity": "Common",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Cave during Fass / Vome cycle, using Spari / Ebisu fishing spear.",
+   "link": "Amniophysi"
+  },
+  "Duroid": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Cave Hotspot during Fass / Vome cycle with Vome Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Duroid"
+  },
+  "Myxostomata": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Cave Hotspot during Vome cycle with Processed Vome Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Myxostomata"
+  },
+  "Chondricord": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Cave Hotspot during Fass / Vome cycle with Vome Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Chondricord"
+  },
+  "Vitreospina": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Cave during Fass / Vome cycle with Fass Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Vitreospina"
+  },
+  "Ostimyr": {
+   "rarity": "Uncommon",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface Hotspot during Fass cycle with Fass Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Ostimyr"
+  },
+  "Aquapulmo": {
+   "rarity": "Rare",
+   "type": "Fish",
+   "location": "Cambion Drift (Deimos), Surface Hotspot during Vome cycle with Processed Fass Residue as bait, using Spari / Ebisu fishing spear.",
+   "link": "Aquapulmo"
+  },
+  "Coastal Mergoo Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Coastal Mergoo Tag"
+  },
+  "Woodland Mergoo Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Woodland Mergoo Tag"
+  },
+  "Splendid Mergoo Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Splendid Mergoo Tag"
+  },
+  "Ostia Vasca Kavat Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Ostia Vasca Kavat Tag"
+  },
+  "Bau Vasca Kavat Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Bau Vasca Kavat Tag"
+  },
+  "Nephil Vasca Kavat Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Nephil Vasca Kavat Tag"
+  },
+  "Plains Kuaka Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Plains Kuaka Tag"
+  },
+  "Ashen Kuaka Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Ashen Kuaka Tag"
+  },
+  "Ghost Kuaka Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Ghost Kuaka Tag"
+  },
+  "Common Condroc Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Common Condroc Tag"
+  },
+  "Rogue Condroc Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Rogue Condroc Tag"
+  },
+  "Emperor Condroc Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Emperor Condroc Tag"
+  },
+  "White-Breasted Virmink Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "White-Breasted Virmink Tag"
+  },
+  "Dusky-Headed Virmink Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Dusky-Headed Virmink Tag"
+  },
+  "Red-Crested Virmink Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Red-Crested Virmink Tag"
+  },
+  "Sentinel Stover Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Sentinel Stover Tag"
+  },
+  "Fuming Dax Stover Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Fuming Dax Stover Tag"
+  },
+  "Fire-Veined Stover Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Fire-Veined Stover Tag"
+  },
+  "Flossy Sawgaw Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Flossy Sawgaw Tag"
+  },
+  "Alpine Monitor Sawgaw Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Alpine Monitor Sawgaw Tag"
+  },
+  "Frogmouthed Sawgaw Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Frogmouthed Sawgaw Tag"
+  },
+  "Brindle Kubrodon Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Brindle Kubrodon Tag"
+  },
+  "Vallis Kubrodon Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Vallis Kubrodon Tag"
+  },
+  "Kubrodon Incarnadine Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Kubrodon Incarnadine Tag"
+  },
+  "Dappled Horrasque Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Dappled Horrasque Tag"
+  },
+  "Swimmer Horrasque Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Swimmer Horrasque Tag"
+  },
+  "Horrasque Stormer Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Horrasque Stormer Tag"
+  },
+  "Spotted Bolarola Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Spotted Bolarola Tag"
+  },
+  "Black-Banded Bolarola Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Black-Banded Bolarola Tag"
+  },
+  "Thorny Bolarola Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Thorny Bolarola Tag"
+  },
+  "Sunny Pobber Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Sunny Pobber Tag"
+  },
+  "Delicate Pobber Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Delicate Pobber Tag"
+  },
+  "Subterranean Pobber Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Subterranean Pobber Tag"
+  },
+  "Equinox Day Aspect": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Equinox"
+  },
+  "Equinox Night Aspect": {
+   "rarity": null,
+   "type": "Component",
+   "location": null,
+   "link": "Equinox"
+  },
+  "Common Avichaea Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Avichaea"
+  },
+  "Viscid Avichaea Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Avichaea"
+  },
+  "Sporule Avichaea Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Avichaea"
+  },
+  "Burrowing Cryptilex Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Cryptilex"
+  },
+  "Caustic Cryptilex Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Cryptilex"
+  },
+  "Septic Cryptilex Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Cryptilex"
+  },
+  "Purple Velocipod Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Velocipod"
+  },
+  "White Velocipod Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Velocipod"
+  },
+  "Green Velocipod Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Velocipod"
+  },
+  "Vizier Predasite Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Predasite"
+  },
+  "Pharaoh Predasite Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Predasite"
+  },
+  "Medjay Predasite Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Predasite"
+  },
+  "Amethyst Nexifera Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Nexifera"
+  },
+  "Viridian Nexifera Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Nexifera"
+  },
+  "Scarlet Nexifera Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Nexifera"
+  },
+  "Umber Undazoa Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Undazoa"
+  },
+  "Vaporous Undazoa Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Undazoa"
+  },
+  "Howler Undazoa Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Conservation#Undazoa"
+  },
+  "Sly Vulpaphyla Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Vulpaphyla"
+  },
+  "Crescent Vulpaphyla Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Vulpaphyla"
+  },
+  "Panzer Vulpaphyla Tag": {
+   "rarity": null,
+   "type": "Conservation",
+   "location": null,
+   "link": "Vulpaphyla"
+  },
+  "Pigment": {
+   "rarity": null,
+   "type": "Research",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Chroma Signal": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "The New Strange/Chroma Signal"
+  },
+  "Scorched Beacon": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "The New Strange/Scorched Beacon"
+  },
+  "Chroma Mark": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "The New Strange/Chroma Mark"
+  },
+  "Pherliac Pods": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Pherliac Pod"
+  },
+  "Phasic Cells": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Phasic Cells"
+  },
+  "Potent Pherliac Pods": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Potent Pherliac Pods"
+  },
+  "Tethra Data Fragments": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Tethra Data Fragments"
+  },
+  "Orokin Ducats": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Orokin Ducats"
+  },
+  "Omega Beacon": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Omega Beacon"
+  },
+  "Delta Beacon": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Delta Beacon"
+  },
+  "Gamma Beacon": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Gamma Beacon"
+  },
+  "Kappa Beacon": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Kappa Beacon"
+  },
+  "Encrypted Journal Fragment": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Encrypted Journal Fragment"
+  },
+  "Nakak Pearl": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Nakak Pearl"
+  },
+  "Alpha Corruptor": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Corruptor"
+  },
+  "Beta Corruptor": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Corruptor"
+  },
+  "Sirius' Swaddle Syandana": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Sirius' Swaddle Syandana"
+  },
+  "Stable Corruptor": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Corruptor"
+  },
+  "Forma": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Forma"
+  },
+  "Ayatan Amber Star": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Ayatan Star"
+  },
+  "Ayatan Cyan Star": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Ayatan Star"
+  },
+  "Proof Fragment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "The Limbo Theorem"
+  },
+  "Mutalist Alad V Nav Coordinate": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Infestation Outbreaks Invasion Rewards, Hyf and Terrorem (Deimos), and Resource Caches found in Naeglar (Eris) and Formido (Deimos)",
+   "link": "Mutalist Alad V Nav Coordinate"
+  },
+  "Focus": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Focus"
+  },
+  "Focus Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Regular Lens"
+  },
+  "Madurai Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Regular Lens"
+  },
+  "Naramon Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Regular Lens"
+  },
+  "Vazarin Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Regular Lens"
+  },
+  "Unairu Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Regular Lens"
+  },
+  "Zenurik Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Regular Lens"
+  },
+  "Greater Focus Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Greater Lens"
+  },
+  "Greater Madurai Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Greater Lens"
+  },
+  "Greater Naramon Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Greater Lens"
+  },
+  "Greater Vazarin Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Greater Lens"
+  },
+  "Greater Unairu Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Greater Lens"
+  },
+  "Greater Zenurik Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Greater Lens"
+  },
+  "Eidolon Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Lens"
+  },
+  "Eidolon Madurai Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Lens"
+  },
+  "Eidolon Naramon Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Lens"
+  },
+  "Eidolon Vazarin Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Lens"
+  },
+  "Eidolon Unairu Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Lens"
+  },
+  "Eidolon Zenurik Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Lens"
+  },
+  "Lua Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lua Lens"
+  },
+  "Lua Madurai Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lua Lens"
+  },
+  "Lua Naramon Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lua Lens"
+  },
+  "Lua Vazarin Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lua Lens"
+  },
+  "Lua Unairu Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lua Lens"
+  },
+  "Lua Zenurik Lens": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lua Lens"
+  },
+  "/Lotus/Language/Items/Relayreconstructionitemaname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Items/Relayreconstructionitemaname"
+  },
+  "/Lotus/Language/Items/Relayreconstructionitembname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Items/Relayreconstructionitembname"
+  },
+  "/Lotus/Language/Items/Relayreconstructionitemcname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Items/Relayreconstructionitemcname"
+  },
+  "/Lotus/Language/Relayreconstruction/Relayreconphase1leftitemname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Relayreconstruction/Relayreconphase1leftitemname"
+  },
+  "/Lotus/Language/Relayreconstruction/Relayreconphase2aleftitemname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Relayreconstruction/Relayreconphase2aleftitemname"
+  },
+  "/Lotus/Language/Relayreconstruction/Relayreconphase2arightitemname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Relayreconstruction/Relayreconphase2arightitemname"
+  },
+  "/Lotus/Language/Relayreconstruction/Relayreconphase2clanitemname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Relayreconstruction/Relayreconphase2clanitemname"
+  },
+  "/Lotus/Language/Relayreconstruction/Relayreconphase3clanitemname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Relayreconstruction/Relayreconphase3clanitemname"
+  },
+  "/Lotus/Language/Relayreconstruction/Relayreconphase3leftitemname": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "/Lotus/Language/Relayreconstruction/Relayreconphase3leftitemname"
+  },
+  "/Lotus/Language/Scans/Gofplantaplantname": {
+   "rarity": null,
+   "type": "Plant",
+   "location": null,
+   "link": "/Lotus/Language/Scans/Gofplantaplantname"
+  },
+  "/Lotus/Language/Scans/Gofplanteplantname": {
+   "rarity": null,
+   "type": "Plant",
+   "location": null,
+   "link": "/Lotus/Language/Scans/Gofplanteplantname"
+  },
+  "01000011 Cyan Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Adramal Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Adramal Alloy"
+  },
+  "Adramalium": {
+   "rarity": "Common",
+   "type": "Ore",
+   "location": "Cambion Drift (Deimos) from Yellow Mining Lesions, Spitia Infested Cysts, and Rolizor Infested Cysts.",
+   "link": "Adramalium"
+  },
+  "Advances Debt-Bond": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Advances Debt-Bond"
+  },
+  "Aggristone": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Aggristone"
+  },
+  "Alloy Plate": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Venus, Phobos, Ceres, Jupiter, Pluto, and Sedna.",
+   "link": "Alloy Plate"
+  },
+  "Amarast": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Orb Vallis (Venus) from Blue Mining Veins and Resource Containers",
+   "link": "Amarast"
+  },
+  "Anomaly Shard": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Murex ships found in Veil Proxima nodes marked with a special flashing icon (Railjack)",
+   "link": "Anomaly Shard"
+  },
+  "Anti Violet Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Antiserum Injector Fragment": {
+   "rarity": null,
+   "type": "Research",
+   "location": "Oestrus on Eris",
+   "link": "Antiserum Injector Fragment"
+  },
+  "Argon Crystal": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Missions in the Void",
+   "link": "Argon Crystal"
+  },
+  "Argon Purple Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Asterite": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Railjack Missions",
+   "link": "Asterite"
+  },
+  "Atramentum": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Atramentum"
+  },
+  "Atmo Systems": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained by completing Heists on the Orb Vallis (Venus)",
+   "link": "Atmo Systems"
+  },
+  "Aucrux Capacitors": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Railjack missions in Venus, Neptune, and Pluto Proximas",
+   "link": "Aucrux Capacitors"
+  },
+  "Auron": {
+   "rarity": "Rare",
+   "type": "Ore",
+   "location": "Plains of Eidolon (Earth) from Red Mining Veins and Thumpers",
+   "link": "Auron"
+  },
+  "Auroxium Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Auroxium Alloy"
+  },
+  "Autumn Brown Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Axidite": {
+   "rarity": "Common",
+   "type": "Ore",
+   "location": "Orb Vallis (Venus) from Red Mining Veins and Resource Containers",
+   "link": "Axidite"
+  },
+  "Axidrol Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Axidrol Alloy"
+  },
+  "Azurite": {
+   "rarity": "Common",
+   "type": "Gem",
+   "location": "Plains of Eidolon (Earth) from Blue Mining Veins and Thumpers",
+   "link": "Azurite"
+  },
+  "Bapholite": {
+   "rarity": "Common",
+   "type": "Ore",
+   "location": "Cambion Drift (Deimos) from Yellow Mining Lesions, Rolizor Infested Cysts, and Bonus Vaults in Isolation Vault Bounties.",
+   "link": "Bapholite"
+  },
+  "Baro's Relay Ticket": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Baro's Relay Ticket"
+  },
+  "Bellow Voca": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos)",
+   "link": "Bellow Voca"
+  },
+  "Benign Infested Tumor": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Benign Infested Tumor"
+  },
+  "Bile": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": null,
+   "link": "Helminth#Bile"
+  },
+  "Biotic Filter": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Biotic Filter"
+  },
+  "Biotics": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": null,
+   "link": "Helminth#Biotics"
+  },
+  "Bioplasma": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Bioplasma"
+  },
+  "Boiler Red Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Bonewidow Capsule": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Bonewidow Capsule"
+  },
+  "Bonewidow Casing": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Bonewidow Casing"
+  },
+  "Bonewidow Engine": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Bonewidow Engine"
+  },
+  "Bonewidow Weapon Pod": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Bonewidow Weapon Pod"
+  },
+  "Boot": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Boot"
+  },
+  "Bracoid": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Bracoid"
+  },
+  "Breath Of The Eidolon": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon Bounties on Earth",
+   "link": "Breath Of The Eidolon"
+  },
+  "Brickie Muon Battery": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Brickie Muon Battery"
+  },
+  "Brilliant Eidolon Shard": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Brilliant Eidolon Shard"
+  },
+  "Cabochon Embolos": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Cabochon Embolos"
+  },
+  "Calda Toroid": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Calda Toroid"
+  },
+  "Calx": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": null,
+   "link": "Helminth#Calx"
+  },
+  "Carbides": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Eximus units in the Grineer Shipyard Tileset, and Railjack missions in Earth, Saturn, and Veil Proximas",
+   "link": "Carbides"
+  },
+  "Cephalite Resonance": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Cephalite Resonance"
+  },
+  "Cerulean Fungus Extract": {
+   "rarity": null,
+   "type": "Plant",
+   "location": null,
+   "link": "Cerulean Fungus Extract"
+  },
+  "Cetus Wisp": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Cetus Wisp"
+  },
+  "Charamote Sagan Module": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Charamote Sagan Module"
+  },
+  "Charc Electroplax": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Charc Electroplax"
+  },
+  "Charger Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Chitinous Husk": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Drops from Juggernauts (non-endless Infested Missions) and Deimos Juggernauts (Cambion Drift on Deimos)",
+   "link": "Chitinous Husk"
+  },
+  "Chromatic Atramentum": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Chromatic Atramentum"
+  },
+  "Circuits": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Venus, Ceres, and the Kuva Fortress",
+   "link": "Circuits"
+  },
+  "Condroc Wing": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Condroc Wing"
+  },
+  "Conductor Gold Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Power Cell": {
+   "rarity": null,
+   "type": "",
+   "location": "Excavation and Defection Missions.",
+   "link": "Power Cell"
+  },
+  "Connla Sprout": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Connla Sprout"
+  },
+  "Control Module": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Europa, Neptune, and the Void",
+   "link": "Control Module"
+  },
+  "Convergence Orb": {
+   "rarity": null,
+   "type": "Booster",
+   "location": null,
+   "link": "Focus#Convergence_Orbs"
+  },
+  "Coolant Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Copernics": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Lua",
+   "link": "Copernics"
+  },
+  "Coprite Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Coprite Alloy"
+  },
+  "Coprun": {
+   "rarity": "Common",
+   "type": "Ore",
+   "location": "Plains of Eidolon (Earth) from Red Mining Veins",
+   "link": "Coprun"
+  },
+  "Corpus Cipher": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Corpus Cipher"
+  },
+  "Corpus Datamass": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Corpus Datamass"
+  },
+  "Corrupted Holokey": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Corrupted Holokey"
+  },
+  "Cortege Barrel": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Cortege Barrel"
+  },
+  "Cortege Receiver": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Cortege Receiver"
+  },
+  "Cortege Stock": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Cortege Stock"
+  },
+  "Cortichrome": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Cortichrome"
+  },
+  "Cranial Foremount": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Cranial Foremount"
+  },
+  "Crawler Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Crewman's Boot": {
+   "rarity": null,
+   "type": "Fish",
+   "location": null,
+   "link": "Crewman's Boot"
+  },
+  "Crimzian": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Plains of Eidolon (Earth) from Blue Mining Veins and Thumpers",
+   "link": "Crimzian"
+  },
+  "Crisma Toroid": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Crisma Toroid"
+  },
+  "Cryotic": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Excavation Missions on Venus, Earth, Phobos, Europa, and Neptune",
+   "link": "Cryotic"
+  },
+  "Cryptographic ALU": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Corpus Archwing units on Jupiter and Neptune when a Razorback Armada is active",
+   "link": "Cryptographic ALU"
+  },
+  "Cubic Diodes": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Eximus units in the Corpus Ice Planet Tileset, and Railjack missions in Venus, Neptune, and Pluto Proximas",
+   "link": "Cubic Diodes"
+  },
+  "Curse of Hearing": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Effervo (Deimos) during Operation Gargoyle's Cry",
+   "link": "Curse of Hearing"
+  },
+  "Curse of Knowing": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Effervo (Deimos) during Operation Gargoyle's Cry",
+   "link": "Curse of Knowing"
+  },
+  "Curse of Seeing": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Effervo (Deimos) during Operation Gargoyle's Cry",
+   "link": "Curse of Seeing"
+  },
+  "Cuthol Tendrils": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Cuthol Tendrils"
+  },
+  "Dagonic": {
+   "rarity": "Common",
+   "type": "Gem",
+   "location": "Cambion Drift (Deimos) from Blue Mining Lesions, Sagiant Entrati Casket, and Bonus Vaults in Isolation Vault Bounties.",
+   "link": "Dagonic"
+  },
+  "Damaged Necramech Casing": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Enemy Necramechs found in Isolation Vault Bounties on the Cambion Drift, and purchased from Loid in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Casing"
+  },
+  "Damaged Necramech Engine": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Enemy Necramechs found in Isolation Vault Bounties on the Cambion Drift (Deimos), and purchased from Loid in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Engine"
+  },
+  "Damaged Necramech Pod": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Enemy Necramechs found in Isolation Vault Bounties on the Cambion Drift (Deimos), and purchased from Father in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Pod"
+  },
+  "Damaged Necramech Weapon Barrel": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Isolation Vault and Arcana Isolation Vault Bounties on the Cambion Drift (Deimos), and purchased from Loid in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Weapon Barrel"
+  },
+  "Damaged Necramech Weapon Pod": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Enemy Necramechs found in Isolation Vault Bounties on the Cambion Drift (Deimos), and purchased from Loid in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Weapon Pod"
+  },
+  "Damaged Necramech Weapon Receiver": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Isolation Vault and Arcana Isolation Vault Bounties on the Cambion Drift (Deimos), and purchased from Loid in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Weapon Receiver"
+  },
+  "Damaged Necramech Weapon Stock": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Isolation Vault and Arcana Isolation Vault Bounties on the Cambion Drift (Deimos), and purchased from Loid in the Necralisk (Deimos) after completing The War Within quest",
+   "link": "Damaged Necramech Weapon Stock"
+  },
+  "Daughter Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Daughter Token"
+  },
+  "Dendrite Blastoma": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Dendrite Blastoma"
+  },
+  "Detonite Ampule": {
+   "rarity": "Uncommon",
+   "type": "Research",
+   "location": "Venus, Earth, Lua, Ceres, Saturn, Sedna, and the Kuva Fortress",
+   "link": "Detonite Ampule"
+  },
+  "Detonite Injector": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Clan Research (Chem Lab in the Dojo) and Grineer Invasion Rewards",
+   "link": "Detonite Injector"
+  },
+  "Devar": {
+   "rarity": "Common",
+   "type": "Gem",
+   "location": "Plains of Eidolon (Earth) from Blue Mining Veins and Thumpers",
+   "link": "Devar"
+  },
+  "Devar Grey Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Devolved Namalon": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Devolved Namalon"
+  },
+  "Diluted Thermia": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Thermia Fractures event in the Orb Vallis on Venus",
+   "link": "Diluted Thermia"
+  },
+  "Dusklight Sarracenia": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Dusklight Sarracenia plants growing in Grineer Shipyards found commonly on Ceres",
+   "link": "Dusklight Sarracenia"
+  },
+  "Dust Brown Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Echo Voca": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos)",
+   "link": "Echo Voca"
+  },
+  "Echowinder Anoscopic Sensor": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Echowinder Anoscopic Sensor"
+  },
+  "Eidolon Shard": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Eidolon Shard"
+  },
+  "Elemental Vice": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Elemental Vice"
+  },
+  "Elysium Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Embolos": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Cambion Drift (Deimos) from Blue Mining Lesions. This Rare Gem can only be mined by the Advanced Nosam Cutter or Sunpoint Plasma Drill.",
+   "link": "Embolos"
+  },
+  "Entratifragmentbase": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Entratifragmentbase"
+  },
+  "Entrati Lanthorn": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos) and Zariman",
+   "link": "Entrati Lanthorn"
+  },
+  "Entrati Obols": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos)",
+   "link": "Entrati Obols"
+  },
+  "Esher Devar": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Esher Devar"
+  },
+  "Exceptional Sentient Core": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Eidolons found roaming the Plains of Eidolon on Earth at night",
+   "link": "Sentient Core"
+  },
+  "Exemplar Granum Crown": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Granum Crown"
+  },
+  "Eye-Eye Rotoblade": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Eye-Eye Rotoblade"
+  },
+  "Faceted Tiametrite": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Faceted Tiametrite"
+  },
+  "False Orange Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Familial Debt-Bond": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Familial Debt-Bond"
+  },
+  "Fass Residue": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Fass Residue"
+  },
+  "Fate Pearl": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Saya's Visions on Earth",
+   "link": "Fate Pearl"
+  },
+  "Father Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Father Token"
+  },
+  "Ferment Bladder": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Ferment Bladder"
+  },
+  "Ferrite": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Mercury, Earth, Lua, Neptune, and the Void",
+   "link": "Ferrite"
+  },
+  "Ferros": {
+   "rarity": "Uncommon",
+   "type": "Ore",
+   "location": "Plains of Eidolon (Earth) from Red Mining Veins and Thumpers",
+   "link": "Ferros"
+  },
+  "Fersteel Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Fersteel Alloy"
+  },
+  "Fieldron": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Clan Research (Energy Lab in the Dojo) and Corpus Invasion Rewards",
+   "link": "Fieldron"
+  },
+  "Fieldron Sample": {
+   "rarity": "Uncommon",
+   "type": "Research",
+   "location": "Venus, Mars, Jupiter, Europa, Neptune, and Pluto",
+   "link": "Fieldron Sample"
+  },
+  "Fish Meat": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Fish Meat"
+  },
+  "Fish Oil": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Fish Oil"
+  },
+  "Fish Scales": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Fish Scales"
+  },
+  "Flawless Sentient Core": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Earned by capturing Eidolons found roaming the Plains of Eidolon on Earth at night",
+   "link": "Sentient Core"
+  },
+  "Fresnels": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Fresnels"
+  },
+  "Frostcap": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Frostcap"
+  },
+  "Frostleaf": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Frostleaf plants that grow on Venus, Neptune, and Pluto",
+   "link": "Frostleaf"
+  },
+  "Gallium": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Mars and Uranus",
+   "link": "Gallium"
+  },
+  "Gallos Rods": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Railjack missions in Earth, Saturn, and Veil Proximas",
+   "link": "Gallos Rods"
+  },
+  "Ganglion": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Cambion Drift on Deimos",
+   "link": "Ganglion"
+  },
+  "Generic Dojo Color Pigment": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Ghost Brush Extract": {
+   "rarity": null,
+   "type": "Plant",
+   "location": null,
+   "link": "Ghost Brush Extract"
+  },
+  "Glacial Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Goblite": {
+   "rarity": "Uncommon",
+   "type": "Gem",
+   "location": "Orb Vallis (Venus) from Blue Mining Veins and Resource Containers",
+   "link": "Goblite"
+  },
+  "Goblite Tears": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Goblite Tears"
+  },
+  "Goopolla Spleen": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Goopolla Spleen"
+  },
+  "Gorgaricus Spore": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Orb Vallis on Venus",
+   "link": "Gorgaricus Spore"
+  },
+  "Grandmother Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Grandmother Token"
+  },
+  "Granum Crown": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Granum Crown"
+  },
+  "Grokdrul": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Grokdrul"
+  },
+  "Grotesque Splinter": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Effervo (Deimos) during Operation Gargoyle's Cry",
+   "link": "Grotesque Splinter"
+  },
+  "Gyromag Systems": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained by completing Heists on the Orb Vallis (Venus)",
+   "link": "Gyromag Systems"
+  },
+  "Harmony Green Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Heart Noctrul": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Heart Noctrul"
+  },
+  "Heart Nyth": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Heart Nyth"
+  },
+  "Heciphron": {
+   "rarity": "Uncommon",
+   "type": "Gem",
+   "location": "Cambion Drift (Deimos) from Blue Mining Lesions.",
+   "link": "Heciphron"
+  },
+  "Hemocyte Cystolith": {
+   "rarity": null,
+   "type": "Event",
+   "location": "Hemocytes found in Plague Star event Bounties in the Plains of Eidolon on Earth",
+   "link": "Hemocyte Cystolith"
+  },
+  "Hespazym Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Hespazym Alloy"
+  },
+  "Hesperia Brown Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Hesperon": {
+   "rarity": "Rare",
+   "type": "Ore",
+   "location": "Orb Vallis (Venus) from Red Mining Veins and Resource Containers",
+   "link": "Hesperon"
+  },
+  "Hexenon": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Jupiter",
+   "link": "Hexenon"
+  },
+  "Infected Palpators": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Drops from Juggernauts (non-endless Infested Missions) and Deimos Juggernauts (Cambion Drift on Deimos)",
+   "link": "Infected Palpators"
+  },
+  "Intact Sentient Core": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Drops from Vomvalysts on the Plains of Eidolon (Earth) at night, and from Sentients found on Lua and the Veil Proxima",
+   "link": "Sentient Core"
+  },
+  "Iradite": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Iradite"
+  },
+  "Isos": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Railjack missions in Venus, Neptune, and Pluto Proximas",
+   "link": "Isos"
+  },
+  "Jackal Yellow Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Javlok Capacitor": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Javlok Capacitor"
+  },
+  "Judgement Points": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Kela De Thaym#Judgement Points"
+  },
+  "Karkina Antenna": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Karkina Antenna"
+  },
+  "Kavat Genetic Code": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained by using a Codex Scanner on Feral Kavats that roam the Orokin Derelict on Deimos",
+   "link": "Kavat Genetic Code"
+  },
+  "Kesslers": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Kesslers"
+  },
+  "Khut-Khut Venom Sac": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Khut-Khut Venom Sac"
+  },
+  "Komms": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Railjack missions in Earth, Saturn, and Veil Proximas",
+   "link": "Komms"
+  },
+  "Kovnik": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Kovnik"
+  },
+  "Kriller Thermal Laser": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Kriller Thermal Laser"
+  },
+  "Kuaka Spinal Claw": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Kuaka Spinal Claw"
+  },
+  "Kuva": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Kuva Siphon Missions and Taveuni (Kuva Fortress)",
+   "link": "Kuva (Resource)"
+  },
+  "Entropic Kuva": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Entropic Kuva (Resource)"
+  },
+  "Lazulite Toroid": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lazulite Toroid"
+  },
+  "Leaf Red Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Leech Green Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Longwinder Lathe Coagulant": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Longwinder Lathe Coagulant"
+  },
+  "Lua Thrax Plasm": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Yuvarium and Circulus on Lua",
+   "link": "Lua Thrax Plasm"
+  },
+  "Lucent Teroglobe": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Cambion Drift on Deimos",
+   "link": "Lucent Teroglobe"
+  },
+  "Lunar Pitcher": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Lunar Pitcher plants that grow on Lua",
+   "link": "Lunar Pitcher"
+  },
+  "Memoriam Purple Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "MOA Green Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Mandachord": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Mandachord"
+  },
+  "Mandachord Body": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Mandachord"
+  },
+  "Mandachord Bridge": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Mandachord"
+  },
+  "Mandachord Fret": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Mandachord"
+  },
+  "Maprico": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Maprico"
+  },
+  "Marks of Valiance": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Marks of Valiance"
+  },
+  "Marquise Thyst": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Marquise Thyst"
+  },
+  "Marquise Veridos": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Marquise Veridos"
+  },
+  "Maw Fang": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": "Maw Feeding in The Duviri Experience",
+   "link": "Maw Fang"
+  },
+  "Mawfish Bones": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Mawfish Bones"
+  },
+  "Medical Debt-Bond": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Medical Debt-Bond"
+  },
+  "Mirewinder Parallel Biode": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Mirewinder Parallel Biode"
+  },
+  "Moonlight Dragonlily": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Moonlight Dragonlily plants that grow on Earth",
+   "link": "Moonlight Dragonlily"
+  },
+  "Moonlight Jadeleaf": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Moonlight Jadeleaf plants that grow on Earth",
+   "link": "Moonlight Jadeleaf"
+  },
+  "Moonlight Threshcone": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Moonlight Threshcone plants that grow on Earth",
+   "link": "Moonlight Threshcone"
+  },
+  "Morgha Barrel": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Morgha Barrel"
+  },
+  "Morgha Receiver": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Morgha Receiver"
+  },
+  "Morgha Stock": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Morgha Stock"
+  },
+  "Morning Yellow Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Morphics": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Mercury, Mars, Phobos, Europa, and Pluto",
+   "link": "Morphics"
+  },
+  "Mortus Horn": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Mortus Horn"
+  },
+  "Mortus Pink Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Mother Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Mother Token"
+  },
+  "Murkray Liver": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Murkray Liver"
+  },
+  "Mutagen Mass": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Clan Research (Bio Lab in the Dojo) and Infested Outbreak Invasion Rewards",
+   "link": "Mutagen Mass"
+  },
+  "Mutagen Sample": {
+   "rarity": "Uncommon",
+   "type": "Research",
+   "location": "Eris and Deimos",
+   "link": "Mutagen Sample"
+  },
+  "Mutalist Red Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Mytocardia Spore": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Orb Vallis on Venus",
+   "link": "Mytocardia Spore"
+  },
+  "Nacreous Pebble": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": "Maw Feeding in The Duviri Experience",
+   "link": "Nacreous Pebble"
+  },
+  "Namalon": {
+   "rarity": "Uncommon",
+   "type": "Ore",
+   "location": "Cambion Drift (Deimos) from Yellow Mining Lesions and Bonus Vaults in Isolation Vault Bounties.",
+   "link": "Namalon"
+  },
+  "Nanite Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Nano Spores": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Saturn, Neptune, Eris, and Deimos",
+   "link": "Nano Spores"
+  },
+  "Nav Coordinate": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Dropped from Storage Containers",
+   "link": "Nav Coordinate"
+  },
+  "Necracoil": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos)",
+   "link": "Necracoil"
+  },
+  "Necrathene": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Cambion Drift (Deimos) from Blue Mining Lesions and Requiem Obelisks.",
+   "link": "Necrathene"
+  },
+  "Neo Pink Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Neural Sensors": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Jupiter",
+   "link": "Neural Sensors"
+  },
+  "Neurodes": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Earth, Lua, Eris, and Deimos",
+   "link": "Neurodes"
+  },
+  "Night Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Nightmare Tatters": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Nightmare Tatters"
+  },
+  "Nistlepod": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Plains of Eidolon on Earth",
+   "link": "Nistlepod"
+  },
+  "Nitain Extract": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Nightwave Cred Offerings",
+   "link": "Nitain Extract"
+  },
+  "Noctrul": {
+   "rarity": "Common",
+   "type": "Gem",
+   "location": "Orb Vallis (Venus) from Blue Mining Veins and Resource Containers",
+   "link": "Noctrul"
+  },
+  "Norg Brain": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Norg Brain"
+  },
+  "Nullstones": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Railjack Missions",
+   "link": "Nullstones"
+  },
+  "Nyth": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Plains of Eidolon (Earth) from Blue Mining Veins and Thumper Bulls. This Rare Gem can only be mined by the Advanced Nosam Cutter or Sunpoint Plasma Drill.",
+   "link": "Nyth"
+  },
+  "Oak Brown Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Ocular Stem-Root": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Ocular Stem-Root"
+  },
+  "Olympus Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Omega Isotope": {
+   "rarity": null,
+   "type": "Event",
+   "location": "When a Balor Fomorian is threatening a Planet's Relay, enemies on that Planet will drop this resource",
+   "link": "Omega Isotope"
+  },
+  "Orion's Swaddle Syandana": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Orion's Swaddle Syandana"
+  },
+  "Orokin Animus Matrix": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Isolation Vault Bounty rewards on the Cambion Drift (Deimos), and from Enemy Necramechs found in Tier 3 Isolation Vault Bounties",
+   "link": "Orokin Animus Matrix"
+  },
+  "Orokin Ballistics Matrix": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Isolation Vault Bounty rewards on the Cambion Drift (Deimos), and from Enemy Necramechs found in Tier 2 Isolation Vault Bounties",
+   "link": "Orokin Ballistics Matrix"
+  },
+  "Orokin Cell": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Ceres, Saturn, and Deimos",
+   "link": "Orokin Cell"
+  },
+  "Orokin Cipher": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Orokin Derelict Vaults on Deimos once opened with a Dragon Key",
+   "link": "Orokin Cipher"
+  },
+  "Orokin Monitor": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Orokin Monitor"
+  },
+  "Orokin Orientation Matrix": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Isolation Vault Bounty rewards on the Cambion Drift (Deimos), and from Enemy Necramechs found in Tier 1 Isolation Vault Bounties",
+   "link": "Orokin Orientation Matrix"
+  },
+  "Otak Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Otak Token"
+  },
+  "Oxides": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": null,
+   "link": "Helminth#Oxides"
+  },
+  "Oxium": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Venus, Jupiter, Mars, Neptune, Pluto, Eris, Europa, and Lua.",
+   "link": "Oxium"
+  },
+  "Parasitic Tethermaw": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Parasitic Tethermaw"
+  },
+  "Phasmin": {
+   "rarity": "Common",
+   "type": "Gem",
+   "location": "Orb Vallis (Venus) from Blue Mining Veins and Resource Containers",
+   "link": "Phasmin"
+  },
+  "Pheromones": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": null,
+   "link": "Helminth#Pheromones"
+  },
+  "Pix Chip": {
+   "rarity": null,
+   "type": "Currency",
+   "location": "Elite Temporal Archimedea (Höllvania) and duplicate Peely Pix.",
+   "link": "Pix Chip"
+  },
+  "Plantitem": {
+   "rarity": null,
+   "type": "Plant",
+   "location": null,
+   "link": "Plantitem"
+  },
+  "Plastids": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Phobos, Saturn, Uranus, Pluto, and Eris",
+   "link": "Plastids"
+  },
+  "Polymer Bundle": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Mercury, Venus, and Uranus",
+   "link": "Polymer Bundle"
+  },
+  "Pulsating Tubercles": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Drops from Juggernauts (non-endless Infested Missions) and Deimos Juggernauts (Cambion Drift on Deimos)",
+   "link": "Pulsating Tubercles"
+  },
+  "Purged Dagonic": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Purged Dagonic"
+  },
+  "Purified Heciphron": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Purified Heciphron"
+  },
+  "Pustrels": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Eris",
+   "link": "Pustrels"
+  },
+  "Pustulent Cognitive Nodule": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Pustulent Cognitive Nodule"
+  },
+  "Pustulite": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Cambion Drift on Deimos",
+   "link": "Pustulite"
+  },
+  "Pyrol": {
+   "rarity": "Common",
+   "type": "Ore",
+   "location": "Plains of Eidolon (Earth) from Red Mining Veins and Thumpers",
+   "link": "Pyrol"
+  },
+  "Pyrotic Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Pyrotic Alloy"
+  },
+  "Pyrus Essence": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Pyrus Essence"
+  },
+  "Radian Sentirum": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Radian Sentirum"
+  },
+  "Radiant Eidolon Shard": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Radiant Eidolon Shard"
+  },
+  "Radiant Zodian": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Radiant Zodian"
+  },
+  "Railgun Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Recaster Neural Relay": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Recaster Neural Relay"
+  },
+  "Relay Strut Component": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Relay Strut Component"
+  },
+  "Repeller Systems": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained by completing Heists on the Orb Vallis (Venus)",
+   "link": "Repeller Systems"
+  },
+  "Riven Sliver": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Eximus units and Requiem Relics",
+   "link": "Riven Sliver"
+  },
+  "Riven Transmuter": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Riven Transmuter"
+  },
+  "River Blue Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Rubedo": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Earth, Lua, Phobos, Europa, Pluto, Sedna, and the Void",
+   "link": "Rubedo"
+  },
+  "Rune Marrow": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "The Undercroft in Duviri",
+   "link": "Rune Marrow"
+  },
+  "Ruk's Claw": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Ruk's Claw plants that grow on Mars",
+   "link": "Ruk's Claw"
+  },
+  "Saggen Pearl": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Saggen Pearl"
+  },
+  "Salvage": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Mars, Jupiter, and Sedna",
+   "link": "Salvage"
+  },
+  "Sand Yellow Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Sapcaddy Venedo Case": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Sapcaddy Venedo Case"
+  },
+  "Saturated Muscle Mass": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Saturated Muscle Mass"
+  },
+  "Scintillant": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Cambion Drift on Deimos",
+   "link": "Scintillant"
+  },
+  "Scrap": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Scrap"
+  },
+  "Scrubber Exa Brain": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Scrubber Exa Brain"
+  },
+  "Sentirum": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Plains of Eidolon (Earth) from Blue Mining Veins and Thumper Bulls. This Rare Gem can only be mined by the Advanced Nosam Cutter or Sunpoint Plasma Drill.",
+   "link": "Sentirum"
+  },
+  "Seram Beetle Shell": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Seram Beetle Shell"
+  },
+  "Seriglass Shard": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Grandmother in the Necralisk on Deimos",
+   "link": "Seriglass Shard"
+  },
+  "Severed Bile Sac": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Drops from Juggernauts (non-endless Infested Missions) and Deimos Juggernauts (Cambion Drift on Deimos)",
+   "link": "Severed Bile Sac"
+  },
+  "Shard Black Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Sharrac Teeth": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Sharrac Teeth"
+  },
+  "Shelter Debt-Bond": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Shelter Debt-Bond"
+  },
+  "Shrill Voca": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos)",
+   "link": "Shrill Voca"
+  },
+  "Silphsela": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Silphsela"
+  },
+  "Sister Of Parvos Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Sister Of Parvos Token"
+  },
+  "Skateweed Extract": {
+   "rarity": null,
+   "type": "Plant",
+   "location": null,
+   "link": "Skateweed Extract"
+  },
+  "Smooth Phasmin": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Smooth Phasmin"
+  },
+  "Sola Toroid": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Sola Toroid"
+  },
+  "Somatic Fibers": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Demolishers on Apollo (Lua), and Conjunction Survival Missions (Lua)",
+   "link": "Somatic Fibers"
+  },
+  "Son Token": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Son Token"
+  },
+  "Spectral Debris": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Errant Specters in the Granum Void (Corpus Ship Tileset)",
+   "link": "Spectral Debris"
+  },
+  "Spinal Core Section": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Spinal Core Section"
+  },
+  "Sporulate Sac": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Sporulate Sac"
+  },
+  "Star Amarast": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Star Amarast"
+  },
+  "Star Crimzian": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Star Crimzian"
+  },
+  "Steel Essence": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Steel Essence"
+  },
+  "Stela": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Albrecht's Laboratories (Deimos)",
+   "link": "Stela"
+  },
+  "Stellated Necrathene": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Stellated Necrathene"
+  },
+  "Stock": {
+   "rarity": null,
+   "type": "Currency",
+   "location": null,
+   "link": "Stock"
+  },
+  "Sunlight Dragonlily": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Sunlight Dragonlily plants that grow on Earth",
+   "link": "Sunlight Dragonlily"
+  },
+  "Sunlight Jadeleaf": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Sunlight Jadeleaf plants that grow on Earth",
+   "link": "Sunlight Jadeleaf"
+  },
+  "Sunlight Threshcone": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Sunlight Threshcone plants that grow on Earth",
+   "link": "Sunlight Threshcone"
+  },
+  "Synathid Ecosynth Analyzer": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Synathid Ecosynth Analyzer"
+  },
+  "Synthetic Eidolon Shard": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Synthetic Eidolon Shard"
+  },
+  "Synthetics": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": null,
+   "link": "Helminth#Synthetics"
+  },
+  "Synthula": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Synthula"
+  },
+  "Syrtis Orange Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Tasoma Extract": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Tasoma Extract"
+  },
+  "Tear Azurite": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Tear Azurite"
+  },
+  "Tellurium": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Archwing Missions on Uranus",
+   "link": "Tellurium"
+  },
+  "Tempered Bapholite": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Tempered Bapholite"
+  },
+  "Tempest Brown Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Tepa Nodule": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Orb Vallis on Venus",
+   "link": "Tepa Nodule"
+  },
+  "Tharsis Brown Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Thaumic Distillate": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Thaumic Distillate"
+  },
+  "Thaumica": {
+   "rarity": "Rare",
+   "type": "Ore",
+   "location": "Cambion Drift (Deimos) from Yellow Mining Lesions, Requiem Obelisks, and Spitia Infested Cysts.",
+   "link": "Thaumica"
+  },
+  "Thermal Sludge": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Orb Vallis on Venus",
+   "link": "Thermal Sludge"
+  },
+  "Thrax Plasm": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Thrax Plasm"
+  },
+  "Thyst": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Orb Vallis (Venus) from Blue Mining Veins and the Exploiter Orb. This Rare Gem can only be mined by the Advanced Nosam Cutter or Sunpoint Plasma Drill.",
+   "link": "Thyst"
+  },
+  "Tiametrite": {
+   "rarity": "Common",
+   "type": "Gem",
+   "location": "Cambion Drift (Deimos) from Blue Mining Lesions, Sagiant Entrati Caskets, and Bonus Vaults in Isolation Vault Bounties.",
+   "link": "Tiametrite"
+  },
+  "Ticor Plate": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Railjack Missions",
+   "link": "Ticor Plate"
+  },
+  "Tink Dissipator Coil": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Tink Dissipator Coil"
+  },
+  "Titanium": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Railjack Missions",
+   "link": "Titanium"
+  },
+  "Tower White Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Trachons": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Trachons"
+  },
+  "Training Debt-Bond": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Training Debt-Bond"
+  },
+  "Tralok Eyes": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Tralok Eyes"
+  },
+  "Trapezium Xenorhast": {
+   "rarity": null,
+   "type": "Gem",
+   "location": null,
+   "link": "Trapezium Xenorhast"
+  },
+  "Travocyte Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Travocyte Alloy"
+  },
+  "Travoride": {
+   "rarity": "Common",
+   "type": "Ore",
+   "location": "Orb Vallis (Venus) from Red Mining Veins and Resource Containers",
+   "link": "Travoride"
+  },
+  "Tree Green Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Trembera Essence": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Trembera Essence"
+  },
+  "Tromyzon Entroplasma": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Tromyzon Entroplasma"
+  },
+  "Tubercular Gill System": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Tubercular Gill System"
+  },
+  "Vainthorn": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Abyssal Zone on Ceres (requires Abyssal Beacons to access)",
+   "link": "Vainthorn"
+  },
+  "Vasca Curative": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Vasca Curative"
+  },
+  "Vega Toroid": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Vega Toroid"
+  },
+  "Veldt Yellow Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Venerdo Alloy": {
+   "rarity": null,
+   "type": "Ore",
+   "location": null,
+   "link": "Venerdo Alloy"
+  },
+  "Venerol": {
+   "rarity": "Uncommon",
+   "type": "Ore",
+   "location": "Orb Vallis (Venus) from Red Mining Veins and Resource Containers",
+   "link": "Venerol"
+  },
+  "Veridos": {
+   "rarity": "Uncommon",
+   "type": "Gem",
+   "location": "Plains of Eidolon (Earth) from Blue Mining Veins and Thumpers",
+   "link": "Veridos"
+  },
+  "Vessel Capillaries": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Vessel Capillaries"
+  },
+  "Vestan Moss": {
+   "rarity": null,
+   "type": "Plant",
+   "location": "Obtained by gathering Vestan Moss plants that grow on Mercury, Saturn, and Sedna",
+   "link": "Vestan Moss"
+  },
+  "Vestigial Motes": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Vestigial Motes"
+  },
+  "Vitus Essence": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Arbitration Missions",
+   "link": "Vitus Essence"
+  },
+  "Voidgel Orb": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Voidgel Orb"
+  },
+  "Void Traces": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Void Fissure Missions",
+   "link": "Void Traces"
+  },
+  "Voidplume Crest": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Voidplume Crest"
+  },
+  "Voidplume Down": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Voidplume Down"
+  },
+  "Voidplume Pinion": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Voidplume Pinion"
+  },
+  "Voidplume Quill": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Voidplume Quill"
+  },
+  "Voidplume Vane": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Zariman",
+   "link": "Voidplume Vane"
+  },
+  "Voidrig Capsule": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Voidrig Capsule"
+  },
+  "Voidrig Casing": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Voidrig Casing"
+  },
+  "Voidrig Engine": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Voidrig Engine"
+  },
+  "Voidrig Weapon Pod": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Voidrig Weapon Pod"
+  },
+  "Volatile Motes": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Volatile Motes"
+  },
+  "Vome Residue": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Vome Residue"
+  },
+  "Vosfor": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Vosfor"
+  },
+  "Waxen Sebum Deposit": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Waxen Sebum Deposit"
+  },
+  "Wisp Grey Pigment": {
+   "rarity": null,
+   "type": "Pigment",
+   "location": null,
+   "link": "Pigment"
+  },
+  "Xenorhast": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Cambion Drift (Deimos) from Blue Mining Lesions. This Rare Gem can only be mined by the Advanced Nosam Cutter or Sunpoint Plasma Drill.",
+   "link": "Xenorhast"
+  },
+  "Yao Shrub": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "Duviri",
+   "link": "Yao Shrub"
+  },
+  "Yogwun Stomach": {
+   "rarity": null,
+   "type": "Fish Part",
+   "location": null,
+   "link": "Yogwun Stomach"
+  },
+  "Zealot Derelict Code": {
+   "rarity": null,
+   "type": "Event",
+   "location": null,
+   "link": "Zealot Derelict Code"
+  },
+  "Zenith Granum Crown": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Granum Crown"
+  },
+  "Höllvanian Pitchweave Fragment": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Höllvanian Pitchweave Fragment"
+  },
+  "Efervon Sample": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Efervon Sample"
+  },
+  "Experimental Arc-Relay": {
+   "rarity": "Uncommon",
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Experimental Arc-Relay"
+  },
+  "Techrot Chitin": {
+   "rarity": "Common",
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Techrot Chitin"
+  },
+  "Techrot Motherboard": {
+   "rarity": "Rare",
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Techrot Motherboard"
+  },
+  "Big Bytes Pizza": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Big Bytes Pizza (Resource)"
+  },
+  "Argon Burger Meal": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Argon Burger Meal"
+  },
+  "35mm Film": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "35mm Film"
+  },
+  "Cheddar Crowns Cereal": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Cheddar Crowns Cereal"
+  },
+  "Mood Crystal": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Mood Crystal"
+  },
+  "Chuggin' Along Sixpack": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "Chuggin' Along Sixpack"
+  },
+  "On-lyne CD": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "On-lyne CD"
+  },
+  "The Countessa Comic": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "1999 (Höllvania)",
+   "link": "The Countessa Comic"
+  },
+  "Zodian": {
+   "rarity": "Rare",
+   "type": "Gem",
+   "location": "Orb Vallis (Venus) from Blue Mining Veins and the Exploiter Orb. This Rare Gem can only be mined by the Advanced Nosam Cutter or Sunpoint Plasma Drill.",
+   "link": "Zodian"
+  },
+  "Lanzo Fishing Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Lanzo Fishing Spear"
+  },
+  "Tulok Fishing Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Tulok Fishing Spear"
+  },
+  "Peram Fishing Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Peram Fishing Spear"
+  },
+  "Shockprod Fishing Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Shockprod Fishing Spear"
+  },
+  "Stunna Fishing Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stunna Fishing Spear"
+  },
+  "Ebisu Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Ebisu Spear"
+  },
+  "Spari Spear": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Spari Spear"
+  },
+  "Condroc Pheromone Oota": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Condroc Pheromone Oota"
+  },
+  "Kuaka Pheromone Oota": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Kuaka Pheromone Oota"
+  },
+  "Mergoo Pheromone Oota": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Mergoo Pheromone Oota"
+  },
+  "Vasca Kavat Pheromone Oota": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Vasca Kavat Pheromone Oota"
+  },
+  "Bolarola Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Bolarola Pheromone Synthesizer"
+  },
+  "Kubrodon Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Kubrodon Pheromone Synthesizer"
+  },
+  "Virmink Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Virmink Pheromone Synthesizer"
+  },
+  "Pobbers Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Pobbers Pheromone Synthesizer"
+  },
+  "Stover Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Stover Pheromone Synthesizer"
+  },
+  "Sawgaw Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Sawgaw Pheromone Synthesizer"
+  },
+  "Horrasque Pheromone Synthesizer": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Horrasque Pheromone Synthesizer"
+  },
+  "Cryptilex Pheromone Gland": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Cryptilex Pheromone Gland"
+  },
+  "Vulpaphyla Pheromone Gland": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Vulpaphyla Pheromone Gland"
+  },
+  "Predasite Pheromone Gland": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Predasite Pheromone Gland"
+  },
+  "Avichaea Pheromone Gland": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Avichaea Pheromone Gland"
+  },
+  "Undazoa Pheromone Gland": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Undazoa Pheromone Gland"
+  },
+  "Override": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Override"
+  },
+  "Med-Tower": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Med-Tower"
+  },
+  "Carpet Bomb": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Carpet Bomb"
+  },
+  "Sentry Gun": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Sentry Gun"
+  },
+  "Dreamers": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Dreamers"
+  },
+  "Kahl Beacon": {
+   "rarity": null,
+   "type": "Gear",
+   "location": null,
+   "link": "Kahl Beacon"
+  },
+  "Beating Heartstrings": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Stage Defense missions in Höllvania.",
+   "link": "Beating Heartstrings"
+  },
+  "Live Heartcell": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Earned upon Vanquishing a Technocyte Coda in Höllvania.",
+   "link": "Live Heartcell"
+  },
+  "Scuttler Husk": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Scuttler Husk"
+  },
+  "Temporal Dust": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Temporal Dust"
+  },
+  "Dominus Aureus": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Dominus Aureus"
+  },
+  "Ignia": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained from crates and bosses in the Descendia (Dark Refractory).",
+   "link": "Ignia"
+  },
+  "Maphica": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained from crates and bosses in the Descendia (Dark Refractory).",
+   "link": "Maphica"
+  },
+  "Ren Hypercore": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Ren Hypercore"
+  },
+  "Lyroic Bridge": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Lyroic Bridge"
+  },
+  "Ascaris Prime": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Ascaris Prime"
+  },
+  "Agnovidisc": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained from crates and enemies in Perita Rebellion missions (Dark Refractory).",
+   "link": "Agnovidisc"
+  },
+  "Servoris": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained from crates and enemies in Perita Rebellion missions(Dark Refractory).",
+   "link": "Servoris"
+  },
+  "Laudavi": {
+   "rarity": null,
+   "type": "Resource",
+   "location": "Obtained from crates and enemies in Perita Rebellion missions(Dark Refractory).",
+   "link": "Laudavi"
+  },
+  "Riven Splicer": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Riven Splicer"
+  },
+  "Crimson Talent": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Crimson Talent"
+  },
+  "Emerald Talent": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Emerald Talent"
+  },
+  "Moonflesh": {
+   "rarity": null,
+   "type": "Resource",
+   "location": null,
+   "link": "Moonflesh"
+  }
+ }
+}

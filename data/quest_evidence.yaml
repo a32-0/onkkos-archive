@@ -1,0 +1,85 @@
+version: 1
+last_verified: "2026-09-04"
+
+rules:
+  - quest: "The Second Dream"
+    evidence: { kind: flag, field: UnlockedOperator }
+    source: "https://wiki.warframe.com/w/Operator"
+    note: "The Operator is first controlled at the end of The Second Dream."
+
+  - quest: "The War Within"
+    evidence: { kind: affiliation, tag: QuillsSyndicate }
+    source: "https://wiki.warframe.com/w/The_Quills"
+    note: "The Quills ally with the player only after The War Within."
+
+  - quest: "Vox Solaris"
+    evidence: { kind: affiliation, tag: VoxSyndicate }
+    source: "https://wiki.warframe.com/w/Vox_Solaris_(Syndicate)"
+
+  - quest: "The War Within"
+    evidence: { kind: affiliation, tag: VoxSyndicate }
+    source: "https://wiki.warframe.com/w/Vox_Solaris_(Syndicate)"
+    note: "Vox Solaris (the syndicate) requires both the quest and The War Within."
+
+  - quest: "Heart of Deimos"
+    evidence: { kind: affiliation, tag: NecraloidSyndicate }
+    source: "https://wiki.warframe.com/w/Necraloid"
+
+  - quest: "The War Within"
+    evidence: { kind: affiliation, tag: NecraloidSyndicate }
+    source: "https://wiki.warframe.com/w/Necraloid"
+
+  - quest: "Veilbreaker"
+    evidence: { kind: affiliation, tag: KahlSyndicate }
+    source: "https://wiki.warframe.com/w/Kahl's_Garrison"
+
+  - quest: "The New War"
+    evidence: { kind: affiliation, tag: KahlSyndicate }
+    source: "https://wiki.warframe.com/w/Veilbreaker"
+    note: "Kahl's Garrison needs Veilbreaker, which has required The New War since release."
+
+  - quest: "Whispers in the Walls"
+    evidence: { kind: affiliation, tag: EntratiLabSyndicate }
+    source: "https://wiki.warframe.com/w/Cavia"
+
+  - quest: "Whispers in the Walls"
+    evidence: { kind: mission, tag: EntratiLabHub }
+    source: "https://wiki.warframe.com/w/Sanctum_Anatomica"
+
+  - quest: "The Hex"
+    evidence: { kind: affiliation, tag: HexSyndicate }
+    source: "https://wiki.warframe.com/w/The_Hex_(Syndicate)"
+
+  - quest: "The Hex"
+    evidence: { kind: mission, tag: 1999Hub }
+    source: "https://wiki.warframe.com/w/The_Hex_(Quest)"
+    note: "Höllvania opens at the end of The Hex."
+
+  - quest: "Angels of the Zariman"
+    evidence: { kind: mission, tag: ZarimanHub }
+    source: "https://wiki.warframe.com/w/Chrysalith"
+
+  - quest: "Angels of the Zariman"
+    evidence: { kind: affiliation, tag: ZarimanSyndicate }
+    source: "https://wiki.warframe.com/w/Chrysalith"
+    note: "Holdfasts standing is only offered inside the Chrysalith, which needs the quest."
+
+  - quest: "The Archwing"
+    evidence: { kind: mission_type, type: "Archwing" }
+    source: "https://wiki.warframe.com/w/The_Archwing"
+    note: "Completing the quest is what unlocks Archwing nodes throughout the solar system."
+
+  - quest: "The New War"
+    evidence: { kind: item, type: "/Lotus/Weapons/Tenno/Bows/Omicrus/OmicrusPlayerWep" }
+    source: "https://wiki.warframe.com/w/Nataruk"
+    note: "Nataruk is given upon completion of The New War; untradeable, not in the Market."
+
+  - quest: "Chimera Prologue"
+    evidence: { kind: item, type: "/Lotus/Weapons/Orokin/BallasSword/BallasSwordWeapon" }
+    source: "https://wiki.warframe.com/w/Paracesis"
+    note: "The Paracesis blueprint is given upon completing Chimera Prologue; untradeable, not in the Market."
+
+  - quest: "The Sacrifice"
+    evidence: { kind: item, type: "/Lotus/Weapons/Orokin/BallasSword/BallasSwordWeapon" }
+    source: "https://wiki.warframe.com/w/Chimera_Prologue"
+    note: "Chimera Prologue has required a completed Sacrifice since it shipped (2018-10-12), so Paracesis proves both."

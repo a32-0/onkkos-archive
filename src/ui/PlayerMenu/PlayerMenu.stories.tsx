@@ -7,7 +7,7 @@ const meta = {
   title: "Chrome/PlayerMenu",
   component: PlayerMenu,
   args: {
-    name: "00111000",
+    name: "Cy",
     rank: "Mastery Rank 27",
     rankTitle: "Middle Master",
     disconnect: <Button variant="danger">Disconnect</Button>,

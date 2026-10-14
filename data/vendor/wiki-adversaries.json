@@ -1,0 +1,57 @@
+{
+ "adversaries": [
+  {
+   "trait": "Kuva Lich",
+   "name": "Kuva Lich",
+   "page": "Kuva Lich",
+   "larva": "Kuva Larvling",
+   "links": [
+    "The War Within",
+    "Mastery Rank",
+    "Railjack",
+    "Kuva Larvling",
+    "Sortie",
+    "Void Fissure",
+    "Invasion",
+    "Quest",
+    "Dark Sectors",
+    "Crossfire",
+    "Uranus",
+    "Steel Path",
+    "Juggernaut",
+    "Kuva Guardian",
+    "waypoint"
+   ],
+   "encounter": "After the completion of The War Within quest, obtaining Mastery Rank 5, and acquiring a Railjack, the player may encounter a Kuva Larvling in a regular level 20+ Grineer mission - this does not include Sorties, Void Fissures, Invasion, Quests or Dark Sectors, but does include Crossfire.",
+   "create": "By choosing to kill the Kuva Larvling with a Parazon Mercy kill, the player causes a Kuva Lich to arise in the Origin System, and the Warframe used for this is recognized as the Progenitor Warframe.",
+   "trade": "The trade is performed inside a Clan Dojo's Crimson Branch room, and the recipient must not have any active Lich.",
+   "intrinsics": {
+    "place": "Saturn Proxima",
+    "rank": 5
+   }
+  },
+  {
+   "trait": "Tenet",
+   "name": "Sister of Parvos",
+   "page": "Sisters of Parvos",
+   "larva": "Candidate",
+   "links": [
+    "The War Within",
+    "Call of the Tempestarii",
+    "Mastery Rank",
+    "Candidate",
+    "Granum Void",
+    "Corpus Ship",
+    "Tile Sets",
+    "Nightmare Mode"
+   ],
+   "encounter": "After the completion of The War Within and Call of the Tempestarii quests, as well as obtaining Mastery Rank 5, the player may encounter a Candidate after completing the Granum Void in any Corpus Ship tileset mission level at minimum 10, while qualifying for Rank 1 rewards of Nightmare Difficulty (using a Zenith Granum Crown, not to be confused with Nightmare Mode which is a different mission modifier).",
+   "create": "By choosing to kill the Sister Candidate with a Parazon Mercy kill, the player causes a Sister to rise in the Origin System, thus becoming the Progenitor of that Sister, and the Warframe used for this is recognized as the Progenitor Warframe.",
+   "trade": "The trade is performed inside a Clan Dojo's Crimson Branch room, and the recipient must not have any active Kuva Lich, Technocyte Coda, or Sister to be able to accept the trade.",
+   "intrinsics": {
+    "place": "Neptune Proxima",
+    "rank": 3
+   }
+  }
+ ]
+}

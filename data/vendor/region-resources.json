@@ -1,0 +1,126 @@
+{
+ "regions": {
+  "Mercury": [
+   "Ferrite",
+   "Polymer Bundle",
+   "Morphics",
+   "Detonite Ampule"
+  ],
+  "Venus": [
+   "Alloy Plate",
+   "Polymer Bundle",
+   "Circuits",
+   "Fieldron Sample"
+  ],
+  "Earth": [
+   "Ferrite",
+   "Rubedo",
+   "Neurodes",
+   "Detonite Ampule"
+  ],
+  "Mars": [
+   "Gallium",
+   "Morphics",
+   "Salvage",
+   "Fieldron Sample"
+  ],
+  "Phobos": [
+   "Rubedo",
+   "Morphics",
+   "Plastids",
+   "Alloy Plate"
+  ],
+  "Deimos": [
+   "Nano Spores",
+   "Mutagen Sample",
+   "Orokin Cell",
+   "Neurodes"
+  ],
+  "Ceres": [
+   "Alloy Plate",
+   "Circuits",
+   "Orokin Cell",
+   "Detonite Ampule"
+  ],
+  "Jupiter": [
+   "Salvage",
+   "Hexenon",
+   "Neural Sensors",
+   "Alloy Plate"
+  ],
+  "Europa": [
+   "Morphics",
+   "Rubedo",
+   "Fieldron Sample",
+   "Control Module"
+  ],
+  "Saturn": [
+   "Nano Spores",
+   "Plastids",
+   "Orokin Cell",
+   "Detonite Ampule"
+  ],
+  "Uranus": [
+   "Gallium",
+   "Plastids",
+   "Polymer Bundle",
+   "Detonite Ampule"
+  ],
+  "Neptune": [
+   "Nano Spores",
+   "Ferrite",
+   "Control Module",
+   "Fieldron Sample"
+  ],
+  "Pluto": [
+   "Rubedo",
+   "Morphics",
+   "Plastids",
+   "Alloy Plate",
+   "Fieldron Sample"
+  ],
+  "Sedna": [
+   "Alloy Plate",
+   "Rubedo",
+   "Salvage",
+   "Detonite Ampule"
+  ],
+  "Eris": [
+   "Nano Spores",
+   "Plastids",
+   "Neurodes",
+   "Mutagen Sample"
+  ],
+  "Void": [
+   "Ferrite",
+   "Rubedo",
+   "Argon Crystal",
+   "Control Module"
+  ],
+  "Lua": [
+   "Ferrite",
+   "Rubedo",
+   "Neurodes",
+   "Detonite Ampule"
+  ],
+  "Höllvania": [
+   "Höllvanian Pitchweave Fragment",
+   "Experimental Arc-Relay",
+   "Efervon Sample",
+   "Techrot Chitin",
+   "Techrot Motherboard"
+  ],
+  "Kuva Fortress": [
+   "Salvage",
+   "Circuits",
+   "Neural Sensors",
+   "Detonite Ampule"
+  ],
+  "Zariman Ten Zero": [
+   "Ferrite",
+   "Alloy Plate",
+   "Voidgel Orb",
+   "Entrati Lanthorn"
+  ]
+ }
+}

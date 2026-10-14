@@ -1,0 +1,157 @@
+{
+ "tags": {
+  "Roathe": {
+   "vendor": "Roathe",
+   "place": "La Cathédrale",
+   "quests": [
+    "The Old Peace"
+   ],
+   "line": "Specifically, purchased from Roathe, La Cathédrale."
+  },
+  "Hunhow": {
+   "vendor": "Hunhow",
+   "place": "Pontis Tower",
+   "quests": [
+    "Jade Shadows: Constellations"
+   ],
+   "line": "Specifically, purchased from Hunhow, Pontis Tower."
+  },
+  "Melica": {
+   "vendor": "Cephalon Melica",
+   "place": "Yuvan's Peak",
+   "quests": [
+    "Angels of the Zariman",
+    "Whispers in the Walls"
+   ],
+   "line": "Specifically, purchased from Cephalon Melica, Yuvan's Peak."
+  },
+  "Syndicate": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Purchased from the six primary 'faction' Syndicates for Standing, requiring rank 5 and 5000 each."
+  },
+  "KIM": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded for achieving certain outcomes within Kinemantik Instant Messenger chats."
+  },
+  "Nightwave": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded for achieving certain Nightwave ranks."
+  },
+  "Adversary": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": null
+  },
+  "Quest": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Quest Honoria are awarded for completing certain Quests."
+  },
+  "Follie's Hunt": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": null
+  },
+  "Descendia": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": null
+  },
+  "Perita": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": null
+  },
+  "Archimedea": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": null
+  },
+  "Boss Fight": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded from activities revolving around defeating various Bosses, such as those found in Assassination and Open World missions, or Hardmode Bosses."
+  },
+  "Focus": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Purchased from the Focus Represent Store for Focus Points each."
+  },
+  "Tektolyst Artifact": {
+   "vendor": "Marie",
+   "place": "La Cathédrale",
+   "quests": [
+    "The Old Peace"
+   ],
+   "line": "Tektolyst Artifacts can be purchased from Marie, La Cathédrale."
+  },
+  "Mastery": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded automatically upon reaching the required Mastery Rank."
+  },
+  "Insign": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Honoria for unlocking the various levels of the Medals from the Insign Bundle."
+  },
+  "Prime": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded for owning specific Prime Warframes, whether purchased directly via Prime Access or built from components."
+  },
+  "Open World": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded for various Open World activities."
+  },
+  "Miscellaneous": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": null
+  },
+  "Event": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded during time-limited events, which may occasionally return."
+  },
+  "Trials": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded for completing Trials before they were retired."
+  },
+  "Founder": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Awarded for purchasing a Founders Pack."
+  },
+  "Staff": {
+   "vendor": null,
+   "place": null,
+   "quests": [],
+   "line": "Granted to employees and staff members of Digital Extremes."
+  }
+ }
+}

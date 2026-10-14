@@ -20,12 +20,18 @@
     "knip": "knip",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "palette": "node scripts/palette.mjs"
+    "palette": "node scripts/palette.mjs",
+    "data:refresh": "node scripts/refresh-drops.mjs",
+    "data:wiki": "node scripts/refresh-wiki.mjs",
+    "fixture": "node scripts/trim-profile.mjs"
   },
   "dependencies": {
+    "@wfcd/items": "1.1275.72",
     "next": "16.3.2",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "warframe-worldstate-data": "3.16.9",
+    "yaml": "2.9.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.6.1",

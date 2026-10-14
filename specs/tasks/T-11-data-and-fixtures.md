@@ -8,20 +8,30 @@
 
 The curated files and the vendored snapshots that cross unchanged, the four profiles the tests and demos read, and the scripts that refresh the snapshots and cut a fixture. The reworked curated files (`grafo.yaml`, `systems.yaml`) cross with the tasks that change them.
 
+Corrected on 2026-10-13, when the task was built:
+
+- `tests/helpers.ts` imports the payload's parse, the profile's types and the graph's schema, none of which is here yet, and it names the real capture. It crosses with T-12, and `testGraph()` joins it in T-13.
+- `trim-profile.mjs` no longer defaults to the real capture: `--from` is required.
+- `refresh-drops.mjs` and `trim-profile.mjs` read `data/grafo.yaml`, so neither runs before T-13.
+- The scripts' three packages join `package.json`, and the snapshots join `.prettierignore` as they are written.
+- `curated-files.md` is reworked rather than moved: it drops the two files that stay, leaves the `grafo.yaml` section to T-13, which reworks the file, follows the new layers and names each snapshot's source and licence.
+
 ## What crosses
 
-| File                                                                                   | Origin | Note                                                                             |
-| -------------------------------------------------------------------------------------- | ------ | -------------------------------------------------------------------------------- |
-| `data/narrative_spine.yaml`, `quest_evidence.yaml`, `sources.yaml`, `acquisition.yaml` | Moves  |                                                                                  |
-| `data/vendor/*`                                                                        | Moves  | Every snapshot and `manifest.json`, each with its source and licence named       |
-| `fixtures/profile-cy.json`, `profile-ordis.json`                                       | Moves  | The two demos, output of `pnpm fixture`, checked once more for a real id or name |
-| `fixtures/profile-veteran.json`, `profile-new-player.json`                             | Moves  | Synthetic                                                                        |
-| `scripts/lua.mjs`, `refresh-drops.mjs`, `refresh-wiki.mjs`, `trim-profile.mjs`         | Moves  | `pnpm data:refresh`, `pnpm data:wiki`, `pnpm fixture`                            |
-| `tests/helpers.ts`                                                                     | Moves  |                                                                                  |
+| File                                                                                   | Origin   | Note                                                                             |
+| -------------------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------- |
+| `data/narrative_spine.yaml`, `quest_evidence.yaml`, `sources.yaml`, `acquisition.yaml` | Moves    |                                                                                  |
+| `data/vendor/*`                                                                        | Moves    | Every snapshot and `manifest.json`, each with its source and licence named       |
+| `fixtures/profile-cy.json`, `profile-ordis.json`                                       | Moves    | The two demos, output of `pnpm fixture`, checked once more for a real id or name |
+| `fixtures/profile-veteran.json`, `profile-new-player.json`                             | Moves    | Synthetic; the veteran's one real platform name replaced by its display name     |
+| `scripts/lua.mjs`, `refresh-drops.mjs`, `refresh-wiki.mjs`                             | Moves    | `pnpm data:refresh`, `pnpm data:wiki`                                            |
+| `scripts/trim-profile.mjs`                                                             | Reworked | `pnpm fixture`; `--from` is required, with no default naming the real capture    |
+| `package.json`, `pnpm-lock.yaml`                                                       | Reworked | `yaml`, `@wfcd/items` and `warframe-worldstate-data`, pinned; the three scripts  |
+| `.prettierignore`                                                                      | Reworked | `fixtures/*.json` and `data/vendor/`, as the private repository has them         |
 
 ## Documents that cross
 
-- `docs/curated-files.md`: Moves
+- `docs/curated-files.md`: Reworked. Without `glosario.yaml` and `lore.yaml`, which stay, and without `grafo.yaml`, which T-13 brings; the paths of the new layers; a section naming each vendored snapshot's source and licence, read from the source.
 
 ## Acceptance
 

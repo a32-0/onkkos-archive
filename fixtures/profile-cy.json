@@ -1,0 +1,6456 @@
+{
+  "Results": [
+    {
+      "AccountId": {
+        "$oid": "000000000000000000000001"
+      },
+      "DisplayName": "Cy",
+      "PlatformNames": [
+        "Cy"
+      ],
+      "PlayerLevel": 27,
+      "Created": {
+        "$date": {
+          "$numberLong": "1410228338770"
+        }
+      },
+      "Missions": [
+        {
+          "Completes": 3,
+          "Tag": "ClanNode1"
+        },
+        {
+          "Completes": 3,
+          "Tag": "ClanNode10"
+        },
+        {
+          "Completes": 10,
+          "Tier": 1,
+          "Tag": "ClanNode2"
+        },
+        {
+          "Completes": 109,
+          "Tag": "ClanNode24"
+        },
+        {
+          "Completes": 10,
+          "Tag": "ClanNode3"
+        },
+        {
+          "Completes": 6,
+          "Tag": "ClanNode4"
+        },
+        {
+          "Completes": 21,
+          "Tag": "ClanNode5"
+        },
+        {
+          "Completes": 3,
+          "Tag": "ClanNode7"
+        },
+        {
+          "Completes": 7,
+          "Tag": "ClanNode8"
+        },
+        {
+          "Completes": 24,
+          "Tag": "ClanNode9"
+        },
+        {
+          "Completes": 27,
+          "Tag": "SettlementNode1"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SettlementNode10"
+        },
+        {
+          "Completes": 13,
+          "Tag": "SettlementNode11"
+        },
+        {
+          "Completes": 16,
+          "Tag": "SettlementNode12"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SettlementNode13"
+        },
+        {
+          "Completes": 18,
+          "Tier": 1,
+          "Tag": "SettlementNode14"
+        },
+        {
+          "Completes": 26,
+          "Tag": "SettlementNode15"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SettlementNode16"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SettlementNode17"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SettlementNode18"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SettlementNode19"
+        },
+        {
+          "Completes": 42,
+          "Tag": "SettlementNode2"
+        },
+        {
+          "Completes": 27,
+          "Tag": "SettlementNode20"
+        },
+        {
+          "Completes": 32,
+          "Tier": 1,
+          "Tag": "SettlementNode3"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SettlementNode4"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SettlementNode5"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SettlementNode6"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SettlementNode7"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SettlementNode8"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SettlementNode9"
+        },
+        {
+          "Completes": 29,
+          "Tag": "SolNode1"
+        },
+        {
+          "Completes": 11,
+          "Tier": 1,
+          "Tag": "SolNode10"
+        },
+        {
+          "Completes": 37,
+          "Tag": "SolNode100"
+        },
+        {
+          "Completes": 23,
+          "Tier": 1,
+          "Tag": "SolNode101"
+        },
+        {
+          "Completes": 12,
+          "Tier": 1,
+          "Tag": "SolNode103"
+        },
+        {
+          "Completes": 30,
+          "Tier": 1,
+          "Tag": "SolNode104"
+        },
+        {
+          "Completes": 39,
+          "Tag": "SolNode105"
+        },
+        {
+          "Completes": 10,
+          "Tag": "SolNode106"
+        },
+        {
+          "Completes": 24,
+          "Tier": 1,
+          "Tag": "SolNode107"
+        },
+        {
+          "Completes": 22,
+          "Tier": 1,
+          "Tag": "SolNode108"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode109"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode11"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode110"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode113"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode114"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode115"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode117"
+        },
+        {
+          "Completes": 18,
+          "Tier": 1,
+          "Tag": "SolNode119"
+        },
+        {
+          "Completes": 20,
+          "Tier": 1,
+          "Tag": "SolNode12"
+        },
+        {
+          "Completes": 33,
+          "Tier": 1,
+          "Tag": "SolNode121"
+        },
+        {
+          "Completes": 26,
+          "Tier": 1,
+          "Tag": "SolNode123"
+        },
+        {
+          "Completes": 29,
+          "Tag": "SolNode125"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode126"
+        },
+        {
+          "Completes": 35,
+          "Tag": "SolNode127"
+        },
+        {
+          "Completes": 39,
+          "Tier": 1,
+          "Tag": "SolNode128"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode13"
+        },
+        {
+          "Completes": 11,
+          "Tier": 1,
+          "Tag": "SolNode130"
+        },
+        {
+          "Completes": 30,
+          "Tier": 1,
+          "Tag": "SolNode131"
+        },
+        {
+          "Completes": 8,
+          "Tag": "SolNode133"
+        },
+        {
+          "Completes": 24,
+          "Tag": "SolNode135"
+        },
+        {
+          "Completes": 15,
+          "Tag": "SolNode14"
+        },
+        {
+          "Completes": 16,
+          "Tag": "SolNode140"
+        },
+        {
+          "Completes": 25,
+          "Tier": 1,
+          "Tag": "SolNode15"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode151"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode156"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode16"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode160"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode165"
+        },
+        {
+          "Completes": 45,
+          "Tag": "SolNode166"
+        },
+        {
+          "Completes": 37,
+          "Tag": "SolNode172"
+        },
+        {
+          "Completes": 27,
+          "Tag": "SolNode177"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode178"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode179"
+        },
+        {
+          "Completes": 11,
+          "Tag": "SolNode18"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode180"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode184"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode186"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode187"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode188"
+        },
+        {
+          "Completes": 10,
+          "Tag": "SolNode189"
+        },
+        {
+          "Completes": 19,
+          "Tier": 1,
+          "Tag": "SolNode19"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode190"
+        },
+        {
+          "Completes": 11,
+          "Tag": "SolNode191"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode192"
+        },
+        {
+          "Completes": 24,
+          "Tag": "SolNode193"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode194"
+        },
+        {
+          "Completes": 16,
+          "Tag": "SolNode196"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode198"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode199"
+        },
+        {
+          "Completes": 18,
+          "Tier": 1,
+          "Tag": "SolNode2"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode20"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode201"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode202"
+        },
+        {
+          "Completes": 22,
+          "Tag": "SolNode203"
+        },
+        {
+          "Completes": 16,
+          "Tier": 1,
+          "Tag": "SolNode205"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode207"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode210"
+        },
+        {
+          "Completes": 17,
+          "Tag": "SolNode212"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode213"
+        },
+        {
+          "Completes": 15,
+          "Tag": "SolNode215"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode219"
+        },
+        {
+          "Completes": 17,
+          "Tag": "SolNode22"
+        },
+        {
+          "Completes": 13,
+          "Tier": 1,
+          "Tag": "SolNode220"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode221"
+        },
+        {
+          "Completes": 7,
+          "Tag": "SolNode222"
+        },
+        {
+          "Completes": 14,
+          "Tier": 1,
+          "Tag": "SolNode223"
+        },
+        {
+          "Completes": 20,
+          "Tier": 1,
+          "Tag": "SolNode224"
+        },
+        {
+          "Completes": 20,
+          "Tier": 1,
+          "Tag": "SolNode225"
+        },
+        {
+          "Completes": 25,
+          "Tier": 1,
+          "Tag": "SolNode226"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode227"
+        },
+        {
+          "Completes": 11,
+          "Tag": "SolNode23"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode24"
+        },
+        {
+          "Completes": 12,
+          "Tag": "SolNode25"
+        },
+        {
+          "Completes": 25,
+          "Tier": 1,
+          "Tag": "SolNode26"
+        },
+        {
+          "Completes": 40,
+          "Tier": 1,
+          "Tag": "SolNode27"
+        },
+        {
+          "Completes": 8,
+          "Tier": 1,
+          "Tag": "SolNode28"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode29"
+        },
+        {
+          "Completes": 9,
+          "Tag": "SolNode30"
+        },
+        {
+          "Completes": 27,
+          "Tag": "SolNode31"
+        },
+        {
+          "Completes": 59,
+          "Tier": 1,
+          "Tag": "SolNode32"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode33"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode35"
+        },
+        {
+          "Completes": 20,
+          "Tag": "SolNode36"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode37"
+        },
+        {
+          "Completes": 37,
+          "Tier": 1,
+          "Tag": "SolNode39"
+        },
+        {
+          "Completes": 15,
+          "Tag": "SolNode41"
+        },
+        {
+          "Completes": 17,
+          "Tier": 1,
+          "Tag": "SolNode42"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode44"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode45"
+        },
+        {
+          "Completes": 23,
+          "Tag": "SolNode46"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode47"
+        },
+        {
+          "Completes": 25,
+          "CompletionDate": {
+            "$date": {
+              "$numberLong": "1412388676203"
+            }
+          },
+          "Tag": "SolNode49"
+        },
+        {
+          "Completes": 16,
+          "Tier": 1,
+          "Tag": "SolNode50"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode52"
+        },
+        {
+          "Completes": 57,
+          "Tier": 1,
+          "Tag": "SolNode53"
+        },
+        {
+          "Completes": 6,
+          "Tag": "SolNode54"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode55"
+        },
+        {
+          "Completes": 45,
+          "Tier": 1,
+          "Tag": "SolNode58"
+        },
+        {
+          "Completes": 15,
+          "Tier": 1,
+          "Tag": "SolNode59"
+        },
+        {
+          "Completes": 16,
+          "Tag": "SolNode6"
+        },
+        {
+          "Completes": 18,
+          "Tag": "SolNode61"
+        },
+        {
+          "Completes": 34,
+          "Tag": "SolNode62"
+        },
+        {
+          "Completes": 29,
+          "Tier": 1,
+          "Tag": "SolNode63"
+        },
+        {
+          "Completes": 8,
+          "Tag": "SolNode65"
+        },
+        {
+          "Completes": 19,
+          "Tier": 1,
+          "Tag": "SolNode66"
+        },
+        {
+          "Completes": 9,
+          "Tag": "SolNode67"
+        },
+        {
+          "Completes": 15,
+          "Tag": "SolNode68"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode69"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode7"
+        },
+        {
+          "Completes": 21,
+          "Tier": 1,
+          "Tag": "SolNode70"
+        },
+        {
+          "Completes": 6,
+          "Tag": "SolNode71"
+        },
+        {
+          "Completes": 34,
+          "Tag": "SolNode73"
+        },
+        {
+          "Completes": 29,
+          "Tag": "SolNode74"
+        },
+        {
+          "Completes": 21,
+          "Tier": 1,
+          "Tag": "SolNode75"
+        },
+        {
+          "Completes": 28,
+          "Tag": "SolNode78"
+        },
+        {
+          "Completes": 19,
+          "Tier": 1,
+          "Tag": "SolNode79"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode80"
+        },
+        {
+          "Completes": 20,
+          "Tag": "SolNode82"
+        },
+        {
+          "Completes": 8,
+          "Tier": 1,
+          "Tag": "SolNode85"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode86"
+        },
+        {
+          "Completes": 28,
+          "Tag": "SolNode87"
+        },
+        {
+          "Completes": 18,
+          "Tier": 1,
+          "Tag": "SolNode88"
+        },
+        {
+          "Completes": 24,
+          "Tier": 1,
+          "Tag": "SolNode89"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode90"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode91"
+        },
+        {
+          "Completes": 22,
+          "Tag": "SolNode93"
+        },
+        {
+          "Completes": 16,
+          "Tier": 1,
+          "Tag": "SolNode94"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode95"
+        },
+        {
+          "Completes": 18,
+          "Tag": "SolNode96"
+        },
+        {
+          "Completes": 19,
+          "Tier": 1,
+          "Tag": "SolNode97"
+        },
+        {
+          "Completes": 5,
+          "Tier": 1,
+          "Tag": "SolNode98"
+        },
+        {
+          "Completes": 32,
+          "Tag": "SolNode99"
+        },
+        {
+          "Completes": 33,
+          "Tag": "SolNode64"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode77"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode111"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode9"
+        },
+        {
+          "Completes": 30,
+          "Tag": "ClanNode13"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode901"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode902"
+        },
+        {
+          "Completes": 10,
+          "Tag": "ClanNode12"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode906"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode5"
+        },
+        {
+          "Completes": 16,
+          "Tag": "ClanNode22"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode92"
+        },
+        {
+          "Completes": 20,
+          "Tag": "SolNode76"
+        },
+        {
+          "Completes": 27,
+          "Tier": 1,
+          "Tag": "SolNode51"
+        },
+        {
+          "Completes": 20,
+          "Tag": "SolNode38"
+        },
+        {
+          "Completes": 18,
+          "Tag": "SolNode4"
+        },
+        {
+          "Completes": 35,
+          "Tag": "SolNode146"
+        },
+        {
+          "Completes": 51,
+          "Tag": "SolNode144"
+        },
+        {
+          "Completes": 8,
+          "Tier": 1,
+          "Tag": "ClanNode0"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "SolNode904"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode905"
+        },
+        {
+          "Completes": 4,
+          "Tier": 1,
+          "Tag": "SolNode34"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode40"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode3"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode112"
+        },
+        {
+          "Completes": 28,
+          "Tag": "ClanNode17"
+        },
+        {
+          "Completes": 12,
+          "Tag": "SolNode908"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode120"
+        },
+        {
+          "Completes": 30,
+          "Tag": "SolNode81"
+        },
+        {
+          "Completes": 25,
+          "Tag": "SolNode216"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode116"
+        },
+        {
+          "Completes": 18,
+          "Tag": "SolNode137"
+        },
+        {
+          "Completes": 8,
+          "Tag": "SolNode72"
+        },
+        {
+          "Completes": 4,
+          "Tag": "ClanNode16"
+        },
+        {
+          "Completes": 16,
+          "Tag": "SolNode217"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode903"
+        },
+        {
+          "Completes": 20,
+          "Tag": "SolNode84"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode102"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode8"
+        },
+        {
+          "Completes": 17,
+          "Tag": "SolNode211"
+        },
+        {
+          "Completes": 22,
+          "Tag": "SolNode43"
+        },
+        {
+          "Completes": 11,
+          "Tier": 1,
+          "Tag": "SolNode48"
+        },
+        {
+          "Completes": 17,
+          "Tag": "SolNode56"
+        },
+        {
+          "Completes": 29,
+          "Tag": "SolNode118"
+        },
+        {
+          "Completes": 18,
+          "Tag": "SolNode57"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode60"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode134"
+        },
+        {
+          "Completes": 11,
+          "Tag": "SolNode149"
+        },
+        {
+          "Completes": 65,
+          "Tag": "ClanNode25"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode143"
+        },
+        {
+          "Completes": 14,
+          "Tag": "SolNode138"
+        },
+        {
+          "Completes": 17,
+          "Tag": "SolNode204"
+        },
+        {
+          "Completes": 17,
+          "Tag": "SolNode139"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode142"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode148"
+        },
+        {
+          "Completes": 33,
+          "Tier": 1,
+          "Tag": "SolNode122"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode174"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode183"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode124"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode155"
+        },
+        {
+          "Completes": 24,
+          "Tag": "ClanNode18"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode168"
+        },
+        {
+          "Completes": 42,
+          "Tag": "SolNode171"
+        },
+        {
+          "Completes": 41,
+          "Tier": 1,
+          "Tag": "SolNode300"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode159"
+        },
+        {
+          "Completes": 7,
+          "Tag": "SolNode302"
+        },
+        {
+          "Completes": 21,
+          "Tier": 1,
+          "Tag": "SolNode141"
+        },
+        {
+          "Completes": 13,
+          "Tag": "SolNode164"
+        },
+        {
+          "Completes": 21,
+          "Tag": "SolNode153"
+        },
+        {
+          "Completes": 8,
+          "Tag": "SolNode214"
+        },
+        {
+          "Completes": 5,
+          "Tier": 1,
+          "Tag": "SolNode132"
+        },
+        {
+          "Completes": 19,
+          "Tag": "SolNode209"
+        },
+        {
+          "Completes": 7,
+          "Tag": "SolNode147"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode169"
+        },
+        {
+          "Completes": 15,
+          "Tag": "SolNode301"
+        },
+        {
+          "Completes": 6,
+          "Tag": "SolNode83"
+        },
+        {
+          "Completes": 24,
+          "Tag": "SolNode21"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode145"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode150"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode158"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode163"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode176"
+        },
+        {
+          "Completes": 14,
+          "Tag": "SolNode175"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode157"
+        },
+        {
+          "Completes": 32,
+          "Tag": "SolNode181"
+        },
+        {
+          "Completes": 24,
+          "Tag": "SolNode167"
+        },
+        {
+          "Completes": 13,
+          "Tag": "SolNode173"
+        },
+        {
+          "Completes": 89,
+          "Tier": 1,
+          "Tag": "SolNode400"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "EarthToMarsJunction"
+        },
+        {
+          "Completes": 237,
+          "Tag": "SolNode195"
+        },
+        {
+          "Completes": 5,
+          "Tag": "ClanNode19"
+        },
+        {
+          "Completes": 9,
+          "Tag": "SolNode304"
+        },
+        {
+          "Completes": 14,
+          "Tag": "SolNode307"
+        },
+        {
+          "Completes": 88,
+          "Tag": "SolNode401"
+        },
+        {
+          "Completes": 31,
+          "Tag": "SolNode406"
+        },
+        {
+          "Completes": 26,
+          "Tag": "SolNode407"
+        },
+        {
+          "Completes": 7,
+          "Tag": "ClanNode11"
+        },
+        {
+          "Completes": 23,
+          "Tier": 1,
+          "Tag": "ClanNode23"
+        },
+        {
+          "Completes": 7,
+          "Tag": "SolNode306"
+        },
+        {
+          "Completes": 13,
+          "Tag": "SolNode17"
+        },
+        {
+          "Completes": 10,
+          "Tag": "SolNode403"
+        },
+        {
+          "Completes": 8,
+          "Tag": "SolNode404"
+        },
+        {
+          "Completes": 31,
+          "Tag": "SolNode405"
+        },
+        {
+          "Completes": 11,
+          "Tag": "SolNode410"
+        },
+        {
+          "Completes": 8,
+          "Tier": 1,
+          "Tag": "SolNode746"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "VenusToMercuryJunction"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "EarthToVenusJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "MarsToPhobosJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "MarsToCeresJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CeresToJupiterJunction"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode705"
+        },
+        {
+          "Completes": 1,
+          "Tag": "JupiterToEuropaJunction"
+        },
+        {
+          "Completes": 5,
+          "Tag": "ClanNode6"
+        },
+        {
+          "Completes": 14,
+          "Tag": "SolNode185"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "JupiterToSaturnJunction"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "SaturnToUranusJunction"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode741"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode742"
+        },
+        {
+          "Completes": 26,
+          "Tag": "SolNode747"
+        },
+        {
+          "Completes": 22,
+          "Tag": "SolNode744"
+        },
+        {
+          "Completes": 18,
+          "Tag": "SolNode402"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode743"
+        },
+        {
+          "Completes": 13,
+          "Tag": "SolNode748"
+        },
+        {
+          "Completes": 58,
+          "Tag": "SolNode707"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode764"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode411"
+        },
+        {
+          "Completes": 10,
+          "Tag": "SolNode412"
+        },
+        {
+          "Completes": 34,
+          "Tier": 1,
+          "Tag": "SolNode409"
+        },
+        {
+          "Completes": 10,
+          "Tier": 1,
+          "Tag": "SolNode305"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode713"
+        },
+        {
+          "Completes": 1,
+          "Tag": "NeptuneToPlutoJunction"
+        },
+        {
+          "Completes": 3,
+          "Tag": "ClanNode21"
+        },
+        {
+          "Completes": 14,
+          "Tag": "SolNode162"
+        },
+        {
+          "Completes": 14,
+          "Tag": "SolNode408"
+        },
+        {
+          "Completes": 204,
+          "Tier": 1,
+          "Tag": "CetusHub4"
+        },
+        {
+          "Completes": 466,
+          "Tier": 1,
+          "Tag": "SolNode228"
+        },
+        {
+          "Completes": 81,
+          "Tag": "SolNode801"
+        },
+        {
+          "Completes": 4,
+          "Tag": "ClanNode14"
+        },
+        {
+          "Completes": 4,
+          "Tag": "EventNode18"
+        },
+        {
+          "Completes": 2,
+          "Tag": "EventNode7"
+        },
+        {
+          "Completes": 3,
+          "Tag": "EventNode4"
+        },
+        {
+          "Completes": 3,
+          "Tag": "EventNode17"
+        },
+        {
+          "Completes": 8,
+          "Tag": "SolNode761"
+        },
+        {
+          "Completes": 4,
+          "Tag": "SolNode762"
+        },
+        {
+          "Completes": 234,
+          "Tag": "SolNode129"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode907"
+        },
+        {
+          "Completes": 1,
+          "Tag": "UranusToNeptuneJunction"
+        },
+        {
+          "Completes": 4,
+          "Tag": "ClanNode20"
+        },
+        {
+          "Completes": 6,
+          "Tier": 1,
+          "Tag": "ClanNode15"
+        },
+        {
+          "Completes": 1,
+          "Tag": "PlutoToErisJunction"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode745"
+        },
+        {
+          "Completes": 90,
+          "Tag": "SolNode763"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode710"
+        },
+        {
+          "Completes": 20,
+          "Tag": "SolNode802"
+        },
+        {
+          "Completes": 7,
+          "Tag": "SolNode711"
+        },
+        {
+          "Completes": 7,
+          "Tier": 1,
+          "Tag": "SolNode708"
+        },
+        {
+          "Completes": 24,
+          "Tag": "SolNode706"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode709"
+        },
+        {
+          "Completes": 3,
+          "Tag": "SolNode712"
+        },
+        {
+          "Completes": 138,
+          "Tag": "SolarisUnitedHub1"
+        },
+        {
+          "Completes": 4,
+          "Tag": "EventNode0"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode701"
+        },
+        {
+          "Completes": 13,
+          "Tag": "EventNode5"
+        },
+        {
+          "Completes": 6,
+          "Tag": "EventNode26"
+        },
+        {
+          "Completes": 6,
+          "Tag": "EventNode24"
+        },
+        {
+          "Completes": 3,
+          "Tag": "EventNode27"
+        },
+        {
+          "Completes": 3,
+          "Tag": "EventNode19"
+        },
+        {
+          "Completes": 8,
+          "Tag": "EventNode25"
+        },
+        {
+          "Completes": 4,
+          "Tag": "EventNode30"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode31"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode32"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode33"
+        },
+        {
+          "Completes": 6,
+          "Tag": "SolNode740"
+        },
+        {
+          "Completes": 4,
+          "Tag": "EventNode2"
+        },
+        {
+          "Completes": 4,
+          "Tag": "EventNode34"
+        },
+        {
+          "Completes": 9,
+          "Tag": "EventNode35"
+        },
+        {
+          "Completes": 5,
+          "Tier": 1,
+          "Tag": "SolNode308"
+        },
+        {
+          "Completes": 92,
+          "Tier": 1,
+          "Tag": "SolNode229"
+        },
+        {
+          "Completes": 6,
+          "Tag": "CrewBattleNode506"
+        },
+        {
+          "Completes": 4,
+          "Tag": "CrewBattleNode520"
+        },
+        {
+          "Completes": 52,
+          "Tier": 1,
+          "Tag": "DeimosHub"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode556"
+        },
+        {
+          "Completes": 6,
+          "Tag": "CrewBattleNode502"
+        },
+        {
+          "Completes": 4,
+          "Tag": "CrewBattleNode518"
+        },
+        {
+          "Completes": 6,
+          "Tag": "CrewBattleNode508"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode517"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode507"
+        },
+        {
+          "Completes": 4,
+          "Tag": "CrewBattleNode522"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode509"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode527"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode553"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode519"
+        },
+        {
+          "Completes": 4,
+          "Tag": "CrewBattleNode528"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode531"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode538"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode542"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode503"
+        },
+        {
+          "Completes": 22,
+          "Tier": 1,
+          "Tag": "SolNode231"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SolNode230"
+        },
+        {
+          "Completes": 6,
+          "Tag": "SolNode232"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode233"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode450"
+        },
+        {
+          "Completes": 3,
+          "Tier": 1,
+          "Tag": "SolNode309"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode310"
+        },
+        {
+          "Completes": 12,
+          "Tag": "SolNode235"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode539"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CrewBattleNode550"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode557"
+        },
+        {
+          "Completes": 2,
+          "Tag": "EventNode37"
+        },
+        {
+          "Completes": 32,
+          "Tag": "SolNode238"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode236"
+        },
+        {
+          "Completes": 2,
+          "Tag": "CrewBattleNode514"
+        },
+        {
+          "Completes": 4,
+          "Tier": 1,
+          "Tag": "EntratiLabHub"
+        },
+        {
+          "Completes": 12,
+          "Tag": "SolNode715"
+        },
+        {
+          "Completes": 8,
+          "Tier": 1,
+          "Tag": "SolNode723"
+        },
+        {
+          "Completes": 3,
+          "Tag": "1999Hub"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "SolNode451"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode721"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode719"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode718"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode717"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode716"
+        },
+        {
+          "Completes": 3,
+          "Tag": "EventNode28"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode38"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode29"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode39"
+        },
+        {
+          "Completes": 1,
+          "Tag": "EventNode40"
+        },
+        {
+          "Completes": 2,
+          "Tag": "EventNode12"
+        },
+        {
+          "Completes": 1,
+          "Tag": "ErisToSednaJunction"
+        },
+        {
+          "Completes": 2,
+          "Tag": "SolNode239"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode253"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode254"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode255"
+        },
+        {
+          "Completes": 1,
+          "Tag": "SolNode256"
+        }
+      ],
+      "Affiliations": [
+        {
+          "Tag": "ArbitersSyndicate",
+          "Standing": 248007,
+          "Title": 5
+        },
+        {
+          "Tag": "RedVeilSyndicate",
+          "Standing": 292159,
+          "Title": 5
+        },
+        {
+          "Tag": "PerrinSyndicate",
+          "Standing": -71000,
+          "Title": -2
+        },
+        {
+          "Tag": "CephalonSudaSyndicate",
+          "Standing": 244581,
+          "Title": 5
+        },
+        {
+          "Tag": "SteelMeridianSyndicate",
+          "Standing": 280955,
+          "Title": 5
+        },
+        {
+          "Tag": "NewLokaSyndicate",
+          "Standing": -71000,
+          "Title": -2
+        },
+        {
+          "Tag": "ConclaveSyndicate",
+          "Standing": 12168,
+          "Title": 1
+        },
+        {
+          "Tag": "LibrarySyndicate",
+          "Standing": 18622,
+          "Title": 0
+        },
+        {
+          "Tag": "CetusSyndicate",
+          "Standing": 303363,
+          "Title": 5
+        },
+        {
+          "Tag": "QuillsSyndicate",
+          "Standing": 291400,
+          "Title": 5
+        },
+        {
+          "Tag": "VentKidsSyndicate",
+          "Standing": 258349,
+          "Title": 5
+        },
+        {
+          "Tag": "SolarisSyndicate",
+          "Standing": 254661,
+          "Title": 5
+        },
+        {
+          "Tag": "VoxSyndicate",
+          "Standing": 108500,
+          "Title": 3
+        },
+        {
+          "Tag": "RadioLegionSyndicate",
+          "Standing": 224650,
+          "Title": 22
+        },
+        {
+          "Tag": "RadioLegionIntermissionSyndicate",
+          "Standing": 156000,
+          "Title": 15
+        },
+        {
+          "Tag": "EventSyndicate",
+          "Standing": 10850,
+          "Title": 3
+        },
+        {
+          "Tag": "RadioLegion2Syndicate",
+          "Standing": 168500,
+          "Title": 16
+        },
+        {
+          "Tag": "RadioLegionIntermission2Syndicate",
+          "Standing": 22000,
+          "Title": 2
+        },
+        {
+          "Tag": "RadioLegion3Syndicate",
+          "Standing": 93820,
+          "Title": 9
+        },
+        {
+          "Tag": "EntratiSyndicate",
+          "Standing": 264100,
+          "Title": 5
+        },
+        {
+          "Tag": "NecraloidSyndicate",
+          "Standing": 78500,
+          "Title": 3
+        },
+        {
+          "Tag": "RadioLegionIntermission3Syndicate",
+          "Standing": 103000,
+          "Title": 10
+        },
+        {
+          "Tag": "RadioLegionIntermission4Syndicate",
+          "Standing": 45000,
+          "Title": 4
+        },
+        {
+          "Tag": "RadioLegionIntermission5Syndicate",
+          "Standing": 6500,
+          "Title": 0
+        },
+        {
+          "Tag": "KahlSyndicate",
+          "Standing": 1,
+          "Title": 1
+        },
+        {
+          "Tag": "RadioLegionIntermission7Syndicate",
+          "Standing": 103000,
+          "Title": 10
+        },
+        {
+          "Tag": "RadioLegionIntermission8Syndicate",
+          "Standing": 310500,
+          "Title": 31
+        },
+        {
+          "Tag": "ZarimanSyndicate",
+          "Standing": 247500,
+          "Title": 5
+        },
+        {
+          "Tag": "RadioLegionIntermission9Syndicate",
+          "Standing": 29000,
+          "Title": 2
+        },
+        {
+          "Tag": "EntratiLabSyndicate",
+          "Standing": 13000,
+          "Title": 1
+        },
+        {
+          "Tag": "RadioLegionIntermission10Syndicate",
+          "Standing": 44500,
+          "Title": 4
+        },
+        {
+          "Tag": "RadioLegionIntermission11Syndicate",
+          "Standing": 1000,
+          "Title": 0
+        },
+        {
+          "Tag": "RadioLegionIntermission12Syndicate",
+          "Standing": 128500,
+          "Title": 12
+        },
+        {
+          "Tag": "RadioLegionIntermission14Syndicate",
+          "Standing": 5500,
+          "Title": 0
+        },
+        {
+          "Tag": "RadioLegionIntermission15Syndicate",
+          "Standing": 24000,
+          "Title": 2
+        }
+      ],
+      "LoadOutInventory": {
+        "XPInfo": [
+          {
+            "ItemType": "/Lotus/Powersuits/AntiMatter/Anti",
+            "XP": 3620930
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Berserker/Berserker",
+            "XP": 4756764
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Ember/Ember",
+            "XP": 47137114
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Ember/EmberPrime",
+            "XP": 28602887
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Jade/Jade",
+            "XP": 1398649
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Paladin/Paladin",
+            "XP": 946877
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Rhino/Rhino",
+            "XP": 5018203
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Saryn/Saryn",
+            "XP": 1158303
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Trinity/Trinity",
+            "XP": 968281
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Volt/Volt",
+            "XP": 3042060
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/KubrowPet/GuardKubrowPetPowerSuit",
+            "XP": 1216666
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/KubrowPet/HunterKubrowPetPowerSuit",
+            "XP": 1329362
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/CarrierPowerSuit",
+            "XP": 63603186
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/DethCubePowerSuit",
+            "XP": 1691345
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/ShadePowerSuit",
+            "XP": 2130550
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/WyrmPowerSuit",
+            "XP": 1102859
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/BurstLaserPistol",
+            "XP": 947649
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/DethMachineRifle",
+            "XP": 1721481
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/LaserRifle",
+            "XP": 1101591
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/SentShotgun",
+            "XP": 13467476
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/ChainLightningGun/ChainLightningRifle",
+            "XP": 981919
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpHandRL/CorpusHandRocketLauncher",
+            "XP": 4017173
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/BurstRifle/GrnBurstRifle",
+            "XP": 1099830
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerMachetteAndCleaver/DualCleaverWeapon",
+            "XP": 652166
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerWhip/GrineerWhip",
+            "XP": 1412637
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrineerMicrowavegun/GrnMicrowavePistol",
+            "XP": 1781161
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Bo",
+            "XP": 492967
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Furax",
+            "XP": 461262
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Furis",
+            "XP": 645394
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Paris",
+            "XP": 515409
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/DualMagnus",
+            "XP": 625387
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Bows/PrimeHuntingBow",
+            "XP": 4720828
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Bows/StalkerBow",
+            "XP": 5853894
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/DoubleBarrelShotgun/TennoDoubleBarrelShotgun",
+            "XP": 574057
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnoPrmryXbow/TnoPrmryXbowWeapon",
+            "XP": 2803875
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Axe/DualAxeWeapon",
+            "XP": 456789
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/CronusSword/CronusLongSword",
+            "XP": 486689
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualKamas/DualKamas",
+            "XP": 481253
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualKamas/SingleKama",
+            "XP": 495676
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Polearms/PolearmWeapon",
+            "XP": 676125
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/KatanaAndWakizashi/Katana",
+            "XP": 3460861
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/KatanaAndWakizashi/LowKatana",
+            "XP": 4768991
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Tonfa/TonfaContestWinner/TennoTonfa",
+            "XP": 2912168
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/AutoPistol",
+            "XP": 711384
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/HeavyPistol",
+            "XP": 684364
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/AutomaticHandCrossbow/AutoCrossBow",
+            "XP": 608505
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/HarlequinGun/HarlequinPistols",
+            "XP": 900029
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/Magnum/Magnum",
+            "XP": 536324
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/LatronPrime",
+            "XP": 111777
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/Rifle",
+            "XP": 497778
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/SemiAutoRifle",
+            "XP": 472462
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Necro/Necro",
+            "XP": 6683314
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Archwing/StandardJetPack/StandardJetPack",
+            "XP": 1006818
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Primary/FoldingMachineGun/ArchMachineGun",
+            "XP": 1211792
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Melee/Archsword/ArchSwordWeapon",
+            "XP": 584343
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Polearms/PrimePolearmWeapon",
+            "XP": 1115941
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Glaives/LightGlaive/LightGlaiveWeapon",
+            "XP": 768451
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpFreezeRay/CrpFreezeRayRifle",
+            "XP": 461434
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/HeatGun/GrnHeatGun",
+            "XP": 698311
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/MeleePetPowerSuit",
+            "XP": 40640735
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/SentGlaiveWeapon",
+            "XP": 668202
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/CephalonSuda/Pistols/CSDroidArray",
+            "XP": 522049
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Glaives/PrimeGlaive/PrimeGlaiveWeapon",
+            "XP": 3799963
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/HeavyRifle",
+            "XP": 458573
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/KubrowPet/AdventurerKubrowPetPowerSuit",
+            "XP": 1384194
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/WraithGorgon/WraithGorgon",
+            "XP": 450461
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/GrineerPistol/GrineerAkimboPistol",
+            "XP": 942239
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Dagger/DarkDagger",
+            "XP": 473832
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CorpusMinigun/CorpusMinigun",
+            "XP": 491046
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/Whip/CorpusWhipWeapon",
+            "XP": 478271
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/PangolinSword/PangolinLongSword",
+            "XP": 456914
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Loki/LokiPrime",
+            "XP": 8626890
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualDagger/DualEtherDagger",
+            "XP": 499455
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/HeatSword/HeatLongSword",
+            "XP": 860298
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/PrimeWyrmPowerSuit",
+            "XP": 5030421
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/PrimeLaserRifle",
+            "XP": 2746363
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/JawSword/JawLongSword",
+            "XP": 462476
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Bows/AsymetricalBow/AsymetricalBow",
+            "XP": 473741
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/StalkerKunai",
+            "XP": 5084874
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/SentElecRailgun",
+            "XP": 30769344
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/ArcDronePowerSuit",
+            "XP": 963768
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/PlasmaSword/PlasmaLongSword",
+            "XP": 510205
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Bows/AntlerBow/AntlerBow",
+            "XP": 489477
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerSawbladeGun/SawBladeGun",
+            "XP": 553335
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Nunchaku/Nunchaku/Nunchaku",
+            "XP": 622621
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/PrimeBoltor/PrimeBoltor",
+            "XP": 6186140
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Rhino/RhinoPrime",
+            "XP": 3746575
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/PrimeThrowingStar/PrimeHikou",
+            "XP": 1357968
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/WraithTwinVipers/WraithTwinVipers",
+            "XP": 8931021
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Jade/NyxPrime",
+            "XP": 983987
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/AntiMatter/NovaPrime",
+            "XP": 15046771
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Dragon/Dragon",
+            "XP": 17050102
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/SniperRifle",
+            "XP": 552779
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/GreatSword/TennoGreatSword",
+            "XP": 604716
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerJetPoweredPolearm/GrineerJetPolearm",
+            "XP": 2747648
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/GubberPowerSuit",
+            "XP": 955986
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/SentBioWeapon",
+            "XP": 1501909
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Strun",
+            "XP": 473943
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Magician/Magician",
+            "XP": 5434540
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpSplitLaser/CrpSplitLaser",
+            "XP": 481079
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpAirPistol/CrpAirPistolArray",
+            "XP": 1630991
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/LongSword/LongSword",
+            "XP": 467830
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Scythe/EtherScytheWeapon",
+            "XP": 460047
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Shotgun/FullAutoShotgun",
+            "XP": 559049
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/NewLoka/LongGuns/NLTigris",
+            "XP": 33051376
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Mag/MagPrime",
+            "XP": 997117
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/NewLoka/Pistols/NLCastanas",
+            "XP": 691427
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/KubrowPet/RetrieverKubrowPetPowerSuit",
+            "XP": 1188512
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Trapper/Trapper",
+            "XP": 1659785
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Harlequin/Harlequin",
+            "XP": 1493907
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/StalkerTwo/StalkerTwoSmallSword",
+            "XP": 6203175
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Excalibur/Excalibur",
+            "XP": 3963214
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/TennoSniperRifle",
+            "XP": 468911
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/MonkeyKing/MonkeyKing",
+            "XP": 1588457
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Staff/Staff",
+            "XP": 456685
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/KickAndPunch/KickPunchWeapon",
+            "XP": 719106
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/GrineerPistol/GrnScopedPistolPlayer",
+            "XP": 597037
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Pistols/InfestedDartPistol/InfestedDartPistol",
+            "XP": 860157
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Maces/PaladinMace/PaladinMaceWeapon",
+            "XP": 598672
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/KubrowPet/FurtiveKubrowPetPowerSuit",
+            "XP": 975805
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Polearms/FlowerPowerPolearm/FlowerPowerPolearmWep",
+            "XP": 451348
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/LongSword/EtherSword",
+            "XP": 473897
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Scythe/ParisScythe/ParisScythe",
+            "XP": 452534
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Loki/Loki",
+            "XP": 9345662
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/StalkerMios/StalkerMios",
+            "XP": 498907
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/RedVeil/Bows/RVCernos",
+            "XP": 3320645
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Ninja/AshPrime",
+            "XP": 7117176
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Tengu/Tengu",
+            "XP": 3118963
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Archwing/StealthJetPack/StealthJetPack",
+            "XP": 1048071
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/StartingRifle",
+            "XP": 473041
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Banshee/Banshee",
+            "XP": 1330810
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/PerrinSequence/LongGuns/PSPenta",
+            "XP": 3689109
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Gauntlet/Gauntlet",
+            "XP": 457201
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualDagger/DualDagger",
+            "XP": 475683
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/RedVeil/Pistols/RVBallistica",
+            "XP": 703860
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnBoomerang/GrnBoomerang",
+            "XP": 463791
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerSniperRifle/VulkarWraith",
+            "XP": 451797
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Gauntlet/BrawlerKnuckles/BrawlerKnuckles",
+            "XP": 455171
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Nezha/Nezha",
+            "XP": 1022541
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualShortSword/DualHeatSwords",
+            "XP": 529406
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/PrimeCarrierPowerSuit",
+            "XP": 66935514
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/PerrinSequence/Melee/PSLecta",
+            "XP": 2670989
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/PrimeSentShotgun",
+            "XP": 4466364
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/NewLoka/Melee/NLMagistar",
+            "XP": 483349
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/PerrinSequence/Pistols/PSDualCestra",
+            "XP": 1616783
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Staff/GrnStaff",
+            "XP": 497409
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Chemical/FlameThrower",
+            "XP": 475468
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnQueenSceptre/GrnQueenSceptreWeapon",
+            "XP": 6343771
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualShortSword/DualShortSword",
+            "XP": 649382
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/GreatSword/GreatSword",
+            "XP": 515291
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Hammer/HammerWeapon",
+            "XP": 548522
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Dagger/Dagger",
+            "XP": 536098
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Frost/Frost",
+            "XP": 4310039
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/GrineerPistol/GrnHeavyPistol",
+            "XP": 572199
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Sandman/Sandman",
+            "XP": 5755558
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/PrimeTigris/PrimeTigris",
+            "XP": 77519183
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/SundialGun/SundialPistol",
+            "XP": 35725243
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/DarkSword/DarkLongSword",
+            "XP": 463601
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/BoltoRifle",
+            "XP": 554906
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/YinYang/YinYang",
+            "XP": 2384959
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerSniperRifle/GrnSniperRifle",
+            "XP": 621875
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/TnoRapier/TnoRapier",
+            "XP": 527563
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/CutlassAndPoignard/CutlassPoignardSwords",
+            "XP": 587360
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/GrenadeLauncher/GrenadeLauncher",
+            "XP": 714575
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Ninja/Ninja",
+            "XP": 3541001
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Ranger/Ranger",
+            "XP": 3052400
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Cowgirl/Cowgirl",
+            "XP": 6749066
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/PrimeKatana/PrimeNikana",
+            "XP": 40233109
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnSpark/GrnSparkRifle",
+            "XP": 696351
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Mag/Mag",
+            "XP": 1676555
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/RepeatingCrossbow/RepeatingCrossbow",
+            "XP": 455620
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnHarpoonGun/GrnHarpoonGun",
+            "XP": 478628
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnGrenadeLauncher/GrnGrenadeLauncher",
+            "XP": 458813
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TennoTommyGun/TennoTommyGunRifle",
+            "XP": 477402
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/FiveShotSniper/FiveShotSniper",
+            "XP": 717025
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/DeraVandal",
+            "XP": 456981
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/BurstRifle",
+            "XP": 669203
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerAssaultRifle/GrnAssaultRifle",
+            "XP": 464502
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Shotgun/QuadShotgun",
+            "XP": 516198
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerM16Homage/GrineerM16Rifle",
+            "XP": 558325
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/PrimeLex/PrimeLex",
+            "XP": 508829
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Glaives/TeshinGlaive/TnTeshinGlaiveWep",
+            "XP": 2301985
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CorpusUMP/CorpusUMP",
+            "XP": 468982
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/TnSentinelCrossPowerSuit",
+            "XP": 30295735
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/Gremlin",
+            "XP": 6030467
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Cephalon/Primary/CephPrimary/CephPrimary",
+            "XP": 462751
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/TennoStars",
+            "XP": 884120
+          },
+          {
+            "ItemType": "/Lotus/Weapons/VoidTrader/VTDetron",
+            "XP": 459394
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/PrimeFragor/PrimeFragor",
+            "XP": 585767
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Shotgun/DoubleBarrelShotgun",
+            "XP": 458003
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/KubrowPet/ChargerKubrowPetPowerSuit",
+            "XP": 1017520
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Cephalon/Melee/Hammer/CephHammerWeapon",
+            "XP": 506336
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/TennoAR",
+            "XP": 574883
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerFlakCannon/FlakCannon",
+            "XP": 465043
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Fairy/Fairy",
+            "XP": 6349544
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/VandalElectroProd",
+            "XP": 1440180
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Infestation/Infestation",
+            "XP": 10725076
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/RevolverPistol",
+            "XP": 466396
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/Swords/Mire/MireSword",
+            "XP": 509777
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/Kunai",
+            "XP": 473559
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualShortSword/DualEtherSword",
+            "XP": 493937
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Volt/VoltPrime",
+            "XP": 4944741
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Glaives/Boomerang/BoomerangWeapon",
+            "XP": 653549
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Trinity/TrinityPrime",
+            "XP": 2487813
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Gunblade/TnoGunblade",
+            "XP": 681725
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Staff/MonkSpade/TnoMonkStaff",
+            "XP": 1045380
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Saryn/SarynPrime",
+            "XP": 40575570
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Tonfa/Boltonfa/Boltonfa",
+            "XP": 714294
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerClaws/GrnClaws",
+            "XP": 587215
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnDualFireAxe/GrnDualFireAxe",
+            "XP": 714376
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Hammer/IceHammer/IceHammer",
+            "XP": 842297
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/CrpTonfa/CrpTonfa",
+            "XP": 481759
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/KrisDagger/KrisDagger",
+            "XP": 485918
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Axe/AxeWeapon",
+            "XP": 477544
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/CutlassAndPoignard/TennoCutlass",
+            "XP": 560498
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/RedVeil/Melee/RVDarkDagger",
+            "XP": 474043
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/PrismaShadePowerSuit",
+            "XP": 928067
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Fist/Fist",
+            "XP": 618140
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/PrismaBurstLaserPistol",
+            "XP": 457170
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Excalibur/ExcaliburUmbra",
+            "XP": 13254211
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/UmbraKatana/UmbraKatana",
+            "XP": 867761
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/Hammer/CorpusHammerWeapon",
+            "XP": 622967
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/InfWFAccompanyingSparring/InfestedKogake",
+            "XP": 460885
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/QuillSword/QuillDualSwords",
+            "XP": 474887
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Berserker/ValkyrPrime",
+            "XP": 2616199
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Hammer/GlassHammer/GlassHammer",
+            "XP": 502324
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnGlassShotgun/TnGlassShotgunGun",
+            "XP": 523418
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerMachetteAndCleaver/PrismaDualCleavers",
+            "XP": 467488
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/PrimeHeliosPowerSuit",
+            "XP": 511795791
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/DeconstructorPrime/PrimeHeliosGlaiveWeapon",
+            "XP": 1546771
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnEgyptSwd/GrnEgyptSwdWeapon",
+            "XP": 1197053
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerMachetteAndCleaver/Machete",
+            "XP": 454948
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Bows/HuntingBow",
+            "XP": 468498
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/TnBardPistol/TnBardPistolGun",
+            "XP": 452030
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Bow/InfCernosBow/InfCernos",
+            "XP": 495780
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Melee/ArchHammer/ArchHammer",
+            "XP": 1162572
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrnQueenGuardDualPistol/GrnQueenGuardDualPistols",
+            "XP": 506887
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Dagger/CeramicDagger",
+            "XP": 462086
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Bio/BioWeapon",
+            "XP": 492607
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/LiDagger/LiDagger",
+            "XP": 562248
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrnUzi/GrnUziWeapon",
+            "XP": 564415
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/TipedoStaff/InfTipedoStaff",
+            "XP": 472743
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrineerCrossbow/GrineerGooGun",
+            "XP": 1503730
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Necro/NekrosPrime",
+            "XP": 13700535
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/TnGuandoPistol/TnGuandoPistolGun",
+            "XP": 553952
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Warfan/WarfanWeapon",
+            "XP": 477082
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Paladin/PaladinPrime",
+            "XP": 1044546
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Polearms/TnGuandaoPolearm/TnGuandaoPolearmWeapon",
+            "XP": 503386
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/Railgun",
+            "XP": 1839510
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Sentients/OperatorAmplifiers/Set1/Barrel/SentAmpSet1BarrelPartB",
+            "XP": 780041
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Trapper/TrapperPrime",
+            "XP": 2390639
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerMachetteAndCleaver/WraithMacheteWeapon",
+            "XP": 600847
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Magician/LimboPrime",
+            "XP": 4083128
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnHeavyShotgun/TnHeavyShotgunGun",
+            "XP": 461988
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/ThreeLeaf/ThreeLeaf",
+            "XP": 480724
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnPriestSpear/TnPriestSpearGun",
+            "XP": 485925
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/PersianMachete/DjinnMachete",
+            "XP": 452734
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrineerBulbousSMG/Prisma/PrismaTwinGremlinsWeapon",
+            "XP": 1649053
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Harlequin/MiragePrime",
+            "XP": 17881527
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpShockRifle/QuantaVandal",
+            "XP": 1582602
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Shotgun/Shotgun",
+            "XP": 467720
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/GrineerPistol/GrineerLightPistol",
+            "XP": 516268
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/RevenantShotgun/RevenantShotgun",
+            "XP": 1217733
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/DrakeRifle/DrakeRifle",
+            "XP": 534705
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/TennoSai/TennoSais",
+            "XP": 499656
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnCannon/GrnCannonWeapon",
+            "XP": 1045155
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnFourBarrelRifle/GrnFourBarrelRifleWeapon",
+            "XP": 450991
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/GarudaCrossbow/GarudaCrossbow",
+            "XP": 552755
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Banshee/BansheePrime",
+            "XP": 1386148
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/GlassKunai/GlassKunaiWeapon",
+            "XP": 451280
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/HandShotGun",
+            "XP": 460788
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Revenant/Revenant",
+            "XP": 2013130
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/SwordsAndBoards/PacifistShieldAndSword/PacifistShieldSword",
+            "XP": 673997
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/AkimboShotGun",
+            "XP": 678893
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Glass/Glass",
+            "XP": 1407252
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/CatbrowPet/CheshireCatbrowPetPowerSuit",
+            "XP": 934499
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/TnPriestPistolScope/TnPriestPistolWeapon",
+            "XP": 625778
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Tengu/ZephyrPrime",
+            "XP": 4251100
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Axe/PrimeScindo/PrimeScindoWeapon",
+            "XP": 1782669
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Dragon/ChromaPrime",
+            "XP": 26042711
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/CephalonSuda/Pistols/CSSynoidGammacor",
+            "XP": 605459
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Cowgirl/MesaPrime",
+            "XP": 65357413
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Pirate/HydroidPrime",
+            "XP": 5579507
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/Pistol",
+            "XP": 592625
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Archwing/PrimeJetPack/PrimeJetPack",
+            "XP": 1227851
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/CrossBow",
+            "XP": 500333
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/AkimboAutoPistols",
+            "XP": 493422
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/AkimboViperPistols",
+            "XP": 495605
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/StalkerTwo/StalkerTwoGreatSword",
+            "XP": 1429532
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/AkLexPistols",
+            "XP": 565790
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/DualVastos",
+            "XP": 453921
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Fist/FuraxWraith",
+            "XP": 628793
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/PrimeVectis/PrimeVectisRifle",
+            "XP": 3509822
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/DualDagger/FangPrimeDagger",
+            "XP": 1189196
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/AkimboBolto",
+            "XP": 477559
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistol/BurstPistol",
+            "XP": 457593
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Akimbo/AkimboPistol",
+            "XP": 462550
+          },
+          {
+            "ItemType": "/Lotus/Weapons/MK1Series/MK1Kunai",
+            "XP": 464139
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/TigrisRedeemerSetPistol/TnoBladedPistols",
+            "XP": 2577051
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/QuillDartgun/QuillDartGunWeapon",
+            "XP": 499786
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Sentients/OperatorAmplifiers/SentTrainingAmplifier/SentAmpTrainingBarrel",
+            "XP": 473401
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Sentients/OperatorAmplifiers/Set1/Barrel/SentAmpSet1BarrelPartC",
+            "XP": 4073240
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Primary/Railgun/ArchRailgun",
+            "XP": 1048067
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnTrident/GrnTridentWeapon",
+            "XP": 530635
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/Machinegun/SupraVandal",
+            "XP": 11294994
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CorpusUMP/PrismaCorpusUMP",
+            "XP": 672854
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/RubicoPrime/RubicoPrimeWeapon",
+            "XP": 7980204
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/PrimeVasto/PrimeVastoPistol",
+            "XP": 1383014
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Brawler/Brawler",
+            "XP": 1387748
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/PrimeSilvaAegis/PrimeSilvaAegis",
+            "XP": 621128
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/ArbitersOfHexis/LongGuns/AHBoltor",
+            "XP": 2807344
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/PrimeGram/PrimeGram",
+            "XP": 15377253
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/CronusSword/PrimeCronusLongSword",
+            "XP": 1180596
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnFlameSpear/GrnFlameSpear",
+            "XP": 513208
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerHalberd/GrnHalberd",
+            "XP": 555190
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/LaserAimRifle/LaserAimRifle",
+            "XP": 742042
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerTylAxeAndBoar/RegorAxeShield",
+            "XP": 487916
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrnKohmPistol/GrnKohmPistol",
+            "XP": 520102
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrnGorgSniperRifle/GrnGorgSniperRifle",
+            "XP": 458023
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Chemical/RocketLauncher",
+            "XP": 1288059
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/SwordsAndBoards/SundialSwordBoard/SundialBoardSword",
+            "XP": 491496
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrineerLeverActionPistol/GLAPistol",
+            "XP": 707068
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Pirate/Pirate",
+            "XP": 1151778
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnKusarigama/GrnKusarigamaWeapon",
+            "XP": 716720
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Ostron/Melee/ModularMelee02/Tip/TipEleven",
+            "XP": 5227513
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Priest/Priest",
+            "XP": 937649
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerLeverActionRifle/GLARifle",
+            "XP": 886970
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Bard/Bard",
+            "XP": 3068986
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/LongGuns/Tentacluster/InfestedShotgun",
+            "XP": 497185
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/PrimeBallistica/PrimeBallistica",
+            "XP": 1927483
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Pistols/InfVomitGun/InfVomitGunWep",
+            "XP": 452061
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/SteelMeridian/LongGuns/SMHek",
+            "XP": 782649
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/LongGuns/InfCrpShockSwarm/InfCrpShockSwarmRifle",
+            "XP": 461071
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/LongGuns/InfestedRifle",
+            "XP": 461113
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/Swords/Mios/Mios",
+            "XP": 463455
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/CephalonSuda/LongGuns/CSSimulor",
+            "XP": 3186285
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnEgyptSwd/DualGrnEgyptSwdWeapon",
+            "XP": 451345
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/ArbitersOfHexis/Pistols/AHAkbolto",
+            "XP": 472696
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Frost/FrostPrime",
+            "XP": 1067210
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/VoidTraderGorgon/VTGorgon",
+            "XP": 946601
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/PRapier/DestrezaPrime",
+            "XP": 949676
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/SteelMeridian/Pistols/SMMarelok",
+            "XP": 1091778
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/Whip/InfestedWhip/InfestedWhipWeapon",
+            "XP": 550692
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Pistols/InfProximityStars/InfProximityStars",
+            "XP": 476352
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Garuda/Garuda",
+            "XP": 1806425
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Ostron/Melee/ModularMelee02/Tip/TipNine",
+            "XP": 790294
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrnDWUniques/GrnTwinKohmaks",
+            "XP": 466934
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/Glaives/PunctureGlaive/PunctureGlaiveWeapon",
+            "XP": 564417
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/LongGuns/QuantaFullyInfested/InfQuantaRifle",
+            "XP": 475381
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/SteelMeridian/Melee/SMSydon",
+            "XP": 466878
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpBFG/Vandal/VandalCrpBFG",
+            "XP": 3180057
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Axe/DualInfestedAxesWeapon",
+            "XP": 475463
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Pistols/InfestedPistol",
+            "XP": 450081
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Ostron/Melee/ModularMelee01/Tip/TipOne",
+            "XP": 619623
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/Staff/InfStaff/InfStaff",
+            "XP": 738849
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/DexFuris/DexFuris",
+            "XP": 667570
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/DexTheThird/DexTheThird",
+            "XP": 495783
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/DexTheSecond/DexTheSecond",
+            "XP": 1190537
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/CephalonSuda/Melee/CSHeliocor",
+            "XP": 496319
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Syndicates/ArbitersOfHexis/Melee/AHBoltace",
+            "XP": 502867
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/PrimeVasto/AkPrimeVasto/AkPrimeVastoPistol",
+            "XP": 5829451
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/BrassKnuckles/BrassKnuckles",
+            "XP": 504377
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpFreezeRay/Vandal/CrpFreezeRayVandalRifle",
+            "XP": 819505
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CorpusModularPistol/Vandal/CrpLaserPistolVandal",
+            "XP": 565400
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/RadarPowerSuit",
+            "XP": 1998642
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/TnTwoHandedKatana/TnTwoHandedKatana",
+            "XP": 6129197
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/Whips/CrpShockGrip/CrpShockGripWhipWeapon",
+            "XP": 570137
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Wisp/Wisp",
+            "XP": 1873478
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrineerHandShotgun/GrineerHandCannon",
+            "XP": 584400
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/KickAndPunch/PrismaObex",
+            "XP": 474956
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/YinYang/EquinoxPrime",
+            "XP": 3377692
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/ElectroProd",
+            "XP": 460674
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Bio/AcidDartPistol",
+            "XP": 456472
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/Polearm/CorpusPolearm01/CorpusPolearmWeapon",
+            "XP": 452514
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/EnergyRifle",
+            "XP": 488112
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpShotgun/CrpShotgun",
+            "XP": 15279348
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Infested/Melee/InfEmbolistScythe/InfestedScythe",
+            "XP": 542369
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Bow/Longbow/CrpBow",
+            "XP": 6142379
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpChargeGun/CrpChargeGun",
+            "XP": 493278
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/CrpLaserPistol",
+            "XP": 456376
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/Glaive/CrpGlaive/CrpGlaive",
+            "XP": 457721
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Rifle/VandalSniperRifle",
+            "XP": 594761
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpSentAmalgPistol/CrpSentAmalgPistol",
+            "XP": 450412
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpSentAmlgSniper/CrpSentAmlgSniper",
+            "XP": 483450
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Orokin/BallasSword/BallasSwordWeapon",
+            "XP": 450000
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Ostron/Melee/ModularMelee01/Tip/TipFive",
+            "XP": 458293
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/SniperPistol/CrpScopeGun",
+            "XP": 535336
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpShockRifle/CrpShockRifle",
+            "XP": 485795
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Soma/SomaDualKamas",
+            "XP": 602659
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/Spears/Railgun/CorpusRailgun",
+            "XP": 479837
+          },
+          {
+            "ItemType": "/Lotus/Weapons/SolarisUnited/Secondary/SUModularSecondarySet1/Barrel/SUModularSecondaryBarrelBPart",
+            "XP": 29365441
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/CrpLaserRifle",
+            "XP": 528719
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpBFG/CrpBFG",
+            "XP": 461805
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/PrimePyrana/PrimePyranaPistol",
+            "XP": 9748258
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CorpusMinigun/DualCorpusMinigun",
+            "XP": 559495
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpElectroMag/CrpElectroMag",
+            "XP": 2797168
+          },
+          {
+            "ItemType": "/Lotus/Types/Friendly/Pets/MoaPets/MoaPetComponents/HextraWeapon",
+            "XP": 696198
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpSentExperimentRifle/CrpSentExperimentRifle",
+            "XP": 486303
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Energy/CrpHeavyRifle",
+            "XP": 630160
+          },
+          {
+            "ItemType": "/Lotus/Weapons/SolarisUnited/Secondary/SUModularSecondarySet1/Barrel/SUModularSecondaryBarrelCPart",
+            "XP": 452594
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Melee/VoidTraderArchsword/VTArchSwordWeapon",
+            "XP": 630614
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpSentExperimentPistol/CrpSentExperimentPistol",
+            "XP": 499971
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnoLeverAction/TnoLeverActionRifle",
+            "XP": 740327
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Claws/TennoClaws",
+            "XP": 644333
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/SawnOffShotgun/TennoHandShotgun",
+            "XP": 705961
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/TennoUzi/TennoUzi",
+            "XP": 1629743
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnBardRifle/TnBardRifle",
+            "XP": 484772
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Polearms/TnHalberdPolearm/TnHalberdPolearmWeapon",
+            "XP": 523639
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/StickyBomb/StickyBombs",
+            "XP": 456967
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/SomaSidearm/AkimboSomaPistols",
+            "XP": 755987
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/SwordsAndBoards/MeleeContestWinnerOne/TennoSwordShield",
+            "XP": 685913
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/CrpVenusHatchet/CrpVenusHatchet",
+            "XP": 478547
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnSMG/TnSMGWeapon",
+            "XP": 489406
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnRevolverRifle/TnRevolverRifleGun",
+            "XP": 622449
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnWispRifle/TnWispRifle",
+            "XP": 1521825
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerAssaultRifle/TwinGrakatas",
+            "XP": 454161
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrnAmphisPistol/GrnAmphisPistol",
+            "XP": 450592
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/GrnTorpedoPistol/GrnTorpedoPistol",
+            "XP": 464903
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Nunchaku/TnoNunchaku/TnoNunchaku",
+            "XP": 488046
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/U18ThrowingKnives/U18throwingknives",
+            "XP": 450443
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/DarkSword/DarkSwordDaggerHybridWeapon",
+            "XP": 451375
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/LongGuns/GrineerLeverActionRifle/PrismaGrinlokWeapon",
+            "XP": 455650
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CorpusHandShotgun/CorpusHandCannon",
+            "XP": 458273
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Melee/Glaive/CrpGhostCatcherGlaive/CrpGhostCatcherGlaive",
+            "XP": 940763
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Primary/FoldingMachineGun/ArchMachineGunVandal",
+            "XP": 564520
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/TnChiselKanabo/TnChiselKanabo",
+            "XP": 657490
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Pistols/ConclaveLeverPistol/ConclaveLeverPistol",
+            "XP": 1078205
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/MonkeyKing/WukongPrime",
+            "XP": 2607750
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/KuvaLich/Secondaries/Kraken/KuvaKraken",
+            "XP": 450000
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/IronFrame/IronFrame",
+            "XP": 4355672
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/LongGuns/CrpShapeBlast/CrpShapeBlastShotgun",
+            "XP": 2956494
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Fairy/TitaniaPrime",
+            "XP": 2800443
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Sandman/InarosPrime",
+            "XP": 5624283
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Ranger/IvaraPrime",
+            "XP": 1003319
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Pistols/WraithSingleViper/WraithSingleViper",
+            "XP": 451073
+          },
+          {
+            "ItemType": "/Lotus/Types/Game/CrewShip/RailJack/DefaultHarness",
+            "XP": 1935757
+          },
+          {
+            "ItemType": "/Lotus/Weapons/VoidTrader/PrismaSkana",
+            "XP": 497521
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Brawler/AtlasPrime",
+            "XP": 1956252
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GunBlade/GrnGunBlade/GrnGunblade",
+            "XP": 600147
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpSonificBlastor/CrpBlastorWeapon",
+            "XP": 455659
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/SunDialAxe/SundialAxeWeapon",
+            "XP": 527032
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/EntratiMech/ThanoTech",
+            "XP": 900000
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Primary/ThanoTechArchLongGun/ThanoTechLongGun",
+            "XP": 2444103
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Corpus/Pistols/CrpHandRL/PrismaAngstrum",
+            "XP": 868241
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Operator/Melee/DrifterTazer/DrifterTazerPlayerWep",
+            "XP": 549247
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Operator/Pistols/DrifterPistol/DrifterPistolPlayerWeapon",
+            "XP": 1146344
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Bows/Omicrus/OmicrusPlayerWep",
+            "XP": 4562844
+          },
+          {
+            "ItemType": "/Lotus/Weapons/ClanTech/Chemical/FlameThrowerWraith",
+            "XP": 514094
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Hoplite/Hoplite",
+            "XP": 1107502
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrnGhoulSaw/GrnGhoulSawPlayer",
+            "XP": 651188
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Devourer/Devourer",
+            "XP": 1390737
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/KuvaLich/LongGuns/Tonkor/KuvaTonkor",
+            "XP": 450000
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Yareli/Yareli",
+            "XP": 908671
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/BrokenFrame/BrokenFrame",
+            "XP": 1310206
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/EntratiMech/NechroTech",
+            "XP": 900000
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Alchemist/Alchemist",
+            "XP": 1012231
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerMachetteAndCleaver/PrismaMachete",
+            "XP": 854075
+          },
+          {
+            "ItemType": "/Lotus/Types/Friendly/PlayerControllable/Weapons/DuviriDualSwordsWeapon",
+            "XP": 10345302
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Grineer/Melee/GrineerCombatKnife/GrineerCombatKnife",
+            "XP": 507643
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/StalkerMios/OperationsLacera",
+            "XP": 533022
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Zariman/LongGuns/PumpShotgun/ZarimanPumpShotgun",
+            "XP": 4525885
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Zariman/Pistols/HeavyPistol/ZarimanHeavyPistol",
+            "XP": 7932869
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Sentients/SentRifleNewWar/SentRifleNewWarGun",
+            "XP": 506968
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Pacifist/Pacifist",
+            "XP": 920775
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Infestation/InfestationPrime",
+            "XP": 968062
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/NWIIIOrokinSword/NWOrokinSword",
+            "XP": 456719
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Devourer/GrendelPrime",
+            "XP": 976608
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Primary/TnShieldframeArchGun/TnShieldFrameArchGun",
+            "XP": 997
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/PrimeDethCubePowerSuit",
+            "XP": 3841383
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/PrimeDethMachineRifle",
+            "XP": 36035046
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Pacifist/BaruukPrime",
+            "XP": 928713
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Staff/SingleStaff",
+            "XP": 870163
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelPowersuits/PrimeShadePowerSuit",
+            "XP": 1363111
+          },
+          {
+            "ItemType": "/Lotus/Types/Sentinels/SentinelWeapons/PrimeBurstLaserPistol",
+            "XP": 1350649
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Gunblade/GunbladeAutomatic/TnoGunbladeAutomatic",
+            "XP": 469531
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Wraith/Wraith",
+            "XP": 964285
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Grimoire/TnGrimoire",
+            "XP": 2101727
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Nezha/NezhaPrime",
+            "XP": 1073552
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Garuda/GarudaPrime",
+            "XP": 976091
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Priest/HarrowPrime",
+            "XP": 920469
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Wisp/WispPrime",
+            "XP": 1002439
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/IronFrame/IronFramePrime",
+            "XP": 1049547
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Bard/OctaviaPrime",
+            "XP": 1019647
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Archwing/Melee/ArchSwordHook/ArchHookSwordWeapon",
+            "XP": 2471
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Lasria/AK47/TC2024AK47Weapon",
+            "XP": 643121
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Swords/KatanaAndWakizashi/Dex2023Nikana/Dex2023Nikana",
+            "XP": 639898
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Sentient/Sentient",
+            "XP": 1059154
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/LoginPrimary/SundialRifle",
+            "XP": 950864
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Khora/Kavat/KhoraKavatPowerSuit",
+            "XP": 1066042
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Khora/Khora",
+            "XP": 1065997
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/ThrowingWeapons/TnChoirframeKunai/TnChoirframeKunai",
+            "XP": 500174
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Runner/Runner",
+            "XP": 950558
+          },
+          {
+            "ItemType": "/Lotus/Powersuits/Dagath/Dagath",
+            "XP": 922315
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/Melee/Hammer/ThrowingHammer",
+            "XP": 708724
+          },
+          {
+            "ItemType": "/Lotus/Weapons/Tenno/LongGuns/TnModQuestRifle/TnModQuestRifleWeapon",
+            "XP": 487844
+          }
+        ]
+      },
+      "PlayerSkills": {
+        "LPP_SPACE": 68680,
+        "LPS_TACTICAL": 5,
+        "LPS_PILOTING": 6,
+        "LPS_GUNNERY": 6,
+        "LPS_ENGINEERING": 5,
+        "LPS_COMMAND": 7,
+        "LPP_DRIFTER": 50000,
+        "LPS_DRIFT_RIDING": 6,
+        "LPS_DRIFT_ENDURANCE": 5,
+        "LPS_DRIFT_COMBAT": 6,
+        "LPS_DRIFT_OPPORTUNITY": 6
+      },
+      "ChallengeProgress": [
+        {
+          "Name": "Alchemist",
+          "Progress": 10
+        },
+        {
+          "Name": "Apply4Mods",
+          "Progress": 1
+        },
+        {
+          "Name": "ApplyMod",
+          "Progress": 1
+        },
+        {
+          "Name": "BladeMastery1",
+          "Progress": 5
+        },
+        {
+          "Name": "BladeMastery2",
+          "Progress": 5
+        },
+        {
+          "Name": "BladeMastery3",
+          "Progress": 5
+        },
+        {
+          "Name": "BladeProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "BladeProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "BladeProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "BowMastery1",
+          "Progress": 2
+        },
+        {
+          "Name": "BowMastery2",
+          "Progress": 2
+        },
+        {
+          "Name": "BowMastery3",
+          "Progress": 2
+        },
+        {
+          "Name": "BowProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "BowProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "BowProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "BrawlerMastery1",
+          "Progress": 3
+        },
+        {
+          "Name": "BrawlerProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "ControlFreak",
+          "Progress": 1
+        },
+        {
+          "Name": "Craft10Items",
+          "Progress": 10
+        },
+        {
+          "Name": "Craft1Item",
+          "Progress": 1
+        },
+        {
+          "Name": "Craft20Items",
+          "Progress": 20
+        },
+        {
+          "Name": "CraftItemsHidden",
+          "Progress": 1321
+        },
+        {
+          "Name": "CustomizeWarframeColor",
+          "Progress": 1
+        },
+        {
+          "Name": "DaggerMastery1",
+          "Progress": 3
+        },
+        {
+          "Name": "DaggerMastery2",
+          "Progress": 3
+        },
+        {
+          "Name": "DaggerMastery3",
+          "Progress": 3
+        },
+        {
+          "Name": "DaggerProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "DaggerProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "DaggerProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "Earn1000000Credits",
+          "Progress": 1000000
+        },
+        {
+          "Name": "Earn100000Credits",
+          "Progress": 100000
+        },
+        {
+          "Name": "Earn10000Credits",
+          "Progress": 10000
+        },
+        {
+          "Name": "Earn1000Credits",
+          "Progress": 1000
+        },
+        {
+          "Name": "EarnCreditsHidden",
+          "Progress": 35798491
+        },
+        {
+          "Name": "Find1000Mods",
+          "Progress": 1000
+        },
+        {
+          "Name": "Find100Mods",
+          "Progress": 100
+        },
+        {
+          "Name": "Find1Mod",
+          "Progress": 1
+        },
+        {
+          "Name": "Find20Mods",
+          "Progress": 20
+        },
+        {
+          "Name": "FindModsHidden",
+          "Progress": 39999
+        },
+        {
+          "Name": "FuseMods",
+          "Progress": 1
+        },
+        {
+          "Name": "Hacker",
+          "Progress": 1
+        },
+        {
+          "Name": "Headhunter",
+          "Progress": 10
+        },
+        {
+          "Name": "Kill100InMission",
+          "Progress": 1
+        },
+        {
+          "Name": "KillPhorid",
+          "Progress": 1
+        },
+        {
+          "Name": "Killer",
+          "Progress": 30
+        },
+        {
+          "Name": "Looter",
+          "Progress": 4
+        },
+        {
+          "Name": "Mercenary",
+          "Progress": 100000
+        },
+        {
+          "Name": "NoWitnesses",
+          "Progress": 100
+        },
+        {
+          "Name": "Own1Sentinel",
+          "Progress": 1
+        },
+        {
+          "Name": "Own2Warframes",
+          "Progress": 1
+        },
+        {
+          "Name": "Parry1000Shots",
+          "Progress": 1000
+        },
+        {
+          "Name": "PistolMaster",
+          "Progress": 20
+        },
+        {
+          "Name": "PistolMastery1",
+          "Progress": 5
+        },
+        {
+          "Name": "PistolMastery2",
+          "Progress": 5
+        },
+        {
+          "Name": "PistolMastery3",
+          "Progress": 5
+        },
+        {
+          "Name": "PistolProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "PistolProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "PistolProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "Play100Hours",
+          "Progress": 360000
+        },
+        {
+          "Name": "Play10Hours",
+          "Progress": 36000
+        },
+        {
+          "Name": "Play2Hours",
+          "Progress": 7200
+        },
+        {
+          "Name": "PlayHoursHidden",
+          "Progress": 2401923
+        },
+        {
+          "Name": "PlayerRank1",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank2",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank3",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank4",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank5",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank6",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank7",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank8",
+          "Progress": 1
+        },
+        {
+          "Name": "PoleWeaponMastery1",
+          "Progress": 3
+        },
+        {
+          "Name": "PoleWeaponMastery2",
+          "Progress": 3
+        },
+        {
+          "Name": "PoleWeaponMastery3",
+          "Progress": 3
+        },
+        {
+          "Name": "PoleWeaponProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "PoleWeaponProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "PoleWeaponProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "Power",
+          "Progress": 5
+        },
+        {
+          "Name": "Revive1000Allies",
+          "Progress": 1000
+        },
+        {
+          "Name": "Revive100Allies",
+          "Progress": 100
+        },
+        {
+          "Name": "Revive10Allies",
+          "Progress": 10
+        },
+        {
+          "Name": "Revive1Ally",
+          "Progress": 1
+        },
+        {
+          "Name": "ReviveAlliesHidden",
+          "Progress": 2211
+        },
+        {
+          "Name": "RifleMastery1",
+          "Progress": 5
+        },
+        {
+          "Name": "RifleMastery2",
+          "Progress": 5
+        },
+        {
+          "Name": "RifleMastery3",
+          "Progress": 5
+        },
+        {
+          "Name": "RifleProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "RifleProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "RifleProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "Rifleman",
+          "Progress": 30
+        },
+        {
+          "Name": "SHOOT_PROJECTILE",
+          "Progress": 4233
+        },
+        {
+          "Name": "SaviourOfCeres",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfEuropa",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfJupiter",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfMars",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfMercury",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfNeptune",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfPhobos",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfSaturn",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfSedna",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfUranus",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfVenus",
+          "Progress": 1
+        },
+        {
+          "Name": "Sell10000Credits",
+          "Progress": 10000
+        },
+        {
+          "Name": "SellItem",
+          "Progress": 1
+        },
+        {
+          "Name": "SellItemsHidden",
+          "Progress": 14624882
+        },
+        {
+          "Name": "SentinelMastery1",
+          "Progress": 3
+        },
+        {
+          "Name": "SentinelMastery2",
+          "Progress": 3
+        },
+        {
+          "Name": "SentinelMastery3",
+          "Progress": 3
+        },
+        {
+          "Name": "SentinelProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "SentinelProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "SentinelProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "ShotgunMastery1",
+          "Progress": 2
+        },
+        {
+          "Name": "ShotgunMastery2",
+          "Progress": 2
+        },
+        {
+          "Name": "ShotgunMastery3",
+          "Progress": 2
+        },
+        {
+          "Name": "ShotgunProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "ShotgunProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "ShotgunProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "Solve1000Ciphers",
+          "Progress": 1000
+        },
+        {
+          "Name": "Solve100Ciphers",
+          "Progress": 100
+        },
+        {
+          "Name": "Solve10Ciphers",
+          "Progress": 10
+        },
+        {
+          "Name": "Solve1Cipher",
+          "Progress": 1
+        },
+        {
+          "Name": "SolveCipherUnder5Seconds",
+          "Progress": 1
+        },
+        {
+          "Name": "SolveCiphersHidden",
+          "Progress": 4726
+        },
+        {
+          "Name": "SpeedKill",
+          "Progress": 3
+        },
+        {
+          "Name": "Stealth",
+          "Progress": 10
+        },
+        {
+          "Name": "StyleKill",
+          "Progress": 5
+        },
+        {
+          "Name": "Swordsman",
+          "Progress": 10
+        },
+        {
+          "Name": "TheSwordAlone",
+          "Progress": 10
+        },
+        {
+          "Name": "TreasureHunter",
+          "Progress": 1
+        },
+        {
+          "Name": "Uber",
+          "Progress": 1
+        },
+        {
+          "Name": "WarframeRank2",
+          "Progress": 1
+        },
+        {
+          "Name": "WeaponRank2",
+          "Progress": 1
+        },
+        {
+          "Name": "HatsOffToYou",
+          "Progress": 200
+        },
+        {
+          "Name": "TheCameraAdds100Pounds",
+          "Progress": 150
+        },
+        {
+          "Name": "PolarizeThat",
+          "Progress": 1
+        },
+        {
+          "Name": "HiveFive",
+          "Progress": 5
+        },
+        {
+          "Name": "SyndicateNLScarfChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "DarkSectors",
+          "Progress": 5
+        },
+        {
+          "Name": "IntoTheVoid",
+          "Progress": 10
+        },
+        {
+          "Name": "WhatANightmare",
+          "Progress": 10
+        },
+        {
+          "Name": "EggTimer",
+          "Progress": 1
+        },
+        {
+          "Name": "ShurikenMastery1",
+          "Progress": 3
+        },
+        {
+          "Name": "ShurikenProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank9",
+          "Progress": 1
+        },
+        {
+          "Name": "RideTheWave",
+          "Progress": 1
+        },
+        {
+          "Name": "ShurikenMastery2",
+          "Progress": 3
+        },
+        {
+          "Name": "ShurikenProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "ShurikenMastery3",
+          "Progress": 3
+        },
+        {
+          "Name": "ShurikenProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfPluto",
+          "Progress": 1
+        },
+        {
+          "Name": "TennoAndHooch",
+          "Progress": 10
+        },
+        {
+          "Name": "WithoutAHitch",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank10",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank11",
+          "Progress": 1
+        },
+        {
+          "Name": "BrawlerMastery2",
+          "Progress": 3
+        },
+        {
+          "Name": "BrawlerMastery3",
+          "Progress": 3
+        },
+        {
+          "Name": "BrawlerProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "BrawlerProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "HeavyWeaponMastery1",
+          "Progress": 2
+        },
+        {
+          "Name": "HeavyWeaponMastery2",
+          "Progress": 2
+        },
+        {
+          "Name": "HeavyWeaponMastery3",
+          "Progress": 2
+        },
+        {
+          "Name": "HeavyWeaponProficiency1",
+          "Progress": 1
+        },
+        {
+          "Name": "HeavyWeaponProficiency2",
+          "Progress": 1
+        },
+        {
+          "Name": "HeavyWeaponProficiency3",
+          "Progress": 1
+        },
+        {
+          "Name": "Own10Warframes",
+          "Progress": 1
+        },
+        {
+          "Name": "Own5Warframes",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank12",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank13",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank14",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank15",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank16",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank17",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank18",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank19",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank20",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank21",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank22",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank23",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank24",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank25",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank26",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank27",
+          "Progress": 1
+        },
+        {
+          "Name": "PlayerRank28",
+          "Progress": 0
+        },
+        {
+          "Name": "PlayerRank29",
+          "Progress": 0
+        },
+        {
+          "Name": "PlayerRank30",
+          "Progress": 0
+        },
+        {
+          "Name": "PolarizeThis",
+          "Progress": 1
+        },
+        {
+          "Name": "SaviourOfEarth",
+          "Progress": 1
+        },
+        {
+          "Name": "TennoOfAllTrades",
+          "Progress": 1
+        },
+        {
+          "Name": "CJCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "EMCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "EVCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "JECompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "JSCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "NPCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "UNCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "EVCollectMods",
+          "Progress": 20
+        },
+        {
+          "Name": "VMKillEximus",
+          "Progress": 10
+        },
+        {
+          "Name": "EMGatherResource",
+          "Progress": 500
+        },
+        {
+          "Name": "EVApplyMod",
+          "Progress": 1
+        },
+        {
+          "Name": "EMGatherResourceReward",
+          "Progress": 0
+        },
+        {
+          "Name": "OnWeaponProcCondition",
+          "Progress": 0
+        },
+        {
+          "Name": "JECompleteVoidMission",
+          "Progress": 1
+        },
+        {
+          "Name": "EMGetKills",
+          "Progress": 150
+        },
+        {
+          "Name": "EMCompleteMercuryNode",
+          "Progress": 1
+        },
+        {
+          "Name": "JECraftMRWeapon",
+          "Progress": 1
+        },
+        {
+          "Name": "PSCraftMRWeapon",
+          "Progress": 1
+        },
+        {
+          "Name": "EVKillEximus",
+          "Progress": 3
+        },
+        {
+          "Name": "EVCollectModsRewards",
+          "Progress": 0
+        },
+        {
+          "Name": "EVUpgradeMod",
+          "Progress": 1
+        },
+        {
+          "Name": "MPCephFragments",
+          "Progress": 3
+        },
+        {
+          "Name": "MummyQuestKillVolatileRunner",
+          "Progress": 50
+        },
+        {
+          "Name": "PSGetKills",
+          "Progress": 10
+        },
+        {
+          "Name": "PSPrincipleMods",
+          "Progress": 1
+        },
+        {
+          "Name": "PSPrincipleModsCunning",
+          "Progress": 0
+        },
+        {
+          "Name": "MummyQuestKillBroodMother",
+          "Progress": 20
+        },
+        {
+          "Name": "MummyQuestKillManic",
+          "Progress": 5
+        },
+        {
+          "Name": "UNKillBossTylRegor",
+          "Progress": 1
+        },
+        {
+          "Name": "VMDefenseWaves",
+          "Progress": 1
+        },
+        {
+          "Name": "VMRescueHostage",
+          "Progress": 1
+        },
+        {
+          "Name": "VMKillBossJackal",
+          "Progress": 1
+        },
+        {
+          "Name": "CJSurvivalTime",
+          "Progress": 1
+        },
+        {
+          "Name": "SUVoidTears",
+          "Progress": 3
+        },
+        {
+          "Name": "NPSpyDataExtractions",
+          "Progress": 1
+        },
+        {
+          "Name": "PEVoidTears",
+          "Progress": 3
+        },
+        {
+          "Name": "MPVoidTears",
+          "Progress": 3
+        },
+        {
+          "Name": "MCVoidProjectionUpgrade",
+          "Progress": 1
+        },
+        {
+          "Name": "MCGetKills",
+          "Progress": 300
+        },
+        {
+          "Name": "PSPrincipleModsPower",
+          "Progress": 0
+        },
+        {
+          "Name": "PSKillBossVayHek",
+          "Progress": 1
+        },
+        {
+          "Name": "CJKillProsecutor",
+          "Progress": 1
+        },
+        {
+          "Name": "UNMeleeOnly",
+          "Progress": 5
+        },
+        {
+          "Name": "MPGetKills",
+          "Progress": 1
+        },
+        {
+          "Name": "MCKillBossSergeant",
+          "Progress": 1
+        },
+        {
+          "Name": "MCKillBossKril",
+          "Progress": 1
+        },
+        {
+          "Name": "CJKillBossLechKril",
+          "Progress": 1
+        },
+        {
+          "Name": "JECraftSpecter",
+          "Progress": 1
+        },
+        {
+          "Name": "JSKillBossAladV",
+          "Progress": 1
+        },
+        {
+          "Name": "Mercenary2",
+          "Progress": 5
+        },
+        {
+          "Name": "SUCraftDerelict",
+          "Progress": 1
+        },
+        {
+          "Name": "JSKillBossRaptor",
+          "Progress": 1
+        },
+        {
+          "Name": "SUKillBossSargasRuk",
+          "Progress": 1
+        },
+        {
+          "Name": "PSPrincipleModsStealth",
+          "Progress": 0
+        },
+        {
+          "Name": "IndexQuestB",
+          "Progress": 1
+        },
+        {
+          "Name": "PEKillBossDerelict",
+          "Progress": 1
+        },
+        {
+          "Name": "PSPrincipleModsEndurance",
+          "Progress": 0
+        },
+        {
+          "Name": "OctaviasAnthem",
+          "Progress": 1
+        },
+        {
+          "Name": "TheWarWithin",
+          "Progress": 1
+        },
+        {
+          "Name": "Liberator",
+          "Progress": 10
+        },
+        {
+          "Name": "CombatSpecialist",
+          "Progress": 3
+        },
+        {
+          "Name": "NPKillBossHyena",
+          "Progress": 1
+        },
+        {
+          "Name": "Kaboom",
+          "Progress": 10
+        },
+        {
+          "Name": "UNFindCaches",
+          "Progress": 1
+        },
+        {
+          "Name": "Marathoner",
+          "Progress": 100000
+        },
+        {
+          "Name": "SharpShooter",
+          "Progress": 1
+        },
+        {
+          "Name": "ChampionOfThePeople",
+          "Progress": 10
+        },
+        {
+          "Name": "TombLooter",
+          "Progress": 12
+        },
+        {
+          "Name": "TombLooter2",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter1",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter3",
+          "Progress": 1
+        },
+        {
+          "Name": "SayasVigil",
+          "Progress": 1
+        },
+        {
+          "Name": "OnBulletOrDoubleJumpCondition",
+          "Progress": 0
+        },
+        {
+          "Name": "TheSacrifice",
+          "Progress": 1
+        },
+        {
+          "Name": "PestControl",
+          "Progress": 100
+        },
+        {
+          "Name": "TombLooter6",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter4",
+          "Progress": 1
+        },
+        {
+          "Name": "MasterAngler",
+          "Progress": 10
+        },
+        {
+          "Name": "TombLooter10",
+          "Progress": 1
+        },
+        {
+          "Name": "TheGreatEidolonHunt",
+          "Progress": 1
+        },
+        {
+          "Name": "PlainsProspector",
+          "Progress": 100
+        },
+        {
+          "Name": "FromOnHigh",
+          "Progress": 100
+        },
+        {
+          "Name": "TombLooter11",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter12",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter7",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter8",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter9",
+          "Progress": 1
+        },
+        {
+          "Name": "TombLooter5",
+          "Progress": 1
+        },
+        {
+          "Name": "RRFireKillDeathSquad",
+          "Progress": 1
+        },
+        {
+          "Name": "MarkedEnemyDown",
+          "Progress": 1
+        },
+        {
+          "Name": "FriendlyNeighborhoodTenno",
+          "Progress": 10
+        },
+        {
+          "Name": "WeeklyChallengeKillFaction",
+          "Progress": 500
+        },
+        {
+          "Name": "GrandTheftDargyn",
+          "Progress": 10000
+        },
+        {
+          "Name": "PEDefenseWaves",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer",
+          "Progress": 30
+        },
+        {
+          "Name": "OrbVallisExplorer9",
+          "Progress": 1
+        },
+        {
+          "Name": "Hang10",
+          "Progress": 1
+        },
+        {
+          "Name": "KDriven",
+          "Progress": 1000000
+        },
+        {
+          "Name": "OrbVallisExplorer16",
+          "Progress": 1
+        },
+        {
+          "Name": "BountyHunter",
+          "Progress": 6
+        },
+        {
+          "Name": "SledsOfSunshine",
+          "Progress": 1
+        },
+        {
+          "Name": "PSPrincipleModsCollaboration",
+          "Progress": 0
+        },
+        {
+          "Name": "OrbVallisExplorer0",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer1",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer10",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer11",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer12",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer13",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer14",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer15",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer17",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer18",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer19",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer2",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer20",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer21",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer22",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer23",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer24",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer25",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer26",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer27",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer28",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer29",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer3",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer4",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer5",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer6",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer7",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisExplorer8",
+          "Progress": 1
+        },
+        {
+          "Name": "ForgedInFire",
+          "Progress": 1
+        },
+        {
+          "Name": "PSPrincipleModsAgility",
+          "Progress": 0
+        },
+        {
+          "Name": "OrbVallisRacer",
+          "Progress": 22
+        },
+        {
+          "Name": "OrbVallisRacer15",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyCompleteTreasures",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyCodexScan",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyDeployGlyph",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteCapture",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyKillEnemies",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonDailySlideKills",
+          "Progress": 10
+        },
+        {
+          "Name": "SeasonWeeklyHardKillEximus",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPlainsBounties",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyPickUpMods",
+          "Progress": 8
+        },
+        {
+          "Name": "SeasonWeeklyCompleteInvasionMissions",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklySanctuaryOnslaught",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklySimarisScan",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithFire",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardFriendsSortie",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardKillOrCaptureRainalyst",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyKillEximus",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyPickUpRareMods",
+          "Progress": 8
+        },
+        {
+          "Name": "SeasonWeeklyHardKuvaSurvivalNoCapsules",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardFriendsSurvival",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithFreeze",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardEliteSanctuaryOnslaught",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyUnlockRelics",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteAssassination",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithBlast",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithMagnetic",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteSyndicateMissions",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteSortie",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithElectricity",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithCorrosive",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyAimGlide",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithFinishers",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardExterminateNoAlarm",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyCompleteSabotage",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyOpenLockers",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyCollectCredits",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteClemMission",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithAbilities",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardCompleteSortie",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyMineRarePlainsResources",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyBulletJump",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyVenusBounties",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyMineRareVenusResources",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithPoison",
+          "Progress": 65
+        },
+        {
+          "Name": "SeasonDailyCompleteMission",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyUnlockDragonVaults",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemies",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteExterminate",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardKillEnemies",
+          "Progress": 128
+        },
+        {
+          "Name": "SeasonWeeklyHardUnlockRelics",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithViral",
+          "Progress": 126
+        },
+        {
+          "Name": "SeasonWeeklyCompleteMobileDefense",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteSpy",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteRescue",
+          "Progress": 3
+        },
+        {
+          "Name": "SeasonDailyPlayEmote",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithSecondary",
+          "Progress": 150
+        },
+        {
+          "Name": "SeasonDailyPlaceMarker",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCatchRarePlainsFish",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithHeadshots",
+          "Progress": 11
+        },
+        {
+          "Name": "SeasonWeeklyGildModular",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithMelee",
+          "Progress": 150
+        },
+        {
+          "Name": "SeasonWeeklyUseForma",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithPrimary",
+          "Progress": 150
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithRadiation",
+          "Progress": 150
+        },
+        {
+          "Name": "SeasonWeeklyCompleteNightmareMissions",
+          "Progress": 0
+        },
+        {
+          "Name": "IndexWinStreakInMission",
+          "Progress": 3
+        },
+        {
+          "Name": "SeasonWeeklyHardIndexWinStreak",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklySabotageCaches",
+          "Progress": 2
+        },
+        {
+          "Name": "SeasonWeeklyHardCompleteNightmareMissions",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailySolveCiphers",
+          "Progress": 8
+        },
+        {
+          "Name": "MoneyCantBuyHappiness",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardFriendsDefense",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyKillEnemiesWithGas",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyPickUpEnergy",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteDisruptionConduits",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyTransmuteMods",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyInteractWithPet",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyDeployAirSupport",
+          "Progress": 0
+        },
+        {
+          "Name": "StayFrosty",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardKillSilverGroveSpecters",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardFriendsProfitTaker",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteKuva",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardKillRopalolyst",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyKillThumper",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardLuaPuzzles",
+          "Progress": 0
+        },
+        {
+          "Name": "WereGonnaNeedaBiggerBoat",
+          "Progress": 1
+        },
+        {
+          "Name": "MapricoFruitCollect",
+          "Progress": 50
+        },
+        {
+          "Name": "SeasonWeeklyHardKillExploiterOrb",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyVisitFeaturedDojo",
+          "Progress": 0
+        },
+        {
+          "Name": "ImTheCaptainNow",
+          "Progress": 1
+        },
+        {
+          "Name": "IUsedToBullseyeKuakas",
+          "Progress": 100
+        },
+        {
+          "Name": "SomeAssemblyRequired",
+          "Progress": 1
+        },
+        {
+          "Name": "TheAbyssGazesIntoYou",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonDailyKillThrall",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyMercyKill",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardFinishLich",
+          "Progress": 1
+        },
+        {
+          "Name": "ThatWhichKillsUsMakesUsStronger",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyRailjackMissions",
+          "Progress": 0
+        },
+        {
+          "Name": "CommandRank10",
+          "Progress": 7
+        },
+        {
+          "Name": "CompleteAllCorpusProxima",
+          "Progress": 8
+        },
+        {
+          "Name": "YareliAirSpinTrickChallenge",
+          "Progress": 0
+        },
+        {
+          "Name": "The8FoldPath",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardKillEnemiesSteelPath",
+          "Progress": 285
+        },
+        {
+          "Name": "ByDawnsEarlyLight",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisHunter",
+          "Progress": 10
+        },
+        {
+          "Name": "SeasonWeeklyPerfectAnimalCapture",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardCompleteSteelPathMissions",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyIsolationBounties",
+          "Progress": 0
+        },
+        {
+          "Name": "KillJuggernautDeimos",
+          "Progress": 5
+        },
+        {
+          "Name": "BurnInfestedPod",
+          "Progress": 39
+        },
+        {
+          "Name": "OrbVallisRacer3",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer7",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer4",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer5",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer10",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer12",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer13",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer18",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer16",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer8",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer22",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer2",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer9",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer6",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer17",
+          "Progress": 1
+        },
+        {
+          "Name": "YareliAirFrontsideRolloutChallenge",
+          "Progress": 0
+        },
+        {
+          "Name": "YareliTrickChainScoreChallenge1",
+          "Progress": 0
+        },
+        {
+          "Name": "OrbVallisRacer20",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer19",
+          "Progress": 1
+        },
+        {
+          "Name": "YareliAirTimeChallenge",
+          "Progress": 0
+        },
+        {
+          "Name": "OrbVallisRacer11",
+          "Progress": 1
+        },
+        {
+          "Name": "YareliTenComboChallenge",
+          "Progress": 0
+        },
+        {
+          "Name": "YareliTrickChainTimeChallenge",
+          "Progress": 0
+        },
+        {
+          "Name": "OrbVallisRacer1",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardKillThumper",
+          "Progress": 0
+        },
+        {
+          "Name": "RideInfestedHoverboard",
+          "Progress": 1
+        },
+        {
+          "Name": "MoaMoneyMoaProblems",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonDailyCollectHundredResources",
+          "Progress": 1500
+        },
+        {
+          "Name": "SeasonDailyAugmentation",
+          "Progress": 0
+        },
+        {
+          "Name": "OrbVallisRacer14",
+          "Progress": 1
+        },
+        {
+          "Name": "OrbVallisRacer21",
+          "Progress": 1
+        },
+        {
+          "Name": "SentEvoSekharaRankOne",
+          "Progress": 250
+        },
+        {
+          "Name": "ThisIsWhatYouAre",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonDailyBuildersTouch",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyFeedHelminth",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyTwoForOne",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyKillEnemiesInMech",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyCompleteMissionMelee",
+          "Progress": 0
+        },
+        {
+          "Name": "SentEvoSekharaRankTwo",
+          "Progress": 1000
+        },
+        {
+          "Name": "SeasonDailyDeathFromAbove",
+          "Progress": 10
+        },
+        {
+          "Name": "SeasonDailyMedic",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyHardRiseOfTheMachine",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardFastCapture",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyTheOldWays",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyLoyalty",
+          "Progress": 5000
+        },
+        {
+          "Name": "SeasonWeeklyHardCompleteArchonHunt",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyKillArchgunEnemies",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyThePersonalTouch",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyZarimanBountyHunter",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCompleteVenusRace",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardThePriceOfFreedom",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyDonateLeverian",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardTheManyMadeWhole",
+          "Progress": 0
+        },
+        {
+          "Name": "EVCompleteSayasVigil",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyNightAndDay",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHighGround",
+          "Progress": 0
+        },
+        {
+          "Name": "RideOrDie",
+          "Progress": 1
+        },
+        {
+          "Name": "ZarimanShotgunChallengeA",
+          "Progress": 100
+        },
+        {
+          "Name": "ZarimanPistolChallengeA",
+          "Progress": 100
+        },
+        {
+          "Name": "ZarimanPistolChallengeBAlt",
+          "Progress": 8
+        },
+        {
+          "Name": "SeasonWeeklyHardTerminated",
+          "Progress": 0
+        },
+        {
+          "Name": "ZarimanShotgunChallengeBAlt",
+          "Progress": 8
+        },
+        {
+          "Name": "SentEvoArmorRankOne",
+          "Progress": 2
+        },
+        {
+          "Name": "SentEvoSyandanaRankOne",
+          "Progress": 15
+        },
+        {
+          "Name": "SentEvoEphemeraRankOne",
+          "Progress": 250000
+        },
+        {
+          "Name": "SentEvoEphemeraRankTwo",
+          "Progress": 500000
+        },
+        {
+          "Name": "SeasonWeeklyDestroyCrewshipArtillery",
+          "Progress": 0
+        },
+        {
+          "Name": "SentEvoSyandanaRankTwo",
+          "Progress": 26
+        },
+        {
+          "Name": "SeasonWeeklyHardAntiquarian",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies",
+          "Progress": 29
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus",
+          "Progress": 0
+        },
+        {
+          "Name": "MCCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "PSCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies3",
+          "Progress": 23
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions3",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus3",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions4",
+          "Progress": 2
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies4",
+          "Progress": 87
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus4",
+          "Progress": 3
+        },
+        {
+          "Name": "ZarimanShotgunChallengeC",
+          "Progress": 20
+        },
+        {
+          "Name": "SUSynthesisScan",
+          "Progress": 1
+        },
+        {
+          "Name": "VMCompleteQuestVox",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions6",
+          "Progress": 10
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies6",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus6",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies7",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus7",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions7",
+          "Progress": 11
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies8",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions8",
+          "Progress": 6
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus8",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies9",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus9",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions9",
+          "Progress": 15
+        },
+        {
+          "Name": "MPVisitMaroo",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions10",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies10",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus10",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions13",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies13",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus13",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyHardCollectUniqueResources",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions15",
+          "Progress": 2
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies15",
+          "Progress": 31
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus15",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyCollectHundredResources",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions22",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies22",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus22",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions23",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies23",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailyCompleteMissionPrimary",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions2",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies2",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus2",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonDailySuspendFiveEnemies",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions5",
+          "Progress": 15
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies5",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus5",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyHardVitalArbiter",
+          "Progress": 1
+        },
+        {
+          "Name": "DJCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "DJPlayedParkourTutorial",
+          "Progress": 1
+        },
+        {
+          "Name": "DJRandomizedWallClingKillstreak",
+          "Progress": 1
+        },
+        {
+          "Name": "DJUpgradeRedirectionToRankFive",
+          "Progress": 1
+        },
+        {
+          "Name": "EMBoltorOnly",
+          "Progress": 1
+        },
+        {
+          "Name": "EMPurchaseWeapon",
+          "Progress": 1
+        },
+        {
+          "Name": "EMVisitSideQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "ESCompleteQuest",
+          "Progress": 1
+        },
+        {
+          "Name": "ESCompleteRailjackMission",
+          "Progress": 1
+        },
+        {
+          "Name": "ESGetKills",
+          "Progress": 5
+        },
+        {
+          "Name": "ESKillBossAmbulas",
+          "Progress": 1
+        },
+        {
+          "Name": "EVEquipDreamersBondMod",
+          "Progress": 1
+        },
+        {
+          "Name": "EVStartCraftingTaxon",
+          "Progress": 1
+        },
+        {
+          "Name": "EVUpgradeDreamersBondMod",
+          "Progress": 1
+        },
+        {
+          "Name": "JECompleteNightmare",
+          "Progress": 1
+        },
+        {
+          "Name": "JELearnSynthesis",
+          "Progress": 1
+        },
+        {
+          "Name": "JEStartCraftingForma",
+          "Progress": 1
+        },
+        {
+          "Name": "JEVisitDojo",
+          "Progress": 1
+        },
+        {
+          "Name": "JSCodexScan",
+          "Progress": 1
+        },
+        {
+          "Name": "JSDissolveFiveMods",
+          "Progress": 5
+        },
+        {
+          "Name": "JSEquipCodexScanner",
+          "Progress": 1
+        },
+        {
+          "Name": "MCCompleteTreasureHunt",
+          "Progress": 1
+        },
+        {
+          "Name": "MCFillTreasure",
+          "Progress": 1
+        },
+        {
+          "Name": "MCPledgeSyndicate",
+          "Progress": 1
+        },
+        {
+          "Name": "MCTradeTreasure",
+          "Progress": 1
+        },
+        {
+          "Name": "MPHeadshotKills",
+          "Progress": 10
+        },
+        {
+          "Name": "NPCompleteFactionInvasionMission",
+          "Progress": 1
+        },
+        {
+          "Name": "NPEquipArchwingLauncher",
+          "Progress": 1
+        },
+        {
+          "Name": "PEEquipFocusLens",
+          "Progress": 1
+        },
+        {
+          "Name": "PEFindOrokinVault",
+          "Progress": 1
+        },
+        {
+          "Name": "PETheWarWithin",
+          "Progress": 1
+        },
+        {
+          "Name": "SUHeavyMeleeKills",
+          "Progress": 10
+        },
+        {
+          "Name": "SUTitanSurvival",
+          "Progress": 1
+        },
+        {
+          "Name": "SUTransmuteMod",
+          "Progress": 1
+        },
+        {
+          "Name": "UNCompleteCaliban",
+          "Progress": 1
+        },
+        {
+          "Name": "VMPurchaseRhinoBlueprint",
+          "Progress": 1
+        },
+        {
+          "Name": "VMStartCraftingRhino",
+          "Progress": 1
+        },
+        {
+          "Name": "ChainsOfHarrow",
+          "Progress": 1
+        },
+        {
+          "Name": "ClemTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "JadeShadowsTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "LichKillerTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "LotusEatersTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SecondDreamTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "TheNewWarTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions19",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies19",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus19",
+          "Progress": 0
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions20",
+          "Progress": 3
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies20",
+          "Progress": 500
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus20",
+          "Progress": 20
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions21",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies21",
+          "Progress": 103
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus21",
+          "Progress": 2
+        },
+        {
+          "Name": "MR10TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR13TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR16TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR19TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR1TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR22TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR25TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR4TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "MR7TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "TitleGrendelPrimeChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyKillEnemiesWithHeadshots",
+          "Progress": 17
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies24",
+          "Progress": 101
+        },
+        {
+          "Name": "FollieHuntOneTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "FollieHuntTenTitleChallenge",
+          "Progress": 2
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions24",
+          "Progress": 2
+        },
+        {
+          "Name": "ShadowgrapherLevelAChallenge",
+          "Progress": 50
+        },
+        {
+          "Name": "ShadowgrapherLevelBChallenge",
+          "Progress": 115
+        },
+        {
+          "Name": "ShadowgrapherLevelCChallenge",
+          "Progress": 115
+        },
+        {
+          "Name": "ShadowgrapherLevelDChallenge",
+          "Progress": 115
+        },
+        {
+          "Name": "ShadowgrapherLevelEChallenge",
+          "Progress": 115
+        },
+        {
+          "Name": "OldPeaceTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus24",
+          "Progress": 1
+        },
+        {
+          "Name": "FollieHuntCompleteTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "DuviriTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies12",
+          "Progress": 6
+        },
+        {
+          "Name": "JadeShadows2TitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies14",
+          "Progress": 491
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus14",
+          "Progress": 30
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions14",
+          "Progress": 4
+        },
+        {
+          "Name": "EidolonHunterTitleChallenge",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentCompleteMissions18",
+          "Progress": 1
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEnemies18",
+          "Progress": 48
+        },
+        {
+          "Name": "SeasonWeeklyPermanentKillEximus18",
+          "Progress": 5
+        },
+        {
+          "Name": "TheHexCompleteTitleChallenge",
+          "Progress": 1
+        }
+      ],
+      "UnlockedOperator": true
+    }
+  ]
+}

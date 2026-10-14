@@ -1,0 +1,328 @@
+{
+  "Results": [
+    {
+      "AccountId": {
+        "$oid": "000000000000000000000001"
+      },
+      "DisplayName": "TestVeteran",
+      "PlatformNames": [
+        "TestVeteran"
+      ],
+      "PlayerLevel": 27,
+      "GuildName": "TestClan",
+      "Created": {
+        "$date": {
+          "$numberLong": "1410228338770"
+        }
+      },
+      "Missions": [
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "EarthToMarsJunction"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "VenusToMercuryJunction"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "EarthToVenusJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "MarsToPhobosJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "MarsToCeresJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "CeresToJupiterJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "JupiterToEuropaJunction"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "JupiterToSaturnJunction"
+        },
+        {
+          "Completes": 2,
+          "Tier": 1,
+          "Tag": "SaturnToUranusJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "NeptuneToPlutoJunction"
+        },
+        {
+          "Completes": 204,
+          "Tier": 1,
+          "Tag": "CetusHub4"
+        },
+        {
+          "Completes": 1,
+          "Tag": "UranusToNeptuneJunction"
+        },
+        {
+          "Completes": 1,
+          "Tag": "PlutoToErisJunction"
+        },
+        {
+          "Completes": 138,
+          "Tag": "SolarisUnitedHub1"
+        },
+        {
+          "Completes": 52,
+          "Tier": 1,
+          "Tag": "DeimosHub"
+        },
+        {
+          "Completes": 4,
+          "Tier": 1,
+          "Tag": "EntratiLabHub"
+        },
+        {
+          "Completes": 3,
+          "Tag": "1999Hub"
+        },
+        {
+          "Completes": 1,
+          "Tag": "ErisToSednaJunction"
+        },
+        {
+          "Completes": 3,
+          "Tag": "ClanNode1"
+        },
+        {
+          "Completes": 3,
+          "Tag": "ClanNode10"
+        },
+        {
+          "Completes": 10,
+          "Tier": 1,
+          "Tag": "ClanNode2"
+        },
+        {
+          "Completes": 109,
+          "Tag": "ClanNode24"
+        },
+        {
+          "Completes": 10,
+          "Tag": "ClanNode3"
+        },
+        {
+          "Completes": 6,
+          "Tag": "ClanNode4"
+        },
+        {
+          "Completes": 21,
+          "Tag": "ClanNode5"
+        },
+        {
+          "Completes": 3,
+          "Tag": "ClanNode7"
+        },
+        {
+          "Completes": 7,
+          "Tag": "ClanNode8"
+        },
+        {
+          "Completes": 24,
+          "Tag": "ClanNode9"
+        },
+        {
+          "Completes": 27,
+          "Tag": "SettlementNode1"
+        },
+        {
+          "Completes": 5,
+          "Tag": "SettlementNode10"
+        }
+      ],
+      "Affiliations": [
+        {
+          "Tag": "ArbitersSyndicate",
+          "Standing": 248007,
+          "Title": 5
+        },
+        {
+          "Tag": "RedVeilSyndicate",
+          "Standing": 286845,
+          "Title": 5
+        },
+        {
+          "Tag": "PerrinSyndicate",
+          "Standing": -71000,
+          "Title": -2
+        },
+        {
+          "Tag": "CephalonSudaSyndicate",
+          "Standing": 244581,
+          "Title": 5
+        },
+        {
+          "Tag": "SteelMeridianSyndicate",
+          "Standing": 270328,
+          "Title": 5
+        },
+        {
+          "Tag": "NewLokaSyndicate",
+          "Standing": -71000,
+          "Title": -2
+        },
+        {
+          "Tag": "ConclaveSyndicate",
+          "Standing": 12168,
+          "Title": 1
+        },
+        {
+          "Tag": "LibrarySyndicate",
+          "Standing": 18622,
+          "Title": 0
+        },
+        {
+          "Tag": "CetusSyndicate",
+          "Standing": 303363,
+          "Title": 5
+        },
+        {
+          "Tag": "QuillsSyndicate",
+          "Standing": 291400,
+          "Title": 5
+        },
+        {
+          "Tag": "VentKidsSyndicate",
+          "Standing": 258349,
+          "Title": 5
+        },
+        {
+          "Tag": "SolarisSyndicate",
+          "Standing": 254661,
+          "Title": 5
+        },
+        {
+          "Tag": "VoxSyndicate",
+          "Standing": 108500,
+          "Title": 3
+        },
+        {
+          "Tag": "RadioLegionSyndicate",
+          "Standing": 224650,
+          "Title": 22
+        },
+        {
+          "Tag": "RadioLegionIntermissionSyndicate",
+          "Standing": 156000,
+          "Title": 15
+        },
+        {
+          "Tag": "EventSyndicate",
+          "Standing": 10850,
+          "Title": 3
+        },
+        {
+          "Tag": "RadioLegion2Syndicate",
+          "Standing": 168500,
+          "Title": 16
+        },
+        {
+          "Tag": "RadioLegionIntermission2Syndicate",
+          "Standing": 22000,
+          "Title": 2
+        },
+        {
+          "Tag": "RadioLegion3Syndicate",
+          "Standing": 93820,
+          "Title": 9
+        },
+        {
+          "Tag": "EntratiSyndicate",
+          "Standing": 264100,
+          "Title": 5
+        },
+        {
+          "Tag": "NecraloidSyndicate",
+          "Standing": 78500,
+          "Title": 3
+        },
+        {
+          "Tag": "RadioLegionIntermission3Syndicate",
+          "Standing": 103000,
+          "Title": 10
+        },
+        {
+          "Tag": "RadioLegionIntermission4Syndicate",
+          "Standing": 45000,
+          "Title": 4
+        },
+        {
+          "Tag": "RadioLegionIntermission5Syndicate",
+          "Standing": 6500,
+          "Title": 0
+        },
+        {
+          "Tag": "KahlSyndicate",
+          "Standing": 1,
+          "Title": 1
+        },
+        {
+          "Tag": "RadioLegionIntermission7Syndicate",
+          "Standing": 103000,
+          "Title": 10
+        },
+        {
+          "Tag": "RadioLegionIntermission8Syndicate",
+          "Standing": 310500,
+          "Title": 31
+        },
+        {
+          "Tag": "ZarimanSyndicate",
+          "Standing": 247500,
+          "Title": 5
+        },
+        {
+          "Tag": "RadioLegionIntermission9Syndicate",
+          "Standing": 29000,
+          "Title": 2
+        },
+        {
+          "Tag": "EntratiLabSyndicate",
+          "Standing": 13000,
+          "Title": 1
+        },
+        {
+          "Tag": "RadioLegionIntermission10Syndicate",
+          "Standing": 44500,
+          "Title": 4
+        },
+        {
+          "Tag": "RadioLegionIntermission11Syndicate",
+          "Standing": 1000,
+          "Title": 0
+        },
+        {
+          "Tag": "RadioLegionIntermission12Syndicate",
+          "Standing": 128500,
+          "Title": 12
+        },
+        {
+          "Tag": "RadioLegionIntermission14Syndicate",
+          "Standing": 5500,
+          "Title": 0
+        },
+        {
+          "Tag": "RadioLegionIntermission15Syndicate",
+          "Standing": 24000,
+          "Title": 2
+        }
+      ]
+    }
+  ]
+}
