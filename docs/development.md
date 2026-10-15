@@ -2,7 +2,8 @@
 
 This page is for anyone who runs the project or changes it: the tools it uses,
 the commands that check a change before it merges, what CI runs on every push,
-how the code is split into layers, and the conventions every file follows.
+how the code is split into layers, the conventions every file follows, and
+the shared store behind the profile's locks.
 
 ## Tooling
 
@@ -14,8 +15,8 @@ how the code is split into layers, and the conventions every file follows.
   imports must be inline, and `console.log` is an error.
   `@next/next/no-img-element` is off, because the game's art is served as it
   is from the wiki and DE's CDN, never rehosted.
-- Prettier (`.prettierrc`) wraps at 100 columns, with double quotes and
-  trailing commas.
+- Prettier (the `prettier` key in `package.json`) wraps at 100 columns, with
+  double quotes and trailing commas.
 - Vitest runs the tests, which never reach the network. It has two projects:
   `unit` runs `tests/` in Node, and `storybook` runs every story as a test in
   a headless Chromium. A unit run with no test file fails.
@@ -47,7 +48,8 @@ pnpm test:stories     # every story in Chromium, with the accessibility checks
 `pnpm exec playwright install chromium`. Each story is checked by axe, and a
 violation fails the story; a run with no story fails too. A story turns one
 rule off only where the frame itself falls below that rule, and the owner has
-been told: the red label of Disconnect (`color-contrast`), and the wiki link,
+been told: the red label of Disconnect and the Locked rows of Step by step, drawn at
+half opacity by BR-63 (`color-contrast`), and the wiki link,
 which its colour and its arrow set apart from the prose with no underline
 (`link-in-text-block`; the owner kept the frame on 2026-10-08), in its own
 stories and wherever it closes a row's passage on Step by step. The
@@ -75,7 +77,7 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Chromium  | `pnpm exec playwright install --with-deps chromium` | The browser the story tests run in                             |
 | Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
 | Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
-| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, the way every preview runs          |
+| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as production does until T-33       |
 
 The workflow holds no secret. It reads nothing outside the repository except
 the packages the lockfile names, the three fonts `next/font` downloads from
@@ -143,8 +145,33 @@ accident.
 
 - `WF_PROFILE_SOURCE`: with `fixture`, every profile is served from
   `fixtures/` and DE is never reached. With `live`, DE's endpoint is read
-  through the locks. Development and previews use `fixture`, and only
-  production uses `live`
-  ([plan part 4](../specs/plan/04-deployment.md#three-environments)).
+  through the locks. Development uses `fixture`; production reads fixtures
+  too until T-33 sets `live` there, and Vercel deploys only `main`
+  ([plan part 4](../specs/plan/04-deployment.md#two-environments)).
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: the shared store,
   set in production only.
+
+## The shared store
+
+The profile's locks live in one store with two backends behind one interface,
+`src/infra/store/`
+([plan part 2](../specs/plan/02-architecture.md#the-store)). `store()` in
+`index.ts` picks one on each call:
+
+| Backend | File         | Used when                                                        |
+| ------- | ------------ | ---------------------------------------------------------------- |
+| Upstash | `upstash.ts` | Both Upstash variables are set: production only                  |
+| Memory  | `memory.ts`  | Either is missing: the tests, development, production until T-33 |
+| None    | `index.ts`   | Either is missing in production reading live: it throws          |
+
+Only `upstash.ts` reads the two variables, and it reads them by name rather
+than through `Redis.fromEnv()`, which would also accept Vercel's `KV_*` names.
+It turns off the client's automatic JSON parsing, so a value comes back as the
+string that was stored, as it does from memory. The tests need neither
+variable.
+
+The memory backend keeps its map on `globalThis`, so it survives the hot reload
+of `pnpm dev`, which evaluates the modules again, and is lost only when the
+process stops. Its keys expire as Upstash's do: a key read after its time is
+gone, `increment` sets the time only when it creates the key, and a later
+increment leaves it. `flush()` empties it between tests.

@@ -8,6 +8,7 @@ export function ComponentRow({
   title,
   art,
   ticked,
+  locked,
   open,
   bodyId,
   onTick,
@@ -17,6 +18,7 @@ export function ComponentRow({
   title: string;
   art: string | null;
   ticked: boolean;
+  locked?: boolean;
   open: boolean;
   bodyId: string;
   onTick: (ticked: boolean) => void;
@@ -25,7 +27,7 @@ export function ComponentRow({
 }) {
   const shown = open && !ticked;
   return (
-    <div className={ticked ? styles.ticked : styles.row}>
+    <div className={ticked ? styles.ticked : locked ? styles.locked : styles.row}>
       <div className={styles.head}>
         <Checkbox
           label={title}

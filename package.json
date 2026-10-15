@@ -20,12 +20,21 @@
     "knip": "knip",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "palette": "node scripts/palette.mjs"
+    "palette": "node scripts/palette.mjs",
+    "data:refresh": "node scripts/refresh-drops.mjs",
+    "data:wiki": "node scripts/refresh-wiki.mjs",
+    "fixture": "node scripts/trim-profile.mjs"
   },
   "dependencies": {
+    "@upstash/redis": "1.39.0",
+    "@wfcd/items": "1.1275.72",
     "next": "16.3.2",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "server-only": "0.0.1",
+    "warframe-worldstate-data": "3.16.9",
+    "yaml": "2.9.0",
+    "zod": "4.4.3"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.6.1",
@@ -54,5 +63,12 @@
   "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=20.9"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "semi": true,
+    "endOfLine": "lf"
   }
 }

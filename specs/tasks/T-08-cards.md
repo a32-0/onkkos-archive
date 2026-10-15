@@ -8,15 +8,20 @@
 
 The cards the screens stack: the two ways in and the goal cards (`ChoiceCard`), the search card on Goal, the update cards of Resume, the last-played card and its list, the five error bands, the loading card and the empty state.
 
-## What crosses
+## What it builds
 
-| File                                                                                                           | Origin   | Note                                                                                           |
-| -------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------- |
-| `src/ui/{ChoiceCard,SearchCard,UpdateCard,FeaturedCard,UpdateList,ShowMore,ErrorBand,LoadingCard,EmptyState}/` | New      |                                                                                                |
-| `src/ui/Icon/`                                                                                                 | Reworked | Size 40, the cards' icons                                                                      |
-| `src/ui/stories/art.ts`                                                                                        | New      | Sample art for stories: gradients, so no game art is rehosted and no story reaches the network |
-| `src/ui/DateMenu/DateMenu.tsx`                                                                                 | Reworked | `aria-controls` only while open, as `FeaturedCard`                                             |
-| `tests/tokens.test.ts`                                                                                         | Reworked | The tokens these components apply leave the allowance list                                     |
+| File                                                                                                           | Note                                                                                           |
+| -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `src/ui/{ChoiceCard,SearchCard,UpdateCard,FeaturedCard,UpdateList,ShowMore,ErrorBand,LoadingCard,EmptyState}/` |                                                                                                |
+| `src/ui/Icon/`                                                                                                 | Size 40, the cards' icons                                                                      |
+| `src/ui/stories/art.ts`                                                                                        | Sample art for stories: gradients, so no game art is rehosted and no story reaches the network |
+| `src/ui/DateMenu/DateMenu.tsx`                                                                                 | `aria-controls` only while open, as `FeaturedCard`                                             |
+| `tests/tokens.test.ts`                                                                                         | The tokens these components apply leave the allowance list                                     |
+
+## Corrections
+
+- Every failure reads `--danger` (owner, 2026-10-08): the error band, Field's Error state and the Danger button had used `--brand` for the same colour, and moved to `--danger` in Figma and in `Button.module.css` and `Field.module.css`. The mark and the rules keep `--brand`.
+- Added to what it builds: the 40 size of `Icon`, sample art as gradients so no story rehosts game art, and `aria-controls` on `DateMenu` only while it is open.
 
 ## Acceptance
 

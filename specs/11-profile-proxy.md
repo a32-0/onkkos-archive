@@ -82,12 +82,11 @@ The visitor is the host's own client address. The host overwrites
 
 ## The fixtures
 
-- `profile-cy.json` and `profile-ordis.json` are the demos, and the only
-  profiles that travel. Both are the output of `pnpm fixture`: whitelisted
-  fields, with the account id, display name and platform names replaced.
+- `profile-cy.json` and `profile-ordis.json` are the demos. Both are the
+  output of `pnpm fixture`: whitelisted fields, with the display name replaced
+  and the account id and platform names removed.
 - Tests read fixtures, never DE.
-- `profile-full.json`, the real capture, does not travel, nor does the
-  `full` demo id that reads it.
+- No real capture is committed, and no demo id reads one.
 
 ## Acceptance
 
@@ -102,16 +101,5 @@ The visitor is the host's own client address. The host overwrites
 7. A demo and development never call DE unless the source is set to live on
    purpose.
 8. A profile stored before the circuit opened still answers while it is open.
-9. `pnpm check` passes, with the existing client, budget and circuit tests run
-   against the shared store's interface.
-
-## Divergences from the code
-
-| Today                                           | This spec                                   |
-| ----------------------------------------------- | ------------------------------------------- |
-| Cache, budget and circuit in process memory     | One shared store                            |
-| The raw payload is held                         | The trimmed, compressed profile             |
-| A third demo reads the real capture             | Two demos, both anonymised                  |
-| A dev disk cache outside the store              | The store's interface, with a local backend |
-| The circuit is checked before the cache         | A stored profile answers first              |
-| Concurrent reads share one request per instance | One read lock across instances              |
+9. `pnpm check` passes, with the client, budget and circuit tests run against
+   the shared store's interface.

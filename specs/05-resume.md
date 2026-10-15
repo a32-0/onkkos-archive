@@ -81,7 +81,7 @@ surface colour.
 
 ## Data and sources
 
-- The updates: `gameUpdates()` in `src/lib/catalog/updates.ts` (BR-09).
+- The updates: `gameUpdates()` in `src/domain/catalog/updates.ts` (BR-09).
 - The art: `data/vendor/update-art.json`, by update name.
 - `wf_since`: a cookie, `YYYY-MM`, read by the server.
 - Copy lives in `src/content/`.
@@ -107,15 +107,6 @@ with its stories.
 4. The search filters by name and version; no match shows the empty line.
 5. Skip, Go back and the tab bar follow the entrance (BR-41).
 6. `pnpm check` passes.
-
-## Divergences from the code
-
-| Today                      | The frames and rules                     |
-| -------------------------- | ---------------------------------------- |
-| Titled "Catch me up"       | "Resume", with the frame's line and lead |
-| Cards show an item count   | "Update {version} · {Mon}, {year}" only  |
-| One form, inside the shell | Two entrances (BR-41)                    |
-| No Skip or Go back         | Both, from Two ways in                   |
 
 ## Frame corrections
 

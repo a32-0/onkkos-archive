@@ -1,0 +1,330 @@
+version: 1
+last_verified: "2026-09-06"
+source: "https://wiki.warframe.com/w/Quest"
+
+arcs:
+  - id: awakening
+    label: "Arc 1: Awakening"
+    quests:
+      - quest: "Awakening"
+        wiki: "Awakening"
+        release: "2020-08-25"
+        requirement: "First login"
+        start: "Plays on its own the first time you log in."
+        locations: [Earth]
+      - quest: "Vor's Prize"
+        wiki: "Vor's Prize"
+        release: "2014-07-18"
+        requirement: "Awakening completed"
+        start: "Starts on its own right after Awakening."
+        locations: [Earth]
+      - quest: "The Teacher"
+        wiki: "The Teacher"
+        release: "2025-10-15"
+        requirement: "Vor's Prize completed"
+        start: "Codex → Quests, once Vor's Prize is done."
+        locations: [Earth, Venus]
+      - quest: "Vox Solaris"
+        wiki: "Vox Solaris (Quest)"
+        release: "2018-11-08"
+        requirement: "Reach Fortuna on Venus"
+        start: "Talk to Eudico in Fortuna, on Venus."
+        locations: [Venus]
+        available_at: [Venus]
+      - quest: "Once Awake"
+        wiki: "Once Awake"
+        release: "2014-11-13"
+        requirement: "Mercury Junction"
+        start: "An inbox message from the Lotus after the Mercury Junction; then Codex → Quests."
+        locations: [Mercury]
+        available_at: [Mercury]
+      - quest: "Heart of Deimos"
+        wiki: "Heart of Deimos"
+        release: "2020-08-25"
+        requirement: "Earth to Mars Junction"
+        start: "An inbox message from Loid after the Mars Junction; then Codex → Quests."
+        locations: [Deimos]
+        available_at: [Mars]
+      - quest: "The Archwing"
+        wiki: "The Archwing"
+        release: "2014-10-24"
+        requirement: "Mars Junction"
+        start: "Awarded by the Mars Junction; start it from Codex → Quests."
+        locations: [Venus, Earth]
+        available_at: [Mars]
+        note: "Awarded by the Mars Junction (wiki: Junction)."
+
+      - quest: "Saya's Vigil"
+        kind: side
+        wiki: "Saya's Vigil"
+        release: "2017-10-12"
+        requirement: "Vor's Prize completed and one Cetus bounty done"
+        start: "Talk to Konzu in Cetus, finish his first bounty, then talk to Saya."
+        locations: [Earth]
+        available_at: [Earth]
+        note: >
+          Side quest since Cetus stopped being the road to the Mars Junction
+          (wiki patch history); DE's guide still lists it in Arc 1.
+      - quest: "Howl of the Kubrow"
+        kind: side
+        wiki: "Howl of the Kubrow"
+        release: "2014-07-18"
+        requirement: "Venus to Mercury Junction"
+        start: "Codex → Quests, after the Venus Junction."
+        locations: [Earth, Venus]
+        available_at: [Mercury]
+      - quest: "Stolen Dreams"
+        kind: side
+        wiki: "Stolen Dreams"
+        release: "2015-02-05"
+        requirement: "Phobos Junction"
+        start: "Codex → Quests, after the Phobos Junction."
+        locations: [Mars, Phobos]
+        available_at: [Phobos]
+      - quest: "The New Strange"
+        kind: warframe
+        wiki: "The New Strange"
+        release: "2015-03-19"
+        requirement: "Stolen Dreams completed and the Europa Junction"
+        start: "Codex → Quests; Cephalon Simaris in a Relay carries the rest."
+        locations: [Europa, Ceres, Mars]
+        available_at: [Europa]
+      - quest: "The Limbo Theorem"
+        kind: warframe
+        wiki: "The Limbo Theorem"
+        release: "2014-10-24"
+        requirement: "Own an Archwing and the Jupiter to Europa Junction"
+        start: "Awarded by the Europa Junction; start it from Codex → Quests."
+        locations: [Mars, Europa]
+        available_at: [Europa]
+      - quest: "A Man of Few Words"
+        kind: side
+        wiki: "A Man of Few Words"
+        release: "2015-09-16"
+        requirement: "Talk to Darvo in any Relay"
+        start: "An inbox message from Darvo; visit him in any Relay."
+        locations: [Uranus]
+      - quest: "The Waverider"
+        kind: warframe
+        wiki: "The Waverider"
+        release: "2021-07-06"
+        requirement: "Vox Solaris completed and Mastery Rank 3"
+        start: "Codex → Quests."
+        locations: [Venus, Deimos]
+      - quest: "Sands of Inaros"
+        kind: warframe
+        wiki: "Sands of Inaros"
+        release: "2016-03-04"
+        requirement: "Mastery Rank 5"
+        start: "Buy the quest blueprint from Baro Ki'Teer, build it in the Foundry and claim it; then Codex → Quests."
+        locations: [Mars]
+      - quest: "The Deadlock Protocol"
+        kind: warframe
+        wiki: "The Deadlock Protocol"
+        release: "2020-06-11"
+        requirement: "Mastery Rank 4 and the Saturn Junction"
+        start: "Codex → Quests."
+        locations: [Venus, Europa, Saturn]
+        available_at: [Saturn]
+
+  - id: second_dream
+    label: "Arc 2: The War Within Saga"
+    note: "The narrative turning point — from looter-shooter to space opera"
+    quests:
+      - quest: "Natah"
+        wiki: "Natah (Quest)"
+        release: "2015-07-31"
+        requirement: "Uranus Junction"
+        start: "Awarded by the Uranus Junction; start it from Codex → Quests. It opens by scanning Oculysts on Uranus."
+        locations: [Uranus]
+        available_at: [Uranus]
+        note: "Awarded by the Uranus Junction (wiki: Natah)."
+      - quest: "The Second Dream"
+        wiki: "The Second Dream"
+        release: "2015-12-03"
+        requirement: "Natah completed and the Neptune Junction"
+        start: "Codex → Quests, after the Neptune Junction. Set aside time: it is long."
+        locations: [Uranus, Neptune, Lua]
+        available_at: [Neptune]
+      - quest: "The War Within"
+        wiki: "The War Within"
+        release: "2016-11-11"
+        requirement: "The Second Dream completed, plus the Pluto and Sedna Junctions"
+        start: "An inbox message from the Lotus once both junctions are done; then Codex → Quests."
+        locations: [Lua, Kuva Fortress]
+        available_at: [Pluto, Sedna]
+      - quest: "Rising Tide"
+        wiki: "Rising Tide"
+        release: "2019-11-22"
+        requirement: "The Second Dream completed"
+        start: "Codex → Quests. The Railjack Cephalon is built in the Foundry and installed at a Dry Dock (a Clan Dojo or a Relay)."
+        locations: [Earth, Sedna, Lua]
+      - quest: "Chains of Harrow"
+        wiki: "Chains of Harrow"
+        release: "2017-06-29"
+        requirement: "The War Within completed and a visit to Onkko in Cetus"
+        start: "In Operator form, visit Onkko in Cetus and take the Mote Amp; then Codex → Quests."
+        locations: [Earth, Void]
+      - quest: "Apostasy Prologue"
+        wiki: "Apostasy Prologue"
+        release: "2017-12-21"
+        requirement: "Chains of Harrow completed and the Personal Quarters segment installed"
+        start: "Install the Personal Quarters segment in the Orbiter; the quest starts there."
+        locations: [Lua]
+      - quest: "The Sacrifice"
+        wiki: "The Sacrifice"
+        release: "2018-06-15"
+        requirement: "Apostasy Prologue completed"
+        start: "Codex → Quests, after Apostasy Prologue."
+        locations: [Earth, Lua, Ceres]
+
+      - quest: "Patient Zero"
+        kind: side
+        wiki: "Patient Zero"
+        release: "2014-11-27"
+        requirement: "Once Awake completed and the Pluto to Eris Junction"
+        start: "Awarded by the Eris Junction; start it from Codex → Quests."
+        locations: [Eris]
+        available_at: [Eris]
+      - quest: "The Jordas Precept"
+        kind: warframe
+        wiki: "The Jordas Precept"
+        release: "2015-10-01"
+        requirement: "Pluto to Eris Junction"
+        start: "An inbox message after the Eris Junction; then Codex → Quests."
+        locations: [Eris]
+        available_at: [Eris]
+      - quest: "Hidden Messages"
+        kind: warframe
+        wiki: "Hidden Messages"
+        release: "2014-07-18"
+        requirement: "Eris to Sedna Junction"
+        start: "Awarded by the Sedna Junction; start it from Codex → Quests."
+        locations: [Mars, Sedna, Saturn]
+        available_at: [Sedna]
+      - quest: "Octavia's Anthem"
+        kind: warframe
+        wiki: "Octavia's Anthem"
+        release: "2017-03-24"
+        requirement: "The Second Dream completed"
+        start: "Codex → Quests, after The Second Dream."
+        locations: [Lua, Uranus, Neptune]
+      - quest: "The Silver Grove"
+        kind: warframe
+        wiki: "The Silver Grove"
+        release: "2016-08-19"
+        requirement: "The Second Dream completed and Mastery Rank 7"
+        start: "Ask Amaryn, New Loka's leader, about The Silver Grove in any Relay."
+        locations: [Earth]
+      - quest: "Mask of the Revenant"
+        kind: warframe
+        wiki: "Mask of the Revenant"
+        release: "2018-08-24"
+        requirement: "Observer rank with The Quills (needs an Operator)"
+        start: "Ask Nakak in Cetus about the mask, once you hold Observer rank with The Quills."
+        locations: [Earth]
+      - quest: "The Glast Gambit"
+        kind: warframe
+        wiki: "The Glast Gambit"
+        release: "2016-12-22"
+        requirement: "The War Within completed"
+        start: "Talk to Ergo Glast of The Perrin Sequence in a Relay."
+        locations: [Neptune]
+      - quest: "Call of the Tempestarii"
+        kind: warframe
+        wiki: "Call of the Tempestarii"
+        release: "2021-04-13"
+        requirement: "The Deadlock Protocol completed, a Railjack and Mastery Rank 4"
+        start: "Codex → Quests, with a Railjack ready."
+        locations: [Pluto, Void]
+
+  - id: new_war
+    label: "Arc 3: The New War Saga"
+    quests:
+      - quest: "Prelude to War"
+        wiki: "Prelude to War"
+        release: "2020-03-24"
+        requirement: "The Sacrifice completed"
+        start: "Codex → Quests → Prelude to War; its three parts play in order."
+        locations: [Lua, Earth, Venus]
+        note: >
+          Includes Chimera Prologue (2018-10-12), Erra (2019-12-13) and The
+          Maker (2020-03-24); dated by the last part, so a player who left
+          before then sees the whole prelude as new.
+      - quest: "The New War"
+        wiki: "The New War"
+        release: "2021-12-15"
+        requirement: "Prelude to War completed, a Railjack and an Amp"
+        start: "Codex → Quests. Expect two to six hours, with checkpoints; the Arsenal stays locked until it ends."
+        locations: [Earth, Venus]
+      - quest: "The Duviri Paradox"
+        wiki: "The Duviri Paradox"
+        release: "2023-04-26"
+        requirement: "Uranus Junction"
+        start: "Codex → Quests, after the Uranus Junction."
+        locations: [Duviri]
+        available_at: [Uranus]
+        note: >
+          Playable from Arc 2 onward (low technical requirement), but placed
+          here for narrative integrity — the wiki itself confirms it's
+          "largely interlinked with the events of Arc 3". Product decision:
+          show it in story order, not availability order.
+
+      - quest: "Veilbreaker"
+        kind: side
+        wiki: "Veilbreaker"
+        release: "2022-09-07"
+        requirement: "The New War completed"
+        start: "Codex → Quests, after The New War."
+        locations: [Deimos]
+
+  - id: void_war_saga
+    label: "Arc 4: The Void War Saga"
+    quests:
+      - quest: "Whispers in the Walls"
+        wiki: "Whispers in the Walls"
+        release: "2023-12-13"
+        requirement: "Heart of Deimos and The New War completed"
+        start: "An inbox message from Loid; meet him in the Necralisk on Deimos."
+        locations: [Deimos]
+      - quest: "The Lotus Eaters"
+        wiki: "The Lotus Eaters"
+        release: "2024-08-21"
+        requirement: "Whispers in the Walls completed"
+        start: "An inbox message titled The Visitor, from Loid; then Codex → Quests."
+        locations: [Deimos, Höllvania]
+        note: "Official 1999 prologue"
+      - quest: "The Hex"
+        wiki: "The Hex (Quest)"
+        release: "2024-12-13"
+        requirement: "The Duviri Paradox and The Lotus Eaters completed"
+        start: "Codex → Quests. About an hour and a half; other activities stay locked until it ends."
+        locations: [Höllvania]
+        note: "Unlocks Höllvania — maps to hub_1999 in grafo.yaml"
+      - quest: "The Old Peace"
+        wiki: "The Old Peace"
+        release: "2025-12-10"
+        requirement: "The Lotus Eaters completed"
+        start: "Codex → Quests, after The Lotus Eaters."
+        locations: [Zariman, Deimos]
+      - quest: "Jade Shadows"
+        wiki: "Jade Shadows"
+        release: "2024-06-18"
+        requirement: "The New War completed"
+        start: "Codex → Quests. Thirty to forty minutes; other activities stay locked until it ends."
+        locations: [Uranus]
+        note: "Side arc, doesn't block the main path"
+      - quest: "Jade Shadows: Constellations"
+        wiki: "Jade Shadows: Constellations"
+        release: "2026-06-17"
+        requirement: "Jade Shadows completed"
+        start: "Codex → Quests. Thirty to forty minutes; other activities stay locked until it ends."
+        locations: [Venus, Uranus]
+        note: "Side arc, doesn't block the main path"
+      - quest: "Angels of the Zariman"
+        wiki: "Angels of the Zariman"
+        release: "2022-04-27"
+        requirement: "The New War completed"
+        start: "Codex → Quests, after The New War."
+        locations: [Zariman]
+        note: "One-off, doesn't block the main path"

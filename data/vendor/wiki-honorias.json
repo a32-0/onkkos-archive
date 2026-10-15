@@ -1,0 +1,1919 @@
+{
+ "honorias": {
+  "Disciple Founder Honoria": {
+   "description": "Awarded for being with us from the beginning.",
+   "tags": [
+    "Founder"
+   ],
+   "price": []
+  },
+  "Hunter Founder Honoria": {
+   "description": "Awarded for being with us from the beginning.",
+   "tags": [
+    "Founder"
+   ],
+   "price": []
+  },
+  "Master Founder Honoria": {
+   "description": "Awarded for being with us from the beginning.",
+   "tags": [
+    "Founder"
+   ],
+   "price": []
+  },
+  "Grand Master Founder Honoria": {
+   "description": "Awarded for being with us from the beginning.",
+   "tags": [
+    "Founder"
+   ],
+   "price": []
+  },
+  "Staff Honoria": {
+   "description": "The mark of a Digital Extremes employee.",
+   "tags": [
+    "Staff"
+   ],
+   "price": []
+  },
+  "90's Kid Honoria": {
+   "description": "Awarded for reaching Rank 29 in Nightwave: Amir's Shockwave",
+   "tags": [
+    "Nightwave"
+   ],
+   "price": []
+  },
+  "Abyssal Thorn Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Vainthorn",
+     "amount": 75
+    }
+   ]
+  },
+  "Ack-Ack Honoria": {
+   "description": "Awarded for destroying 30 airborne units from the ground.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Along Came Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Scuttler Husk",
+     "amount": 100
+    }
+   ]
+  },
+  "Angel of Death Honoria": {
+   "description": "Get 100 kills in a single mission.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Arbiter of Ink Honoria": {
+   "description": "Help Aspirant Zorba read all five of Master Kozai's letters.",
+   "tags": [
+    "Follie's Hunt"
+   ],
+   "price": []
+  },
+  "Arcane Researcher Honoria": {
+   "description": "Complete Elite Deep Archimedea with max Research points.",
+   "tags": [
+    "Archimedea"
+   ],
+   "price": []
+  },
+  "As One Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Emerald Talent",
+     "amount": 10
+    },
+    {
+     "currency": "Crimson Talent",
+     "amount": 10
+    }
+   ]
+  },
+  "Awoken Tenno Honoria": {
+   "description": "Awarded for completing 'The Second Dream'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Big Spender Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Credits",
+     "amount": 100000
+    }
+   ]
+  },
+  "Bigger Spender Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Credits",
+     "amount": 1000000
+    }
+   ]
+  },
+  "Biggest Spender Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Credits",
+     "amount": 2500000
+    }
+   ]
+  },
+  "Biz's Business Partner Honoria": {
+   "description": "Awarded for earning all 4 Conservation emblems.",
+   "tags": [
+    "Open World"
+   ],
+   "price": []
+  },
+  "Blazing Revolutionary Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Beating Heartstrings",
+     "amount": 150
+    }
+   ]
+  },
+  "Capit Honoria": {
+   "description": "Awarded for completing the Capit XIII Sporoi challenge.",
+   "tags": [
+    "Insign"
+   ],
+   "price": []
+  },
+  "Champion of the Lotus Honoria": {
+   "description": "Awarded for completing 'The Lotus Eaters'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Historian of Tau Honoria": {
+   "description": "Awarded for completing the [https://warframe.com/the-old-peace/history-of-tau History of Tau] sequence.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Chosen of Margulis Honoria": {
+   "description": "Awarded for completing the Quest 'The Old Peace'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Clem Honoria": {
+   "description": "Awarded for completing 'A Man of Few Words'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Cœur Enflammé Honoria": {
+   "description": "Awarded for beginning a relationship with Marie.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Conscience Painter Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Atramentum",
+     "amount": 1000
+    }
+   ]
+  },
+  "Conscientious Objector Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Sola Toroid",
+     "amount": 15
+    }
+   ]
+  },
+  "Cryomancer Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Cryotic",
+     "amount": 5000
+    }
+   ]
+  },
+  "Death from Above Honoria": {
+   "description": "Kill 100 grounded enemies while soaring above the Plains of Eidolon, Orb Vallis, or Cambion Drift on your K-Drive or Archwing.",
+   "tags": [
+    "Open World"
+   ],
+   "price": []
+  },
+  "Defender of the Earth Honoria": {
+   "description": "Purchased from New Loka at Rank 5 for 5000.",
+   "tags": [
+    "Syndicate"
+   ],
+   "price": [
+    {
+     "currency": "Standing",
+     "amount": 5000
+    }
+   ]
+  },
+  "Demoness Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Maphica",
+     "amount": 20
+    }
+   ]
+  },
+  "Devil's Own Honoria": {
+   "description": "Awarded for beginning a relationship with Roathe.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Diplomatic Merchant Honoria": {
+   "description": "Purchased from the Perrin Sequence at Rank 5 for 5000.",
+   "tags": [
+    "Syndicate"
+   ],
+   "price": [
+    {
+     "currency": "Standing",
+     "amount": 5000
+    }
+   ]
+  },
+  "Disciple Honoria": {
+   "description": "Reach Mastery Rank 7.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Divine Comedian Honoria": {
+   "description": "Awarded for completing all 21 floors of The Descendia as Dante.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Doctor Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Squad Health Restore (Large)",
+     "amount": 500
+    }
+   ]
+  },
+  "Doesn't Miss Honoria": {
+   "description": "Kill an enemy from over 100 meters away on the Plains of Eidolon.",
+   "tags": [
+    "Open World"
+   ],
+   "price": []
+  },
+  "Double Trouble Honoria": {
+   "description": "Awarded for completing all 21 floors of The Descendia as Uriel.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Dragon Honoria": {
+   "description": "Reach Mastery Rank 22.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Dream Catcher Honoria": {
+   "description": "Awarded for recruiting one Tenno via Referral Program.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Drifter Honoria": {
+   "description": "Awarded for completing 'The New War'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Eagle Honoria": {
+   "description": "Reach Mastery Rank 16.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Early Lunch for Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Goopolla Spleen",
+     "amount": 100
+    }
+   ]
+  },
+  "Eradicator of Corruption Honoria": {
+   "description": "Purchased from the Red Veil at Rank 5 for 5000.",
+   "tags": [
+    "Syndicate"
+   ],
+   "price": [
+    {
+     "currency": "Standing",
+     "amount": 5000
+    }
+   ]
+  },
+  "Executive Overrider Honoria": {
+   "description": "Awarded for vanquishing a Sister of Parvos.",
+   "tags": [
+    "Adversary",
+    "Tenet"
+   ],
+   "price": []
+  },
+  "Exorcist Honoria": {
+   "description": "Awarded for defeating Roathe in The Descendia 21 times.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Facilis Descensus Averno Honoria": {
+   "description": "Awarded for completing all 21 floors of Steel Path Descendia consecutively solo, and without dying.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Fatuous Nymph Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Heart Noctrul",
+     "amount": 100
+    }
+   ]
+  },
+  "Feelin' Lucky Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Mutalist Alad V Nav Coordinate",
+     "amount": 10
+    }
+   ]
+  },
+  "Fire and Brimstone Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Ignia",
+     "amount": 1000
+    }
+   ]
+  },
+  "Force of Nature Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Circuits",
+     "amount": 150000
+    }
+   ]
+  },
+  "Forever Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Argon Crystal",
+     "amount": 20
+    }
+   ]
+  },
+  "Fragmented Honoria": {
+   "description": "Awarded for collecting all 6 Accolade Glyphs from The Fragmented One.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "Friend of Sentients Honoria": {
+   "description": "Awarded for delivering 100 Energy Cores to Typholysts in The Perita Rebellion.",
+   "tags": [
+    "Perita"
+   ],
+   "price": []
+  },
+  "Giant Slayer Honoria": {
+   "description": "Awarded for defeating every Eidolon in Plains of Eidolon.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "Grandis Honoria": {
+   "description": "Awarded for completing the Grandis XVII Sporoi challenge.",
+   "tags": [
+    "Insign"
+   ],
+   "price": []
+  },
+  "Gyanbura Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Fate Pearl",
+     "amount": 150
+    }
+   ]
+  },
+  "Hai-Luk's Wholesaler Honoria": {
+   "description": "Awarded for catching 10 different Rare or Legendary Fish.",
+   "tags": [
+    "Open World"
+   ],
+   "price": []
+  },
+  "Harrow's Shadow Honoria": {
+   "description": "Awarded for completing all 21 floors of The Descendia as Harrow.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Head Cracker Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Experimental Arc-Relay",
+     "amount": 500
+    }
+   ]
+  },
+  "Heart of Concrete Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Stela",
+     "amount": 470
+    }
+   ]
+  },
+  "Heart of the Pack Honoria": {
+   "description": "Acquire Voruna Prime.",
+   "tags": [
+    "Prime"
+   ],
+   "price": []
+  },
+  "Heart Shot Honoria": {
+   "description": "Awarded for beginning a relationship with Quincy.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Hive-kin Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Ascaris Prime",
+     "amount": 20
+    }
+   ]
+  },
+  "Hoplite Honoria": {
+   "description": "Acquire Styanax Prime.",
+   "tags": [
+    "Prime"
+   ],
+   "price": []
+  },
+  "Hot Sludge Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Thermal Sludge",
+     "amount": 200
+    }
+   ]
+  },
+  "Hotwired Honoria": {
+   "description": "Awarded for stealing 20 Anarch Shuttles in The Perita Rebellion.",
+   "tags": [
+    "Perita"
+   ],
+   "price": []
+  },
+  "Hunter Honoria": {
+   "description": "Reach Mastery Rank 13.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Initiate Honoria": {
+   "description": "Reach Mastery Rank 1.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Insign Honoria": {
+   "description": "Awarded for purchasing the Insign Pack.",
+   "tags": [
+    "Insign"
+   ],
+   "price": []
+  },
+  "Ironclad Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Ferrite",
+     "amount": 400000
+    }
+   ]
+  },
+  "It Will Kill Honoria": {
+   "description": "Craft your first Zaw.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "It's All Relative Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Temporal Dust",
+     "amount": 250
+    }
+   ]
+  },
+  "Jade's Guardian Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Vestigial Motes",
+     "amount": 200
+    }
+   ]
+  },
+  "Jammer Honoria": {
+   "description": "Awarded for taking out 50 communication relays in The Perita Rebellion.",
+   "tags": [
+    "Perita"
+   ],
+   "price": []
+  },
+  "Kaithe Tamer of Duviri Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Yao Shrub",
+     "amount": 100
+    }
+   ]
+  },
+  "Kalymos's Best Friend Honoria": {
+   "description": "Awarded for interacting with Kalymos in the Backroom.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Keeper of Secrets Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Bellow Voca",
+     "amount": 50
+    }
+   ]
+  },
+  "King of Duviri Honoria": {
+   "description": "Awarded for completing 'The Duviri Paradox'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "l33t h4XX0r Honoria": {
+   "description": "Awarded for beginning a relationship with Amir.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Lamenting One Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Lamentus",
+     "amount": 200
+    }
+   ]
+  },
+  "Leaves No Witnesses Honoria": {
+   "description": "Successfully perform 100 stealth kills.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Legendary Captain Honoria": {
+   "description": "Awarded for raising all Railjack Intrinsics to Rank 10.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Liberated Grineer Honoria": {
+   "description": "Purchased from the Steel Meridian at Rank 5 for 5000.",
+   "tags": [
+    "Syndicate"
+   ],
+   "price": [
+    {
+     "currency": "Standing",
+     "amount": 5000
+    }
+   ]
+  },
+  "Like Father, Like Sons Honoria": {
+   "description": "Awarded for completing the Quest 'Jade Shadows: Constellations'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Lyon's Savior Honoria": {
+   "description": "Awarded for defending Lyon within The Descendia 3 times.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Madurai Vanguard Honoria": {
+   "description": null,
+   "tags": [
+    "Focus"
+   ],
+   "price": [
+    {
+     "currency": "Focus",
+     "amount": 5000000
+    }
+   ]
+  },
+  "Make Your Own Fate Honoria": {
+   "description": "Awarded for Devotion, Bravery, Sacrifice, and Death. <small>(see here)</small>",
+   "tags": [
+    "Event"
+   ],
+   "price": []
+  },
+  "Marauder of the Deep Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Fish Meat",
+     "amount": 310
+    }
+   ]
+  },
+  "Marie's Champion Honoria": {
+   "description": "Awarded for defending Marie within The Descendia 3 times.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Marty <NAME> McFlea Honoria": {
+   "description": "Awarded for completing the Quest 'The Hex'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Master Honoria": {
+   "description": "Reach Mastery Rank 28.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Master of Minds Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Tiametrite",
+     "amount": 250
+    }
+   ]
+  },
+  "Matriarch Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Mother Token",
+     "amount": 500
+    }
+   ]
+  },
+  "Matron of Malaise Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Judgement Points",
+     "amount": 250
+    }
+   ]
+  },
+  "Mayor of Corpus City Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Hexenon",
+     "amount": 2000
+    }
+   ]
+  },
+  "Messenger of Long Forgotten Gods Honoria": {
+   "description": "Acquire Gauss Prime.",
+   "tags": [
+    "Prime"
+   ],
+   "price": []
+  },
+  "Minesweeper Honoria": {
+   "description": "Awarded for locating and defusing 81 buried mines in The Perita Rebellion.",
+   "tags": [
+    "Perita"
+   ],
+   "price": []
+  },
+  "Mountain Soul Honoria": {
+   "description": "Awarded for obtaining Cogron the Hammer of Unairu.",
+   "tags": [
+    "Tektolyst Artifact"
+   ],
+   "price": []
+  },
+  "My Light Goes With You Honoria": {
+   "description": "Awarded for clearing The Guilty.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "Naramon Vanguard Honoria": {
+   "description": null,
+   "tags": [
+    "Focus"
+   ],
+   "price": [
+    {
+     "currency": "Focus",
+     "amount": 5000000
+    }
+   ]
+  },
+  "Nemesis Of Eris Honoria": {
+   "description": null,
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Night Gardener Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Fergolyte",
+     "amount": 150
+    }
+   ]
+  },
+  "Novice Honoria": {
+   "description": "Reach Mastery Rank 4.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Oblivion's Kiss Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Höllvanian Pitchweave Fragment",
+     "amount": 2600
+    }
+   ]
+  },
+  "Of Golden Valor Honoria": {
+   "description": null,
+   "tags": [
+    "Event"
+   ],
+   "price": [
+    {
+     "currency": "Marks of Valiance",
+     "amount": 80
+    }
+   ]
+  },
+  "of the Old Blood Honoria": {
+   "description": "Awarded for vanquishing a Kuva Lich.",
+   "tags": [
+    "Adversary",
+    "Kuva"
+   ],
+   "price": []
+  },
+  "Ollie's Biggest Fan Honoria": {
+   "description": "Awarded for completing Ollie's Crash Course in under 1:30.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "On That Far Shore Forlorn Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Lyroic Bridge",
+     "amount": 10
+    }
+   ]
+  },
+  "On this Beach of an Earth Honoria": {
+   "description": null,
+   "tags": [
+    "Event",
+    "Dog Days"
+   ],
+   "price": [
+    {
+     "currency": "Nakak Pearl",
+     "amount": 300
+    }
+   ]
+  },
+  "On-lyne Fan Honoria": {
+   "description": "Awarded for vanquishing a Technocyte Coda.",
+   "tags": [
+    "Adversary",
+    "Technocyte Coda"
+   ],
+   "price": []
+  },
+  "On-Lyne Superfan Honoria": {
+   "description": "Reach Max Rank (40) with 5 Coda Weapons.",
+   "tags": [
+    "Adversary",
+    "Technocyte Coda"
+   ],
+   "price": []
+  },
+  "Once and Future Honoria": {
+   "description": "Awarded for beginning a relationship with Arthur.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Oraxia's Prey Honoria": {
+   "description": "Awarded for vanquishing Oraxia in Isleweaver.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "Orb Liquidator Honoria": {
+   "description": "Awarded for defeating Profit-Taker and Exploiter Orb",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "Orokin Cell Executor Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Orokin Cell",
+     "amount": 150
+    }
+   ]
+  },
+  "Painted Free Honoria": {
+   "description": "Complete Follie's Hunt once.",
+   "tags": [
+    "Follie's Hunt"
+   ],
+   "price": []
+  },
+  "Paper Crane Honoria": {
+   "description": "Awarded for beginning a relationship with Aoi.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Parazon Runner Honoria": {
+   "description": "Solve a Cipher in under 5 seconds.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Pas de Deux Honoria": {
+   "description": "Awarded for completing all 21 floors of The Descendia as Wisp.",
+   "tags": [
+    "Descendia"
+   ],
+   "price": []
+  },
+  "Patriarch Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Father Token",
+     "amount": 75
+    }
+   ]
+  },
+  "Payer of the Ferryman Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Entrati Obols",
+     "amount": 100000
+    }
+   ]
+  },
+  "Perigone Honoria": {
+   "description": "Awarded for completing the Grandis XX Perigone challenge.",
+   "tags": [
+    "Insign"
+   ],
+   "price": []
+  },
+  "Pizza Time for Honoria": {
+   "description": "Awarded for completing the Quest 'The Hex Finale'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Plague Doctor Honoria": {
+   "description": "Defeat Phorid and get to extraction.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Plague-bearer Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Neurodes",
+     "amount": 500
+    }
+   ]
+  },
+  "Pleasure and Pain Honoria": {
+   "description": "Awarded for beginning a relationship with Leticia.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Queen of Duviri Honoria": {
+   "description": "Awarded for completing 'The Duviri Paradox'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "Restless Honoria": {
+   "description": "Survive a night on the Plains of Eidolon.",
+   "tags": [
+    "Open World"
+   ],
+   "price": []
+  },
+  "Rusalka's Hope Honoria": {
+   "description": "Awarded for rekindling the love between Minerva and Velimir.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Sage Honoria": {
+   "description": "Reach Mastery Rank 25.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Saint of Altra Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Sentirum",
+     "amount": 110
+    }
+   ]
+  },
+  "Savior of Perita Honoria": {
+   "description": "Awarded for collecting all 6 Accolade Glyphs from The Guilty.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "Scholar of Secrets Honoria": {
+   "description": "Awarded for obtaining Lorak the Zenurik Grimoire.",
+   "tags": [
+    "Tektolyst Artifact"
+   ],
+   "price": []
+  },
+  "Scoria's Saint Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Titanium",
+     "amount": 50000
+    }
+   ]
+  },
+  "Seeker Honoria": {
+   "description": "Reach Mastery Rank 10.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Seeker of Truth Honoria": {
+   "description": "Purchased from the Arbiters of Hexis at Rank 5 for 5000.",
+   "tags": [
+    "Syndicate"
+   ],
+   "price": [
+    {
+     "currency": "Standing",
+     "amount": 5000
+    }
+   ]
+  },
+  "Sentinel of Passion Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Belric Crystal Fragment",
+     "amount": 200
+    },
+    {
+     "currency": "Rania Crystal Fragment",
+     "amount": 200
+    }
+   ]
+  },
+  "Servio Honoria": {
+   "description": "Awarded for completing the Servio V Sporoi challenge.",
+   "tags": [
+    "Insign"
+   ],
+   "price": []
+  },
+  "Shadow Conservator Honoria": {
+   "description": null,
+   "tags": [
+    "Event"
+   ],
+   "price": [
+    {
+     "currency": "Nightmare Tatters",
+     "amount": 200
+    }
+   ]
+  },
+  "Shadowgrapher Honoria": {
+   "description": "Complete Follie's Hunt ten times.",
+   "tags": [
+    "Follie's Hunt"
+   ],
+   "price": []
+  },
+  "Silver Tongue Honoria": {
+   "description": "Awarded for beginning a relationship with Eleanor.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Sleeping in the Cold Below Honoria": {
+   "description": "Reach Max Rank (40) with 5 Tenet Weapons.",
+   "tags": [
+    "Adversary",
+    "Tenet"
+   ],
+   "price": []
+  },
+  "Soulmate Honoria": {
+   "description": "Awarded for beginning a relationship with Lyon.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Spore Bearer Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Nano Spores",
+     "amount": 500000
+    }
+   ]
+  },
+  "Staffbearer Honoria": {
+   "description": "Awarded for obtaining Nidri the Vazarin Staff.",
+   "tags": [
+    "Tektolyst Artifact"
+   ],
+   "price": []
+  },
+  "Steel Soldier Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Steel Essence",
+     "amount": 200
+    }
+   ]
+  },
+  "Sticker Master Honoria": {
+   "description": "Awarded for collecting every Peely Pix from Temporal Archimedea.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Storm Archer Honoria": {
+   "description": "Awarded for obtaining Thara the Madurai Bow.",
+   "tags": [
+    "Tektolyst Artifact"
+   ],
+   "price": []
+  },
+  "Strikes Twice Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Morphics",
+     "amount": 500
+    }
+   ]
+  },
+  "Supreme Operative Honoria": {
+   "description": "Awarded for beating Amir's High Score in Caliber Chicks 2.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Swordmaster Honoria": {
+   "description": "Awarded for obtaining Vexoric the Naramon Sword.",
+   "tags": [
+    "Tektolyst Artifact"
+   ],
+   "price": []
+  },
+  "Sworn Sister Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Spectral Debris",
+     "amount": 50
+    }
+   ]
+  },
+  "Temporal Investigator Honoria": {
+   "description": "Complete Elite Temporal Archimedea with max Research points.",
+   "tags": [
+    "Archimedea"
+   ],
+   "price": []
+  },
+  "Tenens Honoria": {
+   "description": "Awarded for completing the Tenens IX Sporoi challenge.",
+   "tags": [
+    "Insign"
+   ],
+   "price": []
+  },
+  "Tenno of a Thousand Days Honoria": {
+   "description": "Awarded for logging into WARFRAME for 1,000 days.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "The Arcanist Honoria": {
+   "description": "Awarded for getting 20 Arcanes to Max Rank.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "The Awoken Sword Honoria": {
+   "description": null,
+   "tags": [
+    "Hunhow"
+   ],
+   "price": [
+    {
+     "currency": "Alloy Plate",
+     "amount": 500000
+    }
+   ]
+  },
+  "The Copper Kid Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Coprun",
+     "amount": 200
+    }
+   ]
+  },
+  "The Demolitionist Honoria": {
+   "description": "Kill 10 or more enemies with a single explosion.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "The Devil's Confessor Honoria": {
+   "description": "Awarded for listening to all 21 of Roathe's Trauma logs.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "The Gallant Gourmand Honoria": {
+   "description": "Acquire Grendel Prime.",
+   "tags": [
+    "Prime"
+   ],
+   "price": []
+  },
+  "The God Above Knowledge Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Echo Voca",
+     "amount": 10
+    }
+   ]
+  },
+  "The Great & Terrible Honoria": {
+   "description": "Awarded for completing the Quest 'Jade Shadows'.",
+   "tags": [
+    "Quest"
+   ],
+   "price": []
+  },
+  "The Heir of Two Kingdoms Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Narmer Isoplast",
+     "amount": 50
+    }
+   ]
+  },
+  "The Invincible Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Pulsating Tubercles",
+     "amount": 50
+    },
+    {
+     "currency": "Infected Palpators",
+     "amount": 50
+    },
+    {
+     "currency": "Chitinous Husk",
+     "amount": 50
+    },
+    {
+     "currency": "Severed Bile Sac",
+     "amount": 50
+    }
+   ]
+  },
+  "The Learned Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Vessel Capillaries",
+     "amount": 150
+    }
+   ]
+  },
+  "The Lover Honoria": {
+   "description": "Awarded for beginning a relationship with a Protoframe.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "The Mad King Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Thrax Plasm",
+     "amount": 1000
+    }
+   ]
+  },
+  "The Maniac of Deimos Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Ganglion",
+     "amount": 1000
+    }
+   ]
+  },
+  "The Mechanic Honoria": {
+   "description": "Awarded for collecting all 6 Accolade Glyphs from H-09 Apex.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "The Navigator Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Nav Coordinate",
+     "amount": 1000
+    }
+   ]
+  },
+  "The Persecuted Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Kullervo's Bane",
+     "amount": 40
+    }
+   ]
+  },
+  "The Power of Harrow Compels Thee Honoria": {
+   "description": "250 Harrow Chassis Blueprints",
+   "tags": [
+    "Roathe"
+   ],
+   "price": []
+  },
+  "The Scarlet Queen Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Amarast",
+     "amount": 130
+    }
+   ]
+  },
+  "The Scavenger Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Salvage",
+     "amount": 600000
+    }
+   ]
+  },
+  "The Sunderer Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Riven Sliver",
+     "amount": 200
+    }
+   ]
+  },
+  "The Void Called to Me Honoria": {
+   "description": "Awarded for collecting all 6 Accolade Glyphs from Janus Captain Vor.",
+   "tags": [
+    "Boss Fight"
+   ],
+   "price": []
+  },
+  "The Warden of Alchemy Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Xenorhast",
+     "amount": 110
+    }
+   ]
+  },
+  "Thirst for Knowledge Honoria": {
+   "description": "Purchased from Cephalon Suda at Rank 5 for 5000.",
+   "tags": [
+    "Syndicate"
+   ],
+   "price": [
+    {
+     "currency": "Standing",
+     "amount": 5000
+    }
+   ]
+  },
+  "Ticker's Angel Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Familial Debt-Bond",
+     "amount": 100
+    }
+   ]
+  },
+  "Tiger Honoria": {
+   "description": "Reach Mastery Rank 19.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "True Master Honoria": {
+   "description": "Reach Mastery Rank 30.",
+   "tags": [
+    "Mastery"
+   ],
+   "price": []
+  },
+  "Unairu Vanguard Honoria": {
+   "description": null,
+   "tags": [
+    "Focus"
+   ],
+   "price": [
+    {
+     "currency": "Focus",
+     "amount": 5000000
+    }
+   ]
+  },
+  "Under Friendly Fire Honoria": {
+   "description": "Awarded for vanquishing a Hunhullus 5 times.",
+   "tags": [
+    "Perita"
+   ],
+   "price": []
+  },
+  "Vazarin Vanguard Honoria": {
+   "description": null,
+   "tags": [
+    "Focus"
+   ],
+   "price": [
+    {
+     "currency": "Focus",
+     "amount": 5000000
+    }
+   ]
+  },
+  "Volatile Mote Honoria": {
+   "description": null,
+   "tags": [
+    "Event"
+   ],
+   "price": [
+    {
+     "currency": "Volatile Motes",
+     "amount": 10
+    }
+   ]
+  },
+  "Voyager Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Asterite",
+     "amount": 5000
+    }
+   ]
+  },
+  "Was Never Here Honoria": {
+   "description": "Destroy 150 Security Cameras.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Wave Rider Honoria": {
+   "description": "Complete every K-Drive Race in Orb Vallis.",
+   "tags": [
+    "Open World"
+   ],
+   "price": []
+  },
+  "Who Devours All Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Common Condroc Tag",
+     "amount": 110
+    }
+   ]
+  },
+  "Will Do Anything For Money Honoria": {
+   "description": "Earn Battle Pay from 5 unique Invasions.",
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Wolfmother Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Lua Thrax Plasm",
+     "amount": 150
+    }
+   ]
+  },
+  "Worm Queen Honoria": {
+   "description": "Reach Max Rank (40) with 5 Kuva Weapons.",
+   "tags": [
+    "Adversary",
+    "Kuva"
+   ],
+   "price": []
+  },
+  "Yuvan Rising Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Kuva",
+     "amount": 100000
+    }
+   ]
+  },
+  "Zenurik Vanguard Honoria": {
+   "description": null,
+   "tags": [
+    "Focus"
+   ],
+   "price": [
+    {
+     "currency": "Focus",
+     "amount": 5000000
+    }
+   ]
+  },
+  "Legally Distinct Honoria": {
+   "description": null,
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  },
+  "Busy Monologuing Honoria": {
+   "description": null,
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Forever Fablemaster Honoria": {
+   "description": "Complete the Fables & Frontiers Campaign.",
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Butterfingers Honoria": {
+   "description": null,
+   "tags": [
+    "KIM"
+   ],
+   "price": []
+  },
+  "Retributor Honoria": {
+   "description": "Obtained from having completed the Law of Retribution Trial.",
+   "tags": [
+    "Trials"
+   ],
+   "price": []
+  },
+  "Vay Hek's Nightmare Honoria": {
+   "description": "Obtained from having completed the Nightmare Law of Retribution Trial.",
+   "tags": [
+    "Trials"
+   ],
+   "price": []
+  },
+  "The Final Verdict Honoria": {
+   "description": "Obtained from having completed the Jordas Verdict Trial.",
+   "tags": [
+    "Trials"
+   ],
+   "price": []
+  },
+  "Tried and True Honoria": {
+   "description": "Obtained from having completed both the Law of Retribution and Jordas Verdict Trials.",
+   "tags": [
+    "Trials"
+   ],
+   "price": []
+  },
+  "Clionadh Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Javlok Capacitor",
+     "amount": 50
+    }
+   ]
+  },
+  "Berserk Crucible Honoria": {
+   "description": null,
+   "tags": [
+    "Roathe"
+   ],
+   "price": [
+    {
+     "currency": "Entrati Lanthorn",
+     "amount": 200
+    }
+   ]
+  },
+  "Crystal Bastion Honoria": {
+   "description": "Acquire Citrine Prime.",
+   "tags": [
+    "Prime"
+   ],
+   "price": []
+  },
+  "On Wings of Ice Honoria": {
+   "description": null,
+   "tags": [
+    "Melica"
+   ],
+   "price": [
+    {
+     "currency": "Entropic Kuva",
+     "amount": 500
+    }
+   ]
+  },
+  "The Legend Of The Void Honoria": {
+   "description": null,
+   "tags": [
+    "Miscellaneous"
+   ],
+   "price": []
+  }
+ }
+}

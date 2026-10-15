@@ -1,0 +1,197 @@
+import { unstable_doesMiddlewareMatch } from "next/experimental/testing/server";
+import { NextRequest } from "next/server";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
+
+interface Kept {
+  value: string;
+  options: Record<string, unknown>;
+}
+
+const jar = new Map<string, Kept>();
+
+vi.mock("next/headers", () => ({
+  cookies: async () => ({
+    get: (name: string) => (jar.has(name) ? { name, value: jar.get(name)?.value } : undefined),
+    set: (name: string, value: string, options: Record<string, unknown> = {}) =>
+      jar.set(name, { value, options }),
+    delete: (name: string) => jar.delete(name),
+  }),
+  headers: async () => new Headers(),
+}));
+
+class Redirected extends Error {
+  constructor(readonly url: string) {
+    super(url);
+  }
+}
+
+vi.mock("next/navigation", () => ({
+  redirect: (url: string) => {
+    throw new Redirected(url);
+  },
+}));
+
+const ORDIS = DEMO_ACCOUNT_IDS.ordis;
+
+beforeEach(() => jar.clear());
+
+afterEach(() => {
+  vi.doUnmock("@/infra/profile/read");
+  vi.resetModules();
+});
+
+describe("the cookies (BR-46, spec 02, spec 04)", () => {
+  it("keeps the account for a year, out of the page's scripts", async () => {
+    const { readAccountId, writeAccountId } = await import("@/infra/session");
+    await writeAccountId(ORDIS);
+    expect(jar.get("wf_account")?.options).toMatchObject({
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365,
+    });
+    expect(await readAccountId()).toBe(ORDIS);
+  });
+
+  it("reads no account from a cookie that is not an id", async () => {
+    const { readAccountId } = await import("@/infra/session");
+    jar.set("wf_account", { value: "not-an-id", options: {} });
+    expect(await readAccountId()).toBeNull();
+  });
+
+  it("keeps the month the player last played, and only a month", async () => {
+    const { readSince, writeSince } = await import("@/infra/session");
+    await writeSince("2025-13");
+    expect(jar.has("wf_since")).toBe(false);
+    await writeSince("2025-11");
+    expect(await readSince()).toBe("2025-11");
+    jar.set("wf_since", { value: "last spring", options: {} });
+    expect(await readSince()).toBeNull();
+  });
+
+  it("forgets the account and the month together", async () => {
+    const { forgetAccount, writeAccountId, writeSince } = await import("@/infra/session");
+    await writeAccountId(ORDIS);
+    await writeSince("2025-11");
+    await forgetAccount();
+    expect([...jar.keys()]).toEqual([]);
+  });
+
+  it("reads the last place as its system and its place", async () => {
+    const { readPlace } = await import("@/infra/session");
+    jar.set("wf_place", { value: "origin/Kuva Fortress", options: {} });
+    expect(await readPlace()).toEqual({ system: "origin", place: "Kuva Fortress" });
+    jar.set("wf_place", { value: "Kuva Fortress", options: {} });
+    expect(await readPlace()).toBeNull();
+    jar.set("wf_place", { value: "Origin System!/Earth", options: {} });
+    expect(await readPlace()).toBeNull();
+  });
+});
+
+describe("the one read a screen makes", () => {
+  it("answers no account when the device has none", async () => {
+    const { readScreen } = await import("@/infra/screen");
+    expect(await readScreen()).toEqual({ state: "no-account" });
+  });
+
+  it("reads the profile and the domain's readings of it", async () => {
+    const { readScreen } = await import("@/infra/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const read = await readScreen();
+    expect(read.state).toBe("ok");
+    if (read.state !== "ok") return;
+    expect(read.screen.accountId).toBe(ORDIS);
+    expect(read.screen.display.displayName).toBe(read.screen.profile.DisplayName);
+    expect(read.screen.graph).toBeDefined();
+    expect(read.screen.confirmedQuests).toBeInstanceOf(Map);
+  });
+
+  it("turns the wait into the time a retry can succeed", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({ ok: false, reason: "limited", retryAfterSeconds: 600 }),
+    }));
+    const { readScreen } = await import("@/infra/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const before = Math.floor(Date.now() / 1000);
+    const read = await readScreen();
+    expect(read.state === "failed" ? read.reason : null).toBe("limited");
+    const retryAt = read.state === "failed" ? (read.retryAt ?? 0) : 0;
+    expect(retryAt - before).toBeGreaterThanOrEqual(600);
+    expect(retryAt - before).toBeLessThanOrEqual(601);
+  });
+});
+
+describe("a screen that cannot read lands on /connect (BR-38)", () => {
+  async function landing(failure: object): Promise<string> {
+    vi.doMock("@/infra/profile/read", () => ({ readProfile: async () => failure }));
+    const { requireScreen } = await import("@/app/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    try {
+      await requireScreen();
+    } catch (error) {
+      if (error instanceof Redirected) return error.url;
+      throw error;
+    }
+    throw new Error("no redirect");
+  }
+
+  it("carries the reason and the retry time", async () => {
+    const url = await landing({ ok: false, reason: "circuit-open", retryAfterSeconds: 90 });
+    const query = new URL(url, "http://localhost").searchParams;
+    expect(url.startsWith("/connect?")).toBe(true);
+    expect(query.get("reason")).toBe("circuit-open");
+    expect(Number(query.get("retry")) - Date.now() / 1000).toBeGreaterThan(80);
+  });
+
+  it("carries no retry when none is known", async () => {
+    expect(await landing({ ok: false, reason: "upstream" })).toBe("/connect?reason=upstream");
+  });
+
+  it("sends a device with no account to /connect", async () => {
+    const { requireScreen } = await import("@/app/screen");
+    await expect(requireScreen()).rejects.toMatchObject({ url: "/connect" });
+  });
+
+  it("hands the screen over when the read succeeds", async () => {
+    const { requireScreen } = await import("@/app/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect((await requireScreen()).accountId).toBe(ORDIS);
+  });
+});
+
+describe("proxy.ts writes the last place visited (BR-46)", () => {
+  const visit = async (query: string) => {
+    const { proxy } = await import("@/proxy");
+    return proxy(new NextRequest(`http://localhost/system${query}`));
+  };
+
+  it("writes the system and the place of the map's URL", async () => {
+    const response = await visit("?system=origin&place=Kuva%20Fortress");
+    const cookie = response.cookies.get("wf_place");
+    expect(cookie?.value).toBe("origin/Kuva Fortress");
+    expect(cookie).toMatchObject({ httpOnly: true, maxAge: 60 * 60 * 24 * 365 });
+  });
+
+  it("runs on the map and never on a prefetch of it", async () => {
+    const { config } = await import("@/proxy");
+    const runs = (url: string, headers: Record<string, string> = {}) =>
+      unstable_doesMiddlewareMatch({ config, url, headers });
+    expect(runs("/system?system=origin&place=Earth")).toBe(true);
+    expect(runs("/system", { rsc: "1", "next-router-prefetch": "1" })).toBe(false);
+    expect(runs("/system", { purpose: "prefetch" })).toBe(false);
+    expect(runs("/item?name=Ember")).toBe(false);
+  });
+
+  it("writes nothing without both parts, or with a malformed system", async () => {
+    for (const query of [
+      "",
+      "?system=origin",
+      "?place=Earth",
+      "?system=Origin%20System&place=Earth",
+    ]) {
+      expect((await visit(query)).cookies.get("wf_place")).toBeUndefined();
+    }
+  });
+});

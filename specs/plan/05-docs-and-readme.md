@@ -1,54 +1,49 @@
-# Plan · 5 · The documents that travel, and the public README
+# Plan · 5 · The documents, and the README
 
-Which documents in `docs/` cross to the public repository, what changes in each,
-and what the public README says. The cut rule decides, as in part 1: a document
-travels when a spec cites it, when a document that travels depends on it, or
-when it records a decision that governs future work. Every one that travels
-describes the public repository as it will be, not this one.
+Which documents `docs/` holds, what each one is for, the task that writes it,
+and what the README says. The cut rule decides, as everywhere: a document is
+here when a spec cites it, when a document that is here depends on it, or when
+it records a decision that governs future work.
 
-## What changes in every document that travels
+## What every document keeps to
 
-- **Paths follow part 1.** `src/lib/warframe/` becomes `src/infra/…` or
-  `src/domain/…`; `src/components/` becomes `src/ui/` or `src/screens/`.
-- **No "Code: met / not met".** Those lines in `business-rules.md` measure this
-  repository's code against a rule. The public repository starts from the
-  specs, so its code meets each rule by construction, and its tasks say where it
-  does not yet.
-- **No history of this repository** beyond what a decision needs: the question,
-  the options and what settled it stay; a list of commits or of files that were
-  removed here does not.
-- **No link to `CLAUDE.md`**, which stays (part 1). Where a document sent the
-  reader there, it links the constitution.
+- **Paths are this repository's**, in the layers of part 1.
+- **No measure of the code against a rule.** The code meets each rule by
+  construction, and a task says where it does not yet.
+- **History only where a decision needs it:** the question, the options and
+  what settled it, never a list of commits or of files.
+- **No link to `CLAUDE.md`**, which is never committed. Where a document would
+  send the reader there, it links the constitution.
 
 ## The documents
 
-| Document                           | Origin   | Why it travels, or why it stays                                                                                                                                                                                                                                                                                                                                                                        |
-| ---------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `business-rules.md`                | Reworked | Every spec cites it. Loses the "Code:" lines and the Slips section once the owner approves the new designs in Figma                                                                                                                                                                                                                                                                                    |
-| `public-release.md`                | Moves    | The constitution cites it; it is the case study's reasoning                                                                                                                                                                                                                                                                                                                                            |
-| `spec-driven-order.md`             | Moves    | The constitution cites it                                                                                                                                                                                                                                                                                                                                                                              |
-| `api.md`                           | Moves    | Spec 11 cites it: the endpoint's verified behaviour                                                                                                                                                                                                                                                                                                                                                    |
-| `deferred.md`                      | Moves    | Spec 08 cites it; it governs what a later version adds                                                                                                                                                                                                                                                                                                                                                 |
-| `step-by-step.md`                  | Moves    | Spec 10 cites it                                                                                                                                                                                                                                                                                                                                                                                       |
-| `scenario-guidelines.md`           | Moves    | Spec 10 cites it; spec 09 reads its densities (BR-55)                                                                                                                                                                                                                                                                                                                                                  |
-| `acquisition-scenarios.md`         | Moves    | Step by step depends on the routes and the vendored modules it explains                                                                                                                                                                                                                                                                                                                                |
-| `curated-files.md`                 | Moves    | `data/` travels, and this is how each file in it is written                                                                                                                                                                                                                                                                                                                                            |
-| `items.md`                         | Moves    | The catalog under the item page and the Summary                                                                                                                                                                                                                                                                                                                                                        |
-| `place-index.md`                   | Moves    | The map (spec 07) reads the place index it describes                                                                                                                                                                                                                                                                                                                                                   |
-| `system.md`                        | Moves    | The states of an item, a place, a quest and a step that every screen draws                                                                                                                                                                                                                                                                                                                             |
-| `narrative.md`                     | Reworked | Quest evidence and access travel (BR-28); the sections on Catch me up's quest rail leave with it (BR-35)                                                                                                                                                                                                                                                                                               |
-| `engine.md`                        | Reworked | The engine travels; the `Plan` contract is described as Step by step reads it, not as the removed goal screen did                                                                                                                                                                                                                                                                                      |
-| `equipment-unlock-requirements.md` | Moves    | The research behind "don't promise what can't be read"; it governs which checks a new goal may make                                                                                                                                                                                                                                                                                                    |
-| `ui.md`                            | Reworked | The routes with their frames and the link rules; checked against specs 01 to 10 line by line                                                                                                                                                                                                                                                                                                           |
-| `cetus.md`                         | Reworked | Why the system looks as it does: the palette, colour blindness, the type pairing. The tokens themselves move to plan part 3 and `ui/tokens.css`; the icons section follows BR-42; "What changed structurally" and "Pending on the owner" leave, and so do the view frame, the background art registry, Onkko's dialogue tree and the goal solver, which no spec or plan part keeps (owner, 2026-10-08) |
-| `content-updates.md`               | New      | How a mainline or an update enters the app, and the command that runs it; it governs all content work after the launch                                                                                                                                                                                                                                                                                 |
-| `development.md`                   | Reworked | Tooling with Storybook, `knip` and the layers; the store's two backends; the two demos and two test profiles; no disk cache, no real capture                                                                                                                                                                                                                                                           |
-| `README.md` (the index)            | Reworked | Lists what travels, in this order                                                                                                                                                                                                                                                                                                                                                                      |
+| Document                           | What it holds, and why it is here                                                                                                                             | Task             |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `business-rules.md`                | The rules pinned to the frames; every spec cites it                                                                                                           | T-01             |
+| `public-release.md`                | The reasoning behind the release; the constitution cites it, and it is the case study                                                                         | T-01             |
+| `spec-driven-order.md`             | The order the work follows; the constitution cites it                                                                                                         | T-01             |
+| `development.md`                   | Tooling with Storybook, `knip` and the layers; the store's two backends; the two demos and two test profiles                                                  | T-01, each task  |
+| `cetus.md`                         | Why the system looks as it does: the palette, colour blindness, the type pairing; the tokens themselves are in part 3 and `ui/tokens.css`; icons follow BR-42 | T-04             |
+| `curated-files.md`                 | How each file in `data/` is written, with each snapshot's source and licence                                                                                  | T-11, T-13, T-15 |
+| `engine.md`                        | The engine's `Plan` as Goal and the map read it: whether a goal is done, the frontier and the focus                                                           | T-13             |
+| `narrative.md`                     | Quest evidence and access (BR-28)                                                                                                                             | T-13             |
+| `deferred.md`                      | What a later version adds; spec 08 cites it                                                                                                                   | T-13             |
+| `equipment-unlock-requirements.md` | The research behind "don't promise what can't be read"; it governs which checks a new goal may make                                                           | T-13             |
+| `place-index.md`                   | The place index the map (spec 07) reads: its sources, the systems and their names, the Dojo                                                                   | T-15             |
+| `system.md`                        | The states of an item, a place, a quest and a step that every screen draws, and the two lenses                                                                | T-15             |
+| `items.md`                         | The catalog under the item page and the Summary                                                                                                               | T-16             |
+| `scenario-guidelines.md`           | Spec 10 cites it; spec 09 reads its densities (BR-55)                                                                                                         | T-16             |
+| `acquisition-scenarios.md`         | The routes and the vendored modules Step by step depends on                                                                                                   | T-16             |
+| `api.md`                           | The endpoint's verified behaviour; spec 11 cites it                                                                                                           | T-18, T-19       |
+| `step-by-step.md`                  | Spec 10 cites it                                                                                                                                              | T-29             |
+| `content-updates.md`               | How a mainline or an update enters the app, and the command that runs it                                                                                      | T-31             |
+| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 10 line by line                                                                  | T-32             |
+| `README.md` (the index)            | Every document above, in this order                                                                                                                           | T-01, T-32       |
 
-No document stays behind whole. Each one that changes is reworked in the task
-that moves the code it describes, so the two cross together and match.
+Each document is written in the task that builds the code it describes, so the
+two match.
 
-## The public README
+## The README
 
 The README has the two readers of the constitution, and it serves the player
 first because the player reads less. It is short and links out for the rest.
@@ -84,17 +79,7 @@ first because the player reads less. It is short and links out for the rest.
 What it does not have:
 
 - **No link to the Figma file**, which stays private (constitution).
-- **No claim that the app says which value proved a step.** The current README
-  says it; the anchor forbids it ("Never explain the machine").
+- **No claim that the app says which value proved a step.** The anchor forbids
+  it ("Never explain the machine").
 - **No third demo** and no mention of a real capture.
-
-## Divergences from this repository
-
-| Here                                                  | In the public repository                             |
-| ----------------------------------------------------- | ---------------------------------------------------- |
-| The README describes `src/lib/` and `src/components/` | The layers of part 1                                 |
-| "Says which value proved it"                          | Removed: the anchor                                  |
-| A profile "held in memory"                            | Trimmed, compressed, in a shared store, twelve hours |
-| Three demo ids, one a real capture                    | Two, both anonymised                                 |
-| `CLAUDE.md` linked as the product context             | The constitution                                     |
-| Documents carry "Code: met / not met"                 | Tasks carry what is not built yet                    |
+- **No link to `CLAUDE.md`.** The product context is the constitution.

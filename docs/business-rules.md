@@ -167,7 +167,7 @@ a reading of the earlier build against it was put to them.
 - The band's words are not fixed by the frame. The owner drew one as an
   example and on 2026-10-04 left the messages to be written from the failures
   the system can return. The proxy knows seven reasons
-  (`FailureReason` in `src/infra/profile/client.ts`); the player can act on
+  (`FailureReason` in `src/domain/types/profile.ts`); the player can act on
   four, so the band says four things:
 
   | Reason                                  | The band                                                                     |
@@ -337,7 +337,7 @@ a reading of the earlier build against it was put to them.
 - Rule: where the player must take a concrete action, each option's text
   explains what the option does more clearly, in the player's terms.
 - The frame still carried the old words when spec 03 was written on
-  2026-10-05, and the first sentence then built still promised quests, which
+  2026-10-05, and the line then drafted still promised quests, which
   BR-35 took out of Catch me up. The owner chose to correct the frame with
   these two lines, which the build then follows:
   - "Pick up where you left off": "Name the last update you played and see
@@ -767,7 +767,8 @@ settled where the frames disagreed with each other or with the docs.
   play the row, the owner settled the same day: for a mission, the mission
   type's Mechanics section, how it plays (Dante's "Play Armatus"); for an item
   whose route only prose names, its Acquisition section; for anything else
-  (a boss, a lab, a vendor), the lead of its page. The data detail ("It drops at
+  (a boss, a lab, a vendor), the lead of its page. A mission type's page with
+  no Mechanics section gives its lead (owner, 2026-10-14). The data detail ("It drops at
   rotation C, 7.5% a run, so about 13 runs for an even chance.") stays its own
   first line, and "Wiki ↗" closes the passage.
 - This replaces the rule "one sentence per row and never more" in
@@ -833,7 +834,7 @@ settled where the frames disagreed with each other or with the docs.
   work, and forbids the Warframe and Digital Extremes logos without written
   consent. The Quills' emblem is neither logo, so the policy allows it, but as
   the app's own mark it would read as official, and it could never be the
-  owner's. The quill drawn for the first build is original, and the owner chose
+  owner's. The quill the app draws is original, and the owner chose
   it.
 - The game's art is still used where it names a thing (BR-42): non-commercial,
   served from DE's and the wiki's hosts, never rehosted. The wiki's licence

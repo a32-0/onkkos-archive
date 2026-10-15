@@ -126,17 +126,6 @@ Each is one component with its Storybook stories: `Header`, `PlayerChip`,
 7. Every part has its stories, in every state the frames draw.
 8. `pnpm check` passes.
 
-## Divergences from the code
-
-| Today                                                                     | The frames and rules                                 |
-| ------------------------------------------------------------------------- | ---------------------------------------------------- |
-| The menu is a dropdown sheet with a secondary Disconnect                  | A full-screen sheet, red outlined Disconnect (BR-06) |
-| The read cycle reads "Read every twelve hours: last read 12 min ago…"     | The frame's sentence                                 |
-| `/features` sits inside the shell                                         | Outside it                                           |
-| `/catch-up` has one form                                                  | Two entrances (BR-41)                                |
-| The active tab is chosen per page, and `/item` has none of its own origin | The table above                                      |
-| Tab icons as built                                                        | The three approved icons                             |
-
 ## Frame corrections
 
 The owner corrected this screen's frames on 2026-10-06, and the corrections

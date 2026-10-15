@@ -1,0 +1,2220 @@
+{
+ "traits": {
+  "Acceltra": [
+   "Tenno"
+  ],
+  "Acceltra Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Aeolak": [
+   "Duviri"
+  ],
+  "Afentis": [
+   "Tenno"
+  ],
+  "Afentis Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Alternox": [
+   "Tenno"
+  ],
+  "Alternox Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Ambassador": [
+   "Corpus"
+  ],
+  "Amprex": [
+   "Corpus"
+  ],
+  "Arca Plasmor": [
+   "Corpus"
+  ],
+  "Argonak": [
+   "Grineer"
+  ],
+  "Artemis Bow": [
+   "Tenno"
+  ],
+  "Artemis Bow Prime": [
+   "Tenno"
+  ],
+  "Astilla": [
+   "Tenno"
+  ],
+  "Astilla Prime": [
+   "Prime"
+  ],
+  "Attica": [
+   "Tenno"
+  ],
+  "Basmu": [
+   "Sentient"
+  ],
+  "Battacor": [
+   "Corpus"
+  ],
+  "Baza": [
+   "Tenno"
+  ],
+  "Baza Prime": [
+   "Prime"
+  ],
+  "Boar": [
+   "Tenno"
+  ],
+  "Boar Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Boltor": [
+   "Tenno"
+  ],
+  "Boltor Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Braton": [
+   "Tenno"
+  ],
+  "Braton Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Braton Vandal": [
+   "Tenno",
+   "Vandal"
+  ],
+  "Bubonico": [
+   "Infested"
+  ],
+  "Burston": [
+   "Tenno"
+  ],
+  "Burston Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Buzlok": [
+   "Grineer"
+  ],
+  "Carmine Penta": [
+   "Corpus"
+  ],
+  "Cedo": [
+   "Tenno"
+  ],
+  "Cedo Prime": [
+   "Prime"
+  ],
+  "Cernos": [
+   "Tenno"
+  ],
+  "Cernos Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Cinta": [
+   "Duviri"
+  ],
+  "Coda Bassocyst": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Bubonico": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Hema": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Sporothrix": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Synapse": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Convectrix": [
+   "Corpus"
+  ],
+  "Corinth": [
+   "Tenno"
+  ],
+  "Corinth Prime": [
+   "Prime"
+  ],
+  "Daikyu": [
+   "Tenno"
+  ],
+  "Daikyu Prime": [
+   "Tenno"
+  ],
+  "Dera": [
+   "Corpus"
+  ],
+  "Dera Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Dex Sybaris": [
+   "Tenno"
+  ],
+  "Drakgoon": [
+   "Grineer"
+  ],
+  "Dread": [
+   "Stalker"
+  ],
+  "EFV-5 Jupiter": [
+   "Scaldra"
+  ],
+  "Enkaus": [
+   "Tenno"
+  ],
+  "Evensong": [
+   "Tenno"
+  ],
+  "Felarx": [
+   "Zariman",
+   "Incarnon"
+  ],
+  "Ferrox": [
+   "Corpus"
+  ],
+  "Flux Rifle": [
+   "Corpus"
+  ],
+  "Fulmin Prime": [
+   "Prime"
+  ],
+  "Glaxion": [
+   "Corpus"
+  ],
+  "Glaxion Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Gorgon": [
+   "Grineer"
+  ],
+  "Gorgon Wraith": [
+   "Wraith",
+   "Grineer"
+  ],
+  "Gotva Prime": [
+   "Prime"
+  ],
+  "Grakata": [
+   "Grineer"
+  ],
+  "Grinlok": [
+   "Grineer"
+  ],
+  "Haalvu": [
+   "Sentient"
+  ],
+  "Harpak": [
+   "Grineer"
+  ],
+  "Hek": [
+   "Grineer"
+  ],
+  "Hema": [
+   "Infested"
+  ],
+  "Higasa": [
+   "Tenno"
+  ],
+  "Hind": [
+   "Grineer"
+  ],
+  "Ignis": [
+   "Grineer"
+  ],
+  "Ignis Wraith": [
+   "Wraith",
+   "Grineer"
+  ],
+  "Javlok": [
+   "Grineer"
+  ],
+  "Karak": [
+   "Grineer"
+  ],
+  "Karak Wraith": [
+   "Wraith",
+   "Invasion Reward",
+   "Grineer"
+  ],
+  "Kohm": [
+   "Grineer"
+  ],
+  "Komorex": [
+   "Sentient",
+   "Corpus"
+  ],
+  "Kuva Bramma": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Chakkhurr": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Drakgoon": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Hek": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Hind": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Karak": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Kohm": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Ogris": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Quartakk": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Sobek": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Tonkor": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Zarr": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Lanka": [
+   "Corpus"
+  ],
+  "Latron": [
+   "Tenno"
+  ],
+  "Latron Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Latron Wraith": [
+   "Wraith",
+   "Invasion Reward",
+   "Tenno"
+  ],
+  "Lenz": [
+   "Corpus"
+  ],
+  "Lizzie": [
+   "Tenno"
+  ],
+  "Miter": [
+   "Grineer"
+  ],
+  "Mk1-Braton": [
+   "Tenno"
+  ],
+  "Mk1-Paris": [
+   "Tenno"
+  ],
+  "Mk1-Strun": [
+   "Tenno"
+  ],
+  "Mutalist Cernos": [
+   "Infested"
+  ],
+  "Mutalist Quanta": [
+   "Infested"
+  ],
+  "Nagantaka": [
+   "Tenno"
+  ],
+  "Nagantaka Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Nataruk": [
+   "Sentient"
+  ],
+  "Neutralizer": [
+   "Tenno"
+  ],
+  "Nunchasa": [
+   "Tenno"
+  ],
+  "Ogris": [
+   "Grineer"
+  ],
+  "Opticor": [
+   "Corpus"
+  ],
+  "Opticor Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Panthera": [
+   "Tenno"
+  ],
+  "Panthera Prime": [
+   "Prime"
+  ],
+  "Paracyst": [
+   "Infested"
+  ],
+  "Paris": [
+   "Tenno"
+  ],
+  "Paris Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Penta": [
+   "Corpus"
+  ],
+  "Perigale": [
+   "Tenno"
+  ],
+  "Perigale Prime": [
+   "Tenno"
+  ],
+  "Phage": [
+   "Infested"
+  ],
+  "Phantasma": [
+   "Sentient"
+  ],
+  "Phantasma Prime": [
+   "Prime",
+   "Sentient"
+  ],
+  "Phenmor": [
+   "Zariman",
+   "Incarnon"
+  ],
+  "Prisma Gorgon": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Grakata": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Grinlok": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Lenz": [
+   "Corpus",
+   "Baro"
+  ],
+  "Prisma Tetra": [
+   "Prisma",
+   "Baro"
+  ],
+  "Proboscis Cernos": [
+   "Infested"
+  ],
+  "Purgator 1": [
+   "Scaldra"
+  ],
+  "Quanta": [
+   "Corpus"
+  ],
+  "Quanta Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Quartakk": [
+   "Grineer"
+  ],
+  "Quellor": [
+   "Tenno"
+  ],
+  "Rakta Cernos": [
+   "Syndicate",
+   "Red Veil"
+  ],
+  "Reconifex": [
+   "Tenno"
+  ],
+  "Rubico": [
+   "Tenno"
+  ],
+  "Rubico Prime": [
+   "Prime"
+  ],
+  "Sancti Tigris": [
+   "Syndicate",
+   "New Loka"
+  ],
+  "Scourge": [
+   "Tenno"
+  ],
+  "Scourge Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Secura Penta": [
+   "Syndicate",
+   "Perrin Sequence"
+  ],
+  "Shedu": [
+   "Sentient"
+  ],
+  "Simulor": [
+   "Cephalon"
+  ],
+  "Snipetron": [
+   "Corpus"
+  ],
+  "Snipetron Vandal": [
+   "Corpus",
+   "Invasion Reward",
+   "Vandal"
+  ],
+  "Sobek": [
+   "Grineer"
+  ],
+  "Soma": [
+   "Tenno"
+  ],
+  "Soma Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Sporothrix": [
+   "Infested"
+  ],
+  "Stahlta": [
+   "Corpus"
+  ],
+  "Steflos": [
+   "Tenno"
+  ],
+  "Steflos Prime": [
+   "Tenno"
+  ],
+  "Stradavar": [
+   "Tenno"
+  ],
+  "Stradavar Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Strun": [
+   "Tenno"
+  ],
+  "Strun Prime": [
+   "Prime"
+  ],
+  "Strun Wraith": [
+   "Tenno",
+   "Invasion Reward",
+   "Wraith"
+  ],
+  "Supra": [
+   "Corpus"
+  ],
+  "Supra Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Sybaris": [
+   "Tenno"
+  ],
+  "Sybaris Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Synapse": [
+   "Infested"
+  ],
+  "Synoid Simulor": [
+   "Syndicate",
+   "Cephalon Suda",
+   "Cephalon"
+  ],
+  "Telos Boltor": [
+   "Syndicate",
+   "Arbiters of Hexis"
+  ],
+  "Tenet Arca Plasmor": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Envoy": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Ferrox": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Flux Rifle": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Glaxion": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Quanta": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Tetra": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenora": [
+   "Tenno"
+  ],
+  "Tenora Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Tetra": [
+   "Corpus"
+  ],
+  "Thornbak": [
+   "Tenno"
+  ],
+  "Tiberon": [
+   "Tenno"
+  ],
+  "Tiberon Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Tigris": [
+   "Tenno"
+  ],
+  "Tigris Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Tonkor": [
+   "Grineer"
+  ],
+  "Torid": [
+   "Infested"
+  ],
+  "Trumna": [
+   "Entrati"
+  ],
+  "Trumna Prime": [
+   "Prime"
+  ],
+  "Vadarya Prime": [
+   ""
+  ],
+  "Vaykor Hek": [
+   "Syndicate",
+   "Steel Meridian"
+  ],
+  "Vectis": [
+   "Tenno"
+  ],
+  "Vectis Prime": [
+   "Prime"
+  ],
+  "Vulkar": [
+   "Grineer"
+  ],
+  "Vulkar Wraith": [
+   "Wraith",
+   "Baro",
+   "Grineer"
+  ],
+  "Zarr": [
+   "Grineer"
+  ],
+  "Zenith": [
+   "Tenno"
+  ],
+  "Zhuge Prime": [
+   "Prime"
+  ],
+  "Acrid": [
+   "Grineer"
+  ],
+  "Aegrit": [
+   "Grineer"
+  ],
+  "Afuris": [
+   "Tenno"
+  ],
+  "Afuris Prime": [
+   "Prime"
+  ],
+  "Akarius": [
+   "Tenno"
+  ],
+  "Akarius Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Akbolto": [
+   "Tenno"
+  ],
+  "Akbolto Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Akbronco": [
+   "Tenno"
+  ],
+  "Akbronco Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Akjagara": [
+   "Tenno"
+  ],
+  "Akjagara Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Aklex": [
+   "Tenno"
+  ],
+  "Aklex Prime": [
+   "Prime",
+   "Baro"
+  ],
+  "Akmagnus": [
+   "Tenno"
+  ],
+  "Akmagnus Prime": [
+   "Prime",
+   "Baro"
+  ],
+  "Aksomati": [
+   "Tenno"
+  ],
+  "Aksomati Prime": [
+   "Prime"
+  ],
+  "Aksondol": [
+   "Tenno"
+  ],
+  "Akstiletto": [
+   "Tenno"
+  ],
+  "Akstiletto Prime": [
+   "Prime"
+  ],
+  "Akvasto": [
+   "Tenno"
+  ],
+  "Akvasto Prime": [
+   "Prime",
+   "Baro"
+  ],
+  "Akzani": [
+   "Tenno"
+  ],
+  "Angstrum": [
+   "Corpus"
+  ],
+  "Arca Scisco": [
+   "Corpus"
+  ],
+  "Athodai": [
+   "Tenno"
+  ],
+  "Athodai Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Atomos": [
+   "Grineer"
+  ],
+  "Azima": [
+   "Tenno"
+  ],
+  "Balefire Charger": [
+   "Tenno"
+  ],
+  "Balefire Charger Prime": [
+   "Tenno"
+  ],
+  "Ballistica": [
+   "Tenno"
+  ],
+  "Ballistica Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Bolto": [
+   "Tenno"
+  ],
+  "Brakk": [
+   "Grineer"
+  ],
+  "Bronco": [
+   "Tenno"
+  ],
+  "Bronco Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Cantare": [
+   "Tenno"
+  ],
+  "Castanas": [
+   "Tenno"
+  ],
+  "Catabolyst": [
+   "Infested"
+  ],
+  "Cestra": [
+   "Corpus"
+  ],
+  "Coda Catabolyst": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Pox": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Tysis": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Cyanex": [
+   "Corpus",
+   "Sentient"
+  ],
+  "Cycron": [
+   "Corpus"
+  ],
+  "Despair": [
+   "Stalker"
+  ],
+  "Detron": [
+   "Corpus"
+  ],
+  "Dex Furis": [
+   "Tenno"
+  ],
+  "Dex Pixia": [
+   "Tenno"
+  ],
+  "Dex Pixia Prime": [
+   "Tenno"
+  ],
+  "Dual Cestra": [
+   "Corpus"
+  ],
+  "Dual Coda Torxica": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Dual Toxocyst": [
+   "Infested"
+  ],
+  "EFV-8 Mars": [
+   "Scaldra"
+  ],
+  "Embolist": [
+   "Infested"
+  ],
+  "Euphona Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Furis": [
+   "Tenno"
+  ],
+  "Fusilai": [
+   "Tenno"
+  ],
+  "Gammacor": [
+   "Cephalon"
+  ],
+  "Glory": [
+   "Tenno"
+  ],
+  "Grimoire": [
+   "Entrati"
+  ],
+  "Hikou": [
+   "Tenno"
+  ],
+  "Hikou Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Hystrix": [
+   "Tenno"
+  ],
+  "Hystrix Prime": [
+   "Prime"
+  ],
+  "Knell": [
+   "Tenno"
+  ],
+  "Knell Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Kohmak": [
+   "Grineer"
+  ],
+  "Kompressa": [
+   "Tenno"
+  ],
+  "Kompressa Prime": [
+   "Tenno"
+  ],
+  "Kraken": [
+   "Grineer"
+  ],
+  "Kulstar": [
+   "Grineer"
+  ],
+  "Kunai": [
+   "Tenno"
+  ],
+  "Kuva Brakk": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Kraken": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Nukor": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Seer": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Twin Stubbas": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Laetum": [
+   "Zariman",
+   "Incarnon"
+  ],
+  "Lato": [
+   "Tenno"
+  ],
+  "Lato Prime": [
+   "Prime",
+   "Vaulted",
+   "Founder"
+  ],
+  "Lato Vandal": [
+   "Tenno",
+   "Vandal"
+  ],
+  "Lex": [
+   "Tenno"
+  ],
+  "Lex Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Magnus": [
+   "Tenno"
+  ],
+  "Magnus Prime": [
+   "Prime"
+  ],
+  "Mara Detron": [
+   "Corpus"
+  ],
+  "Marelok": [
+   "Grineer"
+  ],
+  "Mk1-Furis": [
+   "Tenno"
+  ],
+  "Mk1-Kunai": [
+   "Tenno"
+  ],
+  "Noctua": [
+   "Tenno"
+  ],
+  "Nukor": [
+   "Grineer"
+  ],
+  "Ocucor": [
+   "Corpus"
+  ],
+  "Onos": [
+   "Entrati",
+   "Incarnon"
+  ],
+  "Pandero": [
+   "Tenno"
+  ],
+  "Pandero Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Plinx": [
+   "Corpus"
+  ],
+  "Pox": [
+   "Infested"
+  ],
+  "Prisma Angstrum": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Twin Gremlins": [
+   "Grineer"
+  ],
+  "Pyrana": [
+   "Tenno"
+  ],
+  "Pyrana Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Rakta Ballistica": [
+   "Syndicate",
+   "Red Veil"
+  ],
+  "Regulators": [
+   "Tenno"
+  ],
+  "Regulators Prime": [
+   "Tenno"
+  ],
+  "Riot-848": [
+   "Tenno",
+   "Entrati"
+  ],
+  "Sagek Prime": [
+   "Prime"
+  ],
+  "Sancti Castanas": [
+   "Syndicate",
+   "New Loka"
+  ],
+  "Secura Dual Cestra": [
+   "Syndicate",
+   "Perrin Sequence"
+  ],
+  "Seer": [
+   "Grineer"
+  ],
+  "Sepulcrum": [
+   "Entrati"
+  ],
+  "Sicarus": [
+   "Tenno"
+  ],
+  "Sicarus Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Sonicor": [
+   "Corpus"
+  ],
+  "Spectra": [
+   "Corpus"
+  ],
+  "Spectra Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Spira": [
+   "Tenno"
+  ],
+  "Spira Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Staticor": [
+   "Corpus"
+  ],
+  "Stubba": [
+   "Grineer"
+  ],
+  "Stug": [
+   "Grineer"
+  ],
+  "Synoid Gammacor": [
+   "Syndicate",
+   "Cephalon Suda"
+  ],
+  "Talons": [
+   "Tenno"
+  ],
+  "Telos Akbolto": [
+   "Syndicate",
+   "Arbiters of Hexis"
+  ],
+  "Tenet Cycron": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Detron": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Diplos": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Plinx": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Spirex": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Twin Grakatas": [
+   "Grineer"
+  ],
+  "Twin Gremlins": [
+   "Grineer"
+  ],
+  "Twin Kohmak": [
+   "Grineer"
+  ],
+  "Twin Rogga": [
+   "Grineer"
+  ],
+  "Twin Vipers": [
+   "Grineer"
+  ],
+  "Twin Vipers Wraith": [
+   "Wraith",
+   "Invasion Reward",
+   "Grineer"
+  ],
+  "Tysis": [
+   "Infested"
+  ],
+  "Vasto": [
+   "Tenno"
+  ],
+  "Vasto Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Vaykor Marelok": [
+   "Syndicate",
+   "Steel Meridian"
+  ],
+  "Velox": [
+   "Tenno"
+  ],
+  "Velox Prime": [
+   "Tenno"
+  ],
+  "Viper": [
+   "Grineer"
+  ],
+  "Viper Wraith": [
+   "Grineer",
+   "Wraith",
+   "Baro"
+  ],
+  "Zakti": [
+   "Tenno"
+  ],
+  "Zakti Prime": [
+   "Prime"
+  ],
+  "Zylok": [
+   "Tenno"
+  ],
+  "Zylok Prime": [
+   "Prime",
+   "Tenno"
+  ],
+  "Zymos": [
+   "Infested"
+  ],
+  "Ack & Brunt": [
+   "Grineer"
+  ],
+  "Amanata": [
+   "Tenno"
+  ],
+  "Amphis": [
+   "Grineer"
+  ],
+  "Anku": [
+   "Tenno"
+  ],
+  "Ankyros": [
+   "Tenno"
+  ],
+  "Ankyros Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Arca Titron": [
+   "Corpus"
+  ],
+  "Argo & Vel": [
+   "Duviri"
+  ],
+  "Arum Spinosa": [
+   "Infested"
+  ],
+  "Atterax": [
+   "Grineer"
+  ],
+  "Azothane": [
+   "Duviri"
+  ],
+  "Bo": [
+   "Tenno"
+  ],
+  "Bo Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Boltace": [
+   "Tenno"
+  ],
+  "Broken War": [
+   "Sentient"
+  ],
+  "Cadus": [
+   "Tenno"
+  ],
+  "Cassowar": [
+   "Tenno"
+  ],
+  "Caustacyst": [
+   "Infested"
+  ],
+  "Ceramic Dagger": [
+   "Tenno"
+  ],
+  "Cerata": [
+   "Infested"
+  ],
+  "Ceti Lacera": [
+   "Tenno"
+  ],
+  "Cobra & Crane Prime": [
+   "Prime"
+  ],
+  "Coda Caustacyst": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Hirudo": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Mire": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Motovore": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Coda Pathocyst": [
+   "Infested",
+   "Technocyte Coda"
+  ],
+  "Corufell": [
+   "Tenno"
+  ],
+  "Corufell Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Cronus": [
+   "Tenno",
+   "Grineer"
+  ],
+  "Dakra Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Dark Dagger": [
+   "Tenno"
+  ],
+  "Dark Split-Sword (Dual Swords)": [
+   "Tenno"
+  ],
+  "Dark Split-Sword (Heavy Blade)": [
+   "Tenno"
+  ],
+  "Dark Sword": [
+   "Tenno"
+  ],
+  "Desert Wind": [
+   "Tenno"
+  ],
+  "Desert Wind Prime": [
+   "Tenno"
+  ],
+  "Destreza": [
+   "Tenno"
+  ],
+  "Destreza Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Dex Dakra": [
+   "Tenno"
+  ],
+  "Dex Nikana": [
+   "Tenno"
+  ],
+  "Diwata": [
+   "Tenno"
+  ],
+  "Diwata Prime": [
+   "Tenno"
+  ],
+  "Dorrclave": [
+   "Dagath",
+   "Tenno"
+  ],
+  "Dragon Nikana": [
+   "Tenno"
+  ],
+  "Dual Cleavers": [
+   "Grineer"
+  ],
+  "Dual Ether": [
+   "Tenno"
+  ],
+  "Dual Heat Swords": [
+   "Tenno"
+  ],
+  "Dual Ichor": [
+   "Infested"
+  ],
+  "Dual Kamas": [
+   "Tenno"
+  ],
+  "Dual Kamas Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Dual Keres Prime": [
+   "Prime"
+  ],
+  "Dual Raza": [
+   "Tenno"
+  ],
+  "Dual Skana": [
+   "Tenno"
+  ],
+  "Dual Viciss": [
+   "Scaldra"
+  ],
+  "Dual Zoren": [
+   "Tenno"
+  ],
+  "Dual Zoren Prime": [
+   "Tenno"
+  ],
+  "Edun": [
+   "Duviri"
+  ],
+  "Ekhein": [
+   "Entrati"
+  ],
+  "Endura": [
+   "Tenno"
+  ],
+  "Ether Daggers": [
+   "Tenno"
+  ],
+  "Ether Reaper": [
+   "Tenno"
+  ],
+  "Exalted Blade": [
+   "Tenno"
+  ],
+  "Exalted Prime Blade": [
+   "Tenno"
+  ],
+  "Exalted Umbra Blade": [
+   "Tenno"
+  ],
+  "Falcor": [
+   "Corpus"
+  ],
+  "Fang": [
+   "Tenno"
+  ],
+  "Fang Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Fragor": [
+   "Tenno"
+  ],
+  "Fragor Prime": [
+   "Prime"
+  ],
+  "Furax": [
+   "Grineer"
+  ],
+  "Galariak Prime": [
+   "Prime"
+  ],
+  "Galatine": [
+   "Tenno"
+  ],
+  "Galatine Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Garuda Prime Talons": [
+   "Tenno",
+   "Prime"
+  ],
+  "Garuda Talons": [
+   "Tenno"
+  ],
+  "Gazal Machete": [
+   "Tenno"
+  ],
+  "Ghoulsaw": [
+   "Grineer"
+  ],
+  "Glaive": [
+   "Tenno"
+  ],
+  "Glaive Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Gram": [
+   "Tenno"
+  ],
+  "Gram Prime": [
+   "Prime"
+  ],
+  "Guandao": [
+   "Tenno"
+  ],
+  "Guandao Prime": [
+   "Prime"
+  ],
+  "Gunsen": [
+   "Tenno"
+  ],
+  "Gunsen Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Halikar": [
+   "Grineer"
+  ],
+  "Halikar Wraith": [
+   "Grineer",
+   "Wraith",
+   "Baro"
+  ],
+  "Harmony": [
+   "Tenno"
+  ],
+  "Hate": [
+   "Stalker"
+  ],
+  "Heat Dagger": [
+   "Tenno"
+  ],
+  "Heat Sword": [
+   "Tenno"
+  ],
+  "Heliocor": [
+   "Cephalon Simaris"
+  ],
+  "Hespar": [
+   "Duviri"
+  ],
+  "Hirudo": [
+   "Infested"
+  ],
+  "Innodem": [
+   "Zariman",
+   "Incarnon"
+  ],
+  "Iron Staff": [
+   "Tenno"
+  ],
+  "Iron Staff Prime": [
+   "Tenno"
+  ],
+  "Jat Kittag": [
+   "Grineer"
+  ],
+  "Jat Kusar": [
+   "Grineer"
+  ],
+  "Jaw Sword": [
+   "Tenno"
+  ],
+  "Kama": [
+   "Tenno"
+  ],
+  "Karyst": [
+   "Tenno"
+  ],
+  "Karyst Prime": [
+   "Prime"
+  ],
+  "Keratinos": [
+   "Infested"
+  ],
+  "Kesheg": [
+   "Grineer"
+  ],
+  "Kestrel": [
+   "Tenno"
+  ],
+  "Kestrel Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Kogake": [
+   "Tenno"
+  ],
+  "Kogake Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Korumm": [
+   "Sentient"
+  ],
+  "Kreska": [
+   "Corpus"
+  ],
+  "Krohkur": [
+   "Grineer"
+  ],
+  "Kronen": [
+   "Tenno"
+  ],
+  "Kronen Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Kuva Ghoulsaw": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Shildeg": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Lacera": [
+   "Tenno"
+  ],
+  "Landslide Fists": [
+   "Tenno"
+  ],
+  "Landslide Fists Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Lecta": [
+   "Corpus"
+  ],
+  "Lesion": [
+   "Infested"
+  ],
+  "Machete": [
+   "Grineer"
+  ],
+  "Machete Wraith": [
+   "Wraith",
+   "Grineer"
+  ],
+  "Magistar": [
+   "Tenno"
+  ],
+  "Masseter": [
+   "Tenno"
+  ],
+  "Masseter Prime": [
+   "Prime",
+   "Tenno"
+  ],
+  "Mios": [
+   "Infested"
+  ],
+  "Mire": [
+   "Infested"
+  ],
+  "Mk1-Bo": [
+   "Tenno"
+  ],
+  "Mk1-Furax": [
+   "Grineer"
+  ],
+  "Nami Skyla": [
+   "Tenno"
+  ],
+  "Nami Skyla Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Nami Solo": [
+   "Tenno"
+  ],
+  "Nepheri": [
+   "Sentient"
+  ],
+  "Nikana": [
+   "Tenno"
+  ],
+  "Nikana Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Ninkondi": [
+   "Tenno"
+  ],
+  "Ninkondi Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Obex": [
+   "Corpus"
+  ],
+  "Ohma": [
+   "Corpus"
+  ],
+  "Okina": [
+   "Tenno"
+  ],
+  "Okina Prime": [
+   "Tenno"
+  ],
+  "Orthos": [
+   "Tenno"
+  ],
+  "Orthos Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Pangolin Prime": [
+   "Prime",
+   "Tenno"
+  ],
+  "Pangolin Sword": [
+   "Tenno"
+  ],
+  "Paracesis": [
+   "Orokin"
+  ],
+  "Pathocyst": [
+   "Infested"
+  ],
+  "Pennant": [
+   "Tenno"
+  ],
+  "Plasma Sword": [
+   "Tenno"
+  ],
+  "Praedos": [
+   "Zariman",
+   "Incarnon"
+  ],
+  "Pride": [
+   "Tenno"
+  ],
+  "Prisma Dual Cleavers": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Obex": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Ohma": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Skana": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prova": [
+   "Corpus"
+  ],
+  "Prova Vandal": [
+   "Corpus",
+   "Vandal"
+  ],
+  "Pulmonars": [
+   "Infested"
+  ],
+  "Pupacyst": [
+   "Infested"
+  ],
+  "Quassus": [
+   "Tenno"
+  ],
+  "Quassus Prime": [
+   "Prime"
+  ],
+  "Rakta Dark Dagger": [
+   "Syndicate",
+   "Red Veil"
+  ],
+  "Reaper Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Redeemer": [
+   "Tenno"
+  ],
+  "Redeemer Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Ripkas": [
+   "Grineer"
+  ],
+  "Rumblejack": [
+   "Tenno"
+  ],
+  "Ruvox": [
+   "Incarnon",
+   "Entrati"
+  ],
+  "Sampotes": [
+   "Duviri"
+  ],
+  "Sancti Magistar": [
+   "New Loka",
+   "Syndicate"
+  ],
+  "Sarofang": [
+   "Tenno"
+  ],
+  "Sarofang Prime": [
+   "Tenno"
+  ],
+  "Sarpa": [
+   "Tenno"
+  ],
+  "Scindo": [
+   "Tenno"
+  ],
+  "Scindo Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Scoliac": [
+   "Infested"
+  ],
+  "Secura Lecta": [
+   "Syndicate",
+   "Perrin Sequence"
+  ],
+  "Serro": [
+   "Corpus"
+  ],
+  "Shadow Claws": [
+   "Tenno"
+  ],
+  "Shadow Claws Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Shadow Clones": [
+   "Tenno"
+  ],
+  "Shadow Clones Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Shaku": [
+   "Tenno"
+  ],
+  "Shattered Lash": [
+   "Tenno"
+  ],
+  "Shattered Lash Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Sheev": [
+   "Grineer"
+  ],
+  "Sibear": [
+   "Tenno"
+  ],
+  "Sigma & Octantis": [
+   "Tenno"
+  ],
+  "Silva & Aegis": [
+   "Tenno"
+  ],
+  "Silva & Aegis Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Skana": [
+   "Tenno"
+  ],
+  "Skana Prime": [
+   "Prime",
+   "Vaulted",
+   "Founder"
+  ],
+  "Skiajati": [
+   "Tenno"
+  ],
+  "Slaytra": [
+   "Grineer"
+  ],
+  "Stropha": [
+   "Corpus"
+  ],
+  "Sun & Moon": [
+   "Dax"
+  ],
+  "Syam": [
+   "Duviri"
+  ],
+  "Sydon": [
+   "Grineer"
+  ],
+  "Synoid Heliocor": [
+   "Syndicate",
+   "Cephalon Suda"
+  ],
+  "Tak & Lug": [
+   "Grineer"
+  ],
+  "Tatsu": [
+   "Tenno"
+  ],
+  "Tatsu Prime": [
+   "Prime"
+  ],
+  "Tekko": [
+   "Tenno"
+  ],
+  "Tekko Prime": [
+   "Prime"
+  ],
+  "Telos Boltace": [
+   "Syndicate",
+   "Arbiters of Hexis"
+  ],
+  "Tenet Agendus": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Exec": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Grigori": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Tenet Livia": [
+   "Corpus",
+   "Tenet"
+  ],
+  "Thalys": [
+   "Duviri",
+   "Incarnon"
+  ],
+  "Tipedo": [
+   "Tenno"
+  ],
+  "Tipedo Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Tonbo": [
+   "Tenno"
+  ],
+  "Tonkkatt": [
+   "Grineer"
+  ],
+  "Twin Basolk": [
+   "Grineer"
+  ],
+  "Twin Krohkur": [
+   "Grineer"
+  ],
+  "Valkyr Prime Talons": [
+   "Tenno"
+  ],
+  "Valkyr Talons": [
+   "Tenno"
+  ],
+  "Vastilok": [
+   "Grineer"
+  ],
+  "Vaykor Sydon": [
+   "Syndicate",
+   "Steel Meridian"
+  ],
+  "Venato": [
+   "Tenno",
+   "Sentient"
+  ],
+  "Venato Prime": [
+   "Tenno",
+   "Sentient",
+   "Prime"
+  ],
+  "Venka": [
+   "Tenno"
+  ],
+  "Venka Prime": [
+   "Prime",
+   "Never Vaulted"
+  ],
+  "Verdilac": [
+   "Sentient"
+  ],
+  "Vericres": [
+   "Tenno"
+  ],
+  "Vinquibus (Melee)": [
+   ""
+  ],
+  "Vitrica": [
+   "Orokin"
+  ],
+  "Volnus": [
+   "Tenno"
+  ],
+  "Volnus Prime": [
+   "Prime"
+  ],
+  "War": [
+   "Sentient"
+  ],
+  "War Prime": [
+   "Sentient",
+   "Prime"
+  ],
+  "Whipclaw": [
+   "Tenno"
+  ],
+  "Whipclaw Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Wrath": [
+   "Tenno"
+  ],
+  "Xoris": [
+   "Corpus"
+  ],
+  "Zenistar": [
+   "Tenno"
+  ],
+  "Arbucep": [
+   "Tenno"
+  ],
+  "Arbucep (Atmosphere)": [
+   "Tenno"
+  ],
+  "Arquebex": [
+   "Entrati"
+  ],
+  "Cortege (Atmosphere)": [
+   "Entrati"
+  ],
+  "Cortege": [
+   "Entrati"
+  ],
+  "Corvas (Atmosphere)": [
+   "Tenno"
+  ],
+  "Corvas": [
+   "Tenno"
+  ],
+  "Corvas Prime (Atmosphere)": [
+   "Prime"
+  ],
+  "Corvas Prime": [
+   "Prime"
+  ],
+  "Cyngas (Atmosphere)": [
+   "Tenno"
+  ],
+  "Cyngas": [
+   "Tenno"
+  ],
+  "Dual Decurion (Atmosphere)": [
+   "Tenno"
+  ],
+  "Dual Decurion": [
+   "Tenno"
+  ],
+  "Fluctus (Atmosphere)": [
+   "Tenno",
+   "Corpus"
+  ],
+  "Fluctus": [
+   "Tenno",
+   "Corpus"
+  ],
+  "Grattler (Atmosphere)": [
+   "Grineer"
+  ],
+  "Grattler": [
+   "Grineer"
+  ],
+  "Imperator (Atmosphere)": [
+   "Tenno"
+  ],
+  "Imperator": [
+   "Tenno"
+  ],
+  "Imperator Vandal (Atmosphere)": [
+   "Tenno",
+   "Vandal"
+  ],
+  "Imperator Vandal": [
+   "Tenno",
+   "Vandal"
+  ],
+  "Kuva Ayanga (Atmosphere)": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Ayanga": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Grattler (Atmosphere)": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Kuva Grattler": [
+   "Grineer",
+   "Kuva Lich"
+  ],
+  "Larkspur (Atmosphere)": [
+   "Tenno"
+  ],
+  "Larkspur": [
+   "Tenno"
+  ],
+  "Larkspur Prime (Atmosphere)": [
+   "Tenno"
+  ],
+  "Larkspur Prime": [
+   "Tenno"
+  ],
+  "Mandonel (Atmosphere)": [
+   "Entrati"
+  ],
+  "Mandonel": [
+   "Entrati"
+  ],
+  "Mausolon (Atmosphere)": [
+   "Entrati"
+  ],
+  "Mausolon": [
+   "Entrati"
+  ],
+  "Morgha (Atmosphere)": [
+   "Entrati"
+  ],
+  "Morgha": [
+   "Entrati"
+  ],
+  "Phaedra (Atmosphere)": [
+   "Tenno"
+  ],
+  "Phaedra": [
+   "Tenno"
+  ],
+  "Prisma Dual Decurions (Atmosphere)": [
+   "Prisma",
+   "Baro"
+  ],
+  "Prisma Dual Decurions": [
+   "Prisma",
+   "Baro"
+  ],
+  "Velocitus (Atmosphere)": [
+   "Tenno"
+  ],
+  "Velocitus": [
+   "Tenno"
+  ],
+  "Agkuza": [
+   "Tenno"
+  ],
+  "Centaur": [
+   "Tenno"
+  ],
+  "Ironbride": [
+   "Entrati"
+  ],
+  "Kaszas": [
+   "Tenno"
+  ],
+  "Knux": [
+   "Grineer"
+  ],
+  "Onorix": [
+   "Tenno"
+  ],
+  "Prisma Veritux": [
+   "Tenno",
+   "Prisma"
+  ],
+  "Rathbone": [
+   "Tenno"
+  ],
+  "Veritux": [
+   "Tenno"
+  ],
+  "Artax": [
+   "Tenno"
+  ],
+  "Burst Laser": [
+   "Tenno"
+  ],
+  "Burst Laser Prime": [
+   "Tenno"
+  ],
+  "Cryotra": [
+   "Corpus"
+  ],
+  "Deconstructor": [
+   "Tenno"
+  ],
+  "Deconstructor Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Deth Machine Rifle": [
+   "Tenno"
+  ],
+  "Deth Machine Rifle Prime": [
+   "Prime"
+  ],
+  "Helstrum": [
+   "Corpus"
+  ],
+  "Laser Rifle": [
+   "Tenno"
+  ],
+  "Multron": [
+   "Corpus"
+  ],
+  "Prime Laser Rifle": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Prisma Burst Laser": [
+   "Tenno",
+   "Prisma"
+  ],
+  "Stinger": [
+   "Infested"
+  ],
+  "Sweeper": [
+   "Tenno"
+  ],
+  "Sweeper Prime": [
+   "Prime",
+   "Vaulted"
+  ],
+  "Tazicor": [
+   "Corpus"
+  ],
+  "Verglas": [
+   "Tenno"
+  ],
+  "Verglas Prime": [
+   "Tenno",
+   "Prime"
+  ],
+  "Vulcax": [
+   "Corpus"
+  ],
+  "Vulklok": [
+   "Grineer"
+  ],
+  "Rampart": [
+   "Grineer"
+  ],
+  "Ebisu Spear": [
+   "Cambion Drift"
+  ],
+  "Lanzo Fishing Spear": [
+   "Cetus"
+  ],
+  "Peram Fishing Spear": [
+   "Cetus"
+  ],
+  "Shockprod Fishing Spear": [
+   "Orb Vallis"
+  ],
+  "Spari Spear": [
+   "Cambion Drift"
+  ],
+  "Stunna Fishing Spear": [
+   "Orb Vallis"
+  ],
+  "Tulok Fishing Spear": [
+   "Cetus"
+  ],
+  "Thermian RPG": [
+   "Scaldra"
+  ],
+  "Pugil": [
+   "Tenno"
+  ],
+  "Hand Grenade": [
+   "Grineer",
+   "Corpus",
+   "Corrupted"
+  ],
+  "Parazon": [
+   "Tenno"
+  ],
+  "Razorflies": [
+   "Tenno"
+  ],
+  "Dargyn": [
+   "Grineer"
+  ]
+ }
+}

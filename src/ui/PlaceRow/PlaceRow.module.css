@@ -58,3 +58,8 @@
 .strong {
   composes: label-s from "../type.module.css";
 }
+
+.gap {
+  composes: label-s from "../type.module.css";
+  color: var(--ink-dim);
+}

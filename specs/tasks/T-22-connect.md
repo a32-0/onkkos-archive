@@ -8,22 +8,28 @@
 
 The id form, its loading card, the five error bands and the demo entrance. A failed read anywhere lands here with its reason.
 
-## What crosses
+## What it builds
 
-| File                           | Origin   | Note                                                                                                                                           |
-| ------------------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src/app/connect/page.tsx`     | Rebuilt  | Spec 02                                                                                                                                        |
-| `src/app/actions.ts`           | Reworked | Connect and demo; no `?step=start`                                                                                                             |
-| `src/screens/connect/`         | Rebuilt  |                                                                                                                                                |
-| `src/content/failures.ts`      | Reworked | The five band messages (BR-38)                                                                                                                 |
-| `src/content/onboarding.ts`    | Reworked | The form's strings and `connectError`; the field's placeholder, a real account id today, becomes `000000000000000000000001` as the frames show |
-| `tests/connect-errors.test.ts` | Reworked | The five reasons of BR-38                                                                                                                      |
-| `tests/tokens.test.ts`         | Reworked | `.numeral` and `.mono-label` leave the allowance list                                                                                          |
+| File                           | Note                                                                                                             |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `src/app/connect/page.tsx`     | Spec 02                                                                                                          |
+| `src/app/actions.ts`           | Connect and demo                                                                                                 |
+| `src/domain/types/next.ts`     | The screen reads `?reason=` and `?retry=` (T-13's correction)                                                    |
+| `src/screens/connect/`         |                                                                                                                  |
+| `src/content/failures.ts`      | The five band messages (BR-38)                                                                                   |
+| `src/content/onboarding.ts`    | The form's strings and `connectError`; the field's placeholder is `000000000000000000000001`, as the frames show |
+| `tests/connect-errors.test.ts` | The five reasons of BR-38                                                                                        |
+| `tests/tokens.test.ts`         | `.numeral` and `.mono-label` leave the allowance list                                                            |
+
+## From T-19
+
+- A failed read lands as `/connect?reason=…&retry=…`, built by `connectAfter()` in `routes.ts`. `retry` is the Unix time, in seconds, when a retry can succeed, and only `limited` and `circuit-open` carry one (plan part 2).
+- The connect and demo actions keep the id with `writeAccountId()` in `infra/session.ts`; the field reads `readAccountId()`.
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 02 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] The screen applies `.numeral` (the numbered steps) and `.mono-label` (the field's label), and both leave the allowance list of `tests/tokens.test.ts`.
 - [ ] `check.yml` passes on `dev`.

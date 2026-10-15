@@ -20,7 +20,7 @@ export const WithChip: Story = {
   args: {
     variant: "chip",
     wordmark: "Onkko's Archive",
-    chip: <PlayerChip name="00111000" open={false} />,
+    chip: <PlayerChip name="Cy" open={false} />,
   },
 };
 
@@ -28,7 +28,7 @@ export const WithChipAndTabs: Story = {
   args: {
     variant: "chip",
     wordmark: "Onkko's Archive",
-    chip: <PlayerChip name="00111000" open={false} />,
+    chip: <PlayerChip name="Cy" open={false} />,
     tabs: (
       <TabBar
         label="Sections"

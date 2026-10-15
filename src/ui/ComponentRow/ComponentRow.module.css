@@ -4,6 +4,12 @@
   gap: var(--space-4);
 }
 
+.locked {
+  composes: row;
+  --row-locked-opacity: 0.5;
+  opacity: var(--row-locked-opacity);
+}
+
 .ticked {
   composes: row;
 }

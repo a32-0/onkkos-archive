@@ -8,22 +8,31 @@
 
 The plan of an item or a quest, section by section, with the wiki's prose and the ticks the player keeps in the browser.
 
-## What crosses
+## What it builds
 
-| File                    | Origin   | Note                             |
-| ----------------------- | -------- | -------------------------------- |
-| `src/app/item/page.tsx` | Reworked | Spec 10's view                   |
-| `src/screens/steps/`    | Rebuilt  |                                  |
-| `src/infra/ticks.ts`    | Moves    | From `src/lib/manual/storage.ts` |
-| `src/content/checks.ts` | Reworked | Spec 10                          |
+| File                    | Note           |
+| ----------------------- | -------------- |
+| `src/app/item/page.tsx` | Spec 10's view |
+| `src/screens/steps/`    |                |
+| `src/infra/ticks.ts`    |                |
+| `src/content/checks.ts` | Spec 10        |
 
-## Documents that cross
+## Documents
 
-- `docs/step-by-step.md`: Moves
+- `docs/step-by-step.md`: what Step by step draws and why
+
+## From T-16
+
+- The step plan holds no words: every title, detail, reading and group heading is a phrase, `{ say, …values }`. `content/checks.ts` holds one function per `say`, typed against `Phrase` in `domain/catalog/checks.ts`, and a row's `best`, `alternative` and `optional` add "(Highest chance)", "Or" and "(Optional)". A detail joins its parts with a space, a reading with " · ".
+
+## From T-19
+
+- `withProse(wiki, plan)` in `infra/wiki/prose.ts` gives each row its prose as paragraphs, or null; `wikiModules()` gives the wiki. A mission type's page with no Mechanics section gives its lead, and an item with no Acquisition section gives null (owner, 2026-10-14).
+- `fetchVarzia()` in `infra/worldstate/client.ts` is read only for a vaulted Prime (BR-29); its stock, or null, is the step plan's `varzia`.
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] `check.yml` passes on `dev`.

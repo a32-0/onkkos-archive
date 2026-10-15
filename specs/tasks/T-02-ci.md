@@ -12,15 +12,19 @@
 
 - Protects `main` so a pull request merges only when `check.yml` passes (may wait until T-33, as plan part 6 sets).
 
-## What crosses
+## What it builds
 
-| File                          | Origin | Note                           |
-| ----------------------------- | ------ | ------------------------------ |
-| `.github/workflows/check.yml` | New    | On every push and pull request |
+| File                          | Note                           |
+| ----------------------------- | ------------------------------ |
+| `.github/workflows/check.yml` | On every push and pull request |
 
-## Documents that cross
+## Documents
 
 - `docs/development.md`: Adds what CI runs and why
+
+## Corrections
+
+- The README's line on Claude's part reads "research, implementation, debugging and documentation", in place of "development" (2026-10-08).
 
 ## Acceptance
 

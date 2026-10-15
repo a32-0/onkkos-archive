@@ -14,21 +14,21 @@ The rewrite follows [humanizer](https://github.com/blader/humanizer/blob/225a6f3
 
 - Reads each reworked page and approves it, or says what still reads like a machine.
 
-## What crosses
+## What it builds
 
-Nothing crosses from the private repository. Each file below is already here and is reworked in place.
+Each file below is already here and is rewritten in place.
 
-| File                         | Origin   | Note                                                                             |
-| ---------------------------- | -------- | -------------------------------------------------------------------------------- |
-| `README.md`                  | Reworked | Plain language throughout; its sections stay as plan part 5 sets them for T-32   |
-| `docs/*.md`                  | Reworked | Plain language throughout; every finding, number and reason kept                 |
-| `specs/00-constitution.md`   | Reworked | A short opening for a person: what the app is, what it refuses to be, and why    |
-| `specs/01-*.md` to `11-*.md` | Reworked | One plain paragraph at the top of each; behaviour and acceptance untouched       |
-| `specs/plan/06-roadmap.md`   | Reworked | "Who reads what" states the rule: one text per document, the human opening first |
+| File                         | Note                                                                             |
+| ---------------------------- | -------------------------------------------------------------------------------- |
+| `README.md`                  | Plain language throughout; its sections stay as plan part 5 sets them for T-32   |
+| `docs/*.md`                  | Plain language throughout; every finding, number and reason kept                 |
+| `specs/00-constitution.md`   | A short opening for a person: what the app is, what it refuses to be, and why    |
+| `specs/01-*.md` to `11-*.md` | One plain paragraph at the top of each; behaviour and acceptance untouched       |
+| `specs/plan/06-roadmap.md`   | "Who reads what" states the rule: one text per document, the human opening first |
 
 The plan's other parts and the task files are written for the build, and stay as they are.
 
-## Documents that cross
+## Documents
 
 - The ones in the table above; no other document changes.
 

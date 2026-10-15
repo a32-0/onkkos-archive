@@ -8,17 +8,24 @@
 
 Choosing the update last played: the cards, the search, the date menu, and both entrances.
 
-## What crosses
+Settled by the owner on 2026-10-13: a server action sets `wf_since` and opens the Summary, as the connect action sets `wf_account`. `screens/` and `ui/` read and write no cookie.
 
-| File                        | Origin   | Note                                                                                                  |
-| --------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| `src/app/catch-up/page.tsx` | Rebuilt  | Spec 05, with no month chosen                                                                         |
-| `src/screens/resume/`       | Rebuilt  |                                                                                                       |
-| `src/content/catch-up.ts`   | Reworked | Resume's strings; without the quest rail's `Relation`, and the month's wording from `domain/since.ts` |
+## What it builds
+
+| File                        | Note                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `src/app/catch-up/page.tsx` | Spec 05, with no month chosen                                                                         |
+| `src/screens/resume/`       |                                                                                                       |
+| `src/app/actions.ts`        | The action that writes `wf_since` through `infra/session.ts` and opens the Summary                    |
+| `src/content/catch-up.ts`   | Resume's strings; without the quest rail's `Relation`, and the month's wording from `domain/since.ts` |
+
+## From T-19
+
+- `writeSince()` in `infra/session.ts` keeps only a `YYYY-MM` month, for a year; `readSince()` reads it back or answers null.
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 05 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] `check.yml` passes on `dev`.

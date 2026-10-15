@@ -8,17 +8,23 @@
 
 The smallest parts every screen uses. `GameIcon` renders the game's own art from a URL it is given, and the name alone when there is none (BR-42).
 
-## What crosses
+## What it builds
 
-| File                                                                        | Origin   | Note                                                                                                                                                                                             |
-| --------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `src/ui/{Icon,GameIcon,Badge,Button,Checkbox,Wordmark,OnkkoLine,WikiLink}/` | New      | From the Design System page; the old `src/components/` read for behaviour and accessibility only                                                                                                 |
-| `src/ui/Wordmark/Quill.tsx`                                                 | Moves    | From `src/components/brand/Quill.tsx`: the app's own quill (BR-58), never the game's emblem. The path is unchanged; its box is drawn to the path's bounds, as the frame stretches it to 96 × 144 |
-| `tests/language.test.ts`                                                    | Reworked | The four states keep their vocabulary: `Badge` draws Mastered and Rank, and nothing for not obtained or unknown, against `Badge` instead of `StateChip`                                          |
-| `src/ui/Icon/glyphs.ts`                                                     | New      | The Material Symbols Rounded paths the Design System page draws, one per icon name                                                                                                               |
-| `src/ui/Wordmark/letters.ts`                                                | New      | The outlined letters of "Onkko's Archive" from the `Wordmark` component, filled with `--ink`                                                                                                     |
-| `tests/tokens.test.ts`                                                      | Reworked | Spaces, radii and borders are not primitives; `linear-gradient` is not an easing; the tokens these atoms apply leave the allowance list                                                          |
-| `package.json`, `.storybook/main.ts`                                        | Reworked | `storybook-addon-pseudo-states`, so the hover and focus stories show those states                                                                                                                |
+| File                                                                        | Note                                                                                                                                                      |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/ui/{Icon,GameIcon,Badge,Button,Checkbox,Wordmark,OnkkoLine,WikiLink}/` | From the Design System page                                                                                                                               |
+| `src/ui/Wordmark/Quill.tsx`                                                 | The app's own quill (BR-58), never the game's emblem. The path is unchanged; its box is drawn to the path's bounds, as the frame stretches it to 96 × 144 |
+| `tests/language.test.ts`                                                    | The four states keep their vocabulary: `Badge` draws Mastered and Rank, and nothing for not obtained or unknown, against `Badge` instead of `StateChip`   |
+| `src/ui/Icon/glyphs.ts`                                                     | The Material Symbols Rounded paths the Design System page draws, one per icon name                                                                        |
+| `src/ui/Wordmark/letters.ts`                                                | The outlined letters of "Onkko's Archive" from the `Wordmark` component, filled with `--ink`                                                              |
+| `tests/tokens.test.ts`                                                      | Spaces, radii and borders are not primitives; `linear-gradient` is not an easing; the tokens these atoms apply leave the allowance list                   |
+| `package.json`, `.storybook/main.ts`                                        | `storybook-addon-pseudo-states`, so the hover and focus stories show those states                                                                         |
+
+## Corrections
+
+- BR-58 (2026-10-07): the quill is the app's own mark, never the game's emblem. Its path is unchanged and its box is drawn to the path's bounds, as the frame stretches it.
+- Added to what it builds: the glyphs and the outlined letters, the state vocabulary of `tests/language.test.ts` (from T-04), `storybook-addon-pseudo-states` for the hover and focus stories, and two rules in `tests/tokens.test.ts` (spaces, radii and borders are not primitives; `linear-gradient` is not an easing).
+- `docs/development.md` records the two accessibility rules a story turns off, where the frame itself falls below them: the red label of Disconnect (`color-contrast`) and the wiki link (`link-in-text-block`).
 
 ## Acceptance
 

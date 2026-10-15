@@ -8,17 +8,17 @@
 
 The choice between Catch me up and Reach a goal after connecting.
 
-## What crosses
+## What it builds
 
-| File                        | Origin   | Note    |
-| --------------------------- | -------- | ------- |
-| `src/app/features/page.tsx` | Rebuilt  | Spec 03 |
-| `src/screens/two-ways-in/`  | Rebuilt  |         |
-| `src/content/features.ts`   | Reworked | Spec 03 |
+| File                        | Note    |
+| --------------------------- | ------- |
+| `src/app/features/page.tsx` | Spec 03 |
+| `src/screens/two-ways-in/`  |         |
+| `src/content/features.ts`   | Spec 03 |
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 03 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] `check.yml` passes on `dev`.

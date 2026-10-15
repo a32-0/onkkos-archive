@@ -8,17 +8,21 @@
 
 An item's page: the hero with its state, the crumb, and the Summary that is Step by step in short form.
 
-## What crosses
+## What it builds
 
-| File                               | Origin   | Note    |
-| ---------------------------------- | -------- | ------- |
-| `src/app/item/page.tsx`            | Rebuilt  | Spec 09 |
-| `src/screens/item/`                | Rebuilt  |         |
-| `src/content/item.ts`, `states.ts` | Reworked | Spec 09 |
+| File                               | Note    |
+| ---------------------------------- | ------- |
+| `src/app/item/page.tsx`            | Spec 09 |
+| `src/screens/item/`                |         |
+| `src/content/item.ts`, `states.ts` | Spec 09 |
+
+## From T-16
+
+- `briefOf()` returns blocks `blueprints` and `components`, or `how` when an item has neither (BR-55). Each line carries its `title`, its best `route`, its `reading` (the runs as a value, BR-56) and its `where` (node and mission).
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] `check.yml` passes on `dev`.

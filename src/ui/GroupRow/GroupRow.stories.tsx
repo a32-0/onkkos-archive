@@ -51,6 +51,26 @@ export const Closed: Story = {};
 
 export const Open: Story = { args: { open: true } };
 
+export const OneTile: Story = {
+  args: {
+    name: "Necramech",
+    count: "1 New",
+    open: true,
+    railId: "necramech",
+    children: (
+      <Rail id="necramech" label="Necramech">
+        <ItemTile
+          href="/item/voidrig"
+          name="Voidrig"
+          reading="~24 Runs · Rotation A"
+          place="Saya's Visions · Shrine Defense"
+          art={SAMPLE_ART[1]}
+        />
+      </Rail>
+    ),
+  },
+};
+
 export const WithoutCount: Story = { args: { count: undefined } };
 
 export const NoIcon: Story = { args: { icon: null } };

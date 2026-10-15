@@ -67,8 +67,9 @@ Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
 
 ## The frontier and the focus
 
-- **The frontier** is the first planet on `star_chart_order` whose junction the
-  profile cannot prove (`findNextPlanet`).
+- **The frontier** is the first planet on `star_chart_order` the profile
+  cannot prove, by its junction tag or by a played node on it, as accounts
+  older than junctions show (`findNextPlanet`).
 - **The focus** is for a player with no frontier: the place, in any system,
   with the highest share of its readable arsenal items mastered, short of all
   of them. A tie goes to the earlier place in system order (BR-47), then in
@@ -103,7 +104,9 @@ Viewing a place writes it to `wf_place` (BR-46).
 
 As on the Summary: the catalogue's game icon (BR-42), its name, "{n} New" when
 the place holds something new since the month, and a chevron; closed by
-default, a sideways rail of tiles when open (`212:159`). What a group holds
+default, a sideways rail of tiles when open (`212:159`). A group with one item shows
+that one tile, at the same size, never a Summary row or a wider card
+(`212:159`, Necramech, Archwing, Railjack). What a group holds
 follows the lens (BR-45); a group or divider with nothing to show does not
 render. Under the default and New, the rail holds what is in reach, and the
 open group ends in a More line that counts the rest by rank alone, the place
@@ -180,10 +183,10 @@ Choosing a system returns to the place list, now listing that system's places.
 ## Data and sources
 
 - Places and systems: `data/systems.yaml` and the place index
-  (`src/lib/place/`), with node names from `warframe-worldstate-data`.
+  (`src/domain/place/`), with node names from `warframe-worldstate-data`.
 - What a place holds and each tile's reading: the place index's tiles
-  (`src/lib/place/tile.ts`) over DE's drop tables and the wiki's modules.
-- Item state: `src/lib/place/state.ts` (`done | ranked | absent | unknown`),
+  (`src/domain/place/tile.ts`) over DE's drop tables and the wiki's modules.
+- Item state: `src/domain/place/state.ts` (`done | ranked | absent | unknown`),
   from `XPInfo`.
 - Nodes: `Missions[]` and `Missions[].Tier` counted against the node catalog.
 - New: `releasesSince()` from the month in `wf_since`.
@@ -235,21 +238,6 @@ New, Mastered, Rank), `ItemTile` (plain, Rank, Mastered), `GroupRow`, `Rail`,
    shows and no More line renders.
 9. `pnpm check` passes, with tests for the focus, the lens, reach and
    `wf_place`.
-
-## Divergences from the code
-
-| Today                                                | The frames and rules                                  |
-| ---------------------------------------------------- | ----------------------------------------------------- |
-| All / Missing / New, All by default                  | What is left by default; Mastered / New (BR-45)       |
-| A drawer "Where to" with systems and places together | The place list and the system list, two sheets        |
-| Opens on the system's first place                    | The last place viewed, else Start here (BR-46)        |
-| No focus                                             | The focus, as defined above                           |
-| The tile's state as built                            | The Mastered and Rank badges of `257:1124`, `269:364` |
-| The suggested goals on the map                       | None; goals live on Goal (spec 08)                    |
-| A note that the collection cannot be read            | No note (never explain the machine)                   |
-| Pom-2 PC after Empyrean Proxima; "Soon"              | BR-47's order; "Soon™"                                |
-| No Dojo                                              | The Dojo in the Origin System (BR-57)                 |
-| "No location matches that." in the drawer            | The empty state of `474:1927`                         |
 
 ## Frame corrections
 

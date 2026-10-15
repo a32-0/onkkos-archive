@@ -12,7 +12,7 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
               │                 │
           wf_place          readScreen()   (once per request)
                                 │
-                     infra/profile/fetch-profile.ts ──► infra/store ──► Upstash
+                     infra/profile/read.ts ──► infra/store ──► Upstash
                                 │                          (memory in tests and dev)
                                 ├──► DE's endpoint, only on a miss
                                 ▼
@@ -22,7 +22,7 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
 1. **`proxy.ts`** runs before the route. It does one thing: when `/system`
    opens with a place, it writes `wf_place` (BR-46).
 2. **The page** calls `readScreen()`: the account id from `wf_account`, the
-   profile through `fetchProfile`, and the readings the domain makes of it. It
+   profile through `readProfile()`, and the readings the domain makes of it. It
    hands plain values to its screen.
 3. **The screen** composes `ui/` components from those values. Nothing under
    `screens/` or `ui/` fetches, reads a cookie or imports `infra/`.
@@ -40,16 +40,16 @@ would be off by half.
 
 ## Where each kind of state lives
 
-| State                                   | Where                                               | Lives for                      | Set by                           |
-| --------------------------------------- | --------------------------------------------------- | ------------------------------ | -------------------------------- |
-| The trimmed profile                     | The shared store                                    | Twelve hours                   | `fetchProfile`                   |
-| Not-found, budget, circuit, lock        | The shared store                                    | Each lock's own window (below) | `fetchProfile`                   |
-| `wf_account`                            | Cookie, `httpOnly`                                  | One year                       | The connect action               |
-| `wf_since`                              | Cookie                                              | One year                       | The Resume picker, in the client |
-| `wf_place`                              | Cookie                                              | One year                       | `proxy.ts`                       |
-| The ticks of spec 10                    | Browser storage                                     | Until cleared                  | The checkbox, in the client      |
-| Wiki prose and icons, Varzia, rotations | Next's data cache (`force-cache` with `revalidate`) | A day; Varzia a minute         | The wiki and worldstate clients  |
-| Curated files and vendored data         | `data/`, read from disk                             | The deployment                 | Commits                          |
+| State                                   | Where                                               | Lives for                      | Set by                          |
+| --------------------------------------- | --------------------------------------------------- | ------------------------------ | ------------------------------- |
+| The trimmed profile                     | The shared store                                    | Twelve hours                   | `fetchProfile`                  |
+| Not-found, budget, circuit, lock        | The shared store                                    | Each lock's own window (below) | `fetchProfile`                  |
+| `wf_account`                            | Cookie, `httpOnly`                                  | One year                       | The connect action              |
+| `wf_since`                              | Cookie, `httpOnly`                                  | One year                       | A server action, from Resume    |
+| `wf_place`                              | Cookie, `httpOnly`                                  | One year                       | `proxy.ts`                      |
+| The ticks of spec 10                    | Browser storage                                     | Until cleared                  | The checkbox, in the client     |
+| Wiki prose and icons, Varzia, rotations | Next's data cache (`force-cache` with `revalidate`) | A day; Varzia ten minutes      | The wiki and worldstate clients |
+| Curated files and vendored data         | `data/`, read from disk                             | The deployment                 | Commits                         |
 
 **Why the wiki and the worldstate stay out of the store.** The question was
 whether every outside read should go through Upstash. Next 16.3, without Cache
@@ -61,10 +61,10 @@ profile's locks need the store.
 Two things make the opt-in hold, and both are checked rather than assumed:
 
 - **No route exports `dynamic = "force-dynamic"`.** Next 16.3 documents it as
-  forcing every `fetch` in the route to `no-store`, `force-cache` included.
-  Every page today exports it, so today the wiki is read again on every screen.
-  Reading `cookies()` already makes a page render per request; the export adds
-  nothing but the lost cache.
+  forcing every `fetch` in the route to `no-store`, `force-cache` included, so
+  the wiki would be read again on every screen. Reading `cookies()` already
+  makes a page render per request; the export would add nothing but the lost
+  cache.
 - **The wiki and worldstate clients say `cache: "force-cache"`** beside their
   `revalidate`. A page reads its cookies before it fetches, and Next does not
   cache a `fetch` met after a request-time API unless the call opts in.
@@ -87,23 +87,30 @@ It skips prefetches. A `<Link>` prefetches its target as it scrolls into view,
 and the map is a list of place links, so without the check the last place
 _prefetched_ would become the last place visited. The proxy writes nothing
 when the request carries the `next-router-prefetch` header or
-`purpose: prefetch`, the two Next 16.3 names for a prefetch.
+`purpose: prefetch`, the two Next 16.3 names for a prefetch. The check is in
+the proxy's matcher, as `missing` headers, and not in its code: Next removes
+`next-router-prefetch` from the request it hands the proxy, so the code never
+sees it.
 
 ## How a failure reaches `/connect`
 
 Spec 02 sends a failure on any screen to `/connect` "with the reason and, where
 one is known, the retry time". A redirect issued while a server component
-renders cannot set a cookie, so both travel in the URL:
-`/connect?reason=throttled&retry=1760023800`. The page accepts a `reason` only
-if it is one of the seven `FailureReason` values and a `retry` only as a whole
-number of seconds in the next day, and ignores anything else. A forged URL can
-show a band message and nothing more. `routes.ts` builds the URL; no page writes
-it by hand.
+renders cannot set a cookie, so both go in the URL:
+`/connect?reason=circuit-open&retry=1760023800`. The retry is the Unix time, in
+seconds, when a retry can succeed; only `limited` and `circuit-open` carry one.
+The page accepts a `reason` only if it is one of the seven `FailureReason`
+values and a `retry` only as a whole number of seconds in the next day, and
+ignores anything else. A forged URL can show a band message and nothing more.
+
+`readScreen()` in `infra/screen.ts` returns the reason and the retry time, and
+`requireScreen()` in `app/screen.ts` redirects: `infra/` does not import
+`routes.ts`, which builds the URL. No page writes it by hand.
 
 ## The read order
 
-Spec 11 read the circuit before the cache, as the code does today. That meant
-that while the circuit was open, every player was sent to `/connect` with
+Spec 11 first read the circuit before the cache. That meant that while the
+circuit was open, every player was sent to `/connect` with
 "Warframe isn't answering", even one whose profile was stored an hour earlier,
 and every screen spent an extra store command. The owner chose on 2026-10-06
 that a stored profile answers first. Spec 11 is corrected to this order:
@@ -112,9 +119,10 @@ that a stored profile answers first. Spec 11 is corrected to this order:
    `invalid-id`.
 2. **Demo.** The two demo ids, and every id when the source is fixtures, read
    their fixture.
-3. **Stored.** One `MGET` reads the profile and the not-found for the id. A hit
-   answers at once.
-4. **Circuit.** If open, `circuit-open` with the time it closes.
+3. **Stored.** One `MGET` reads the profile, the not-found and the lock for
+   the id, with the circuit's two keys. A hit answers at once.
+4. **Circuit.** If open, `circuit-open` with the time it closes, read from the
+   same `MGET`.
 5. **Lock.** Take the id's read lock. If another instance holds it, wait for
    its result (below).
 6. **Budget.** Spend one of the visitor's two lookups, or answer `limited`.
@@ -150,8 +158,7 @@ re-evaluates the modules, and a map held in a module would start empty: with
 the source set to live, the next render would read DE again from the
 developer's own address, the lockout the constitution warns about. On
 `globalThis` the cache, the budget and the circuit survive every reload and are
-lost only when the process stops. That replaces today's disk cache, which
-existed for the same reason.
+lost only when the process stops, so development needs no disk cache.
 
 `infra/store/index.ts` picks the backend: Upstash when its two variables are
 set, memory otherwise. In production with the source set to live, a missing
@@ -165,7 +172,7 @@ spend.
 
 ### The keys
 
-Every key starts with `wf:`. Preview deployments never read live (part 4), so
+Every key starts with `wf:`. Only production deploys and reads live (part 4), so
 one namespace serves the one deployment that does.
 
 | Lock           | Key                   | Value                                                        | Lives for                                   |
@@ -175,14 +182,15 @@ one namespace serves the one deployment that does.
 | Read lock      | `wf:lock:{id}`        | The instance's token                                         | Twenty seconds, or until the read ends      |
 | Visitor budget | `wf:budget:{visitor}` | The number of lookups spent                                  | Twelve hours from the first spend           |
 | Refusals       | `wf:circuit:refusals` | Consecutive refusals                                         | Thirty minutes from the first               |
-| Circuit        | `wf:circuit:open`     | `1`                                                          | Thirty minutes                              |
+| Circuit        | `wf:circuit:open`     | The time it closes, in milliseconds                          | Thirty minutes                              |
 
 ### Two instances, one id
 
-The in-process map of reads in flight dedupes requests inside one instance only.
+The in-process map of reads in flight dedupes one visitor's requests for an id
+inside one instance only.
 Across instances, `wf:lock:{id}` is taken with `setIfAbsent`. The owner chose on
 2026-10-06 what the instance that loses does: every half second, for up to fifteen
-seconds, it reads the profile, the not-found and the lock in one `MGET`, and
+seconds, it reads the same keys as step 3 in one `MGET`, and
 answers with whichever result the winner left:
 
 - **A profile or a not-found**: it answers with it. It spends no lookup and
@@ -199,8 +207,8 @@ blocks an id.
 
 ### The budget is a fixed window
 
-Today the budget keeps each visitor's timestamps and slides. Spec 11 says
-"twelve hours from first spend", and the store makes that the simple form: the
+Spec 11 says "twelve hours from first spend", and the store makes that the
+simple form, rather than a sliding window over each visitor's timestamps: the
 first lookup creates `wf:budget:{visitor}` with a twelve-hour expiry, each one
 increments it, and a count over two answers `limited` with the key's remaining
 time as the retry.
@@ -217,25 +225,28 @@ because the profile is stored.
 ### The circuit counts refusals without a success between them
 
 A refusal increments `wf:circuit:refusals`; at three it sets `wf:circuit:open`
-for thirty minutes. A profile or a not-found removes both keys. On one server
+for thirty minutes, with the time it closes as its value, since the store
+reads no key's remaining time. A profile or a not-found removes both keys, when
+the `MGET` of step 3 saw either. On one server
 "three in a row" was exact. Across instances it means three refusals with no
 success recorded between them, which is the same protection: what DE punishes
 is a burst, and a burst is what the count sees.
 
 ### Synchronous becomes asynchronous
 
-`spendLookup`, `circuitState`, `recordSuccess` and `recordRejection` return
-promises once they read the store. Their only callers are `client.ts` and two
-test files, `client.test.ts` and `resilience.test.ts`. The tests' `resetBudget`,
-`resetCircuit` and `clearMemoryCache` become one `flush()` on the memory store,
-so the same tests run against the store's interface (spec 11, acceptance 8).
+`spendLookup`, `recordSuccess` and `recordRefusal` return promises once they
+write the store; `circuitState` reads the circuit's value from the `MGET` of
+step 3 and stays synchronous. Their only caller is `read.ts`, which holds the
+read order; `client.ts` is the request to DE and its classification. The tests'
+`resetBudget`, `resetCircuit` and `clearMemoryCache` become one `flush()` on the
+memory store, so the same tests run against the store's interface (spec 11,
+acceptance 9).
 
 ## Trim and compress
 
 The trim is a domain function, `domain/profile/trim.ts`, over one list of the
-root fields the travelling code reads, `domain/profile/fields.ts`. The list was
-read off the modules part 1 marks Moves or Reworked, and the curated files'
-checks, never off today's whole `src/`:
+root fields the app reads, `domain/profile/fields.ts`. The list was read off
+every module that reads the profile, and the curated files' checks:
 
 | Field              | Read by                                                       |
 | ------------------ | ------------------------------------------------------------- |
@@ -248,11 +259,14 @@ checks, never off today's whole `src/`:
 | `UnlockedOperator` | Quest evidence                                                |
 | `GuildId`          | The Dojo's reach (BR-59); kept as `true`, never the clan's id |
 
-Left out, because only code that stays reads them: `PlayerSkills` (the
-Intrinsics goal, deferred), `ChallengeProgress` (Nightwave, BR-35), `Stats`
-(read by nothing), and `GuildName` and `PlatformNames` (no frame draws them).
-The task that builds the trim confirms the list against every reading that
-travels, the profile parser's included.
+Left out, because nothing the app does reads them: `PlayerSkills` (the
+Intrinsics goal, deferred), `ChallengeProgress` (Nightwave, BR-35), `Stats`,
+and `GuildName` and `PlatformNames` (no frame draws them). T-12 confirmed the
+list against every reading on 2026-10-13: inside `LoadOutInventory` only
+`XPInfo` is read, so the trim keeps `XPInfo` alone and drops the presets, skins
+and equipped gear DE sends beside it, as the fixture cutter does. There is no
+profile parser: the player chip reads `DisplayName` and `PlayerLevel`
+directly.
 `scripts/trim-profile` imports the same list, so the fixtures and the store can
 never keep different fields. The file has no imports, so Node's type stripping
 runs the script without a build step.
@@ -279,20 +293,3 @@ Every route runs on Node.js, not the edge: the store's compression uses
 `next.config.ts` names both folders in `outputFileTracingIncludes`, so the
 deployed function carries them. Part 4 checks it on the deployment, because a
 missing file passes locally.
-
-## Divergences from the code
-
-| Today                                                 | This plan                                                      |
-| ----------------------------------------------------- | -------------------------------------------------------------- |
-| Cache, budget and circuit in maps and variables       | One `Store`, Upstash in production, memory in tests and dev    |
-| A disk cache in development (`WF_DISK_CACHE`)         | The memory store; development reads fixtures                   |
-| The circuit is read before the cache                  | A stored profile answers first                                 |
-| Two instances can read the same id at once            | A read lock; the loser waits for the winner's result           |
-| The budget slides over two timestamps                 | A fixed window from the first spend                            |
-| The raw `Results[0]` is held                          | The trimmed profile, gzip and base64                           |
-| No field list; Cy is the whole capture                | One list in the domain, shared by the store and `pnpm fixture` |
-| Pages call `requireScreen()` with no dedupe           | `readScreen()` in React's `cache()`                            |
-| `/connect?step=start` and a failure rendered in place | `/connect?reason=…&retry=…`                                    |
-| The place is not remembered                           | `proxy.ts` writes `wf_place`                                   |
-| Every page exports `dynamic = "force-dynamic"`        | None does; the wiki and worldstate reads say `force-cache`     |
-| The development disk cache survives restarts          | The memory store survives hot reloads on `globalThis`          |

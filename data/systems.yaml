@@ -1,0 +1,60 @@
+aliases:
+  "Dark Refractory, Deimos": Dark Refractory
+  "Zariman Ten Zero": Zariman
+
+systems:
+  - id: origin
+    name: Origin System
+    released: true
+    places:
+      - Earth
+      - Venus
+      - Mercury
+      - Mars
+      - Deimos
+      - Phobos
+      - Void
+      - Ceres
+      - Jupiter
+      - Europa
+      - Sanctuary
+      - Saturn
+      - Uranus
+      - Neptune
+      - Lua
+      - Pluto
+      - Eris
+      - Sedna
+      - Kuva Fortress
+      - Zariman
+      - Dojo
+  - id: pom2
+    name: Pom-2 PC
+    released: true
+    places:
+      - Höllvania
+  - id: duviri
+    name: Duviri
+    released: true
+    places:
+      - Duviri
+  - id: empyrean
+    name: Empyrean Proxima
+    released: true
+    places:
+      - Earth Proxima
+      - Venus Proxima
+      - Saturn Proxima
+      - Uranus Proxima
+      - Neptune Proxima
+      - Pluto Proxima
+      - Veil Proxima
+  - id: refractory
+    name: Dark Refractory
+    released: true
+    places:
+      - Dark Refractory
+  - id: tau
+    name: Tau
+    released: false
+    places: []

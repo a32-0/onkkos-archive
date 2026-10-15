@@ -7,6 +7,7 @@ export function StepRow({
   title,
   art,
   best,
+  locked,
   open,
   bodyId,
   onToggle,
@@ -15,13 +16,14 @@ export function StepRow({
   title: string;
   art?: string | null;
   best?: boolean;
+  locked?: boolean;
   open: boolean;
   bodyId: string;
   onToggle: () => void;
   children?: ReactNode;
 }) {
   return (
-    <div className={styles.row}>
+    <div className={locked ? styles.locked : styles.row}>
       <button
         type="button"
         className={styles.head}

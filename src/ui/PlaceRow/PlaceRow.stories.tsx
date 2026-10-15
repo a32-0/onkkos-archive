@@ -45,6 +45,19 @@ export const OnViewStartHereNew: Story = {
   args: { name: "Earth", art: SAMPLE_ORB[0], onView: true, startHere: "Start here", isNew: "New" },
 };
 
+export const BeyondReach: Story = {
+  args: {
+    name: "Mars",
+    art: SAMPLE_ORB[2],
+    count: undefined,
+    gap: "Clear the Venus Junction, on Earth, to reach it.",
+  },
+};
+
+export const DojoBeyondReach: Story = {
+  args: { name: "Dojo", count: undefined, gap: "Join a clan to enter its Dojo." },
+};
+
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

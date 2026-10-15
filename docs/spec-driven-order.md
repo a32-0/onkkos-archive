@@ -31,8 +31,8 @@ look.
   anyone can see the spec is behind, and the spec is updated before the code
   follows.
 - The business rules are the spec's requirements.
-  [`business-rules.md`](business-rules.md) holds BR-01 to BR-33, and each rule
-  already has its frame, its pin position, its rule and its code status. A
+  [`business-rules.md`](business-rules.md) holds the rules from BR-01 on, and each rule
+  already has its frame, its pin position and its rule. A
   spec cites rules by id and adds acceptance criteria; it does not restate
   them.
 - The frame does not fix the data. A sample value drawn in a frame is a
@@ -41,39 +41,18 @@ look.
 
 ## Where this stands
 
-Done before the spec, because every spec answers to it:
-
-- The constitution names the Figma frames as the design (BR-33).
-- [`cetus.md`](cetus.md) is reframed as the reasoning behind the system as
-  built, and its measurements become feedback on the frames.
-- `pnpm palette` measures every ink, reports what falls below its floor and
-  exits clean. It no longer blocks a build.
-- `tests/language.test.ts` no longer confines brand red to the mark or keeps a
-  second state hue out, since those checks would have blocked colours the
-  frames draw, such as the red Disconnect. The checks on type faces remain:
-  names in the display serif, readings in mono.
-
-Settled by the constitution on 2026-10-04:
-
-- `specs/00-constitution.md` was rebuilt. Its gates now follow BR-33: each
-  screen matches its frame, and `pnpm palette` measures and reports. It also
-  names where the work ends, a new public repository, and how the release fits
-  inside these six steps. The reasoning is in
-  [`public-release.md`](public-release.md).
-
-Waiting until the spec is written:
-
-- The divergences listed under BR-33 ("Code: not met yet"): the hero card,
-  the "You're on" card, the view pill, Summary rows, the Step-by-step line,
-  the player menu, the update banner and cards, Resume, the Catch-up summary,
-  Two ways in, and the splash and ID form (still to audit). They become tasks
-  in step 5. None is built ahead of its spec, so the spec decides what the
-  code does instead of describing it afterwards.
-
-Settled by the owner on 2026-10-04, which pinned the design:
-
-- Both slips are corrected in the frames: the player menu reads twelve hours,
-  and the chevrons in `257:653` agree with `367:291`.
-- The pinned design is the section `421:590` "High-fi Wireframes". The file
-  stays private. See "Settled before the spec" in
+- The constitution names the Figma frames as the design (BR-33). The reasoning
+  behind its release decisions is in [`public-release.md`](public-release.md).
+- The pinned design is the section `421:590` "High-fi Wireframes", as it
+  stood on 2026-10-04, once the owner had corrected both slips in it: the
+  player menu reads twelve hours, and the chevrons in `257:653` agree with
+  `367:291`. The file stays private. See "Settled before the spec" in
   [`specs/00-constitution.md`](../specs/00-constitution.md).
+- [`cetus.md`](cetus.md) is the reasoning behind the system, and its
+  measurements are feedback on the frames.
+- `pnpm palette` measures every ink, reports what falls below its floor and
+  exits clean. It never blocks a build.
+- `tests/language.test.ts` checks the type faces (names in the display serif,
+  readings in mono) and never a colour the frames draw.
+- The eleven specs are written against the pinned design, and the plan and the
+  tasks build from them.

@@ -8,18 +8,22 @@
 
 The search with its suggestions, and the curated goal cards.
 
-## What crosses
+## What it builds
 
-| File                          | Origin   | Note                  |
-| ----------------------------- | -------- | --------------------- |
-| `src/app/goals/page.tsx`      | Rebuilt  | Spec 08               |
-| `src/app/api/search/route.ts` | Reworked | Places too            |
-| `src/screens/goals/`          | Rebuilt  |                       |
-| `src/content/goals.ts`        | Reworked | Cards and search only |
+| File                          | Note                                                                                                                                                        |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/app/goals/page.tsx`      | Spec 08                                                                                                                                                     |
+| `src/app/api/search/route.ts` | Places too                                                                                                                                                  |
+| `src/screens/goals/`          | `suggestedGoals()` takes, with the goals the engine proves done, `build_necramech` once every Necramech is owned, read from the catalog (T-13's correction) |
+| `src/content/goals.ts`        | Cards and search only                                                                                                                                       |
+
+## From T-16
+
+- `searchCatalog(data, placeIndex(), term)` returns every match, best first, places among them: each hit with its `kind`, `group`, `name`, `type` and `family`. The route orders it by reach (spec 08, BR-62) and keeps eight.
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 08 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] `check.yml` passes on `dev`.
