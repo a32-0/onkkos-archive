@@ -15,3 +15,9 @@
   width: 100%;
   text-align: center;
 }
+
+.art {
+  composes: line bottom;
+  composes: voice from "../type.module.css";
+  color: var(--ink);
+}

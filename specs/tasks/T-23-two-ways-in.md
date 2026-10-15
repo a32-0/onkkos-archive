@@ -21,6 +21,10 @@ The choice between Catch me up and Reach a goal after connecting.
 - `VOICE.features(name)` reads "We have, and shall have a long association, {name}.", as spec 03 writes it.
 - `tests/language.test.ts` checks `src/screens/two-ways-in/` for an `OnkkoLine` fed from `VOICE`, and every line of `content/voice.ts` against the specs.
 
+## From T-21
+
+- `Button` takes `href` and `link` and then draws a link that looks the same, for a button that only opens another screen.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 03 holds.

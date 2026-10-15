@@ -67,3 +67,7 @@ export const TextHover = text.Hover;
 export const TextFocus = text.Focus;
 export const TextDisabled = text.Disabled;
 export const TextLoading = text.Loading;
+
+export const PrimaryLink: Story = {
+  args: { variant: "primary", href: "/connect", children: "Begin" },
+};

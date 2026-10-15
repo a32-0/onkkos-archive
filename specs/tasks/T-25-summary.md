@@ -10,12 +10,11 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 ## What it builds
 
-| File                        | Note                                |
-| --------------------------- | ----------------------------------- |
-| `src/app/catch-up/page.tsx` | Spec 06, with a month chosen        |
-| `src/screens/summary/`      |                                     |
-| `src/content/catch-up.ts`   | The Summary's strings               |
-| `tests/tokens.test.ts`      | `--scrim` leaves the allowance list |
+| File                        | Note                         |
+| --------------------------- | ---------------------------- |
+| `src/app/catch-up/page.tsx` | Spec 06, with a month chosen |
+| `src/screens/summary/`      |                              |
+| `src/content/catch-up.ts`   | The Summary's strings        |
 
 ## From T-15
 
@@ -25,10 +24,14 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 - The Summary keeps Resume's entrance: `Shell` with `tab="resume"`, and `tabs` as Resume had it (BR-41).
 
+## From T-21
+
+- `--scrim` left the allowance list of `tests/tokens.test.ts` in T-21: the splash's veil over the art applies it, and the frame `206:903` is bound to the `scrim` variable at 60%.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 06 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
 - [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
-- [ ] The screen applies `--scrim` (the veil behind the open card, `264:67`), and it leaves the allowance list of `tests/tokens.test.ts`.
+- [ ] The screen applies `--scrim` (the veil behind the open card, `264:67`).
 - [ ] `check.yml` passes on `dev`.

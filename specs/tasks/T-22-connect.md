@@ -31,6 +31,11 @@ The id form, its loading card, the five error bands and the demo entrance. A fai
 - Disconnect (`app/actions.ts`) forgets `wf_account` and `wf_since` and redirects to `/connect` with no query: the field must open empty.
 - `tests/language.test.ts` checks `src/screens/connect/` for an `OnkkoLine` fed from `VOICE`, and every line of `content/voice.ts` against the specs. `VOICE.connect` exists.
 
+## From T-21
+
+- `content/onboarding.ts` is created here: spec 01's only strings are `VOICE.onboarding` and `VOICE.onboardingEnter`, so T-21 left it out.
+- `Button` takes `href` and `link` and then draws a link that looks the same; Begin opens `/connect` that way. The field holding the remembered id (spec 01, acceptance 3) is this task's.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 02 holds.

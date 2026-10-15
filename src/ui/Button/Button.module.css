@@ -15,6 +15,7 @@
   background-color: transparent;
   color: var(--ink);
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 
