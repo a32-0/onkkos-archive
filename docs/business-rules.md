@@ -767,7 +767,8 @@ settled where the frames disagreed with each other or with the docs.
   play the row, the owner settled the same day: for a mission, the mission
   type's Mechanics section, how it plays (Dante's "Play Armatus"); for an item
   whose route only prose names, its Acquisition section; for anything else
-  (a boss, a lab, a vendor), the lead of its page. The data detail ("It drops at
+  (a boss, a lab, a vendor), the lead of its page. A mission type's page with
+  no Mechanics section gives its lead (owner, 2026-10-14). The data detail ("It drops at
   rotation C, 7.5% a run, so about 13 runs for an even chance.") stays its own
   first line, and "Wiki ↗" closes the passage.
 - This replaces the rule "one sentence per row and never more" in

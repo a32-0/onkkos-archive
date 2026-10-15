@@ -20,6 +20,13 @@ The header, the player chip and its menu with Disconnect, the tab bar and its or
 | `tests/content.test.ts`                    | The player's rank title (T-13's correction)                                                                                     |
 | `tests/language.test.ts`                   | Onkko speaks on every screen: each page opens or closes with a line from `voice.ts`; each screen task after it is checked by it |
 
+## From T-19
+
+- `src/routes.ts` exists, with `/connect` and `connectAfter()`, the failure URL; this task adds the shell's routes.
+- A page reads through `requireScreen()` in `app/screen.ts`: it answers the `Screen` or redirects to `/connect`. `readScreen()` is wrapped in React's `cache()`, so the layout and the page share one read.
+- `Screen` carries `cached` and `fetchedAt`. The last read's age and `nextReadAt()` (spec 04) are this task's: the age is words, so it is not in `infra/`, and the next read is `fetchedAt` plus `PROFILE_TTL_MS` from `infra/profile/cache.ts`.
+- Disconnect calls `forgetAccount()` in `infra/session.ts`, which forgets `wf_account` and `wf_since`.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 04 holds.

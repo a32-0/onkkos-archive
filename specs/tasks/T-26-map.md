@@ -23,6 +23,12 @@ One place at a time: the place card, the lens, the groups, the place list and th
 - A group is the place index's `group`, one per catalogue as the frames draw them (`docs/place-index.md`).
 - Tau is listed as Soon™ and is never counted in the system list's More line: it is in no one's reach, and with no `Missions[]` and no `PlayerLevel` no More line renders (spec 07, acceptance 8). `systemInReach` is false for an unreleased system.
 
+## From T-19
+
+- `proxy.ts` writes `wf_place` as `{system}/{place}` from `/system?system=&place=`, for a system id and a place name of the expected shape. Its matcher is the literal `/system`, missing the two prefetch headers: this task adds the route to `routes.ts` with the same path.
+- `readPlace()` in `infra/session.ts` reads it back as `{ system, place }`; the page checks the place exists before it opens it, and opens Start here otherwise (BR-46).
+- `gameIcons()` and `placeIcons(names)` in `infra/wiki/icons.ts` give the wiki's icon URLs by role and by place name; a missing one is absent from the map.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 07 holds.

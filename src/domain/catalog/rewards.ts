@@ -11,7 +11,7 @@ export interface RewardRoute {
   item: string;
 }
 
-function namesItem(rewardName: string, itemName: string): boolean {
+export function namesItem(rewardName: string, itemName: string): boolean {
   const reward = rewardName.toLowerCase();
   const item = itemName.toLowerCase();
   return reward === item || reward.startsWith(`${item} `);

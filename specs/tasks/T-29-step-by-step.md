@@ -25,6 +25,11 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 
 - The step plan holds no words: every title, detail, reading and group heading is a phrase, `{ say, …values }`. `content/checks.ts` holds one function per `say`, typed against `Phrase` in `domain/catalog/checks.ts`, and a row's `best`, `alternative` and `optional` add "(Highest chance)", "Or" and "(Optional)". A detail joins its parts with a space, a reading with " · ".
 
+## From T-19
+
+- `withProse(wiki, plan)` in `infra/wiki/prose.ts` gives each row its prose as paragraphs, or null; `wikiModules()` gives the wiki. A mission type's page with no Mechanics section gives its lead, and an item with no Acquisition section gives null (owner, 2026-10-14).
+- `fetchVarzia()` in `infra/worldstate/client.ts` is read only for a vaulted Prime (BR-29); its stock, or null, is the step plan's `varzia`.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

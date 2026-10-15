@@ -215,7 +215,7 @@ function vendorNames(wiki: Wiki): string[] {
   return names;
 }
 
-function parseRequirements(text: string | null): Requirement[] {
+export function parseRequirements(text: string | null): Requirement[] {
   if (text === null) return [];
   const out: Requirement[] = [];
   for (const match of text.matchAll(LINK)) {
@@ -339,7 +339,7 @@ function catalogRoutes(wiki: Wiki, drops: readonly CatalogDrop[]): Route[] {
   return out;
 }
 
-function partName(item: string, part: string): string {
+export function partName(item: string, part: string): string {
   return part.startsWith(`${item} `) ? part : `${item} ${part}`;
 }
 
@@ -555,7 +555,7 @@ function routeArea(route: Route): string | null {
   return route.kind === "drop" || route.kind === "bounty" ? route.place : null;
 }
 
-function layoutOf(parts: readonly ResolvedPart[]): Layout {
+export function layoutOf(parts: readonly ResolvedPart[]): Layout {
   const main = parts.find((part) => part.main);
   const others = parts.filter((part) => !part.main);
   const mainRoute = main?.routes[0] ?? null;
@@ -584,7 +584,7 @@ function layoutOf(parts: readonly ResolvedPart[]): Layout {
   return { blueprint: together ? "with-parts" : "apart", parts: shape };
 }
 
-function scenarioOf(layout: Layout): ScenarioCase {
+export function scenarioOf(layout: Layout): ScenarioCase {
   if (layout.parts === "none")
     return layout.blueprint === "none" ? "no-recipe" : "single-blueprint";
   if (layout.parts === "one-source") {

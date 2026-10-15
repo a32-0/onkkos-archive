@@ -19,6 +19,10 @@ Settled by the owner on 2026-10-13: a server action sets `wf_since` and opens th
 | `src/app/actions.ts`        | The action that writes `wf_since` through `infra/session.ts` and opens the Summary                    |
 | `src/content/catch-up.ts`   | Resume's strings; without the quest rail's `Relation`, and the month's wording from `domain/since.ts` |
 
+## From T-19
+
+- `writeSince()` in `infra/session.ts` keeps only a `YYYY-MM` month, for a year; `readSince()` reads it back or answers null.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 05 holds.

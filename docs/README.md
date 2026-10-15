@@ -49,9 +49,10 @@ arrives with the task that builds what it describes.
 - [`scenario-guidelines.md`](scenario-guidelines.md): the grammar every item
   view shares, the two densities of one answer, and how a family with no frame
   of its own is drawn.
-- [`api.md`](api.md): DE's profile endpoint as verified, what each answer
-  means, how long a read is kept, the locks in front of it, and the route
-  that exposes it.
+- [`api.md`](api.md): the outside sources. DE's profile endpoint as verified,
+  what each answer means, how long a read is kept, the locks in front of it
+  and the route that exposes it; then the wiki's prose and icons, and
+  Varzia's stock, with how long each is kept.
 - [`deferred.md`](deferred.md): what was set aside for a later version, and how
   to bring it back.
 

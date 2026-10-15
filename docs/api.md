@@ -1,6 +1,11 @@
-# DE's public profile endpoint
+# The outside sources
 
-Everything below was verified against the live endpoint. Third-party
+The app reads three things from outside: DE's profile endpoint, the wiki's
+prose and icons, and Varzia's stock. DE's endpoint takes most of this page,
+because misusing it costs the game itself; the other two are free public reads
+kept in Next's data cache.
+
+DE's endpoint was verified against the live service. Third-party
 documentation (FrameHub, the `@wfcd/profile-parser` README) describes a
 `content.warframe.com/dynamic/...` host that no longer answers. How the app
 protects the endpoint is [spec 11](../specs/11-profile-proxy.md); how the
@@ -132,16 +137,68 @@ a sentence; the band's words for each are BR-38's.
 A profile carries `x-wf-cache: hit` or `miss`, and `cache-control: private,
 max-age=60`.
 
+## The wiki
+
+`src/infra/wiki/client.ts` reads `wiki.warframe.com/api.php`, the wiki's
+MediaWiki API, for two things:
+
+- **Prose** (BR-48). One request per page, the plain text of the whole page
+  (`prop=extracts`, `explaintext`). `withProse()` in `prose.ts` asks once per
+  page and source, and cuts the passage the plan names: a mission type's
+  Mechanics section with its subsections, or the page's lead when it has
+  none; an item's Acquisition section without the drop tables' boilerplate;
+  otherwise the page's lead, without an opening quote or a hatnote, and
+  nothing for a disambiguation page. An Acquisition title that names a
+  section, as the Hounds' `Model#Bhaira` does, reads that section instead. Every paragraph is kept. A title goes
+  through the vendored `wiki-titles.json` first, so a row asks for the page
+  the wiki files it under.
+- **Icons.** One request for many files (`prop=imageinfo`): the white game
+  icons by their role, and each place's art by its name (`icons.ts`). The
+  app links to the wiki's own file URLs and never rehosts them.
+
+Each request waits eight seconds at most. A failed or missing read answers
+nothing, and the row or the icon goes without: the wiki never stops a screen.
+
+## Varzia's stock
+
+`src/infra/worldstate/client.ts` reads `api.warframestat.us/pc/vaultTrader`,
+the community's free public worldstate API, for where Varzia is, when her
+rotation ends and what she offers. A store path (`/Lotus/StoreItems/…`) is read
+as the catalog's own `uniqueName`; an offer's `ducats` is its Regal Aya and
+its `credits` its Aya. It is read only when a vaulted Prime is on screen
+(BR-29) and waits eight seconds at most; a failed read drops to the lines
+that need no live data. Nightwave is not read (BR-35).
+
+## How long the wiki and Varzia are kept
+
+| Source | Kept        | Set by                                                        |
+| ------ | ----------- | ------------------------------------------------------------- |
+| Wiki   | A day       | `REVALIDATE_SECONDS` in `wiki/client.ts`                      |
+| Varzia | Ten minutes | `REVALIDATE_SECONDS` in `worldstate/client.ts`, as BR-29 says |
+
+Both requests say `cache: "force-cache"` beside `next: { revalidate }`, so
+Next keeps them in its data cache, which Vercel shares across instances; they
+cost no store command. A page reads its cookies before it fetches, and Next
+caches a `fetch` met after that only when the call opts in
+([plan part 2](../specs/plan/02-architecture.md#where-each-kind-of-state-lives)).
+Checked on 2026-10-14 with `logging.fetches` in development: on a page that
+reads its cookies first, the first render fetched the icons, a page's prose
+and Varzia's stock from their sources, and the second answered all three as
+`cache hit`.
+
 ## Platforms
 
-No source the app reads takes a platform, and the app never asks for one.
+The app never asks a player for a platform, and only one source names one.
 
 - The profile endpoint takes `playerId` and nothing else. Account ids are
   global; there is no per-platform host or parameter.
 - `@wfcd/items` carries no platform field: one `releaseDate` and one
   `introduced` per item, so what shipped while a player was away is the same
   answer everywhere.
+- Varzia's stock is read from the worldstate API's `/pc/` path, for every
+  player.
 
-Not verified: whether a player who has never set up Cross Save can reach
+Not verified: whether Varzia's stock differs on another platform, and whether
+a player who has never set up Cross Save can reach
 `warframe.com/api/user-data` at all. The steps on `/connect` assume a
 warframe.com login exists.

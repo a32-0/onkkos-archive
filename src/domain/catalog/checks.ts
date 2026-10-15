@@ -266,14 +266,14 @@ function say<K extends keyof Says>(
   return { say: key, ...fields[0] } as Phrase;
 }
 
-type ProseSource = "mechanics" | "acquisition" | "lead";
+export type ProseSource = "mechanics" | "acquisition" | "lead";
 
-interface ProseAsk {
+export interface ProseAsk {
   title: string;
   source: ProseSource;
 }
 
-interface StepRow {
+export interface StepRow {
   id: string;
   title: Phrase;
   detail: Part[];
@@ -294,7 +294,7 @@ interface StepGroup {
   rows: StepRow[];
 }
 
-interface StepSection {
+export interface StepSection {
   id: string;
   title: Phrase;
   imageUrl: string | null;
@@ -306,7 +306,7 @@ export interface StepPlan {
   sections: StepSection[];
 }
 
-interface VarziaStock {
+export interface VarziaStock {
   location: string | null;
   expiry: string | null;
   offers: { uniqueName: string; regalAya: number | null; aya: number | null }[];

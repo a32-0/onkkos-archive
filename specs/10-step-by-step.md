@@ -160,9 +160,9 @@ no Components unless the quest asks for an item to be built.
 
 - The plan: `stepPlan()` and `collectibleStepPlan()` in `src/domain/catalog/`,
   over the vendored wiki modules, DE's drop tables and the curated files.
-- Prose: for a mission its type's Mechanics section, for a prose-only route
-  the item's Acquisition section, otherwise the page's lead (BR-48); cached a
-  day, its paragraphs
+- Prose: for a mission its type's Mechanics section, or its lead when it has
+  none (owner, 2026-10-14); for a prose-only route the item's Acquisition
+  section; otherwise the page's lead (BR-48). Cached a day, its paragraphs
   kept (BR-48).
 - Varzia's stock, live and cached ten minutes, only for a vaulted Prime on
   screen (BR-29).

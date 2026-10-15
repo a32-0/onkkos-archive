@@ -120,7 +120,8 @@ odds, highest first (BR-25, BR-26).
 - **Detail.** One line of data: odds, runs, price, rank or date. "Uncommon.
   11% intact and 20% radiant." "Rotation C, 8.51% a run."
 - **Prose.** The wiki's passage in its paragraphs, as the frames draw it
-  (BR-48): for a mission, its type's Mechanics section; for an item whose
+  (BR-48): for a mission, its type's Mechanics section, or its lead when it
+  has none; for an item whose
   route only prose names, its Acquisition section; for anything else, the
   lead of its page. The plan says which, as the prose ask's `source`.
 - **Link.** Every row has one. It opens the thing's own `/item` page when the

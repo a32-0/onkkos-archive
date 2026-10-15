@@ -21,6 +21,11 @@ The id form, its loading card, the five error bands and the demo entrance. A fai
 | `tests/connect-errors.test.ts` | The five reasons of BR-38                                                                                        |
 | `tests/tokens.test.ts`         | `.numeral` and `.mono-label` leave the allowance list                                                            |
 
+## From T-19
+
+- A failed read lands as `/connect?reason=…&retry=…`, built by `connectAfter()` in `routes.ts`. `retry` is the Unix time, in seconds, when a retry can succeed, and only `limited` and `circuit-open` carry one (plan part 2).
+- The connect and demo actions keep the id with `writeAccountId()` in `infra/session.ts`; the field reads `readAccountId()`.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 02 holds.

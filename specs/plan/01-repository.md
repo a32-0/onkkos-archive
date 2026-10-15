@@ -102,6 +102,7 @@ rules they would carry are in the constitution and the docs.
 | `goals/page.tsx`                                      | 08     | T-27       |
 | `item/page.tsx`                                       | 09, 10 | T-28, T-29 |
 | `actions.ts`: connect, demo, disconnect               | 02, 04 | T-20, T-22 |
+| `screen.ts`: a failed read redirects to `/connect`    | 02     | T-19       |
 | `api/profile/[accountId]/route.ts`                    | 11     | T-18       |
 | `api/search/route.ts`: items, collectibles and places | 08     | T-27       |
 
@@ -145,7 +146,7 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 | `wiki/`                          | The vendored modules, the wiki's client and its prose (BR-48)                                          | T-16, T-19 |
 | `worldstate/`                    | Varzia's stock                                                                                         | T-19       |
 | `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46)                                                           | T-19       |
-| `screen.ts`                      | The screen read; a failed read redirects to `/connect` (BR-38)                                         | T-19       |
+| `screen.ts`                      | The screen read: the profile and its readings, or a failed read's reason and retry time (BR-38)        | T-19       |
 | `ticks.ts`                       | The ticks of spec 10, in browser storage                                                               | T-29       |
 
 ## `src/content/`

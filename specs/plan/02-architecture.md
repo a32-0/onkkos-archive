@@ -22,7 +22,7 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
 1. **`proxy.ts`** runs before the route. It does one thing: when `/system`
    opens with a place, it writes `wf_place` (BR-46).
 2. **The page** calls `readScreen()`: the account id from `wf_account`, the
-   profile through `fetchProfile`, and the readings the domain makes of it. It
+   profile through `readProfile()`, and the readings the domain makes of it. It
    hands plain values to its screen.
 3. **The screen** composes `ui/` components from those values. Nothing under
    `screens/` or `ui/` fetches, reads a cookie or imports `infra/`.
@@ -45,10 +45,10 @@ would be off by half.
 | The trimmed profile                     | The shared store                                    | Twelve hours                   | `fetchProfile`                  |
 | Not-found, budget, circuit, lock        | The shared store                                    | Each lock's own window (below) | `fetchProfile`                  |
 | `wf_account`                            | Cookie, `httpOnly`                                  | One year                       | The connect action              |
-| `wf_since`                              | Cookie                                              | One year                       | A server action, from Resume    |
-| `wf_place`                              | Cookie                                              | One year                       | `proxy.ts`                      |
+| `wf_since`                              | Cookie, `httpOnly`                                  | One year                       | A server action, from Resume    |
+| `wf_place`                              | Cookie, `httpOnly`                                  | One year                       | `proxy.ts`                      |
 | The ticks of spec 10                    | Browser storage                                     | Until cleared                  | The checkbox, in the client     |
-| Wiki prose and icons, Varzia, rotations | Next's data cache (`force-cache` with `revalidate`) | A day; Varzia a minute         | The wiki and worldstate clients |
+| Wiki prose and icons, Varzia, rotations | Next's data cache (`force-cache` with `revalidate`) | A day; Varzia ten minutes      | The wiki and worldstate clients |
 | Curated files and vendored data         | `data/`, read from disk                             | The deployment                 | Commits                         |
 
 **Why the wiki and the worldstate stay out of the store.** The question was
@@ -87,18 +87,25 @@ It skips prefetches. A `<Link>` prefetches its target as it scrolls into view,
 and the map is a list of place links, so without the check the last place
 _prefetched_ would become the last place visited. The proxy writes nothing
 when the request carries the `next-router-prefetch` header or
-`purpose: prefetch`, the two Next 16.3 names for a prefetch.
+`purpose: prefetch`, the two Next 16.3 names for a prefetch. The check is in
+the proxy's matcher, as `missing` headers, and not in its code: Next removes
+`next-router-prefetch` from the request it hands the proxy, so the code never
+sees it.
 
 ## How a failure reaches `/connect`
 
 Spec 02 sends a failure on any screen to `/connect` "with the reason and, where
 one is known, the retry time". A redirect issued while a server component
 renders cannot set a cookie, so both go in the URL:
-`/connect?reason=throttled&retry=1760023800`. The page accepts a `reason` only
-if it is one of the seven `FailureReason` values and a `retry` only as a whole
-number of seconds in the next day, and ignores anything else. A forged URL can
-show a band message and nothing more. `routes.ts` builds the URL; no page writes
-it by hand.
+`/connect?reason=circuit-open&retry=1760023800`. The retry is the Unix time, in
+seconds, when a retry can succeed; only `limited` and `circuit-open` carry one.
+The page accepts a `reason` only if it is one of the seven `FailureReason`
+values and a `retry` only as a whole number of seconds in the next day, and
+ignores anything else. A forged URL can show a band message and nothing more.
+
+`readScreen()` in `infra/screen.ts` returns the reason and the retry time, and
+`requireScreen()` in `app/screen.ts` redirects: `infra/` does not import
+`routes.ts`, which builds the URL. No page writes it by hand.
 
 ## The read order
 
