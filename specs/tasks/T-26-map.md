@@ -27,6 +27,6 @@ One place at a time: the place card, the lens, the groups, the place list and th
 
 - [ ] Every acceptance item of spec 07 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] The place list's system card applies `.heading`; the allowance list of `tests/tokens.test.ts` is then empty and removed, and the test passes with no token unapplied.
 - [ ] `check.yml` passes on `dev`.

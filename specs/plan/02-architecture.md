@@ -12,7 +12,7 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
               │                 │
           wf_place          readScreen()   (once per request)
                                 │
-                     infra/profile/fetch-profile.ts ──► infra/store ──► Upstash
+                     infra/profile/read.ts ──► infra/store ──► Upstash
                                 │                          (memory in tests and dev)
                                 ├──► DE's endpoint, only on a miss
                                 ▼
@@ -112,9 +112,10 @@ that a stored profile answers first. Spec 11 is corrected to this order:
    `invalid-id`.
 2. **Demo.** The two demo ids, and every id when the source is fixtures, read
    their fixture.
-3. **Stored.** One `MGET` reads the profile and the not-found for the id. A hit
-   answers at once.
-4. **Circuit.** If open, `circuit-open` with the time it closes.
+3. **Stored.** One `MGET` reads the profile, the not-found and the lock for
+   the id, with the circuit's two keys. A hit answers at once.
+4. **Circuit.** If open, `circuit-open` with the time it closes, read from the
+   same `MGET`.
 5. **Lock.** Take the id's read lock. If another instance holds it, wait for
    its result (below).
 6. **Budget.** Spend one of the visitor's two lookups, or answer `limited`.
@@ -164,7 +165,7 @@ spend.
 
 ### The keys
 
-Every key starts with `wf:`. Preview deployments never read live (part 4), so
+Every key starts with `wf:`. Only production deploys and reads live (part 4), so
 one namespace serves the one deployment that does.
 
 | Lock           | Key                   | Value                                                        | Lives for                                   |
@@ -174,14 +175,15 @@ one namespace serves the one deployment that does.
 | Read lock      | `wf:lock:{id}`        | The instance's token                                         | Twenty seconds, or until the read ends      |
 | Visitor budget | `wf:budget:{visitor}` | The number of lookups spent                                  | Twelve hours from the first spend           |
 | Refusals       | `wf:circuit:refusals` | Consecutive refusals                                         | Thirty minutes from the first               |
-| Circuit        | `wf:circuit:open`     | `1`                                                          | Thirty minutes                              |
+| Circuit        | `wf:circuit:open`     | The time it closes, in milliseconds                          | Thirty minutes                              |
 
 ### Two instances, one id
 
-The in-process map of reads in flight dedupes requests inside one instance only.
+The in-process map of reads in flight dedupes one visitor's requests for an id
+inside one instance only.
 Across instances, `wf:lock:{id}` is taken with `setIfAbsent`. The owner chose on
 2026-10-06 what the instance that loses does: every half second, for up to fifteen
-seconds, it reads the profile, the not-found and the lock in one `MGET`, and
+seconds, it reads the same keys as step 3 in one `MGET`, and
 answers with whichever result the winner left:
 
 - **A profile or a not-found**: it answers with it. It spends no lookup and
@@ -216,18 +218,22 @@ because the profile is stored.
 ### The circuit counts refusals without a success between them
 
 A refusal increments `wf:circuit:refusals`; at three it sets `wf:circuit:open`
-for thirty minutes. A profile or a not-found removes both keys. On one server
+for thirty minutes, with the time it closes as its value, since the store
+reads no key's remaining time. A profile or a not-found removes both keys, when
+the `MGET` of step 3 saw either. On one server
 "three in a row" was exact. Across instances it means three refusals with no
 success recorded between them, which is the same protection: what DE punishes
 is a burst, and a burst is what the count sees.
 
 ### Synchronous becomes asynchronous
 
-`spendLookup`, `circuitState`, `recordSuccess` and `recordRejection` return
-promises once they read the store. Their only callers are `client.ts` and two
-test files, `client.test.ts` and `resilience.test.ts`. The tests' `resetBudget`,
-`resetCircuit` and `clearMemoryCache` become one `flush()` on the memory store,
-so the same tests run against the store's interface (spec 11, acceptance 8).
+`spendLookup`, `recordSuccess` and `recordRefusal` return promises once they
+write the store; `circuitState` reads the circuit's value from the `MGET` of
+step 3 and stays synchronous. Their only caller is `read.ts`, which holds the
+read order; `client.ts` is the request to DE and its classification. The tests'
+`resetBudget`, `resetCircuit` and `clearMemoryCache` become one `flush()` on the
+memory store, so the same tests run against the store's interface (spec 11,
+acceptance 9).
 
 ## Trim and compress
 

@@ -20,6 +20,12 @@ The smallest parts every screen uses. `GameIcon` renders the game's own art from
 | `tests/tokens.test.ts`                                                      | Spaces, radii and borders are not primitives; `linear-gradient` is not an easing; the tokens these atoms apply leave the allowance list                   |
 | `package.json`, `.storybook/main.ts`                                        | `storybook-addon-pseudo-states`, so the hover and focus stories show those states                                                                         |
 
+## Corrections
+
+- BR-58 (2026-10-07): the quill is the app's own mark, never the game's emblem. Its path is unchanged and its box is drawn to the path's bounds, as the frame stretches it.
+- Added to what it builds: the glyphs and the outlined letters, the state vocabulary of `tests/language.test.ts` (from T-04), `storybook-addon-pseudo-states` for the hover and focus stories, and two rules in `tests/tokens.test.ts` (spaces, radii and borders are not primitives; `linear-gradient` is not an easing).
+- `docs/development.md` records the two accessibility rules a story turns off, where the frame itself falls below them: the red label of Disconnect (`color-contrast`) and the wiki link (`link-in-text-block`).
+
 ## Acceptance
 
 - [ ] Each of the eight components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.

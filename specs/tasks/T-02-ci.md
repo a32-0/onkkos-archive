@@ -22,6 +22,10 @@
 
 - `docs/development.md`: Adds what CI runs and why
 
+## Corrections
+
+- The README's line on Claude's part reads "research, implementation, debugging and documentation", in place of "development" (2026-10-08).
+
 ## Acceptance
 
 - [ ] A push runs install (`--frozen-lockfile`), `pnpm check`, `pnpm knip` and `pnpm build` with `WF_PROFILE_SOURCE=fixture`.

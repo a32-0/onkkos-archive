@@ -92,7 +92,7 @@ draws a failure.
 
 ## Data and sources
 
-- The read: `fetchProfile()` in `src/infra/profile/client.ts`, with the shared
+- The read: `fetchProfile()` in `src/infra/profile/read.ts`, with the shared
   locks the constitution names. Its `FailureReason` picks the band's message;
   its `retryAfterSeconds` gives the time in it, shown as `HH:MM UTC`.
 - The demos: `fixtures/profile-ordis.json` and `fixtures/profile-cy.json`,

@@ -18,6 +18,12 @@ What the player types into and what frames every screen: the header with the pla
 | `src/ui/Button/Button.tsx`                                                                                 | Carries `data-variant`, so a story can leave the danger label out of the contrast check alone        |
 | `tests/tokens.test.ts`                                                                                     | The tokens these components apply leave the allowance list                                           |
 
+## Corrections
+
+- `src/ui/link.ts` arrived so a navigating component takes its link as a prop and `ui/` imports no Next; `Button` carries `data-variant`, so a story can leave the danger label out of the contrast check alone.
+- The owner redesigned Resume's date menu on 2026-10-08, with the exact day as a field under the months, and the Design System page was brought level with the code of T-06 and T-07 the same day. Plan part 3 records what changed.
+- The owner kept the wiki link as drawn, set apart from the prose by its colour and its arrow with no underline (2026-10-08); `docs/development.md` says so.
+
 ## Acceptance
 
 - [ ] Each of the eleven components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.

@@ -36,6 +36,7 @@ The map's data: every place in BR-47's order, the Dojo in the Origin System (BR-
 - `systems.yaml` named Dark Refractory as the drop tables do, `Dark Refractory, Deimos`, and `grafo.yaml` names it `Dark Refractory`, so reach could not measure it. The place takes `grafo.yaml`'s name, and `aliases` reads the sources' spelling under it, with the wiki's `Zariman Ten Zero`: Zariman gains its region resources, which it never had.
 - The focus came with T-13, and nothing kept it off the Dojo, which BR-57 forbids.
 - The owner settled on 2026-10-13 that the index's groups follow the frames: one group per catalogue as spec 07 draws them, gathered into BR-16's for the Summary, and nothing a frame draws no group for.
+- `Dossier` is exported from `catalog/dossier.ts`, since `place/state.ts` and `catalog/checks.ts` take it as a type.
 
 ## Acceptance
 

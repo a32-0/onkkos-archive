@@ -27,6 +27,13 @@ The token layer of plan part 3: primitives, semantic roles, type, shape, space a
 - `docs/development.md`: Vitest without `passWithNoTests`, `pnpm palette`, and the layer exception for `tokens.css`
 - `docs/README.md`: lists `cetus.md`
 
+## Corrections
+
+- Plan part 3 named five colour roles and seven text styles without all their values, so the variables of `421:590` were read once and its tables carry what they gave, `--night-card` among them (2026-10-08). Plan part 3 records it.
+- `tests/language.test.ts` keeps only its type check here. The state vocabulary arrives with T-06, against `Badge`, and Onkko's line on every screen with T-20, each with what it checks.
+- `eslint.config.mjs` lets `app/` import `ui/tokens.css`, the one file of `ui/` the root layout loads.
+- `cetus.md` leaves out the view frame, the background art registry, Onkko's dialogue tree and the goal solver, which no spec or plan part keeps (owner, 2026-10-08).
+
 ## Acceptance
 
 - [ ] Every token in plan part 3 exists with the value its table gives, and nothing else does.

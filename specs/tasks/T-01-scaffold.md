@@ -38,6 +38,11 @@ The empty tree of plan part 1, with every tool configured, so the first commit a
 - `docs/development.md`: the tooling as this task sets it up; later tasks add their part
 - `docs/README.md`: the index, listing only what is here; each task adds its documents
 
+## Corrections
+
+- The Prettier options moved from `.prettierrc` into the `prettier` key of `package.json`, and `knip.json` was dropped: it held only its schema, and knip's own Vitest and Storybook plugins already count tests and stories as entry points. Plan part 1's tree says so (2026-10-13).
+- `@upstash/redis`, which plan part 1 listed with this task, was installed by T-17, the first task that imports it, as this task's rule for every other dependency says.
+
 ## Acceptance
 
 - [ ] `pnpm install`, `pnpm check`, `pnpm knip` and `pnpm build` pass on a clean clone.

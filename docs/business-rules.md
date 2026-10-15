@@ -167,7 +167,7 @@ a reading of the earlier build against it was put to them.
 - The band's words are not fixed by the frame. The owner drew one as an
   example and on 2026-10-04 left the messages to be written from the failures
   the system can return. The proxy knows seven reasons
-  (`FailureReason` in `src/infra/profile/client.ts`); the player can act on
+  (`FailureReason` in `src/domain/types/profile.ts`); the player can act on
   four, so the band says four things:
 
   | Reason                                  | The band                                                                     |

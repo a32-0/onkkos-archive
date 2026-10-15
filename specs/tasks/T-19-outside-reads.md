@@ -22,6 +22,15 @@ Everything else that touches the outside: the wiki's prose and icons, Varzia's s
 | `next.config.ts`                           | `logging.fetches`; `outputFileTracingIncludes` for `data/` and `fixtures/`           |
 | `tests/checks.test.ts`, `scenario.test.ts` | They read through the wiki client                                                    |
 
+## Documents
+
+- `docs/api.md`: the other outside sources, beside DE's endpoint: the wiki's prose and icons, and Varzia's stock with its cache; BR-29 cites it for Varzia and says ten minutes where plan part 2 says a minute, so the client and both texts end with one figure
+
+## From T-18
+
+- `readProfile(accountId)` in `infra/profile/read.ts` is the read a request makes: React `cache()`, the visitor from the request. It returns `ProfileResult`; a failure carries a `FailureReason` and, for `limited` and `circuit-open`, `retryAfterSeconds`.
+- `FailureReason` is in `domain/types/profile.ts`, so `/connect` can check `?reason=` against it without importing `infra/`.
+
 ## From T-16
 
 - The catalog's data is one value, `catalogData()` in `infra/catalog/data.ts`; every catalog function takes it first. The step plan takes `{ now, masteryRank, varzia, done }`: `infra/worldstate/client.ts` returns Varzia's stock in the shape `checks.ts` reads (`location`, `expiry`, `offers` with `uniqueName`, `aya`, `regalAya`).

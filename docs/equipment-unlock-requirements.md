@@ -132,10 +132,10 @@ chance and rarity. The full chain, Prime part → relic → farmable node, is
 therefore complete for live relics and empty for vaulted ones, which is correct:
 a vaulted relic has no farm.
 
-The cost is file size. [`docs/api.md`](../docs/api.md) records that
-`Relics.json` (8.3 MB) is deliberately never loaded. This is an
-**architectural** gap, not a data gap: the answer exists and the app has chosen
-not to pay for it.
+The cost was file size: `Relics.json` is 8.3 MB, and the app first chose not
+to load it. The relic catalog now reads it for each relic's icon and its
+`vaulted` flag, and where a relic drops comes from `place-rewards.json`
+([`items.md`](items.md)).
 
 Vault status is carried per item: `vaulted`, `vaultDate`, `estimatedVaultDate`.
 Ash Prime reads `vaulted: true, vaultDate: 2017-05-30`. 44 of 120 Warframes and
@@ -272,5 +272,5 @@ ten missing prices.
 
 - `@wfcd/items@1.1275.72`, `data/json/*.json`, read directly.
 - A full capture of a real profile, taken on 2026-09-04, never committed.
-- `api.md` for endpoint behaviour and the loading policy.
+- `api.md` for the profile endpoint's behaviour.
 - `narrative_spine.yaml` and `quest_evidence.yaml` for the curated quest layer.

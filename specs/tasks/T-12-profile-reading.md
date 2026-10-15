@@ -17,6 +17,7 @@ Corrected on 2026-10-13, when the task was built. Each module arrives with somet
 - The cookie's read and write are input and output, which plan part 1 puts in `infra/`, so `since.ts` holds no cookie: the server reads `wf_since` in `infra/session.ts` (T-19), and a server action writes it from Resume (T-24).
 - The trim keeps `XPInfo` alone inside `LoadOutInventory`, as `trim-profile.mjs` already did. Nothing the app reads needs the rest.
 - `trim-profile.mjs` reads `grafo.yaml` before it cuts, so the fixtures are cut again in T-13.
+- The constitution and `public-release.md` say the account id and platform names are removed, not replaced, as the cutter now does.
 
 ## What it builds
 

@@ -25,7 +25,7 @@ Set by the owner on 2026-10-08 ([T-02b](../tasks/T-02b-humanise.md)).
 | Phase                   | What is built                                                                                                             | What the owner creates                                                      | Done when                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | **0. Specs**            | The tasks, here                                                                                                           | Approves the new designs in Figma and the plan                              | Every task has its spec, its acceptance and its order                                              |
-| **1. Scaffold**         | The empty tree of part 1, the tooling, `check.yml`, the first preview                                                     | The public GitHub repository, the Vercel account and the app's project      | A push to a branch builds a preview, and `check.yml` passes on it                                  |
+| **1. Scaffold**         | The empty tree of part 1, the tooling, `check.yml`, the first deployment                                                  | The public GitHub repository, the Vercel account and the app's project      | The first deployment serves the blank root, and `check.yml` passes                                 |
 | **2. Design system**    | The tokens and the components of part 3, each with its stories                                                            | The Storybook project on Vercel                                             | Every component matches its Figma component in every state                                         |
 | **3. Domain and infra** | The engine, the catalog, the places, the trim, the store, the proxy                                                       | Nothing                                                                     | Spec 11's acceptance passes against the memory store                                               |
 | **4. Screens**          | By flow: the shell, Onboarding and Connect, Two ways in, Resume and the Summary, the map, Goal, the item and Step by step | Nothing                                                                     | Each screen matches its frames at 390 and holds BR-39 at every sweep width, and `smoke.yml` passes |
@@ -47,16 +47,17 @@ Every piece points to the one before it, and back:
 Business rule ──► Spec ──► Task ──► Commit on dev ──► Phase pull request ──► main
    BR-46          07       T-26     T-26: …           4. Screens
                                          │
-                               Vercel preview, Storybook
+                        Vercel production, Storybook, from main
 ```
 
 - **A task** is written here, in `specs/tasks/`, with its id, the spec and rules
   it serves, its acceptance and the tasks it waits on.
 - **A commit** on `dev` starts its subject with the task's id. The owner
-  commits; every push builds a preview.
+  commits; every push runs `check.yml`, and Vercel builds nothing from `dev`
+  (part 4).
 - **A pull request** per phase takes `dev` into `main` and lists the tasks it
-  carries, with the preview and the Storybook build linked. The owner merges it,
-  and the merge deploys production
+  carries. The owner merges it, and the merge deploys production and the
+  Storybook build
   ([`specs/tasks/README.md`](../tasks/README.md#branches)).
 
 The owner set this on 2026-10-08, in place of one issue per task, milestones

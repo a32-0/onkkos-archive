@@ -77,7 +77,7 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Chromium  | `pnpm exec playwright install --with-deps chromium` | The browser the story tests run in                             |
 | Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
 | Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
-| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, the way every preview runs          |
+| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as production does until T-33       |
 
 The workflow holds no secret. It reads nothing outside the repository except
 the packages the lockfile names, the three fonts `next/font` downloads from
@@ -145,9 +145,9 @@ accident.
 
 - `WF_PROFILE_SOURCE`: with `fixture`, every profile is served from
   `fixtures/` and DE is never reached. With `live`, DE's endpoint is read
-  through the locks. Development and previews use `fixture`, and only
-  production uses `live`
-  ([plan part 4](../specs/plan/04-deployment.md#three-environments)).
+  through the locks. Development uses `fixture`; production reads fixtures
+  too until T-33 sets `live` there, and Vercel deploys only `main`
+  ([plan part 4](../specs/plan/04-deployment.md#two-environments)).
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: the shared store,
   set in production only.
 
@@ -158,11 +158,11 @@ The profile's locks live in one store with two backends behind one interface,
 ([plan part 2](../specs/plan/02-architecture.md#the-store)). `store()` in
 `index.ts` picks one on each call:
 
-| Backend | File         | Used when                                                   |
-| ------- | ------------ | ----------------------------------------------------------- |
-| Upstash | `upstash.ts` | Both Upstash variables are set: production only             |
-| Memory  | `memory.ts`  | Either is missing: the tests, development and every preview |
-| None    | `index.ts`   | Either is missing in production reading live: it throws     |
+| Backend | File         | Used when                                                        |
+| ------- | ------------ | ---------------------------------------------------------------- |
+| Upstash | `upstash.ts` | Both Upstash variables are set: production only                  |
+| Memory  | `memory.ts`  | Either is missing: the tests, development, production until T-33 |
+| None    | `index.ts`   | Either is missing in production reading live: it throws          |
 
 Only `upstash.ts` reads the two variables, and it reads them by name rather
 than through `Redis.fromEnv()`, which would also accept Vercel's `KV_*` names.

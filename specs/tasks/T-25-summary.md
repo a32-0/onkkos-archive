@@ -25,6 +25,6 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 - [ ] Every acceptance item of spec 06 holds.
 - [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the preview with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] The screen applies `--scrim` (the veil behind the open card, `264:67`), and it leaves the allowance list of `tests/tokens.test.ts`.
 - [ ] `check.yml` passes on `dev`.

@@ -16,6 +16,6 @@ The launch: production reads a real account through the locks, once.
 ## Acceptance
 
 - [ ] The owner's own account reads once in production; a second visit in the window costs no lookup (the store holds it).
-- [ ] A preview still reads fixtures.
+- [ ] `pnpm dev` with no `WF_PROFILE_SOURCE` set still reads fixtures.
 - [ ] No secret is in the tree or the history.
 - [ ] `check.yml` passes on `dev`.

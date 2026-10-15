@@ -28,6 +28,11 @@ The states are new here.
 
 - `docs/development.md`: The Locked stories turn `color-contrast` off, since BR-63 draws them at half opacity
 
+## Corrections
+
+- T-20 now waits on this task instead of T-10, and the tasks index counts the components through T-10b.
+- `GroupRow` gained a story with one tile, the case a group of one item shows.
+
 ## Acceptance
 
 - [ ] Each state has its story, and the owner has checked each against its Figma state.

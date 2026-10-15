@@ -20,6 +20,13 @@ Corrected on 2026-10-08, before the work: progressive disclosure (BR-59 to BR-63
 | `tests/tokens.test.ts`                                                                                                    | The tokens these components apply leave the allowance list                                              |
 | `scripts/palette.mjs`                                                                                                     | Measures the system name on the place card's band, `--ink-muted` since the owner chose it on 2026-10-08 |
 
+## Corrections
+
+- A system's symbol is a large orb with a small one beside it, its satellite (owner, 2026-10-08): `SystemRow` takes `art` and `satellite`, and spec 07 says so.
+- The system name on a place card was `--ink-dim`, 4.14:1 on its band; the owner moved it to `--ink-muted` (5.10:1) on 2026-10-08, and `scripts/palette.mjs` measures that pair.
+- `SearchField`'s story with suggestions shows `SuggestionList` instead of a list built in the story (owner, 2026-10-08).
+- The Design System page gained the Suggestion row and Progress bar sets and the hover and focus states the code has; the Tab set hugs its content with a minimum of 80 px; Rail's grid from 840 is not drawn, as the owner chose for every wider layout. Plan part 3 records each.
+
 ## Acceptance
 
 - [ ] Each of the eleven components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.

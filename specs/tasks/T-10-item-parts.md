@@ -21,6 +21,13 @@ Corrected again on 2026-10-08: `StepRow` and `ComponentRow` gain the Locked stat
 | `tests/tokens.test.ts`                                                                                                 | The allowance list keeps only what screens apply                                              |
 | `docs/development.md`                                                                                                  | The wiki link closing a row's passage joins the `link-in-text-block` exception the owner kept |
 
+## Corrections
+
+- `--space-3` (6) was applied nowhere, in the code or in Figma, and the owner removed it on 2026-10-08; the other spaces keep their names.
+- The type table was corrected against the frames: `.numeral` sets screen titles, `.title` the hero's name, `.heading` the place list's system card.
+- Step by step was bound in Figma as its frames drew it, the hero's Not obtained Prime border moved to `--state-prime`, "(Highest chance)" turned gold as BR-26 asks, Step row gained Best, and Component row's Collapsed state was rebuilt (2026-10-08). Plan part 3 records each.
+- What only screens apply left the allowance list for the tasks that apply it, each noted there: `.numeral` and `.mono-label` (T-22), `--scrim` (T-25), `.heading` (T-26).
+
 ## Acceptance
 
 - [ ] Each of the ten components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.

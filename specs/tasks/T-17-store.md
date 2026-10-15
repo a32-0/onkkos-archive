@@ -22,6 +22,15 @@ The store of plan part 2: `getMany`, `set`, `setIfAbsent`, `increment`, `remove`
 
 - `docs/development.md`: The two backends and when each is used
 
+## Corrections
+
+- `src/infra/store/index.ts` joined the table: plan part 2 names it as the file that picks the backend.
+- `@upstash/redis` 1.39.0 is installed here, pinned, as the first task that imports it; plan part 1 had listed it with T-01.
+- `upstash.ts` reads its two variables by name rather than through `Redis.fromEnv()`, which would also accept Vercel's `KV_*` names, and turns off the client's automatic JSON parsing, so a value comes back as the string that was stored, as it does from memory.
+- `store()` refuses the memory backend in production reading live: a missing store is a configuration error and fails closed.
+- `storeKeys` names the keys only; their lifetimes belong to the locks, in T-18.
+- The commit also carried corrections to T-01, T-13 and T-16 found while it was built; each is recorded in its own task.
+
 ## Acceptance
 
 - [ ] A key expires after its time in the memory backend as in Upstash.

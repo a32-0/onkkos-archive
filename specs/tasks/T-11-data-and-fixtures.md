@@ -15,6 +15,7 @@ Corrected on 2026-10-13, when the task was built:
 - `refresh-drops.mjs` and `trim-profile.mjs` read `data/grafo.yaml`, so neither runs before T-13.
 - The scripts' three packages join `package.json`, and the snapshots join `.prettierignore` as they are written.
 - `curated-files.md` leaves the `grafo.yaml` section to T-13, which shapes the file, follows the layers and names each snapshot's source and licence.
+- The header, player chip, player menu and sheet stories carried the frames' sample player name; they now read Cy, the demo's name, as the check for a real id or name asked.
 
 ## What it builds
 

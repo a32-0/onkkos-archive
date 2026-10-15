@@ -27,20 +27,21 @@ asking the owner to restate a decision:
 Set by the owner on 2026-10-08, replacing the issues, milestones and GitHub
 Project planned on 2026-10-06:
 
-- **`dev`** is where every task is committed. Each push runs `check.yml` and
-  builds a Vercel preview, which reads fixtures.
+- **`dev`** is where every task is committed. Each push runs `check.yml`;
+  Vercel builds no preview, as the owner chose on 2026-10-08 (plan part 4).
 - **`main`** is production. It moves once per phase: when a phase's tasks are
   done, the owner opens one pull request from `dev` to `main`, titled with the
-  phase, `check.yml` runs on it, and the merge deploys production.
+  phase, `check.yml` runs on it, and the merge deploys production and the
+  Storybook build, then `smoke.yml` checks the deployment.
 - A commit's subject starts with its task id (`T-04: …`), so `git log` reads
-  task by task. The phase's pull request lists the tasks it carries and links
-  its preview and, from T-05, its Storybook build.
+  task by task. The phase's pull request lists the tasks it carries.
 
 ## Done
 
 A task is done when its acceptance holds, `check.yml` passes on `dev`, and the
 owner has committed it. A screen task is also checked by the owner against its
-frames at 390 px on the preview, and swept at 360, 600, 840, 1280 and 1440
+frames at 390 px on their machine (`pnpm build`, then `pnpm start`), and swept
+at 360, 600, 840, 1280 and 1440
 (constitution, "The gates"). A phase is done when its pull request is merged
 into `main`.
 

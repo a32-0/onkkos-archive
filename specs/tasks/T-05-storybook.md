@@ -29,6 +29,12 @@ The catalogue the constitution asks for, its tests in CI, and a Foundations page
 
 - `docs/development.md`: How to run Storybook and the story tests
 
+## Corrections
+
+- The Storybook project is named `onkkos-archive-storybook` (2026-10-08).
+- The three fonts moved to `src/app/fonts.ts`, so the root layout and Storybook load the same ones, and Vitest gained its two projects, `unit` and `storybook`.
+- `test:stories` passes with no story until T-06, which removes `--passWithNoTests` with its first stories.
+
 ## Acceptance
 
 - [ ] `pnpm storybook` serves the Foundations page; every token in `tokens.css` appears on it.

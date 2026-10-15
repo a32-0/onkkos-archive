@@ -62,3 +62,6 @@ export interface RawProfileResponse {
   Stats?: RawStats;
   [key: string]: unknown;
 }
+
+export type FailureReason =
+  "invalid-id" | "not-found" | "limited" | "throttled" | "circuit-open" | "upstream" | "malformed";

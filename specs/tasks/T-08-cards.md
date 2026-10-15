@@ -18,6 +18,11 @@ The cards the screens stack: the two ways in and the goal cards (`ChoiceCard`), 
 | `src/ui/DateMenu/DateMenu.tsx`                                                                                 | `aria-controls` only while open, as `FeaturedCard`                                             |
 | `tests/tokens.test.ts`                                                                                         | The tokens these components apply leave the allowance list                                     |
 
+## Corrections
+
+- Every failure reads `--danger` (owner, 2026-10-08): the error band, Field's Error state and the Danger button had used `--brand` for the same colour, and moved to `--danger` in Figma and in `Button.module.css` and `Field.module.css`. The mark and the rules keep `--brand`.
+- Added to what it builds: the 40 size of `Icon`, sample art as gradients so no story rehosts game art, and `aria-controls` on `DateMenu` only while it is open.
+
 ## Acceptance
 
 - [ ] Each of the nine components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
