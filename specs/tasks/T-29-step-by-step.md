@@ -30,6 +30,10 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 - `withProse(wiki, plan)` in `infra/wiki/prose.ts` gives each row its prose as paragraphs, or null; `wikiModules()` gives the wiki. A mission type's page with no Mechanics section gives its lead, and an item with no Acquisition section gives null (owner, 2026-10-14).
 - `fetchVarzia()` in `infra/worldstate/client.ts` is read only for a vaulted Prime (BR-29); its stock, or null, is the step plan's `varzia`.
 
+## From T-20
+
+- Step by step is the item's page: the same `Shell` and `from`. Onkko's line closes the page, from `VOICE`. Spec 10 quotes no line, and `language.test.ts` checks every line against the specs: settle it with the owner and quote it in spec 10 first.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

@@ -158,7 +158,10 @@ why the frames' Onkko lines read in small caps without `textCase`.
 
 A type token is a set of properties (`font-family`, `font-weight`, `font-size`,
 `text-transform`), one class each in `src/ui/type.module.css`, named in the
-table above, which a component's module takes with `composes:`. Like
+table above, which a component's module takes with `composes:`. A class that
+composes another class of its own module names the type class itself as well:
+Next's build does not follow a chain of `composes` into another file, though
+Storybook does, and `tests/tokens.test.ts` fails a chain. Like
 `tokens.css`, it is the only other file allowed raw type values. Fonts load
 through `next/font/google`, self-hosted at build time, as the variables
 `--font-cinzel`, `--font-inter` and `--font-jetbrains-mono`.

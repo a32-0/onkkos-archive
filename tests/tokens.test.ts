@@ -80,6 +80,36 @@ describe("no raw value outside the token layer", () => {
   });
 });
 
+describe("a composed type style reaches the page", () => {
+  const composes = (body: string) =>
+    [...body.matchAll(/composes:\s*([a-z0-9\s-]+?)\s*(?:from\s+["']([^"']+)["'])?\s*;/g)].map(
+      ([, names, from]) => ({ names: names!.trim().split(/\s+/), from }),
+    );
+
+  it("names every class from another file itself, since Next does not follow a chain", () => {
+    const found = modules.flatMap((rel) => {
+      const rules = new Map(
+        [...read(rel).matchAll(/^\.([a-z0-9-]+)\s*\{([^}]*)\}/gm)].map(([, name, body]) => [
+          name!,
+          composes(body!),
+        ]),
+      );
+      return [...rules].flatMap(([name, own]) => {
+        const direct = new Set(own.filter((c) => c.from).flatMap((c) => c.names));
+        return own
+          .filter((c) => !c.from)
+          .flatMap((c) => c.names)
+          .flatMap((local) => rules.get(local) ?? [])
+          .filter((c) => c.from)
+          .flatMap((c) => c.names)
+          .filter((outside) => !direct.has(outside))
+          .map((outside) => `${rel}: .${name} reaches .${outside} only through a chain`);
+      });
+    });
+    expect(found).toEqual([]);
+  });
+});
+
 describe("no token that nothing applies", () => {
   const moduleText = modules.map(read).join("\n");
   const composed = new Set(

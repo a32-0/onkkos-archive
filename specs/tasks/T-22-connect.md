@@ -26,6 +26,11 @@ The id form, its loading card, the five error bands and the demo entrance. A fai
 - A failed read lands as `/connect?reason=…&retry=…`, built by `connectAfter()` in `routes.ts`. `retry` is the Unix time, in seconds, when a retry can succeed, and only `limited` and `circuit-open` carry one (plan part 2).
 - The connect and demo actions keep the id with `writeAccountId()` in `infra/session.ts`; the field reads `readAccountId()`.
 
+## From T-20
+
+- Disconnect (`app/actions.ts`) forgets `wf_account` and `wf_since` and redirects to `/connect` with no query: the field must open empty.
+- `tests/language.test.ts` checks `src/screens/connect/` for an `OnkkoLine` fed from `VOICE`, and every line of `content/voice.ts` against the specs. `VOICE.connect` exists.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 02 holds.

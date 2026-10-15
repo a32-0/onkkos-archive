@@ -45,6 +45,7 @@
 
 .best {
   composes: title;
+  composes: label from "../type.module.css";
   color: var(--accent);
 }
 

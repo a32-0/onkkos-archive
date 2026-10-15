@@ -21,6 +21,10 @@ The search with its suggestions, and the curated goal cards.
 
 - `searchCatalog(data, placeIndex(), term)` returns every match, best first, places among them: each hit with its `kind`, `group`, `name`, `type` and `family`. The route orders it by reach (spec 08, BR-62) and keeps eight.
 
+## From T-20
+
+- Goal renders `Shell` with `tab="goal"` and the tab bar. `/goals` is already in `routes.ts`. A link into an item carries `from=goal`.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 08 holds.

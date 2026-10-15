@@ -31,11 +31,15 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
 
 ### One read per request
 
-The shell's header shows the player, so the layout and the page both need the
-profile. `readScreen()` is wrapped in React's `cache()`, which dedupes it for
-the length of one request: a screen costs one store read, however many server
-components ask. Without it every screen would cost two, and the command count
-in [`public-release.md`](../../docs/public-release.md#what-upstash-actually-spends)
+The shell's header shows the player, so the shell and the screen inside it both
+need the profile. The page renders the shell, not the root layout: Next 16.3
+gives a layout neither the pathname nor the query, so it cannot know the active
+tab, the item's `from` or Resume's entrance, and `/`, `/connect` and
+`/features` have no player to show. `readScreen()` is wrapped in React's
+`cache()`, which dedupes it for the length of one request: a screen costs one
+store read, however many server components ask. Without it a screen could cost
+two, and the command count in
+[`public-release.md`](../../docs/public-release.md#what-upstash-actually-spends)
 would be off by half.
 
 ## Where each kind of state lives

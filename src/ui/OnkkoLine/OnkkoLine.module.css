@@ -6,10 +6,12 @@
 
 .top {
   composes: line;
+  composes: voice from "../type.module.css";
 }
 
 .bottom {
   composes: line;
+  composes: voice from "../type.module.css";
   width: 100%;
   text-align: center;
 }

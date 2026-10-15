@@ -370,10 +370,13 @@ a reading of the earlier build against it was put to them.
   hours as an example and settled on twelve on 2026-10-04: nothing the app
   reads about an item changes faster than its build, and twelve hours is the
   arsenal's floor ([`public-release.md`](public-release.md#how-long-a-read-lasts)).
-- The footer reads "Read every twelve hours: last read 12 min ago, next at
-  15:30 UTC.", the next time being the last read plus `PROFILE_TTL_MS`
-  (`nextReadAt()` in `src/infra/screen.ts`). The frame drew 24 until the owner
-  corrected it to 12 on 2026-10-04.
+- The footer reads as the frame draws it: "Data is read every **12 hours**.
+  The last read was **12 minutes ago,** and the next one will be at **15:30
+  hours UTC.**", the next time being the last read plus `PROFILE_TTL_MS`
+  (`nextReadAt()` in `src/infra/screen.ts`). The age is said in whole words:
+  "just now" after a fresh read, "less than a minute ago", "1 minute ago",
+  "{n} minutes ago", "1 hour ago", "{n} hours ago" (owner, 2026-10-14). The
+  frame drew 24 until the owner corrected it to 12 on 2026-10-04.
 
 ## Resume: picking the last update played
 

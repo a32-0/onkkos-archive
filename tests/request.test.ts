@@ -195,3 +195,45 @@ describe("proxy.ts writes the last place visited (BR-46)", () => {
     }
   });
 });
+
+describe("Disconnect (spec 04)", () => {
+  it("forgets the account and the month, and lands on /connect", async () => {
+    const { writeAccountId, writeSince } = await import("@/infra/session");
+    await writeAccountId(ORDIS);
+    await writeSince("2025-11");
+    jar.set("wf_place", { value: "origin/Earth", options: {} });
+    const { disconnect } = await import("@/app/actions");
+    await expect(disconnect()).rejects.toMatchObject({ url: "/connect" });
+    expect([...jar.keys()]).toEqual(["wf_place"]);
+  });
+});
+
+describe("the player the shell shows", () => {
+  it("carries the name, the rank and the read times", async () => {
+    const { playerOf, requireScreen } = await import("@/app/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const screen = await requireScreen();
+    const player = playerOf(screen);
+    expect(player.name).toBe(screen.display.displayName);
+    expect(player.masteryRank).toBe(screen.display.masteryRank);
+    expect(player.nextReadAt - screen.fetchedAt).toBe(12 * 60 * 60 * 1000);
+    expect(player.fresh).toBe(!screen.cached);
+  });
+
+  it("counts whole minutes since the read, never a negative one", async () => {
+    const { playerOf, requireScreen } = await import("@/app/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const screen = await requireScreen();
+    expect(playerOf(screen, screen.fetchedAt + 12.5 * 60_000).minutesSinceRead).toBe(12);
+    expect(playerOf(screen, screen.fetchedAt - 60_000).minutesSinceRead).toBe(0);
+  });
+
+  it("falls back to the account id and rank 0 when the profile lacks them", async () => {
+    const { playerOf, requireScreen } = await import("@/app/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const screen = await requireScreen();
+    const player = playerOf({ ...screen, display: {} });
+    expect(player.name).toBe(ORDIS);
+    expect(player.masteryRank).toBe(0);
+  });
+});

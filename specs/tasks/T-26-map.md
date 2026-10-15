@@ -29,6 +29,10 @@ One place at a time: the place card, the lens, the groups, the place list and th
 - `readPlace()` in `infra/session.ts` reads it back as `{ system, place }`; the page checks the place exists before it opens it, and opens Start here otherwise (BR-46).
 - `gameIcons()` and `placeIcons(names)` in `infra/wiki/icons.ts` give the wiki's icon URLs by role and by place name; a missing one is absent from the map.
 
+## From T-20
+
+- The map renders `Shell` with `tab="navigation"` and the tab bar. `/system` is already in `routes.ts`. A link into an item carries `from=navigation`.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 07 holds.

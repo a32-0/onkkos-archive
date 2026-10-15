@@ -53,6 +53,8 @@ look.
 - `pnpm palette` measures every ink, reports what falls below its floor and
   exits clean. It never blocks a build.
 - `tests/language.test.ts` checks the type faces (names in the display serif,
-  readings in mono) and never a colour the frames draw.
+  readings in mono) and never a colour the frames draw. It also checks that
+  every screen gives Onkko a line from `voice.ts`, and that each line is
+  quoted as a spec writes it.
 - The eleven specs are written against the pinned design, and the plan and the
   tasks build from them.

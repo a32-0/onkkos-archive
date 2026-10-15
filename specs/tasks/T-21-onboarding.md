@@ -16,6 +16,11 @@ The first screen a new visitor sees, as spec 01 sets it.
 | `src/screens/onboarding/`   |                                                                           |
 | `src/content/onboarding.ts` | Spec 01's strings; the form's strings and `connectError` arrive with T-22 |
 
+## From T-20
+
+- The header outside the shell is `Header` with `variant="wordmark"` and `APP.name` from `content/app.ts`; there is no shell to wrap it.
+- `tests/language.test.ts` checks `src/screens/onboarding/` for an `OnkkoLine` fed from `VOICE`, and every line of `content/voice.ts` against the specs. `VOICE.onboarding` and `VOICE.onboardingEnter` exist.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 01 holds.

@@ -91,20 +91,20 @@ rules they would carry are in the constitution and the docs.
 
 ## `src/app/`: routes
 
-| Route                                                 | Spec   | Task       |
-| ----------------------------------------------------- | ------ | ---------- |
-| `layout.tsx`                                          | 04     | T-20       |
-| `page.tsx` (`/`)                                      | 01     | T-21       |
-| `connect/page.tsx`                                    | 02     | T-22       |
-| `features/page.tsx`                                   | 03     | T-23       |
-| `catch-up/page.tsx`                                   | 05, 06 | T-24, T-25 |
-| `system/page.tsx`                                     | 07     | T-26       |
-| `goals/page.tsx`                                      | 08     | T-27       |
-| `item/page.tsx`                                       | 09, 10 | T-28, T-29 |
-| `actions.ts`: connect, demo, disconnect               | 02, 04 | T-20, T-22 |
-| `screen.ts`: a failed read redirects to `/connect`    | 02     | T-19       |
-| `api/profile/[accountId]/route.ts`                    | 11     | T-18       |
-| `api/search/route.ts`: items, collectibles and places | 08     | T-27       |
+| Route                                                                          | Spec   | Task       |
+| ------------------------------------------------------------------------------ | ------ | ---------- |
+| `layout.tsx`                                                                   | 04     | T-20       |
+| `page.tsx` (`/`)                                                               | 01     | T-21       |
+| `connect/page.tsx`                                                             | 02     | T-22       |
+| `features/page.tsx`                                                            | 03     | T-23       |
+| `catch-up/page.tsx`                                                            | 05, 06 | T-24, T-25 |
+| `system/page.tsx`                                                              | 07     | T-26       |
+| `goals/page.tsx`                                                               | 08     | T-27       |
+| `item/page.tsx`                                                                | 09, 10 | T-28, T-29 |
+| `actions.ts`: connect, demo, disconnect                                        | 02, 04 | T-20, T-22 |
+| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows | 02, 04 | T-19, T-20 |
+| `api/profile/[accountId]/route.ts`                                             | 11     | T-18       |
+| `api/search/route.ts`: items, collectibles and places                          | 08     | T-27       |
 
 No route has a `loading.tsx`: no frame draws a route loading, and the one
 loading drawn is the id form's (BR-38). A goal opens Step by step, so there is
@@ -137,17 +137,17 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 
 ## `src/infra/`
 
-| Folder or file                   | Holds                                                                                                  | Task       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------ | ---------- |
-| `catalog/`                       | The read of `@wfcd/items`, of `sources.yaml` and of the update art; the catalog's data, read once      | T-14, T-16 |
-| `graph/`, `narrative/`, `place/` | The loaders of `data/`                                                                                 | T-13, T-15 |
-| `store/`                         | One store interface: Upstash in production, memory in tests and development (spec 11)                  | T-17       |
-| `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read | T-18       |
-| `wiki/`                          | The vendored modules, the wiki's client and its prose (BR-48)                                          | T-16, T-19 |
-| `worldstate/`                    | Varzia's stock                                                                                         | T-19       |
-| `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46)                                                           | T-19       |
-| `screen.ts`                      | The screen read: the profile and its readings, or a failed read's reason and retry time (BR-38)        | T-19       |
-| `ticks.ts`                       | The ticks of spec 10, in browser storage                                                               | T-29       |
+| Folder or file                   | Holds                                                                                                          | Task       |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------- |
+| `catalog/`                       | The read of `@wfcd/items`, of `sources.yaml` and of the update art; the catalog's data, read once              | T-14, T-16 |
+| `graph/`, `narrative/`, `place/` | The loaders of `data/`                                                                                         | T-13, T-15 |
+| `store/`                         | One store interface: Upstash in production, memory in tests and development (spec 11)                          | T-17       |
+| `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read         | T-18       |
+| `wiki/`                          | The vendored modules, the wiki's client and its prose (BR-48)                                                  | T-16, T-19 |
+| `worldstate/`                    | Varzia's stock                                                                                                 | T-19       |
+| `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46)                                                                   | T-19       |
+| `screen.ts`                      | The screen read: the profile and its readings, or a failed read's reason and retry time (BR-38); the next read | T-19, T-20 |
+| `ticks.ts`                       | The ticks of spec 10, in browser storage                                                                       | T-29       |
 
 ## `src/content/`
 

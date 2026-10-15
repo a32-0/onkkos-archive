@@ -20,6 +20,11 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
 
 - `briefOf()` returns blocks `blueprints` and `components`, or `how` when an item has neither (BR-55). Each line carries its `title`, its best `route`, its `reading` (the runs as a value, BR-56) and its `where` (node and mission).
 
+## From T-20
+
+- The item renders `Shell` with the tab bar and `tab={openedFrom(from)}` from `screens/shell/tabs.ts`: `from` is `navigation`, `resume` or `goal`, and anything else lights no tab.
+- `VOICE.itemOwned` ("Well chosen.") exists. The line for an item not owned is not in `voice.ts`: spec 09 quotes none, so it is settled with the owner here.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.

@@ -8,6 +8,7 @@ import { toDisplayProfile, type DisplayProfile } from "@/domain/profile/display"
 import type { FailureReason, RawProfile } from "@/domain/types/profile";
 import { loadGraph } from "@/infra/graph/load";
 import { loadEvidenceRules } from "@/infra/narrative/evidence-load";
+import { PROFILE_TTL_MS } from "@/infra/profile/cache";
 import { readProfile } from "@/infra/profile/read";
 import { readAccountId } from "@/infra/session";
 
@@ -52,3 +53,7 @@ export const readScreen = cache(async (): Promise<ScreenRead> => {
     },
   };
 });
+
+export function nextReadAt(fetchedAt: number): number {
+  return fetchedAt + PROFILE_TTL_MS;
+}

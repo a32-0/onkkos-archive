@@ -1,5 +1,8 @@
 export const ROUTES = {
   connect: "/connect",
+  system: "/system",
+  catchUp: "/catch-up",
+  goals: "/goals",
 } as const;
 
 export function connectAfter(reason: string, retryAt: number | null): string {

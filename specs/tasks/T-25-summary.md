@@ -21,6 +21,10 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 - A group is the place index's `group` gathered by `summaryGroupOf` into BR-16's: Warframes, Weapons, Companions, Vehicles, and the Collection's as they are (`docs/place-index.md`).
 
+## From T-20
+
+- The Summary keeps Resume's entrance: `Shell` with `tab="resume"`, and `tabs` as Resume had it (BR-41).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 06 holds.

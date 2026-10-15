@@ -34,6 +34,7 @@
 
 .primary {
   composes: button;
+  composes: label from "../type.module.css";
   border-color: var(--fill-strong);
   background-color: var(--fill-strong);
   color: var(--ink-inverse);
@@ -41,15 +42,18 @@
 
 .secondary {
   composes: button;
+  composes: label from "../type.module.css";
   border-color: var(--line-strong);
 }
 
 .danger {
   composes: button;
+  composes: label from "../type.module.css";
   border-color: var(--danger);
   color: var(--danger);
 }
 
 .text {
   composes: button;
+  composes: label from "../type.module.css";
 }
