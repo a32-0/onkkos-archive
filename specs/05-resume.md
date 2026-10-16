@@ -34,7 +34,12 @@ describes and no earlier frame drew. Their texts are sample values:
 
 ## What the screen does
 
-Route `/catch-up` with no month chosen. From the top, as `203:231` draws it:
+Route `/catch-up` with no month chosen, or `/catch-up?step=resume` from Two
+ways in, whatever month is kept (owner, 2026-10-15). A `step` marks the
+onboarding entrance: no tab bar, Skip and Go back. Choosing from it opens
+`/catch-up?step=summary`, the Summary of the same entrance; choosing from the
+tab opens `/catch-up`, which shows the Summary once a month is kept. From the
+top, as `203:231` draws it:
 
 1. The header with the player chip (spec 04).
 2. Onkko's line, "Once, long ago, I would look backwards, feeling for the
@@ -55,7 +60,10 @@ Route `/catch-up` with no month chosen. From the top, as `203:231` draws it:
   "Show {n} older updates" counts only what still matches. No match shows the
   line "No update by that name." in place of the cards. The frame draws no empty state; the line is the one already in `src/content/`, set in the same type as the lead.
 - **Date** opens the month list and the typed-date field (BR-08). A month or a
-  date sets `wf_since` the same way and opens the Summary.
+  date sets `wf_since` the same way and opens the Summary. The list holds the
+  twelve months back from this one, newest first; an older month is typed.
+  A typed day is `YYYY-MM-DD` and keeps its month; a day that does not exist
+  or a month still to come keeps nothing and leaves the player on Resume.
 - **Skip** opens the map on the frontier or the focus, as on Two ways in.
 - **Go back** returns to `/features`.
 
@@ -81,8 +89,10 @@ surface colour.
 
 ## Data and sources
 
-- The updates: `gameUpdates()` in `src/domain/catalog/updates.ts` (BR-09).
-- The art: `data/vendor/update-art.json`, by update name.
+- The updates: `gameUpdates()` in `src/domain/catalog/updates.ts` (BR-09), from
+  DE's patch notes (`data/vendor/patch-notes.json`, `pnpm data:patch-notes`)
+  and, before Update 19, the catalog's `introduced`.
+- The art: the patch notes' image, else `data/vendor/update-art.json` by name.
 - `wf_since`: a cookie, `YYYY-MM`, read by the server.
 - Copy lives in `src/content/`.
 

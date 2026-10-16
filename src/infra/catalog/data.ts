@@ -18,6 +18,7 @@ import {
   relicEntries,
   resourceCatalog,
 } from "@/infra/catalog/items";
+import { patchNotes } from "@/infra/catalog/patch-notes";
 import { updateArt } from "@/infra/catalog/update-art";
 import { loadSpine } from "@/infra/narrative/load";
 import { loadAcquisition, loadPlaceRewards, loadRegionResources } from "@/infra/place/load";
@@ -33,11 +34,12 @@ export function catalogData(): CatalogData {
   const regions = loadRegionResources();
   const arsenal = arsenalCatalog();
   const relics = buildRelicCatalog(relicEntries(), rewards);
+  const curated = normalizeSources(
+    parseYaml(readFileSync(path.join(process.cwd(), "data", "sources.yaml"), "utf8")),
+  );
   cached = {
     wiki,
-    curated: normalizeSources(
-      parseYaml(readFileSync(path.join(process.cwd(), "data", "sources.yaml"), "utf8")),
-    ),
+    curated,
     rewards,
     regions,
     acquisition: loadAcquisition(),
@@ -51,6 +53,7 @@ export function catalogData(): CatalogData {
       relics,
       regions,
       wiki,
+      curated: curated.items,
     }),
     gear: buildGearRecipes(gearEntries()),
   };
@@ -60,6 +63,7 @@ export function catalogData(): CatalogData {
 export function updateSources(): UpdateSources {
   cachedUpdates ??= {
     entries: introducedEntries(),
+    patchNotes: patchNotes(),
     spine: loadSpine(),
     art: updateArt(),
     arsenal: arsenalCatalog(),

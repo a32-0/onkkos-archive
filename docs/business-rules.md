@@ -400,6 +400,11 @@ a reading of the earlier build against it was put to them.
 - Rule: the list shows main updates and the numbered updates in between
   (43, 43.5…), because minor updates also ship content. Reference: DE's patch
   notes index.
+- Since 2026-10-15 that index is the list's source (owner): `pnpm
+data:patch-notes` keeps every update it names, 41.1 Vauban Heirloom and 39.1
+  Caliban Prime included, with DE's name, date and art. Hotfixes are not
+  updates and stay out. The catalog's `introduced` fills what the index lacks:
+  the updates before 19, and a date the index leaves out.
 
 ### BR-10 · Update card title band
 

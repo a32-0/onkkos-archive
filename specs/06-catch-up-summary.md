@@ -135,7 +135,7 @@ Opens the map on the frontier, or on the focus when there is no frontier
 - The tile's lines: the item's plan through `briefOf()` in
   `src/domain/catalog/summary.ts`, the same answer as its page.
 - The card: `updateStanding()` and `bannerUpdates()` in
-  `src/domain/catalog/updates.ts`; art from `data/vendor/update-art.json`.
+  `src/domain/catalog/updates.ts`; art from the patch notes, else `data/vendor/update-art.json`.
 - The frontier and the focus: as on Two ways in (spec 03, spec 07).
 - Category icons: the wiki, never rehosted.
 

@@ -12,8 +12,8 @@ importers:
         specifier: 1.39.0
         version: 1.39.0
       '@wfcd/items':
-        specifier: 1.1275.72
-        version: 1.1275.72(warframe-worldstate-data@3.16.9)
+        specifier: 1.1276.21
+        version: 1.1276.21(warframe-worldstate-data@3.16.9)
       next:
         specifier: 16.3.2
         version: 16.3.2(@babel/core@7.29.7)(@types/node@22.18.12)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -1641,8 +1641,8 @@ packages:
   '@webcontainer/env@1.1.1':
     resolution: {integrity: sha512-6aN99yL695Hi9SuIk1oC88l9o0gmxL1nGWWQ/kNy81HigJ0FoaoTXpytCj6ItzgyCEwA9kF1wixsTuv5cjsgng==}
 
-  '@wfcd/items@1.1275.72':
-    resolution: {integrity: sha512-WwPwAdDY18tmFiQBS+dLk93hgtqwRfLCpKNhiZEHTFzFWST2BVYTZBtcLzbvagl4LW6ye6prroex9RDIBRTxng==}
+  '@wfcd/items@1.1276.21':
+    resolution: {integrity: sha512-fE281gEChO7FFnF8HWdkYzavabMnPM946rUlwCSIjCV8tTTQmfTtern+/8wVDU8o5rObPkHG1I88RBKtPS1QUQ==}
     peerDependencies:
       warframe-worldstate-data: ^3.0.0
 
@@ -4807,7 +4807,7 @@ snapshots:
 
   '@webcontainer/env@1.1.1': {}
 
-  '@wfcd/items@1.1275.72(warframe-worldstate-data@3.16.9)':
+  '@wfcd/items@1.1276.21(warframe-worldstate-data@3.16.9)':
     dependencies:
       warframe-worldstate-data: 3.16.9
 

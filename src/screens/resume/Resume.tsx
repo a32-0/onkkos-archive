@@ -1,0 +1,67 @@
+import Link from "next/link";
+
+import { RESUME } from "@/content/catch-up";
+import { VOICE } from "@/content/voice";
+import { ROUTES } from "@/routes";
+import { Button } from "@/ui/Button/Button";
+import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
+
+import { Shell } from "../shell/Shell";
+import type { ShellPlayer } from "../shell/read-cycle";
+import styles from "./Resume.module.css";
+import { ResumePicker } from "./ResumePicker";
+import type { ResumeAction, ResumeMonth, ResumeUpdate } from "./state";
+
+export function Resume({
+  player,
+  disconnect,
+  onboarding,
+  updates,
+  months,
+  choose,
+  skip,
+}: {
+  player: ShellPlayer;
+  disconnect: () => Promise<void>;
+  onboarding: boolean;
+  updates: readonly ResumeUpdate[];
+  months: readonly ResumeMonth[];
+  choose: ResumeAction;
+  skip: string;
+}) {
+  return (
+    <Shell player={player} tab="resume" tabs={!onboarding} disconnect={disconnect}>
+      <div className={styles.page}>
+        <div className={styles.intro}>
+          <OnkkoLine place="top" line={VOICE.resume} />
+          <div>
+            <h1 className={styles.title}>{RESUME.title}</h1>
+            <p className={styles.lead}>{RESUME.lead}</p>
+          </div>
+        </div>
+
+        <section className={styles.panel}>
+          <div className={styles.area}>
+            <ResumePicker
+              updates={updates}
+              months={months}
+              step={onboarding ? "resume" : null}
+              choose={choose}
+            />
+          </div>
+        </section>
+
+        {onboarding && (
+          <div className={styles.actions}>
+            <Button variant="secondary" href={skip} link={Link}>
+              {RESUME.skip}
+            </Button>
+            <Button variant="text" href={ROUTES.features} link={Link}>
+              {RESUME.back}
+            </Button>
+          </div>
+        )}
+      </div>
+    </Shell>
+  );
+}

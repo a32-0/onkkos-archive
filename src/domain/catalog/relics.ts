@@ -155,3 +155,25 @@ function relicFarms(rewards: PlaceRewards): Map<string, RelicFarm[]> {
   for (const list of farms.values()) list.sort((a, b) => (b.chance ?? 0) - (a.chance ?? 0));
   return farms;
 }
+
+export function rewardOffers(
+  catalog: ReadonlyMap<string, Relic>,
+  names: readonly string[],
+): RelicOffer[] {
+  const offers: RelicOffer[] = [];
+  for (const relic of catalog.values()) {
+    const reward = relic.rewards.find((one) => names.includes(one.name));
+    if (!reward) continue;
+    offers.push({
+      relic: relic.name,
+      rarity: reward.rarity,
+      intact: reward.intact,
+      radiant: reward.radiant,
+      imageUrl: relic.imageUrl,
+      vaulted: relic.vaulted,
+      farm: relic.farms[0] ?? null,
+      farms: relic.farms.length,
+    });
+  }
+  return offers.sort((a, b) => a.relic.localeCompare(b.relic));
+}

@@ -874,3 +874,92 @@ items:
       - type: cyst
         warframe: Nidus
         days: 7
+
+  - item: Aksondol
+    cite: Aksondol
+    routes:
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 200 }]
+        part: Blueprint
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 30 }]
+        part: Barrel
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 30 }]
+        part: Receiver
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 60 }]
+        part: Link
+      - { type: market, platinum: 990, bundle: Narin Bundle }
+
+  - item: Nunchasa
+    cite: Nunchasa
+    routes:
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 200 }]
+        part: Blueprint
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 50 }]
+        part: Upper Limb
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 50 }]
+        part: Lower Limb
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 50 }]
+        part: Grip
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 50 }]
+        part: String
+      - { type: market, platinum: 990, bundle: Narin Bundle }
+
+  - item: Rathbone
+    cite: Rathbone
+    routes:
+      - type: vendor
+        vendor: Red Veil
+        costs: [{ currency: Standing, amount: 20000 }]
+        rank: Honored
+        part: Handle
+
+  - item: Belfri Ephemera
+    cite: Belfri Ephemera
+    routes:
+      - { type: market, platinum: 95 }
+      - { type: market, platinum: 340, bundle: Qorvex Basilica Collection }
+
+  - item: Gangrim Ephemera
+    cite: Gangrim Ephemera
+    routes:
+      - { type: market, platinum: 75 }
+      - { type: market, platinum: 990, bundle: Narin Bundle }
+
+  - item: Seonang Ephemera
+    cite: Seonang Ephemera
+    routes:
+      - type: vendor
+        vendor: Cephalon Melica
+        place: Zariman
+        costs: [{ currency: Entropic Kuva, amount: 500 }]
+
+  - item: Conquera III Ephemera
+    cite: Conquera III Ephemera
+    routes:
+      - { type: event, event: Conquera 2026 }

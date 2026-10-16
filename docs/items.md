@@ -91,6 +91,12 @@ odds, and joins two more sources:
   mission type stripped from the node name where DE repeats it
   (`Khufu Envoy (Caches)` running `Caches`).
 
+A part whose catalog entry carries no drops is looked up the other way:
+`rewardOffers()` finds the relics whose rewards name "{item} {part}" or
+"{item} {part} Blueprint". `@wfcd/items` 1.1276.21 dropped the drops of
+Odonata Prime's blueprint while `Relics.json` still lists it in 20 relics
+(2026-10-15).
+
 The drop tables file Railjack nodes under the planet (`Venus` holds Bifrost
 Echo), which would let "Reach Venus" tick for a farm that needs a Railjack.
 `proximaPlace()` in `src/domain/place/proxima.ts` renames such a place

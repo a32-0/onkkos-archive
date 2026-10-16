@@ -69,6 +69,7 @@ const CATEGORIES: Record<string, CollectibleGroup> = {
   Skins: "other",
   Glyphs: "other",
   Railjack: "other",
+  Honoria: "other",
 };
 
 export const COLLECTIBLE_SOURCES = Object.keys(CATEGORIES);
@@ -93,6 +94,7 @@ export interface CollectibleSources {
   relics: ReadonlyMap<string, Relic>;
   regions: RegionResources;
   wiki: Wiki;
+  curated: { has(name: string): boolean };
 }
 
 export function buildCollectibleCatalog(sources: CollectibleSources): Map<string, Collectible> {
@@ -116,7 +118,8 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
     const honoria = honorias.get(name) ?? null;
     const incarnon = INCARNON.test(name);
     const known = drops.length > 0 || found.length > 0 || sold.length > 0;
-    if (!known && family === null) continue;
+    const documented = family !== null && (told(honoria) || incarnon || sources.curated.has(name));
+    if (!known && !documented) continue;
 
     const existing = out.get(name);
     if (existing && existing.drops.length >= drops.length) continue;
@@ -348,4 +351,8 @@ function rewardArt(sources: ViewSources): Map<string, string> {
   }
   artCache.set(sources.collectibles, art);
   return art;
+}
+
+function told(honoria: WikiHonoria | null): boolean {
+  return honoria !== null && (honoria.description !== null || honoria.price.length > 0);
 }

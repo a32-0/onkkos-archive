@@ -147,8 +147,10 @@ is the clan: a profile that names one (`GuildId`) can enter it
 Constellations", not "Update 43"), and the wiki has a page image under that
 name for almost every major update. `pnpm data:refresh` asks the wiki by
 **name**, never by version: `Update 43` has no page, the name it shipped under
-does. `data/vendor/update-art.json` holds art for 61 names; a name with no art
-renders as a name, never as a placeholder.
+does. Since 2026-10-15 the art comes first from DE's patch notes
+(`data/vendor/patch-notes.json`), which carry an image for every update after
+28.3; `update-art.json` (62 names) fills the older ones. A name with
+no art renders as a name, never as a placeholder.
 
 ## What the profile cannot date
 

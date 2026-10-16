@@ -32,13 +32,13 @@ disconnect.
 
 ## Where the shell shows
 
-| Screen                                      | Header        | Tab bar |
-| ------------------------------------------- | ------------- | ------- |
-| `/`, `/connect`, `/features`                | Wordmark only | No      |
-| Resume and its Summary, from Two ways in    | With the chip | No      |
-| Resume and its Summary, from the Resume tab | With the chip | Yes     |
-| The map, Goal, the item                     | With the chip | Yes     |
-| A full-screen sheet                         | Sheet header  | No      |
+| Screen                                              | Header        | Tab bar |
+| --------------------------------------------------- | ------------- | ------- |
+| `/`, `/connect`, `/features`                        | Wordmark only | No      |
+| Resume and its Summary, from Two ways in (`?step=`) | With the chip | No      |
+| Resume and its Summary, from the Resume tab         | With the chip | Yes     |
+| The map, Goal, the item                             | With the chip | Yes     |
+| A full-screen sheet                                 | Sheet header  | No      |
 
 ## The parts
 

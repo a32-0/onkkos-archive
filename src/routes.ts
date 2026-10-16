@@ -15,3 +15,9 @@ export function connectAfter(reason: string, retryAt: number | null): string {
 export function placeRoute(system: string, place: string): string {
   return `${ROUTES.system}?${new URLSearchParams({ system, place }).toString()}`;
 }
+
+export type CatchUpStep = "resume" | "summary";
+
+export function catchUpAt(step: CatchUpStep | null): string {
+  return step ? `${ROUTES.catchUp}?step=${step}` : ROUTES.catchUp;
+}

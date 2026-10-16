@@ -2,7 +2,7 @@ import { SYNDICATE_RE } from "@/domain/catalog/acquisition";
 import { circuitTier, inCircuit } from "@/domain/catalog/circuit";
 import type { CatalogData } from "@/domain/catalog/data";
 import type { CatalogDrop, CatalogItem } from "@/domain/catalog/items";
-import { relicOffers, type RelicOffer } from "@/domain/catalog/relics";
+import { relicOffers, rewardOffers, type RelicOffer } from "@/domain/catalog/relics";
 import { partKey, rewardRoutes, vendorOffer, type RewardRoute } from "@/domain/catalog/rewards";
 import { curatedFor, vendorGates, type CuratedSource } from "@/domain/catalog/sources";
 import {
@@ -464,7 +464,11 @@ function partRoutes(
   const isCurated = curatedFor(curated, item.name, name).length > 0;
   const rewards = own ?? (isCurated ? [] : foreignPart(data, item.name, name));
   for (const reward of rewards) routes.push(rewardRoute(wiki, reward));
-  for (const offer of relicOffers(data.relics, drops)) routes.push({ kind: "relic", offer });
+  const offers =
+    drops.length > 0
+      ? relicOffers(data.relics, drops)
+      : rewardOffers(data.relics, [`${item.name} ${name}`, `${item.name} ${name} Blueprint`]);
+  for (const offer of offers) routes.push({ kind: "relic", offer });
   routes.push(...catalogRoutes(wiki, drops));
   const research = researchRoute(wiki, item.name, name, main);
   if (research) routes.push(research);

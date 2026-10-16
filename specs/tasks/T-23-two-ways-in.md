@@ -43,6 +43,7 @@ The choice between Catch me up and Reach a goal after connecting.
 - **The title is the frame's text, "TWO WAYS IN".** Display/Numeral has no case of its own, and the frame writes the title in capitals.
 - **The frame's copy (owner, 2026-10-15).** The owner changed the lead to "Pick one, you can change at any time." and shortened the first card's line to "Name the last update you played and see everything added since."; spec 03, BR-04 and the `ChoiceCard` story follow. The frame's first card is now a Choice card instance.
 - **`/system` answers 404** until T-26 builds it; Skip already opens it.
+- **"Pick up where you left off" opens `/catch-up?step=resume` (T-24, after this task's commit)**, so Resume knows it is the onboarding entrance (BR-41).
 - **The local check.** Under `pnpm build` and `pnpm start`, with the Ordis demo, at 390: the title at y 151, the cards 358 wide at x 16, Skip at y 720 and Go back ending at 828, as the frame. Skip opens `/system?system=origin&place=Mars`, Ordis's frontier; with Cy, who has no frontier, the focus, Earth. At 360 and 600 nothing is cut; from 840 the cards sit side by side at 358 each under a 358 column, and no width scrolls sideways.
 
 ## Acceptance

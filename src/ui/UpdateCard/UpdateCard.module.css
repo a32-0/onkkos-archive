@@ -8,6 +8,16 @@
   text-decoration: none;
 }
 
+.button {
+  composes: card;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: start;
+  cursor: pointer;
+}
+
 .card:hover .band {
   background-image: linear-gradient(var(--hover), var(--hover));
 }

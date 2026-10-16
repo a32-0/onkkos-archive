@@ -439,6 +439,15 @@ every Honoria (204), every Incarnon Genesis (45) and almost every Ephemera
 - **Ephemera.** 28 are sold by a vendor or the Market; the rest show the
   first sentence of their Acquisition section.
 
+A Honoria or an Ephemera enters only when a source says how to get it: a
+drop, a region, a vendor, a `sources.yaml` row, or a Honoria entry in the
+wiki's module with a description or a price. The catalog lists some the wiki
+has never documented (six Honorias and Eskhatos Infinitas Ephemera when
+`@wfcd/items` 1.1276.21 arrived); they stay out until it does, and the next
+refresh brings them in (owner, 2026-10-15). That version also moved the
+Honorias out of `Misc` into a category of their own, `Honoria`, which
+`COLLECTIBLE_SOURCES` reads.
+
 Any other collectible with a vendor offer in `Module:Vendors/data` is admitted
 too (51 mods among them). Event vendors (Nights of Naberus, Scarlet Spear…) sort
 after standing vendors, and a collectible lists at most four ways to get it.

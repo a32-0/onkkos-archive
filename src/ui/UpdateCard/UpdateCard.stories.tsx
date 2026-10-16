@@ -38,4 +38,6 @@ export const Newest: Story = {
 
 export const WithoutArt: Story = { args: { art: null } };
 
+export const Choice: Story = { args: { href: undefined, field: "since", value: "2026-06" } };
+
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

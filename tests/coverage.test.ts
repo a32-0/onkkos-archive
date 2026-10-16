@@ -48,3 +48,22 @@ describe("every item is answered from data, not prose alone", () => {
     expect(thin).toEqual([]);
   });
 });
+
+describe("what the sources leave out or fill in", () => {
+  it("leaves out a Honoria or an Ephemera no source says how to get", () => {
+    for (const name of ["Conquera Honoria", "Eskhatos Infinitas Ephemera"]) {
+      expect(data.collectibles.has(name)).toBe(false);
+    }
+    expect(data.collectibles.has("Big Spender Honoria")).toBe(true);
+    expect(data.collectibles.has("Seonang Ephemera")).toBe(true);
+  });
+
+  it("reads a part's relics from the relics' rewards when the part carries no drops", () => {
+    const item = data.arsenal.find((one) => one.name === "Odonata Prime");
+    if (!item) throw new Error("Odonata Prime is not catalogued");
+    const plan = stepPlan(data, dossier(item, data.arsenal), { now, masteryRank: 10 });
+    const blueprint = plan.sections.find((one) => one.id === "part:Blueprint");
+    expect(blueprint?.groups.flatMap((group) => group.rows).length).toBeGreaterThan(0);
+    expect(rowsOf(plan).some((row) => row.id === "part:Blueprint:none")).toBe(false);
+  });
+});

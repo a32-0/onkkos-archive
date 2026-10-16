@@ -3,7 +3,7 @@ import Link from "next/link";
 import { APP } from "@/content/app";
 import { FEATURES } from "@/content/features";
 import { VOICE } from "@/content/voice";
-import { ROUTES } from "@/routes";
+import { catchUpAt, ROUTES } from "@/routes";
 import { Button } from "@/ui/Button/Button";
 import { ChoiceCard } from "@/ui/ChoiceCard/ChoiceCard";
 import { Header } from "@/ui/Header/Header";
@@ -27,7 +27,7 @@ export function TwoWaysIn({ name, skip }: { name: string | null; skip: string })
         <div className={styles.cards}>
           <ChoiceCard
             use="two-ways-in"
-            href={ROUTES.catchUp}
+            href={catchUpAt("resume")}
             icon="hourglass"
             title={FEATURES.catchUp.title}
             line={FEATURES.catchUp.line}
