@@ -104,8 +104,10 @@ The profile carries no picture, so the avatar is the square the frame draws.
   between the wordmark and the chip, in the same order and with the same
   active treatment.
 - From 840 the player menu opens as a panel at the frame's 390 px, anchored
-  under the chip, with the same content; close or a click outside dismisses
-  it. Full-screen sheets of spec 07 follow the same rule.
+  under the chip, with the same content, over the page dimmed by `--scrim`;
+  close or a click outside dismisses it. Full-screen sheets of spec 07 follow
+  the same rule. Every menu that opens over a page dims it the same way
+  (owner, 2026-10-16).
 
 ## Components
 

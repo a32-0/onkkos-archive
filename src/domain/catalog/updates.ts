@@ -6,8 +6,10 @@ import type { RawProfile } from "@/domain/types/profile";
 
 export interface GameUpdate {
   version: string;
+  versions: string[];
   name: string;
   yearMonth: string;
+  yearMonths: string[];
   date: string;
   wikiUrl: string | null;
   items: number;
@@ -176,9 +178,11 @@ function buildUpdates(graph: Graph, sources: UpdateSources): GameUpdate[] {
   ) =>
     updates.set(version, {
       version,
+      versions: [version],
       name,
       date,
       yearMonth: date.slice(0, 7),
+      yearMonths: [date.slice(0, 7)],
       wikiUrl: typeof anchor?.url === "string" ? anchor.url : null,
       items: items.get(version) ?? 0,
       quest: questByDate.get(date) ?? null,
@@ -200,9 +204,24 @@ function buildUpdates(graph: Graph, sources: UpdateSources): GameUpdate[] {
     add(version, name, introduced.date as string, introduced, null);
   }
 
-  return [...updates.values()].sort(
+  const sorted = [...updates.values()].sort(
     (a, b) => b.date.localeCompare(a.date) || compareVersions(b.version, a.version),
   );
+  return principals(sorted);
+}
+
+function principals(sorted: readonly GameUpdate[]): GameUpdate[] {
+  const byName = new Map<string, GameUpdate>();
+  for (const update of [...sorted].reverse()) {
+    const key = update.name.toLowerCase();
+    const principal = byName.get(key);
+    if (principal) {
+      principal.versions.push(update.version);
+      if (!principal.yearMonths.includes(update.yearMonth))
+        principal.yearMonths.push(update.yearMonth);
+    } else byName.set(key, update);
+  }
+  return sorted.filter((update) => byName.get(update.name.toLowerCase()) === update);
 }
 
 function titleAlias(aliases: string[] | undefined): string | null {

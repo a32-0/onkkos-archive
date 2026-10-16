@@ -36,7 +36,8 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 - `app/catch-up/page.tsx` calls `notFound()` where the Summary goes: a kept month (`readSince()`) with no `step` or with `step=summary`. The Summary renders there, inside `Shell` with `tab="resume"` and `tabs` false when a `step` is in the address (BR-41).
 - `resume` in `app/actions.ts` writes `wf_since` and opens `catchUpAt("summary")` from Two ways in, or `catchUpAt(null)` from the tab; the update list over the page (`264:67`) can call it the same way.
-- `wf_since` keeps a month, and 29 months hold more than one update since the list reads DE's patch notes; `updateFor(yearMonth)` answers the newest of that month, which is what the last-played card shows.
+- `wf_since` keeps a month, and some months hold more than one update since the list reads DE's patch notes; `updateFor(yearMonth)` answers the newest of that month, which is what the last-played card shows.
+- Updates that share a name are one `GameUpdate`, the principal, with `versions` and `yearMonths` for the rest (BR-09). A month kept before 2026-10-16 can be one of those later months, where no update starts: `updateFor` answers null there, and the Summary has to name the update whose `yearMonths` hold it.
 - `shortMonth()` in `domain/since.ts` writes "Mar, 2026" (BR-43), and `RESUME.meta` in `content/catch-up.ts` "Update {version} · {Mon}, {year}".
 
 ## Acceptance

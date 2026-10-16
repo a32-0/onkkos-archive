@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useSyncExternalStore, useTransition } from "react";
 
 import { RESUME } from "@/content/catch-up";
 import { DateMenu } from "@/ui/DateMenu/DateMenu";
@@ -11,12 +11,37 @@ import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 import styles from "./Resume.module.css";
 import type { ResumeAction, ResumeMonth, ResumeUpdate } from "./state";
 
-const SHOWN = 3;
+const FIRST = 5;
+const MORE = 5;
+const MORE_WIDE = 10;
+const WIDE = "(min-width: 840px)";
 
 function matches(update: ResumeUpdate, query: string): boolean {
-  const needle = query.trim().toLowerCase();
-  if (needle.length === 0) return true;
-  return update.name.toLowerCase().includes(needle) || update.version.startsWith(needle);
+  const name = update.name.toLowerCase();
+  const dates = update.dates.map((date) => date.toLowerCase());
+  const rest = query
+    .toLowerCase()
+    .split(/[\s,]+/)
+    .filter((word) => word.length > 0)
+    .filter(
+      (word) =>
+        !name.includes(word) && !update.versions.some((version) => version.startsWith(word)),
+    );
+  return rest.length === 0 || dates.some((date) => rest.every((word) => date.includes(word)));
+}
+
+function watchWide(change: () => void): () => void {
+  const query = window.matchMedia(WIDE);
+  query.addEventListener("change", change);
+  return () => query.removeEventListener("change", change);
+}
+
+function useWide(): boolean {
+  return useSyncExternalStore(
+    watchWide,
+    () => window.matchMedia(WIDE).matches,
+    () => false,
+  );
 }
 
 export function ResumePicker({
@@ -31,12 +56,13 @@ export function ResumePicker({
   choose: ResumeAction;
 }) {
   const [query, setQuery] = useState("");
-  const [expanded, setExpanded] = useState(false);
+  const [shown, setShown] = useState(FIRST);
   const [dating, setDating] = useState(false);
   const [, start] = useTransition();
+  const more = useWide() ? MORE_WIDE : MORE;
 
   const found = updates.filter((update) => matches(update, query));
-  const listed = expanded ? found : found.slice(0, SHOWN);
+  const listed = found.slice(0, shown);
   const hidden = found.length - listed.length;
 
   const send = (since: string) => {
@@ -54,20 +80,20 @@ export function ResumePicker({
             label={RESUME.search}
             placeholder={RESUME.search}
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setShown(FIRST);
+            }}
           />
         </div>
         <DateMenu
           label={RESUME.date}
           heading={RESUME.monthHeading}
           months={months}
-          dayHeading={RESUME.dayHeading}
-          dayPlaceholder={RESUME.dayPlaceholder}
           open={dating}
           menuId="resume-date"
           onToggle={() => setDating(!dating)}
           onChoose={send}
-          onDay={send}
         />
       </div>
       {found.length === 0 ? (
@@ -88,7 +114,12 @@ export function ResumePicker({
           ))}
         </form>
       )}
-      {hidden > 0 && <ShowMore label={RESUME.more(hidden)} onClick={() => setExpanded(true)} />}
+      {hidden > 0 && (
+        <ShowMore
+          label={RESUME.more(Math.min(more, hidden))}
+          onClick={() => setShown(shown + more)}
+        />
+      )}
     </>
   );
 }

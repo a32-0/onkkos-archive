@@ -22,7 +22,7 @@ describe("the updates a returning player might remember", () => {
   });
 
   it("covers every update from 15, newest first by date", () => {
-    expect(updates.length).toBeGreaterThanOrEqual(120);
+    expect(updates.length).toBeGreaterThanOrEqual(80);
     expect(updates[0]?.version).toBe("44.1");
     expect(updates.at(-1)?.version).toBe("15");
     for (let index = 1; index < updates.length; index += 1) {
@@ -33,8 +33,20 @@ describe("the updates a returning player might remember", () => {
   it("lists the numbered updates between the majors, from DE's patch notes (BR-09)", () => {
     expect(updates.find((update) => update.version === "41.1")?.name).toBe("Vauban Heirloom");
     expect(updates.find((update) => update.version === "39.1")?.name).toBe("Caliban Prime");
-    expect(updates.find((update) => update.version === "19.10")?.name).toBe("The Glast Gambit");
+    expect(updates.find((update) => update.version === "38.5")).toBeDefined();
     expect(updates.some((update) => /Hotfix|Update \d/.test(update.name))).toBe(false);
+  });
+
+  it("keeps one card per name: the principal, which holds its later versions", () => {
+    const plains = updates.filter((update) => update.name === "Plains of Eidolon");
+    expect(plains.map((update) => update.version)).toEqual(["22"]);
+    expect(plains[0]?.date).toBe("2017-10-12");
+    expect(plains[0]?.versions).toContain("22.11");
+    const whispers = updates.find((update) => update.name === "Whispers in the Walls");
+    expect(whispers?.version).toBe("35");
+    expect(whispers?.versions).toEqual(["35", "35.1"]);
+    expect(whispers?.yearMonths).toEqual(["2023-12", "2024-02"]);
+    expect(new Set(updates.map((update) => update.name.toLowerCase())).size).toBe(updates.length);
   });
 
   it("dates an update the patch notes leave undated from the catalog", () => {

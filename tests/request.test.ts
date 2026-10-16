@@ -417,13 +417,13 @@ describe("Resume (spec 05, BR-41)", () => {
     throw new Error("no redirect");
   }
 
-  it("from the tab: the tab bar, three cards newest first, and no Skip or Go back", async () => {
+  it("from the tab: the tab bar, five cards newest first, and no Skip", async () => {
     jar.set("wf_account", { value: CY, options: {} });
     const html = await page();
     expect(html).toContain("RESUME");
     expect(html).toContain("Once, long ago, I would look backwards");
     expect(html).toMatch(/<nav[^>]*>/);
-    expect(html.match(/<button [^>]*name="since"/g)).toHaveLength(3);
+    expect(html.match(/<button [^>]*name="since"/g)).toHaveLength(5);
     expect(html.match(/>Newest</g)).toHaveLength(1);
     expect(html).toMatch(/Update [\d.]+ · [A-Z][a-z]{2}, \d{4}/);
     expect(html).toMatch(/Show \d+ older updates/);
@@ -431,12 +431,12 @@ describe("Resume (spec 05, BR-41)", () => {
     expect(html).not.toContain('name="step"');
   });
 
-  it("from Two ways in: Skip to Start here, Go back to /features, no tab bar", async () => {
+  it("from Two ways in: Skip to Start here, no Go back and no tab bar", async () => {
     jar.set("wf_account", { value: CY, options: {} });
     const html = await page("resume");
     expect(html).not.toMatch(/<nav/);
     expect(html).toMatch(/<a [^>]*href="\/system\?system=[^"]+"[^>]*>Skip<\/a>/);
-    expect(html).toMatch(/<a [^>]*href="\/features"[^>]*>Go back<\/a>/);
+    expect(html).not.toContain("Go back");
     expect(html).toContain('<input type="hidden" name="step" value="resume"/>');
   });
 
@@ -452,19 +452,19 @@ describe("Resume (spec 05, BR-41)", () => {
     await expect(page()).rejects.toBeInstanceOf(NotFound);
   });
 
-  it("keeps the month of a card, a month or a typed day, and opens the Summary", async () => {
+  it("keeps the month of a card or of Date, and opens the Summary", async () => {
     const { resume } = await import("@/app/actions");
     expect(await landing(() => resume(choose({ since: "2025-06" })))).toBe("/catch-up");
     expect(jar.get("wf_since")?.value).toBe("2025-06");
-    expect(await landing(() => resume(choose({ since: "2024-02-29", step: "resume" })))).toBe(
+    expect(await landing(() => resume(choose({ since: "2024-02", step: "resume" })))).toBe(
       "/catch-up?step=summary",
     );
     expect(jar.get("wf_since")?.value).toBe("2024-02");
   });
 
-  it("keeps nothing from a date it cannot read, and stays on Resume", async () => {
+  it("keeps nothing from a month it cannot read, and stays on Resume", async () => {
     const { resume } = await import("@/app/actions");
-    expect(await landing(() => resume(choose({ since: "2024-02-30", step: "resume" })))).toBe(
+    expect(await landing(() => resume(choose({ since: "2024-02-29", step: "resume" })))).toBe(
       "/catch-up?step=resume",
     );
     expect(jar.has("wf_since")).toBe(false);

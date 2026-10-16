@@ -336,7 +336,7 @@ months, and the menu took its title, "Or the exact day", and the placeholder
 "YYYY-MM-DD". The page gained the icons `close` and `check-box`, Field's
 Filled state, Checkbox's Focus, Tab's Hover and Focus, and two component
 sets built from the screens' own layers: **Wiki link** (Wiki, Our page, Focus)
-and **Date menu** (Closed, Open). Button's description says that Loading is
+and **Date menu** (Closed, Open). On 2026-10-16 the exact day left the menu, which keeps the months, and a date is typed in the search (BR-08). Button's description says that Loading is
 drawn as Disabled. Error band, Field's Error state and the Danger button were bound to
 `--danger` instead of `--brand`, which they had used for the same colour, so
 the mark and the rules keep `--brand` and every failure reads `--danger`.

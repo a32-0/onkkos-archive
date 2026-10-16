@@ -32,20 +32,8 @@ export function recentMonths(now: Date, count: number): string[] {
   );
 }
 
-const DAY = /^(\d{4})-(\d{2})-(\d{2})$/;
-
 export function sinceFrom(value: unknown, now: Date): string | null {
   if (typeof value !== "string") return null;
   const typed = value.trim();
-  const day = DAY.exec(typed);
-  let month: string | null = null;
-  if (day) {
-    const date = new Date(`${typed}T00:00:00Z`);
-    if (!Number.isNaN(date.getTime()) && date.toISOString().startsWith(typed)) {
-      month = toYearMonth(date);
-    }
-  } else if (isYearMonth(typed)) {
-    month = typed;
-  }
-  return month !== null && month <= toYearMonth(now) ? month : null;
+  return isYearMonth(typed) && typed <= toYearMonth(now) ? typed : null;
 }

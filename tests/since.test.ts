@@ -36,15 +36,15 @@ describe("Resume's months (BR-08, BR-43)", () => {
     expect(recentMonths(new Date("2026-01-31T00:00:00Z"), 2)).toEqual(["2026-01", "2025-12"]);
   });
 
-  it("takes a month or a typed day, and keeps the month", () => {
+  it("takes a month", () => {
     expect(sinceFrom("2026-03", NOW)).toBe("2026-03");
-    expect(sinceFrom(" 2025-12-24 ", NOW)).toBe("2025-12");
+    expect(sinceFrom(" 2025-12 ", NOW)).toBe("2025-12");
   });
 
-  it("refuses a day that does not exist, a future month and anything else", () => {
-    expect(sinceFrom("2026-02-30", NOW)).toBeNull();
+  it("refuses a day, a future month and anything else", () => {
+    expect(sinceFrom("2025-12-24", NOW)).toBeNull();
     expect(sinceFrom("2026-11", NOW)).toBeNull();
-    expect(sinceFrom("2026-11-01", NOW)).toBeNull();
+    expect(sinceFrom("2026-13", NOW)).toBeNull();
     expect(sinceFrom("March", NOW)).toBeNull();
     expect(sinceFrom(null, NOW)).toBeNull();
   });

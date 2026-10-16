@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { RESUME } from "@/content/catch-up";
 import { VOICE } from "@/content/voice";
-import { ROUTES } from "@/routes";
 import { Button } from "@/ui/Button/Button";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
@@ -55,9 +54,6 @@ export function Resume({
           <div className={styles.actions}>
             <Button variant="secondary" href={skip} link={Link}>
               {RESUME.skip}
-            </Button>
-            <Button variant="text" href={ROUTES.features} link={Link}>
-              {RESUME.back}
             </Button>
           </div>
         )}

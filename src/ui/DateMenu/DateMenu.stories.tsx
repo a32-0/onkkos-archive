@@ -18,13 +18,10 @@ const meta = {
     label: "Date",
     heading: "Month you last played",
     months: MONTHS,
-    dayHeading: "Or the exact day",
-    dayPlaceholder: "YYYY-MM-DD",
     open: false,
     menuId: "date-menu",
     onToggle: () => {},
     onChoose: () => {},
-    onDay: () => {},
   },
   decorators: [
     (Story) => (

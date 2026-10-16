@@ -208,9 +208,11 @@ a reading of the earlier build against it was put to them.
   Settled by the owner on 2026-10-05.
 - Type: behaviour.
 - Rule: reached from "Pick up where you left off" (BR-40's screen), Resume is
-  onboarding and looks as drawn: no tab bar, with Skip and Go back.
+  onboarding and looks as drawn: no tab bar, with Skip.
   Reached from the Resume tab, it is a section of the shell: the tab bar
-  shows and Skip and Go back do not. Everything else is the same screen.
+  shows and Skip does not. Everything else is the same screen.
+- Resume has no Go back since 2026-10-16 (owner): the way back is the
+  browser's, and Skip is the one way forward without choosing.
 - The Summary that follows keeps the entrance: no tab bar after the onboarding
   entrance, the tab bar after the tab's. Its frames draw the first. Settled by
   the owner on 2026-10-05.
@@ -389,8 +391,12 @@ a reading of the earlier build against it was put to them.
   · pin (344, 321) · layer: Shipment Section › Date Filter Container (the
   "Date" button) · comment `1931751624`
 - Type: behaviour.
-- Rule: "Date" opens a dropdown to choose a date. Beside it, a field accepts a
-  full date typed by hand.
+- Rule: "Date" opens a dropdown to choose a month, over the page dimmed by
+  `--scrim`. A date is typed in the search beside it (owner, 2026-10-16): a
+  year, a month or a day, as "2024", "2024-03", "Mar 2024" or "March 2024",
+  filters the cards to the updates of that time, and the player picks one.
+  The field under the months that took a full day was removed then, because
+  the search does the same with less.
 
 ### BR-09 · Main updates and minor updates both count
 
@@ -405,6 +411,12 @@ data:patch-notes` keeps every update it names, 41.1 Vauban Heirloom and 39.1
   Caliban Prime included, with DE's name, date and art. Hotfixes are not
   updates and stay out. The catalog's `introduced` fills what the index lacks:
   the updates before 19, and a date the index leaves out.
+- One card per name (owner, 2026-10-16). Before Update 24 DE named the
+  numbered updates after the major they followed, so 22 to 22.11 all read
+  "Plains of Eidolon". Updates that share a name keep only the principal, the
+  oldest, with its date: measuring from it shows more, never less. Its later
+  versions and their months still find it in the search ("22.4", "Feb 2024"
+  finds Whispers in the Walls through 35.1).
 
 ### BR-10 · Update card title band
 

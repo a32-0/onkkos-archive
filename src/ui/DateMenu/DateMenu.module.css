@@ -1,3 +1,10 @@
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--scrim);
+}
+
 .trigger {
   composes: label from "../type.module.css";
   --date-trigger-height: 48px;
@@ -34,7 +41,7 @@
   position: absolute;
   inset-inline: 0;
   top: calc(100% + var(--space-4));
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -79,12 +86,4 @@
 .month:focus-visible {
   outline: var(--border-2) solid var(--focus);
   outline-offset: var(--space-1);
-}
-
-.day {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  margin: 0;
-  padding-top: var(--space-5);
 }

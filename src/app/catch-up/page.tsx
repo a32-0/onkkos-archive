@@ -22,6 +22,10 @@ export default async function CatchUpPage({ searchParams }: { searchParams: Sear
     since: update.yearMonth,
     name: update.name,
     version: update.version,
+    versions: update.versions,
+    dates: update.yearMonths.map((month) =>
+      [month, describeMonth(month), shortMonth(month)].join(" "),
+    ),
     meta: RESUME.meta(update.version, shortMonth(update.yearMonth)),
     art: update.art,
     newest: index === 0,
