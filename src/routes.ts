@@ -11,3 +11,7 @@ export function connectAfter(reason: string, retryAt: number | null): string {
   if (retryAt !== null) query.set("retry", String(retryAt));
   return `${ROUTES.connect}?${query.toString()}`;
 }
+
+export function placeRoute(system: string, place: string): string {
+  return `${ROUTES.system}?${new URLSearchParams({ system, place }).toString()}`;
+}

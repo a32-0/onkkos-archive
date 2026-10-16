@@ -32,7 +32,7 @@ tab bar and no player chip. From the top, as `203:140` draws it:
 1. Onkko's line, "We have, and shall have a long association, {name}.", with
    the player's display name in the accent colour. A profile with no display
    name ends the line at "association."
-2. **Two ways in**, and "Pick one, you can switch at any time."
+2. **Two ways in**, and "Pick one, you can change at any time."
 3. Two cards, each a link, each with its icon, title and one line (BR-04):
    - **Pick up where you left off** opens `/catch-up`, the update picker
      (spec 05).
@@ -55,8 +55,12 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
 - The display name: the profile's `DisplayName`, through the screen context.
 - Whether the player is past Venus: `asksWhenLastPlayed()` in
   `src/domain/graph/star-chart.ts`.
-- The frontier: `findNextPlanet`. The focus does not exist in code yet
-  (BR-05); spec 07 defines it, and Skip and Next use the same one.
+- Skip's place: `startHere()` in `src/domain/place/start-here.ts`, the
+  frontier (`findNextPlanet`) or else the focus (`findFocus`, as spec 07
+  defines it) over each released place's share of readable items mastered;
+  with neither, the first place of the Origin System (BR-46).
+  `startHereOf()` in `src/app/screen.ts` makes it the map's address, and
+  Next on the Summary uses the same one.
 - Copy lives in `src/content/` (`VOICE.features`, `FEATURES`).
 
 ## Acceptance

@@ -321,3 +321,67 @@ describe("Connect and the demos (spec 02, BR-03)", () => {
     expect(entranceAfter({ Missions: [] })).toBe("/goals");
   });
 });
+
+describe("Two ways in (spec 03, BR-03, BR-40)", () => {
+  async function page(): Promise<string> {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: FeaturesPage } = await import("@/app/features/page");
+    return renderToStaticMarkup(await FeaturesPage());
+  }
+
+  async function landing(): Promise<string> {
+    try {
+      await page();
+    } catch (error) {
+      if (error instanceof Redirected) return error.url;
+      throw error;
+    }
+    throw new Error("no redirect");
+  }
+
+  it("sends a visitor with no account to /connect", async () => {
+    expect(await landing()).toBe("/connect");
+  });
+
+  it("sends a failed read back to /connect with its band (BR-38)", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({ ok: false, reason: "not-found" }),
+    }));
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(await landing()).toBe("/connect?reason=not-found");
+  });
+
+  it("sends a new player who opens /features by its address to /goals", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({
+        ok: true,
+        profile: { Missions: [] },
+        cached: false,
+        fetchedAt: 0,
+      }),
+    }));
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(await landing()).toBe("/goals");
+  });
+
+  it("greets Ordis by name and opens Skip on the frontier, Go back on the id form", async () => {
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const html = await page();
+    expect(html).toMatch(/association, <span[^>]*>Ordis<\/span>\./);
+    expect(html).toContain('href="/catch-up"');
+    expect(html).toContain('href="/goals"');
+    expect(html).toMatch(
+      /<a [^>]*href="\/system\?system=origin&amp;place=[A-Z][a-z]+"[^>]*>Skip<\/a>/,
+    );
+    expect(html).toMatch(/<a [^>]*href="\/connect"[^>]*>Go back<\/a>/);
+    expect(html).not.toMatch(/<nav|aria-haspopup/);
+  });
+
+  it("ends the line at association when the profile has no name", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({ ok: true, profile: {}, cached: false, fetchedAt: 0 }),
+    }));
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(await page()).toContain("We have, and shall have a long association.</p>");
+  });
+});

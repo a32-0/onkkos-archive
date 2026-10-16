@@ -3,7 +3,7 @@ import { BAND } from "./failures";
 export const CONNECT = {
   lead: "Onkko will read your public profile and tell you what's left. Nothing is written to your account.",
   fieldLabel: "Account ID",
-  fieldPlaceholder: "000000000000000000000001",
+  fieldPlaceholder: "4b2e9f17c3a85d06e1f74a9c",
   submit: "Connect",
   reading: "Onkko’s reading your codex...",
   whereTitle: "Where do I find this?",
@@ -19,7 +19,7 @@ export const CONNECT = {
     { text: "Copy the 24-character value of the cookie:", value: [{ label: null, text: "gid" }] },
   ],
   exampleLead: "It will look something like this:",
-  example: "gid   000000000000000000000001",
+  example: "gid   4b2e9f17c3a85d06e1f74a9c",
   publicNote:
     "It’s a safe public read endpoint, the same one the game uses to view another player.",
   demoTitle: "Explore with a demo",

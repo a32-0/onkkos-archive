@@ -1,6 +1,6 @@
 .page {
   --onboarding-viewport: 100dvh;
-  --onboarding-column: 326px;
+  --onboarding-column: none;
   --onboarding-wordmark: 80px;
   --onboarding-art-x: 30%;
   position: relative;
@@ -50,4 +50,10 @@
   gap: var(--space-6);
   width: 100%;
   max-width: var(--onboarding-column);
+}
+
+@media (min-width: 600px) {
+  .page {
+    --onboarding-column: 326px;
+  }
 }

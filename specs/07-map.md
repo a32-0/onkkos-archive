@@ -190,8 +190,9 @@ Choosing a system returns to the place list, now listing that system's places.
   from `XPInfo`.
 - Nodes: `Missions[]` and `Missions[].Tier` counted against the node catalog.
 - New: `releasesSince()` from the month in `wf_since`.
-- The frontier: `findNextPlanet`; the focus: a new function beside it, as
-  defined above, with tests.
+- The frontier: `findNextPlanet`; the focus: `findFocus` beside it, as
+  defined above, with tests. Start here: `startHere()` in
+  `src/domain/place/start-here.ts`, built with Two ways in (spec 03).
 - Reach: one predicate in `src/domain/place/reach.ts` over `reachedPlaces`,
   the `after` of `off_chart_places`, `PlayerLevel` and the catalog's
   `masteryReq` (BR-59).

@@ -33,6 +33,10 @@ One place at a time: the place card, the lens, the groups, the place list and th
 
 - The map renders `Shell` with `tab="navigation"` and the tab bar. `/system` is already in `routes.ts`. A link into an item carries `from=navigation`.
 
+## From T-23
+
+- `startHere()` in `domain/place/start-here.ts` gives the place that carries Start here (BR-44), the frontier or the focus, or `null` with neither; `firstPlace()` gives the Origin System's first place for a first opening with no Start here (BR-46). `placeRoute(system, place)` in `routes.ts` writes the map's address, which Skip already opens.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 07 holds.

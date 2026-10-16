@@ -27,3 +27,11 @@ export const Bottom: Story = {
 export const Art: Story = {
   args: { place: "art", line: "You were anticipated. Our interaction begins." },
 };
+
+export const Accent: Story = {
+  args: {
+    place: "top",
+    line: "We have, and shall have a long association, Cy.",
+    accent: "Cy",
+  },
+};

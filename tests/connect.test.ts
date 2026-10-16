@@ -24,7 +24,7 @@ function page(initial: ConnectState): string {
 describe("the id form (spec 02)", () => {
   it("holds the remembered id, or nothing, under the frame's placeholder", () => {
     const empty = page({ value: "", reason: null, retryAt: null });
-    expect(empty).toContain('placeholder="000000000000000000000001"');
+    expect(empty).toContain('placeholder="4b2e9f17c3a85d06e1f74a9c"');
     expect(empty).toMatch(/<input[^>]*value=""/);
     expect(page({ value: REMEMBERED, reason: null, retryAt: null })).toMatch(
       new RegExp(`<input[^>]*value="${REMEMBERED}"`),

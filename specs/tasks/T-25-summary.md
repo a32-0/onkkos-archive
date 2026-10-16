@@ -28,6 +28,10 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 - `--scrim` left the allowance list of `tests/tokens.test.ts` in T-21: the splash's veil over the art applies it, and the frame `206:903` is bound to the `scrim` variable at 60%.
 
+## From T-23
+
+- Next opens `startHereOf(screen)` from `app/screen.ts`, the address Skip opens on Two ways in: the frontier, or the focus, or the Origin System's first place (BR-36, BR-46).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 06 holds.

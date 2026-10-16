@@ -45,8 +45,8 @@ tabs or player chip. From the top, as `202:38` draws it:
    your public profile and tell you what's left. Nothing is written to your
    account."
 2. The **Account ID** field and **Connect**. The field's placeholder is the
-   frame's `000000000000000000000001`. When the device remembers an id
-   (`wf_account`), the field holds it (BR-01).
+   frame's `4b2e9f17c3a85d06e1f74a9c`, an invented id of the real shape. When
+   the device remembers an id (`wf_account`), the field holds it (BR-01).
 3. **Where do I find this?**: three numbered steps. On a computer,
    log in at `https://www.warframe.com`, a link that opens in a new tab; in the
    same browser, open the developer tools and the cookies (**On Firefox:**
@@ -106,8 +106,14 @@ draws a failure.
   `src/infra/profile/fixture-source.ts`. The Mastery Rank on each button is
   read from its fixture's `PlayerLevel`, so the label cannot drift from the
   data.
-- The frame's example id is Cy's demo id. Typing it opens Cy, which is
-  harmless and needs nothing more.
+- The frame's example id, `4b2e9f17c3a85d06e1f74a9c`, is invented: 24
+  characters of 0–9 and a–f, so it reads as an id, and it is no demo's id.
+  It cannot be anyone's. An account id is a MongoDB ObjectId, whose first 8
+  characters are its creation time in seconds; `4b2e9f17` is 20 December
+  2009, before Warframe's closed beta in October 2012, so no account was
+  created then (owner, 2026-10-15). A replacement keeps a date before 2012.
+  Typing it reads it like any other id: under the fixture source it opens Cy,
+  the default fixture; live, it spends one read and ends in "not found".
 - Copy lives in `src/content/`, the band's messages included.
 
 ## Acceptance
@@ -115,8 +121,9 @@ draws a failure.
 1. At 390 px each state matches its frame: layout, type, colour, spacing and
    copy.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
-   page does not scroll sideways. Wider than the frame the page stays one
-   centred column at the frame's width (BR-39).
+   page does not scroll sideways. Below 600 the cards keep 16 px from the
+   window's edges at every width; from 600 the page stays one centred column
+   at the frame's width (BR-39).
 3. A malformed id shows the `invalid-id` band and makes no request.
 4. Each of the seven reasons shows its BR-38 message; the three that share a
    message show it with the retry time when one is known, and "try again in a

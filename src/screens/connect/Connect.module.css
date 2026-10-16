@@ -1,5 +1,6 @@
 .page {
-  --connect-column: 390px;
+  --connect-column: none;
+  --connect-reading: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-7);
@@ -154,5 +155,12 @@
 
 .reading {
   width: 100%;
-  max-width: calc(var(--connect-column) - var(--gutter) * 2);
+  max-width: var(--connect-reading);
+}
+
+@media (min-width: 600px) {
+  .page {
+    --connect-column: 390px;
+    --connect-reading: 358px;
+  }
 }

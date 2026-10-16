@@ -3,10 +3,13 @@ import "server-only";
 import { redirect } from "next/navigation";
 
 import { asksWhenLastPlayed } from "@/domain/graph/star-chart";
+import { firstPlace, startHere } from "@/domain/place/start-here";
+import { itemRanks } from "@/domain/place/state";
 import type { RawProfile } from "@/domain/types/profile";
 import { loadGraph } from "@/infra/graph/load";
+import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
 import { nextReadAt, readScreen, type Screen } from "@/infra/screen";
-import { connectAfter, ROUTES } from "@/routes";
+import { connectAfter, placeRoute, ROUTES } from "@/routes";
 import type { ShellPlayer } from "@/screens/shell/read-cycle";
 
 export async function requireScreen(): Promise<Screen> {
@@ -24,6 +27,19 @@ export function playerOf(screen: Screen, now: number = Date.now()): ShellPlayer 
     nextReadAt: nextReadAt(screen.fetchedAt),
     fresh: !screen.cached,
   };
+}
+
+export function startHereOf(screen: Screen): string {
+  const { systems } = loadSystems();
+  const place =
+    startHere(
+      screen.graph,
+      screen.profile,
+      systems,
+      placeIndex(),
+      itemRanks(screen.profile, placeCatalog().entries),
+    ) ?? firstPlace(systems);
+  return place ? placeRoute(place.system, place.place) : ROUTES.system;
 }
 
 export function entranceAfter(profile: RawProfile): string {

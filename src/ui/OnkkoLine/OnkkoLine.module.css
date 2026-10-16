@@ -21,3 +21,7 @@
   composes: voice from "../type.module.css";
   color: var(--ink);
 }
+
+.accent {
+  color: var(--accent);
+}

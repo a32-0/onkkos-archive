@@ -50,7 +50,8 @@ One. The screen has no data, so it has no loading, empty or error state.
 1. At 390 px the screen matches `206:903`: layout, type, colour, spacing and
    copy.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
-   page does not scroll sideways. Wider than the frame (BR-39), the wordmark
+   page does not scroll sideways. Below 600 the frame line keeps 16 px from
+   the window's edges and Begin fills it; from 600 (BR-39), the wordmark
    stays in the middle and the button and the line at the foot of the frame
    line, one centred column at the frame's width; the
    art covers the whole window and the thin frame line stays inset from the

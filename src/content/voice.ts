@@ -2,7 +2,10 @@ export const VOICE = {
   onboarding: "You were anticipated. Our interaction begins.",
   onboardingEnter: "Begin",
   connect: "It is time. Utter the name.",
-  features: (name: string) => `We have, and shall have a long association, ${name}.`,
+  features: (name: string | null) =>
+    name
+      ? `We have, and shall have a long association, ${name}.`
+      : "We have, and shall have a long association.",
   resume:
     "Once, long ago, I would look backwards, feeling for the fading tendrils of our might-have-beens.",
   summary: "We are prepared to provide.",

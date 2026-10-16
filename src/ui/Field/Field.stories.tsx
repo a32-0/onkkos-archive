@@ -5,7 +5,7 @@ import { Field } from "./Field";
 const meta = {
   title: "Fields/Field",
   component: Field,
-  args: { "aria-label": "Account id", placeholder: "000000000000000000000001", onChange: () => {} },
+  args: { "aria-label": "Account id", placeholder: "4b2e9f17c3a85d06e1f74a9c", onChange: () => {} },
   decorators: [
     (Story) => (
       <div style={{ padding: "var(--space-7) var(--space-8)", background: "var(--surface)" }}>

@@ -1,0 +1,73 @@
+.screen {
+  --features-viewport: 100dvh;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--features-viewport);
+}
+
+.page {
+  --features-column: none;
+  --features-reading: none;
+  --features-cards: 1fr;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--features-column);
+  margin: 0 auto;
+  padding: var(--space-7) var(--gutter) var(--space-6);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--features-reading);
+}
+
+.title {
+  composes: numeral from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.lead {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: var(--features-cards);
+  justify-content: center;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--features-reading);
+  margin-top: auto;
+}
+
+@media (min-width: 600px) {
+  .page {
+    --features-column: 390px;
+  }
+}
+
+@media (min-width: 840px) {
+  .page {
+    --features-column: none;
+    --features-reading: 358px;
+    --features-cards: repeat(2, 358px);
+  }
+}

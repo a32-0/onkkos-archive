@@ -79,8 +79,9 @@ cite one. The Figma comment id is given beside each for traceability.
   | 840 to 1199 | expanded | The tab bar moves into the header, the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
   | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                          |
 
-- Outside the shell, the splash and the id form stay one centred column at the
-  frame's width. Background art covers the whole window at every width.
+- Outside the shell, the splash and the id form follow the compact class below
+  600, fluid with the 16 px gutter at the window's edges, and from 600 stay one
+  centred column at the frame's width (owner, 2026-10-15). Background art covers the whole window at every width.
 - A sheet or menu that the frame draws full width, such as the player menu
   (`270:1145`), opens from 840 up as a panel at the frame's 390 px, anchored to
   what opened it.
@@ -341,9 +342,11 @@ a reading of the earlier build against it was put to them.
   BR-35 took out of Catch me up. The owner chose to correct the frame with
   these two lines, which the build then follows:
   - "Pick up where you left off": "Name the last update you played and see
-    everything added to your arsenal and collection since."
+    everything added since."
   - "Set a goal": "Pick one thing to chase and get the road to it, in order,
     read from your profile."
+- The owner shortened the first line on 2026-10-15, dropping "to your arsenal
+  and collection".
 
 ### BR-05 · "Set a goal" runs on frontier and focus
 
