@@ -33,6 +33,7 @@ The first screen a new visitor sees, as spec 01 sets it.
 - **The art.** The frame's image, 1024 × 683, sits at `src/screens/onboarding/art.png` and is drawn by `next/image`, covering the window, at 30% from the left as the frame crops it.
 - **The frame line** is an outline drawn inside the box, as Figma draws a stroke, so the column is 326 px wide at 390, as in the frame.
 - **The remembered id in the field** (spec 01, acceptance 3) is Connect's, so T-22 checks it; this task checks that Begin opens `/connect`.
+- **`pnpm typecheck` runs `next typegen` first.** The art is the first image a module imports, and the types for it live in `next-env.d.ts`, which git ignores; a working copy that had run `next build` had it, and CI did not, so `check.yml` failed on `./art.png`. `docs/development.md` says so.
 - **The local check.** Under `pnpm build` and `pnpm start`, at 390 × 844 the frame line is 358 × 812 at 16, the wordmark starts at y 320, and Begin is 326 wide at x 32, as in the frame; at 360, 600, 840, 1280 and 1440 nothing overflows, the column stays 326 wide and centred, the art covers the window and the line stays 16 px in. Begin landed on `/connect`, and `/` made no request outside the app. This is evidence, not the owner's comparison.
 
 ## Acceptance

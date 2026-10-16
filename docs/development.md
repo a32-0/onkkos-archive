@@ -29,6 +29,10 @@ the shared store behind the profile's locks.
 - knip finds files, exports and dependencies that nothing reaches. Its Vitest
   and Storybook plugins count tests and stories as entry points, so a module
   that only its tests or its stories use is not reported as dead.
+- `pnpm typecheck` runs `next typegen` before `tsc`. `next-env.d.ts`, which
+  lets TypeScript import an image, is ignored by git and written by Next, so a
+  fresh clone, as in CI, has it only after `next typegen`, `next dev` or
+  `next build`.
 
 ```bash
 pnpm typecheck
