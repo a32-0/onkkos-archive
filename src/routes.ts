@@ -1,5 +1,6 @@
 export const ROUTES = {
   connect: "/connect",
+  features: "/features",
   system: "/system",
   catchUp: "/catch-up",
   goals: "/goals",

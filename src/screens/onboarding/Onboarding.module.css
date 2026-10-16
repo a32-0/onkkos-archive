@@ -1,6 +1,7 @@
 .page {
   --onboarding-viewport: 100dvh;
   --onboarding-column: 326px;
+  --onboarding-wordmark: 80px;
   --onboarding-art-x: 30%;
   position: relative;
   display: flex;
@@ -27,22 +28,20 @@
 .frame {
   display: flex;
   flex: 1 1 0;
+  flex-direction: column;
   min-width: 0;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: var(--space-7);
   padding: var(--space-6);
   outline: var(--border-1) solid var(--brand);
   outline-offset: calc(var(--border-1) * -1);
   backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-7);
-  width: 100%;
-  max-width: var(--onboarding-column);
+.spacer {
+  flex: none;
+  height: var(--onboarding-wordmark);
 }
 
 .content {
@@ -50,4 +49,5 @@
   flex-direction: column;
   gap: var(--space-6);
   width: 100%;
+  max-width: var(--onboarding-column);
 }

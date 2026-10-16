@@ -17,14 +17,13 @@ export function Onboarding() {
       <Image className={styles.art} src={art} alt="" fill sizes="100vw" preload />
       <div className={styles.scrim} />
       <div className={styles.frame}>
-        <div className={styles.column}>
-          <Wordmark size="splash" label={APP.name} />
-          <div className={styles.content}>
-            <Button href={ROUTES.connect} link={Link}>
-              {VOICE.onboardingEnter}
-            </Button>
-            <OnkkoLine place="art" line={VOICE.onboarding} />
-          </div>
+        <div className={styles.spacer} />
+        <Wordmark size="splash" label={APP.name} />
+        <div className={styles.content}>
+          <Button href={ROUTES.connect} link={Link}>
+            {VOICE.onboardingEnter}
+          </Button>
+          <OnkkoLine place="art" line={VOICE.onboarding} />
         </div>
       </div>
     </main>

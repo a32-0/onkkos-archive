@@ -25,6 +25,10 @@ The choice between Catch me up and Reach a goal after connecting.
 
 - `Button` takes `href` and `link` and then draws a link that looks the same, for a button that only opens another screen.
 
+## From T-22
+
+- `ROUTES.features` exists. Connect and both demos send a player past Venus here through `entranceAfter()` in `app/screen.ts` (BR-03); the Ordis demo stops at Mercury, so it lands here too.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 03 holds.

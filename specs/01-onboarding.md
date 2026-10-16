@@ -27,7 +27,8 @@ behaviour and where things come from.
 - It holds what the frame draws, and nothing else: the background art, the
   thin frame line, the wordmark (quill and "Onkko's Archive"), a **Begin**
   button, and Onkko's line under it, "You were anticipated. Our interaction
-  begins."
+  begins." The wordmark sits in the middle of the frame line, and Begin and
+  the line at its foot (owner, 2026-10-15).
 - **Begin** opens `/connect`. When the device remembers an account id
   (`wf_account`), the form opens with it already in the field, so the player
   only presses Connect (BR-01). The splash itself never reads the profile and
@@ -49,8 +50,9 @@ One. The screen has no data, so it has no loading, empty or error state.
 1. At 390 px the screen matches `206:903`: layout, type, colour, spacing and
    copy.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
-   page does not scroll sideways. Wider than the frame (BR-39), the wordmark,
-   the button and the line stay one centred column at the frame's width; the
+   page does not scroll sideways. Wider than the frame (BR-39), the wordmark
+   stays in the middle and the button and the line at the foot of the frame
+   line, one centred column at the frame's width; the
    art covers the whole window and the thin frame line stays inset from the
    window's edges.
 3. Begin opens `/connect`; with `wf_account` set, the field holds that id.

@@ -257,9 +257,10 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
   `.module.css`, outside `tokens.css` and `type.module.css`. `0`, `100%` and
   layout keywords are allowed.
 - A test fails on a token that no module uses. Its allowance list holds what
-  no component applies, each until the screen that applies it: `.numeral`
-  and `.mono-label` (T-22, Connect) and `.heading` (T-26, the place list's system card), which deletes
-  the list. `--space-3` (6) was applied nowhere, in the code or in Figma,
+  no component applies, each until the screen that applies it: `.heading`
+  (T-26, the place list's system card), which deletes the list. `--scrim`
+  left it with the splash (T-21), `.numeral` and `.mono-label` with Connect
+  (T-22). `--space-3` (6) was applied nowhere, in the code or in Figma,
   and the owner removed it on 2026-10-08; the steps keep their names.
 - `pnpm palette` reads `tokens.css` and reports every ink against the colour
   blindness matrices, as the constitution says. It never blocks.

@@ -15,6 +15,9 @@ fails.
 - [`428:616` Error](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=428-616):
   the form after a failed read.
 
+The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
+answers 404, so the id is read from the `gid` cookie instead (owner).
+
 Drawn on 2026-10-06 under **Documented states**, from the states this spec
 describes and no earlier frame drew. Their texts are sample values:
 
@@ -44,9 +47,11 @@ tabs or player chip. From the top, as `202:38` draws it:
 2. The **Account ID** field and **Connect**. The field's placeholder is the
    frame's `000000000000000000000001`. When the device remembers an id
    (`wf_account`), the field holds it (BR-01).
-3. **Where do I find this?**: three numbered steps. Both addresses are links
-   and open in a new tab: `https://www.warframe.com` and
-   `https://www.warframe.com/api/user-data`. Then the example JSON and the
+3. **Where do I find this?**: three numbered steps. On a computer,
+   log in at `https://www.warframe.com`, a link that opens in a new tab; in the
+   same browser, open the developer tools and the cookies (**On Firefox:**
+   Storage › Cookies, **On Chrome:** Application › Cookies, the browsers'
+   names in bold); copy the value of the `gid` cookie. Then an example of that cookie and the
    note "It's a safe public read endpoint, the same one the game uses to view
    another player."
 4. **Explore with a demo**: **Ordis (Mastery Rank 2)**, then **Cy (Mastery
@@ -70,7 +75,8 @@ tabs or player chip. From the top, as `202:38` draws it:
 ### A demo
 
 Each demo button saves that demo's id in `wf_account` and goes on by BR-03,
-exactly as a real read would: Ordis to `/goals`, Cy to `/features`. A demo is
+exactly as a real read would. Both demos have reached Venus (Ordis stops at
+Mercury), so both land on `/features` (owner, 2026-10-15). A demo is
 read from its fixture and never calls DE. It spends no lookup from the
 visitor's budget.
 
@@ -117,8 +123,8 @@ draws a failure.
    few minutes." when not.
 5. A successful read of a player past Venus lands on `/features`; a new
    player's lands on `/goals`.
-6. Ordis lands on `/goals` and Cy on `/features`, with no request to DE and no
-   lookup spent.
+6. Ordis and Cy land on `/features`, with no request to DE and no lookup
+   spent.
 7. A failed read on any screen inside the shell lands on `/connect` with that
    reason's band and the remembered id in the field.
 8. `pnpm check` passes, with tests for the reason-to-message mapping and the

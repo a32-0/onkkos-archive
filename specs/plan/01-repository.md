@@ -91,20 +91,20 @@ rules they would carry are in the constitution and the docs.
 
 ## `src/app/`: routes
 
-| Route                                                                          | Spec   | Task       |
-| ------------------------------------------------------------------------------ | ------ | ---------- |
-| `layout.tsx`                                                                   | 04     | T-20       |
-| `page.tsx` (`/`)                                                               | 01     | T-21       |
-| `connect/page.tsx`                                                             | 02     | T-22       |
-| `features/page.tsx`                                                            | 03     | T-23       |
-| `catch-up/page.tsx`                                                            | 05, 06 | T-24, T-25 |
-| `system/page.tsx`                                                              | 07     | T-26       |
-| `goals/page.tsx`                                                               | 08     | T-27       |
-| `item/page.tsx`                                                                | 09, 10 | T-28, T-29 |
-| `actions.ts`: connect, demo, disconnect                                        | 02, 04 | T-20, T-22 |
-| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows | 02, 04 | T-19, T-20 |
-| `api/profile/[accountId]/route.ts`                                             | 11     | T-18       |
-| `api/search/route.ts`: items, collectibles and places                          | 08     | T-27       |
+| Route                                                                                                      | Spec   | Task             |
+| ---------------------------------------------------------------------------------------------------------- | ------ | ---------------- |
+| `layout.tsx`                                                                                               | 04     | T-20             |
+| `page.tsx` (`/`)                                                                                           | 01     | T-21             |
+| `connect/page.tsx`                                                                                         | 02     | T-22             |
+| `features/page.tsx`                                                                                        | 03     | T-23             |
+| `catch-up/page.tsx`                                                                                        | 05, 06 | T-24, T-25       |
+| `system/page.tsx`                                                                                          | 07     | T-26             |
+| `goals/page.tsx`                                                                                           | 08     | T-27             |
+| `item/page.tsx`                                                                                            | 09, 10 | T-28, T-29       |
+| `actions.ts`: connect, demo, disconnect                                                                    | 02, 04 | T-20, T-22       |
+| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03) | 02, 04 | T-19, T-20, T-22 |
+| `api/profile/[accountId]/route.ts`                                                                         | 11     | T-18             |
+| `api/search/route.ts`: items, collectibles and places                                                      | 08     | T-27             |
 
 No route has a `loading.tsx`: no frame draws a route loading, and the one
 loading drawn is the id form's (BR-38). A goal opens Step by step, so there is

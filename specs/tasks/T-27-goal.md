@@ -25,6 +25,10 @@ The search with its suggestions, and the curated goal cards.
 
 - Goal renders `Shell` with `tab="goal"` and the tab bar. `/goals` is already in `routes.ts`. A link into an item carries `from=goal`.
 
+## From T-22
+
+- Connect sends a player who has not reached Venus straight to `/goals` through `entranceAfter()` in `app/screen.ts` (BR-03). Neither demo arrives that way, since both have reached Venus.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 08 holds.

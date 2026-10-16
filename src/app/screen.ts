@@ -2,6 +2,9 @@ import "server-only";
 
 import { redirect } from "next/navigation";
 
+import { asksWhenLastPlayed } from "@/domain/graph/star-chart";
+import type { RawProfile } from "@/domain/types/profile";
+import { loadGraph } from "@/infra/graph/load";
 import { nextReadAt, readScreen, type Screen } from "@/infra/screen";
 import { connectAfter, ROUTES } from "@/routes";
 import type { ShellPlayer } from "@/screens/shell/read-cycle";
@@ -21,4 +24,8 @@ export function playerOf(screen: Screen, now: number = Date.now()): ShellPlayer 
     nextReadAt: nextReadAt(screen.fetchedAt),
     fresh: !screen.cached,
   };
+}
+
+export function entranceAfter(profile: RawProfile): string {
+  return asksWhenLastPlayed(loadGraph(), profile) ? ROUTES.features : ROUTES.goals;
 }

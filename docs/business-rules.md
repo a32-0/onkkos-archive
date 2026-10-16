@@ -173,7 +173,7 @@ a reading of the earlier build against it was put to them.
   | Reason                                  | The band                                                                     |
   | --------------------------------------- | ---------------------------------------------------------------------------- |
   | `invalid-id`                            | An account ID is 24 characters: digits 0–9 and letters a–f.                  |
-  | `not-found`                             | No account answers to this ID. Copy it again from user_id.                   |
+  | `not-found`                             | No account answers to this ID. Copy it again from the gid cookie.            |
   | `upstream`, `throttled`, `circuit-open` | Warframe isn't answering right now. Your ID is fine; try again at 15:30 UTC. |
   | `malformed`                             | Warframe's answer came back in a form we can't read yet. Your ID is fine.    |
   | `limited`                               | You've had your two readings for now. The next opens at 15:30 UTC.           |

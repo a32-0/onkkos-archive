@@ -237,3 +237,87 @@ describe("the player the shell shows", () => {
     expect(player.masteryRank).toBe(0);
   });
 });
+
+describe("Connect and the demos (spec 02, BR-03)", () => {
+  const form = (entries: Record<string, string>) => {
+    const data = new FormData();
+    for (const [name, value] of Object.entries(entries)) data.set(name, value);
+    return data;
+  };
+  const REST = { value: "", reason: null, retryAt: null };
+
+  async function landing(run: () => Promise<unknown>): Promise<string> {
+    try {
+      await run();
+    } catch (error) {
+      if (error instanceof Redirected) return error.url;
+      throw error;
+    }
+    throw new Error("no redirect");
+  }
+
+  it("refuses a malformed id without reading anything", async () => {
+    const read = vi.fn();
+    vi.doMock("@/infra/profile/read", () => ({ readProfile: read }));
+    const { connect } = await import("@/app/actions");
+    expect(await connect(REST, form({ accountId: " not an id " }))).toEqual({
+      value: " not an id ",
+      reason: "invalid-id",
+      retryAt: null,
+    });
+    expect(read).not.toHaveBeenCalled();
+    expect(jar.has("wf_account")).toBe(false);
+  });
+
+  it("keeps what was typed and the retry time when a read fails", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({ ok: false, reason: "limited", retryAfterSeconds: 600 }),
+    }));
+    const { connect } = await import("@/app/actions");
+    const typed = "ABCDEFABCDEFABCDEFABCDEF";
+    const state = await connect(REST, form({ accountId: typed }));
+    expect(state.value).toBe(typed);
+    expect(state.reason).toBe("limited");
+    expect((state.retryAt ?? 0) - Date.now() / 1000).toBeGreaterThan(590);
+    expect(jar.has("wf_account")).toBe(false);
+  });
+
+  it("saves the id, trimmed, and sends a player past Venus to /features", async () => {
+    const { connect } = await import("@/app/actions");
+    const url = await landing(() => connect(REST, form({ accountId: ` ${DEMO_ACCOUNT_IDS.cy} ` })));
+    expect(url).toBe("/features");
+    expect(jar.get("wf_account")?.value).toBe(DEMO_ACCOUNT_IDS.cy);
+  });
+
+  it("sends a new player to /goals", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({
+        ok: true,
+        profile: { Missions: [] },
+        cached: false,
+        fetchedAt: 0,
+      }),
+    }));
+    const { connect } = await import("@/app/actions");
+    expect(await landing(() => connect(REST, form({ accountId: ORDIS })))).toBe("/goals");
+    expect(jar.get("wf_account")?.value).toBe(ORDIS);
+  });
+
+  it("opens both demos on /features, as their reads would, with no request", async () => {
+    const fetch = vi.spyOn(globalThis, "fetch");
+    const { demo } = await import("@/app/actions");
+    expect(await landing(() => demo(form({ profile: "ordis" })))).toBe("/features");
+    expect(jar.get("wf_account")?.value).toBe(ORDIS);
+    expect(await landing(() => demo(form({ profile: "cy" })))).toBe("/features");
+    expect(jar.get("wf_account")?.value).toBe(DEMO_ACCOUNT_IDS.cy);
+    expect(fetch).not.toHaveBeenCalled();
+    fetch.mockRestore();
+  });
+
+  it("counts a profile whose missions cannot be read as past Venus", async () => {
+    const { entranceAfter } = await import("@/app/screen");
+    expect(entranceAfter({})).toBe("/features");
+    expect(entranceAfter({ Missions: [{ Tag: "EarthToVenusJunction" }] })).toBe("/features");
+    expect(entranceAfter({ Missions: [] })).toBe("/goals");
+  });
+});
