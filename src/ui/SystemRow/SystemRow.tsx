@@ -19,7 +19,7 @@ export function SystemRow({
   href?: string;
   name: string;
   orb: string | null;
-  satellite?: string;
+  satellite?: string | null;
   count?: RowCount;
   mastered?: string;
   startHere?: string;
@@ -31,11 +31,9 @@ export function SystemRow({
     <>
       <span className={styles.arts}>
         <Orb color={orb} size="m" />
-        {satellite && (
-          <span className={styles.satellite}>
-            <Orb color={satellite} size="xs" />
-          </span>
-        )}
+        <span className={styles.satellite}>
+          <Orb color={satellite ?? null} size="xs" />
+        </span>
       </span>
       <span className={mastered ? styles.inline : styles.text}>
         <span className={styles.name}>{name}</span>

@@ -69,16 +69,9 @@ export interface MapGroup {
   fresh: number;
 }
 
-interface NodeCount {
-  total: number;
-  done: number;
-  steelPath: number;
-}
-
 export interface PlaceMap {
   system: SystemEntry;
   place: string;
-  nodes: NodeCount | null;
   done: number;
   readable: number;
   mastered: boolean;
@@ -94,7 +87,6 @@ export interface MapInput {
   ranks: Ranks;
   reach: Reach;
   since: string | null;
-  nodes: ReadonlyMap<string, NodeCount> | null;
   lineOf: (name: string) => ItemLine;
   masteryReqOf: (name: string) => number;
 }
@@ -154,7 +146,6 @@ export function placeMap(input: MapInput): PlaceMap {
   return {
     system: input.system,
     place: input.place,
-    nodes: input.nodes?.get(input.place) ?? null,
     done: completion.done,
     readable: completion.readable,
     mastered: isComplete(completion),

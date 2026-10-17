@@ -9,10 +9,9 @@ import { allPlaces } from "@/domain/catalog/places";
 import { bestPlaces, itemLine } from "@/domain/catalog/whats-new";
 import { startHere } from "@/domain/place/start-here";
 import { itemRanks } from "@/domain/place/state";
-import { nodeCountsByPlace } from "@/domain/profile/nodes";
 import type { RawProfile } from "@/domain/types/profile";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
-import { nextLens, shownUnder } from "@/screens/map/lens";
+import { nextLens, shownGroups, shownUnder } from "@/screens/map/lens";
 import type { Lens, MapView } from "@/screens/map/state";
 import { mapView } from "@/screens/map/view";
 
@@ -42,7 +41,6 @@ function viewOf(
       ranks,
       reach,
       since,
-      nodes: nodeCountsByPlace(profile),
       lineOf: real
         ? (name) =>
             itemLine(
@@ -167,6 +165,23 @@ describe("reach on the map (BR-59 to BR-62)", () => {
   });
 });
 
+describe("a lens with nothing to show", () => {
+  it("leaves no group, and names the place in its empty state", () => {
+    const view = viewOf(fixture("profile-new-player"), "origin", "Earth", null);
+    expect(shownGroups(view.sections, "mastered")).toEqual([]);
+    expect(view.empty.mastered.title).toBe("Nothing mastered on Earth yet");
+    expect(shownGroups(view.sections, "left").length).toBeGreaterThan(0);
+  });
+});
+
+describe("the system list", () => {
+  it("gives every system a satellite, its second place's or the neutral one", () => {
+    const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
+    expect(view.systems.every((one) => "satellite" in one)).toBe(true);
+    expect(view.systems.find((one) => one.id === "duviri")?.satellite ?? null).toBeNull();
+  });
+});
+
 describe("Start here (BR-44)", () => {
   it("sits on exactly one place, and on its system", () => {
     const view = viewOf(fixture("profile-ordis"), "origin", "Earth", null);
@@ -177,14 +192,9 @@ describe("Start here (BR-44)", () => {
 });
 
 describe("the place card", () => {
-  it("counts the nodes played and the items mastered", () => {
-    const view = viewOf(fixture("profile-ordis"), "origin", "Earth", null);
-    expect(view.card.nodes?.lines.map((line) => line.label)).toEqual(["Normal", "Steel Path"]);
+  it("counts the items mastered", () => {
+    const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
     expect(view.card.items.count).toMatch(/^\d+\/\d+$/);
-  });
-
-  it("drops the Nodes lines where the profile has no missions", () => {
-    expect(viewOf({}, "origin", "Earth", null).card.nodes).toBeUndefined();
   });
 });
 
@@ -255,11 +265,10 @@ describe("each place's sphere", () => {
     }
   });
 
-  it("draws one node per node of the place, lit as played", () => {
+  it("reads Change location over the place, and counts items alone", () => {
     const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
-    expect(view.card.constellation?.total).toBe(15);
-    expect(view.card.constellation?.lit).toBe(15);
     expect(view.card.system).toBe("Change location");
+    expect(Object.keys(view.card)).not.toContain("nodes");
   });
 });
 

@@ -19,7 +19,7 @@ export function UpdateList({
     <div id={id} className={styles.list}>
       <ul className={styles.items}>
         {items.map((item) => (
-          <li key={item.value}>
+          <li key={`${item.value}/${item.name}`}>
             <button type="button" className={styles.item} onClick={() => onChoose(item.value)}>
               {item.art ? (
                 <img className={styles.art} src={item.art} alt="" />

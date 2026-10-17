@@ -21,11 +21,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Row: Story = {};
 
-export const Card: Story = {
-  args: { size: "l", nodes: { seed: "Earth", total: 15, lit: 12 } },
-};
-
-export const CardNoNodes: Story = { args: { size: "l", color: "#9b7b4f" } };
+export const Card: Story = { args: { size: "l" } };
 
 export const Small: Story = { args: { size: "s", color: "#ff4a6b" } };
 

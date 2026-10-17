@@ -623,7 +623,7 @@ describe("the map (spec 07, BR-46)", () => {
     const html = await page({ system: "origin", place: "Earth" });
     expect(html).toContain("You last played");
     expect(html).toContain(">Earth<");
-    expect(html).toContain(">Nodes<");
+    expect(html).not.toContain(">Nodes<");
     expect(html).toMatch(/>Show<[\s\S]*>To get<[\s\S]*>Mastered<[\s\S]*>New</);
     expect(html).toContain(">Arsenal<");
     expect(html).not.toContain('aria-expanded="true"');

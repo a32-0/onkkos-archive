@@ -115,7 +115,7 @@ function placeRow(
       ? { mastered: MAP.mastered }
       : standing.readable > 0 && { count: fraction(standing.done, standing.readable) }),
     ...(isStartAt(input.start, system, standing.place) && { startHere: MAP.startHere }),
-    ...(input.since !== null && standing.fresh && { isNew: MAP.new }),
+    ...(input.since !== null && standing.fresh && { isNew: MAP.newItems }),
     ...(gap && { gap }),
     listed: standing.gap === null || onView,
     onView,
@@ -157,12 +157,11 @@ function placeList(input: MapViewInput): PlaceListSystem[] {
 function systemRow(standing: SystemStanding, input: MapViewInput): SystemRowView {
   const { system } = standing;
   const [first, second] = system.places;
-  const satellite = second ? input.orbs[second] : undefined;
   return {
     id: system.id,
     name: system.name,
     orb: first ? (input.orbs[first] ?? null) : null,
-    ...(satellite && { satellite }),
+    satellite: second ? (input.orbs[second] ?? null) : null,
     ...(!system.released
       ? { soon: MAP.soon }
       : standing.mastered
@@ -185,20 +184,6 @@ export function mapView(input: MapViewInput): MapView {
       system: MAP.changeLocation,
       name: map.place,
       orb: input.orbs[map.place] ?? null,
-      ...(map.nodes &&
-        map.nodes.total > 0 && {
-          constellation: { seed: map.place, total: map.nodes.total, lit: map.nodes.done },
-        }),
-      ...(map.nodes &&
-        map.nodes.total > 0 && {
-          nodes: {
-            title: MAP.nodes,
-            lines: [
-              { count: MAP.fraction(map.nodes.done, map.nodes.total), label: MAP.normal },
-              { count: MAP.fraction(map.nodes.steelPath, map.nodes.total), label: MAP.steelPath },
-            ],
-          },
-        }),
       items: { count: MAP.fraction(map.done, map.readable), label: MAP.items, word: MAP.mastered },
       ...(map.mastered && { mastered: MAP.mastered }),
       progress: { value: map.done, max: map.readable, label: MAP.progress(map.place) },
@@ -207,6 +192,11 @@ export function mapView(input: MapViewInput): MapView {
     nothingLeft: map.nothingLeft
       ? { title: MAP.nothingLeft(map.place), line: MAP.nothingLeftLine }
       : null,
+    empty: {
+      left: MAP.emptyLens.left(map.place),
+      mastered: MAP.emptyLens.mastered(map.place),
+      new: MAP.emptyLens.new(map.place),
+    },
     sections: map.sections.map((section) => ({
       id: section.catalog,
       label: section.catalog === "arsenal" ? MAP.arsenal : MAP.collection,

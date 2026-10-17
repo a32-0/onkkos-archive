@@ -38,8 +38,6 @@ interface PlaceCardView {
   system: string;
   name: string;
   orb: string | null;
-  constellation?: { seed: string; total: number; lit: number };
-  nodes?: { title: string; lines: readonly PlaceCardCount[] };
   items: PlaceCardCount & { word: string };
   mastered?: string;
   progress: { value: number; max: number; label: string };
@@ -70,7 +68,7 @@ export interface SystemRowView {
   id: string;
   name: string;
   orb: string | null;
-  satellite?: string;
+  satellite: string | null;
   count?: RowCount;
   mastered?: string;
   startHere?: string;
@@ -82,6 +80,7 @@ export interface MapView {
   card: PlaceCardView;
   newLens: boolean;
   nothingLeft: { title: string; line: string } | null;
+  empty: Record<Lens, { title: string; line: string }>;
   sections: MapSectionView[];
   system: string;
   places: PlaceListSystem[];

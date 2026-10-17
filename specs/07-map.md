@@ -35,6 +35,12 @@ Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
 - [`533:4354` Navigation Menu — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-4354): a search hit beyond reach, its gap in place of the count.
 - [`533:4426` Navigation — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-4426): the first open group ends in the More line, by rank.
 
+Drawn on 2026-10-17 under **Documented states**, for BR-45:
+
+- [`630:5021` Navigation — Nothing to get](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=630-5021): To get chosen, the empty state (explore, "Nothing left to get on {place}", "You have everything it gives so far. What it adds later shows up here.").
+- [`630:5119` Navigation — Nothing mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=630-5119): Mastered chosen, the empty state ("Nothing mastered on {place} yet", "What you master from this place shows up here.").
+- [`630:5246` Navigation — Nothing new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=630-5246): New chosen, the empty state ("Nothing new on {place}", "No item from this place came out after the update you chose.").
+
 ## Rules
 
 - [BR-05](../docs/business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus)
@@ -88,14 +94,14 @@ the top, as `312:199` draws it:
    is taken as up to date: the card reads "You're up to date" and names the
    newest update (owner, 2026-10-16).
 2. The **place card**: "Change location" as kicker, the place's name and a
-   chevron that opens the place list; the place's sphere in its colour, with
-   one node of the constellation per node of the place, lit once played
-   (owner, 2026-10-16); **Nodes**, with "{n}/{m}
-   Normal" and "{n}/{m} Steel Path"; "{n}/{m} Items mastered" and a bar filled to
-   that share. When every readable item is mastered the line takes the
+   chevron that opens the place list; the place's sphere in its colour; "{n}/{m}
+   Items mastered" and a bar filled to that share. The card counts items
+   alone: a place is mastered by its items, never by its nodes, which the
+   game already shows (owner, 2026-10-17). When every readable item is mastered the line takes the
    **Mastered** badge and the bar turns to the mastered colour (`299:597`).
 3. **Show**, with **To get**, **Mastered** and **New**, one always chosen,
-   To get first (BR-45).
+   To get first (BR-45). When the chosen one leaves no group, an empty state
+   under Show says so (BR-45).
 4. The **Arsenal** divider and its groups, one per catalogue: Warframes,
    Primary, Secondary, Melee, Archgun, Archmelee, Amp, Companion, Necramech,
    Archwing, Railjack.
@@ -155,7 +161,8 @@ header (spec 04):
 3. The system's places in reach (BR-59, BR-60), in `star_chart_order`, each
    with its sphere, its name and "{n}/{m} Mastered", or the **Mastered** badge in
    its place when all are. A place may also carry **Start here** (BR-44) and
-   **New** when it holds something new since the month. The place on view is
+   **New items** when it holds something new since the month (owner,
+   2026-10-17). The place on view is
    highlighted, and stays listed while on view even beyond reach. Then, when
    any place is beyond, one More line, a single paragraph: "3 more places
    open as you clear the junctions. Next: the Venus Junction, on Earth.", or,
@@ -171,7 +178,9 @@ The system card's chevron opens `270:786`, whose header has a chevron back to
 the place list in place of the close: **Choose a system**, "You can switch
 at any time.", and the systems in BR-47's order, each with its symbol (a large orb and a
 small one beside it, its satellite; the owner, 2026-10-08): its first place's
-sphere, and its second place's as the satellite, its name
+sphere, and its second place's as the satellite, or the neutral sphere
+when it has no second place, as every `System row` draws one (owner,
+2026-10-17), its name
 and its mastered count or badge, **Start here** on the system that holds it,
 and the system on view highlighted. Only the systems with a place in reach
 are listed, then a More line, "2 more systems open as you go further."
@@ -185,9 +194,9 @@ Choosing a system returns to the place list, now listing that system's places.
 | ------------------------------------ | ---------------------------------------------------------------------------------------------- |
 | To get (the default)                 | What is left (BR-45), groups closed                                                            |
 | Mastered or New chosen               | Only that, groups closed                                                                       |
+| The chosen lens leaves no group      | Show, then the empty state that names the place (BR-45)                                        |
 | No month (`wf_since` unset)          | No New option, no "{n} New" counts, no New badge on places; the card reads "You're up to date" |
 | Everything mastered, no collectibles | The mastered card, then the empty state                                                        |
-| A place with no nodes of its own     | The card without the Nodes lines                                                               |
 | Search with no match (place list)    | The empty state under the field                                                                |
 | Places or systems beyond reach       | The lists end in `More line` (`526:117`, BR-60)                                                |
 | A hit beyond reach (place list)      | `Place row` Beyond reach (`526:112`, BR-62)                                                    |
@@ -201,12 +210,11 @@ Choosing a system returns to the place list, now listing that system's places.
   `systems.yaml`'s `hubs` maps a hub to its place, for what a hub hands out
   (`src/domain/place/hubs.ts`).
 - A system's symbol: its first place's sphere, its second place's as the
-  satellite.
+  satellite, the neutral sphere without one.
 - What a place holds and each tile's reading: the place index's tiles
   (`src/domain/place/tile.ts`) over DE's drop tables and the wiki's modules.
 - Item state: `src/domain/place/state.ts` (`done | ranked | absent | unknown`),
   from `XPInfo`.
-- Nodes: `Missions[]` and `Missions[].Tier` counted against the node catalog.
 - New: `releasesSince()` from the month in `wf_since`.
 - The frontier: `findNextPlanet`; the focus: `findFocus` beside it, as
   defined above, with tests. Start here: `startHere()` in

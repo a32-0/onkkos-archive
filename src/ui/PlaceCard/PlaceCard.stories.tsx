@@ -10,13 +10,6 @@ const meta = {
     name: "Earth",
     orb: "#4a9eff",
     onOpen: () => {},
-    nodes: {
-      title: "Nodes",
-      lines: [
-        { count: "14/14", label: "Normal" },
-        { count: "14/14", label: "Steel Path" },
-      ],
-    },
     items: { count: "12/21", label: "Items", word: "mastered" },
     progress: { value: 12, max: 21, label: "Items mastered on Earth" },
   },
@@ -36,13 +29,7 @@ export const Mastered: Story = {
   },
 };
 
-export const NoNodes: Story = { args: { nodes: undefined } };
-
 export const NoColor: Story = { args: { orb: null } };
-
-export const WithNodes: Story = {
-  args: { constellation: { seed: "Earth", total: 15, lit: 12 } },
-};
 
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };
 

@@ -13,7 +13,6 @@ import { readReach } from "@/domain/place/reach";
 import type { SystemEntry } from "@/domain/place/schema";
 import { firstPlace, startHere, type PlaceRef } from "@/domain/place/start-here";
 import { itemRanks } from "@/domain/place/state";
-import { nodeCountsByPlace } from "@/domain/profile/nodes";
 import { shortMonth } from "@/domain/since";
 import { readParam, type SearchParams } from "@/domain/types/next";
 import { catalogData, updateSources } from "@/infra/catalog/data";
@@ -63,7 +62,6 @@ async function mapOf(
     ranks,
     reach,
     since,
-    nodes: nodeCountsByPlace(screen.profile),
     lineOf: (name) => itemLine(sources, name),
     masteryReqOf: (name) => masteryReqOf(data, name),
   });

@@ -12,7 +12,7 @@ import { PlaceCard } from "@/ui/PlaceCard/PlaceCard";
 import { Segmented, type SegmentedOption } from "@/ui/Segmented/Segmented";
 import { Sheet } from "@/ui/Sheet/Sheet";
 
-import { nextLens } from "./lens";
+import { nextLens, shownGroups } from "./lens";
 import styles from "./Map.module.css";
 import { MapGroups } from "./MapGroups";
 import { usePanes } from "./panes";
@@ -32,6 +32,7 @@ export function MapBody({ view, voice, top }: { view: MapView; voice: boolean; t
   const [query, setQuery] = useState("");
   const panes = usePanes();
   const system = view.places.find((one) => one.id === chosen) ?? view.places[0];
+  const shown = shownGroups(view.sections, lens);
 
   const list = system && (
     <PlaceList
@@ -57,20 +58,29 @@ export function MapBody({ view, voice, top }: { view: MapView; voice: boolean; t
               line={view.nothingLeft.line}
             />
           ) : (
-            <div className={styles.show}>
-              <span className={styles["show-label"]}>{MAP.show}</span>
-              <Segmented
-                label={MAP.show}
-                options={view.newLens ? [TO_GET, MASTERED, NEW] : [TO_GET, MASTERED]}
-                chosen={lens}
-                onChoose={(value) => setLens(nextLens(lens, value))}
-              />
-            </div>
+            <>
+              <div className={styles.show}>
+                <span className={styles["show-label"]}>{MAP.show}</span>
+                <Segmented
+                  label={MAP.show}
+                  options={view.newLens ? [TO_GET, MASTERED, NEW] : [TO_GET, MASTERED]}
+                  chosen={lens}
+                  onChoose={(value) => setLens(nextLens(lens, value))}
+                />
+              </div>
+              {shown.length === 0 && (
+                <EmptyState
+                  icon="explore"
+                  title={view.empty[lens].title}
+                  line={view.empty[lens].line}
+                />
+              )}
+            </>
           )}
         </div>
-        {!view.nothingLeft && (
+        {!view.nothingLeft && shown.length > 0 && (
           <div className={styles.area}>
-            <MapGroups key={lens} sections={view.sections} lens={lens} />
+            <MapGroups key={lens} shown={shown} />
           </div>
         )}
         {voice && (

@@ -24,7 +24,9 @@ export function MapScreen({
         key={`${view.system}/${view.card.name}`}
         view={view}
         voice={chrome.voice.on}
-        top={<SummaryCard card={card} updates={updates} step={null} choose={choose} />}
+        top={
+          <SummaryCard key="summary" card={card} updates={updates} step={null} choose={choose} />
+        }
       />
     </Shell>
   );

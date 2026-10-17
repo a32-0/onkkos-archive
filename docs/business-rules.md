@@ -275,6 +275,10 @@ a reading of the earlier build against it was put to them.
   divider with no group under it does not render either. A place where every
   arsenal item is mastered and that holds no collectible shows the empty state
   under its card (spec 07).
+- When the chosen lens leaves no group at all, Show stays and an empty state
+  under it says so, naming the place: "Nothing left to get on {place}",
+  "Nothing mastered on {place} yet" or "Nothing new on {place}" (owner,
+  2026-10-17).
 - The frame draws three options (All / Mastered / New); the owner corrects it
   to the two. The `All` view leaves: the default is what is
   left.
@@ -780,7 +784,7 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - Rule: the Origin System holds a place, Dojo, that holds everything built
   from research in a clan dojo's labs, whichever lab researches it.
   It is listed with the other places, carries a mastered count and lenses like
-  any place, has no Nodes lines and never carries Start here.
+  any place, and never carries Start here.
 
 ## Step by step: settled when its spec was written
 
@@ -1037,47 +1041,3 @@ on 2026-10-08.
   always show.
 - The menu also shows Language (English, Español) and Tutorial (Reset),
   disabled: they wait for later versions (owner, 2026-10-16).
-
-## Not applied
-
-Two comments were set aside by the owner on 2026-10-04 and carry no rule:
-`1939170476` ("tell them which planet to go to next", on `323:689`) and
-`1923621464` ("add an open search input?", on the deleted node `163:103`).
-
-### Frames from deleted screens
-
-These frames are the desktop Home and star chart. The screens were removed,
-so the comments are kept here and not applied. The first of them,
-`1905320490` on `10:16` ("Content depends on the player's level"), was
-applied on 2026-10-08 as BR-59.
-
-| Frame                 | Pin         | Comment      | Text                                                                            |
-| --------------------- | ----------- | ------------ | ------------------------------------------------------------------------------- |
-| `94:156` Home - 0.0.0 | (1400, 275) | `1918281689` | Use more symbols on labels                                                      |
-| `94:156` Home - 0.0.0 | (633, 227)  | `1918287698` | Nodes?                                                                          |
-| `94:156` Home - 0.0.0 | (1221, 478) | `1918287884` | A "platinum" completion system for free items, to find, track and guide to them |
-| reply to the above    | n/a         | `1918290338` | Track and guide what the game does not say; never be redundant                  |
-| `129:12` Home - 0.0.0 | (142, 116)  | `1918300458` | The places list becomes a planet menu, with a card on hover                     |
-| `129:118` Frame 83    | (167, 371)  | `1918304538` | Planet stats?                                                                   |
-| `128:2223` Frame 96   | (284, 53)   | `1918286062` | Shine effect (on the Mastered badge)                                            |
-
-`1918290338` still reads as a product principle, and the anchor in the
-[constitution](../specs/00-constitution.md#the-anchor-holds) already holds it ("Filter and curate; never mirror").
-
-## Resolved threads
-
-Thirteen threads are resolved. Three on `206:774` were reopened as BR-12,
-BR-13 and BR-14. The rest are recorded here and need nothing:
-
-| Frame                | Comment      | Text                                                                 |
-| -------------------- | ------------ | -------------------------------------------------------------------- |
-| `206:774` Summary    | `1924100394` | Only the first descriptive line of a quest                           |
-| `206:774` Summary    | `1924100483` | Only the first descriptive line of an item                           |
-| `212:159` Navigation | `1929710840` | No navbar during onboarding until it ends                            |
-| `212:159` Navigation | `1933693172` | Choose the System from here, not from the navbar                     |
-| `212:159` Navigation | `1933718008` | Show every catalogue: primaries, secondaries, melee                  |
-| `306:1456` Card      | `1937241802` | Show Playstyle and Progenitor Element                                |
-| `306:1456` Card      | `1937251280` | For weapons: projectile type and primary damage                      |
-| `306:1456` Card      | `1937263619` | For Archwing: themes                                                 |
-| `270:1270` (deleted) | `1933353580` | A guided route through planet and mission, after Marvel Future Fight |
-| `270:1270` (deleted) | `1939082421` | Which mission, and how                                               |

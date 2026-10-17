@@ -9,11 +9,9 @@ export const MAP = {
   toGet: "To get",
   mastered: "Mastered",
   new: "New",
+  newItems: "New items",
   changeLocation: "Change location",
   changeSystem: "Change system",
-  nodes: "Nodes",
-  normal: "Normal",
-  steelPath: "Steel Path",
   items: "Items",
   fraction: (done: number, total: number) => `${done}/${total}`,
   progress: (place: string) => `Items mastered on ${place}`,
@@ -43,6 +41,20 @@ export const MAP = {
   },
   nothingLeft: (place: string) => `Nothing left on ${place}`,
   nothingLeftLine: "Every item it gives is mastered. Choose another place from the card above.",
+  emptyLens: {
+    left: (place: string) => ({
+      title: `Nothing left to get on ${place}`,
+      line: "You have everything it gives so far. What it adds later shows up here.",
+    }),
+    mastered: (place: string) => ({
+      title: `Nothing mastered on ${place} yet`,
+      line: "What you master from this place shows up here.",
+    }),
+    new: (place: string) => ({
+      title: `Nothing new on ${place}`,
+      line: "No item from this place came out after the update you chose.",
+    }),
+  },
   places: "Places",
   search: "Search a planet, location or celestial body...",
   searchLabel: "Search the places",

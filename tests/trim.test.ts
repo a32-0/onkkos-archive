@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { toDisplayProfile } from "@/domain/profile/display";
 import { PROFILE_FIELDS } from "@/domain/profile/fields";
-import { regionsPlayed, nodeCountsByPlace } from "@/domain/profile/nodes";
+import { regionsPlayed } from "@/domain/profile/nodes";
 import { accountCreatedAt } from "@/domain/profile/payload";
 import { trimProfile } from "@/domain/profile/trim";
 import type { RawProfile } from "@/domain/types/profile";
@@ -71,10 +71,6 @@ describe.each(PROFILES)("every reading of %s is the same once trimmed", (_, whol
 
   it("the account's creation", () => {
     expect(accountCreatedAt(trimmed)).toEqual(accountCreatedAt(whole));
-  });
-
-  it("the nodes run, per place", () => {
-    expect(nodeCountsByPlace(trimmed)).toEqual(nodeCountsByPlace(whole));
   });
 
   it("the regions played", () => {
