@@ -9,20 +9,18 @@ import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import styles from "./Resume.module.css";
 import { ResumePicker } from "./ResumePicker";
-import type { ResumeAction, ResumeMonth, ResumeUpdate } from "./state";
+import type { ResumeAction, ResumeUpdate } from "./state";
 
 export function Resume({
   chrome,
   onboarding,
   updates,
-  months,
   choose,
   skip,
 }: {
   chrome: ShellChrome;
   onboarding: boolean;
   updates: readonly ResumeUpdate[];
-  months: readonly ResumeMonth[];
   choose: ResumeAction;
   skip: string;
 }) {
@@ -39,12 +37,7 @@ export function Resume({
 
         <section className={styles.panel}>
           <div className={styles.area}>
-            <ResumePicker
-              updates={updates}
-              months={months}
-              step={onboarding ? "resume" : null}
-              choose={choose}
-            />
+            <ResumePicker updates={updates} step={onboarding ? "resume" : null} choose={choose} />
           </div>
         </section>
 

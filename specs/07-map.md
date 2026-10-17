@@ -84,13 +84,18 @@ Route `/system?system=&place=`, inside the shell, the Navigation tab lit. From
 the top, as `312:199` draws it:
 
 1. The **last-played card** (spec 06, the same component and states), whose
-   list re-measures New from the chosen month.
-2. The **place card**: the system's name as kicker, the place's name and a
-   chevron that opens the place list; the place's art; **Nodes**, with "{n}/{m}
+   list re-measures New from the chosen month. With no month kept, the player
+   is taken as up to date: the card reads "You're up to date" and names the
+   newest update (owner, 2026-10-16).
+2. The **place card**: "Change location" as kicker, the place's name and a
+   chevron that opens the place list; the place's sphere in its colour, with
+   one node of the constellation per node of the place, lit once played
+   (owner, 2026-10-16); **Nodes**, with "{n}/{m}
    Normal" and "{n}/{m} Steel Path"; "{n}/{m} Items mastered" and a bar filled to
    that share. When every readable item is mastered the line takes the
    **Mastered** badge and the bar turns to the mastered colour (`299:597`).
-3. **Show**, with **Mastered** and **New** (BR-45).
+3. **Show**, with **To get**, **Mastered** and **New**, one always chosen,
+   To get first (BR-45).
 4. The **Arsenal** divider and its groups, one per catalogue: Warframes,
    Primary, Secondary, Melee, Archgun, Archmelee, Amp, Companion, Necramech,
    Archwing, Railjack.
@@ -120,7 +125,8 @@ only the line. A place beyond reach opened on purpose shows whole (BR-60).
 
 ### A tile
 
-The item's art, its name, the reading in gold and the place under it, as on
+The item's art, its name without the word its group already says ("Hunhow"
+under Honoria, "Axi A21" under Relics, "Braton" under Incarnons), the reading in gold and the place under it, as on
 the Summary, but read **at this place**: "~{n} Runs · Rotation {x}" for the
 drop here (BR-56), and the node and mission that give it. Over the art, the item's state
 for this player:
@@ -138,8 +144,8 @@ A tile opens the item's page, with Navigation as its origin (spec 04).
 The place card's chevron opens `215:610`, a full-screen sheet with the sheet
 header (spec 04):
 
-1. The **system card**: the system's icon, "System" and its name, and a chevron
-   that opens the system list.
+1. The **system card**: the system's sphere, "Change system" and its name,
+   and a chevron that opens the system list.
 2. A search field, "Search a planet, location or celestial body...", which
    filters the list by name as the player types. It reaches every place of
    the system; a place beyond reach shows as the Beyond reach row
@@ -147,21 +153,25 @@ header (spec 04):
    Earth, to reach it." or, for the Dojo, "Join a clan to enter its Dojo."
    (BR-59, BR-62).
 3. The system's places in reach (BR-59, BR-60), in `star_chart_order`, each
-   with its art, its name and "{n}/{m} Mastered", or the **Mastered** badge in
+   with its sphere, its name and "{n}/{m} Mastered", or the **Mastered** badge in
    its place when all are. A place may also carry **Start here** (BR-44) and
    **New** when it holds something new since the month. The place on view is
    highlighted, and stays listed while on view even beyond reach. Then, when
-   any place is beyond, a More line: "3 more places open as you clear the
-   junctions. Next: the Venus Junction, on Earth."
+   any place is beyond, one More line, a single paragraph: "3 more places
+   open as you clear the junctions. Next: the Venus Junction, on Earth.", or,
+   with the Dojo among them, "… as you clear the junctions and join a clan.
+   Next: …".
 4. Onkko's line, "Ah, the history you will have."
 
 Choosing a place closes the sheet and opens it.
 
 ### The system list
 
-The system card's chevron opens `270:786`: **Choose a system**, "You can switch
+The system card's chevron opens `270:786`, whose header has a chevron back to
+the place list in place of the close: **Choose a system**, "You can switch
 at any time.", and the systems in BR-47's order, each with its symbol (a large orb and a
-small one beside it, its satellite; the owner, 2026-10-08), its name
+small one beside it, its satellite; the owner, 2026-10-08): its first place's
+sphere, and its second place's as the satellite, its name
 and its mastered count or badge, **Start here** on the system that holds it,
 and the system on view highlighted. Only the systems with a place in reach
 are listed, then a More line, "2 more systems open as you go further."
@@ -171,18 +181,18 @@ Choosing a system returns to the place list, now listing that system's places.
 
 ## States
 
-| State                                | What shows                                                                                    |
-| ------------------------------------ | --------------------------------------------------------------------------------------------- |
-| Default lens                         | What is left (BR-45), groups closed                                                           |
-| Mastered or New chosen               | Only that, groups closed                                                                      |
-| No month (`wf_since` unset)          | No New option, no "{n} New" counts, no New badge on places; the card reads "Choose an update" |
-| Everything mastered, no collectibles | The mastered card, then the empty state                                                       |
-| A place with no nodes of its own     | The card without the Nodes lines                                                              |
-| Search with no match (place list)    | The empty state under the field                                                               |
-| Places or systems beyond reach       | The lists end in `More line` (`526:117`, BR-60)                                               |
-| A hit beyond reach (place list)      | `Place row` Beyond reach (`526:112`, BR-62)                                                   |
-| Items beyond reach in a group        | The open group ends in `More line` (BR-61)                                                    |
-| A place beyond reach on view         | The place whole, still listed while on view (BR-60)                                           |
+| State                                | What shows                                                                                     |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| To get (the default)                 | What is left (BR-45), groups closed                                                            |
+| Mastered or New chosen               | Only that, groups closed                                                                       |
+| No month (`wf_since` unset)          | No New option, no "{n} New" counts, no New badge on places; the card reads "You're up to date" |
+| Everything mastered, no collectibles | The mastered card, then the empty state                                                        |
+| A place with no nodes of its own     | The card without the Nodes lines                                                               |
+| Search with no match (place list)    | The empty state under the field                                                                |
+| Places or systems beyond reach       | The lists end in `More line` (`526:117`, BR-60)                                                |
+| A hit beyond reach (place list)      | `Place row` Beyond reach (`526:112`, BR-62)                                                    |
+| Items beyond reach in a group        | The open group ends in `More line` (BR-61)                                                     |
+| A place beyond reach on view         | The place whole, still listed while on view (BR-60)                                            |
 
 ## Data and sources
 
@@ -190,7 +200,7 @@ Choosing a system returns to the place list, now listing that system's places.
   (`src/domain/place/`), with node names from `warframe-worldstate-data`.
   `systems.yaml`'s `hubs` maps a hub to its place, for what a hub hands out
   (`src/domain/place/hubs.ts`).
-- A system's symbol: the art of its first place, its second place's as the
+- A system's symbol: its first place's sphere, its second place's as the
   satellite.
 - What a place holds and each tile's reading: the place index's tiles
   (`src/domain/place/tile.ts`) over DE's drop tables and the wiki's modules.
@@ -204,7 +214,10 @@ Choosing a system returns to the place list, now listing that system's places.
 - Reach: one predicate in `src/domain/place/reach.ts` over `reachedPlaces`,
   the `after` of `off_chart_places`, `PlayerLevel` and the catalog's
   `masteryReq` (BR-59).
-- Art and icons: the wiki and `@wfcd/items`, never rehosted.
+- Art and icons: items' art from `@wfcd/items` and the categories' icons
+  from the wiki, never rehosted; a category with no wiki icon takes a
+  Material Symbol (BR-42). A place's sphere is drawn from its colour in
+  `systems.yaml`'s `colors`.
 
 ## Desktop (BR-39)
 
@@ -232,8 +245,8 @@ New, Mastered, Rank), `ItemTile` (plain, Rank, Mastered), `GroupRow`, `Rail`,
    chevrons.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut; from 1200 the
    place list is a pane.
-3. By default only what is left shows; Mastered and New show only theirs, and
-   choosing the chosen one again returns to the default.
+3. To get is chosen by default and shows only what is left; Mastered and New
+   show only theirs; one option is always chosen.
 4. Start here sits on exactly one place, and on its system; Skip and the
    first Navigation tab land there.
 5. The Navigation tab reopens the last place viewed.

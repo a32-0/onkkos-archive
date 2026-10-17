@@ -119,7 +119,7 @@ On a phone the menu covers the screen, so the page under it does not scroll whil
 ## Components
 
 Each is one component with its Storybook stories: `Header`, `PlayerChip`,
-`TabBar` and `Tab` (active, inactive), `SheetHeader`, `PlayerMenu` (with
+`TabBar` and `Tab` (active, inactive), `SheetHeader` (close, or a chevron back), `PlayerMenu` (with
 settings), `Segmented`, and `Button` in the red filled variant Disconnect uses.
 
 ## Acceptance

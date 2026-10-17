@@ -43,7 +43,7 @@ export function SystemList({
             key={system.id}
             href={`${SYSTEM_HASH}${system.id}`}
             name={system.name}
-            art={system.art}
+            orb={system.orb}
             satellite={system.satellite}
             count={system.count}
             mastered={system.mastered}

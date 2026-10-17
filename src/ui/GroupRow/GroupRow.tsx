@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 
 import { GameIcon } from "../GameIcon/GameIcon";
+import type { IconName } from "../Icon/glyphs";
 import { Icon } from "../Icon/Icon";
 import styles from "./GroupRow.module.css";
 
 export function GroupRow({
   icon,
+  symbol,
   name,
   count,
   open,
@@ -14,6 +16,7 @@ export function GroupRow({
   children,
 }: {
   icon: string | null;
+  symbol?: IconName;
   name: string;
   count?: string;
   open: boolean;
@@ -31,7 +34,15 @@ export function GroupRow({
         onClick={onToggle}
       >
         <span className={styles.title}>
-          <GameIcon url={icon} />
+          {icon ? (
+            <GameIcon url={icon} />
+          ) : (
+            symbol && (
+              <span className={styles.symbol}>
+                <Icon name={symbol} size={20} />
+              </span>
+            )
+          )}
           <span className={styles.name}>{name}</span>
           {count && <span className={styles.count}>{count}</span>}
         </span>

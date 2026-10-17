@@ -22,11 +22,13 @@
   --blue-700: #1d3c5c;
   --red-600: #b33419;
   --red-100: #ffd4cb;
+  --abyss-900: #00142c;
 
   --canvas: var(--black);
   --surface-header: var(--night-900);
   --surface: var(--night-700);
   --surface-sunken: var(--night-800);
+  --orb-shade: var(--abyss-900);
   --surface-raised: var(--night-600);
   --surface-raised-strong: var(--night-500);
   --surface-band: var(--night-band);

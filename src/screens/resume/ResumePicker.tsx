@@ -1,16 +1,15 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 
 import { RESUME } from "@/content/catch-up";
 import { Button } from "@/ui/Button/Button";
-import { DateMenu } from "@/ui/DateMenu/DateMenu";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
 import { FIRST, useMore } from "./batches";
 import styles from "./Resume.module.css";
-import type { ResumeAction, ResumeMonth, ResumeUpdate } from "./state";
+import type { ResumeAction, ResumeUpdate } from "./state";
 
 function matches(update: ResumeUpdate, query: string): boolean {
   const name = update.name.toLowerCase();
@@ -28,31 +27,20 @@ function matches(update: ResumeUpdate, query: string): boolean {
 
 export function ResumePicker({
   updates,
-  months,
   step,
   choose,
 }: {
   updates: readonly ResumeUpdate[];
-  months: readonly ResumeMonth[];
   step: string | null;
   choose: ResumeAction;
 }) {
   const [query, setQuery] = useState("");
   const [shown, setShown] = useState(FIRST);
-  const [dating, setDating] = useState(false);
-  const [, start] = useTransition();
   const more = useMore();
 
   const found = updates.filter((update) => matches(update, query));
   const listed = found.slice(0, shown);
   const hidden = found.length - listed.length;
-
-  const send = (since: string) => {
-    const form = new FormData();
-    form.set("since", since);
-    if (step) form.set("step", step);
-    start(() => choose(form));
-  };
 
   return (
     <>
@@ -68,15 +56,6 @@ export function ResumePicker({
             }}
           />
         </div>
-        <DateMenu
-          label={RESUME.date}
-          heading={RESUME.monthHeading}
-          months={months}
-          open={dating}
-          menuId="resume-date"
-          onToggle={() => setDating(!dating)}
-          onChoose={send}
-        />
       </div>
       {found.length === 0 ? (
         <p className={styles.empty}>{RESUME.noMatch}</p>

@@ -624,7 +624,7 @@ describe("the map (spec 07, BR-46)", () => {
     expect(html).toContain("You last played");
     expect(html).toContain(">Earth<");
     expect(html).toContain(">Nodes<");
-    expect(html).toMatch(/>Show<[\s\S]*>Mastered<[\s\S]*>New</);
+    expect(html).toMatch(/>Show<[\s\S]*>To get<[\s\S]*>Mastered<[\s\S]*>New</);
     expect(html).toContain(">Arsenal<");
     expect(html).not.toContain('aria-expanded="true"');
     expect(html).toMatch(
@@ -632,10 +632,10 @@ describe("the map (spec 07, BR-46)", () => {
     );
   });
 
-  it("offers no New without a month, and asks for an update on the card", async () => {
+  it("takes a player who skipped the month as up to date, with no New", async () => {
     const html = await page({ system: "origin", place: "Earth" });
-    expect(html).toContain("Choose an update");
-    expect(html).toContain(">Mastered<");
+    expect(html).toContain("You&#x27;re up to date");
+    expect(html).toMatch(/>To get<[\s\S]*>Mastered</);
     expect(html).not.toMatch(/>New</);
   });
 

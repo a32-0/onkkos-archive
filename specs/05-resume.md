@@ -14,13 +14,12 @@ Drawn on 2026-10-06 under **Documented states**, from the states this spec
 describes and no earlier frame drew. Their texts are sample values:
 
 - [`474:608` Resume — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-608): the search with no hit.
-- [`474:685` Resume — Date open](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-685): Date open over the cards and the dimmed page: "Month you last played" and the months newest first (BR-08).
 - [`466:207` Resume (from Two ways in)](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=466-207): the onboarding entrance, with Skip and no tab bar (BR-41).
 
 ## Rules
 
-- [BR-08](../docs/business-rules.md#br-08--pick-a-date-or-type-it): Date, a
-  list of months; a date is typed in the search.
+- [BR-08](../docs/business-rules.md#br-08--type-a-date-in-the-search): a date
+  is typed in the search.
 - [BR-09](../docs/business-rules.md#br-09--main-updates-and-minor-updates-both-count):
   which updates are listed, one card per name.
 - [BR-10](../docs/business-rules.md#br-10--update-card-title-band): the card's
@@ -45,9 +44,9 @@ top, as `203:231` draws it:
 2. Onkko's line, "Once, long ago, I would look backwards, feeling for the
    fading tendrils of our might-have-beens.", once the player has reached
    Cetus and has not turned the phrases off (BR-64).
-3. **Resume**, and "Tell Onkko which one was your last played. He'll show you
-   what shipped since." (owner, 2026-10-16).
-4. The search field and **Date**.
+3. **Resume**, and "Tell Onkko which update you last played. He'll show you
+   the items released since then." (owner, 2026-10-16).
+4. The search field, "Search an update or a date...", alone (`477:3022`).
 5. The update cards, newest first, one per name (BR-09). The newest wears
    **Newest**. Five show, then "Show more", a `Button` in its text style,
    which shows five more below 840 and ten from 840 (owner, 2026-10-16).
@@ -64,12 +63,8 @@ top, as `203:231` draws it:
   "Mar 2024", "March 2024"). A typed search starts again at five cards, and
   "Show more" shows only what still matches. No match shows the
   line "No update by that name or date." in place of the cards. The frame draws no empty state; the line is the one already in `src/content/`, set in the same type as the lead.
-- **Date** opens the month list over the page dimmed by `--scrim` (BR-08); a
-  click on the veil or Escape closes it. A month sets `wf_since` the same way
-  and opens the Summary. The list holds the twelve months back from this one,
-  newest first; an older time is typed in the search. A month the action
-  cannot read, or one still to come, keeps nothing and leaves the player on
-  Resume.
+- A month the action cannot read, or one still to come, keeps nothing and
+  leaves the player on Resume.
 - **Skip** opens the map on the frontier or the focus, as on Two ways in.
 
 Skip follows BR-40: every screen before the map ends in it. Resume has no Go
@@ -103,14 +98,13 @@ surface colour.
 
 ## Desktop (BR-39)
 
-From 840 the heading, the search and Date stay one centred column; the cards
+From 840 the heading and the search stay one centred column; the cards
 form a grid at the frame's card width, newest first in reading order, and
 "Show older" sits under the grid.
 
 ## Components
 
-`UpdateCard` (plain, newest), `Badge` (Newest), `SearchField`, `DateMenu`
-(closed, open), and the `Button` variants of Skip and "Show more", each
+`UpdateCard` (plain, newest), `Badge` (Newest), `SearchField`, and the `Button` variants of Skip and "Show more", each
 with its stories.
 
 ## Acceptance

@@ -1,5 +1,6 @@
 import { Badge } from "../Badge/Badge";
 import { Icon } from "../Icon/Icon";
+import { Orb, type OrbNodes } from "../Orb/Orb";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import styles from "./PlaceCard.module.css";
 
@@ -8,7 +9,8 @@ export type PlaceCardCount = { count: string; label: string };
 export function PlaceCard({
   system,
   name,
-  art,
+  orb,
+  constellation,
   onOpen,
   nodes,
   items,
@@ -17,7 +19,8 @@ export function PlaceCard({
 }: {
   system: string;
   name: string;
-  art: string | null;
+  orb: string | null;
+  constellation?: OrbNodes;
   onOpen: () => void;
   nodes?: { title: string; lines: readonly PlaceCardCount[] };
   items: PlaceCardCount & { word: string };
@@ -35,7 +38,7 @@ export function PlaceCard({
           <Icon name="chevron-backward" />
         </span>
       </button>
-      {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
+      <Orb color={orb} size="l" nodes={constellation} />
       <div className={mastered ? styles.done : styles.state}>
         {nodes && (
           <>

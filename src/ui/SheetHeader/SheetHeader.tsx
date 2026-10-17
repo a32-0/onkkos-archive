@@ -6,10 +6,12 @@ export function SheetHeader({
   wordmark,
   closeLabel,
   onClose,
+  back = false,
 }: {
   wordmark: string;
   closeLabel: string;
   onClose: () => void;
+  back?: boolean;
 }) {
   return (
     <Header
@@ -17,7 +19,7 @@ export function SheetHeader({
       wordmark={wordmark}
       close={
         <button type="button" className={styles.close} aria-label={closeLabel} onClick={onClose}>
-          <Icon name="close" />
+          <Icon name={back ? "chevron-backward" : "close"} />
         </button>
       }
     />

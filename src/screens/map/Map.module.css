@@ -112,16 +112,6 @@
   outline-offset: calc(var(--border-2) * -1);
 }
 
-.orb {
-  --map-orb: 32px;
-  flex: none;
-  width: var(--map-orb);
-  height: var(--map-orb);
-  border-radius: var(--radius-full);
-  background: var(--fill-strong);
-  object-fit: cover;
-}
-
 .system-text {
   display: flex;
   flex: 1 0 0;

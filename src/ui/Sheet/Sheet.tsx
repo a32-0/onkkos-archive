@@ -14,6 +14,7 @@ export function Sheet({
   open,
   onClose,
   align = "end",
+  back = false,
   children,
 }: {
   label: string;
@@ -22,6 +23,7 @@ export function Sheet({
   open: boolean;
   onClose: () => void;
   align?: SheetAlign;
+  back?: boolean;
   children: ReactNode;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -47,7 +49,7 @@ export function Sheet({
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <SheetHeader wordmark={wordmark} closeLabel={closeLabel} onClose={onClose} />
+      <SheetHeader wordmark={wordmark} closeLabel={closeLabel} onClose={onClose} back={back} />
       <div className={styles.body}>{children}</div>
     </dialog>
   );

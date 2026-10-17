@@ -1,4 +1,5 @@
 import { BRIEF, briefLine } from "@/content/checks";
+import { shortName } from "@/content/names";
 import { REACH } from "@/content/reach";
 import { MAP } from "@/content/system";
 import type {
@@ -21,6 +22,7 @@ import type {
   PlaceRowView,
   SystemRowView,
 } from "./state";
+import { GROUP_SYMBOLS } from "./symbols";
 
 const FROM = "navigation";
 
@@ -47,10 +49,10 @@ function tileWords(tile: MapTile): { reading: string; place: string } {
   return { reading: words.reading, place: words.place || (tile.from ?? "") };
 }
 
-function tileView(tile: MapTile): MapTileView {
+function tileView(tile: MapTile, group: string): MapTileView {
   const { state } = tile;
   return {
-    name: tile.name,
+    name: shortName(tile.name, group),
     href: itemRoute(tile.name, FROM),
     art: tile.art,
     ...tileWords(tile),
@@ -78,8 +80,9 @@ function groupView(group: MapGroup, map: PlaceMap, input: MapViewInput): MapGrou
     id: `map-${group.group}`,
     name: MAP.groups[group.group].name,
     icon: input.icons[group.group] ?? null,
+    ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),
     ...(input.since !== null && group.fresh > 0 && { count: MAP.count(group.fresh) }),
-    tiles: group.tiles.map(tileView),
+    tiles: group.tiles.map((tile) => tileView(tile, group.group)),
     more: {
       left: moreLine(group, map.rank, (tile) => tile.left),
       fresh: moreLine(group, map.rank, (tile) => tile.fresh),
@@ -107,7 +110,7 @@ function placeRow(
   return {
     name: standing.place,
     href: placeRoute(system, standing.place),
-    art: input.orbs[standing.place] ?? null,
+    orb: input.orbs[standing.place] ?? null,
     ...(standing.mastered
       ? { mastered: MAP.mastered }
       : standing.readable > 0 && { count: fraction(standing.done, standing.readable) }),
@@ -124,14 +127,12 @@ function isStartAt(start: PlaceRef | null, system: string, place?: string): bool
   return place === undefined || start.place === place;
 }
 
-function moreFor(standings: readonly PlaceStanding[], onView: string | null): string[] {
+function moreFor(standings: readonly PlaceStanding[], onView: string | null): string | null {
   const beyond = standings.filter((one) => one.gap !== null && one.place !== onView);
-  const junction = beyond.flatMap((one) => (one.gap?.kind === "junction" ? [one.gap] : []));
-  const lines: string[] = [];
-  const next = junction[0];
-  if (next) lines.push(MAP.morePlaces(junction.length, next.from, next.to));
-  if (beyond.some((one) => one.gap?.kind === "clan")) lines.push(MAP.moreDojo);
-  return lines;
+  if (beyond.length === 0) return null;
+  const next = beyond.flatMap((one) => (one.gap?.kind === "junction" ? [one.gap] : []))[0];
+  const clan = beyond.some((one) => one.gap?.kind === "clan");
+  return MAP.morePlaces(beyond.length, next ? { from: next.from, to: next.to } : null, clan);
 }
 
 function placeList(input: MapViewInput): PlaceListSystem[] {
@@ -144,7 +145,7 @@ function placeList(input: MapViewInput): PlaceListSystem[] {
       return {
         id: standing.system.id,
         name: standing.system.name,
-        art: input.orbs[standing.system.places[0] ?? ""] ?? null,
+        orb: input.orbs[standing.system.places[0] ?? ""] ?? null,
         rows: standing.places.map((place) =>
           placeRow(place, standing.system.id, input, place.place === onView),
         ),
@@ -160,7 +161,7 @@ function systemRow(standing: SystemStanding, input: MapViewInput): SystemRowView
   return {
     id: system.id,
     name: system.name,
-    art: first ? (input.orbs[first] ?? null) : null,
+    orb: first ? (input.orbs[first] ?? null) : null,
     ...(satellite && { satellite }),
     ...(!system.released
       ? { soon: MAP.soon }
@@ -181,9 +182,13 @@ export function mapView(input: MapViewInput): MapView {
   const hidden = input.standings.length - listed.length;
   return {
     card: {
-      system: map.system.name,
+      system: MAP.changeLocation,
       name: map.place,
-      art: input.orbs[map.place] ?? null,
+      orb: input.orbs[map.place] ?? null,
+      ...(map.nodes &&
+        map.nodes.total > 0 && {
+          constellation: { seed: map.place, total: map.nodes.total, lit: map.nodes.done },
+        }),
       ...(map.nodes &&
         map.nodes.total > 0 && {
           nodes: {

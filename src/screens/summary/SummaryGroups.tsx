@@ -28,6 +28,7 @@ export function SummaryGroups({ sections }: { sections: readonly SummarySection[
           <GroupRow
             key={group.id}
             icon={group.icon}
+            symbol={group.symbol}
             name={group.name}
             count={group.count}
             open={open.has(group.id)}

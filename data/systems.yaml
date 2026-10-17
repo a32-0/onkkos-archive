@@ -8,6 +8,39 @@ hubs:
   Pontis Tower: Uranus Proxima
   Nightcap: Venus
 
+colors:
+  Earth: "#4a9eff"
+  Venus: "#725253"
+  Mercury: "#ff4a6b"
+  Mars: "#ff0004"
+  Deimos: "#cd0026"
+  Phobos: "#686465"
+  Void: "#e8c35a"
+  Ceres: "#5bc4b4"
+  Jupiter: "#d9935b"
+  Europa: "#a9d8f2"
+  Sanctuary: "#3fd2c7"
+  Saturn: "#e3c27a"
+  Uranus: "#59c2e6"
+  Neptune: "#3b5bdb"
+  Lua: "#c9c9c9"
+  Pluto: "#b08968"
+  Eris: "#6bbf59"
+  Sedna: "#9c3b3b"
+  "Kuva Fortress": "#b3001b"
+  Zariman: "#e8e3d9"
+  Dojo: "#9b7b4f"
+  "Höllvania": "#a15cff"
+  Duviri: "#e05a9b"
+  "Earth Proxima": "#4a9eff"
+  "Venus Proxima": "#725253"
+  "Saturn Proxima": "#e3c27a"
+  "Uranus Proxima": "#59c2e6"
+  "Neptune Proxima": "#3b5bdb"
+  "Pluto Proxima": "#b08968"
+  "Veil Proxima": "#7a4dff"
+  "Dark Refractory": "#5c6b73"
+
 systems:
   - id: origin
     name: Origin

@@ -59,16 +59,6 @@
   transform: rotate(180deg);
 }
 
-.art {
-  --place-art-size: 120px;
-  display: block;
-  width: var(--place-art-size);
-  height: var(--place-art-size);
-  border-radius: var(--radius-full);
-  background: var(--surface-sunken);
-  object-fit: cover;
-}
-
 .state {
   display: flex;
   flex-direction: column;

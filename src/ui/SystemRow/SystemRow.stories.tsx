@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { SAMPLE_ORB } from "../stories/art";
 import { SystemRow } from "./SystemRow";
 
 const meta = {
@@ -9,8 +8,8 @@ const meta = {
   args: {
     href: "/system?system=duviri",
     name: "Duviri",
-    art: SAMPLE_ORB[2],
-    satellite: SAMPLE_ORB[4],
+    orb: "#e85a7a",
+    satellite: "#7a5a6a",
     count: { count: "12/21", label: "Mastered" },
   },
   decorators: [
@@ -31,8 +30,8 @@ export const Plain: Story = {};
 export const OnView: Story = {
   args: {
     name: "Origin",
-    art: SAMPLE_ORB[1],
-    satellite: SAMPLE_ORB[0],
+    orb: "#e8d84a",
+    satellite: "#4a9eff",
     count: undefined,
     mastered: "Mastered",
     onView: true,
@@ -40,14 +39,14 @@ export const OnView: Story = {
 };
 
 export const StartHere: Story = {
-  args: { name: "Pom-2 PC", art: SAMPLE_ORB[4], startHere: "Start here" },
+  args: { name: "Pom-2 PC", orb: "#7a5a6a", startHere: "Start here" },
 };
 
 export const Soon: Story = {
   args: {
     name: "Tau",
-    art: SAMPLE_ORB[4],
-    satellite: SAMPLE_ORB[0],
+    orb: "#7a5a6a",
+    satellite: "#4a9eff",
     count: undefined,
     soon: "Soon™",
   },

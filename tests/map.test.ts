@@ -67,14 +67,14 @@ function viewOf(
 }
 
 const tilesOf = (view: MapView) => view.sections.flatMap((s) => s.groups.flatMap((g) => g.tiles));
-const shown = (view: MapView, lens: Lens | null) =>
-  tilesOf(view).filter((tile) => shownUnder(tile, lens));
+const shown = (view: MapView, lens: Lens) => tilesOf(view).filter((tile) => shownUnder(tile, lens));
 
 describe("the lens (BR-45)", () => {
-  it("chooses a lens, and choosing the chosen one again returns to the default", () => {
-    expect(nextLens(null, "mastered")).toBe("mastered");
+  it("always has one lens chosen, To get by default", () => {
+    expect(nextLens("left", "mastered")).toBe("mastered");
     expect(nextLens("mastered", "new")).toBe("new");
-    expect(nextLens("new", "new")).toBeNull();
+    expect(nextLens("new", "new")).toBe("new");
+    expect(nextLens("new", "left")).toBe("left");
     expect(nextLens("mastered", "other")).toBe("mastered");
   });
 
@@ -82,7 +82,7 @@ describe("the lens (BR-45)", () => {
   const view = viewOf(cy, "origin", "Earth", "2025-08");
 
   it("shows what is left by default, and only the mastered or the new under a lens", () => {
-    expect(shown(view, null).every((tile) => !tile.mastered)).toBe(true);
+    expect(shown(view, "left").every((tile) => !tile.mastered)).toBe(true);
     expect(shown(view, "mastered").length).toBeGreaterThan(0);
     expect(shown(view, "mastered").every((tile) => tile.mastered)).toBe(true);
     expect(shown(view, "new").every((tile) => tile.fresh)).toBe(true);
@@ -121,7 +121,7 @@ describe("reach on the map (BR-59 to BR-62)", () => {
       /^\d+ more .+ Mastery Rank \d+ or higher\. You are Mastery Rank 2\.$/,
     );
     expect(held?.tiles.some((tile) => tile.beyond)).toBe(true);
-    for (const tile of held?.tiles.filter((one) => shownUnder(one, null)) ?? []) {
+    for (const tile of held?.tiles.filter((one) => shownUnder(one, "left")) ?? []) {
       expect(tile.beyond).toBe(false);
     }
   });
@@ -132,8 +132,8 @@ describe("reach on the map (BR-59 to BR-62)", () => {
     const listed = origin.rows.filter((row) => row.listed);
     expect(listed.length).toBeGreaterThan(0);
     expect(listed.length).toBeLessThan(origin.rows.length);
-    expect(origin.more[0]).toMatch(
-      /more places? opens? as you clear the junctions\. Next: the .+ Junction, on .+\.$/,
+    expect(origin.more).toMatch(
+      /^\d+ more places open as you clear the junctions and join a clan\. Next: the .+ Junction, on .+\.$/,
     );
     const beyond = origin.rows.find((row) => !row.listed && row.gap?.startsWith("Clear the"));
     expect(beyond?.gap).toMatch(/^Clear the .+ Junction, on .+, to reach it\.$/);
@@ -161,7 +161,7 @@ describe("reach on the map (BR-59 to BR-62)", () => {
     const view = viewOf({}, "origin", "Earth", null);
     const origin = view.places.find((one) => one.id === "origin")!;
     expect(origin.rows.every((row) => row.listed && row.gap === undefined)).toBe(true);
-    expect(origin.more).toEqual([]);
+    expect(origin.more).toBeNull();
     expect(view.moreSystems).toBeNull();
     expect(tilesOf(view).every((tile) => !tile.beyond)).toBe(true);
   });
@@ -198,7 +198,7 @@ describe("the Collection groups with a place (owner, 2026-10-16)", () => {
 
   it("gives each hub tile its hub, and a reading where the source has one", () => {
     const cy = fixture("profile-cy");
-    const unpriced = new Set(["The Power Of Harrow Compels Thee Honoria"]);
+    const unpriced = new Set(["The Power Of Harrow Compels Thee"]);
     for (const [system, place, group] of [
       ["duviri", "Duviri", "map-incarnons"],
       ["empyrean", "Uranus Proxima", "map-honoria"],
@@ -244,5 +244,33 @@ describe("the Collection groups with a place (owner, 2026-10-16)", () => {
       ["Hunhow Honoria", "Uranus Proxima"],
       ["Rizoma Ephemera", "Venus"],
     ]);
+  });
+});
+
+describe("each place's sphere", () => {
+  it("has a colour for every place of every system", () => {
+    const { colors } = loadSystems();
+    for (const place of systems.flatMap((system) => system.places)) {
+      expect(colors[place], place).toMatch(/^#[0-9a-f]{6}$/);
+    }
+  });
+
+  it("draws one node per node of the place, lit as played", () => {
+    const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
+    expect(view.card.constellation?.total).toBe(15);
+    expect(view.card.constellation?.lit).toBe(15);
+    expect(view.card.system).toBe("Change location");
+  });
+});
+
+describe("names inside their group", () => {
+  it("drop the word the group already says", async () => {
+    const { shortName } = await import("@/content/names");
+    expect(shortName("Hunhow Honoria", "honoria")).toBe("Hunhow");
+    expect(shortName("Rizoma Ephemera", "ephemera")).toBe("Rizoma");
+    expect(shortName("Braton Incarnon Genesis", "incarnons")).toBe("Braton");
+    expect(shortName("Axi A21 Intact", "relics")).toBe("Axi A21");
+    expect(shortName("Honoria", "honoria")).toBe("Honoria");
+    expect(shortName("Excalibur Prime", "warframes")).toBe("Excalibur Prime");
   });
 });

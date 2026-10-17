@@ -1,3 +1,4 @@
+import type { IconName } from "@/ui/Icon/glyphs";
 import type { FeaturedCardKind } from "@/ui/FeaturedCard/FeaturedCard";
 import type { UpdateListItem } from "@/ui/UpdateList/UpdateList";
 
@@ -13,6 +14,7 @@ export interface SummaryGroup {
   id: string;
   name: string;
   icon: string | null;
+  symbol?: IconName;
   count: string;
   tiles: SummaryTile[];
   more: string | null;

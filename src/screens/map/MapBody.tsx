@@ -20,11 +20,12 @@ import { PlaceList } from "./PlaceList";
 import type { Lens, MapView } from "./state";
 import { SystemList } from "./SystemList";
 
+const TO_GET: SegmentedOption = { value: "left", label: MAP.toGet };
 const MASTERED: SegmentedOption = { value: "mastered", label: MAP.mastered };
 const NEW: SegmentedOption = { value: "new", label: MAP.new };
 
 export function MapBody({ view, voice, top }: { view: MapView; voice: boolean; top: ReactNode }) {
-  const [lens, setLens] = useState<Lens | null>(null);
+  const [lens, setLens] = useState<Lens>("left");
   const [places, setPlaces] = useState(false);
   const [systems, setSystems] = useState(false);
   const [chosen, setChosen] = useState(view.system);
@@ -60,7 +61,7 @@ export function MapBody({ view, voice, top }: { view: MapView; voice: boolean; t
               <span className={styles["show-label"]}>{MAP.show}</span>
               <Segmented
                 label={MAP.show}
-                options={view.newLens ? [MASTERED, NEW] : [MASTERED]}
+                options={view.newLens ? [TO_GET, MASTERED, NEW] : [TO_GET, MASTERED]}
                 chosen={lens}
                 onChoose={(value) => setLens(nextLens(lens, value))}
               />
@@ -69,7 +70,7 @@ export function MapBody({ view, voice, top }: { view: MapView; voice: boolean; t
         </div>
         {!view.nothingLeft && (
           <div className={styles.area}>
-            <MapGroups key={lens ?? "left"} sections={view.sections} lens={lens} />
+            <MapGroups key={lens} sections={view.sections} lens={lens} />
           </div>
         )}
         {voice && (
@@ -95,6 +96,7 @@ export function MapBody({ view, voice, top }: { view: MapView; voice: boolean; t
         open={systems}
         onClose={() => setSystems(false)}
         align={panes ? "start" : "end"}
+        back
       >
         <SystemList
           systems={view.systems}

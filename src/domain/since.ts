@@ -26,12 +26,6 @@ export function shortMonth(yearMonth: string, locale = "en-US"): string {
   return `${name}, ${year}`;
 }
 
-export function recentMonths(now: Date, count: number): string[] {
-  return Array.from({ length: count }, (_, back) =>
-    toYearMonth(new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back))),
-  );
-}
-
 export function sinceFrom(value: unknown, now: Date): string | null {
   if (typeof value !== "string") return null;
   const typed = value.trim();

@@ -242,6 +242,9 @@ a reading of the earlier build against it was put to them.
   interface's own icons are Material Symbols Rounded, drawn in the frames on
   2026-10-06: the tab bar's explore, hourglass and flag; hourglass and flag on
   Two ways in; precision manufacturing and auto stories on the Goal cards.
+- Rule: a category the wiki has no white icon for takes a Material Symbol
+  (owner, 2026-10-16): Archgun rocket launch, Archmelee swords, Necramech
+  smart toy, Incarnons cyclone, Ephemera flare, Honoria military tech.
 
 ### BR-44 · Start here marks the frontier, or the focus
 
@@ -262,11 +265,12 @@ a reading of the earlier build against it was put to them.
 - Rule: by default a place shows only what is left: everything here the player
   has not mastered. That includes a ranked item short of its maximum and every
   collectible, since the profile cannot prove one is owned. The control has
-  two options, Mastered and New, and none is chosen by default.
-  Choosing Mastered shows only what is mastered here; choosing New shows only
-  what shipped since the player's month, mastered or not. Choosing the chosen
-  option again returns to the default.
-- New needs a month. Without `wf_since` the New option is not shown.
+  three options, To get, Mastered and New, and one is always chosen, To get
+  first (owner, 2026-10-16: with no name, the default was hard to read).
+  Mastered shows only what is mastered here; New shows only what shipped
+  since the player's month, mastered or not.
+- New needs a month. Without `wf_since` the New option is not shown; the
+  player is taken as up to date (spec 07).
 - A group with nothing to show under the current lens does not render, and a
   divider with no group under it does not render either. A place where every
   arsenal item is mastered and that holds no collectible shows the empty state
@@ -389,18 +393,17 @@ a reading of the earlier build against it was put to them.
 
 ## Resume: picking the last update played
 
-### BR-08 · Pick a date, or type it
+### BR-08 · Type a date in the search
 
 - Frame [`203:231` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231)
   · pin (344, 321) · layer: Shipment Section › Date Filter Container (the
   "Date" button) · comment `1931751624`
 - Type: behaviour.
-- Rule: "Date" opens a dropdown to choose a month, over the page dimmed by
-  `--scrim`. A date is typed in the search beside it (owner, 2026-10-16): a
-  year, a month or a day, as "2024", "2024-03", "Mar 2024" or "March 2024",
-  filters the cards to the updates of that time, and the player picks one.
-  The field under the months that took a full day was removed then, because
-  the search does the same with less.
+- Rule: a date is typed in the search (owner, 2026-10-16): a year, a month
+  or a day, as "2024", "2024-03", "Mar 2024" or "March 2024", filters the
+  cards to the updates of that time, and the player picks one. The "Date"
+  button and its month list were removed the same day, so the search is the
+  one field (`477:3022`).
 
 ### BR-09 · Main updates and minor updates both count
 

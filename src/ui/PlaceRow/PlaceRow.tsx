@@ -1,5 +1,6 @@
 import { Badge } from "../Badge/Badge";
 import type { LinkComponent } from "../link";
+import { Orb } from "../Orb/Orb";
 import styles from "./PlaceRow.module.css";
 
 export type RowCount = { count: string; label: string };
@@ -7,7 +8,7 @@ export type RowCount = { count: string; label: string };
 export function PlaceRow({
   href,
   name,
-  art,
+  orb,
   count,
   gap,
   mastered,
@@ -18,7 +19,7 @@ export function PlaceRow({
 }: {
   href: string;
   name: string;
-  art: string | null;
+  orb: string | null;
   count?: RowCount;
   gap?: string;
   mastered?: string;
@@ -30,7 +31,7 @@ export function PlaceRow({
   const Link = link ?? "a";
   return (
     <Link href={href} className={styles.row} aria-current={onView || undefined}>
-      {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
+      <Orb color={orb} size="m" />
       <span className={mastered ? styles.inline : styles.text}>
         <span className={styles.name}>{name}</span>
         {mastered ? (

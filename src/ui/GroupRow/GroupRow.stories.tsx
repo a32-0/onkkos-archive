@@ -75,4 +75,6 @@ export const WithoutCount: Story = { args: { count: undefined } };
 
 export const NoIcon: Story = { args: { icon: null } };
 
+export const SymbolIcon: Story = { args: { icon: null, name: "Honoria", symbol: "military-tech" } };
+
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

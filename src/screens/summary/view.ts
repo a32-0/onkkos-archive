@@ -1,8 +1,10 @@
 import { SUMMARY } from "@/content/catch-up";
+import { shortName } from "@/content/names";
 import { REACH, type Kind } from "@/content/reach";
 import type { Beyond, NewGroup, WhatsNew } from "@/domain/catalog/whats-new";
 import { itemRoute } from "@/routes";
 
+import { GROUP_SYMBOLS } from "../map/symbols";
 import { tileLines } from "./lines";
 import type { SummaryGroup, SummarySection } from "./state";
 
@@ -26,9 +28,10 @@ function groupView(group: NewGroup, icons: Readonly<Record<string, string>>): Su
     id: `summary-${group.group}`,
     name: words.name,
     icon: icons[group.group] ?? null,
+    ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),
     count: SUMMARY.count(group.count),
     tiles: group.tiles.map((tile) => ({
-      name: tile.name,
+      name: shortName(tile.name, group.group),
       href: itemRoute(tile.name, FROM),
       art: tile.art,
       ...tileLines(tile.reading, tile.where),

@@ -10,7 +10,7 @@ import {
   sectionOf,
   wikiPassage,
 } from "@/infra/wiki/client";
-import { gameIcons, placeIcons } from "@/infra/wiki/icons";
+import { gameIcons } from "@/infra/wiki/icons";
 import { withProse } from "@/infra/wiki/prose";
 
 import { testData } from "./helpers";
@@ -290,14 +290,6 @@ describe("the wiki's icons", () => {
     });
   });
 
-  it("reads each place's art by its name, in one request", async () => {
-    const asked = filesReturn(["File:Earth.png"]);
-    expect(await placeIcons(["Earth", "Venus"])).toEqual({
-      Earth: "https://wiki.test/File:Earth.png",
-    });
-    expect(asked).toEqual([["File:Earth.png", "File:Venus.png"]]);
-  });
-
   it("answers no icon rather than failing when the wiki is down", async () => {
     vi.stubGlobal(
       "fetch",
@@ -305,7 +297,7 @@ describe("the wiki's icons", () => {
         throw new Error("offline");
       }),
     );
-    expect(await placeIcons(["Earth"])).toEqual({});
+    expect(await gameIcons()).toEqual({});
   });
 });
 

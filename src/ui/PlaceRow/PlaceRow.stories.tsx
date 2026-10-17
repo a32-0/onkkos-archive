@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { SAMPLE_ORB } from "../stories/art";
 import { PlaceRow } from "./PlaceRow";
 
 const meta = {
@@ -9,7 +8,7 @@ const meta = {
   args: {
     href: "/system?system=origin&place=ceres",
     name: "Ceres",
-    art: SAMPLE_ORB[3],
+    orb: "#4ad8c8",
     count: { count: "12/21", label: "Mastered" },
   },
   decorators: [
@@ -27,28 +26,28 @@ type Story = StoryObj<typeof meta>;
 
 export const Plain: Story = {};
 
-export const OnView: Story = { args: { name: "Earth", art: SAMPLE_ORB[0], onView: true } };
+export const OnView: Story = { args: { name: "Earth", orb: "#4a9eff", onView: true } };
 
 export const StartHere: Story = {
-  args: { name: "Venus", art: SAMPLE_ORB[4], startHere: "Start here" },
+  args: { name: "Venus", orb: "#7a5a6a", startHere: "Start here" },
 };
 
-export const New: Story = { args: { name: "Mercury", art: SAMPLE_ORB[2], isNew: "New" } };
+export const New: Story = { args: { name: "Mercury", orb: "#e85a7a", isNew: "New" } };
 
 export const Mastered: Story = {
-  args: { name: "Mars", art: SAMPLE_ORB[2], count: undefined, mastered: "Mastered" },
+  args: { name: "Mars", orb: "#e85a7a", count: undefined, mastered: "Mastered" },
 };
 
 export const Dojo: Story = { args: { name: "Dojo" } };
 
 export const OnViewStartHereNew: Story = {
-  args: { name: "Earth", art: SAMPLE_ORB[0], onView: true, startHere: "Start here", isNew: "New" },
+  args: { name: "Earth", orb: "#4a9eff", onView: true, startHere: "Start here", isNew: "New" },
 };
 
 export const BeyondReach: Story = {
   args: {
     name: "Mars",
-    art: SAMPLE_ORB[2],
+    orb: "#e85a7a",
     count: undefined,
     gap: "Clear the Venus Junction, on Earth, to reach it.",
   },

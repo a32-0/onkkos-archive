@@ -6,8 +6,11 @@ function plural(count: number, one: string, many: string): string {
 
 export const MAP = {
   show: "Show",
+  toGet: "To get",
   mastered: "Mastered",
   new: "New",
+  changeLocation: "Change location",
+  changeSystem: "Change system",
   nodes: "Nodes",
   normal: "Normal",
   steelPath: "Steel Path",
@@ -40,9 +43,7 @@ export const MAP = {
   },
   nothingLeft: (place: string) => `Nothing left on ${place}`,
   nothingLeftLine: "Every item it gives is mastered. Choose another place from the card above.",
-  pickUpdate: "Choose an update",
   places: "Places",
-  system: "System",
   search: "Search a planet, location or celestial body...",
   searchLabel: "Search the places",
   noPlace: "No place by that name",
@@ -51,9 +52,10 @@ export const MAP = {
   startHere: "Start here",
   junctionGap: (from: string, to: string) => `Clear ${ENGINE.junctionAt(from, to)}, to reach it.`,
   clanGap: "Join a clan to enter its Dojo.",
-  morePlaces: (count: number, from: string, to: string) =>
-    `${count} more ${plural(count, "place opens", "places open")} as you clear the junctions. Next: ${ENGINE.junctionAt(from, to)}.`,
-  moreDojo: "1 more place opens when you join a clan.",
+  morePlaces: (count: number, next: { from: string; to: string } | null, clan: boolean) =>
+    next === null
+      ? `${count} more ${plural(count, "place opens", "places open")} when you join a clan.`
+      : `${count} more ${plural(count, "place opens", "places open")} as you clear the junctions${clan ? " and join a clan" : ""}. Next: ${ENGINE.junctionAt(next.from, next.to)}.`,
   systems: "Systems",
   chooseSystem: "Choose a system",
   switchAnyTime: "You can switch at any time.",

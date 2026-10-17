@@ -1,9 +1,7 @@
 export const RESUME = {
   title: "RESUME",
-  lead: "Tell Onkko which one was your last played. He'll show you what shipped since.",
+  lead: "Tell Onkko which update you last played. He'll show you the items released since then.",
   search: "Search an update or a date...",
-  date: "Date",
-  monthHeading: "Month you last played",
   newest: "Newest",
   meta: (version: string, month: string) => `Update ${version} · ${month}`,
   more: "Show more",

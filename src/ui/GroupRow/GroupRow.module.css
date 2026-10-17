@@ -24,6 +24,12 @@
   outline-offset: var(--space-2);
 }
 
+.symbol {
+  display: flex;
+  flex: none;
+  color: var(--fill-strong);
+}
+
 .title {
   display: flex;
   align-items: center;

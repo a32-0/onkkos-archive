@@ -22,17 +22,6 @@
   outline-offset: calc(var(--border-2) * -1);
 }
 
-.art {
-  --row-art-size: 48px;
-  display: block;
-  flex: none;
-  width: var(--row-art-size);
-  height: var(--row-art-size);
-  border-radius: var(--radius-full);
-  background: var(--surface-sunken);
-  object-fit: cover;
-}
-
 .text {
   display: flex;
   flex-direction: column;

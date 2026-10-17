@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { SAMPLE_ORB } from "../stories/art";
 import { PlaceCard } from "./PlaceCard";
 
 const meta = {
@@ -9,7 +8,7 @@ const meta = {
   args: {
     system: "Origin",
     name: "Earth",
-    art: SAMPLE_ORB[0],
+    orb: "#4a9eff",
     onOpen: () => {},
     nodes: {
       title: "Nodes",
@@ -39,7 +38,11 @@ export const Mastered: Story = {
 
 export const NoNodes: Story = { args: { nodes: undefined } };
 
-export const NoArt: Story = { args: { art: null } };
+export const NoColor: Story = { args: { orb: null } };
+
+export const WithNodes: Story = {
+  args: { constellation: { seed: "Earth", total: 15, lit: 12 } },
+};
 
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };
 

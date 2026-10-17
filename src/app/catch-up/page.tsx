@@ -8,7 +8,7 @@ import { allPlaces } from "@/domain/catalog/places";
 import { gameUpdates, updateStanding, type GameUpdate } from "@/domain/catalog/updates";
 import { bestPlaces, whatsNew } from "@/domain/catalog/whats-new";
 import { readReach } from "@/domain/place/reach";
-import { describeMonth, recentMonths, shortMonth } from "@/domain/since";
+import { describeMonth, shortMonth } from "@/domain/since";
 import { readParam, type SearchParams } from "@/domain/types/next";
 import { catalogData, updateSources } from "@/infra/catalog/data";
 import { placeIndex } from "@/infra/place/load";
@@ -18,8 +18,6 @@ import { gameIcons } from "@/infra/wiki/icons";
 import { Resume } from "@/screens/resume/Resume";
 import { Summary } from "@/screens/summary/Summary";
 import { summarySections } from "@/screens/summary/view";
-
-const MONTHS_LISTED = 12;
 
 function metaOf(update: GameUpdate): string {
   return RESUME.meta(update.version, shortMonth(update.yearMonth));
@@ -88,17 +86,11 @@ export default async function CatchUpPage({ searchParams }: { searchParams: Sear
     art: update.art,
     newest: index === 0,
   }));
-  const months = recentMonths(new Date(), MONTHS_LISTED).map((value) => ({
-    value,
-    label: describeMonth(value),
-  }));
-
   return (
     <Resume
       chrome={await chromeOf(screen)}
       onboarding={onboarding}
       updates={updates}
-      months={months}
       choose={resume}
       skip={startHereOf(screen)}
     />

@@ -1,13 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  describeMonth,
-  isYearMonth,
-  recentMonths,
-  shortMonth,
-  sinceFrom,
-  toYearMonth,
-} from "@/domain/since";
+import { describeMonth, isYearMonth, shortMonth, sinceFrom, toYearMonth } from "@/domain/since";
 
 describe("year-month helpers", () => {
   it("isYearMonth accepts YYYY-MM and nothing else", () => {
@@ -28,12 +21,6 @@ describe("Resume's months (BR-08, BR-43)", () => {
 
   it("writes an update's month short, with the year", () => {
     expect(shortMonth("2026-03")).toBe("Mar, 2026");
-  });
-
-  it("lists the months back from this one, newest first, across a year", () => {
-    expect(recentMonths(NOW, 12)).toHaveLength(12);
-    expect(recentMonths(NOW, 3)).toEqual(["2026-10", "2026-09", "2026-08"]);
-    expect(recentMonths(new Date("2026-01-31T00:00:00Z"), 2)).toEqual(["2026-01", "2025-12"]);
   });
 
   it("takes a month", () => {

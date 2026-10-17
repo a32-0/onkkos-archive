@@ -1,8 +1,9 @@
+import type { IconName } from "@/ui/Icon/glyphs";
 import type { ItemTileState } from "@/ui/ItemTile/ItemTile";
 import type { PlaceCardCount } from "@/ui/PlaceCard/PlaceCard";
 import type { RowCount } from "@/ui/PlaceRow/PlaceRow";
 
-export type Lens = "mastered" | "new";
+export type Lens = "left" | "mastered" | "new";
 
 export interface MapTileView {
   name: string;
@@ -21,6 +22,7 @@ export interface MapGroupView {
   id: string;
   name: string;
   icon: string | null;
+  symbol?: IconName;
   count?: string;
   tiles: MapTileView[];
   more: { left: string | null; fresh: string | null };
@@ -35,7 +37,8 @@ export interface MapSectionView {
 interface PlaceCardView {
   system: string;
   name: string;
-  art: string | null;
+  orb: string | null;
+  constellation?: { seed: string; total: number; lit: number };
   nodes?: { title: string; lines: readonly PlaceCardCount[] };
   items: PlaceCardCount & { word: string };
   mastered?: string;
@@ -45,7 +48,7 @@ interface PlaceCardView {
 export interface PlaceRowView {
   name: string;
   href: string;
-  art: string | null;
+  orb: string | null;
   count?: RowCount;
   mastered?: string;
   startHere?: string;
@@ -58,15 +61,15 @@ export interface PlaceRowView {
 export interface PlaceListSystem {
   id: string;
   name: string;
-  art: string | null;
+  orb: string | null;
   rows: PlaceRowView[];
-  more: string[];
+  more: string | null;
 }
 
 export interface SystemRowView {
   id: string;
   name: string;
-  art: string | null;
+  orb: string | null;
   satellite?: string;
   count?: RowCount;
   mastered?: string;

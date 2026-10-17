@@ -13,13 +13,7 @@ import { shownUnder } from "./lens";
 import styles from "./Map.module.css";
 import type { Lens, MapSectionView } from "./state";
 
-export function MapGroups({
-  sections,
-  lens,
-}: {
-  sections: readonly MapSectionView[];
-  lens: Lens | null;
-}) {
+export function MapGroups({ sections, lens }: { sections: readonly MapSectionView[]; lens: Lens }) {
   const [open, setOpen] = useState<ReadonlySet<string>>(new Set());
   const toggle = (id: string) => {
     const next = new Set(open);
@@ -42,6 +36,7 @@ export function MapGroups({
             <GroupRow
               key={group.id}
               icon={group.icon}
+              symbol={group.symbol}
               name={group.name}
               count={group.count}
               open={open.has(group.id)}

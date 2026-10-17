@@ -5,7 +5,6 @@ import { remeasure } from "@/app/actions";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
 import { RESUME, SUMMARY } from "@/content/catch-up";
-import { MAP } from "@/content/system";
 import { allPlaces } from "@/domain/catalog/places";
 import { gameUpdates, updateStanding, type GameUpdate } from "@/domain/catalog/updates";
 import { bestPlaces, itemLine, masteryReqOf } from "@/domain/catalog/whats-new";
@@ -21,7 +20,7 @@ import { catalogData, updateSources } from "@/infra/catalog/data";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
 import type { Screen } from "@/infra/screen";
 import { readPlace, readSince } from "@/infra/session";
-import { gameIcons, placeIcons } from "@/infra/wiki/icons";
+import { gameIcons } from "@/infra/wiki/icons";
 import { placeRoute, ROUTES } from "@/routes";
 import { MapScreen } from "@/screens/map/MapScreen";
 import { mapView } from "@/screens/map/view";
@@ -71,7 +70,9 @@ async function mapOf(
 
   const updateData = updateSources();
   const updates = gameUpdates(screen.graph, updateData);
-  const { update, current } = updateStanding(screen.graph, updateData, since, screen.profile);
+  const standing = updateStanding(screen.graph, updateData, since, screen.profile);
+  const { update, current } =
+    since === null ? { update: updates[0] ?? null, current: true } : standing;
 
   return {
     view: mapView({
@@ -80,12 +81,12 @@ async function mapOf(
       start,
       since,
       icons: await gameIcons(),
-      orbs: await placeIcons(systems.flatMap((system) => system.places)),
+      orbs: loadSystems().colors,
     }),
     card: {
       kind: current ? "up-to-date" : "last-played",
       eyebrow: current ? SUMMARY.upToDate : SUMMARY.lastPlayed,
-      name: update?.name ?? MAP.pickUpdate,
+      name: update?.name ?? "",
       meta: update ? metaOf(update) : "",
       art: update?.art ?? null,
     },

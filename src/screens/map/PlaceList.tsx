@@ -6,6 +6,7 @@ import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { Icon } from "@/ui/Icon/Icon";
 import { MoreLine } from "@/ui/MoreLine/MoreLine";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
+import { Orb } from "@/ui/Orb/Orb";
 import { PlaceRow } from "@/ui/PlaceRow/PlaceRow";
 import { SearchField } from "@/ui/SearchField/SearchField";
 
@@ -33,13 +34,9 @@ export function PlaceList({
   return (
     <div className={styles.list}>
       <button type="button" className={styles.system} aria-haspopup="dialog" onClick={onSystems}>
-        {system.art ? (
-          <img className={styles.orb} src={system.art} alt="" />
-        ) : (
-          <span className={styles.orb} />
-        )}
+        <Orb color={system.orb} size="s" />
         <span className={styles["system-text"]}>
-          <span className={styles["system-kicker"]}>{MAP.system}</span>
+          <span className={styles["system-kicker"]}>{MAP.changeSystem}</span>
           <span className={styles["system-name"]}>{system.name}</span>
         </span>
         <span className={styles.chevron}>
@@ -65,7 +62,7 @@ export function PlaceList({
               key={row.name}
               href={row.href}
               name={row.name}
-              art={row.art}
+              orb={row.orb}
               count={row.count}
               mastered={row.mastered}
               startHere={row.startHere}
@@ -77,7 +74,7 @@ export function PlaceList({
           ))}
         </div>
       )}
-      {!typed && system.more.map((line) => <MoreLine key={line} text={line} />)}
+      {!typed && system.more && <MoreLine text={system.more} />}
       {voice && <OnkkoLine place="bottom" line={VOICE.farewell} />}
     </div>
   );
