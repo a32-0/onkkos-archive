@@ -13,8 +13,8 @@ const COLLECTION_SHELVES = [
   "honoria",
 ] as const;
 
-type ArsenalShelf = (typeof ARSENAL_SHELVES)[number];
-type CollectionShelf = (typeof COLLECTION_SHELVES)[number];
+export type ArsenalShelf = (typeof ARSENAL_SHELVES)[number];
+export type CollectionShelf = (typeof COLLECTION_SHELVES)[number];
 
 interface ReleasedItem {
   item: CatalogItem;

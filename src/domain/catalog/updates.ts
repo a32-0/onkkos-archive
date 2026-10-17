@@ -67,7 +67,15 @@ export function updateFor(
   sources: UpdateSources,
   yearMonth: string,
 ): GameUpdate | null {
-  return gameUpdates(graph, sources).find((update) => update.yearMonth === yearMonth) ?? null;
+  return playedIn(gameUpdates(graph, sources), yearMonth);
+}
+
+function playedIn(updates: readonly GameUpdate[], yearMonth: string): GameUpdate | null {
+  return (
+    updates.find((update) => update.yearMonth === yearMonth) ??
+    updates.find((update) => update.yearMonths.includes(yearMonth)) ??
+    null
+  );
 }
 
 interface BannerEntry {
@@ -126,7 +134,7 @@ export function updateStanding(
     : null;
   const all = gameUpdates(graph, sources);
   const newest = all[0] ?? null;
-  const chosen = since ? (all.find((update) => update.yearMonth === since) ?? null) : null;
+  const chosen = since ? playedIn(all, since) : null;
   const caughtUp = since !== null && newest !== null && since >= newest.yearMonth;
   if (newest && (caughtUp || ownsLatest(all, sources.arsenal, owned))) {
     return { update: newest, current: true };

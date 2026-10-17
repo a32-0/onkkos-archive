@@ -16,3 +16,8 @@
   flex: 1 0 0;
   border-top: var(--border-1) solid var(--line);
 }
+
+.flush {
+  composes: divider;
+  padding-inline: 0;
+}

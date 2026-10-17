@@ -34,6 +34,10 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 
 - Step by step is the item's page: the same `Shell` and `from`. Onkko's line closes the page, from `VOICE`. Spec 10 quotes no line, and `language.test.ts` checks every line against the specs: settle it with the owner and quote it in spec 10 first.
 
+## From T-25
+
+- `content/checks.ts` exists with the eight readings a Summary tile shows (`BRIEF`) and `briefLine()`, which joins with " · ". `content/` cannot import `domain/`, so each function types its own values; `screens/summary/lines.ts` checks `BRIEF` against `Phrase` at compile time. The rest of the phrases join it here.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

@@ -5,7 +5,7 @@ export const CONNECT = {
   fieldLabel: "Account ID",
   fieldPlaceholder: "4b2e9f17c3a85d06e1f74a9c",
   submit: "Connect",
-  reading: "Onkko’s reading your codex...",
+  reading: "Onkko is reading your archive...",
   whereTitle: "Where do I find this?",
   steps: [
     { text: "On a computer, log in at the official site:", link: "https://www.warframe.com" },

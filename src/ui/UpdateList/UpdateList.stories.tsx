@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { ShowMore } from "../ShowMore/ShowMore";
+import { Button } from "../Button/Button";
 import { SAMPLE_ART } from "../stories/art";
 import { UpdateList, type UpdateListItem } from "./UpdateList";
 
@@ -19,7 +19,7 @@ const meta = {
     id: "updates",
     items: ITEMS,
     onChoose: () => {},
-    more: <ShowMore label="Show 23 older updates" />,
+    more: <Button variant="text">Show more</Button>,
   },
   decorators: [
     (Story) => (

@@ -27,14 +27,11 @@ class Redirected extends Error {
   }
 }
 
-class NotFound extends Error {}
+vi.mock("next/cache", () => ({ refresh: () => {} }));
 
 vi.mock("next/navigation", () => ({
   redirect: (url: string) => {
     throw new Redirected(url);
-  },
-  notFound: () => {
-    throw new NotFound();
   },
 }));
 
@@ -225,6 +222,14 @@ describe("the player the shell shows", () => {
     expect(player.fresh).toBe(!screen.cached);
   });
 
+  it("wears each demo's glyph", async () => {
+    const { playerOf, requireScreen } = await import("@/app/screen");
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(playerOf(await requireScreen()).avatar).toMatch(/ConqueraOrdisGlyph.png$/);
+    jar.set("wf_account", { value: DEMO_ACCOUNT_IDS.cy, options: {} });
+    expect(playerOf(await requireScreen()).avatar).toMatch(/CyGlyph.png$/);
+  });
+
   it("counts whole minutes since the read, never a negative one", async () => {
     const { playerOf, requireScreen } = await import("@/app/screen");
     jar.set("wf_account", { value: ORDIS, options: {} });
@@ -369,7 +374,7 @@ describe("Two ways in (spec 03, BR-03, BR-40)", () => {
     expect(await landing()).toBe("/goals");
   });
 
-  it("greets Ordis by name and opens Skip on the frontier, Go back on the id form", async () => {
+  it("greets Ordis by name and opens Skip on the frontier, Back on the id form", async () => {
     jar.set("wf_account", { value: ORDIS, options: {} });
     const html = await page();
     expect(html).toMatch(/association, <span[^>]*>Ordis<\/span>\./);
@@ -378,7 +383,7 @@ describe("Two ways in (spec 03, BR-03, BR-40)", () => {
     expect(html).toMatch(
       /<a [^>]*href="\/system\?system=origin&amp;place=[A-Z][a-z]+"[^>]*>Skip<\/a>/,
     );
-    expect(html).toMatch(/<a [^>]*href="\/connect"[^>]*>Go back<\/a>/);
+    expect(html).toMatch(/<a [^>]*href="\/connect"[^>]*>Back<\/a>/);
     expect(html).not.toMatch(/<nav|aria-haspopup/);
   });
 
@@ -391,7 +396,7 @@ describe("Two ways in (spec 03, BR-03, BR-40)", () => {
   });
 });
 
-describe("Resume (spec 05, BR-41)", () => {
+describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
   const CY = DEMO_ACCOUNT_IDS.cy;
 
   async function page(step?: string): Promise<string> {
@@ -417,7 +422,7 @@ describe("Resume (spec 05, BR-41)", () => {
     throw new Error("no redirect");
   }
 
-  it("from the tab: the tab bar, five cards newest first, and no Skip", async () => {
+  it("from the tab: the tab bar, five cards newest first, Show more and Skip", async () => {
     jar.set("wf_account", { value: CY, options: {} });
     const html = await page();
     expect(html).toContain("RESUME");
@@ -426,8 +431,8 @@ describe("Resume (spec 05, BR-41)", () => {
     expect(html.match(/<button [^>]*name="since"/g)).toHaveLength(5);
     expect(html.match(/>Newest</g)).toHaveLength(1);
     expect(html).toMatch(/Update [\d.]+ · [A-Z][a-z]{2}, \d{4}/);
-    expect(html).toMatch(/Show \d+ older updates/);
-    expect(html).not.toContain(">Skip<");
+    expect(html).toContain(">Show more<");
+    expect(html).toMatch(/<a [^>]*href="\/system\?system=[^"]+"[^>]*>Skip<\/a>/);
     expect(html).not.toContain('name="step"');
   });
 
@@ -446,10 +451,52 @@ describe("Resume (spec 05, BR-41)", () => {
     expect(await page("resume")).toContain("RESUME");
   });
 
-  it("leaves a chosen month to the Summary, which T-25 builds", async () => {
-    jar.set("wf_account", { value: CY, options: {} });
-    jar.set("wf_since", { value: "2026-03", options: {} });
-    await expect(page()).rejects.toBeInstanceOf(NotFound);
+  describe("the Summary", () => {
+    beforeEach(() => {
+      vi.stubGlobal("fetch", async () => Response.json({}));
+      jar.set("wf_account", { value: CY, options: {} });
+    });
+    afterEach(() => vi.unstubAllGlobals());
+
+    it("from the tab: the title, the lead, the card, closed groups, Skip and the tab bar", async () => {
+      jar.set("wf_since", { value: "2026-03", options: {} });
+      const html = await page();
+      expect(html).toContain("SUMMARY");
+      expect(html).toContain("This is what shipped since you left off.");
+      expect(html).toContain("You last played");
+      expect(html).toContain("The Shadowgrapher");
+      expect(html).toMatch(/Update 42 · Mar, 2026/);
+      expect(html).toContain(">Arsenal<");
+      expect(html).toMatch(/aria-expanded="false"/);
+      expect(html).not.toContain('aria-expanded="true"');
+      expect(html).toContain("We are prepared to provide.");
+      expect(html).toMatch(/<a [^>]*href="\/system\?system=[^"]+"[^>]*>Skip<\/a>/);
+      expect(html).toMatch(/<nav[^>]*>/);
+      expect(html).not.toMatch(/Nightwave|Running now|Pick up/);
+    });
+
+    it("from Two ways in: the same Summary with no tab bar", async () => {
+      jar.set("wf_since", { value: "2026-03", options: {} });
+      const html = await page("summary");
+      expect(html).toContain("SUMMARY");
+      expect(html).not.toMatch(/<nav/);
+    });
+
+    it("names the update a folded month belongs to", async () => {
+      jar.set("wf_since", { value: "2024-02", options: {} });
+      expect(await page()).toContain("Whispers in the Walls");
+    });
+
+    it("says up to date, and shows the empty state, when nothing shipped since", async () => {
+      jar.set("wf_since", { value: "2026-10", options: {} });
+      const html = await page();
+      expect(html).toContain("You&#x27;re up to date");
+      expect(html).toContain("Nothing new since Oct, 2026");
+      expect(html).toContain("The arsenal and the collection are as you left them.");
+      expect(html).not.toContain(">Arsenal<");
+      expect(html).not.toContain("This is what shipped since you left off.");
+      expect(html).toContain(">Skip<");
+    });
   });
 
   it("keeps the month of a card or of Date, and opens the Summary", async () => {
@@ -468,5 +515,51 @@ describe("Resume (spec 05, BR-41)", () => {
       "/catch-up?step=resume",
     );
     expect(jar.has("wf_since")).toBe(false);
+  });
+});
+
+describe("Onkko's phrases (BR-64)", () => {
+  const CY = DEMO_ACCOUNT_IDS.cy;
+
+  async function resume(): Promise<string> {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: CatchUpPage } = await import("@/app/catch-up/page");
+    return renderToStaticMarkup(await CatchUpPage({ searchParams: Promise.resolve({}) }));
+  }
+
+  it("speaks to a player who has been to Cetus", async () => {
+    jar.set("wf_account", { value: CY, options: {} });
+    expect(await resume()).toContain("Once, long ago, I would look backwards");
+  });
+
+  it("stays silent once turned off, speaks again once turned on, and ignores anything else", async () => {
+    jar.set("wf_account", { value: CY, options: {} });
+    const { setOnkko } = await import("@/app/actions");
+    const choose = (value: string) => {
+      const form = new FormData();
+      form.set("onkko", value);
+      return setOnkko(form);
+    };
+    await choose("off");
+    expect(jar.get("wf_onkko")?.value).toBe("off");
+    expect(await resume()).not.toContain("Once, long ago");
+    await choose("on");
+    expect(await resume()).toContain("Once, long ago");
+    await choose("loud");
+    expect(jar.get("wf_onkko")?.value).toBe("on");
+  });
+
+  it("keeps silent for a player who has not reached Cetus, whatever the cookie says", async () => {
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({
+        ok: true,
+        profile: { Missions: [{ Tag: "SolNode27", Completes: 1 }] },
+        cached: false,
+        fetchedAt: 0,
+      }),
+    }));
+    jar.set("wf_account", { value: CY, options: {} });
+    jar.set("wf_onkko", { value: "on", options: {} });
+    expect(await resume()).not.toContain("Once, long ago");
   });
 });

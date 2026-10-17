@@ -51,7 +51,8 @@
   composes: button;
   composes: label from "../type.module.css";
   border-color: var(--danger);
-  color: var(--danger);
+  background-color: var(--danger);
+  color: var(--ink);
 }
 
 .text {

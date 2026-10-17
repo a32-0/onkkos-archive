@@ -25,6 +25,12 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
 - The item renders `Shell` with the tab bar and `tab={openedFrom(from)}` from `screens/shell/tabs.ts`: `from` is `navigation`, `resume` or `goal`, and anything else lights no tab.
 - `VOICE.itemOwned` ("Well chosen.") exists. The line for an item not owned is not in `voice.ts`: spec 09 quotes none, so it is settled with the owner here.
 
+## From T-25
+
+- A screen of the shell renders `Shell chrome={await chromeOf(screen)}` (`app/chrome.ts`): the player, Onkko's voice and the actions in one value. Onkko's line shows only when `chrome.voice.on` (BR-64).
+
+- `itemRoute(name, from)` in `routes.ts` writes `/item?name=&from=`; the Summary's tiles open it with `from=resume`, and `openedFrom()` in `screens/shell/tabs.ts` reads it.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.

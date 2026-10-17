@@ -37,6 +37,13 @@ One place at a time: the place card, the lens, the groups, the place list and th
 
 - `startHere()` in `domain/place/start-here.ts` gives the place that carries Start here (BR-44), the frontier or the focus, or `null` with neither; `firstPlace()` gives the Origin System's first place for a first opening with no Start here (BR-46). `placeRoute(system, place)` in `routes.ts` writes the map's address, which Skip already opens.
 
+## From T-25
+
+- A screen of the shell renders `Shell chrome={await chromeOf(screen)}` (`app/chrome.ts`): the player, Onkko's voice and the actions in one value. Onkko's line shows only when `chrome.voice.on` (BR-64).
+
+- `whatsNew()` in `domain/catalog/whats-new.ts` splits a group into tiles in reach and a `Beyond` (how many, which gaps, the lowest rank, the junction); `content/reach.ts` holds the More line's words and `screens/summary/view.ts` chooses among them. The map's groups count the same way (BR-61).
+- `bestPlaces()` gives an item's place, the place of its best route in the place index; the map's own place is the place on view (BR-59).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 07 holds.

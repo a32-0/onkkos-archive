@@ -29,11 +29,18 @@
   background: var(--scrim);
 }
 
+@media (max-width: 839px) {
+  :global(html):has(.sheet[open]) {
+    overflow: hidden;
+  }
+}
+
 .body {
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .start {

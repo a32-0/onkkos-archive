@@ -84,12 +84,19 @@ A full-screen sheet with the sheet header (`270:1145`):
 
 1. The avatar square, the display name in the display face, "Mastery Rank
    {n}" and the rank's title under it ("Middle Master").
-2. At the bottom, **Disconnect**, a red outlined button across the width. It
-   forgets `wf_account` and `wf_since` and opens `/connect` with an empty field.
-3. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
+2. At the bottom, **Settings**: a divider, then **Onkko's Phrases** with On
+   and Off (`Segmented`), shown once the player has reached Cetus (BR-64).
+   Language (English, Español) and Tutorial (Reset) show disabled; they wait
+   for later versions (owner, 2026-10-16).
+3. **Disconnect**, a red button across the width, filled since 2026-10-16. It
+   forgets `wf_account`, `wf_since` and `wf_onkko` and opens `/connect` with
+   an empty field.
+4. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
    read was **{age}**, and the next one will be at **{HH:MM} hours UTC**."
 
-The profile carries no picture, so the avatar is the square the frame draws.
+The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and the menu's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source.
+
+On a phone the menu covers the screen, so the page under it does not scroll while it is open (owner, 2026-10-16).
 
 ## Data and sources
 
@@ -112,8 +119,8 @@ The profile carries no picture, so the avatar is the square the frame draws.
 ## Components
 
 Each is one component with its Storybook stories: `Header`, `PlayerChip`,
-`TabBar` and `Tab` (active, inactive), `SheetHeader`, `PlayerMenu`, and
-`Button` in the red outlined variant Disconnect uses.
+`TabBar` and `Tab` (active, inactive), `SheetHeader`, `PlayerMenu` (with
+settings), `Segmented`, and `Button` in the red filled variant Disconnect uses.
 
 ## Acceptance
 

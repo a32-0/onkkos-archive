@@ -21,6 +21,12 @@
   background: var(--fill-strong);
 }
 
+.glyph {
+  width: calc(var(--space-7) * 2);
+  height: calc(var(--space-7) * 2);
+  object-fit: contain;
+}
+
 .name {
   composes: display-name from "../type.module.css";
   margin: 0;
@@ -40,6 +46,29 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
+}
+
+.setting {
+  --player-setting-gap: 24px;
+  display: flex;
+  align-items: center;
+  gap: var(--player-setting-gap);
+  padding: 0 var(--space-6);
+}
+
+.label {
+  composes: body-l from "../type.module.css";
+  color: var(--ink);
+}
+
+.control {
+  display: flex;
+}
+
+.fill {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
 }
 
 .cycle {

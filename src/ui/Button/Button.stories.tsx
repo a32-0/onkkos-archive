@@ -6,7 +6,7 @@ const LABELS: Record<ButtonVariant, string> = {
   primary: "Connect",
   secondary: "Skip",
   danger: "Disconnect",
-  text: "Go back",
+  text: "Show more",
 };
 
 const meta = {

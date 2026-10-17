@@ -3,11 +3,13 @@ import "server-only";
 import { cookies } from "next/headers";
 
 import { normalizeAccountId } from "@/domain/profile/account-id";
+import { isOnkkoChoice, type OnkkoChoice } from "@/domain/profile/onkko";
 import { isYearMonth } from "@/domain/since";
 
 const ACCOUNT_COOKIE = "wf_account";
 const SINCE_COOKIE = "wf_since";
 const PLACE_COOKIE = "wf_place";
+const ONKKO_COOKIE = "wf_onkko";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 const SYSTEM_ID = /^[a-z0-9-]{1,40}$/;
 const PLACE_NAME = /^[^/]{1,80}$/;
@@ -32,6 +34,16 @@ export async function forgetAccount(): Promise<void> {
   const store = await cookies();
   store.delete(ACCOUNT_COOKIE);
   store.delete(SINCE_COOKIE);
+  store.delete(ONKKO_COOKIE);
+}
+
+export async function readOnkko(): Promise<OnkkoChoice | null> {
+  const value = (await cookies()).get(ONKKO_COOKIE)?.value;
+  return isOnkkoChoice(value) ? value : null;
+}
+
+export async function writeOnkko(choice: OnkkoChoice): Promise<void> {
+  (await cookies()).set(ONKKO_COOKIE, choice, KEPT);
 }
 
 export async function readSince(): Promise<string | null> {

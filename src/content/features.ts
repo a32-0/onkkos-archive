@@ -10,5 +10,5 @@ export const FEATURES = {
     line: "Pick one thing to chase and get the road to it, in order, read from your profile.",
   },
   skip: "Skip",
-  back: "Go back",
+  back: "Back",
 } as const;

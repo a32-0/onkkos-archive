@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { requireScreen, startHereOf } from "@/app/screen";
+import { requireScreen, startHereOf, voiceOf } from "@/app/screen";
 import { asksWhenLastPlayed } from "@/domain/graph/star-chart";
 import { ROUTES } from "@/routes";
 import { TwoWaysIn } from "@/screens/two-ways-in/TwoWaysIn";
@@ -8,5 +8,11 @@ import { TwoWaysIn } from "@/screens/two-ways-in/TwoWaysIn";
 export default async function FeaturesPage() {
   const screen = await requireScreen();
   if (!asksWhenLastPlayed(screen.graph, screen.profile)) redirect(ROUTES.goals);
-  return <TwoWaysIn name={screen.display.displayName ?? null} skip={startHereOf(screen)} />;
+  return (
+    <TwoWaysIn
+      name={screen.display.displayName ?? null}
+      voice={(await voiceOf(screen)).on}
+      skip={startHereOf(screen)}
+    />
+  );
 }

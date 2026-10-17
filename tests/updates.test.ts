@@ -102,6 +102,7 @@ describe("the updates a returning player might remember", () => {
       expect(update.version).toMatch(/^\d+(\.\d+)?$/);
     }
     expect(updateFor(graph, sources, "2023-12")?.name).toBe("Whispers in the Walls");
+    expect(updateFor(graph, sources, "2024-02")?.name).toBe("Whispers in the Walls");
     expect(updateFor(graph, sources, "1999-01")).toBeNull();
   });
 

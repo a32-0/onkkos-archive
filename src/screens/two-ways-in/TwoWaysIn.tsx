@@ -11,13 +11,21 @@ import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
 import styles from "./TwoWaysIn.module.css";
 
-export function TwoWaysIn({ name, skip }: { name: string | null; skip: string }) {
+export function TwoWaysIn({
+  name,
+  voice,
+  skip,
+}: {
+  name: string | null;
+  voice: boolean;
+  skip: string;
+}) {
   return (
     <div className={styles.screen}>
       <Header variant="wordmark" wordmark={APP.name} />
       <main className={styles.page}>
         <div className={styles.intro}>
-          <OnkkoLine place="top" line={VOICE.features(name)} accent={name} />
+          {voice && <OnkkoLine place="top" line={VOICE.features(name)} accent={name} />}
           <div>
             <h1 className={styles.title}>{FEATURES.title}</h1>
             <p className={styles.lead}>{FEATURES.lead}</p>

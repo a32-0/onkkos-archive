@@ -6,22 +6,20 @@ import { Button } from "@/ui/Button/Button";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
 import { Shell } from "../shell/Shell";
-import type { ShellPlayer } from "../shell/read-cycle";
+import type { ShellChrome } from "../shell/voice";
 import styles from "./Resume.module.css";
 import { ResumePicker } from "./ResumePicker";
 import type { ResumeAction, ResumeMonth, ResumeUpdate } from "./state";
 
 export function Resume({
-  player,
-  disconnect,
+  chrome,
   onboarding,
   updates,
   months,
   choose,
   skip,
 }: {
-  player: ShellPlayer;
-  disconnect: () => Promise<void>;
+  chrome: ShellChrome;
   onboarding: boolean;
   updates: readonly ResumeUpdate[];
   months: readonly ResumeMonth[];
@@ -29,10 +27,10 @@ export function Resume({
   skip: string;
 }) {
   return (
-    <Shell player={player} tab="resume" tabs={!onboarding} disconnect={disconnect}>
+    <Shell chrome={chrome} tab="resume" tabs={!onboarding}>
       <div className={styles.page}>
         <div className={styles.intro}>
-          <OnkkoLine place="top" line={VOICE.resume} />
+          {chrome.voice.on && <OnkkoLine place="top" line={VOICE.resume} />}
           <div>
             <h1 className={styles.title}>{RESUME.title}</h1>
             <p className={styles.lead}>{RESUME.lead}</p>
@@ -50,13 +48,11 @@ export function Resume({
           </div>
         </section>
 
-        {onboarding && (
-          <div className={styles.actions}>
-            <Button variant="secondary" href={skip} link={Link}>
-              {RESUME.skip}
-            </Button>
-          </div>
-        )}
+        <div className={styles.actions}>
+          <Button variant="secondary" href={skip} link={Link}>
+            {RESUME.skip}
+          </Button>
+        </div>
       </div>
     </Shell>
   );

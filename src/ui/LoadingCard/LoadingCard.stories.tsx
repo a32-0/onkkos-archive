@@ -5,7 +5,7 @@ import { LoadingCard } from "./LoadingCard";
 const meta = {
   title: "Cards/LoadingCard",
   component: LoadingCard,
-  args: { line: "Onkko’s reading your codex..." },
+  args: { line: "Onkko is reading your archive..." },
   decorators: [
     (Story) => (
       <div style={{ padding: "var(--space-7) var(--gutter)" }}>

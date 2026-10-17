@@ -50,6 +50,15 @@ export const SHELL = {
       ? `Legendary ${rank - LEGENDARY_FROM + 1}`
       : (RANK_TITLES[rank] ?? RANK_TITLES[0]),
   disconnect: "Disconnect",
+  settings: "Settings",
+  language: "Language",
+  english: "English",
+  spanish: "Español",
+  onkko: "Onkko’s Phrases",
+  tutorial: "Tutorial",
+  reset: "Reset",
+  on: "On",
+  off: "Off",
   age: (minutes: number, fresh: boolean) => {
     if (minutes < 1) return fresh ? "just now" : "less than a minute ago";
     if (minutes === 1) return "1 minute ago";

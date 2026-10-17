@@ -7,11 +7,13 @@ export function Segmented({
   options,
   chosen,
   onChoose,
+  disabled = false,
 }: {
   label: string;
   options: readonly [SegmentedOption, SegmentedOption];
   chosen: string | null;
   onChoose: (value: string) => void;
+  disabled?: boolean;
 }) {
   return (
     <div className={styles.segmented} role="group" aria-label={label}>
@@ -21,6 +23,7 @@ export function Segmented({
           type="button"
           className={option.value === chosen ? styles.chosen : styles.option}
           aria-pressed={option.value === chosen}
+          disabled={disabled}
           onClick={() => onChoose(option.value)}
         >
           {option.label}

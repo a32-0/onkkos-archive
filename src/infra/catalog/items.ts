@@ -2,6 +2,7 @@ import "server-only";
 
 import Items from "@wfcd/items";
 
+import { glyphArt, GLYPH_SOURCES, type RawGlyph } from "@/domain/profile/avatar";
 import { COLLECTIBLE_SOURCES, GEAR_SOURCES, type RawEntry } from "@/domain/catalog/collectibles";
 import {
   ARSENAL_SOURCES,
@@ -17,6 +18,7 @@ import type { Introduced } from "@/domain/catalog/updates";
 
 let cached: CatalogItem[] | undefined;
 let cachedResources: CatalogResource[] | undefined;
+let cachedGlyphs: Map<string, string> | undefined;
 
 function readItems<T>(category?: readonly string[]): T[] {
   return new Items({
@@ -33,6 +35,11 @@ export function arsenalCatalog(): CatalogItem[] {
 export function resourceCatalog(): CatalogResource[] {
   cachedResources ??= buildResourceCatalog(readItems<RawItem>(RESOURCE_SOURCES));
   return cachedResources;
+}
+
+export function glyphImages(): ReadonlyMap<string, string> {
+  cachedGlyphs ??= glyphArt(readItems<RawGlyph>(GLYPH_SOURCES));
+  return cachedGlyphs;
 }
 
 export function relicEntries(): RawRelic[] {

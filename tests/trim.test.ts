@@ -14,6 +14,7 @@ import { CY, fixture, NEW_PLAYER } from "./helpers";
 const SYNTHETIC: RawProfile = {
   AccountId: { $oid: "000000000000000000000009" },
   DisplayName: "Synthetic",
+  ActiveAvatarImageType: "/Lotus/Types/StoreItems/AvatarImages/ImageCephalonCy",
   PlatformNames: ["Synthetic"],
   PlayerLevel: 12,
   GuildId: { $oid: "000000000000000000000010" },
@@ -39,7 +40,7 @@ const PROFILES: [string, RawProfile][] = [
 ];
 
 describe("trimProfile", () => {
-  it("keeps the eight fields and nothing else", () => {
+  it("keeps the nine fields and nothing else", () => {
     const trimmed = trimProfile(SYNTHETIC);
     expect(Object.keys(trimmed).sort()).toEqual([...PROFILE_FIELDS].sort());
   });

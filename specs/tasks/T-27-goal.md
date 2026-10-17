@@ -29,6 +29,11 @@ The search with its suggestions, and the curated goal cards.
 
 - Connect sends a player who has not reached Venus straight to `/goals` through `entranceAfter()` in `app/screen.ts` (BR-03). Neither demo arrives that way, since both have reached Venus.
 
+## From T-25
+
+- A screen of the shell renders `Shell chrome={await chromeOf(screen)}` (`app/chrome.ts`): the player, Onkko's voice and the actions in one value. Onkko's line shows only when `chrome.voice.on` (BR-64).
+- The Goal frames end in Continue and Skip, secondary, since 2026-10-16 (BR-40): Skip opens Start here.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 08 holds.

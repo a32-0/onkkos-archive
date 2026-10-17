@@ -36,7 +36,7 @@ export function FeaturedCard({
         <span className={styles.name}>{name}</span>
         <span className={styles.meta}>{meta}</span>
       </span>
-      <span className={styles.chevron}>
+      <span className={open ? styles.up : styles.chevron}>
         <Icon name="chevron-backward" />
       </span>
     </button>

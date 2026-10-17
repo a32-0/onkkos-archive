@@ -63,7 +63,7 @@ tabs or player chip. From the top, as `202:38` draws it:
    either case) before any call. A bad shape shows the `invalid-id` band
    without reading anything.
 2. Otherwise the form enters **Loading** (`428:743`): the page dims, Connect
-   is disabled, and the quill card reads "Onkko's reading your codex...".
+   is disabled, and the quill card reads "Onkko is reading your archive...", centred under the quill (owner, 2026-10-16).
    The card is announced to screen readers.
 3. On success the id is saved in `wf_account` for a year, and the player goes
    on by BR-03: a player who has reached Venus to `/features`, a new player to

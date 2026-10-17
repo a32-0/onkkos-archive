@@ -1,4 +1,5 @@
 .segmented {
+  --segmented-disabled-opacity: 0.4;
   display: inline-flex;
   align-items: center;
   padding: var(--space-2);
@@ -22,6 +23,15 @@
 
 .segment:hover {
   background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.segment:disabled {
+  opacity: var(--segmented-disabled-opacity);
+  cursor: default;
+}
+
+.segment:disabled:hover {
+  background-image: none;
 }
 
 .segment:focus-visible {

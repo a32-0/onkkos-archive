@@ -1,20 +1,16 @@
 "use client";
 
-import { useState, useSyncExternalStore, useTransition } from "react";
+import { useState, useTransition } from "react";
 
 import { RESUME } from "@/content/catch-up";
+import { Button } from "@/ui/Button/Button";
 import { DateMenu } from "@/ui/DateMenu/DateMenu";
 import { SearchField } from "@/ui/SearchField/SearchField";
-import { ShowMore } from "@/ui/ShowMore/ShowMore";
 import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
+import { FIRST, useMore } from "./batches";
 import styles from "./Resume.module.css";
 import type { ResumeAction, ResumeMonth, ResumeUpdate } from "./state";
-
-const FIRST = 5;
-const MORE = 5;
-const MORE_WIDE = 10;
-const WIDE = "(min-width: 840px)";
 
 function matches(update: ResumeUpdate, query: string): boolean {
   const name = update.name.toLowerCase();
@@ -28,20 +24,6 @@ function matches(update: ResumeUpdate, query: string): boolean {
         !name.includes(word) && !update.versions.some((version) => version.startsWith(word)),
     );
   return rest.length === 0 || dates.some((date) => rest.every((word) => date.includes(word)));
-}
-
-function watchWide(change: () => void): () => void {
-  const query = window.matchMedia(WIDE);
-  query.addEventListener("change", change);
-  return () => query.removeEventListener("change", change);
-}
-
-function useWide(): boolean {
-  return useSyncExternalStore(
-    watchWide,
-    () => window.matchMedia(WIDE).matches,
-    () => false,
-  );
 }
 
 export function ResumePicker({
@@ -59,7 +41,7 @@ export function ResumePicker({
   const [shown, setShown] = useState(FIRST);
   const [dating, setDating] = useState(false);
   const [, start] = useTransition();
-  const more = useWide() ? MORE_WIDE : MORE;
+  const more = useMore();
 
   const found = updates.filter((update) => matches(update, query));
   const listed = found.slice(0, shown);
@@ -115,10 +97,9 @@ export function ResumePicker({
         </form>
       )}
       {hidden > 0 && (
-        <ShowMore
-          label={RESUME.more(Math.min(more, hidden))}
-          onClick={() => setShown(shown + more)}
-        />
+        <Button variant="text" onClick={() => setShown(shown + more)}>
+          {RESUME.more}
+        </Button>
       )}
     </>
   );

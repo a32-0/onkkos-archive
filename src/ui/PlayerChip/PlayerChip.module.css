@@ -24,6 +24,13 @@
   background: var(--fill-strong);
 }
 
+.glyph {
+  flex: none;
+  width: var(--space-7);
+  height: var(--space-7);
+  object-fit: contain;
+}
+
 .chevron {
   display: flex;
   transform: rotate(180deg);

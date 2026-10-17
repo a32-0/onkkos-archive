@@ -27,7 +27,7 @@ describes and no earlier frame drew. Their texts are sample values:
   title band.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   wider than the frame.
-- [BR-40](../docs/business-rules.md#br-40--two-ways-in-skip-goes-to-the-map-go-back-to-the-id-form):
+- [BR-40](../docs/business-rules.md#br-40--before-the-map-skip-goes-to-the-map):
   what Skip means in onboarding.
 - [BR-41](../docs/business-rules.md#br-41--resume-has-two-entrances): the two
   entrances.
@@ -36,22 +36,23 @@ describes and no earlier frame drew. Their texts are sample values:
 
 Route `/catch-up` with no month chosen, or `/catch-up?step=resume` from Two
 ways in, whatever month is kept (owner, 2026-10-15). A `step` marks the
-onboarding entrance: no tab bar, and Skip. Choosing from it opens
+onboarding entrance: no tab bar. Choosing from it opens
 `/catch-up?step=summary`, the Summary of the same entrance; choosing from the
 tab opens `/catch-up`, which shows the Summary once a month is kept. From the
 top, as `203:231` draws it:
 
 1. The header with the player chip (spec 04).
 2. Onkko's line, "Once, long ago, I would look backwards, feeling for the
-   fading tendrils of our might-have-beens."
-3. **Resume**, and "Tell us which one was your last played. We'll show you what
-   shipped since."
+   fading tendrils of our might-have-beens.", once the player has reached
+   Cetus and has not turned the phrases off (BR-64).
+3. **Resume**, and "Tell Onkko which one was your last played. He'll show you
+   what shipped since." (owner, 2026-10-16).
 4. The search field and **Date**.
 5. The update cards, newest first, one per name (BR-09). The newest wears
-   **Newest**. Five show, then "Show {n} older updates", which shows {n} more:
-   five below 840, ten from 840, fewer when fewer are left (owner, 2026-10-16).
-6. From Two ways in: **Skip**. From the Resume tab: the tab bar in its place
-   (BR-41).
+   **Newest**. Five show, then "Show more", a `Button` in its text style,
+   which shows five more below 840 and ten from 840 (owner, 2026-10-16).
+6. **Skip**, from both entrances; from the Resume tab, the tab bar under it
+   (BR-40, BR-41).
 
 ### Choosing
 
@@ -61,7 +62,7 @@ top, as `203:231` draws it:
   types: every word is found in the name, at the start of a version, or, for
   the words left, together in one month of the update ("2024", "2024-03",
   "Mar 2024", "March 2024"). A typed search starts again at five cards, and
-  "Show {n} older updates" counts only what still matches. No match shows the
+  "Show more" shows only what still matches. No match shows the
   line "No update by that name or date." in place of the cards. The frame draws no empty state; the line is the one already in `src/content/`, set in the same type as the lead.
 - **Date** opens the month list over the page dimmed by `--scrim` (BR-08); a
   click on the veil or Escape closes it. A month sets `wf_since` the same way
@@ -71,9 +72,8 @@ top, as `203:231` draws it:
   Resume.
 - **Skip** opens the map on the frontier or the focus, as on Two ways in.
 
-Skip follows BR-40 because it is the same button on the next screen of the
-same onboarding: forward to the map. Resume has no Go back (owner,
-2026-10-16).
+Skip follows BR-40: every screen before the map ends in it. Resume has no Go
+back (owner, 2026-10-16).
 
 ## The update card
 
@@ -85,12 +85,12 @@ surface colour.
 
 ## States
 
-| State          | What shows                              |
-| -------------- | --------------------------------------- |
-| Five or fewer  | The cards, without "Show older"         |
-| More than five | Five cards and "Show {n} older updates" |
-| Expanded       | Every card, and no "Show older"         |
-| Search, no hit | "No update by that name or date."       |
+| State          | What shows                        |
+| -------------- | --------------------------------- |
+| Five or fewer  | The cards, without "Show older"   |
+| More than five | Five cards and "Show more"        |
+| Expanded       | Every card, and no "Show older"   |
+| Search, no hit | "No update by that name or date." |
 
 ## Data and sources
 
@@ -110,7 +110,7 @@ form a grid at the frame's card width, newest first in reading order, and
 ## Components
 
 `UpdateCard` (plain, newest), `Badge` (Newest), `SearchField`, `DateMenu`
-(closed, open), `ShowMore`, and the `Button` variant of Skip, each
+(closed, open), and the `Button` variants of Skip and "Show more", each
 with its stories.
 
 ## Acceptance
@@ -121,7 +121,7 @@ with its stories.
 3. A card or a month sets `wf_since` and opens the Summary.
 4. The search filters by name, version and date; no match shows the empty
    line.
-5. Skip and the tab bar follow the entrance (BR-41).
+5. Skip shows from both entrances; the tab bar follows the entrance (BR-41).
 6. `pnpm check` passes.
 
 ## Frame corrections

@@ -12,6 +12,7 @@ const MINUTE = 60_000;
 
 const PLAYER: ShellPlayer = {
   name: "Cy",
+  avatar: null,
   masteryRank: 27,
   minutesSinceRead: 12,
   nextReadAt: READ_AT + 12 * 60 * MINUTE,
@@ -23,10 +24,14 @@ const text = (parts: readonly { text: string }[]) => parts.map((part) => part.te
 function shell(tab: ShellTab | null, tabs: boolean): string {
   return renderToStaticMarkup(
     Shell({
-      player: PLAYER,
+      chrome: {
+        player: PLAYER,
+        voice: { met: true, on: true },
+        disconnect: async () => {},
+        setOnkko: async () => {},
+      },
       tab,
       tabs,
-      disconnect: async () => {},
       children: createElement("p", null, "body"),
     }),
   );

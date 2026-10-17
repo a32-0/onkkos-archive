@@ -67,3 +67,8 @@
   flex: none;
   transform: rotate(-90deg);
 }
+
+.up {
+  composes: chevron;
+  transform: rotate(90deg);
+}

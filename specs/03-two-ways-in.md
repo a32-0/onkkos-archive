@@ -17,12 +17,12 @@ goal. It is the last screen of onboarding.
   the words on each card.
 - [BR-05](../docs/business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
   Set a goal leads to goals ordered by frontier and focus.
-- [BR-36](../docs/business-rules.md#br-36--from-the-summary-an-item-or-next-to-a-place):
-  the frontier or the focus, which Skip shares with Next.
+- [BR-36](../docs/business-rules.md#br-36--from-the-summary-an-item-or-skip-to-a-place):
+  the frontier or the focus, which Skip shares with the Summary's Skip.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   wider than the frame.
-- [BR-40](../docs/business-rules.md#br-40--two-ways-in-skip-goes-to-the-map-go-back-to-the-id-form):
-  Skip and Go back.
+- [BR-40](../docs/business-rules.md#br-40--before-the-map-skip-goes-to-the-map):
+  Skip and Back.
 
 ## What the screen does
 
@@ -39,7 +39,11 @@ tab bar and no player chip. From the top, as `203:140` draws it:
    - **Set a goal** opens `/goals` (spec 08).
 4. **Skip** opens the map on the frontier, or on the focus when the player has
    no frontier (BR-40).
-5. **Go back** opens `/connect` with the player's id in the field (BR-40).
+5. **Back**, in the text style, opens `/connect` with the player's id in the
+   field (BR-40); it read "Go back" until 2026-10-16.
+
+Onkko's line shows only once the player has reached Cetus and has not turned
+the phrases off (BR-64).
 
 A new player never sees this screen: `/connect` sends them to `/goals`
 (BR-03). A new player who opens `/features` by its address is sent to
@@ -60,7 +64,7 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
   defines it) over each released place's share of readable items mastered;
   with neither, the first place of the Origin System (BR-46).
   `startHereOf()` in `src/app/screen.ts` makes it the map's address, and
-  Next on the Summary uses the same one.
+  Skip on Resume and on the Summary uses the same one.
 - Copy lives in `src/content/` (`VOICE.features`, `FEATURES`).
 
 ## Acceptance
@@ -72,7 +76,7 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
    centred column, and the two cards sit side by side under it, each at its
    frame width (BR-39).
 3. Each card opens its route. Skip opens the map on the frontier, or the focus
-   with no frontier. Go back opens `/connect` with the id in the field.
+   with no frontier. Back opens `/connect` with the id in the field.
 4. A new player opening `/features` lands on `/goals`.
 5. `pnpm check` passes.
 

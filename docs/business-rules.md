@@ -127,15 +127,16 @@ a reading of the earlier build against it was put to them.
   Nightwave ("Running now") and the suggested goal ("Pick up") are not part
   of it.
 
-### BR-36 · From the Summary: an item, or Next to a place
+### BR-36 · From the Summary: an item, or Skip to a place
 
-- Frame `206:774`, the tiles and the "Next" button.
+- Frame `206:774`, the tiles and the Skip button.
 - Type: behaviour.
 - Rule: from the Summary the player either opens an item, which opens that
-  item's page, or presses Next, which opens the map on one place: the
+  item's page, or presses Skip, which opens the map on one place: the
   frontier when the player has one, otherwise the focus
   ([`system.md`](system.md#two-lenses-that-cut-every-level-at-once)). The two
-  are separate decisions: Next does not lead to quests.
+  are separate decisions: Skip does not lead to quests.
+- The button read "Next" until the owner made it Skip on 2026-10-16 (BR-40).
 
 ### BR-37 · A goal opens the steps of what it names
 
@@ -163,7 +164,7 @@ a reading of the earlier build against it was put to them.
   both drawn on the Login frame (`202:38`), added by the owner on 2026-10-04.
 - Type: state.
 - Rule: while the profile is read, the form dims and a card with the quill
-  reads "Onkko's reading your codex...". When the read fails, the message sits
+  reads "Onkko is reading your archive...". When the read fails, the message sits
   in a red band under the account id field, and the form stays usable.
 - The band's words are not fixed by the frame. The owner drew one as an
   example and on 2026-10-04 left the messages to be written from the failures
@@ -189,16 +190,19 @@ a reading of the earlier build against it was put to them.
   the player is returned to this form with the band, which is the one place a
   failure is drawn.
 
-### BR-40 · Two ways in: Skip goes to the map, Go back to the id form
+### BR-40 · Before the map, Skip goes to the map
 
 - Frame [`203:140` Features](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-140),
-  the Skip and Go back buttons under the two cards. Settled by the
-  owner on 2026-10-05.
+  the Skip button under the two cards. Settled by the owner on 2026-10-05,
+  changed on 2026-10-16.
 - Type: behaviour.
-- Rule: Skip opens the map on one place, the same as Next on the Summary
-  (BR-36): the frontier when the player has one, otherwise the focus. Go
-  back returns to `/connect`, with the player's id in the field, which is
-  also how a player changes account or demo.
+- Rule: every screen between Connect and the map, Two ways in, Resume and the
+  Summary, ends in Skip, in the secondary style. It opens the map on one place
+  (BR-36): the frontier when the player has one, otherwise the focus.
+- Two ways in also keeps **Back**, in the text style, under Skip: it returns
+  to `/connect` with the player's id in the field. The screen has no player
+  menu, so Back is how a player changes account or demo there (owner,
+  2026-10-16; the button read "Go back" before).
 - The screen is still onboarding, so it draws no tab bar and no player chip
   (thread `1929710840`, "no navbar during onboarding until it ends").
 
@@ -208,9 +212,9 @@ a reading of the earlier build against it was put to them.
   Settled by the owner on 2026-10-05.
 - Type: behaviour.
 - Rule: reached from "Pick up where you left off" (BR-40's screen), Resume is
-  onboarding and looks as drawn: no tab bar, with Skip.
-  Reached from the Resume tab, it is a section of the shell: the tab bar
-  shows and Skip does not. Everything else is the same screen.
+  onboarding and looks as drawn: no tab bar. Reached from the Resume tab, it
+  is a section of the shell: the tab bar shows. Both end in Skip (BR-40, since
+  2026-10-16). Everything else is the same screen.
 - Resume has no Go back since 2026-10-16 (owner): the way back is the
   browser's, and Skip is the one way forward without choosing.
 - The Summary that follows keeps the entrance: no tab bar after the onboarding
@@ -245,7 +249,7 @@ a reading of the earlier build against it was put to them.
   and [`270:786`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=270-786),
   the gold-outlined "Start here" badge. Settled by the owner on 2026-10-06.
 - Type: content.
-- Rule: Start here marks the one place Next and Skip open: the frontier, or the
+- Rule: Start here marks the one place Skip opens: the frontier, or the
   focus when the player has no frontier (BR-36). Exactly one place carries it,
   and so does that place's system in the system list. A player with neither
   sees no badge.
@@ -280,8 +284,8 @@ a reading of the earlier build against it was put to them.
 - Type: behaviour.
 - Rule: the Navigation tab opens the map on the last place the player viewed
   on this device. The first time, it opens on Start here (BR-44), and with no
-  Start here, on the first place of the Origin System. Next and Skip always
-  open Start here, whatever was viewed last.
+  Start here, on the first place of the Origin System. Skip always opens
+  Start here, whatever was viewed last.
 - The place is kept in a cookie, `wf_place`, as `{system}/{place}`, because the
   server renders the map. It is a convenience: losing it only reopens on Start
   here.
@@ -966,6 +970,12 @@ on 2026-10-08.
   The line informs. It opens nothing; a search is the way to one of them
   (BR-62).
 
+- What only the Dojo holds is counted in the words of BR-59's Dojo row: "2
+  more weapons come from the Dojo. Join a clan to enter it." A group held
+  back by a rank and by a clan reads "need Mastery Rank {r} or a clan's
+  Dojo". `content/reach.ts` holds the words; the Summary (T-25) first speaks
+  them.
+
 - The group's count ("{n} NEW" in the Summary, "{n} New" on the map) counts
   everything new, in reach or not, so it adds up to the tiles and the line.
 - A group with nothing in reach and something beyond renders, its rail
@@ -1002,6 +1012,28 @@ on 2026-10-08.
   open, readable, never hidden. A locked component can still be ticked.
 - A quest with no evidence locks nothing, and neither does any prerequisite
   the profile cannot read: absence of evidence is never "not done" (BR-28).
+
+## Onkko's voice: settled on 2026-10-16
+
+### BR-64 · Onkko speaks once the player has reached Cetus
+
+- Frame [`270:1145` Menú del jugador](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=270-1145),
+  Settings › Onkko's Phrases. Settled by the owner on 2026-10-16: "Activar
+  Onkko's sólo si ha desbloqueado Cetus. Después podrá activarlas o
+  desactivarlas."
+- Type: behaviour.
+- Rule: Onkko's lines (`OnkkoLine`) show only to a player who has reached
+  Cetus, where Onkko lives. The profile shows it in `Missions[]`: the Cetus
+  hub (`CetusHub4`) or the Plains of Eidolon (`SolNode228`). A profile with
+  no `Missions[]` counts as reached (BR-59).
+- From then on the player menu shows Settings › Onkko's Phrases, On and Off,
+  On by default. The choice is kept in a cookie, `wf_onkko`, for a year, and
+  Disconnect forgets it with the account.
+- Before Cetus the lines do not show and the setting is not offered.
+- The splash and Connect come before any profile is read, so their lines
+  always show.
+- The menu also shows Language (English, Español) and Tutorial (Reset),
+  disabled: they wait for later versions (owner, 2026-10-16).
 
 ## Not applied
 

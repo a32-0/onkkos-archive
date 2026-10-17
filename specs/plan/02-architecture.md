@@ -252,16 +252,17 @@ The trim is a domain function, `domain/profile/trim.ts`, over one list of the
 root fields the app reads, `domain/profile/fields.ts`. The list was read off
 every module that reads the profile, and the curated files' checks:
 
-| Field              | Read by                                                       |
-| ------------------ | ------------------------------------------------------------- |
-| `DisplayName`      | The player chip (spec 04)                                     |
-| `PlayerLevel`      | The chip's Mastery Rank, and goal checks in `grafo.yaml`      |
-| `Created`          | Resume's earliest month (spec 05)                             |
-| `Missions`         | The star chart, the frontier and every place's state          |
-| `Affiliations`     | Goal checks and quest evidence                                |
-| `LoadOutInventory` | Mastery per item (`XPInfo`), quest evidence, every item state |
-| `UnlockedOperator` | Quest evidence                                                |
-| `GuildId`          | The Dojo's reach (BR-59); kept as `true`, never the clan's id |
+| Field                   | Read by                                                                                                              |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `DisplayName`           | The player chip (spec 04)                                                                                            |
+| `PlayerLevel`           | The chip's Mastery Rank, and goal checks in `grafo.yaml`                                                             |
+| `Created`               | Resume's earliest month (spec 05)                                                                                    |
+| `Missions`              | The star chart, the frontier and every place's state                                                                 |
+| `Affiliations`          | Goal checks and quest evidence                                                                                       |
+| `LoadOutInventory`      | Mastery per item (`XPInfo`), quest evidence, every item state                                                        |
+| `UnlockedOperator`      | Quest evidence                                                                                                       |
+| `GuildId`               | The Dojo's reach (BR-59); kept as `true`, never the clan's id                                                        |
+| `ActiveAvatarImageType` | The player's glyph on the chip and in the menu (spec 04), added on 2026-10-16; a profile without it keeps the square |
 
 Left out, because nothing the app does reads them: `PlayerSkills` (the
 Intrinsics goal, deferred), `ChallengeProgress` (Nightwave, BR-35), `Stats`,

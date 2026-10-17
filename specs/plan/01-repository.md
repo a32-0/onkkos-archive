@@ -91,20 +91,21 @@ rules they would carry are in the constitution and the docs.
 
 ## `src/app/`: routes
 
-| Route                                                                                                                                    | Spec       | Task                   |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------- |
-| `layout.tsx`                                                                                                                             | 04         | T-20                   |
-| `page.tsx` (`/`)                                                                                                                         | 01         | T-21                   |
-| `connect/page.tsx`                                                                                                                       | 02         | T-22                   |
-| `features/page.tsx`                                                                                                                      | 03         | T-23                   |
-| `catch-up/page.tsx`                                                                                                                      | 05, 06     | T-24, T-25             |
-| `system/page.tsx`                                                                                                                        | 07         | T-26                   |
-| `goals/page.tsx`                                                                                                                         | 08         | T-27                   |
-| `item/page.tsx`                                                                                                                          | 09, 10     | T-28, T-29             |
-| `actions.ts`: connect, demo, disconnect, resume (`wf_since`)                                                                             | 02, 04, 05 | T-20, T-22, T-24       |
-| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03); Start here's address (BR-40) | 02, 03, 04 | T-19, T-20, T-22, T-23 |
-| `api/profile/[accountId]/route.ts`                                                                                                       | 11         | T-18                   |
-| `api/search/route.ts`: items, collectibles and places                                                                                    | 08         | T-27                   |
+| Route                                                                                                                                                                  | Spec       | Task                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------- |
+| `layout.tsx`                                                                                                                                                           | 04         | T-20                   |
+| `page.tsx` (`/`)                                                                                                                                                       | 01         | T-21                   |
+| `connect/page.tsx`                                                                                                                                                     | 02         | T-22                   |
+| `features/page.tsx`                                                                                                                                                    | 03         | T-23                   |
+| `catch-up/page.tsx`                                                                                                                                                    | 05, 06     | T-24, T-25             |
+| `system/page.tsx`                                                                                                                                                      | 07         | T-26                   |
+| `goals/page.tsx`                                                                                                                                                       | 08         | T-27                   |
+| `item/page.tsx`                                                                                                                                                        | 09, 10     | T-28, T-29             |
+| `actions.ts`: connect, demo, disconnect, resume (`wf_since`), setOnkko (`wf_onkko`, BR-64)                                                                             | 02, 04, 05 | T-20, T-22, T-24, T-25 |
+| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03); Start here's address (BR-40); whether Onkko speaks (BR-64) | 02, 03, 04 | T-19, T-20, T-22, T-23 |
+| `chrome.ts`: what every screen of the shell passes to `Shell`, the player, Onkko's voice and the two actions                                                           | 04         | T-25                   |
+| `api/profile/[accountId]/route.ts`                                                                                                                                     | 11         | T-18                   |
+| `api/search/route.ts`: items, collectibles and places                                                                                                                  | 08         | T-27                   |
 
 No route has a `loading.tsx`: no frame draws a route loading, and the one
 loading drawn is the id form's (BR-38). A goal opens Step by step, so there is
@@ -124,16 +125,16 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 
 ## `src/domain/`
 
-| Folder or file  | Holds                                                                                                                                                            | Task             |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal                                                                      | T-12, T-14       |
-| `since.ts`      | The month a player last played                                                                                                                                   | T-12             |
-| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                           | T-12, T-13, T-22 |
-| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion, the frontier and the focus                                                                           | T-13             |
-| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                 | T-13, T-16       |
-| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, the Summary, checks and search | T-14, T-16       |
-| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59), Start here (BR-44)                                                                                  | T-15, T-23       |
-| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                         | T-16             |
+| Folder or file  | Holds                                                                                                                                                                                      | Task             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
+| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal, whether Onkko has been met (BR-64)                                                            | T-12, T-14       |
+| `since.ts`      | The month a player last played                                                                                                                                                             | T-12             |
+| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                                                     | T-12, T-13, T-22 |
+| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion, the frontier and the focus                                                                                                     | T-13             |
+| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                                           | T-13, T-16       |
+| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, what is new and in reach, the Summary, checks and search | T-14, T-16, T-25 |
+| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59), Start here (BR-44)                                                                                                            | T-15, T-23       |
+| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                                                   | T-16             |
 
 ## `src/infra/`
 
@@ -145,7 +146,7 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 | `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read         | T-18       |
 | `wiki/`                          | The vendored modules, the wiki's client and its prose (BR-48)                                                  | T-16, T-19 |
 | `worldstate/`                    | Varzia's stock                                                                                                 | T-19       |
-| `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46)                                                                   | T-19       |
+| `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46), `wf_onkko` (BR-64)                                               | T-19       |
 | `screen.ts`                      | The screen read: the profile and its readings, or a failed read's reason and retry time (BR-38); the next read | T-19, T-20 |
 | `ticks.ts`                       | The ticks of spec 10, in browser storage                                                                       | T-29       |
 
@@ -154,7 +155,9 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 Every user-facing string, one file per screen or concern, each written by the
 task that builds what speaks it. `failures.ts` holds the five band messages
 (BR-38), `engine.ts` the words of the engine's values, read by the map (T-26),
-and `goals.ts` the cards and the search.
+`goals.ts` the cards and the search, `reach.ts` the More line's words (BR-61),
+and `checks.ts` the words of the step plan's phrases, begun by T-25 with the
+readings a tile shows and completed by T-29.
 
 ## `data/`
 

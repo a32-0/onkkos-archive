@@ -7,23 +7,23 @@ import { Header } from "@/ui/Header/Header";
 import { TabBar } from "@/ui/TabBar/TabBar";
 
 import { PlayerMenuButton } from "./PlayerMenuButton";
-import { readCycle, type ShellPlayer } from "./read-cycle";
+import { readCycle } from "./read-cycle";
 import styles from "./Shell.module.css";
 import { tabItems, type ShellTab } from "./tabs";
+import type { ShellChrome } from "./voice";
 
 export function Shell({
-  player,
+  chrome,
   tab,
   tabs,
-  disconnect,
   children,
 }: {
-  player: ShellPlayer;
+  chrome: ShellChrome;
   tab: ShellTab | null;
   tabs: boolean;
-  disconnect: () => Promise<void>;
   children: ReactNode;
 }) {
+  const { player, voice, disconnect, setOnkko } = chrome;
   const items = tabItems(tab);
   return (
     <div className={styles.shell}>
@@ -34,9 +34,12 @@ export function Shell({
           chip={
             <PlayerMenuButton
               name={player.name}
+              avatar={player.avatar}
               masteryRank={player.masteryRank}
               readCycle={readCycle(player)}
+              voice={voice}
               disconnect={disconnect}
+              setOnkko={setOnkko}
             />
           }
           tabs={

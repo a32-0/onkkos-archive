@@ -1,12 +1,14 @@
 "use server";
 
+import { refresh } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { normalizeAccountId } from "@/domain/profile/account-id";
+import { isOnkkoChoice } from "@/domain/profile/onkko";
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
 import { readProfile } from "@/infra/profile/read";
 import { sinceFrom } from "@/domain/since";
-import { forgetAccount, writeAccountId, writeSince } from "@/infra/session";
+import { forgetAccount, writeAccountId, writeOnkko, writeSince } from "@/infra/session";
 import { catchUpAt, connectAfter, ROUTES } from "@/routes";
 import type { ConnectState } from "@/screens/connect/state";
 
@@ -50,4 +52,11 @@ export async function resume(form: FormData): Promise<void> {
 export async function disconnect(): Promise<void> {
   await forgetAccount();
   redirect(ROUTES.connect);
+}
+
+export async function setOnkko(form: FormData): Promise<void> {
+  const choice = form.get("onkko");
+  if (!isOnkkoChoice(choice)) return;
+  await writeOnkko(choice);
+  refresh();
 }

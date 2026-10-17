@@ -45,7 +45,7 @@ Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
   the last-played card, shared with the Summary.
 - [BR-14](../docs/business-rules.md#br-14--groups-start-closed): groups start
   closed.
-- [BR-36](../docs/business-rules.md#br-36--from-the-summary-an-item-or-next-to-a-place):
+- [BR-36](../docs/business-rules.md#br-36--from-the-summary-an-item-or-skip-to-a-place):
   the map is where both features end.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes),
   [BR-42](../docs/business-rules.md#br-42--the-placeholder-circles-are-the-games-icons),
@@ -75,7 +75,7 @@ Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
   of them. A tie goes to the earlier place in system order (BR-47), then in
   `star_chart_order`. A player with every readable item mastered everywhere has
   no focus.
-- **Start here** is the frontier, or else the focus (BR-44). Next, Skip and the
+- **Start here** is the frontier, or else the focus (BR-44). Skip and the
   Navigation tab's first opening all land on it.
 
 ## What the screen does
@@ -226,7 +226,7 @@ New, Mastered, Rank), `ItemTile` (plain, Rank, Mastered), `GroupRow`, `Rail`,
    place list is a pane.
 3. By default only what is left shows; Mastered and New show only theirs, and
    choosing the chosen one again returns to the default.
-4. Start here sits on exactly one place, and on its system; Next, Skip and the
+4. Start here sits on exactly one place, and on its system; Skip and the
    first Navigation tab land there.
 5. The Navigation tab reopens the last place viewed.
 6. Tau cannot be opened.

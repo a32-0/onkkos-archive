@@ -5,10 +5,12 @@ import styles from "./PlayerChip.module.css";
 
 export function PlayerChip({
   name,
+  avatar = null,
   open,
   ...rest
 }: Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "style" | "children"> & {
   name: string;
+  avatar?: string | null;
   open: boolean;
 }) {
   return (
@@ -19,7 +21,11 @@ export function PlayerChip({
       aria-haspopup="dialog"
       aria-expanded={open}
     >
-      <span className={styles.avatar} aria-hidden />
+      {avatar ? (
+        <img className={styles.glyph} src={avatar} alt="" />
+      ) : (
+        <span className={styles.avatar} aria-hidden />
+      )}
       <span>{name}</span>
       <span className={styles.chevron}>
         <Icon name="chevron-backward" />

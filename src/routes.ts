@@ -4,6 +4,7 @@ export const ROUTES = {
   system: "/system",
   catchUp: "/catch-up",
   goals: "/goals",
+  item: "/item",
 } as const;
 
 export function connectAfter(reason: string, retryAt: number | null): string {
@@ -20,4 +21,8 @@ export type CatchUpStep = "resume" | "summary";
 
 export function catchUpAt(step: CatchUpStep | null): string {
   return step ? `${ROUTES.catchUp}?step=${step}` : ROUTES.catchUp;
+}
+
+export function itemRoute(name: string, from: string): string {
+  return `${ROUTES.item}?${new URLSearchParams({ name, from }).toString()}`;
 }

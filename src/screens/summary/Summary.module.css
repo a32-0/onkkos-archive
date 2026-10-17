@@ -1,0 +1,115 @@
+.page {
+  --summary-column: none;
+  --summary-area: none;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding: var(--space-7) 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--summary-column);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  composes: numeral from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.lead {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.card {
+  position: relative;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: var(--scrim);
+}
+
+.flat {
+  position: relative;
+}
+
+.raised {
+  position: relative;
+  z-index: 2;
+}
+
+.list {
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+}
+
+.area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  width: 100%;
+  max-width: var(--summary-area);
+  margin: 0 auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--summary-column);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+@media (min-width: 600px) {
+  .page {
+    --summary-column: 632px;
+    --summary-area: 600px;
+  }
+}
+
+@media (min-width: 840px) {
+  .page {
+    --summary-column: 672px;
+    --summary-area: 1200px;
+  }
+}

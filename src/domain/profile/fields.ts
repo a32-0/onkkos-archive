@@ -7,6 +7,7 @@ export const PROFILE_FIELDS = [
   "LoadOutInventory",
   "UnlockedOperator",
   "GuildId",
+  "ActiveAvatarImageType",
 ] as const;
 
 export const INVENTORY_FIELDS = ["XPInfo"] as const;

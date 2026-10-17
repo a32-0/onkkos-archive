@@ -3,6 +3,7 @@ import type { ReadCyclePart } from "@/ui/PlayerMenu/PlayerMenu";
 
 export interface ShellPlayer {
   name: string;
+  avatar: string | null;
   masteryRank: number;
   minutesSinceRead: number;
   nextReadAt: number;

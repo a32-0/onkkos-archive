@@ -19,6 +19,11 @@ const FIXTURE_BY_ACCOUNT_ID: Record<string, string> = {
 
 const DEFAULT_FIXTURE = "profile-cy";
 
+const DEMO_GLYPHS: Record<string, string> = {
+  "profile-cy": "/Lotus/Types/StoreItems/AvatarImages/ImageCephalonCy",
+  "profile-ordis": "/Lotus/Types/StoreItems/AvatarImages/AvatarImageConqueraOrdis",
+};
+
 export function liveSource(): boolean {
   return process.env.WF_PROFILE_SOURCE === "live";
 }
@@ -33,7 +38,9 @@ export function loadFixtureProfile(accountId: string): RawProfile | null {
     const file = path.join(process.cwd(), "fixtures", `${name}.json`);
     const raw = JSON.parse(readFileSync(file, "utf8")) as RawProfileResponse;
     const profile = profileFromResponse(raw);
-    return profile ? trimProfile(profile) : null;
+    if (!profile) return null;
+    const glyph = DEMO_GLYPHS[name];
+    return trimProfile(glyph ? { ...profile, ActiveAvatarImageType: glyph } : profile);
   } catch {
     return null;
   }
