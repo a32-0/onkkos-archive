@@ -126,6 +126,29 @@ system field. `data/systems.yaml` is therefore hand-written:
 - Tau is carried as announced, with `released: false` and no places, because
   it has no nodes and no items.
 
+## What a hub hands out
+
+Incarnons, Honoria and Ephemera are not dropped either. The wiki's tables say
+who hands them out: The Circuit gives the Incarnon Genesis, an Honoria's tag
+names the vendor and the hub that sell it, and a vendor's offers list the
+Ephemera it sells. None of those hubs is a place of the map, so
+`data/systems.yaml` maps each one to the place a player goes through to reach
+it (owner, 2026-10-16):
+
+| Hub           | Place          | Why                                         |
+| ------------- | -------------- | ------------------------------------------- |
+| The Circuit   | Duviri         | It is run from Duviri                       |
+| La Cathédrale | Deimos         | Its portal is in the Sanctum Anatomica      |
+| Pontis Tower  | Uranus Proxima | It sits in the Proxima, reached from Uranus |
+| Nightcap      | Venus          | He trades in Fortuna                        |
+
+`hubAcquisition()` (`src/domain/place/hubs.ts`) turns those into rows like the
+curated file's: the verb `drop` for The Circuit and `vendor` for the rest.
+Measured on 2026-10-16: 45 Incarnon Genesis at Duviri, 60 Honoria at Deimos
+and 8 at Uranus Proxima, and one Ephemera at Venus. The rest come from events,
+the Market, Nightwave or hubs with no place (Kahl's Garrison, the relays), and
+stay off the map.
+
 ## The Dojo
 
 BR-57 makes the Dojo a place in the Origin System that holds everything built

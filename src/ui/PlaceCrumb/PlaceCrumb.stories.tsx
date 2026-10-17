@@ -9,7 +9,7 @@ const meta = {
   args: {
     href: "/system?system=origin&place=deimos",
     label: "You're on",
-    place: "Origin System > Deimos",
+    place: "Origin > Deimos",
     art: SAMPLE_ORB[2],
   },
   decorators: [
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 
 export const YoureOn: Story = {};
 
-export const Dojo: Story = { args: { place: "Origin System > Dojo", art: SAMPLE_ORB[3] } };
+export const Dojo: Story = { args: { place: "Origin > Dojo", art: SAMPLE_ORB[3] } };
 
 export const NoArt: Story = { args: { art: null } };
 

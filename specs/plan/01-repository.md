@@ -161,12 +161,12 @@ readings a tile shows and completed by T-29.
 
 ## `data/`
 
-| File                                                                              | Holds                                                                        | Task             |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------- |
-| `grafo.yaml`                                                                      | The goals and their checks; the deferred goals are not in it (`deferred.md`) | T-13             |
-| `narrative_spine.yaml`, `quest_evidence.yaml`, `sources.yaml`, `acquisition.yaml` | The spine, quest evidence, sources and placed acquisition                    | T-11, T-13, T-15 |
-| `systems.yaml`                                                                    | BR-47's order, the Dojo (BR-57), "Soon™", the places' aliases                | T-11, T-15       |
-| `vendor/*`                                                                        | Snapshots, each with its source and licence named (part 5)                   | T-11             |
+| File                                                                              | Holds                                                                           | Task             |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------- |
+| `grafo.yaml`                                                                      | The goals and their checks; the deferred goals are not in it (`deferred.md`)    | T-13             |
+| `narrative_spine.yaml`, `quest_evidence.yaml`, `sources.yaml`, `acquisition.yaml` | The spine, quest evidence, sources and placed acquisition                       | T-11, T-13, T-15 |
+| `systems.yaml`                                                                    | BR-47's order, the Dojo (BR-57), "Soon™", the places' aliases, the hubs' places | T-11, T-15, T-26 |
+| `vendor/*`                                                                        | Snapshots, each with its source and licence named (part 5)                      | T-11             |
 
 ## `fixtures/`, `scripts/`, `tests/`
 

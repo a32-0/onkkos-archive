@@ -18,6 +18,13 @@ const GROUP_ICONS = {
   resources: WHITE("Treasures"),
   gear: WHITE("Grenade"),
   parts: WHITE("CategoryModular"),
+  primary: WHITE("CategoryRifle"),
+  secondary: WHITE("CategoryPistol"),
+  melee: WHITE("CategoryMelee"),
+  amp: WHITE("CategoryAmp"),
+  companion: WHITE("Sentinel"),
+  archwing: WHITE("Archwing"),
+  railjack: WHITE("Railjack"),
 } as const;
 
 const MARK_ICONS = {

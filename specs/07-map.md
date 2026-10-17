@@ -27,7 +27,7 @@ describes and no earlier frame drew. Their texts are sample values:
 - [`474:1160` Navigation — Mastered chosen](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1160): Show with Mastered chosen.
 - [`474:1404` Navigation — No month](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1404): no New option and no "{n} New" counts.
 - [`474:1648` Navigation — Everything mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1648): the mastered card, then the empty state (explore, "Nothing left on {place}", "Every item it gives is mastered. Choose another place from the card above."); no Show, no group.
-- [`474:1927` Navigation Menu — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1927): the place list's search with no hit: the empty state (explore, "No place by that name", "None of the {system}'s places is called “{query}”. Try another system."). The sample query is a place of another system.
+- [`474:1927` Navigation Menu — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1927): the place list's search with no hit: the empty state (explore, "No place by that name", "None of {system}’s places is called “{query}”. Try another system."). The sample query is a place of another system.
 
 Drawn on 2026-10-08 under **Documented states**, for BR-60 to BR-62:
 
@@ -95,7 +95,11 @@ the top, as `312:199` draws it:
    Primary, Secondary, Melee, Archgun, Archmelee, Amp, Companion, Necramech,
    Archwing, Railjack.
 5. The **Collection** divider and its groups: Resources, Relics, Mods, Arcanes,
-   Incarnons, Ephemera, Honoria.
+   Incarnons, Ephemera, Honoria. What a hub hands out is filed under the
+   hub's place (owner, 2026-10-16): the Incarnon Genesis of The Circuit at
+   Duviri, Honoria at Deimos (La Cathédrale) and Uranus Proxima (Pontis
+   Tower), Nightcap's Ephemera at Venus. What only events, the Market or a
+   hub off the map hand out has no place here.
 6. Onkko's line, "We watch, we anticipate, we intercede."
 
 Viewing a place writes it to `wf_place` (BR-46).
@@ -167,23 +171,27 @@ Choosing a system returns to the place list, now listing that system's places.
 
 ## States
 
-| State                                | What shows                                                 |
-| ------------------------------------ | ---------------------------------------------------------- |
-| Default lens                         | What is left (BR-45), groups closed                        |
-| Mastered or New chosen               | Only that, groups closed                                   |
-| No month (`wf_since` unset)          | No New option, no "{n} New" counts, no New badge on places |
-| Everything mastered, no collectibles | The mastered card, then the empty state                    |
-| A place with no nodes of its own     | The card without the Nodes lines                           |
-| Search with no match (place list)    | The empty state under the field                            |
-| Places or systems beyond reach       | The lists end in `More line` (`526:117`, BR-60)            |
-| A hit beyond reach (place list)      | `Place row` Beyond reach (`526:112`, BR-62)                |
-| Items beyond reach in a group        | The open group ends in `More line` (BR-61)                 |
-| A place beyond reach on view         | The place whole, still listed while on view (BR-60)        |
+| State                                | What shows                                                                                    |
+| ------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Default lens                         | What is left (BR-45), groups closed                                                           |
+| Mastered or New chosen               | Only that, groups closed                                                                      |
+| No month (`wf_since` unset)          | No New option, no "{n} New" counts, no New badge on places; the card reads "Choose an update" |
+| Everything mastered, no collectibles | The mastered card, then the empty state                                                       |
+| A place with no nodes of its own     | The card without the Nodes lines                                                              |
+| Search with no match (place list)    | The empty state under the field                                                               |
+| Places or systems beyond reach       | The lists end in `More line` (`526:117`, BR-60)                                               |
+| A hit beyond reach (place list)      | `Place row` Beyond reach (`526:112`, BR-62)                                                   |
+| Items beyond reach in a group        | The open group ends in `More line` (BR-61)                                                    |
+| A place beyond reach on view         | The place whole, still listed while on view (BR-60)                                           |
 
 ## Data and sources
 
 - Places and systems: `data/systems.yaml` and the place index
   (`src/domain/place/`), with node names from `warframe-worldstate-data`.
+  `systems.yaml`'s `hubs` maps a hub to its place, for what a hub hands out
+  (`src/domain/place/hubs.ts`).
+- A system's symbol: the art of its first place, its second place's as the
+  satellite.
 - What a place holds and each tile's reading: the place index's tiles
   (`src/domain/place/tile.ts`) over DE's drop tables and the wiki's modules.
 - Item state: `src/domain/place/state.ts` (`done | ranked | absent | unknown`),

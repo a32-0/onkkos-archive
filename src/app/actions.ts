@@ -49,6 +49,13 @@ export async function resume(form: FormData): Promise<void> {
   redirect(catchUpAt(step && "summary"));
 }
 
+export async function remeasure(form: FormData): Promise<void> {
+  const since = sinceFrom(form.get("since"), new Date());
+  if (!since) return;
+  await writeSince(since);
+  refresh();
+}
+
 export async function disconnect(): Promise<void> {
   await forgetAccount();
   redirect(ROUTES.connect);

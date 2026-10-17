@@ -7,8 +7,13 @@ const nextConfig: NextConfig = {
       fullUrl: true,
     },
   },
+  serverExternalPackages: ["warframe-worldstate-data"],
   outputFileTracingIncludes: {
-    "/**": ["./data/**/*", "./fixtures/**/*"],
+    "/**": [
+      "./data/**/*",
+      "./fixtures/**/*",
+      "./node_modules/warframe-worldstate-data/dist/data/*.json",
+    ],
   },
 };
 

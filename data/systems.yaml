@@ -2,9 +2,15 @@ aliases:
   "Dark Refractory, Deimos": Dark Refractory
   "Zariman Ten Zero": Zariman
 
+hubs:
+  The Circuit: Duviri
+  La Cathédrale: Deimos
+  Pontis Tower: Uranus Proxima
+  Nightcap: Venus
+
 systems:
   - id: origin
-    name: Origin System
+    name: Origin
     released: true
     places:
       - Earth

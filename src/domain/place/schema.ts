@@ -90,6 +90,7 @@ const rawSystem = z.object({
 
 const rawSystemsFile = z.object({
   aliases: z.record(z.string(), z.string().min(1)),
+  hubs: z.record(z.string(), z.string().min(1)),
   systems: z.array(rawSystem).min(1),
 });
 
@@ -103,11 +104,12 @@ export interface SystemEntry {
 export interface Systems {
   systems: SystemEntry[];
   aliases: Record<string, string>;
+  hubs: Record<string, string>;
 }
 
 export function normalizeSystems(input: unknown): Systems {
   const parsed = rawSystemsFile.parse(input);
-  return { systems: parsed.systems, aliases: parsed.aliases };
+  return { systems: parsed.systems, aliases: parsed.aliases, hubs: parsed.hubs };
 }
 
 export function canonicalPlace(aliases: Readonly<Record<string, string>>, name: string): string {

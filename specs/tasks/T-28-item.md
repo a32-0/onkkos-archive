@@ -31,6 +31,10 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
 
 - `itemRoute(name, from)` in `routes.ts` writes `/item?name=&from=`; the Summary's tiles open it with `from=resume`, and `openedFrom()` in `screens/shell/tabs.ts` reads it.
 
+## From T-26
+
+- The map's tiles open the item with `from=navigation`. An Incarnon Genesis, an Honoria or an Ephemera now has a place on the map when a hub hands it out (`domain/place/hubs.ts`); the page's own routes still come from `briefOf()`, so the two agree on the source and the page names it whether or not the map holds it.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.

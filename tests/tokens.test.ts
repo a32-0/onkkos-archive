@@ -7,8 +7,6 @@ const root = process.cwd();
 const TOKENS = "src/ui/tokens.css";
 const TYPE = "src/ui/type.module.css";
 
-const UNAPPLIED = [".heading"];
-
 function files(dir: string, suffix: string): string[] {
   const out: string[] = [];
   for (const entry of readdirSync(path.join(root, dir))) {
@@ -144,13 +142,7 @@ describe("no token that nothing applies", () => {
   const isApplied = (token: string) =>
     token.startsWith(".") ? composed.has(token) : applied.has(token);
 
-  it("applies every token not on the allowance list", () => {
-    const unapplied = everything.filter((token) => !isApplied(token) && !UNAPPLIED.includes(token));
-    expect(unapplied).toEqual([]);
-  });
-
-  it("lists only tokens that exist and are still unapplied", () => {
-    const stale = UNAPPLIED.filter((token) => !everything.includes(token) || isApplied(token));
-    expect(stale).toEqual([]);
+  it("applies every token", () => {
+    expect(everything.filter((token) => !isApplied(token))).toEqual([]);
   });
 });

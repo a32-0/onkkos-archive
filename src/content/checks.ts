@@ -62,6 +62,8 @@ export const BRIEF = {
   costs: ({ costs }: { costs: readonly { currency: string; amount: number }[] }) =>
     listOf(costs.map((one) => `${number(one.amount)} ${one.currency}`)),
   percent: ({ chance }: { chance: number }) => `${chance}%`,
+  circuitBrief: ({ weeksAway }: { weeksAway: number }) =>
+    weeksAway === 0 ? "This week" : `In ${weeksAway} ${plural(weeksAway, "week", "weeks")}`,
 } as const;
 
 export function briefLine(parts: readonly (string | null)[]): string {

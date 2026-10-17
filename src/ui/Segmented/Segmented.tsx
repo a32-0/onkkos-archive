@@ -10,7 +10,7 @@ export function Segmented({
   disabled = false,
 }: {
   label: string;
-  options: readonly [SegmentedOption, SegmentedOption];
+  options: readonly [SegmentedOption, ...SegmentedOption[]];
   chosen: string | null;
   onChoose: (value: string) => void;
   disabled?: boolean;

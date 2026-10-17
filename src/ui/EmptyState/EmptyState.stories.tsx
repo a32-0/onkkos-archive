@@ -46,6 +46,6 @@ export const PlaceListNoMatch: Story = {
   args: {
     icon: "explore",
     title: "No place by that name",
-    line: "None of the Origin System's places is called “Cetus”. Try another system.",
+    line: "None of Origin’s places is called “Cetus”. Try another system.",
   },
 };

@@ -1,4 +1,4 @@
-import { collectibleStepPlan, stepPlan, type Part } from "@/domain/catalog/checks";
+import { collectibleStepPlan, stepPlan, type Part, type StepPlan } from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
 import type { CatalogData } from "@/domain/catalog/data";
 import { dossier } from "@/domain/catalog/dossier";
@@ -51,6 +51,16 @@ interface Candidate {
 }
 
 const NO_PARTS: Part[] = [];
+
+const arsenalCache = new WeakMap<readonly CatalogItem[], Map<string, CatalogItem>>();
+
+function arsenalByName(data: CatalogData): ReadonlyMap<string, CatalogItem> {
+  const cached = arsenalCache.get(data.arsenal);
+  if (cached) return cached;
+  const found = new Map(data.arsenal.map((item) => [item.name, item]));
+  arsenalCache.set(data.arsenal, found);
+  return found;
+}
 
 const placeCache = new WeakMap<ReadonlyMap<string, PlaceView>, Map<string, string>>();
 
@@ -130,6 +140,42 @@ function groupOf(group: NewGroupName, candidates: readonly Candidate[]): NewGrou
     tiles: candidates.filter((one) => one.gaps.length === 0).map((one) => one.tile),
     beyond: beyondOf(candidates.filter((one) => one.gaps.length > 0).map((one) => one.gaps)),
   };
+}
+
+const HOW = "how";
+
+function planFor(sources: WhatsNewSources, name: string): StepPlan | null {
+  const { data, places, reach, now } = sources;
+  const item = arsenalByName(data).get(name);
+  if (item) {
+    return stepPlan(data, dossier(item, data.arsenal), {
+      now,
+      masteryRank: reach.rank ?? undefined,
+    });
+  }
+  const collectible = data.collectibles.get(name);
+  if (!collectible) return null;
+  const view = collectibleView(data, collectible, places, reach.places ?? places);
+  return collectibleStepPlan(data, view, { now });
+}
+
+export function itemLine(
+  sources: WhatsNewSources,
+  name: string,
+): { reading: Part[]; where: Part[] } {
+  const plan = planFor(sources, name);
+  if (!plan) return { reading: NO_PARTS, where: NO_PARTS };
+  const first = firstLine(briefOf(plan));
+  if (first.reading.length > 0) return first;
+  const how = plan.sections
+    .find((section) => section.id === HOW)
+    ?.groups.flatMap((group) => group.rows)
+    .find((row) => row.brief.length > 0);
+  return how ? { reading: how.brief, where: how.where } : first;
+}
+
+export function masteryReqOf(data: CatalogData, name: string): number {
+  return arsenalByName(data).get(name)?.masteryReq ?? 0;
 }
 
 export function whatsNew(sources: WhatsNewSources, since: string): WhatsNew {

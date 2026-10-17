@@ -176,6 +176,18 @@ describe("proxy.ts writes the last place visited (BR-46)", () => {
     expect(cookie).toMatchObject({ httpOnly: true, maxAge: 60 * 60 * 24 * 365 });
   });
 
+  it("writes every place of every released system, accents and spaces kept", async () => {
+    const { loadSystems } = await import("@/infra/place/load");
+    for (const system of loadSystems().systems.filter((one) => one.released)) {
+      for (const place of system.places) {
+        const query = new URLSearchParams({ system: system.id, place }).toString();
+        expect((await visit(`?${query}`)).cookies.get("wf_place")?.value).toBe(
+          `${system.id}/${place}`,
+        );
+      }
+    }
+  });
+
   it("runs on the map and never on a prefetch of it", async () => {
     const { config } = await import("@/proxy");
     const runs = (url: string, headers: Record<string, string> = {}) =>
@@ -561,5 +573,80 @@ describe("Onkko's phrases (BR-64)", () => {
     jar.set("wf_account", { value: CY, options: {} });
     jar.set("wf_onkko", { value: "on", options: {} });
     expect(await resume()).not.toContain("Once, long ago");
+  });
+});
+
+describe("the map (spec 07, BR-46)", () => {
+  beforeEach(() => {
+    vi.stubGlobal("fetch", async () => Response.json({}));
+    jar.set("wf_account", { value: ORDIS, options: {} });
+  });
+  afterEach(() => vi.unstubAllGlobals());
+
+  async function page(query: Record<string, string>): Promise<string> {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: SystemPage } = await import("@/app/system/page");
+    return renderToStaticMarkup(await SystemPage({ searchParams: Promise.resolve(query) }));
+  }
+
+  async function landing(query: Record<string, string>): Promise<string> {
+    try {
+      await page(query);
+    } catch (error) {
+      if (error instanceof Redirected) return error.url;
+      throw error;
+    }
+    throw new Error("no redirect");
+  }
+
+  it("opens Start here the first time, the same place Skip opens", async () => {
+    const { requireScreen, startHereOf } = await import("@/app/screen");
+    const skip = startHereOf(await requireScreen());
+    expect(await landing({})).toBe(skip);
+  });
+
+  it("reopens the last place viewed", async () => {
+    jar.set("wf_place", { value: "origin/Mars", options: {} });
+    expect(await landing({})).toBe("/system?system=origin&place=Mars");
+  });
+
+  it("never opens Tau, a place of another system, or a place it does not know", async () => {
+    const { requireScreen, startHereOf } = await import("@/app/screen");
+    const skip = startHereOf(await requireScreen());
+    expect(await landing({ system: "tau", place: "Earth" })).toBe(skip);
+    expect(await landing({ system: "duviri", place: "Earth" })).toBe(skip);
+    expect(await landing({ system: "origin", place: "Atlantis" })).toBe(skip);
+  });
+
+  it("draws the card, the place, Show, the groups closed and the Navigation tab", async () => {
+    jar.set("wf_since", { value: "2025-08", options: {} });
+    const html = await page({ system: "origin", place: "Earth" });
+    expect(html).toContain("You last played");
+    expect(html).toContain(">Earth<");
+    expect(html).toContain(">Nodes<");
+    expect(html).toMatch(/>Show<[\s\S]*>Mastered<[\s\S]*>New</);
+    expect(html).toContain(">Arsenal<");
+    expect(html).not.toContain('aria-expanded="true"');
+    expect(html).toMatch(
+      /<a [^>]*aria-current="page"[^>]*href="\/system"|href="\/system"[^>]*aria-current="page"/,
+    );
+  });
+
+  it("offers no New without a month, and asks for an update on the card", async () => {
+    const html = await page({ system: "origin", place: "Earth" });
+    expect(html).toContain("Choose an update");
+    expect(html).toContain(">Mastered<");
+    expect(html).not.toMatch(/>New</);
+  });
+
+  it("keeps the month chosen on the map's card and stays on the map", async () => {
+    const { remeasure } = await import("@/app/actions");
+    const form = new FormData();
+    form.set("since", "2025-06");
+    await remeasure(form);
+    expect(jar.get("wf_since")?.value).toBe("2025-06");
+    form.set("since", "June");
+    await remeasure(form);
+    expect(jar.get("wf_since")?.value).toBe("2025-06");
   });
 });
