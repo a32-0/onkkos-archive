@@ -192,6 +192,20 @@ describe("Start here (BR-44)", () => {
 });
 
 describe("the place card", () => {
+  it("counts what is still to master here by kind, in reach, and nothing once mastered", () => {
+    const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
+    const arsenal = view.sections.find((section) => section.id === "arsenal")?.groups ?? [];
+    const expected = arsenal
+      .map((group) => ({
+        name: group.name,
+        count: group.tiles.filter((tile) => tile.left && !tile.beyond).length,
+      }))
+      .filter((kind) => kind.count > 0);
+    expect(view.card.left?.kinds.map(({ name, count }) => ({ name, count }))).toEqual(expected);
+    expect(view.card.left?.title).toBe("Still to master here");
+    expect(viewOf(fixture("profile-cy"), "origin", "Phobos", null).card.left).toBeUndefined();
+  });
+
   it("counts the items mastered", () => {
     const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
     expect(view.card.items.count).toMatch(/^\d+\/\d+$/);

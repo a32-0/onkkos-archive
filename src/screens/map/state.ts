@@ -1,6 +1,6 @@
 import type { IconName } from "@/ui/Icon/glyphs";
 import type { ItemTileState } from "@/ui/ItemTile/ItemTile";
-import type { PlaceCardCount } from "@/ui/PlaceCard/PlaceCard";
+import type { PlaceCardCount, PlaceCardKind } from "@/ui/PlaceCard/PlaceCard";
 import type { RowCount } from "@/ui/PlaceRow/PlaceRow";
 
 export type Lens = "left" | "mastered" | "new";
@@ -38,6 +38,7 @@ interface PlaceCardView {
   system: string;
   name: string;
   orb: string | null;
+  left?: { title: string; kinds: readonly PlaceCardKind[] };
   items: PlaceCardCount & { word: string };
   mastered?: string;
   progress: { value: number; max: number; label: string };

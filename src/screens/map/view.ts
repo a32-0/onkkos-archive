@@ -12,6 +12,7 @@ import type {
 import type { ReachGap } from "@/domain/place/reach";
 import type { PlaceRef } from "@/domain/place/start-here";
 import { itemRoute, placeRoute } from "@/routes";
+import type { PlaceCardKind } from "@/ui/PlaceCard/PlaceCard";
 
 import { tileLines } from "../summary/lines";
 import type {
@@ -172,6 +173,25 @@ function systemRow(standing: SystemStanding, input: MapViewInput): SystemRowView
   };
 }
 
+function leftByKind(map: PlaceMap, input: MapViewInput): PlaceCardKind[] {
+  return map.sections
+    .filter((section) => section.catalog === "arsenal")
+    .flatMap((section) => section.groups)
+    .flatMap((group) => {
+      const count = group.tiles.filter((tile) => tile.left && tile.need === null).length;
+      if (count === 0) return [];
+      const symbol = GROUP_SYMBOLS[group.group];
+      return [
+        {
+          name: MAP.groups[group.group].name,
+          icon: input.icons[group.group] ?? null,
+          ...(symbol && { symbol }),
+          count,
+        },
+      ];
+    });
+}
+
 export function mapView(input: MapViewInput): MapView {
   const { map } = input;
   const listed = input.standings.filter(
@@ -179,11 +199,13 @@ export function mapView(input: MapViewInput): MapView {
       !standing.system.released || standing.inReach || standing.system.id === map.system.id,
   );
   const hidden = input.standings.length - listed.length;
+  const kinds = leftByKind(map, input);
   return {
     card: {
       system: MAP.changeLocation,
       name: map.place,
       orb: input.orbs[map.place] ?? null,
+      ...(kinds.length > 0 && { left: { title: MAP.stillToMaster, kinds } }),
       items: { count: MAP.fraction(map.done, map.readable), label: MAP.items, word: MAP.mastered },
       ...(map.mastered && { mastered: MAP.mastered }),
       progress: { value: map.done, max: map.readable, label: MAP.progress(map.place) },

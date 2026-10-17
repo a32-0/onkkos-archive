@@ -125,16 +125,16 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 
 ## `src/domain/`
 
-| Folder or file  | Holds                                                                                                                                                                                      | Task             |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
-| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal, whether Onkko has been met (BR-64)                                                            | T-12, T-14       |
-| `since.ts`      | The month a player last played                                                                                                                                                             | T-12             |
-| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                                                     | T-12, T-13, T-22 |
-| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion, the frontier and the focus                                                                                                     | T-13             |
-| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                                           | T-13, T-16       |
-| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, what is new and in reach, the Summary, checks and search | T-14, T-16, T-25 |
-| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59), Start here (BR-44)                                                                                                            | T-15, T-23       |
-| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                                                   | T-16             |
+| Folder or file  | Holds                                                                                                                                                                                                                             | Task                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal, whether Onkko has been met (BR-64)                                                                                                   | T-12, T-14             |
+| `since.ts`      | The month a player last played                                                                                                                                                                                                    | T-12                   |
+| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                                                                                            | T-12, T-13, T-22       |
+| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion with the goal at the frontier or the focus first (BR-05), the frontier and the focus                                                                                   | T-13, T-27             |
+| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                                                                                  | T-13, T-16             |
+| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, what is new and in reach, the Summary, checks and search; the Necramechs a player lacks (BR-54) | T-14, T-16, T-25, T-27 |
+| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59), Start here (BR-44)                                                                                                                                                   | T-15, T-23             |
+| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                                                                                          | T-16                   |
 
 ## `src/infra/`
 

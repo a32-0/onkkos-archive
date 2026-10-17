@@ -19,6 +19,10 @@ Drawn on 2026-10-08 under **Documented states**, for BR-62:
 
 - [`533:5041` Goal — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-5041): the last match beyond reach, after those in reach, with its gap.
 
+Drawn on 2026-10-17 under **Documented states**:
+
+- [`645:5166` Goal — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=645-5166): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
+
 ## Rules
 
 - [BR-05](../docs/business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
@@ -51,6 +55,8 @@ from `/connect` (BR-03). From the top, as `208:90` draws it:
    the frame drops "or a Mastery Rank"; the field, "A warframe, a weapon, or
    planet"; and **Continue**.
 4. The goal cards, each a link with its icon, title and one line.
+5. **Skip**, in the secondary style, which opens the map on Start here
+   (BR-40), as `208:90` draws it since 2026-10-16.
 
 ### The search (BR-53)
 
@@ -95,7 +101,11 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
   Rank band (`suggestedGoals`).
 - Each card carries its icon, as the frame draws it: `precision_manufacturing`
   for the Necramech, `auto_stories` for a quest, `flag` otherwise.
-- The card's line is the goal's curated line in `grafo.yaml`.
+- The card's line lives in `src/content/goals.ts`, as every string does:
+  "Build a Necramech" and "Play the Hex Quest" carry the lines `208:90`
+  draws; "Unlock the next planet" names the junction the frontier needs,
+  "Clear the Mars Junction, on Earth, to open the next planet." (owner,
+  2026-10-17).
 
 ## States
 
@@ -113,7 +123,11 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
   never ships the whole index.
 - Goals: `data/grafo.yaml` through `suggestedGoals()`; the frontier and the
   focus as in spec 07.
-- Necramechs: the catalog's Necramech category against `XPInfo`.
+- Necramechs: the catalog's Necramech category against `XPInfo`
+  (`lackingNecramechs()` in `src/domain/catalog/necramechs.ts`).
+- Search: the route reads the player's screen, from the profile's cache, to
+  order by reach and say each gap; it is private to the player and never
+  cached in public.
 - Copy lives in `src/content/`.
 
 ## Desktop (BR-39)

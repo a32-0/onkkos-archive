@@ -68,6 +68,8 @@ Drawn on 2026-10-17 under **Documented states**, for BR-45:
   [BR-62](../docs/business-rules.md#br-62--a-search-shows-everything-and-says-the-gap):
   the lists hold the places and systems in reach, a group the items in reach,
   and the rest is counted; the place list's search reaches every place.
+- [BR-65](../docs/business-rules.md#br-65--the-place-card-shows-what-is-still-to-master-by-kind):
+  the place card's Still to master here.
 - Threads `1933693172` (the system is chosen here, not from the tab bar) and
   `1933718008` (every catalogue: primaries, secondaries, melee…).
 
@@ -95,9 +97,13 @@ the top, as `312:199` draws it:
    newest update (owner, 2026-10-16).
 2. The **place card**: "Change location" as kicker, the place's name and a
    chevron that opens the place list; the place's sphere in its colour; "{n}/{m}
-   Items mastered" and a bar filled to that share. The card counts items
-   alone: a place is mastered by its items, never by its nodes, which the
-   game already shows (owner, 2026-10-17). When every readable item is mastered the line takes the
+   Items mastered" and a bar filled to that share. Above it, while anything
+   is left, **Still to master here** and one game icon per Arsenal group with
+   the count of its items still to master in reach, in the groups' order and
+   with no other word, as the Place card set's In progress variant
+   (`463:335`) draws it (BR-65). The card counts items alone: a place is
+   mastered by its items, never by its nodes, which the game already shows
+   (owner, 2026-10-17). When every readable item is mastered the line takes the
    **Mastered** badge and the bar turns to the mastered colour (`299:597`).
 3. **Show**, with **To get**, **Mastered** and **New**, one always chosen,
    To get first (BR-45). When the chosen one leaves no group, an empty state

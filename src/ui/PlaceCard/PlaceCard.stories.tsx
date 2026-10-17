@@ -29,6 +29,19 @@ export const Mastered: Story = {
   },
 };
 
+export const StillToMaster: Story = {
+  args: {
+    left: {
+      title: "Still to master here",
+      kinds: [
+        { name: "Warframes", icon: null, symbol: "smart-toy", count: 2 },
+        { name: "Archgun", icon: null, symbol: "rocket-launch", count: 1 },
+        { name: "Archmelee", icon: null, symbol: "swords", count: 1 },
+      ],
+    },
+  },
+};
+
 export const NoColor: Story = { args: { orb: null } };
 
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };

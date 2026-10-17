@@ -1041,3 +1041,19 @@ on 2026-10-08.
   always show.
 - The menu also shows Language (English, Español) and Tutorial (Reset),
   disabled: they wait for later versions (owner, 2026-10-16).
+
+### BR-65 · The place card shows what is still to master, by kind
+
+- Frame [`463:335` Place card, In progress](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=463-335).
+  Settled by the owner on 2026-10-17.
+- Type: content.
+- Rule: while anything is left, the place card shows **Still to master here**
+  and, for each Arsenal group that holds something left in reach, the
+  group's game icon (BR-42) and how many of its items are still to master. No
+  percentage and no other word: the icons say what is counted, and the app
+  does the sums.
+- What lies beyond reach is not counted here; the groups' More lines count it
+  (BR-61). A mastered place shows no row.
+- The card counts items alone. It carried the place's nodes until
+  2026-10-17; the owner removed them, since a place is mastered by its items
+  and the game already shows its nodes.

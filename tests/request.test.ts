@@ -33,6 +33,7 @@ vi.mock("next/navigation", () => ({
   redirect: (url: string) => {
     throw new Redirected(url);
   },
+  useRouter: () => ({ push: () => {} }),
 }));
 
 const ORDIS = DEMO_ACCOUNT_IDS.ordis;
@@ -648,5 +649,79 @@ describe("the map (spec 07, BR-46)", () => {
     form.set("since", "June");
     await remeasure(form);
     expect(jar.get("wf_since")?.value).toBe("2025-06");
+  });
+});
+
+describe("the goals (spec 08, BR-54, BR-62)", () => {
+  beforeEach(() => vi.stubGlobal("fetch", async () => Response.json({})));
+  afterEach(() => vi.unstubAllGlobals());
+
+  async function page(account: string): Promise<string> {
+    jar.set("wf_account", { value: account, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: GoalsPage } = await import("@/app/goals/page");
+    return renderToStaticMarkup(await GoalsPage());
+  }
+
+  async function search(account: string, term: string) {
+    jar.set("wf_account", { value: account, options: {} });
+    const { GET } = await import("@/app/api/search/route");
+    const response = await GET(new NextRequest(`http://localhost/api/search?q=${term}`));
+    const body = (await response.json()) as {
+      results: { name: string; catalogue: string; href: string }[];
+    };
+    return { response, results: body.results };
+  }
+
+  it("offers Ordis the next planet first, then by band, Deimos being in reach", async () => {
+    const html = await page(ORDIS);
+    expect(html).toContain("Clear the Mars Junction, on Earth, to open the next planet.");
+    const order = ["Unlock the next planet", "Build a Necramech", "Play the Hex Quest"];
+    const at = order.map((title) => html.indexOf(title));
+    expect(at.every((index) => index >= 0)).toBe(true);
+    expect([...at].sort((a, b) => a - b)).toEqual(at);
+    expect(html).toContain("/item?name=Voidrig&amp;from=goal&amp;view=steps");
+    expect(html).toContain("Skip");
+  });
+
+  it("offers no Necramech to a player who has not reached Deimos", async () => {
+    const { fixture, NEW_PLAYER } = await import("./helpers");
+    const profile = fixture(NEW_PLAYER);
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({ ok: true, profile, cached: true, fetchedAt: Date.now() }),
+    }));
+    const html = await page(ORDIS);
+    expect(html).toContain("Unlock the next planet");
+    expect(html).not.toContain("Build a Necramech");
+  });
+
+  it("hides from Cy what the profile proves done", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy);
+    expect(html).not.toContain("Unlock the next planet");
+    expect(html).not.toContain("Play the Hex Quest");
+    expect(html).not.toContain("Build a Necramech");
+    expect(html).toContain("Nothing left to suggest");
+  });
+
+  it("orders a search by reach, says the gap, and keeps it private", async () => {
+    const { response, results } = await search(ORDIS, "jup");
+    expect(response.headers.get("cache-control")).toBe("private, no-store");
+    const jupiter = results.find((row) => row.name === "Jupiter");
+    expect(jupiter?.catalogue).toBe("Place · Clear the Mars Junction, on Earth");
+    const beyond = results.map((row) => row.catalogue.includes(" · "));
+    expect(beyond).toEqual([...beyond].sort((a, b) => Number(a) - Number(b)));
+  });
+
+  it("opens an item beyond Ordis's rank on Step by step", async () => {
+    const { results } = await search(ORDIS, "rubico");
+    const rubico = results.find((row) => row.name === "Rubico");
+    expect(rubico?.catalogue).toMatch(/· Needs Mastery Rank \d+, you are 2$/);
+    expect(rubico?.href).toBe("/item?name=Rubico&from=goal&view=steps");
+  });
+
+  it("answers no account with an empty list", async () => {
+    const { GET } = await import("@/app/api/search/route");
+    const response = await GET(new NextRequest("http://localhost/api/search?q=ember"));
+    expect(response.status).toBe(401);
   });
 });

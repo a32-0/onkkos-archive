@@ -1,0 +1,67 @@
+.page {
+  --goals-column: none;
+  --goals-cards: 1fr;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding: var(--space-7) 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--goals-column);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.title {
+  composes: numeral from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.lead {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: var(--goals-cards);
+  justify-content: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--gutter);
+}
+
+@media (min-width: 600px) {
+  .page {
+    --goals-column: 390px;
+    --goals-cards: minmax(0, 358px);
+  }
+}
+
+@media (min-width: 840px) {
+  .page {
+    --goals-cards: repeat(auto-fit, 358px);
+  }
+}

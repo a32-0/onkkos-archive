@@ -10,6 +10,7 @@ export const MAP = {
   mastered: "Mastered",
   new: "New",
   newItems: "New items",
+  stillToMaster: "Still to master here",
   changeLocation: "Change location",
   changeSystem: "Change system",
   items: "Items",
