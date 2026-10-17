@@ -225,7 +225,13 @@ Choosing a system returns to the place list, now listing that system's places.
 - Art and icons: items' art from `@wfcd/items` and the categories' icons
   from the wiki, never rehosted; a category with no wiki icon takes a
   Material Symbol (BR-42). A place's sphere is drawn from its colour in
-  `systems.yaml`'s `colors`.
+  `systems.yaml`'s `colors` (owner, 2026-10-17). A place outside Origin
+  takes the lit side of its art on the wiki, made more vivid. Origin's
+  places blend that art with the colour a player already has in mind (Earth
+  blue, Mars rust, Kuva Fortress Kuva red, Eris Infested green) and stay
+  apart from one another in hue or lightness. Höllvania (electric green, as
+  1999's art), Sanctuary (Tenno cyan) and the Dark Refractory (infernal red)
+  were chosen by the owner.
 
 ## Desktop (BR-39)
 
