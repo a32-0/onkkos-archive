@@ -40,6 +40,7 @@ export interface SummaryUpdate {
   name: string;
   meta: string;
   art: string | null;
+  newest: boolean;
 }
 
 export type SummaryAction = (form: FormData) => Promise<void>;

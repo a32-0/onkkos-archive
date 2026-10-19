@@ -59,8 +59,13 @@ export function updatesRoute(from: UpdatesFrom, step: CatchUpStep | null): strin
   return withQuery(`${ROUTES.catchUp}/updates`, { from, step });
 }
 
-export function mapCategoryRoute(category: string, system: string, place: string): string {
-  return withQuery(`${ROUTES.system}/${category}`, { system, place });
+export function mapCategoryRoute(
+  category: string,
+  system: string,
+  place: string,
+  view: string | null = null,
+): string {
+  return withQuery(`${ROUTES.system}/${category}`, { system, place, view });
 }
 
 export function placesRoute(system: string, place: string, list: string | null = null): string {

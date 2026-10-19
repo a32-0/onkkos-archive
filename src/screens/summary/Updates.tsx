@@ -51,6 +51,7 @@ export function Updates({
               name={update.name}
               meta={update.meta}
               art={update.art}
+              {...(update.newest && { newest: RESUME.newest })}
             />
           ))}
         </form>

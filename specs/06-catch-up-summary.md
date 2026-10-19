@@ -107,7 +107,8 @@ More line.
 
 - The chevron opens **Updates** (`662:6072`), a page under the top bar, with
   the lead "Pick the update you last played. The Summary starts again from
-  it.": the other updates newest first as update cards (spec 05), five, then "Show
+  it.": the other updates newest first as update cards (spec 05), the newest
+  game update still carrying **Newest** (owner, 2026-10-18), five, then "Show
   more", five more below 840 and ten from 840, as on Resume (owner,
   2026-10-16). Choosing one sets `wf_since` and returns to the Summary from
   that month, keeping the entrance. Back returns without a change.

@@ -33,7 +33,8 @@ vi.mock("next/navigation", () => ({
   redirect: (url: string) => {
     throw new Redirected(url);
   },
-  useRouter: () => ({ push: () => {} }),
+  useRouter: () => ({ push: () => {}, back: () => {} }),
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 const ORDIS = DEMO_ACCOUNT_IDS.ordis;
@@ -541,11 +542,14 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
     it("keeps apart two updates of the same month", async () => {
       const { requireScreen } = await import("@/app/screen");
       const { otherUpdates } = await import("@/app/catch-up/summary");
-      const updates = otherUpdates(await requireScreen(), null);
+      const updates = otherUpdates(await requireScreen(), "2026-03");
       const months = updates.map((one) => one.value);
       const versions = updates.map((one) => one.version);
       expect(new Set(months).size).toBeLessThan(months.length);
       expect(new Set(versions).size).toBe(versions.length);
+      expect(updates.filter((one) => one.newest).map((one) => one.version)).toEqual([
+        updates[0]?.version,
+      ]);
     });
 
     it("names the update a folded month belongs to", async () => {
@@ -720,6 +724,45 @@ describe("the map (spec 07, BR-46)", () => {
     expect(html).not.toMatch(/>New</);
   });
 
+  it("reopens a category on the view its link keeps, and never on New without a month", async () => {
+    const mastered = await category("warframes", {
+      system: "origin",
+      place: "Earth",
+      view: "mastered",
+    });
+    expect(mastered).toMatch(/aria-pressed="true"[^>]*>Mastered</);
+    const fresh = await category("warframes", { system: "origin", place: "Earth", view: "new" });
+    expect(fresh).toMatch(/aria-pressed="true"[^>]*>To get</);
+  });
+
+  it("gives a Collection category no View, since it gives no mastery", async () => {
+    jar.set("wf_since", { value: "2025-08", options: {} });
+    const html = await category("resources", { system: "origin", place: "Earth" });
+    expect(html).toContain('aria-label="Back"');
+    expect(html).not.toMatch(/>View<|>To get</);
+  });
+
+  it("puts one tag at most on a place, and dims Tau", async () => {
+    jar.set("wf_since", { value: "2025-08", options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: PlacesPage } = await import("@/app/system/places/page");
+    const { default: SystemsPage } = await import("@/app/system/systems/page");
+    const query = { system: "origin", place: "Earth" };
+    const places = renderToStaticMarkup(await PlacesPage({ searchParams: Promise.resolve(query) }));
+    const rows = places.split("<li").filter((row) => row.includes('href="/system?'));
+    expect(rows.length).toBeGreaterThan(0);
+    for (const row of rows) {
+      const tags = ["Mastered<", "Start here<", "New items<"].filter((tag) =>
+        row.includes(">" + tag),
+      );
+      expect(tags.length).toBeLessThanOrEqual(1);
+    }
+    const systems = renderToStaticMarkup(
+      await SystemsPage({ searchParams: Promise.resolve(query) }),
+    );
+    expect(systems).toMatch(/aria-disabled="true"[^]*>Tau</);
+  });
+
   it("lists the places and the systems on their own pages", async () => {
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { default: PlacesPage } = await import("@/app/system/places/page");
@@ -871,6 +914,7 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(ranked).toContain(">Rank 17/30<");
     const absent = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "navigation" });
     expect(absent).not.toContain("Well chosen.");
+    expect(absent).toContain("These will assist.");
   });
 
   it("names the place the Summary's first line names (BR-51)", async () => {

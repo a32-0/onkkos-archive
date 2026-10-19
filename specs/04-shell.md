@@ -56,7 +56,9 @@ on the same ground and over the same red rule: a round back button and the
 page's title in the display face. Back returns to the screen above the page:
 a category to its menu, Updates to where it was opened, the place and system
 lists to the map and to the place list, Profile to the root of the tab it was
-opened from (T-27b).
+opened from (T-27b), and an item to the screen it was opened from, where the
+player was on it, or to its tab's root when nothing in the app came before it
+(owner, 2026-10-18).
 
 ### Tab bar
 

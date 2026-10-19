@@ -141,7 +141,10 @@ category (spec 04), as `662:6837` draws it:
 2. The place it is about (`Place crumb`): its sphere, "You're on" and
    "{system} > {place}".
 3. **View**, a row holding a segmented control: **To get**, **Mastered** and
-   **New**, one always chosen, To get first (BR-45). It is the same row as
+   **New**, one always chosen, To get first (BR-45). Only an Arsenal category
+   has it: what the Collection holds gives no mastery, so a Collection
+   category lists everything in reach with no View (owner, 2026-10-18). It is
+   the same row as
    Summary and Step by step on an item (spec 09). When the chosen one leaves
    nothing, the empty state that names the place takes the list's place
    (BR-45).
@@ -180,7 +183,9 @@ Change location opens `662:6528`, a page under the top bar (spec 04):
    grouped list, each with its sphere, its name and "{n}/{m} Mastered", or the
    **Mastered** tag in its place when all are. A place may also carry **Start
    here** (BR-44) and **New items** when it holds something new since the
-   month (owner, 2026-10-17). The place on view is highlighted, and stays
+   month (owner, 2026-10-17). A row carries one tag at most, at its end:
+   Mastered, else Start here, else New items (owner, 2026-10-18). The place
+   on view is highlighted, and stays
    listed while on view even beyond reach. Then, when any place is beyond, one
    More line, a single paragraph: "3 more places open as you clear the
    junctions. Next: the Venus Junction, on Earth.", or, with the Dojo among
@@ -199,8 +204,8 @@ the satellite, or the neutral sphere when it has no second place, as every
 `System row` draws one (owner, 2026-10-17), its name and its mastered count
 or tag, **Start here** on the system that holds it, and the system on view
 highlighted. Only the systems with a place in reach are listed, then a More
-line, "2 more systems open as you go further." (BR-60). Tau reads "Soon™" and
-cannot be chosen. Choosing a system returns to the place list, now listing
+line, "2 more systems open as you go further." (BR-60). Tau reads "Soon™",
+cannot be chosen, and shows disabled, dimmed (owner, 2026-10-18). Choosing a system returns to the place list, now listing
 that system's places.
 
 ## States

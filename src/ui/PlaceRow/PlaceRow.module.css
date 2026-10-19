@@ -31,14 +31,8 @@
 
 .text {
   display: flex;
+  flex: 1 0 0;
   flex-direction: column;
-  min-width: 0;
-}
-
-.inline {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
   min-width: 0;
 }
 

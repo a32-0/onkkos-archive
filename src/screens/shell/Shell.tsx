@@ -9,6 +9,7 @@ import { PlayerChip } from "@/ui/PlayerChip/PlayerChip";
 import { TabBar } from "@/ui/TabBar/TabBar";
 import { TopBar } from "@/ui/TopBar/TopBar";
 
+import { BackLink, Visit } from "./history";
 import styles from "./Shell.module.css";
 import { tabItems, type ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
@@ -16,6 +17,7 @@ import type { ShellChrome } from "./voice";
 export interface ShellBar {
   title: string;
   back: string;
+  history?: boolean;
 }
 
 export function Shell({
@@ -40,6 +42,7 @@ export function Shell({
   ) : undefined;
   return (
     <div className={styles.shell}>
+      <Visit />
       <div className={styles.top}>
         <div className={bar ? styles.desktop : undefined}>
           <Header
@@ -56,7 +59,14 @@ export function Shell({
             tabs={wide}
           />
         </div>
-        {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={Link} />}
+        {bar && (
+          <TopBar
+            title={bar.title}
+            back={bar.back}
+            backLabel={SHELL.back}
+            link={bar.history ? BackLink : Link}
+          />
+        )}
       </div>
       <main className={styles.main}>{children}</main>
       {tabs && (

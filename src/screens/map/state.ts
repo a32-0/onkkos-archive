@@ -19,6 +19,7 @@ export interface MapTileView {
 export interface MapGroupView {
   id: string;
   key: string;
+  lenses: boolean;
   name: string;
   icon: string | null;
   symbol?: IconName;

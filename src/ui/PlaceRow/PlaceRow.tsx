@@ -32,11 +32,9 @@ export function PlaceRow({
   return (
     <Link href={href} className={styles.row} aria-current={onView || undefined}>
       <Orb color={orb} size="m" />
-      <span className={mastered ? styles.inline : styles.text}>
+      <span className={styles.text}>
         <span className={styles.name}>{name}</span>
-        {mastered ? (
-          <Badge kind="mastered" label={mastered} />
-        ) : gap ? (
+        {mastered ? null : gap ? (
           <span className={styles.gap}>{gap}</span>
         ) : (
           count && (
@@ -46,8 +44,13 @@ export function PlaceRow({
           )
         )}
       </span>
-      {startHere && <Badge kind="start-here" label={startHere} />}
-      {isNew && <Badge kind="new" label={isNew} />}
+      {mastered ? (
+        <Badge kind="mastered" label={mastered} />
+      ) : startHere ? (
+        <Badge kind="start-here" label={startHere} />
+      ) : (
+        isNew && <Badge kind="new" label={isNew} />
+      )}
     </Link>
   );
 }

@@ -35,13 +35,11 @@ export function SystemRow({
           <Orb color={satellite ?? null} size="xs" />
         </span>
       </span>
-      <span className={mastered ? styles.inline : styles.text}>
+      <span className={styles.text}>
         <span className={styles.name}>{name}</span>
         {soon ? (
           <span className={styles.soon}>{soon}</span>
-        ) : mastered ? (
-          <Badge kind="mastered" label={mastered} />
-        ) : (
+        ) : mastered ? null : (
           count && (
             <span className={styles.count}>
               <b className={styles.strong}>{count.count}</b> {count.label}
@@ -49,10 +47,23 @@ export function SystemRow({
           )
         )}
       </span>
-      {startHere && <Badge kind="start-here" label={startHere} />}
+      {mastered ? (
+        <Badge kind="mastered" label={mastered} />
+      ) : (
+        startHere && <Badge kind="start-here" label={startHere} />
+      )}
     </>
   );
-  if (soon || !href) return <div className={styles.static}>{body}</div>;
+  if (soon || !href) {
+    return (
+      <div
+        className={soon ? styles.disabled : styles.static}
+        aria-disabled={soon ? true : undefined}
+      >
+        {body}
+      </div>
+    );
+  }
   const Link = link ?? "a";
   return (
     <Link href={href} className={styles.row} aria-current={onView || undefined}>

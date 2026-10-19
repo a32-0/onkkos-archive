@@ -77,10 +77,16 @@ function moreLine(group: MapGroup, have: number | null, shown: (tile: MapTile) =
   return REACH.rank(needs.length, MAP.groups[group.group], Math.min(...needs), have);
 }
 
-function groupView(group: MapGroup, map: PlaceMap, input: MapViewInput): MapGroupView {
+function groupView(
+  group: MapGroup,
+  map: PlaceMap,
+  input: MapViewInput,
+  ranked: boolean,
+): MapGroupView {
   return {
     id: `map-${group.group}`,
     key: group.group,
+    lenses: ranked,
     name: MAP.groups[group.group].name,
     icon: input.icons[group.group] ?? null,
     ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),
@@ -225,7 +231,9 @@ export function mapView(input: MapViewInput): MapView {
     sections: map.sections.map((section) => ({
       id: section.catalog,
       label: section.catalog === "arsenal" ? MAP.arsenal : MAP.collection,
-      groups: section.groups.map((group) => groupView(group, map, input)),
+      groups: section.groups.map((group) =>
+        groupView(group, map, input, section.catalog === "arsenal"),
+      ),
     })),
     system: map.system.id,
     places: placeList(input),

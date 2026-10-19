@@ -44,9 +44,13 @@ Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
 
 Route `/item?name=&from=&view=`, inside the shell, under the top bar titled
 with the item's catalogue (spec 04), with the tab of the screen it was opened
-from lit (`from`, spec 04). From the top:
+from lit (`from`, spec 04). Back returns to the screen the player came from,
+where they were on it; an item opened directly, with nothing before it in the
+app, returns to the root of its tab (owner, 2026-10-18). From the top:
 
-1. Onkko's line, chosen by the item's state ("Well chosen.").
+1. Onkko's line, chosen by the item's state: "Well chosen." for an item the
+   player has, ranked or mastered, and "These will assist." for any other, his
+   line for browsing his wares on the wiki (owner, 2026-10-18).
 2. **You're on** (BR-51): "You're on {system} > {place}" with the place's art,
    when the item comes from a place, the Dojo included for anything
    researched (BR-57). An item from relics or from a game system has none. It

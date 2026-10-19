@@ -66,6 +66,22 @@ mission as its `where`, as it already did for parts with their own routes.
 - Each section is a `Divider` over its card at `--radius-m`; sections do not
   fold (spec 09).
 
+## Owner review, 2026-10-18
+
+- Onkko says "These will assist." on an item the player does not have, his
+  line for browsing his wares on the wiki; "Well chosen." stays for one they
+  have (spec 09).
+- Back returns to the screen the player came from, where they were on it: the
+  item's top bar goes back in the browser's history when the app came before
+  it, and to the tab's root otherwise. A map category keeps its view in its
+  link (`?view=`), so going back finds it as it was (specs 04, 07, 09).
+- A Collection category on the map has no View: it gives no mastery (spec 07).
+- A place or system row carries one tag at most, at its end; Tau shows
+  disabled (spec 07).
+- Updates keeps Newest on the newest game update, and its cards are keyed by
+  version, since two updates can share a month (spec 06).
+- Resume's list sits on the page's ground, as `662:4717` draws it.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.

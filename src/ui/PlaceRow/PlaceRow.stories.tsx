@@ -40,7 +40,7 @@ export const Mastered: Story = {
 
 export const Dojo: Story = { args: { name: "Dojo" } };
 
-export const OnViewStartHereNew: Story = {
+export const StartHereOverNew: Story = {
   args: { name: "Earth", orb: "#4a9eff", onView: true, startHere: "Start here", isNew: "New" },
 };
 

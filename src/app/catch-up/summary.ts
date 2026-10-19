@@ -46,6 +46,7 @@ export function otherUpdates(screen: Screen, since: string | null): SummaryUpdat
       name: one.name,
       meta: metaOf(one),
       art: one.art,
+      newest: one.version === updates[0]?.version,
     }));
 }
 

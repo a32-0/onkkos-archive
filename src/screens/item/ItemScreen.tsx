@@ -37,10 +37,17 @@ export function ItemScreen({ chrome, page }: { chrome: ShellChrome; page: ItemPa
     window.history.replaceState(null, "", page.hrefs[value]);
   };
   return (
-    <Shell chrome={chrome} tab={page.tab} tabs bar={{ title: page.title, back: page.back }}>
+    <Shell
+      chrome={chrome}
+      tab={page.tab}
+      tabs
+      bar={{ title: page.title, back: page.back, history: true }}
+    >
       <div className={styles.page}>
         <div className={styles.head}>
-          {chrome.voice.on && page.owned && <OnkkoLine place="top" line={VOICE.itemOwned} />}
+          {chrome.voice.on && (
+            <OnkkoLine place="top" line={page.owned ? VOICE.itemOwned : VOICE.item} />
+          )}
           {page.crumb && (
             <PlaceCrumb
               href={page.crumb.href}
