@@ -21,6 +21,12 @@
   position: sticky;
   bottom: 0;
   z-index: 1;
+  padding-top: var(--space-4);
+  background: var(--canvas);
+}
+
+.desktop {
+  display: none;
 }
 
 .wide {
@@ -34,5 +40,9 @@
 
   .bottom {
     display: none;
+  }
+
+  .desktop {
+    display: block;
   }
 }

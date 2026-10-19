@@ -11,7 +11,10 @@ repeating them, so this is the page that explains why a screen behaves the way
 it does.
 
 Read on 2026-10-03 through the Figma REST API: 66 comments, 53 open and 13
-resolved, all on the page Wireframes. The owner answered the open
+resolved, all on the page Wireframes. The frames they were pinned to were
+deleted with "High-fi Wireframes" on 2026-10-18; the links below open them in
+the file's version history, and T-27b names the frame that took each one's
+place. The owner answered the open
 readings on 2026-10-04, and those answers are folded into the rules below.
 
 ## How to read an entry
@@ -284,6 +287,9 @@ a reading of the earlier build against it was put to them.
   left.
 - Under the default and New, what is left is also what is in reach; the rest
   is counted in the group's More line (BR-61).
+- Since the Material pass (T-27b, owner, 2026-10-18) the control is the
+  **View** row on a category's page, and a lens filters that category's
+  items; the empty state takes the list's place (spec 07).
 
 ### BR-46 · The map reopens where the player left it
 
@@ -378,6 +384,8 @@ a reading of the earlier build against it was put to them.
 - Rule: this frame is the player menu, opened from the player chip at the top
   right of every screen (avatar, display name, Mastery Rank and title,
   Disconnect).
+- Since the Material pass (T-27b, owner, 2026-10-18) the menu is a page,
+  **Profile**, under the top bar, with the same content (spec 04).
 
 ### BR-07 · One profile read per twelve hours
 
@@ -484,6 +492,8 @@ in force: BR-12, BR-13 and BR-14.
 - Type: behaviour.
 - Rule: the chevron opens a dropdown with the updates, ordered by date, newest
   first. Choosing one changes `since`.
+- Since the Material pass (T-27b, owner, 2026-10-18) the list is a page,
+  **Updates**, under the top bar (spec 06).
 
 ### BR-14 · Groups start closed
 
@@ -493,6 +503,9 @@ in force: BR-12, BR-13 and BR-14.
 - A closed group's chevron points down and an open one's points up, on every
   screen, the same as the rows in BR-20. `257:653` drew closed groups with an
   up chevron until the owner corrected it on 2026-10-04.
+- Retired by the Material pass (T-27b, owner, 2026-10-18): the Summary and
+  the map no longer fold their groups. Each category is a row that opens its
+  own page (specs 06 and 07).
 
 ### BR-15 · No Mastered or Rank here, only NEW
 
@@ -1057,3 +1070,6 @@ on 2026-10-08.
 - The card counts items alone. It carried the place's nodes until
   2026-10-17; the owner removed them, since a place is mastered by its items
   and the game already shows its nodes.
+- Since the Material pass (T-27b, owner, 2026-10-18) the place sits on the
+  page (`Place overview`, `656:211`): the count is one chip per category,
+  under the ring of its mastered share (spec 07).

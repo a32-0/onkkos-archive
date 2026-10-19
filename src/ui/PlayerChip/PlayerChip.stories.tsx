@@ -11,7 +11,7 @@ const GLYPH =
 const meta = {
   title: "Chrome/PlayerChip",
   component: PlayerChip,
-  args: { name: "Cy", open: false },
+  args: { href: "/profile", name: "Cy" },
   decorators: [
     (Story) => (
       <div

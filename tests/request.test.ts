@@ -471,7 +471,7 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
     });
     afterEach(() => vi.unstubAllGlobals());
 
-    it("from the tab: the title, the lead, the card, closed groups, Skip and the tab bar", async () => {
+    it("from the tab: the title, the lead, the card, the categories, Skip and the tab bar", async () => {
       jar.set("wf_since", { value: "2026-03", options: {} });
       const html = await page();
       expect(html).toContain("SUMMARY");
@@ -479,9 +479,11 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       expect(html).toContain("You last played");
       expect(html).toContain("The Shadowgrapher");
       expect(html).toMatch(/Update 42 · Mar, 2026/);
+      expect(html).toContain('href="/catch-up/updates?from=resume"');
       expect(html).toContain(">Arsenal<");
-      expect(html).toMatch(/aria-expanded="false"/);
-      expect(html).not.toContain('aria-expanded="true"');
+      expect(html).toMatch(/href="\/catch-up\/warframes"/);
+      expect(html).toMatch(/\d+ New/);
+      expect(html).not.toContain("aria-expanded");
       expect(html).toContain("We are prepared to provide.");
       expect(html).toMatch(/<a [^>]*href="\/system\?system=[^"]+"[^>]*>Skip<\/a>/);
       expect(html).toMatch(/<nav[^>]*>/);
@@ -492,6 +494,47 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       jar.set("wf_since", { value: "2026-03", options: {} });
       const html = await page("summary");
       expect(html).toContain("SUMMARY");
+      expect(html).not.toMatch(/<nav/);
+      expect(html).toMatch(/href="\/catch-up\/warframes\?step=summary"/);
+    });
+
+    async function category(name: string, step?: string): Promise<string> {
+      const { renderToStaticMarkup } = await import("react-dom/server");
+      const { default: CategoryPage } = await import("@/app/catch-up/[category]/page");
+      const query = step ? { step } : {};
+      return renderToStaticMarkup(
+        await CategoryPage({
+          params: Promise.resolve({ category: name }),
+          searchParams: Promise.resolve(query),
+        }),
+      );
+    }
+
+    it("opens a category under the top bar, its things as rows, with the tab bar", async () => {
+      jar.set("wf_since", { value: "2026-03", options: {} });
+      const html = await category("warframes");
+      expect(html).toContain("Warframes");
+      expect(html).toContain('aria-label="Back"');
+      expect(html).toContain("New since you left off. Pick one to see how to get it.");
+      expect(html).toMatch(/href="\/item\?name=[^"]+&amp;from=resume"/);
+      expect(html).toMatch(/<nav/);
+    });
+
+    it("sends a category with nothing new back to the Summary", async () => {
+      jar.set("wf_since", { value: "2026-10", options: {} });
+      await expect(category("warframes", "summary")).rejects.toThrow("/catch-up?step=summary");
+    });
+
+    it("lists the other updates on their own page, choosing one keeps the entrance", async () => {
+      jar.set("wf_since", { value: "2026-03", options: {} });
+      const { renderToStaticMarkup } = await import("react-dom/server");
+      const { default: UpdatesPage } = await import("@/app/catch-up/updates/page");
+      const html = renderToStaticMarkup(
+        await UpdatesPage({ searchParams: Promise.resolve({ from: "resume", step: "summary" }) }),
+      );
+      expect(html).toContain("Updates");
+      expect(html).toContain('name="step" value="resume"');
+      expect(html).not.toContain(">The Shadowgrapher<");
       expect(html).not.toMatch(/<nav/);
     });
 
@@ -619,35 +662,82 @@ describe("the map (spec 07, BR-46)", () => {
     expect(await landing({ system: "origin", place: "Atlantis" })).toBe(skip);
   });
 
-  it("draws the card, the place, Show, the groups closed and the Navigation tab", async () => {
+  it("draws the card, Change location, the place, the categories and the Navigation tab", async () => {
     jar.set("wf_since", { value: "2025-08", options: {} });
     const html = await page({ system: "origin", place: "Earth" });
     expect(html).toContain("You last played");
+    expect(html).toContain('href="/catch-up/updates?from=navigation"');
     expect(html).toContain(">Earth<");
+    expect(html).toContain('href="/system/places?system=origin&amp;place=Earth"');
+    expect(html).toContain('role="progressbar"');
     expect(html).not.toContain(">Nodes<");
-    expect(html).toMatch(/>Show<[\s\S]*>To get<[\s\S]*>Mastered<[\s\S]*>New</);
     expect(html).toContain(">Arsenal<");
-    expect(html).not.toContain('aria-expanded="true"');
+    expect(html).toContain('href="/system/warframes?system=origin&amp;place=Earth"');
     expect(html).toMatch(
       /<a [^>]*aria-current="page"[^>]*href="\/system"|href="\/system"[^>]*aria-current="page"/,
     );
   });
 
-  it("takes a player who skipped the month as up to date, with no New", async () => {
+  it("takes a player who skipped the month as up to date, with no date on the card", async () => {
     const html = await page({ system: "origin", place: "Earth" });
     expect(html).toContain("You&#x27;re up to date");
+    expect(html).not.toMatch(/Update [\d.]+ · /);
+  });
+
+  async function category(name: string, query: Record<string, string>): Promise<string> {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: CategoryPage } = await import("@/app/system/[category]/page");
+    return renderToStaticMarkup(
+      await CategoryPage({
+        params: Promise.resolve({ category: name }),
+        searchParams: Promise.resolve(query),
+      }),
+    );
+  }
+
+  it("opens a category on To get, under the top bar, with the place and View", async () => {
+    jar.set("wf_since", { value: "2025-08", options: {} });
+    const html = await category("warframes", { system: "origin", place: "Earth" });
+    expect(html).toContain('aria-label="Back"');
+    expect(html).toContain("Origin &gt; Earth");
+    expect(html).toMatch(/>View<[\s\S]*>To get<[\s\S]*>Mastered<[\s\S]*>New</);
+    expect(html).toMatch(/aria-pressed="true"[^>]*>To get</);
+  });
+
+  it("offers no New on a category without a month", async () => {
+    const html = await category("warframes", { system: "origin", place: "Earth" });
     expect(html).toMatch(/>To get<[\s\S]*>Mastered</);
     expect(html).not.toMatch(/>New</);
   });
 
-  it("keeps the month chosen on the map's card and stays on the map", async () => {
+  it("lists the places and the systems on their own pages", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: PlacesPage } = await import("@/app/system/places/page");
+    const { default: SystemsPage } = await import("@/app/system/systems/page");
+    const query = { system: "origin", place: "Earth" };
+    const places = renderToStaticMarkup(await PlacesPage({ searchParams: Promise.resolve(query) }));
+    expect(places).toContain("Locations");
+    expect(places).toContain(
+      'href="/system/systems?system=origin&amp;place=Earth&amp;list=origin"',
+    );
+    expect(places).toContain('href="/system?system=origin&amp;place=Mars"');
+    const systems = renderToStaticMarkup(
+      await SystemsPage({ searchParams: Promise.resolve(query) }),
+    );
+    expect(systems).toContain("Choose a system");
+    expect(systems).toContain(
+      'href="/system/places?system=origin&amp;place=Earth&amp;list=origin"',
+    );
+  });
+
+  it("keeps the month chosen in Updates and returns to the map", async () => {
     const { remeasure } = await import("@/app/actions");
     const form = new FormData();
     form.set("since", "2025-06");
-    await remeasure(form);
+    await expect(remeasure(form)).rejects.toThrow("/system");
     expect(jar.get("wf_since")?.value).toBe("2025-06");
     form.set("since", "June");
-    await remeasure(form);
+    await expect(remeasure(form)).rejects.toThrow("/system");
     expect(jar.get("wf_since")?.value).toBe("2025-06");
   });
 });

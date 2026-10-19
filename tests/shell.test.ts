@@ -3,8 +3,9 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { SHELL } from "@/content/nav";
+import { Profile } from "@/screens/shell/Profile";
 import { readCycle, type ShellPlayer } from "@/screens/shell/read-cycle";
-import { Shell } from "@/screens/shell/Shell";
+import { Shell, type ShellBar } from "@/screens/shell/Shell";
 import { openedFrom, tabItems, type ShellTab } from "@/screens/shell/tabs";
 
 const READ_AT = Date.UTC(2026, 9, 14, 3, 30);
@@ -21,19 +22,16 @@ const PLAYER: ShellPlayer = {
 
 const text = (parts: readonly { text: string }[]) => parts.map((part) => part.text).join("");
 
-function shell(tab: ShellTab | null, tabs: boolean): string {
+const CHROME = {
+  player: PLAYER,
+  voice: { met: true, on: true },
+  disconnect: async () => {},
+  setOnkko: async () => {},
+};
+
+function shell(tab: ShellTab | null, tabs: boolean, bar?: ShellBar): string {
   return renderToStaticMarkup(
-    Shell({
-      chrome: {
-        player: PLAYER,
-        voice: { met: true, on: true },
-        disconnect: async () => {},
-        setOnkko: async () => {},
-      },
-      tab,
-      tabs,
-      children: createElement("p", null, "body"),
-    }),
+    Shell({ chrome: CHROME, tab, tabs, bar, children: createElement("p", null, "body") }),
   );
 }
 
@@ -89,7 +87,7 @@ describe("the read cycle (BR-07)", () => {
 describe("the shell around a screen (spec 04)", () => {
   it("shows the chip and the tab bar, with the screen's tab lit", () => {
     const html = shell("navigation", true);
-    expect(html).toContain('aria-haspopup="dialog"');
+    expect(html).toContain('href="/profile?from=navigation"');
     expect(html.match(/<nav /g)).toHaveLength(2);
     const lit = html.match(/<a [^>]*aria-current="page"[^>]*>/g) ?? [];
     expect(lit).toHaveLength(2);
@@ -99,7 +97,7 @@ describe("the shell around a screen (spec 04)", () => {
 
   it("shows the chip without the tab bar for Resume's onboarding entrance (BR-41)", () => {
     const html = shell("resume", false);
-    expect(html).toContain('aria-haspopup="dialog"');
+    expect(html).toContain('href="/profile?from=resume"');
     expect(html).not.toContain("<nav");
   });
 
@@ -107,11 +105,24 @@ describe("the shell around a screen (spec 04)", () => {
     const html = shell(null, true);
     const header = /<header[\s\S]*?<\/header>/.exec(html)?.[0] ?? "";
     const links = header.match(/<a [^>]*>/g) ?? [];
-    expect(links.every((link) => /href="\/(system|catch-up|goals)"/.test(link))).toBe(true);
+    expect(links.every((link) => /href="\/(system|catch-up|goals|profile)[?"]/.test(link))).toBe(
+      true,
+    );
   });
 
-  it("holds the player menu with Disconnect and the read cycle", () => {
-    const html = shell("goal", true);
+  it("opens a page under a tab with the top bar, its back link and its title", () => {
+    const html = shell("resume", true, { title: "Warframes", back: "/catch-up" });
+    expect(html).toContain('aria-label="Back"');
+    expect(html).toContain('href="/catch-up"');
+    expect(html).toContain("Warframes");
+    expect(html.match(/<nav /g)).toHaveLength(2);
+  });
+
+  it("holds Profile with Disconnect and the read cycle", () => {
+    const html = renderToStaticMarkup(
+      createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals" }),
+    );
+    expect(html).toContain("Profile");
     expect(html).toContain("Mastery Rank 27");
     expect(html).toContain("Gold Sage");
     expect(html).toContain("Disconnect");

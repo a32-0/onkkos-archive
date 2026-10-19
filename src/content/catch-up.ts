@@ -6,6 +6,7 @@ export const RESUME = {
   meta: (version: string, month: string) => `Update ${version} · ${month}`,
   more: "Show more",
   noMatch: "No update by that name or date.",
+  noMatchLine: "Try its number, like 43, or a month and a year.",
   skip: "Skip",
 } as const;
 
@@ -15,6 +16,8 @@ export const SUMMARY = {
   lastPlayed: "You last played",
   upToDate: "You're up to date",
   updates: "Updates",
+  updatesLead: "Pick the update you last played. The Summary starts again from it.",
+  categoryLead: "New since you left off. Pick one to see how to get it.",
   arsenal: "Arsenal",
   collection: "Collection",
   count: (count: number) => `${count} New`,

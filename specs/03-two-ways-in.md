@@ -7,7 +7,7 @@ goal. It is the last screen of onboarding.
 
 ## Frames
 
-- [`203:140` Features](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-140).
+- [`661:4591` Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4591).
 
 ## Rules
 
@@ -27,7 +27,7 @@ goal. It is the last screen of onboarding.
 ## What the screen does
 
 Route `/features`, outside the shell: the header carries the wordmark only, no
-tab bar and no player chip. From the top, as `203:140` draws it:
+tab bar and no player chip. From the top, as `661:4591` draws it:
 
 1. Onkko's line, "We have, and shall have a long association, {name}.", with
    the player's display name in the accent colour. A profile with no display
@@ -69,7 +69,7 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
 
 ## Acceptance
 
-1. At 390 px the screen matches `203:140`: layout, type, colour, spacing and
+1. At 390 px the screen matches `661:4591`: layout, type, colour, spacing and
    copy, with its Material Symbols icons (hourglass, flag).
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
    page does not scroll sideways. From 840 the heading and the buttons stay one

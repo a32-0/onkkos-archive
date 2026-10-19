@@ -46,10 +46,8 @@ export function ConnectForm({
         </Button>
       </form>
       {pending && (
-        <div className={styles.veil}>
-          <div className={styles.reading}>
-            <LoadingCard line={CONNECT.reading} />
-          </div>
+        <div className={styles.reading}>
+          <LoadingCard line={CONNECT.reading} />
         </div>
       )}
     </>

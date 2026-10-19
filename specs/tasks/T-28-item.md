@@ -4,7 +4,7 @@
 | -------- | ----------------------------------------------------------------------------------------- |
 | Phase    | 4. Screens                                                                                |
 | Serves   | [spec 09](../09-item-summary.md); [plan 1](../plan/01-repository.md); BR-55, BR-56, BR-62 |
-| Waits on | [T-27](T-27-goal.md)                                                                      |
+| Waits on | [T-27c](T-27c-material-code.md)                                                           |
 
 An item's page: the hero with its state, the crumb, and the Summary that is Step by step in short form.
 
@@ -29,11 +29,22 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
 
 - A screen of the shell renders `Shell chrome={await chromeOf(screen)}` (`app/chrome.ts`): the player, Onkko's voice and the actions in one value. Onkko's line shows only when `chrome.voice.on` (BR-64).
 
-- `itemRoute(name, from)` in `routes.ts` writes `/item?name=&from=`; the Summary's tiles open it with `from=resume`, and `openedFrom()` in `screens/shell/tabs.ts` reads it.
+- `itemRoute(name, from)` in `routes.ts` writes `/item?name=&from=`; a category's rows in the Summary open it with `from=resume`, and `openedFrom()` in `screens/shell/tabs.ts` reads it.
 
 ## From T-26
 
-- The map's tiles open the item with `from=navigation`. An Incarnon Genesis, an Honoria or an Ephemera now has a place on the map when a hub hands it out (`domain/place/hubs.ts`); the page's own routes still come from `briefOf()`, so the two agree on the source and the page names it whether or not the map holds it.
+- A category's rows on the map open the item with `from=navigation`. An Incarnon Genesis, an Honoria or an Ephemera now has a place on the map when a hub hands it out (`domain/place/hubs.ts`); the page's own routes still come from `briefOf()`, so the two agree on the source and the page names it whether or not the map holds it.
+
+## From T-27c
+
+- The item renders `Shell` with `bar={{ title, back }}`: the top bar titled
+  with the item's catalogue, its back to the screen that opened it. From 840
+  the header with the tabs sits above it.
+- View is a `ControlRow` holding `Segmented` (Summary, Step by step).
+- `ItemHero` has no card: the kicker, the name and the art sit on the page.
+- `SummaryRow` keeps its 16 and 16 here; `compact` is only for category pages.
+- Each section is a `Divider` over its card at `--radius-m`; sections do not
+  fold (spec 09).
 
 ## Acceptance
 

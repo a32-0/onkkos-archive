@@ -4,6 +4,7 @@
   display: block;
   height: var(--update-card-height);
   overflow: hidden;
+  border-radius: var(--radius-s);
   color: var(--ink);
   text-decoration: none;
 }

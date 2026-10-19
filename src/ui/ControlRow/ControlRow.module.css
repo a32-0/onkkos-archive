@@ -1,0 +1,24 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-7);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
+}
+
+.label {
+  composes: body-l from "../type.module.css";
+  color: var(--ink);
+}
+
+.control {
+  display: flex;
+}
+
+.fill {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+}

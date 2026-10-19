@@ -5,12 +5,12 @@
   box-sizing: border-box;
   width: 100%;
   padding: var(--space-5) var(--space-6);
-  border: none;
   border-left: var(--border-1) solid var(--accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
   background-color: var(--surface);
   color: var(--ink);
   text-align: start;
-  cursor: pointer;
+  text-decoration: none;
   backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
@@ -65,10 +65,5 @@
 .chevron {
   display: flex;
   flex: none;
-  transform: rotate(-90deg);
-}
-
-.up {
-  composes: chevron;
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }

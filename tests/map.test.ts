@@ -11,7 +11,7 @@ import { startHere } from "@/domain/place/start-here";
 import { itemRanks } from "@/domain/place/state";
 import type { RawProfile } from "@/domain/types/profile";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
-import { nextLens, shownGroups, shownUnder } from "@/screens/map/lens";
+import { nextLens, shownIn, shownUnder } from "@/screens/map/lens";
 import type { Lens, MapView } from "@/screens/map/state";
 import { mapView } from "@/screens/map/view";
 
@@ -91,12 +91,17 @@ describe("the lens (BR-45)", () => {
     expect(drop?.place).toMatch(/\S · \S/);
   });
 
-  it("offers New only with a month, and counts it on a group only then", () => {
+  it("offers New only with a month", () => {
     expect(view.newLens).toBe(true);
     const none = viewOf(cy, "origin", "Earth", null);
     expect(none.newLens).toBe(false);
-    expect(none.sections.flatMap((s) => s.groups).every((g) => g.count === undefined)).toBe(true);
     expect(tilesOf(none).every((tile) => !tile.fresh)).toBe(true);
+  });
+
+  it("gives each category a key its page is found by", () => {
+    const keys = view.sections.flatMap((s) => s.groups.map((g) => g.key));
+    expect(keys).toContain("warframes");
+    expect(new Set(keys).size).toBe(keys.length);
   });
 
   it("puts the Arsenal before the Collection, each group once", () => {
@@ -166,11 +171,12 @@ describe("reach on the map (BR-59 to BR-62)", () => {
 });
 
 describe("a lens with nothing to show", () => {
-  it("leaves no group, and names the place in its empty state", () => {
+  it("leaves a category empty, and names the place in its empty state", () => {
     const view = viewOf(fixture("profile-new-player"), "origin", "Earth", null);
-    expect(shownGroups(view.sections, "mastered")).toEqual([]);
+    const groups = view.sections.flatMap((section) => section.groups);
+    expect(groups.every((group) => shownIn(group, "mastered").tiles.length === 0)).toBe(true);
     expect(view.empty.mastered.title).toBe("Nothing mastered on Earth yet");
-    expect(shownGroups(view.sections, "left").length).toBeGreaterThan(0);
+    expect(groups.some((group) => shownIn(group, "left").tiles.length > 0)).toBe(true);
   });
 });
 
@@ -191,7 +197,7 @@ describe("Start here (BR-44)", () => {
   });
 });
 
-describe("the place card", () => {
+describe("the place overview", () => {
   it("counts what is still to master here by kind, in reach, and nothing once mastered", () => {
     const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
     const arsenal = view.sections.find((section) => section.id === "arsenal")?.groups ?? [];
@@ -201,14 +207,15 @@ describe("the place card", () => {
         count: group.tiles.filter((tile) => tile.left && !tile.beyond).length,
       }))
       .filter((kind) => kind.count > 0);
-    expect(view.card.left?.kinds.map(({ name, count }) => ({ name, count }))).toEqual(expected);
-    expect(view.card.left?.title).toBe("Still to master here");
-    expect(viewOf(fixture("profile-cy"), "origin", "Phobos", null).card.left).toBeUndefined();
+    expect(view.overview.left?.kinds.map(({ name, count }) => ({ name, count }))).toEqual(expected);
+    expect(view.overview.left?.caption).toBe("Still to master here");
+    expect(viewOf(fixture("profile-cy"), "origin", "Phobos", null).overview.left).toBeUndefined();
   });
 
   it("counts the items mastered", () => {
     const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
-    expect(view.card.items.count).toMatch(/^\d+\/\d+$/);
+    expect(view.overview.done).toBeLessThanOrEqual(view.overview.readable);
+    expect(view.overview.count).toMatch(/^\d+\/\d+$/);
   });
 });
 
@@ -279,10 +286,18 @@ describe("each place's sphere", () => {
     }
   });
 
-  it("reads Change location over the place, and counts items alone", () => {
+  it("names the place it is about, and counts items alone", () => {
     const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
-    expect(view.card.system).toBe("Change location");
-    expect(Object.keys(view.card)).not.toContain("nodes");
+    expect(view.place).toBe("Earth");
+    expect(view.systemName).toBe("Origin");
+    expect(Object.keys(view.overview)).not.toContain("nodes");
+  });
+
+  it("says the rank of an item short of its maximum before its place", () => {
+    const view = viewOf(fixture("profile-cy"), "origin", "Earth", null);
+    for (const tile of tilesOf(view).filter((one) => one.place.startsWith("Rank "))) {
+      expect(tile.place).toMatch(/^Rank \d+\/\d+( · .+)?$/);
+    }
   });
 });
 

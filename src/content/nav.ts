@@ -42,8 +42,8 @@ export const NAV = {
 } as const;
 
 export const SHELL = {
-  playerMenu: "Player menu",
-  close: "Close",
+  profile: "Profile",
+  back: "Back",
   masteryRank: (rank: number) => `Mastery Rank ${rank}`,
   rankTitle: (rank: number) =>
     rank >= LEGENDARY_FROM

@@ -60,3 +60,14 @@ export const Route: Story = {
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };
+
+export const Compact: Story = {
+  args: {
+    href: "/item?name=koumei&from=resume",
+    name: "Koumei",
+    reading: "Blueprint · ~24 runs · Rotation A",
+    blueprint: undefined,
+    art: SAMPLE_ART[0],
+    compact: true,
+  },
+};

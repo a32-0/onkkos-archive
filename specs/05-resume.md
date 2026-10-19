@@ -6,15 +6,15 @@ then measures everything from that day.
 
 ## Frames
 
-- [`203:231` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231).
-- [`264:388` Card Container](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=264-388):
+- [`662:4709` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4709).
+- [`463:256` Update card](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=463-256):
   the update card.
 
-Drawn on 2026-10-06 under **Documented states**, from the states this spec
-describes and no earlier frame drew. Their texts are sample values:
+Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
+describes. Their texts are sample values:
 
-- [`474:608` Resume — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-608): the search with no hit.
-- [`466:207` Resume (from Two ways in)](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=466-207): the onboarding entrance, with Skip and no tab bar (BR-41).
+- [`675:5461` Resume — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5461): the search with no hit.
+- [`679:4734` Resume — From Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the onboarding entrance, with Skip and no tab bar (BR-41).
 
 ## Rules
 
@@ -38,7 +38,7 @@ ways in, whatever month is kept (owner, 2026-10-15). A `step` marks the
 onboarding entrance: no tab bar. Choosing from it opens
 `/catch-up?step=summary`, the Summary of the same entrance; choosing from the
 tab opens `/catch-up`, which shows the Summary once a month is kept. From the
-top, as `203:231` draws it:
+top, as `662:4709` draws it:
 
 1. The header with the player chip (spec 04).
 2. Onkko's line, "Once, long ago, I would look backwards, feeling for the
@@ -46,7 +46,7 @@ top, as `203:231` draws it:
    Cetus and has not turned the phrases off (BR-64).
 3. **Resume**, and "Tell Onkko which update you last played. He'll show you
    the items released since then." (owner, 2026-10-16).
-4. The search field, "Search an update or a date...", alone (`477:3022`).
+4. The search field, "Search an update or a date...", alone (`Search field`, `463:79`).
 5. The update cards, newest first, one per name (BR-09). The newest wears
    **Newest**. Five show, then "Show more", a `Button` in its text style,
    which shows five more below 840 and ten from 840 (owner, 2026-10-16).
@@ -62,7 +62,9 @@ top, as `203:231` draws it:
   the words left, together in one month of the update ("2024", "2024-03",
   "Mar 2024", "March 2024"). A typed search starts again at five cards, and
   "Show more" shows only what still matches. No match shows the
-  line "No update by that name or date." in place of the cards. The frame draws no empty state; the line is the one already in `src/content/`, set in the same type as the lead.
+  `Empty state` card in place of the cards, "No update by that name or
+  date." and "Try its number, like 43, or a month and a year." (`675:5461`;
+  owner, 2026-10-18).
 - A month the action cannot read, or one still to come, keeps nothing and
   leaves the player on Resume.
 - **Skip** opens the map on the frontier or the focus, as on Two ways in.
@@ -72,7 +74,7 @@ back (owner, 2026-10-16).
 
 ## The update card
 
-From `264:388`: the update's art across the card, and over its lower part the
+From `463:256`: the update's art across the card, and over its lower part the
 band (BR-10) with the name in the display face and "Update {version} ·
 {Mon}, {year}" (BR-43). **Newest** sits at the top left of the newest card. The card
 carries no item count. An update with no art shows the band over the card's
@@ -109,7 +111,7 @@ with its stories.
 
 ## Acceptance
 
-1. At 390 px the screen matches `203:231` and the card matches `264:388`.
+1. At 390 px the screen matches `662:4709` and the card matches `463:256`.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut; from 840 the
    cards form a grid.
 3. A card or a month sets `wf_since` and opens the Summary.

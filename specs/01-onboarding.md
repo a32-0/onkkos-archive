@@ -6,8 +6,8 @@ player's id when this device remembers them.
 
 ## Frames
 
-- [`206:903` Onboarding](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=206-903),
-  in the pinned section `421:590`. It is the only frame for this screen.
+- [`661:4307` Start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4307),
+  in the pinned section `661:4302`. It is the only frame for this screen.
 
 The frame is the design (BR-33). This spec says what the frame cannot:
 behaviour and where things come from.
@@ -47,7 +47,7 @@ One. The screen has no data, so it has no loading, empty or error state.
 
 ## Acceptance
 
-1. At 390 px the screen matches `206:903`: layout, type, colour, spacing and
+1. At 390 px the screen matches `661:4307`: layout, type, colour, spacing and
    copy.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
    page does not scroll sideways. Below 600 the frame line keeps 16 px from

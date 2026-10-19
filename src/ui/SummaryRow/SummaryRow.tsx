@@ -9,6 +9,7 @@ export function SummaryRow({
   place,
   art,
   blueprint,
+  compact = false,
   link,
 }: {
   href?: string;
@@ -17,6 +18,7 @@ export function SummaryRow({
   place?: string;
   art: string | null;
   blueprint?: string | null;
+  compact?: boolean;
   link?: LinkComponent;
 }) {
   const body = (
@@ -30,8 +32,10 @@ export function SummaryRow({
       )}
       <span className={styles.band}>
         <span className={styles.name}>{name}</span>
-        {reading && <span className={styles.reading}>{reading}</span>}
-        {place && <span className={styles.place}>{place}</span>}
+        {reading && (
+          <span className={compact ? styles["compact-reading"] : styles.reading}>{reading}</span>
+        )}
+        {place && <span className={compact ? styles["compact-place"] : styles.place}>{place}</span>}
       </span>
     </>
   );

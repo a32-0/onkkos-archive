@@ -6,6 +6,10 @@
   background-color: var(--surface-raised-strong);
 }
 
+.row[aria-current] .count {
+  color: var(--ink-muted);
+}
+
 .static {
   display: flex;
   align-items: center;
@@ -13,6 +17,8 @@
   box-sizing: border-box;
   width: 100%;
   padding: var(--space-6);
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
   color: var(--ink);
 }
 

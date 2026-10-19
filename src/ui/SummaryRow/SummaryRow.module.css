@@ -1,7 +1,12 @@
 .row {
+  --summary-row-height: 100px;
   display: flex;
   box-sizing: border-box;
   width: 100%;
+  min-height: var(--summary-row-height);
+  overflow: hidden;
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
   color: var(--ink);
   text-decoration: none;
 }
@@ -10,7 +15,7 @@
   composes: row;
 }
 
-.link:hover .band {
+.link:hover {
   background-image: linear-gradient(var(--hover), var(--hover));
 }
 
@@ -24,7 +29,8 @@
   display: block;
   flex: none;
   width: var(--summary-art-size);
-  height: var(--summary-art-size);
+  height: auto;
+  min-height: var(--summary-art-size);
   background: var(--surface-sunken);
   object-fit: cover;
 }
@@ -36,9 +42,7 @@
   justify-content: center;
   gap: var(--space-2);
   min-width: 0;
-  padding: var(--space-4);
-  background-color: var(--surface-band);
-  backdrop-filter: blur(calc(var(--blur-band) / 2));
+  padding: var(--space-5) var(--space-6);
 }
 
 .name {
@@ -52,4 +56,13 @@
 
 .place {
   composes: body-l from "../type.module.css";
+}
+
+.compact-reading {
+  composes: reading from "../type.module.css";
+  color: var(--accent);
+}
+
+.compact-place {
+  composes: body from "../type.module.css";
 }

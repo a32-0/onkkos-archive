@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
 import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { Icon } from "@/ui/Icon/Icon";
+import { List, ListEntry } from "@/ui/List/List";
 import { MoreLine } from "@/ui/MoreLine/MoreLine";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { Orb } from "@/ui/Orb/Orb";
@@ -15,17 +19,14 @@ import type { PlaceListSystem } from "./state";
 
 export function PlaceList({
   system,
-  query,
-  onQuery,
-  onSystems,
+  systemsHref,
   voice,
 }: {
   system: PlaceListSystem;
-  query: string;
-  onQuery: (query: string) => void;
-  onSystems: () => void;
+  systemsHref: string;
   voice: boolean;
 }) {
+  const [query, setQuery] = useState("");
   const typed = query.trim().toLowerCase();
   const rows = typed
     ? system.rows.filter((row) => row.name.toLowerCase().includes(typed))
@@ -33,7 +34,12 @@ export function PlaceList({
 
   return (
     <div className={styles.list}>
-      <button type="button" className={styles.system} aria-haspopup="dialog" onClick={onSystems}>
+      <div className={styles.intro}>
+        {voice && <OnkkoLine place="top" line={VOICE.farewell} />}
+        <h2 className={styles["place-title"]}>{MAP.chooseLocation}</h2>
+        <p className={styles.lead}>{MAP.switchAnyTime}</p>
+      </div>
+      <Link href={systemsHref} className={styles.system}>
         <Orb color={system.orb} size="s" />
         <span className={styles["system-text"]}>
           <span className={styles["system-kicker"]}>{MAP.changeSystem}</span>
@@ -42,12 +48,12 @@ export function PlaceList({
         <span className={styles.chevron}>
           <Icon name="chevron-backward" />
         </span>
-      </button>
+      </Link>
       <SearchField
         label={MAP.searchLabel}
         placeholder={MAP.search}
         value={query}
-        onChange={(event) => onQuery(event.target.value)}
+        onChange={(event) => setQuery(event.target.value)}
       />
       {rows.length === 0 ? (
         <EmptyState
@@ -56,26 +62,26 @@ export function PlaceList({
           line={MAP.noPlaceLine(system.name, query.trim())}
         />
       ) : (
-        <div className={styles.rows}>
+        <List label={system.name}>
           {rows.map((row) => (
-            <PlaceRow
-              key={row.name}
-              href={row.href}
-              name={row.name}
-              orb={row.orb}
-              count={row.count}
-              mastered={row.mastered}
-              startHere={row.startHere}
-              isNew={row.isNew}
-              gap={row.gap}
-              onView={row.onView}
-              link={Link}
-            />
+            <ListEntry key={row.name}>
+              <PlaceRow
+                href={row.href}
+                name={row.name}
+                orb={row.orb}
+                count={row.count}
+                mastered={row.mastered}
+                startHere={row.startHere}
+                isNew={row.isNew}
+                gap={row.gap}
+                onView={row.onView}
+                link={Link}
+              />
+            </ListEntry>
           ))}
-        </div>
+        </List>
       )}
       {!typed && system.more && <MoreLine text={system.more} />}
-      {voice && <OnkkoLine place="bottom" line={VOICE.farewell} />}
     </div>
   );
 }

@@ -63,14 +63,6 @@
   min-width: 0;
 }
 
-.empty {
-  composes: body-l from "../../ui/type.module.css";
-  width: 100%;
-  max-width: var(--resume-column);
-  margin: 0 auto;
-  color: var(--ink);
-}
-
 .cards {
   display: grid;
   grid-template-columns: var(--resume-cards);

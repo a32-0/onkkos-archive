@@ -26,6 +26,13 @@
   text-transform: none;
 }
 
+.bar-title {
+  font-family: var(--font-cinzel), serif;
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
 .heading {
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
@@ -157,13 +164,6 @@
   font-weight: 300;
   font-size: 14px;
   text-transform: none;
-}
-
-.quiet-upper {
-  font-family: var(--font-inter), sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  text-transform: uppercase;
 }
 
 .reading {

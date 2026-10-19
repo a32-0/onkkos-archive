@@ -3,9 +3,9 @@
   display: inline-flex;
   align-items: center;
   padding: var(--space-2);
-  border: var(--border-1) solid var(--line-subtle);
+  border: var(--border-1) solid var(--line);
   border-radius: var(--radius-l);
-  background: var(--surface);
+  background: transparent;
 }
 
 .segment {
@@ -47,5 +47,6 @@
 .chosen {
   composes: segment;
   composes: label from "../type.module.css";
-  background-color: var(--surface-raised);
+  background-color: var(--fill-strong);
+  color: var(--ink-inverse);
 }

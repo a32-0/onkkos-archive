@@ -5,12 +5,19 @@
   box-sizing: border-box;
   width: 100%;
   padding: var(--space-6);
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
   color: var(--ink);
   text-decoration: none;
 }
 
 .row[aria-current] {
-  background-color: var(--surface-raised);
+  background-color: var(--surface-raised-strong);
+}
+
+.row[aria-current] .count,
+.row[aria-current] .gap {
+  color: var(--ink-muted);
 }
 
 .row:hover {

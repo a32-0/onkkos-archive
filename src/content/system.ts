@@ -5,7 +5,11 @@ function plural(count: number, one: string, many: string): string {
 }
 
 export const MAP = {
-  show: "Show",
+  view: "View",
+  youreOn: "You're on",
+  crumb: (system: string, place: string) => `${system} > ${place}`,
+  locations: "Locations",
+  chooseLocation: "Choose a location",
   toGet: "To get",
   mastered: "Mastered",
   new: "New",
@@ -13,11 +17,10 @@ export const MAP = {
   stillToMaster: "Still to master here",
   changeLocation: "Change location",
   changeSystem: "Change system",
-  items: "Items",
+  itemsMastered: "Items mastered",
   fraction: (done: number, total: number) => `${done}/${total}`,
   progress: (place: string) => `Items mastered on ${place}`,
   rank: (rank: number, max: number) => `Rank ${rank}/${max}`,
-  count: (count: number) => `${count} New`,
   arsenal: "Arsenal",
   collection: "Collection",
   groups: {
@@ -56,7 +59,6 @@ export const MAP = {
       line: "No item from this place came out after the update you chose.",
     }),
   },
-  places: "Places",
   search: "Search a planet, location or celestial body...",
   searchLabel: "Search the places",
   noPlace: "No place by that name",

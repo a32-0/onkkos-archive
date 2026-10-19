@@ -11,7 +11,7 @@
   min-height: var(--button-height);
   padding: var(--space-5);
   border: var(--border-1) solid transparent;
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-full);
   background-color: transparent;
   color: var(--ink);
   text-align: center;

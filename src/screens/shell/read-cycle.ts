@@ -1,5 +1,6 @@
 import { SHELL } from "@/content/nav";
-import type { ReadCyclePart } from "@/ui/PlayerMenu/PlayerMenu";
+
+export type ReadCyclePart = { text: string; strong?: boolean };
 
 export interface ShellPlayer {
   name: string;

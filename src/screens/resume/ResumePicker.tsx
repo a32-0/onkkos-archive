@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { RESUME } from "@/content/catch-up";
 import { Button } from "@/ui/Button/Button";
+import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
@@ -58,7 +59,7 @@ export function ResumePicker({
         </div>
       </div>
       {found.length === 0 ? (
-        <p className={styles.empty}>{RESUME.noMatch}</p>
+        <EmptyState icon="hourglass" title={RESUME.noMatch} line={RESUME.noMatchLine} />
       ) : (
         <form action={choose} className={styles.cards}>
           {step && <input type="hidden" name="step" value={step} />}

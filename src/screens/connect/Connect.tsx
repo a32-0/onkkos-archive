@@ -69,7 +69,7 @@ export function Connect({
           <p className={styles.note}>{CONNECT.publicNote}</p>
         </section>
 
-        <section className={styles.card}>
+        <section className={styles.demo}>
           <h2 className={styles.label}>{CONNECT.demoTitle}</h2>
           <form action={demo} className={styles.demos}>
             {demos.map(({ key, name, masteryRank }) => (

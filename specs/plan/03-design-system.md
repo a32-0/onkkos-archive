@@ -52,44 +52,48 @@ of them; a component never computes a colour.
 
 ### Primitives
 
-| Token          | Value       | Was in the frames                                                          | Uses  |
-| -------------- | ----------- | -------------------------------------------------------------------------- | ----- |
-| `--black`      | `#000000`   | page canvas                                                                | 32    |
-| `--night-900`  | `#0f0f0f`   | `#0f0f0f`, `#110e09`, `#17140f`, `#161413` (header, text on light buttons) | 45    |
-| `--night-800`  | `#16130e`   | art ground, value fields (BR-18)                                           | 111   |
-| `--night-700`  | `#1f1b16`   | `#1f1b16`, `#1f1c18` (sections, cards, segmented)                          | 244   |
-| `--night-600`  | `#2e2924`   | active segment, secondary buttons                                          | 42    |
-| `--night-500`  | `#39342e`   | `#39342e`, `#352f2d` (featured card)                                       | 9     |
-| `--night-band` | `#37322ce5` | `#37322c@90`, `#373130@90`, `#39342e@80` (title bands)                     | 70    |
-| `--night-card` | `#231f1acc` | the choice cards                                                           | n/a   |
-| `--ash-100`    | `#eae1d9`   | `#eae1d9`, `#ffffff` (text, light buttons, icons)                          | 2,163 |
-| `--ash-300`    | `#b1a595`   | `#b1a595`, `#b6a99a` (secondary text)                                      | 279   |
-| `--ash-500`    | `#9f9486`   | `#9f9486`, `#9b8f80`, `#97a5a4` (dim text, lines)                          | 210   |
-| `--slate-400`  | `#98a2b3`   | the not-obtained frame                                                     | 32    |
-| `--gold-400`   | `#fcbb4a`   | `#fcbb4a`, `#fbbc36`, `#f5b731` (accent, Newest, card rules)               | 141   |
-| `--bronze-600` | `#765824`   | the line down a Step by step section                                       | 101   |
-| `--cyan-300`   | `#4fd8e8`   | links ("Wiki ↗")                                                           | 236   |
-| `--green-400`  | `#4ec98a`   | mastered, done                                                             | 26    |
-| `--green-900`  | `#143024`   | mastered ground                                                            | 25    |
-| `--green-700`  | `#1f5138`   | mastered border                                                            | 25    |
-| `--blue-400`   | `#5aa9ff`   | rank                                                                       | 6     |
-| `--blue-900`   | `#122438`   | rank ground                                                                | 4     |
-| `--blue-700`   | `#1d3c5c`   | rank border                                                                | 4     |
-| `--red-600`    | `#b33419`   | the mark, the header rule, Disconnect, the error band                      | 43    |
-| `--red-100`    | `#ffd4cb`   | text on the error band                                                     | 1     |
+| Token          | Value     | Was in the frames                                                          | Uses  |
+| -------------- | --------- | -------------------------------------------------------------------------- | ----- |
+| `--black`      | `#000000` | page canvas                                                                | 32    |
+| `--night-900`  | `#0f0f0f` | `#0f0f0f`, `#110e09`, `#17140f`, `#161413` (header, text on light buttons) | 45    |
+| `--night-800`  | `#16130e` | art ground, value fields (BR-18)                                           | 111   |
+| `--night-650`  | `#2a251f` | the surface of the Material pass (T-27b)                                   | n/a   |
+| `--night-600`  | `#2e2924` | active segment, secondary buttons                                          | 42    |
+| `--ash-100`    | `#eae1d9` | `#eae1d9`, `#ffffff` (text, light buttons, icons)                          | 2,163 |
+| `--ash-300`    | `#b1a595` | `#b1a595`, `#b6a99a` (secondary text)                                      | 279   |
+| `--ash-500`    | `#9f9486` | `#9f9486`, `#9b8f80`, `#97a5a4` (dim text, lines)                          | 210   |
+| `--slate-400`  | `#98a2b3` | the not-obtained frame                                                     | 32    |
+| `--gold-400`   | `#fcbb4a` | `#fcbb4a`, `#fbbc36`, `#f5b731` (accent, Newest, card rules)               | 141   |
+| `--bronze-600` | `#765824` | the line down a Step by step section                                       | 101   |
+| `--cyan-300`   | `#4fd8e8` | links ("Wiki ↗")                                                           | 236   |
+| `--green-400`  | `#4ec98a` | mastered, done                                                             | 26    |
+| `--green-900`  | `#143024` | mastered ground                                                            | 25    |
+| `--green-700`  | `#1f5138` | mastered border                                                            | 25    |
+| `--blue-400`   | `#5aa9ff` | rank                                                                       | 6     |
+| `--blue-900`   | `#122438` | rank ground                                                                | 4     |
+| `--blue-700`   | `#1d3c5c` | rank border                                                                | 4     |
+| `--red-600`    | `#b33419` | the mark, the header rule, Disconnect, the error band                      | 43    |
+| `--red-100`    | `#ffd4cb` | text on the error band                                                     | 1     |
 
 ### Semantic
 
+The Material pass (T-27b, 2026-10-18) leaves two grounds: the page,
+`--night-800`, and the surface, `--night-650`. `--canvas`, `--surface-header`
+and `--surface-sunken` point at the page; `--surface`, `--surface-raised`,
+`--surface-band` and `--surface-card` at the surface; `--surface-raised-strong`
+is the surface under `--hover`'s selected layer. Hover and pressed are a state
+layer, never a third colour. T-27c applied it in `tokens.css`.
+
 | Role                                         | Points at                                                                               |
 | -------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `--canvas`                                   | `--black`                                                                               |
-| `--surface-header`                           | `--night-900`                                                                           |
-| `--surface`                                  | `--night-700`                                                                           |
+| `--canvas`                                   | `--night-800`                                                                           |
+| `--surface-header`                           | `--night-800`                                                                           |
+| `--surface`                                  | `--night-650`                                                                           |
 | `--surface-sunken`                           | `--night-800`                                                                           |
-| `--surface-raised`                           | `--night-600`                                                                           |
-| `--surface-raised-strong`                    | `--night-500`                                                                           |
-| `--surface-band`                             | `--night-band`                                                                          |
-| `--surface-card`                             | `--night-card`                                                                          |
+| `--surface-raised`                           | `--night-650`                                                                           |
+| `--surface-raised-strong`                    | `--night-650` under `--ash-100` at 8% (the selected row)                                |
+| `--surface-band`                             | `--night-650`                                                                           |
+| `--surface-card`                             | `--night-650`                                                                           |
 | `--scrim`                                    | `--black` at 60%                                                                        |
 | `--ink`                                      | `--ash-100`                                                                             |
 | `--ink-muted`                                | `--ash-300`                                                                             |
@@ -115,7 +119,7 @@ of them; a component never computes a colour.
 | `--focus`                                    | `--gold-400`, a 2 px ring offset 2 px (drawn on the Design System page)                 |
 
 A role at a fraction of a primitive's opacity is written as `color-mix()` on
-that primitive. `tokens.css` has 23 primitives; Figma's Primitives collection
+that primitive. `tokens.css` has 21 primitives; Figma's Primitives collection
 counts 28, and the five it adds have not been read.
 
 ## Type
@@ -130,6 +134,7 @@ why the frames' Onkko lines read in small caps without `textCase`.
 | `.numeral`        | Display/Numeral   | Cinzel         | 700    | 36   |       | screen titles, the numbered steps on the id form     |
 | `.title`          | Display/Title     | Cinzel         | 700    | 32   | upper | the hero's name                                      |
 | `.display-name`   | Display/Name      | Cinzel         | 700    | 32   |       | the player's name                                    |
+| `.bar-title`      | Display/Bar       | Cinzel         | 700    | 22   | upper | the top bar's title                                  |
 | `.heading`        | Display/Heading   | Cinzel         | 700    | 24   | upper | the system card of the place list                    |
 | `.name`           | Name/Default      | Cinzel         | 700    | 16   | upper | card, tile, group, place and update names            |
 | `.name-caps`      | Name/Small Caps   | Cinzel         | 700    | 16   |       | the choice cards' titles, in Cinzel's small capitals |
@@ -149,7 +154,6 @@ why the frames' Onkko lines read in small caps without `textCase`.
 | `.eyebrow-s`      | Eyebrow/Small     | Inter          | 400    | 12   | upper | "You're on", "System"                                |
 | `.badge`          | Badge             | Inter          | 700    | 12   | upper | badges, "You last played"                            |
 | `.quiet`          | Quiet             | Inter          | 300    | 14   |       | "12/21 Mastered"                                     |
-| `.quiet-upper`    | Quiet/Upper       | Inter          | 300    | 14   | upper | the quiet line in capitals                           |
 | `.reading`        | Reading/Default   | JetBrains Mono | 700    | 12   |       | the gold line, "~24 Runs · Rotation A"               |
 | `.reading-l`      | Reading/Large     | JetBrains Mono | 700    | 16   |       | the gold line in Summary rows                        |
 | `.mono`           | Mono              | JetBrains Mono | 400    | 14   |       | the read cycle, addresses                            |
@@ -168,13 +172,13 @@ through `next/font/google`, self-hosted at build time, as the variables
 
 ## Shape, space and effect
 
-| Token family | Values                                                                                                                                                                  |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Radius       | `--radius-xs` 2 (diamonds), `--radius-s` 4 (fields), `--radius-m` 8 (badges, chips), `--radius-l` 24 (buttons, segmented), `--radius-full` (orbs, avatars, round icons) |
-| Space        | `--space-1` 2, `--space-2` 4, `--space-4` 8, `--space-5` 12, `--space-6` 16, `--space-7` 24, `--space-8` 32                                                             |
-| Border       | `--border-1` 1, `--border-2` 2 (a field in error)                                                                                                                       |
-| Blur         | `--blur-band` 4 (`Blur/Band`)                                                                                                                                           |
-| Gutter       | `--gutter` 16, the frames' side margin                                                                                                                                  |
+| Token family | Values                                                                                                                                                                                                                                                                                       |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Radius       | `--radius-xs` 2 (diamonds), `--radius-s` 4 (list and settings rows, update cards), `--radius-m` 8 (cards, sections, steps, tags, fields, the ends of a grouped list), `--radius-l` 12 (segmented controls only), `--radius-full` (buttons, the search field, the back button, orbs, avatars) |
+| Space        | `--space-1` 2, `--space-2` 4, `--space-4` 8, `--space-5` 12, `--space-6` 16, `--space-7` 24, `--space-8` 32                                                                                                                                                                                  |
+| Border       | `--border-1` 1, `--border-2` 2 (a field in error)                                                                                                                                                                                                                                            |
+| Blur         | `--blur-band` 4 (`Blur/Band`)                                                                                                                                                                                                                                                                |
+| Gutter       | `--gutter` 16, the frames' side margin                                                                                                                                                                                                                                                       |
 
 The frames draw no motion, so there is no duration or easing token yet; the
 check below still refuses a raw one in a module.
@@ -193,40 +197,37 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `Button`                | primary (light), secondary (outlined), danger (red, filled since 2026-10-16), text ("Show more" and Back, since it replaced `ShowMore`); rest, hover, focus, disabled, loading (drawn as disabled and marked busy, as Connect is in spec 02); with `href`, a link that looks the same (Begin, spec 01) | every screen   |
 | `Field`                 | rest, focus, filled, error                                                                                                                                                                                                                                                                             | 02, 05, 07, 08 |
 | `SearchField`           | empty, typing, with suggestions                                                                                                                                                                                                                                                                        | 05, 07, 08     |
-| `Segmented`             | two options, or one (the map's Show with no month); none chosen, one chosen, disabled; the player menu's settings                                                                                                                                                                                      | 04, 07, 09     |
+| `Segmented`             | outlined; two or three options, or two (View with no month); one chosen, disabled; inside a `View` row or a settings row                                                                                                                                                                               | 04, 07, 09     |
 | `Badge`                 | Newest, Start here, New, Mastered, Rank                                                                                                                                                                                                                                                                | 05, 07, 09     |
 | `Icon`                  | Material Symbols Rounded, by name; sizes 16, 20, 24                                                                                                                                                                                                                                                    | all            |
 | `GameIcon`              | the game's icon from the wiki; the name alone when it has none                                                                                                                                                                                                                                         | 06, 07, 10     |
-| `Wordmark`              | large (splash), header, sheet                                                                                                                                                                                                                                                                          | 01, 02, 04     |
+| `Wordmark`              | large (splash), header                                                                                                                                                                                                                                                                                 | 01, 02, 04     |
 | `OnkkoLine`             | top, bottom, art (in ink, over the splash's art); an accent, the player's name in `--accent` (spec 03)                                                                                                                                                                                                 | all            |
-| `Header`                | wordmark only, with chip, sheet (with close)                                                                                                                                                                                                                                                           | 04             |
+| `Header`                | wordmark only, with chip; on a tab's root                                                                                                                                                                                                                                                              | 04             |
+| `TopBar`                | a round back button and the title, 65 px, on every page under a tab (T-27b)                                                                                                                                                                                                                            | 04, 06, 07, 09 |
+| `ListItem`              | one row at `--radius-s`, which `List` rounds at its ends; default, hover, focus; icon, title, a badge ("{n} New"), a supporting line, a chevron (T-27b)                                                                                                                                                | 04, 06, 07     |
+| `List`                  | a grouped list: its rows 2 px apart, the ends at `--radius-m` (T-27b)                                                                                                                                                                                                                                  | 04, 06, 07     |
+| `ControlRow`            | a label and its control on the surface: View, and every setting (T-27b)                                                                                                                                                                                                                                | 04, 07, 09     |
 | `PlayerChip`            |                                                                                                                                                                                                                                                                                                        | 04             |
 | `TabBar`, `Tab`         | active, inactive; bottom, in the header                                                                                                                                                                                                                                                                | 04             |
-| `Sheet`                 | full screen, anchored panel                                                                                                                                                                                                                                                                            | 04, 07         |
 | `ChoiceCard`            | with icon, title, line; link                                                                                                                                                                                                                                                                           | 03, 08         |
 | `UpdateCard`            | plain, Newest; with art, without; with `href` a link, without it a submit button named by `field` (Resume's form)                                                                                                                                                                                      | 05             |
-| `FeaturedCard`          | last played, up to date; closed, open                                                                                                                                                                                                                                                                  | 06, 07         |
-| `UpdateList`            | with "Show older"                                                                                                                                                                                                                                                                                      | 06, 07         |
+| `FeaturedCard`          | last played, up to date                                                                                                                                                                                                                                                                                | 06, 07         |
 | `Divider`               | with label                                                                                                                                                                                                                                                                                             | 06, 07, 10     |
-| `GroupRow`              | closed, open; with count; one tile; a Material Symbol where the wiki has no icon (BR-42); focus                                                                                                                                                                                                        | 06, 07         |
-| `ItemTile`              | plain, Rank, Mastered; hover, focus                                                                                                                                                                                                                                                                    | 06, 07         |
-| `Rail`                  | sideways (compact), grid (from 840)                                                                                                                                                                                                                                                                    | 06, 07         |
-| `PlaceCard`             | in progress, mastered; the sphere; still to master, an icon and a count per group                                                                                                                                                                                                                      | 07             |
-| `ProgressBar`           | in progress, mastered                                                                                                                                                                                                                                                                                  | 07             |
+| `PlaceSwitcher`         | "Change location" and the place's name, the accent edge (T-27b)                                                                                                                                                                                                                                        | 07             |
+| `PlaceOverview`         | in progress, mastered; the sphere inside a ring filled with the mastered share, "{n}/{m}", still to master as an icon and a count per category (T-27b)                                                                                                                                                 | 07             |
 | `PlaceRow`, `SystemRow` | plain (a sphere in the place's colour), on view, Start here, New, Mastered, Soon, beyond reach (`PlaceRow`, BR-62); hover, focus                                                                                                                                                                       | 07             |
 | `PlaceCrumb`            | "You're on"                                                                                                                                                                                                                                                                                            | 09, 10         |
 | `ItemHero`              | Rank, Mastered, Not obtained, Not obtained Prime, no state, collectible                                                                                                                                                                                                                                | 09             |
 | `BlueprintArt`          | the part over the blueprint                                                                                                                                                                                                                                                                            | 09, 10         |
-| `SummaryRow`            | blueprint, component, route                                                                                                                                                                                                                                                                            | 09             |
-| `SectionHeader`         | game icon, part art; open, closed                                                                                                                                                                                                                                                                      | 09, 10         |
+| `SummaryRow`            | blueprint, component, route; at least 100 px; compact (12 and 14 on a category's page)                                                                                                                                                                                                                 | 06, 07, 09     |
+| `SectionHeader`         | part art                                                                                                                                                                                                                                                                                               | 10             |
 | `StepRow`               | step, optional, alternative, best; open, collapsed, locked (BR-63)                                                                                                                                                                                                                                     | 10             |
 | `ComponentRow`          | open, collapsed, ticked, locked (BR-63)                                                                                                                                                                                                                                                                | 10             |
 | `Checkbox`              | off, on                                                                                                                                                                                                                                                                                                | 10             |
 | `ErrorBand`             |                                                                                                                                                                                                                                                                                                        | 02             |
 | `LoadingCard`           | the quill                                                                                                                                                                                                                                                                                              | 02             |
 | `SuggestionList`        | the search's list (BR-53): results, no match                                                                                                                                                                                                                                                           | 08             |
-| `PlayerMenu`            | open, with Disconnect; with Settings (BR-64)                                                                                                                                                                                                                                                           | 04             |
-| `SheetHeader`           | wordmark and close, or a chevron back (the system list)                                                                                                                                                                                                                                                | 04, 07         |
 | `Orb`                   | a place's sphere in its colour, four sizes; with its nodes, lit as played                                                                                                                                                                                                                              | 07             |
 | `MoreLine`              | the count of what lies beyond reach and its gap (BR-60, BR-61); one line, opens nothing                                                                                                                                                                                                                | 06, 07         |
 | `SearchCard`            | title, line, field and Continue                                                                                                                                                                                                                                                                        | 08             |
@@ -394,7 +395,7 @@ behind its Mastery Rank. Each spec links its own.
 On 2026-10-13 the owner found that a group with one item was drawn as a
 section of its own, a Summary row beside a hidden tile: Vehicles in the
 Summary (`206:774`) and Necramech, Archwing and Railjack on the map
-(`212:159`). Group row's Open state held two loose Card frames, not the Item
+(`312:199`). Group row's Open state held two loose Card frames, not the Item
 tile it looked like; they were replaced with Item tile instances (Plain), and
 the 23 instances kept their names and art as overrides. The four sections
 became Group row instances, Open, with the second tile hidden, so one item
@@ -417,14 +418,34 @@ that hold components.
 
 ### Documented states
 
-A row of frames in the pinned section, under **Documented states**, draws every
-mobile state the specs describe that no earlier frame drew: Resume with no
-match and with Date open; the Summary with nothing new; the map with Mastered
-chosen, with no month, and with everything mastered; the place list with no
-match; Goal with results, with no match and with every goal done; a
-collectible's item page; a quest's Step by step; and Resume from Two ways in.
-Each spec links its own. Desktop is not drawn: the owner chose on 2026-10-06 to
-keep the wider layouts in the words of BR-39 and each spec's Desktop section.
+Until 2026-10-18 a row of frames in the pinned section, under **Documented
+states**, drew every mobile state the specs describe that no earlier frame
+drew. They now live in "App flows", each beside the screen it belongs to.
+Desktop is not drawn: the owner chose on 2026-10-06 to keep the wider layouts
+in the words of BR-39 and each spec's Desktop section.
+
+### The Material pass
+
+On 2026-10-17 and 2026-10-18 (T-27b) the owner took Cetus toward Material's
+shape and hierarchy, keeping its type, art and state colours, and drew the
+roots of each flow. The Design System page took the pass:
+
+- **Two grounds**: `night/650` (`#2A251F`) joined the primitives as the
+  surface, over the page's `night/800`.
+- **Radii**: `radius/l` went from 24 to 12 and now serves the segmented
+  controls alone; cards, sections and the ends of a grouped list take
+  `radius/m`; rows take `radius/s`; buttons and the search field are pills.
+  A card with the accent edge is square on that edge.
+- **New sets**: `List item` (`651:5425`), `Top bar` (`652:132`, 65 px,
+  the header's ground and rule), `Place switcher` (`656:186`) and `Place
+overview` (`656:211`, the ring the owner chose over a linear bar). `Item
+hero` lost its card; `Summary row` holds at least 100 px; `Segmented` is
+  outlined. `Filter chip` was drawn and removed the next day, when the View
+  row replaced it; `Place card`, `Progress bar`, `Group row` and `Item tile`
+  left with the screens that used them.
+- **The screens**: "App flows" (`661:4302`) replaced "High-fi Wireframes"
+  (`421:590`), deleted on the owner's word; T-27b maps every old frame to its
+  new one.
 
 ## Applied in Figma
 

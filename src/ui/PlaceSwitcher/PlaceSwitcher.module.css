@@ -1,0 +1,44 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  border-left: var(--border-1) solid var(--accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  background-color: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.card:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.text {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kicker {
+  composes: eyebrow from "../type.module.css";
+  color: var(--ink-muted);
+}
+
+.name {
+  composes: place from "../type.module.css";
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+  transform: rotate(180deg);
+}

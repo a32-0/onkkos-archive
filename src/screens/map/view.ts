@@ -12,7 +12,7 @@ import type {
 import type { ReachGap } from "@/domain/place/reach";
 import type { PlaceRef } from "@/domain/place/start-here";
 import { itemRoute, placeRoute } from "@/routes";
-import type { PlaceCardKind } from "@/ui/PlaceCard/PlaceCard";
+import type { PlaceOverviewKind } from "@/ui/PlaceOverview/PlaceOverview";
 
 import { tileLines } from "../summary/lines";
 import type {
@@ -52,15 +52,16 @@ function tileWords(tile: MapTile): { reading: string; place: string } {
 
 function tileView(tile: MapTile, group: string): MapTileView {
   const { state } = tile;
+  const words = tileWords(tile);
   return {
     name: shortName(tile.name, group),
     href: itemRoute(tile.name, FROM),
     art: tile.art,
-    ...tileWords(tile),
-    ...(state.kind === "done" && { state: { kind: "mastered", label: MAP.mastered } }),
-    ...(state.kind === "ranked" && {
-      state: { kind: "rank", label: MAP.rank(state.rank, state.max) },
-    }),
+    reading: words.reading,
+    place:
+      state.kind === "ranked"
+        ? briefLine([MAP.rank(state.rank, state.max), words.place])
+        : words.place,
     left: tile.left,
     mastered: tile.mastered,
     fresh: tile.fresh,
@@ -79,10 +80,10 @@ function moreLine(group: MapGroup, have: number | null, shown: (tile: MapTile) =
 function groupView(group: MapGroup, map: PlaceMap, input: MapViewInput): MapGroupView {
   return {
     id: `map-${group.group}`,
+    key: group.group,
     name: MAP.groups[group.group].name,
     icon: input.icons[group.group] ?? null,
     ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),
-    ...(input.since !== null && group.fresh > 0 && { count: MAP.count(group.fresh) }),
     tiles: group.tiles.map((tile) => tileView(tile, group.group)),
     more: {
       left: moreLine(group, map.rank, (tile) => tile.left),
@@ -173,7 +174,7 @@ function systemRow(standing: SystemStanding, input: MapViewInput): SystemRowView
   };
 }
 
-function leftByKind(map: PlaceMap, input: MapViewInput): PlaceCardKind[] {
+function leftByKind(map: PlaceMap, input: MapViewInput): PlaceOverviewKind[] {
   return map.sections
     .filter((section) => section.catalog === "arsenal")
     .flatMap((section) => section.groups)
@@ -201,14 +202,16 @@ export function mapView(input: MapViewInput): MapView {
   const hidden = input.standings.length - listed.length;
   const kinds = leftByKind(map, input);
   return {
-    card: {
-      system: MAP.changeLocation,
-      name: map.place,
+    place: map.place,
+    systemName: map.system.name,
+    overview: {
       orb: input.orbs[map.place] ?? null,
-      ...(kinds.length > 0 && { left: { title: MAP.stillToMaster, kinds } }),
-      items: { count: MAP.fraction(map.done, map.readable), label: MAP.items, word: MAP.mastered },
-      ...(map.mastered && { mastered: MAP.mastered }),
-      progress: { value: map.done, max: map.readable, label: MAP.progress(map.place) },
+      done: map.done,
+      readable: map.readable,
+      count: MAP.fraction(map.done, map.readable),
+      label: MAP.itemsMastered,
+      progressLabel: MAP.progress(map.place),
+      ...(kinds.length > 0 && !map.mastered && { left: { caption: MAP.stillToMaster, kinds } }),
     },
     newLens: input.since !== null,
     nothingLeft: map.nothingLeft

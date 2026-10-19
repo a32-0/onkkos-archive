@@ -1,6 +1,5 @@
 import type { IconName } from "@/ui/Icon/glyphs";
 import type { FeaturedCardKind } from "@/ui/FeaturedCard/FeaturedCard";
-import type { UpdateListItem } from "@/ui/UpdateList/UpdateList";
 
 interface SummaryTile {
   name: string;
@@ -12,6 +11,7 @@ interface SummaryTile {
 
 export interface SummaryGroup {
   id: string;
+  key: string;
   name: string;
   icon: string | null;
   symbol?: IconName;
@@ -34,6 +34,11 @@ export interface SummaryCardView {
   art: string | null;
 }
 
-export type SummaryUpdate = UpdateListItem;
+export interface SummaryUpdate {
+  value: string;
+  name: string;
+  meta: string;
+  art: string | null;
+}
 
 export type SummaryAction = (form: FormData) => Promise<void>;

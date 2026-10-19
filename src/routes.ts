@@ -5,6 +5,7 @@ export const ROUTES = {
   catchUp: "/catch-up",
   goals: "/goals",
   item: "/item",
+  profile: "/profile",
   search: "/api/search",
 } as const;
 
@@ -34,4 +35,37 @@ export function itemRoute(name: string, from: string, view?: ItemView): string {
 
 export function searchRoute(term: string): string {
   return `${ROUTES.search}?${new URLSearchParams({ q: term }).toString()}`;
+}
+
+function withQuery(path: string, query: Record<string, string | null>): string {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(query)) if (value !== null) params.set(key, value);
+  const text = params.toString();
+  return text ? `${path}?${text}` : path;
+}
+
+export function profileRoute(from: string | null): string {
+  return withQuery(ROUTES.profile, { from });
+}
+
+export function catchUpCategoryRoute(category: string, step: CatchUpStep | null): string {
+  return withQuery(`${ROUTES.catchUp}/${category}`, { step });
+}
+
+export type UpdatesFrom = "resume" | "navigation";
+
+export function updatesRoute(from: UpdatesFrom, step: CatchUpStep | null): string {
+  return withQuery(`${ROUTES.catchUp}/updates`, { from, step });
+}
+
+export function mapCategoryRoute(category: string, system: string, place: string): string {
+  return withQuery(`${ROUTES.system}/${category}`, { system, place });
+}
+
+export function placesRoute(system: string, place: string, list: string | null = null): string {
+  return withQuery(`${ROUTES.system}/places`, { system, place, list });
+}
+
+export function systemsRoute(system: string, place: string, list: string | null = null): string {
+  return withQuery(`${ROUTES.system}/systems`, { system, place, list });
 }

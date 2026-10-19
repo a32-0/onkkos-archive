@@ -8,6 +8,7 @@
   height: var(--crumb-height);
   padding: var(--space-5) var(--space-6);
   border-left: var(--border-1) solid var(--accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
   background: var(--surface);
   color: var(--ink);
   text-decoration: none;

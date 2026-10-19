@@ -6,8 +6,7 @@ import styles from "./Header.module.css";
 export function Header(
   props:
     | { variant: "wordmark"; wordmark: string }
-    | { variant: "chip"; wordmark: string; chip: ReactNode; tabs?: ReactNode }
-    | { variant: "sheet"; wordmark: string; close: ReactNode },
+    | { variant: "chip"; wordmark: string; chip: ReactNode; tabs?: ReactNode },
 ) {
   if (props.variant === "wordmark") {
     return (
@@ -19,14 +18,8 @@ export function Header(
   return (
     <header className={styles.header}>
       <Wordmark size="sheet" label={props.wordmark} />
-      {props.variant === "chip" ? (
-        <>
-          {props.tabs && <div className={styles.tabs}>{props.tabs}</div>}
-          {props.chip}
-        </>
-      ) : (
-        props.close
-      )}
+      {props.tabs && <div className={styles.tabs}>{props.tabs}</div>}
+      {props.chip}
     </header>
   );
 }

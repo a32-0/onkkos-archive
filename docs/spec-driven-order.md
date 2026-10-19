@@ -43,10 +43,10 @@ look.
 
 - The constitution names the Figma frames as the design (BR-33). The reasoning
   behind its release decisions is in [`public-release.md`](public-release.md).
-- The pinned design is the section `421:590` "High-fi Wireframes", as it
-  stood on 2026-10-04, once the owner had corrected both slips in it: the
-  player menu reads twelve hours, and the chevrons in `257:653` agree with
-  `367:291`. The file stays private. See "Settled before the spec" in
+- The pinned design is the section `661:4302` "App flows", as the owner
+  approved it on 2026-10-18. It replaced `421:590` "High-fi Wireframes",
+  pinned on 2026-10-04 and since deleted; T-27b maps each old frame to its
+  new one. The file stays private. See "Settled before the spec" in
   [`specs/00-constitution.md`](../specs/00-constitution.md).
 - [`cetus.md`](cetus.md) is the reasoning behind the system, and its
   measurements are feedback on the frames.

@@ -26,6 +26,7 @@ function groupView(group: NewGroup, icons: Readonly<Record<string, string>>): Su
   const words = SUMMARY.groups[group.group];
   return {
     id: `summary-${group.group}`,
+    key: group.group,
     name: words.name,
     icon: icons[group.group] ?? null,
     ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),

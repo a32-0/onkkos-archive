@@ -1,26 +1,21 @@
-import type { ButtonHTMLAttributes } from "react";
-
 import { Icon } from "../Icon/Icon";
+import type { LinkComponent } from "../link";
 import styles from "./PlayerChip.module.css";
 
 export function PlayerChip({
+  href,
   name,
   avatar = null,
-  open,
-  ...rest
-}: Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "style" | "children"> & {
+  link,
+}: {
+  href: string;
   name: string;
   avatar?: string | null;
-  open: boolean;
+  link?: LinkComponent;
 }) {
+  const Link = link ?? "a";
   return (
-    <button
-      {...rest}
-      type="button"
-      className={styles.chip}
-      aria-haspopup="dialog"
-      aria-expanded={open}
-    >
+    <Link href={href} className={styles.chip}>
       {avatar ? (
         <img className={styles.glyph} src={avatar} alt="" />
       ) : (
@@ -30,6 +25,6 @@ export function PlayerChip({
       <span className={styles.chevron}>
         <Icon name="chevron-backward" />
       </span>
-    </button>
+    </Link>
   );
 }

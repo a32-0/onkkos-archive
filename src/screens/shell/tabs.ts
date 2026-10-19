@@ -23,3 +23,7 @@ export function tabItems(active: ShellTab | null): TabBarItem[] {
 export function openedFrom(from: string | null | undefined): ShellTab | null {
   return TABS.find(({ tab }) => tab === from)?.tab ?? null;
 }
+
+export function tabHome(tab: ShellTab | null): string {
+  return TABS.find((one) => one.tab === tab)?.href ?? ROUTES.catchUp;
+}

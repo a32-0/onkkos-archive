@@ -1,6 +1,5 @@
 import type { IconName } from "@/ui/Icon/glyphs";
-import type { ItemTileState } from "@/ui/ItemTile/ItemTile";
-import type { PlaceCardCount, PlaceCardKind } from "@/ui/PlaceCard/PlaceCard";
+import type { PlaceOverviewKind } from "@/ui/PlaceOverview/PlaceOverview";
 import type { RowCount } from "@/ui/PlaceRow/PlaceRow";
 
 export type Lens = "left" | "mastered" | "new";
@@ -11,7 +10,6 @@ export interface MapTileView {
   art: string | null;
   reading: string;
   place: string;
-  state?: ItemTileState;
   left: boolean;
   mastered: boolean;
   fresh: boolean;
@@ -20,28 +18,28 @@ export interface MapTileView {
 
 export interface MapGroupView {
   id: string;
+  key: string;
   name: string;
   icon: string | null;
   symbol?: IconName;
-  count?: string;
   tiles: MapTileView[];
   more: { left: string | null; fresh: string | null };
 }
 
-export interface MapSectionView {
+interface MapSectionView {
   id: string;
   label: string;
   groups: MapGroupView[];
 }
 
-interface PlaceCardView {
-  system: string;
-  name: string;
+interface PlaceOverviewView {
   orb: string | null;
-  left?: { title: string; kinds: readonly PlaceCardKind[] };
-  items: PlaceCardCount & { word: string };
-  mastered?: string;
-  progress: { value: number; max: number; label: string };
+  done: number;
+  readable: number;
+  count: string;
+  label: string;
+  progressLabel: string;
+  left?: { caption: string; kinds: readonly PlaceOverviewKind[] };
 }
 
 export interface PlaceRowView {
@@ -78,7 +76,9 @@ export interface SystemRowView {
 }
 
 export interface MapView {
-  card: PlaceCardView;
+  place: string;
+  systemName: string;
+  overview: PlaceOverviewView;
   newLens: boolean;
   nothingLeft: { title: string; line: string } | null;
   empty: Record<Lens, { title: string; line: string }>;

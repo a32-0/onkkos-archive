@@ -1,0 +1,40 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-bottom: var(--border-1) solid var(--brand);
+  background: var(--surface-header);
+  color: var(--ink);
+}
+
+.back {
+  --top-bar-back-size: 32px;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--top-bar-back-size);
+  height: var(--top-bar-back-size);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.back:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.back:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+}
+
+.title {
+  composes: bar-title from "../type.module.css";
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

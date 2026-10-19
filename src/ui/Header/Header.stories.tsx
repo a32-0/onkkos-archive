@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { PlayerChip } from "../PlayerChip/PlayerChip";
-import { SheetHeader } from "../SheetHeader/SheetHeader";
 import { TabBar } from "../TabBar/TabBar";
 import { Header } from "./Header";
 
@@ -20,7 +19,7 @@ export const WithChip: Story = {
   args: {
     variant: "chip",
     wordmark: "Onkko's Archive",
-    chip: <PlayerChip name="Cy" open={false} />,
+    chip: <PlayerChip href="/profile" name="Cy" />,
   },
 };
 
@@ -28,7 +27,7 @@ export const WithChipAndTabs: Story = {
   args: {
     variant: "chip",
     wordmark: "Onkko's Archive",
-    chip: <PlayerChip name="Cy" open={false} />,
+    chip: <PlayerChip href="/profile" name="Cy" />,
     tabs: (
       <TabBar
         label="Sections"
@@ -42,9 +41,4 @@ export const WithChipAndTabs: Story = {
     ),
   },
   globals: { viewport: { value: "w1280", isRotated: false } },
-};
-
-export const Sheet: Story = {
-  args: { variant: "sheet", wordmark: "Onkko's Archive", close: null },
-  render: () => <SheetHeader wordmark="Onkko's Archive" closeLabel="Close" onClose={() => {}} />,
 };

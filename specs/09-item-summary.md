@@ -7,21 +7,19 @@ the materials they call for.
 
 ## Frames
 
-- [`208:287` Item Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-287):
+- [`662:5503` Item>Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5503):
   the page in its Summary view, the hero in the Rank state.
-- [`339:1335`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=339-1335),
-  [`320:758`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=320-758),
-  [`372:1394`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=372-1394):
+- [`677:6582` Item>Summary — Mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6582),
+  [`677:6640` Item>Summary — Not obtained](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6640),
+  [`677:6694` Item>Summary — Not obtained Prime](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6694):
   the hero Mastered, Not obtained, and Not obtained Prime.
-- [`306:1456` Cards](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=306-1456):
-  the hero for every catalogue (kicker, name, art).
-- [`372:350` Blueprint Preview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=372-350):
+- [`677:6750` Item>Summary — Collectible](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6750):
+  a resource's page. The hero is kicker, name and art with no state, and the
+  Summary is How to get in the row style (`Summary row`, Kind=Route).
+- [`479:3589` Summary row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=479-3589):
   a part's art over the blueprint.
 
-Drawn on 2026-10-06 under **Documented states**, from the states this spec
-describes and no earlier frame drew. Their texts are sample values:
-
-- [`474:2012` Item (Summary) — Collectible](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-2012): a resource's page. The hero is kicker, name and art with no state, and the Summary is How to get in the row style (`Summary row`, Kind=Route).
+Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
 
 ## Rules
 
@@ -44,50 +42,52 @@ describes and no earlier frame drew. Their texts are sample values:
 
 ## What the page does
 
-Route `/item?name=&from=&view=`, inside the shell, with the tab of the screen
-it was opened from lit (`from`, spec 04). From the top:
+Route `/item?name=&from=&view=`, inside the shell, under the top bar titled
+with the item's catalogue (spec 04), with the tab of the screen it was opened
+from lit (`from`, spec 04). From the top:
 
-1. **You're on** (BR-51): "You're on {system} > {place}" with the place's art,
+1. Onkko's line, chosen by the item's state ("Well chosen.").
+2. **You're on** (BR-51): "You're on {system} > {place}" with the place's art,
    when the item comes from a place, the Dojo included for anything
    researched (BR-57). An item from relics or from a game system has none. It
    opens the map on that place.
-2. **The hero**: the catalogue as kicker ("Warframe", "Primary"…), the name in
-   the display face, and the square image carrying the state:
+3. **The hero**, on the page and not on a card (owner, 2026-10-18): the
+   catalogue as kicker ("Warframe", "Primary"…), the name in the display face,
+   and the square image carrying the state:
 
    | State               | Border and badge                    | Frame      |
    | ------------------- | ----------------------------------- | ---------- |
-   | Rank                | Blue border, "Rank {n}/{max}" badge | `208:287`  |
-   | Mastered            | Green ground and border, "Mastered" | `339:1335` |
-   | Not obtained        | Grey border, no badge               | `320:758`  |
-   | Not obtained, Prime | Gold border, no badge               | `372:1394` |
+   | Rank                | Blue border, "Rank {n}/{max}" badge | `662:5503` |
+   | Mastered            | Green ground and border, "Mastered" | `677:6582` |
+   | Not obtained        | Grey border, no badge               | `677:6640` |
+   | Not obtained, Prime | Gold border, no badge               | `677:6694` |
    | Cannot be read      | Grey border, no badge, no state     | —          |
 
    A collectible (a mod, a resource, a relic…) has no rank and no state; its
-   hero is kicker, name and art, as `306:1456` draws Resources and Relics.
+   hero is kicker, name and art, as `677:6750` draws a resource.
 
-3. **View**: a segmented control, **Summary** and **Step by step**. Summary is
-   the default; the choice is kept in `?view=steps` so a link can open either.
-   Step by step is spec 10. An item beyond the player's reach (BR-59) opens
-   with Step by step chosen, where the prerequisite in the way leads (BR-62);
-   Summary is one tap away and shows as it always does.
-4. The Summary view (BR-55):
-   - **Blueprints**, open: one row per blueprint, the main Blueprint first,
-     then the parts in the order Step by step gives them. Each row is the
-     part's art over the blueprint (BR-19), its name, its best route's reading, "~{n} Runs · Rotation {x}" (BR-56),
-     in gold, and its place.
-   - **Components**, open: one row per ingredient, "{name} ×{n}", with its
-     art, its reading and its place when it has a known drop, and "{n}
-     Credits" last.
-   - With neither, the item's How to get or Acquisition rows in the same row
-     style.
-5. Onkko's line, chosen by the item's state ("Well chosen.").
+4. **View**, a row holding a segmented control, **Summary** and **Step by
+   step**. Summary is the default; the choice is kept in `?view=steps` so a
+   link can open either. Step by step is spec 10. An item beyond the player's
+   reach (BR-59) opens with Step by step chosen, where the prerequisite in the
+   way leads (BR-62); Summary is one tap away and shows as it always does.
+5. The Summary view (BR-55), each section a divider naming it over its rows:
+   - **Blueprints**: one row per blueprint, the main Blueprint first, then the
+     parts in the order Step by step gives them. Each row is the part's art
+     over the blueprint (BR-19), its name, its best route's reading, "~{n}
+     Runs · Rotation {x}" (BR-56), in gold, and its place.
+   - **Components**: one row per ingredient, "{name} ×{n}", with its art, its
+     reading and its place when it has a known drop, and "{n} Credits" last.
+   - With neither, **How to get**: the item's How to get or Acquisition rows
+     in the same row style.
 
 ### What a row does
 
 - A blueprint row opens Step by step at that part's section.
 - A component row opens that thing's own page when the app has one, and
   nothing otherwise (BR-30). Credits open nothing.
-- A section header folds its section; both start open, as drawn.
+- A section's divider only names it; sections do not fold, since the
+  frames draw no fold from T-27b on.
 
 ## Data and sources
 
@@ -108,14 +108,15 @@ it was opened from lit (`from`, spec 04). From the top:
 
 ## Components
 
-`PlaceCrumb` (You're on), `ItemHero` (Rank, Mastered, Not obtained, Not
-obtained Prime, no state, collectible), `Badge`, `Segmented`, `SectionHeader`
-(open, closed), `SummaryRow` (blueprint, component, route), `BlueprintArt`,
+`TopBar`, `PlaceCrumb` (You're on), `ItemHero` (Rank, Mastered, Not obtained,
+Not obtained Prime, no state, collectible), `Badge`, `Segmented`, `Divider`,
+`SummaryRow` (blueprint, component, route), `BlueprintArt`,
 `OnkkoLine`, each with its stories.
 
 ## Acceptance
 
-1. At 390 px the page matches `208:287`, and each hero state its frame.
+1. At 390 px the page matches `662:5503`, and each state its frame in "App
+   flows".
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut; from 1200 the
    hero pane stays in view.
 3. The hero shows the player's state from `XPInfo`, and no state without it.

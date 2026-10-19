@@ -8,11 +8,11 @@ fails.
 
 ## Frames
 
-- [`202:38` Login](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=202-38):
+- [`661:4354` Onboarding](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4354):
   the form at rest, with the demo profiles.
-- [`428:743` Loading](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=428-743):
+- [`675:5392` Onboarding — Loading](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5392):
   the form while the profile is read.
-- [`428:616` Error](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=428-616):
+- [`662:6943` Onboarding>Error](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6943):
   the form after a failed read.
 
 The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
@@ -39,7 +39,7 @@ describes and no earlier frame drew. Their texts are sample values:
 ## What the screen does
 
 Route `/connect`, outside the shell: the header carries the wordmark and no
-tabs or player chip. From the top, as `202:38` draws it:
+tabs or player chip. From the top, as `661:4354` draws it:
 
 1. Onkko's line, "It is time. Utter the name.", and the lead, "Onkko will read
    your public profile and tell you what's left. Nothing is written to your
@@ -62,13 +62,14 @@ tabs or player chip. From the top, as `202:38` draws it:
 1. The id is trimmed and checked for shape (24 hexadecimal characters,
    either case) before any call. A bad shape shows the `invalid-id` band
    without reading anything.
-2. Otherwise the form enters **Loading** (`428:743`): the page dims, Connect
-   is disabled, and the quill card reads "Onkko is reading your archive...", centred under the quill (owner, 2026-10-16).
-   The card is announced to screen readers.
+2. Otherwise the form enters **Loading** (`675:5392`): Connect is disabled,
+   and the quill card reads "Onkko is reading your archive...", centred under
+   the quill (owner, 2026-10-16), between the form and the steps, where the
+   demos give way to it (T-27b). The card is announced to screen readers.
 3. On success the id is saved in `wf_account` for a year, and the player goes
    on by BR-03: a player who has reached Venus to `/features`, a new player to
    `/goals`. A profile whose `Missions[]` cannot be read counts as reached.
-4. On failure the form returns to rest with the **Error** band (`428:616`)
+4. On failure the form returns to rest with the **Error** band (`662:6943`)
    under the field, holding that reason's message from BR-38. The field keeps
    what was typed, and the form can be sent again at once.
 
@@ -90,11 +91,11 @@ draws a failure.
 
 ## States
 
-| State   | Frame     | What differs from rest                                     |
-| ------- | --------- | ---------------------------------------------------------- |
-| Rest    | `202:38`  | Empty field, or the remembered id                          |
-| Loading | `428:743` | The page dimmed, Connect disabled, the quill card          |
-| Error   | `428:616` | The red band under the field with one of the five messages |
+| State   | Frame      | What differs from rest                                     |
+| ------- | ---------- | ---------------------------------------------------------- |
+| Rest    | `661:4354` | Empty field, or the remembered id                          |
+| Loading | `675:5392` | Connect disabled, the quill card in place of the demos     |
+| Error   | `662:6943` | The red band under the field with one of the five messages |
 
 ## Data and sources
 
