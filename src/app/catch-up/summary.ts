@@ -40,7 +40,13 @@ export function otherUpdates(screen: Screen, since: string | null): SummaryUpdat
       : updateStanding(screen.graph, sources, since, screen.profile).update;
   return updates
     .filter((one) => one.version !== shown?.version)
-    .map((one) => ({ value: one.yearMonth, name: one.name, meta: metaOf(one), art: one.art }));
+    .map((one) => ({
+      version: one.version,
+      value: one.yearMonth,
+      name: one.name,
+      meta: metaOf(one),
+      art: one.art,
+    }));
 }
 
 export async function summaryOf(

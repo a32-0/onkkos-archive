@@ -25,12 +25,13 @@ export function catchUpAt(step: CatchUpStep | null): string {
   return step ? `${ROUTES.catchUp}?step=${step}` : ROUTES.catchUp;
 }
 
-export type ItemView = "steps";
+export type ItemView = "summary" | "steps";
 
-export function itemRoute(name: string, from: string, view?: ItemView): string {
+export function itemRoute(name: string, from: string, view?: ItemView, section?: string): string {
   const query = new URLSearchParams({ name, from });
   if (view) query.set("view", view);
-  return `${ROUTES.item}?${query.toString()}`;
+  const anchor = section ? `#${encodeURIComponent(section)}` : "";
+  return `${ROUTES.item}?${query.toString()}${anchor}`;
 }
 
 export function searchRoute(term: string): string {

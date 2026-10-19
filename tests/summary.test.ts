@@ -104,3 +104,21 @@ describe("the gold line reads in runs (BR-56)", () => {
     }
   });
 });
+
+describe("what a Summary row names and opens (spec 09)", () => {
+  it("gives each part the node and mission of the one source they share", () => {
+    const blueprints = briefOf(planOf("Dante")).find((block) => block.id === "blueprints");
+    expect(blueprints?.lines.length).toBeGreaterThan(0);
+    for (const line of blueprints?.lines ?? []) {
+      expect(line.where).toEqual(["Armatus", "Disruption"]);
+    }
+  });
+
+  it("keeps the thing a component opens, and none for credits", () => {
+    const components = briefOf(planOf("Mesa")).find((block) => block.id === "components");
+    const spores = components?.lines.find((line) => line.id === "resource:Nano Spores");
+    expect(spores?.thing).toBe("Nano Spores");
+    expect(spores?.imageUrl).toContain("cdn.warframestat.us");
+    expect(components?.lines.find((line) => line.id === "credits")?.thing).toBeNull();
+  });
+});

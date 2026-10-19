@@ -16,6 +16,7 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 | `src/screens/steps/`    |                |
 | `src/infra/ticks.ts`    |                |
 | `src/content/checks.ts` | Spec 10        |
+| `src/content/states.ts` | Spec 10        |
 
 ## Documents
 
@@ -37,6 +38,12 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 ## From T-25
 
 - `content/checks.ts` exists with the eight readings a Summary tile shows (`BRIEF`) and `briefLine()`, which joins with " · ". `content/` cannot import `domain/`, so each function types its own values; `screens/summary/lines.ts` checks `BRIEF` against `Phrase` at compile time. The rest of the phrases join it here.
+
+## From T-28
+
+- `content/checks.ts` holds the words of every title and section phrase (`TITLES`) and of every reading (`BRIEF`), checked against `Phrase` in `screens/summary/lines.ts`. The details, the group headings and the "(Highest chance)", "Or" and "(Optional)" marks join them here.
+- The page reads `?view=steps` and opens an item beyond reach on it (`initialView()` in `screens/item/view.ts`); the View row switches without a reload. With Step by step chosen, the page shows Onkko's line, You're on, the hero and the View row, and this task draws the plan under them.
+- A blueprint row links to `itemRoute(name, from, "steps", section)`, which ends in `#{section id}`: each part's section takes its plan id (`part:{name}`) as its anchor.
 
 ## Acceptance
 

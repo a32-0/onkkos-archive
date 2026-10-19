@@ -45,7 +45,7 @@ export function Updates({
           {onboarding && <input type="hidden" name="step" value="resume" />}
           {listed.map((update) => (
             <UpdateCard
-              key={update.value}
+              key={update.version}
               field="since"
               value={update.value}
               name={update.name}

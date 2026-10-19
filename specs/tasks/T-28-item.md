@@ -10,11 +10,29 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
 
 ## What it builds
 
-| File                               | Note    |
-| ---------------------------------- | ------- |
-| `src/app/item/page.tsx`            | Spec 09 |
-| `src/screens/item/`                |         |
-| `src/content/item.ts`, `states.ts` | Spec 09 |
+| File                    | Note                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| `src/app/item/page.tsx` | Spec 09                                                      |
+| `src/screens/item/`     |                                                              |
+| `src/content/item.ts`   | Spec 09                                                      |
+| `src/content/checks.ts` | Every title and section name, and the readings still missing |
+
+## Correction
+
+Written on 2026-10-18, before the code. The Summary's rows are named by the
+step plan's title phrases ("Neuroptics", "Fate Pearl ×12", "25,000 Credits",
+"Defeat Spy"), and a How to get row can carry any route's title. So the words
+of every title and section phrase come here rather than with T-29, typed
+against `Phrase` so that none is missed. So do the readings `BRIEF` still
+lacks (Baro's price, Varzia's, Aya's, the Prime Resurgence lines, Nightwave),
+which this page is the first to show. `states.ts`, the vocabulary of a step's
+status, moves to T-29, which is the first to draw one. The Step by step view
+itself stays T-29's: this task builds the View row, `?view=steps` and the rule
+that opens an item beyond reach on it.
+
+A part's blueprint row names its place: when every part comes from one
+source, the step plan now gives each part's row that source's node and
+mission as its `where`, as it already did for parts with their own routes.
 
 ## From T-16
 
@@ -42,13 +60,15 @@ An item's page: the hero with its state, the crumb, and the Summary that is Step
   the header with the tabs sits above it.
 - View is a `ControlRow` holding `Segmented` (Summary, Step by step).
 - `ItemHero` has no card: the kicker, the name and the art sit on the page.
-- `SummaryRow` keeps its 16 and 16 here; `compact` is only for category pages.
+- `SummaryRow` is `compact` here too: `662:5503` sets the name in 16, the
+  reading in 12 and the place in 14, as the category pages do (corrected on
+  2026-10-18; the note first kept 16 and 16).
 - Each section is a `Divider` over its card at `--radius-m`; sections do not
   fold (spec 09).
 
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.
-- [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
+- [x] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
 - [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
 - [ ] `check.yml` passes on `dev`.

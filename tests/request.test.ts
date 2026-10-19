@@ -538,6 +538,16 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       expect(html).not.toMatch(/<nav/);
     });
 
+    it("keeps apart two updates of the same month", async () => {
+      const { requireScreen } = await import("@/app/screen");
+      const { otherUpdates } = await import("@/app/catch-up/summary");
+      const updates = otherUpdates(await requireScreen(), null);
+      const months = updates.map((one) => one.value);
+      const versions = updates.map((one) => one.version);
+      expect(new Set(months).size).toBeLessThan(months.length);
+      expect(new Set(versions).size).toBe(versions.length);
+    });
+
     it("names the update a folded month belongs to", async () => {
       jar.set("wf_since", { value: "2024-02", options: {} });
       expect(await page()).toContain("Whispers in the Walls");
@@ -813,5 +823,78 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     const { GET } = await import("@/app/api/search/route");
     const response = await GET(new NextRequest("http://localhost/api/search?q=ember"));
     expect(response.status).toBe(401);
+  });
+});
+
+describe("the item (spec 09, BR-51, BR-62)", () => {
+  beforeEach(() => vi.stubGlobal("fetch", async () => Response.json({})));
+  afterEach(() => vi.unstubAllGlobals());
+
+  async function page(account: string, query: Record<string, string>): Promise<string> {
+    jar.set("wf_account", { value: account, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: ItemPage } = await import("@/app/item/page");
+    return renderToStaticMarkup(await ItemPage({ searchParams: Promise.resolve(query) }));
+  }
+
+  it("draws the top bar, You're on, the hero, View and the Summary's sections", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "navigation" });
+    expect(html).toContain('aria-label="Back"');
+    expect(html).toContain(">Warframes<");
+    expect(html).toContain("Origin &gt; Deimos");
+    expect(html).toContain('href="/system?system=origin&amp;place=Deimos"');
+    expect(html).toMatch(/>Warframe<[\s\S]*>Dante</);
+    expect(html).toMatch(/aria-pressed="true"[^>]*>Summary</);
+    expect(html).toMatch(/>Blueprints<[\s\S]*>Components</);
+    expect(html).toContain("/item?name=Dante&amp;from=navigation&amp;view=steps#part%3ANeuroptics");
+    expect(html).toContain("Armatus · Disruption");
+    expect(html).toContain(">70,000 Credits<");
+    expect(html).toMatch(
+      /<a [^>]*aria-current="page"[^>]*href="\/system"|href="\/system"[^>]*aria-current="page"/,
+    );
+  });
+
+  it("opens an item beyond reach on Step by step, unless the link says Summary", async () => {
+    const beyond = await page(ORDIS, { name: "Kuva Bramma", from: "goal" });
+    expect(beyond).toMatch(/aria-pressed="true"[^>]*>Step by step</);
+    expect(beyond).not.toContain(">Components<");
+    const asked = await page(ORDIS, { name: "Kuva Bramma", from: "goal", view: "summary" });
+    expect(asked).toMatch(/aria-pressed="true"[^>]*>Summary</);
+    expect(asked).toContain(">Components<");
+  });
+
+  it("draws the player's state on the hero, and Onkko's line for an item they have", async () => {
+    const mastered = await page(DEMO_ACCOUNT_IDS.cy, { name: "Ash", from: "navigation" });
+    expect(mastered).toContain(">Mastered<");
+    expect(mastered).toContain("Well chosen.");
+    const ranked = await page(ORDIS, { name: "Excalibur", from: "navigation" });
+    expect(ranked).toContain(">Rank 17/30<");
+    const absent = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "navigation" });
+    expect(absent).not.toContain("Well chosen.");
+  });
+
+  it("names the place the Summary's first line names (BR-51)", async () => {
+    const serration = await page(DEMO_ACCOUNT_IDS.cy, { name: "Serration", from: "navigation" });
+    expect(serration).toMatch(/Origin &gt; Mercury[\s\S]*Hapke · Spy/);
+    const spores = await page(DEMO_ACCOUNT_IDS.cy, { name: "Nano Spores", from: "resume" });
+    expect(spores).toContain("Origin &gt; Deimos");
+  });
+
+  it("gives a relic-built Prime no You're on", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Gyre Prime", from: "resume" });
+    expect(html).not.toContain("You&#x27;re on");
+    expect(html).toContain(">Blueprints<");
+  });
+
+  it("draws a resource with no state and How to get", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Nano Spores", from: "resume" });
+    expect(html).toContain(">Resources<");
+    expect(html).toMatch(/>Resource<[\s\S]*>Nano Spores</);
+    expect(html).toContain(">How to get<");
+    expect(html).not.toMatch(/Rank \d+\/\d+|>Mastered</);
+  });
+
+  it("returns to the tab's screen when the item is not in the catalog", async () => {
+    await expect(page(ORDIS, { name: "Not a thing", from: "resume" })).rejects.toThrow("/catch-up");
   });
 });

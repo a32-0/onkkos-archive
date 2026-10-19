@@ -1194,7 +1194,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
       {
         detail: parts(resourceDetail(tally.rarity, tally.location)),
         wikiTitle: tally.link,
-        imageUrl: resourceImage(data, tally.name),
+        imageUrl: thingImage(data, tally.name),
         thing: tally.name,
       },
     );
@@ -1828,6 +1828,7 @@ function itemPlan(data: CatalogData, reader: Reader, view: Dossier): StepPlan {
                 ? []
                 : routeDetail(data, reader, route),
             brief: route ? routeBrief(data, reader, route) : [],
+            where: route ? routeRow(data, reader, `part:${part.name}`, route).where : [],
             imageUrl: images.get(part.name) ?? null,
           });
         }),

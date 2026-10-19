@@ -122,6 +122,9 @@ export interface CatalogResource {
 }
 
 const ICON_BASE = "https://cdn.warframestat.us/img";
+
+export const BLUEPRINT_ART = `${ICON_BASE}/blueprint.png`;
+
 const ACQUISITION_ANCHOR = "#Acquisition";
 
 export function buildArsenalCatalog(raw: RawItem[]): CatalogItem[] {

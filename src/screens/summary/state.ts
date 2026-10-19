@@ -35,6 +35,7 @@ export interface SummaryCardView {
 }
 
 export interface SummaryUpdate {
+  version: string;
   value: string;
   name: string;
   meta: string;
