@@ -9,6 +9,7 @@ export function ComponentRow({
   art,
   ticked,
   locked,
+  status,
   open,
   bodyId,
   onTick,
@@ -19,6 +20,7 @@ export function ComponentRow({
   art: string | null;
   ticked: boolean;
   locked?: boolean;
+  status?: string;
   open: boolean;
   bodyId: string;
   onTick: (ticked: boolean) => void;
@@ -43,6 +45,7 @@ export function ComponentRow({
           onClick={onToggle}
         >
           <span className={styles.title}>{title}</span>
+          {status && <span className={styles.status}>{status}</span>}
           <span className={shown ? styles.up : styles.down}>
             <Icon name="chevron-backward" />
           </span>

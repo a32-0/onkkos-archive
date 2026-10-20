@@ -56,7 +56,6 @@
   --state-rank-tint: color-mix(in srgb, var(--blue-400) 20%, transparent);
   --state-absent: var(--slate-400);
   --state-prime: var(--gold-400);
-  --art-done: color-mix(in srgb, var(--night-800) 20%, transparent);
   --hover: color-mix(in srgb, var(--ash-100) 8%, transparent);
   --focus: var(--gold-400);
 

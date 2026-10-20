@@ -24,6 +24,7 @@
     "data:refresh": "node scripts/refresh-drops.mjs",
     "data:wiki": "node scripts/refresh-wiki.mjs",
     "data:patch-notes": "node scripts/refresh-patch-notes.mjs",
+    "data:vendor-art": "node scripts/refresh-vendor-art.mjs",
     "fixture": "node scripts/trim-profile.mjs"
   },
   "dependencies": {

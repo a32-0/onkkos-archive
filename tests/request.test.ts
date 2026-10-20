@@ -663,6 +663,27 @@ describe("the map (spec 07, BR-46)", () => {
     expect(await landing({})).toBe(skip);
   });
 
+  it("tags a category Mastered when every item in it is, and only then", async () => {
+    jar.set("wf_account", { value: DEMO_ACCOUNT_IDS.cy, options: {} });
+    const html = await page({ system: "origin", place: "Earth" });
+    const rows = html.split("<li").filter((row) => /href="\/system\/[a-z]+\?/.test(row));
+    const tagged = rows.filter((row) => row.includes(">Mastered<"));
+    expect(tagged.length).toBeGreaterThan(0);
+    expect(tagged.length).toBeLessThan(rows.length);
+    for (const row of tagged) {
+      const key = /href="\/system\/([a-z]+)\?/.exec(row)?.[1] ?? "";
+      const { renderToStaticMarkup } = await import("react-dom/server");
+      const { default: CategoryPage } = await import("@/app/system/[category]/page");
+      const category = renderToStaticMarkup(
+        await CategoryPage({
+          params: Promise.resolve({ category: key }),
+          searchParams: Promise.resolve({ system: "origin", place: "Earth" }),
+        }),
+      );
+      expect(category, key).not.toMatch(/href="\/item\?/);
+    }
+  });
+
   it("reopens the last place viewed", async () => {
     jar.set("wf_place", { value: "origin/Mars", options: {} });
     expect(await landing({})).toBe("/system?system=origin&place=Mars");
@@ -894,8 +915,8 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).toMatch(/>Warframe<[\s\S]*>Dante</);
     expect(html).toMatch(/aria-pressed="true"[^>]*>Summary</);
     expect(html).toMatch(/>Blueprints<[\s\S]*>Components</);
-    expect(html).toContain("/item?name=Dante&amp;from=navigation&amp;view=steps#part%3ANeuroptics");
-    expect(html).toContain("Armatus · Disruption");
+    expect(html).toContain("/item?name=Dante&amp;from=navigation&amp;view=steps#part-neuroptics");
+    expect(html).toContain("Armatus (Deimos) · Disruption");
     expect(html).toContain(">70,000 Credits<");
     expect(html).toMatch(
       /<a [^>]*aria-current="page"[^>]*href="\/system"|href="\/system"[^>]*aria-current="page"/,
@@ -905,10 +926,11 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
   it("opens an item beyond reach on Step by step, unless the link says Summary", async () => {
     const beyond = await page(ORDIS, { name: "Kuva Bramma", from: "goal" });
     expect(beyond).toMatch(/aria-pressed="true"[^>]*>Step by step</);
-    expect(beyond).not.toContain(">Components<");
+    expect(beyond).toContain(">Prerequisites<");
     const asked = await page(ORDIS, { name: "Kuva Bramma", from: "goal", view: "summary" });
     expect(asked).toMatch(/aria-pressed="true"[^>]*>Summary</);
     expect(asked).toContain(">Components<");
+    expect(asked).not.toContain(">Prerequisites<");
   });
 
   it("draws the player's state on the hero, and Onkko's line for an item they have", async () => {
@@ -922,9 +944,34 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(absent).toContain("These will assist.");
   });
 
+  it("draws Step by step as cards under dividers, ticks only on Components (spec 10)", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "goal", view: "steps" });
+    for (const title of ["Prerequisites", "How to get", "Blueprints", "Components"]) {
+      expect(html).toContain(`>${title}<`);
+    }
+    expect(html).not.toContain("Deimos specific");
+    expect(html).toContain('id="part-neuroptics"');
+    expect(html.match(/type="checkbox"/g)?.length).toBeGreaterThan(5);
+    expect(html).not.toMatch(/type="checkbox"[^>]*checked/);
+  });
+
+  it("locks what waits on an unmet Mastery Rank for Ordis (BR-63)", async () => {
+    const html = await page(ORDIS, { name: "Kuva Sobek", from: "goal", view: "steps" });
+    expect(html).toContain("Needs Mastery Rank 15. You are Mastery Rank 2.");
+    expect(html).toContain(">Locked<");
+  });
+
+  it("opens a quest from Goal in the same grammar (BR-37)", async () => {
+    const html = await page(ORDIS, { name: "The Second Dream", from: "goal", view: "steps" });
+    expect(html).toContain(">Quest<");
+    expect(html).toContain(">Quests<");
+    expect(html).toContain(">Start The Second Dream<");
+    expect(html).toContain("Complete Natah");
+  });
+
   it("names the place the Summary's first line names (BR-51)", async () => {
     const serration = await page(DEMO_ACCOUNT_IDS.cy, { name: "Serration", from: "navigation" });
-    expect(serration).toMatch(/Origin &gt; Mercury[\s\S]*Hapke · Spy/);
+    expect(serration).toMatch(/Origin &gt; Mercury[\s\S]*Bode, Hapke · Spy/);
     const spores = await page(DEMO_ACCOUNT_IDS.cy, { name: "Nano Spores", from: "resume" });
     expect(spores).toContain("Origin &gt; Deimos");
   });

@@ -17,6 +17,7 @@ import { SummaryRow } from "@/ui/SummaryRow/SummaryRow";
 
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
+import { Steps, type Ticks } from "./steps/Steps";
 import styles from "./Item.module.css";
 import type { ItemPageView } from "./state";
 
@@ -29,7 +30,15 @@ function isView(value: string): value is ItemView {
   return VIEWS.some((option) => option.value === value);
 }
 
-export function ItemScreen({ chrome, page }: { chrome: ShellChrome; page: ItemPageView }) {
+export function ItemScreen({
+  chrome,
+  page,
+  ticks,
+}: {
+  chrome: ShellChrome;
+  page: ItemPageView;
+  ticks: Ticks;
+}) {
   const [view, setView] = useState<ItemView>(page.view);
   const choose = (value: string) => {
     if (!isView(value)) return;
@@ -83,6 +92,7 @@ export function ItemScreen({ chrome, page }: { chrome: ShellChrome; page: ItemPa
               ))}
             </div>
           )}
+          {view === "steps" && <Steps view={page.steps} ticks={ticks} />}
         </div>
       </div>
     </Shell>

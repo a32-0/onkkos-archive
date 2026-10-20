@@ -112,7 +112,6 @@ layer, never a third colour. T-27c applied it in `tokens.css`.
 | `--state-mastered`, `-ground`, `-border`     | the greens                                                                              |
 | `--state-rank`, `-ground`, `-border`         | the blues                                                                               |
 | `--state-mastered-tint`, `--state-rank-tint` | `--green-400`, `--blue-400` at 20% (the ground behind a part's art)                     |
-| `--art-done`                                 | `--night-800` at 20% (a ticked component's faded art)                                   |
 | `--state-absent`                             | `--slate-400`                                                                           |
 | `--state-prime`                              | `--gold-400`                                                                            |
 | `--hover`                                    | `--ash-100` at 8%, laid over what is pressable (BR-39; drawn on the Design System page) |
@@ -146,13 +145,12 @@ why the frames' Onkko lines read in small caps without `textCase`.
 | `.body`           | Body/Default      | Inter          | 400    | 14   |       | descriptions, prose, dates                           |
 | `.body-s`         | Body/Small        | Inter          | 400    | 12   |       | places under a tile, the update list                 |
 | `.label`          | Label/Default     | Inter          | 700    | 16   |       | buttons, step titles                                 |
-| `.label-upper`    | Label/Upper       | Inter          | 700    | 16   | upper | Newest, system names                                 |
 | `.label-s`        | Label/Small       | Inter          | 700    | 14   |       | tabs, counts                                         |
 | `.label-s-upper`  | Label/Small Upper | Inter          | 700    | 14   | upper | the counts on the place card                         |
 | `.kicker`         | Kicker            | Inter          | 400    | 16   | upper | the hero's catalogue                                 |
 | `.eyebrow`        | Eyebrow/Default   | Inter          | 400    | 14   | upper | "Origin", "Change location"                          |
 | `.eyebrow-s`      | Eyebrow/Small     | Inter          | 400    | 12   | upper | "You're on", "System"                                |
-| `.badge`          | Badge             | Inter          | 700    | 12   | upper | badges, "You last played"                            |
+| `.badge`          | Badge             | Inter          | 700    | 12   | upper | every badge, "You last played"                       |
 | `.quiet`          | Quiet             | Inter          | 300    | 14   |       | "12/21 Mastered"                                     |
 | `.reading`        | Reading/Default   | JetBrains Mono | 700    | 12   |       | the gold line, "~24 Runs · Rotation A"               |
 | `.reading-l`      | Reading/Large     | JetBrains Mono | 700    | 16   |       | the gold line in Summary rows                        |
@@ -198,7 +196,7 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `Field`                 | rest, focus, filled, error                                                                                                                                                                                                                                                                             | 02, 05, 07, 08 |
 | `SearchField`           | empty, typing, with suggestions                                                                                                                                                                                                                                                                        | 05, 07, 08     |
 | `Segmented`             | outlined; two or three options, or two (View with no month); one chosen, disabled; inside a `View` row or a settings row                                                                                                                                                                               | 04, 07, 09     |
-| `Badge`                 | Newest, Start here, New, Mastered, Rank                                                                                                                                                                                                                                                                | 05, 07, 09     |
+| `Badge`                 | Newest, Start here, New, Mastered, Rank; one size for all: `.badge`, 8 px padding, a 1 px border, `--radius-m` (owner, 2026-10-19)                                                                                                                                                                     | 05, 07, 09     |
 | `Icon`                  | Material Symbols Rounded, by name; sizes 16, 20, 24                                                                                                                                                                                                                                                    | all            |
 | `GameIcon`              | the game's icon from the wiki; the name alone when it has none                                                                                                                                                                                                                                         | 06, 07, 10     |
 | `Wordmark`              | large (splash), header                                                                                                                                                                                                                                                                                 | 01, 02, 04     |
@@ -289,8 +287,8 @@ the place card), `Label/Upper` (Inter 700 16, upper: Newest, system names),
 `Name/Small Caps` (Cinzel 700 16 in its own small capitals: the choice cards'
 titles) and `Display/Name` (Cinzel 700 32: the player's name). It found five
 colour roles too: `--state-mastered-tint` and `--state-rank-tint` (the 20%
-grounds behind a part's art), `--art-done` (a ticked component's faded art),
-`--surface-card` (`#231f1a` at 80%, the choice cards) and `--fill-dim`.
+grounds behind a part's art), `--art-done` (a ticked component's faded art,
+retired on 2026-10-19 when the art lost its ground), `--surface-card` (`#231f1a` at 80%, the choice cards) and `--fill-dim`.
 `tokens.css` carries all of them.
 
 ### The Design System page

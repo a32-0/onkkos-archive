@@ -10,6 +10,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
     name: "Dante",
     group: "warframes",
     collectible: false,
+    quest: false,
     art: "dante.png",
     blueprint: "blueprint.png",
     prime: false,
@@ -66,6 +67,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
     },
     place: { system: "origin", systemName: "Origin", place: "Deimos", orb: "#a33" },
     beyond: false,
+    steps: { sections: [], lock: null },
     ...over,
   };
 }
@@ -131,7 +133,7 @@ describe("the item's page (spec 09)", () => {
       place: "Armatus · Disruption",
       art: "helmet.png",
       blueprint: "blueprint.png",
-      href: "/item?name=Dante&from=resume&view=steps#part%3ANeuroptics",
+      href: "/item?name=Dante&from=resume&view=steps#part-neuroptics",
     });
     expect(components?.title).toBe("Components");
     expect(components?.rows.map((row) => row.name)).toEqual([

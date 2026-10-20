@@ -32,6 +32,8 @@ export const WithBadge: Story = { args: { badge: "3 New" } };
 
 export const WithSupporting: Story = { args: { supporting: "Three more to master here" } };
 
+export const Mastered: Story = { args: { tag: { kind: "mastered", label: "Mastered" } } };
+
 export const Symbol: Story = { args: { icon: null, symbol: "rocket-launch", title: "Archgun" } };
 
 export const Grouped: Story = {

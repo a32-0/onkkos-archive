@@ -54,6 +54,7 @@ export const RELIC_SOURCES = ["Relics"];
 const ICON_BASE = "https://cdn.warframestat.us/img";
 const REFINED = /^(.+) (Intact|Exceptional|Flawless|Radiant)$/;
 const DROP = /^(.+ Relic)(?:\s*\((Exceptional|Flawless|Radiant)\))?$/;
+const UNNAMED = /\bundefined\b/;
 
 export function buildRelicCatalog(raw: RawRelic[], rewards: PlaceRewards): Map<string, Relic> {
   const byRefinement = new Map<string, Partial<Record<Refinement, RawRelic>>>();
@@ -103,7 +104,7 @@ export function relicOffers(
   const grouped = new Map<string, { rarity: string | null; chances: Map<Refinement, number> }>();
   for (const drop of drops) {
     const match = DROP.exec(drop.location.trim());
-    if (!match?.[1]) continue;
+    if (!match?.[1] || UNNAMED.test(match[1])) continue;
     const entry = grouped.get(match[1]) ?? { rarity: drop.rarity, chances: new Map() };
     if (drop.chance !== null) entry.chances.set((match[2] as Refinement) ?? "Intact", drop.chance);
     grouped.set(match[1], entry);

@@ -80,6 +80,10 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
      parts in the order Step by step gives them. Each row is the part's art
      over the blueprint (BR-19), its name, its best route's reading, "~{n}
      Runs · Rotation {x}" (BR-56), in gold, and its place.
+   - A row's place names a mission node as the wiki and the players write
+     it, "{Node} ({Planet}) · {Mission}": "Armatus (Deimos) · Disruption",
+     so it is found at once on the star chart (owner, 2026-10-19). A route
+     that groups nodes of several planets names the nodes alone.
    - **Components**: one row per ingredient, "{name} ×{n}", with its art, its
      reading and its place when it has a known drop, and "{n} Credits" last.
    - With neither, **How to get**: the item's How to get or Acquisition rows

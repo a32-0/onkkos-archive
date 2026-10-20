@@ -87,6 +87,7 @@ function groupView(
     id: `map-${group.group}`,
     key: group.group,
     lenses: ranked,
+    mastered: ranked && group.tiles.length > 0 && group.tiles.every((tile) => tile.mastered),
     name: MAP.groups[group.group].name,
     icon: input.icons[group.group] ?? null,
     ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),

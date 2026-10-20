@@ -21,6 +21,8 @@ import {
 import { curatedFor, vendorGates, type Cost, type CuratedSource } from "@/domain/catalog/sources";
 import { researchFor, sameName } from "@/domain/catalog/wiki";
 import { questNeeds, questsBefore } from "@/domain/narrative/chain";
+import type { Quest } from "@/domain/narrative/schema";
+import { placeGap, rankGap, type Reach, type ReachGap } from "@/domain/place/reach";
 
 type None = Record<never, never>;
 
@@ -56,6 +58,7 @@ interface Says {
   masteryUnknownDetail: None;
   questTitle: { quest: string };
   questDetail: None;
+  questStartTitle: { quest: string };
   intrinsicsTitle: { rank: number | null };
   intrinsicsDetail: None;
   nemesisTitle: { name: string };
@@ -103,6 +106,7 @@ interface Says {
   relicOdds: RelicFacts;
   relicBrief: RelicFacts;
   dropDetail: { place: string; node: string };
+  nodeOn: { node: string; place: string };
   partsUnknown: None;
   noRouteTitle: { item: string };
 
@@ -751,7 +755,7 @@ function routeRow(
     case "drop":
       return row(id, say("playTitle", { node: route.node }), {
         ...shared,
-        where: parts(route.node, route.mission),
+        where: parts(say("nodeOn", { node: route.node, place: route.place }), route.mission),
         prose: mechanics(route.mission),
         wikiTitle: route.node,
       });
@@ -1017,10 +1021,23 @@ function arsenalImage(data: CatalogData, name: string): string | null {
   return images.get(name) ?? null;
 }
 
+function partImage(data: CatalogData, name: string): string | null {
+  for (const item of data.arsenal) {
+    if (!name.startsWith(`${item.name} `)) continue;
+    const part = name.slice(item.name.length + 1);
+    const art = item.recipe?.parts.find((one) => one.name === part)?.imageUrl;
+    if (art) return art;
+  }
+  return null;
+}
+
 function thingImage(data: CatalogData, name: string): string | null {
   if (name === MAIN_PART) return BLUEPRINT_ART;
   return (
-    resourceImage(data, name) ?? findCollectible(data, name)?.imageUrl ?? arsenalImage(data, name)
+    resourceImage(data, name) ??
+    findCollectible(data, name)?.imageUrl ??
+    arsenalImage(data, name) ??
+    partImage(data, name)
   );
 }
 
@@ -1232,7 +1249,10 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     elsewhere.push(
       row(`currency:${key}`, say("currencyTitle", { cost, currency, vendor }), {
         wikiTitle: currency === "Standing" ? vendor : currency,
-        imageUrl: currency === "Standing" ? null : thingImage(data, currency),
+        imageUrl:
+          currency === "Standing"
+            ? (data.vendorArt[vendor] ?? null)
+            : (thingImage(data, currency) ?? data.vendorArt[currency] ?? null),
         thing: currency === "Standing" ? null : currency,
       }),
     );
@@ -1901,7 +1921,12 @@ function dropRows(view: CollectibleView): StepRow[] {
         oddsDetail(value),
       ),
       brief: parts(route.place, route.mission, oddsBrief(value)),
-      where: parts(route.node ?? route.place, route.mission),
+      where: parts(
+        route.node && route.place && !route.node.includes(", ")
+          ? say("nodeOn", { node: route.node, place: route.place })
+          : (route.node ?? route.place),
+        route.mission,
+      ),
       prose: mechanics(route.place ? route.mission : null),
       wikiTitle: route.node ?? collectible.name,
       imageUrl: index === 0 ? collectible.imageUrl : null,
@@ -2158,4 +2183,67 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
   const recipe = recipeSection(data, collectible);
   if (recipe) sections.push(recipe);
   return { sections: sections.filter((entry) => entry.groups.some((g) => g.rows.length > 0)) };
+}
+
+export function questStepPlan(data: CatalogData, quest: Quest, reader: Reader): StepPlan {
+  const needs = questNeeds(data.spine, quest.name);
+  const prerequisites = [
+    ...questRowsFor(data, needs.quests),
+    ...needs.junctions.map((junction) => junctionRow(data, junction)),
+    ...reachRows(data, quest.availableAt),
+  ];
+  const start = row(`start:${quest.name}`, say("questStartTitle", { quest: quest.name }), {
+    detail: parts(quest.start),
+    prose: lead(quest.wikiTitle),
+    wikiTitle: quest.wikiTitle,
+  });
+  return linked(
+    data,
+    {
+      sections: [
+        section(PREREQUISITES, say("sectionPrerequisites"), prerequisites),
+        section("how", say("sectionHowToGet"), [start]),
+      ],
+    },
+    {
+      self: quest.name,
+      masteryReq: needs.mastery,
+      masteryRank: reader.masteryRank,
+      done: reader.done ?? new Set(),
+    },
+  );
+}
+
+export interface PlanLock {
+  row: string;
+  gap: ReachGap;
+}
+
+const PLACE_ROW = "place:";
+
+function junctionGap(reach: Reach, place: string): ReachGap | null {
+  const gap = placeGap(reach, place);
+  return gap?.kind === "junction" ? gap : null;
+}
+
+function rowGap(entry: StepRow, reach: Reach): ReachGap | null {
+  if (entry.id === MASTERY_ROW && entry.title.say === "masteryTitle") {
+    return rankGap(reach, entry.title.rank);
+  }
+  if (entry.id.startsWith(PLACE_ROW)) return junctionGap(reach, entry.id.slice(PLACE_ROW.length));
+  if (entry.id.startsWith(JUNCTION_ROW)) {
+    return junctionGap(reach, entry.id.slice(JUNCTION_ROW.length).replace(JUNCTION, ""));
+  }
+  return null;
+}
+
+export function planLock(plan: StepPlan, reach: Reach): PlanLock | null {
+  const rows = plan.sections
+    .filter((entry) => entry.id === PREREQUISITES)
+    .flatMap((entry) => entry.groups.flatMap((group) => group.rows));
+  for (const entry of rows) {
+    const gap = rowGap(entry, reach);
+    if (gap) return { row: entry.id, gap };
+  }
+  return null;
 }

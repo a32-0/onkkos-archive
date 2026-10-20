@@ -292,9 +292,11 @@ and the wiki's region resources are read. `place-index.md` explains why.
 
 ## Vendored snapshots
 
-Three scripts write `data/vendor/`, and nothing else does: `pnpm data:refresh`
-(`scripts/refresh-drops.mjs`), `pnpm data:wiki` (`scripts/refresh-wiki.mjs`)
-and `pnpm data:patch-notes` (`scripts/refresh-patch-notes.mjs`). Each reduces
+Four scripts write `data/vendor/`, and nothing else does: `pnpm data:refresh`
+(`scripts/refresh-drops.mjs`), `pnpm data:wiki` (`scripts/refresh-wiki.mjs`),
+`pnpm data:patch-notes` (`scripts/refresh-patch-notes.mjs`) and
+`pnpm data:vendor-art` (`scripts/refresh-vendor-art.mjs`), which reads
+`wiki-vendors.json` and so runs after `data:wiki`. Each reduces
 its source to the fields the app reads; `manifest.json` records when the first
 two ran and how much they kept, and `patch-notes.json` carries its own
 `refreshedAt`. A refresh is a commit of its own, never part of a feature.
@@ -304,6 +306,7 @@ two ran and how much they kept, and `patch-notes.json` carries its own
 | `place-rewards.json`     | WFCD's `warframe-drop-data`: the mission rewards and six bounty tables, built from DE's drop tables          |
 | `region-resources.json`  | The wiki's `Module:Missions/data`                                                                            |
 | `update-art.json`        | The wiki's API: the lead image of each update's page, as a link; used where `patch-notes.json` has no art    |
+| `vendor-art.json`        | The wiki's API: the lead image of each page of a vendor paid in Standing or Stock, a syndicate's sigil       |
 | `patch-notes.json`       | DE's patch notes index and its JSON feed: each update's version, name, date, art and page, hotfixes left out |
 | `wiki-blueprints.json`   | `Module:Blueprints/data`                                                                                     |
 | `wiki-nodes.json`        | `Module:Missions/data`                                                                                       |
@@ -331,6 +334,6 @@ The licences, read from each source on 2026-10-13:
   footer reads CC BY-NC-SA 3.0. The snapshots read from pages are held to
   the stricter of the two; the app carries no revenue, and this page credits
   the wiki.
-- **Images** are never copied. `update-art.json` holds links, and the art is
+- **Images** are never copied. `update-art.json` and `vendor-art.json` hold links, and the art is
   served from the wiki. The wiki states that DE's assets are used with DE's
   permission or as fair use.

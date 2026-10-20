@@ -20,6 +20,7 @@ export interface MapGroupView {
   id: string;
   key: string;
   lenses: boolean;
+  mastered: boolean;
   name: string;
   icon: string | null;
   symbol?: IconName;

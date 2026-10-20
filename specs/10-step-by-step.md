@@ -87,9 +87,10 @@ In this order; a section with nothing in it does not render.
    **one card per part** under the same divider, each opening with its
    header, "{Part} Blueprint" with the part's art as its icon, ordered by
    best odds (BR-25).
-4. **Components**: what the player collects, grouped under dividers, "{Place}
-   specific" for what only that place gives and "Different locations" for the
-   rest, each group ordered by rarity, credits last (BR-24), including every
+4. **Components**: what the player collects, in groups split by a plain
+   line inside the card, as `662:7558` draws it: first what only that place
+   gives, then the rest; a gear's recipe makes its own group. No group carries
+   a title (owner, 2026-10-19). Each group ordered by rarity, credits last (BR-24), including every
    recipe the plan names (BR-32).
 
 Each section is a card under a divider that names it (owner's frames,
@@ -123,11 +124,11 @@ diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
 
 ### Components
 
-No line and no diamond. Each row: a checkbox, the thing's art on the drawn
-ground (BR-18), "{name} ×{n}" in bold, a chevron, the description and **Wiki
+No line and no diamond. Each row: a checkbox, the thing's art with no ground
+behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, the description and **Wiki
 ↗**. Ticking a row (`465:477`):
 
-- fills the box, dims the title and strikes it through, fades the art's ground;
+- fills the box, dims the title and strikes it through, dims the art;
 - collapses the row, its chevron pointing down;
 - is kept on this device (`wf:manual:item:{name}:{rowId}`), never read from the
   profile, which lists no resources.
@@ -178,12 +179,13 @@ reading measure of at most 62 characters.
 
 ## Components
 
-`Divider`, `SectionHeader` (part art), `Timeline`, `StepRow`
-(step, optional, alternative, best; open, collapsed, locked), `RowDetail`,
-`RowProse`, `WikiLink` (wiki, our page), `ComponentRow` (open, collapsed,
-ticked, locked),
-`GroupDivider`, `Checkbox`, each with its stories, and a story per scenario
-frame above, built from fixture plans.
+`Divider` (sections and component groups), `SectionHeader` (part art),
+`Timeline`, `StepRow` (step, optional, alternative, best; open, collapsed,
+locked), `RowDetail`, `RowProse`, `WikiLink` (wiki, our page), `ComponentRow`
+(open, collapsed, ticked, locked) and `Checkbox`, each with its stories. Each
+scenario frame above is a test of the view built from the catalogue's own
+plan (`tests/steps.test.ts`), not a story: the plan is built on the server
+from data Storybook does not load (2026-10-19).
 
 ## Acceptance
 

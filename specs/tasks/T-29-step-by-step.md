@@ -10,13 +10,33 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 
 ## What it builds
 
-| File                    | Note           |
-| ----------------------- | -------------- |
-| `src/app/item/page.tsx` | Spec 10's view |
-| `src/screens/steps/`    |                |
-| `src/infra/ticks.ts`    |                |
-| `src/content/checks.ts` | Spec 10        |
-| `src/content/states.ts` | Spec 10        |
+| File                           | Note                                                   |
+| ------------------------------ | ------------------------------------------------------ |
+| `src/app/item/page.tsx`        | Spec 10's view                                         |
+| `src/app/item/item.ts`         | The plan, its prose and its lock, for a quest too      |
+| `src/app/item/ItemTicks.tsx`   | Hands the ticks to the screen                          |
+| `src/screens/item/steps/`      | The view and `Steps`                                   |
+| `src/domain/catalog/checks.ts` | `questStepPlan()` and `planLock()`                     |
+| `src/infra/ticks.ts`           |                                                        |
+| `src/content/checks.ts`        | Spec 10: the details, the group headings and the marks |
+| `src/content/states.ts`        | Spec 10                                                |
+
+## Correction
+
+Written on 2026-10-19, during the task.
+
+- A quest opened from Goal had no plan: the page answered only items and
+  collectibles. `questStepPlan()` places a quest in the grammar (BR-37), and
+  the page answers a quest's name.
+- `planLock()` reads BR-63 off the plan's Prerequisites, so the page draws
+  the lock rather than working it out.
+- The view lives in `src/screens/item/steps/`: Step by step is a view of the
+  item's page, and every folder of `src/screens/` is a screen that gives
+  Onkko a line, which the item's page already does.
+- The ticks reach the screen through `src/app/item/ItemTicks.tsx`, since a
+  screen may not import `infra/`.
+- Onkko's line stays at the top of the page, as `662:7143` draws it; the
+  frame draws no closing line, so none was added (From T-20 below).
 
 ## Documents
 
@@ -44,6 +64,20 @@ The plan of an item or a quest, section by section, with the wiki's prose and th
 - `content/checks.ts` holds the words of every title and section phrase (`TITLES`) and of every reading (`BRIEF`), checked against `Phrase` in `screens/summary/lines.ts`. The details, the group headings and the "(Highest chance)", "Or" and "(Optional)" marks join them here.
 - The page reads `?view=steps` and opens an item beyond reach on it (`initialView()` in `screens/item/view.ts`); the View row switches without a reload. With Step by step chosen, the page shows Onkko's line, You're on, the hero and the View row, and this task draws the plan under them.
 - A blueprint row links to `itemRoute(name, from, "steps", section)`, which ends in `#{section id}`: each part's section takes its plan id (`part:{name}`) as its anchor.
+
+## Owner review, 2026-10-19
+
+- Components' groups are split by a plain line with no title, as `662:7558`
+  draws it; `Divider` with no label draws that line (spec 10).
+- A component's art has no ground in Step by step; a ticked one dims its art.
+- Every badge is one size: `.badge`, 8 px padding, a 1 px border (plan 3).
+- A row's place names a node as "{Node} ({Planet}) · {Mission}" (spec 09).
+- An Arsenal category every item of which is mastered carries the Mastered
+  tag on the map (spec 07).
+- Figma was brought level with the code the same day: the Badge set, Place
+  and System rows (Badge instances at the end), the Component row's art, List
+  item's "Show tag", the group lines of the Step by step scenarios, and the
+  sample texts.
 
 ## Acceptance
 

@@ -6,6 +6,7 @@ import type { ItemView } from "@/routes";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import type { ShellTab } from "../shell/tabs";
+import type { StepsFacts, StepsView } from "./steps/state";
 
 export interface ItemPlace {
   system: string;
@@ -18,6 +19,7 @@ export interface ItemFacts {
   name: string;
   group: Group | null;
   collectible: boolean;
+  quest: boolean;
   art: string | null;
   blueprint: string;
   prime: boolean;
@@ -26,6 +28,7 @@ export interface ItemFacts {
   lines: Readonly<Record<string, { reading: Part[]; where: Part[] }>>;
   place: ItemPlace | null;
   beyond: boolean;
+  steps: StepsFacts;
 }
 
 export interface ItemRowView {
@@ -57,4 +60,5 @@ export interface ItemPageView {
   view: ItemView;
   hrefs: Record<ItemView, string>;
   sections: ItemSectionView[];
+  steps: StepsView;
 }

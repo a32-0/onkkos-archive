@@ -2,6 +2,8 @@ export const ITEM = {
   view: "View",
   summary: "Summary",
   steps: "Step by step",
+  quest: "Quest",
+  quests: "Quests",
   kicker: {
     warframes: "Warframe",
     primary: "Primary",

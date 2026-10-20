@@ -18,6 +18,7 @@ export interface CatalogData {
   relics: ReadonlyMap<string, Relic>;
   collectibles: ReadonlyMap<string, Collectible>;
   gear: ReadonlyMap<string, CollectibleRecipe>;
+  vendorArt: Readonly<Record<string, string>>;
 }
 
 export function findCollectible(data: CatalogData, name: string): Collectible | null {

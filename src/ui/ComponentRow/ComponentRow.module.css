@@ -26,12 +26,12 @@
   flex: none;
   width: var(--component-art-size);
   height: var(--component-art-size);
-  background: var(--surface-sunken);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .ticked .art {
-  background: var(--art-done);
+  --component-art-done: 0.4;
+  opacity: var(--component-art-done);
 }
 
 .toggle {
@@ -84,4 +84,15 @@
   flex-direction: column;
   gap: var(--space-6);
   padding-right: var(--space-7);
+}
+
+.status {
+  --status-size: 1px;
+  position: absolute;
+  width: var(--status-size);
+  height: var(--status-size);
+  overflow: hidden;
+  --status-clip: inset(50%);
+  clip-path: var(--status-clip);
+  white-space: nowrap;
 }

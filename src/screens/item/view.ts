@@ -5,6 +5,7 @@ import { itemRoute, placeRoute, type ItemView } from "@/routes";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import { openedFrom, tabHome } from "../shell/tabs";
+import { stepsView } from "./steps/view";
 import { tileLines, titled } from "../summary/lines";
 import type { ItemFacts, ItemPageView, ItemRowView, ItemSectionView } from "./state";
 
@@ -18,7 +19,7 @@ export function initialView(asked: string | null, beyond: boolean): ItemView {
 
 export function heroState(facts: ItemFacts): ItemHeroState {
   const { state } = facts;
-  if (facts.collectible) return { kind: "none" };
+  if (facts.collectible || facts.quest) return { kind: "none" };
   if (state.kind === "done") return { kind: "mastered", label: MAP.mastered };
   if (state.kind === "ranked") return { kind: "rank", label: MAP.rank(state.rank, state.max) };
   if (state.kind === "absent") return { kind: facts.prime ? "prime" : "absent" };
@@ -57,17 +58,17 @@ export function itemPage(
 ): ItemPageView {
   const tab = openedFrom(from);
   const origin = from ?? "";
-  const kicker = facts.group ? ITEM.kicker[facts.group] : "";
+  const kicker = facts.quest ? ITEM.quest : facts.group ? ITEM.kicker[facts.group] : "";
   const state = facts.state.kind;
   return {
-    title: facts.group ? MAP.groups[facts.group].name : facts.name,
+    title: facts.quest ? ITEM.quests : facts.group ? MAP.groups[facts.group].name : facts.name,
     back: tabHome(tab),
     tab,
     kicker,
     name: facts.name,
     art: facts.art,
     hero: heroState(facts),
-    owned: !facts.collectible && (state === "done" || state === "ranked"),
+    owned: !facts.collectible && !facts.quest && (state === "done" || state === "ranked"),
     crumb: facts.place && {
       href: placeRoute(facts.place.system, facts.place.place),
       place: MAP.crumb(facts.place.systemName, facts.place.place),
@@ -79,5 +80,6 @@ export function itemPage(
       steps: itemRoute(facts.name, origin, STEPS),
     },
     sections: sectionsOf(facts, origin),
+    steps: stepsView(facts.steps, facts.name, origin),
   };
 }

@@ -1,3 +1,4 @@
+import { Badge, type BadgeKind } from "../Badge/Badge";
 import { GameIcon } from "../GameIcon/GameIcon";
 import type { IconName } from "../Icon/glyphs";
 import { Icon } from "../Icon/Icon";
@@ -11,6 +12,7 @@ export function ListItem({
   title,
   badge,
   supporting,
+  tag,
   link,
 }: {
   href: string;
@@ -19,6 +21,7 @@ export function ListItem({
   title: string;
   badge?: string;
   supporting?: string;
+  tag?: { kind: BadgeKind; label: string };
   link?: LinkComponent;
 }) {
   const Link = link ?? "a";
@@ -42,6 +45,7 @@ export function ListItem({
         </span>
         {supporting && <span className={styles.supporting}>{supporting}</span>}
       </span>
+      {tag && <Badge kind={tag.kind} label={tag.label} />}
       <span className={styles.trailing}>
         <Icon name="chevron-backward" />
       </span>

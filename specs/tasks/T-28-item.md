@@ -90,8 +90,10 @@ mission as its `where`, as it already did for parts with their own routes.
 - A part another item owns is named after it ("Volt Neuroptics" for Chroma,
   "Wrath Blade" for Pride), so no two parts of a recipe share a name or a key.
 - Resources and currencies find their art among the game's Misc items too;
-  credits are drawn from the wiki. Standing, Stock and the Nautilus parts still
-  have none.
+  credits are drawn from the wiki. Standing and Stock show the vendor's page
+  image, a syndicate's sigil, from `vendor-art.json`; a part named after its
+  item ("Nautilus Carapace") takes that part's art, the same as a Warframe's.
+  Every component of every item has art.
 - Updates, Change location and Change system are one height, the taller
   setting it (spec 07). Resume's cards sit 8 px apart, as `662:4717` draws them.
 - A system row counts its mastered places, not its items (spec 07).

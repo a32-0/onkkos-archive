@@ -131,7 +131,9 @@ Viewing a place writes it to `wf_place` (BR-46).
 
 Each divider holds its categories as one grouped list (`List item`): the
 catalogue's game icon (BR-42), its name and a chevron, and no count, since
-the place above already says what is left (owner, 2026-10-18). A category the
+the place above already says what is left (owner, 2026-10-18). An Arsenal
+category every item of which is mastered carries the Mastered tag before its
+chevron, so the player sees at a glance which are done (owner, 2026-10-19). A category the
 place holds nothing of, under any view, does not render, nor a divider left
 empty. The row opens the category's page.
 

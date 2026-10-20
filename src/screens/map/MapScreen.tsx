@@ -72,6 +72,9 @@ export function MapScreen({
                       icon={group.icon}
                       symbol={group.symbol}
                       title={group.name}
+                      {...(group.mastered && {
+                        tag: { kind: "mastered" as const, label: MAP.mastered },
+                      })}
                       link={Link}
                     />
                   </ListEntry>

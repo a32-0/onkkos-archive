@@ -9,13 +9,12 @@
 }
 
 .newest {
-  composes: label-upper from "../type.module.css";
-  display: inline-flex;
-  padding: var(--space-4);
+  composes: boxed;
+  composes: badge from "../type.module.css";
   background: var(--accent);
+  border-color: var(--accent);
   color: var(--ink-inverse);
   backdrop-filter: blur(calc(var(--blur-band) / 2));
-  white-space: nowrap;
 }
 
 .start-here {
@@ -26,9 +25,10 @@
 }
 
 .new {
+  composes: boxed;
   composes: badge from "../type.module.css";
+  border-color: var(--accent);
   color: var(--accent);
-  white-space: nowrap;
 }
 
 .mastered {

@@ -27,10 +27,17 @@ export function catchUpAt(step: CatchUpStep | null): string {
 
 export type ItemView = "summary" | "steps";
 
+export function stepAnchor(id: string): string {
+  return id
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export function itemRoute(name: string, from: string, view?: ItemView, section?: string): string {
   const query = new URLSearchParams({ name, from });
   if (view) query.set("view", view);
-  const anchor = section ? `#${encodeURIComponent(section)}` : "";
+  const anchor = section ? `#${stepAnchor(section)}` : "";
   return `${ROUTES.item}?${query.toString()}${anchor}`;
 }
 

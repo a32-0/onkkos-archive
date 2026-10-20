@@ -110,7 +110,10 @@ describe("what a Summary row names and opens (spec 09)", () => {
     const blueprints = briefOf(planOf("Dante")).find((block) => block.id === "blueprints");
     expect(blueprints?.lines.length).toBeGreaterThan(0);
     for (const line of blueprints?.lines ?? []) {
-      expect(line.where).toEqual(["Armatus", "Disruption"]);
+      expect(line.where).toEqual([
+        { say: "nodeOn", node: "Armatus", place: "Deimos" },
+        "Disruption",
+      ]);
     }
   });
 
@@ -130,6 +133,17 @@ describe("what a Summary row names and opens (spec 09)", () => {
     expect(art("Mesa", "credits")).toBe("https://wiki.warframe.com/images/Credits.png");
     expect(art("Broken Scepter", "resource:Kuva")).toContain("Kuva.png");
     expect(art("Ack & Brunt", "resource:Cryotic")).toContain("cdn.warframestat.us");
+  });
+
+  it("draws every component of every item", () => {
+    const blank = new Set<string>();
+    for (const item of data.arsenal) {
+      for (const block of briefOf(stepPlan(data, dossier(item, data.arsenal), reader))) {
+        if (block.id !== "components") continue;
+        for (const line of block.lines) if (!line.imageUrl) blank.add(line.id);
+      }
+    }
+    expect([...blank]).toEqual([]);
   });
 
   it("names a part another item owns after it", () => {

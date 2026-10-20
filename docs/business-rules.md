@@ -585,7 +585,8 @@ The item screen's hero card has four states. Each is a frame of its own,
 - Rule: tapping the checkbox ticks the row and:
   - fills the box, `#9f9486` (nearest `--ink-dim`);
   - dims the title to the same ink and strikes it through;
-  - fades the icon's ground to 20%;
+  - dims the icon (its ground was retired on 2026-10-19, when Step by step
+    dropped the ground behind a component's art);
   - collapses the row (the description is hidden, the chevron points down).
 
 ## Step by step: rules by scenario
