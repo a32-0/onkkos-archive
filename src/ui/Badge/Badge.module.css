@@ -1,5 +1,8 @@
 .boxed {
   display: inline-flex;
+  --badge-width: 92px;
+  box-sizing: border-box;
+  min-width: var(--badge-width);
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
@@ -27,7 +30,7 @@
 .new {
   composes: boxed;
   composes: badge from "../type.module.css";
-  border-color: var(--accent);
+  border-color: transparent;
   color: var(--accent);
 }
 

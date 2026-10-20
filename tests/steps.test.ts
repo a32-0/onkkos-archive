@@ -44,17 +44,17 @@ const SCENARIOS: [string, string[]][] = [
   ["Ember", ["Prerequisites", "How to get", "Blueprints", "Components"]],
   ["Gyre", ["Prerequisites", "How to get", "Blueprints", "Components"]],
   ["Nezha", ["Prerequisites", "How to get", "Blueprints", "Components"]],
-  ["Kuva Sobek", ["Prerequisites", "Acquisition", "Components"]],
-  ["Tenet Tetra", ["Prerequisites", "Acquisition", "Components"]],
-  ["Prisma Gorgon", ["Prerequisites", "Acquisition", "Components"]],
+  ["Kuva Sobek", ["Prerequisites", "How to get", "Components"]],
+  ["Tenet Tetra", ["Prerequisites", "How to get", "Components"]],
+  ["Prisma Gorgon", ["Prerequisites", "How to get", "Components"]],
   ["Gyre Prime", ["Prerequisites", "Blueprints", "Components"]],
   ["Ember Prime", ["Prerequisites", "How to get", "Blueprints", "Components"]],
   ["Ivara Prime", ["Prerequisites", "How to get", "Blueprints", "Components"]],
-  ["Chesa Kubrow", ["Prerequisites", "Acquisition", "Components"]],
-  ["Adarza Kavat", ["Prerequisites", "Acquisition", "Components"]],
-  ["Bhaira Hound", ["Prerequisites", "Acquisition", "Components"]],
-  ["Vizier Predasite", ["Prerequisites", "Acquisition"]],
-  ["Vasca Kavat", ["Prerequisites", "Acquisition", "Components"]],
+  ["Chesa Kubrow", ["Prerequisites", "How to get", "Components"]],
+  ["Adarza Kavat", ["Prerequisites", "How to get", "Components"]],
+  ["Bhaira Hound", ["Prerequisites", "How to get", "Components"]],
+  ["Vizier Predasite", ["Prerequisites", "How to get"]],
+  ["Vasca Kavat", ["Prerequisites", "How to get", "Components"]],
 ];
 
 describe("Step by step draws each scenario as its frame does (spec 10)", () => {
@@ -99,8 +99,8 @@ describe("Step by step draws each scenario as its frame does (spec 10)", () => {
 
   it("lets a Kuva weapon's trade continue the row above, with no diamond", () => {
     const rows =
-      viewOf("Kuva Sobek").blocks.find((block) => block.title === "Acquisition")?.cards[0]
-        ?.groups[0]?.rows ?? [];
+      viewOf("Kuva Sobek").blocks.find((block) => block.title === "How to get")?.cards[0]?.groups[0]
+        ?.rows ?? [];
     expect(rows.at(-1)?.title).toBe("Or trade for a converted Kuva Lich");
     expect(rows.at(-1)?.alternative).toBe(true);
   });
@@ -114,7 +114,7 @@ describe("Step by step draws each scenario as its frame does (spec 10)", () => {
 
   it("keeps an optional step's mark once", () => {
     const rows =
-      viewOf("Chesa Kubrow").blocks.find((block) => block.title === "Acquisition")?.cards[0]
+      viewOf("Chesa Kubrow").blocks.find((block) => block.title === "How to get")?.cards[0]
         ?.groups[0]?.rows ?? [];
     expect(rows.filter((row) => row.title.includes("(Optional)"))).not.toHaveLength(0);
     expect(rows.every((row) => !row.title.includes("(Optional) (Optional)"))).toBe(true);

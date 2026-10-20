@@ -79,6 +79,18 @@ Written on 2026-10-19, during the task.
   item's "Show tag", the group lines of the Step by step scenarios, and the
   sample texts.
 
+## Owner review, 2026-10-19 (second)
+
+- A component row's body starts under the art, 32 px in, so nothing sits
+  under the checkbox; "Wiki ↗" closes the same line of text (`465:477`).
+- Every badge is as wide as the widest, 92 px, so badges side by side line up;
+  New has no stroke, its border kept transparent so it stays as tall (plan 3).
+- A system's steps are titled "How to get", as the frames draw them (spec 10).
+- Updates, Change location and Change system keep one height, 84 px; a long
+  name shrinks its type down to a floor, then takes a second line, then
+  ends in an ellipsis, instead of growing the card. This replaces "one height, the taller setting
+  it" (spec 07, T-28).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

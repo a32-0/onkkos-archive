@@ -31,7 +31,8 @@ card.
    purchase closes the section: "Buy the Ember Blueprint".
 2. **How to get**, one row when the parts share a source. An item that comes
    from a game system (a Kuva Lich, a Sister of Parvos, Baro Ki'Teer,
-   breeding, Son) gets **Acquisition** here instead, one row per step.
+   breeding, Son) gets its steps here instead, under the same title, one row
+   per step.
 3. **Blueprints.** A shared source gives one flat list, each row with the
    part's art. Parts from different places each get a card under the same
    divider, its header the part's art and name, best odds first (BR-25).

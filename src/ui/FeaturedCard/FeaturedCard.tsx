@@ -1,4 +1,5 @@
 import { Icon } from "../Icon/Icon";
+import { fit } from "../fit";
 import type { LinkComponent } from "../link";
 import styles from "./FeaturedCard.module.css";
 
@@ -27,7 +28,9 @@ export function FeaturedCard({
       {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.blank} />}
       <span className={styles.text}>
         <span className={styles[kind]}>{eyebrow}</span>
-        <span className={styles.name}>{name}</span>
+        <span className={styles.name} style={fit(name)}>
+          {name}
+        </span>
         {meta && <span className={styles.meta}>{meta}</span>}
       </span>
       <span className={styles.chevron}>

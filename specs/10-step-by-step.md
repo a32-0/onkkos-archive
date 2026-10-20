@@ -82,7 +82,7 @@ In this order; a section with nothing in it does not render.
    a place, gear owned, standing, clan, a status row ("Prime Vaulted"), and
    last, "Buy … Blueprint" when the main blueprint is bought.
 2. **How to get**, when the parts share a source, or the system's steps
-   (Lich, Sister, Baro, Varzia, breeding, Son) as the frames title them.
+   (Lich, Sister, Baro, Varzia, breeding, Son), under the same title.
 3. **Blueprints**, one flat list when every part shares a source; otherwise
    **one card per part** under the same divider, each opening with its
    header, "{Part} Blueprint" with the part's art as its icon, ordered by
@@ -125,8 +125,9 @@ diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
 ### Components
 
 No line and no diamond. Each row: a checkbox, the thing's art with no ground
-behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, the description and **Wiki
-↗**. Ticking a row (`465:477`):
+behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, and under them, starting where the art
+starts so nothing sits under the checkbox, the description with **Wiki ↗**
+closing its line. Ticking a row (`465:477`):
 
 - fills the box, dims the title and strikes it through, dims the art;
 - collapses the row, its chevron pointing down;

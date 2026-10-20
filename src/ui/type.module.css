@@ -193,3 +193,18 @@
   font-size: 14px;
   text-transform: none;
 }
+
+.fit {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: clamp(
+    var(--fit-min),
+    calc(100cqi / (var(--chars) * var(--fit-glyph))),
+    var(--fit-max)
+  );
+  line-height: 1;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}

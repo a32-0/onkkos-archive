@@ -94,8 +94,9 @@ mission as its `where`, as it already did for parts with their own routes.
   image, a syndicate's sigil, from `vendor-art.json`; a part named after its
   item ("Nautilus Carapace") takes that part's art, the same as a Warframe's.
   Every component of every item has art.
-- Updates, Change location and Change system are one height, the taller
-  setting it (spec 07). Resume's cards sit 8 px apart, as `662:4717` draws them.
+- Updates, Change location and Change system are one height (spec 07); the
+  owner replaced "the taller setting it" with a shrinking name on 2026-10-19
+  (T-29). Resume's cards sit 8 px apart, as `662:4717` draws them.
 - A system row counts its mastered places, not its items (spec 07).
 
 ## Acceptance

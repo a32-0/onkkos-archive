@@ -4,7 +4,7 @@
   gap: var(--space-4);
   box-sizing: border-box;
   width: 100%;
-  min-height: var(--link-card-height);
+  height: var(--link-card-height);
   padding: var(--space-5) var(--space-6);
   border-left: var(--border-1) solid var(--accent);
   border-radius: 0 var(--radius-m) var(--radius-m) 0;
@@ -39,6 +39,7 @@
 }
 
 .text {
+  container-type: inline-size;
   display: flex;
   flex: 1 0 0;
   flex-direction: column;
@@ -57,6 +58,10 @@
 
 .name {
   composes: name-s from "../type.module.css";
+  composes: fit from "../type.module.css";
+  --fit-max: 14px;
+  --fit-glyph: 0.8;
+  --fit-min: 11px;
 }
 
 .meta {

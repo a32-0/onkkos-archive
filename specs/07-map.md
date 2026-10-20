@@ -102,9 +102,11 @@ the top, as `662:5177` draws it:
    date" and names the newest update (owner, 2026-10-16).
 3. **Change location** (`Place switcher`): "Change location" as kicker, the
    place's name in the display face and a chevron that opens the place list.
-   It is always as tall as the Updates card above it, the taller of the two
-   setting the height, and so is Change system on the place list (owner,
-   2026-10-19).
+   It, the Updates card above it and Change system on the place list are
+   84 px tall at every width. A name too long for one line shrinks its type,
+   from the display size down to a floor (16 px here, 14 px for Change
+   system, 11 px for an update's name); at the floor it takes a second
+   line, and past that ends in an ellipsis; the card never grows (owner, 2026-10-19).
 4. The **place** (`Place overview`, `656:211`), on the page and not on a
    card: its sphere in its colour inside a ring that fills counter-clockwise from the top with
    the share of its readable items mastered; under it "{n}/{m}" in the display

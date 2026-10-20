@@ -6,6 +6,7 @@ import { useState } from "react";
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
 import { EmptyState } from "@/ui/EmptyState/EmptyState";
+import { fit } from "@/ui/fit";
 import { Icon } from "@/ui/Icon/Icon";
 import { List, ListEntry } from "@/ui/List/List";
 import { MoreLine } from "@/ui/MoreLine/MoreLine";
@@ -43,7 +44,9 @@ export function PlaceList({
         <Orb color={system.orb} size="s" />
         <span className={styles["system-text"]}>
           <span className={styles["system-kicker"]}>{MAP.changeSystem}</span>
-          <span className={styles["system-name"]}>{system.name}</span>
+          <span className={styles["system-name"]} style={fit(system.name)}>
+            {system.name}
+          </span>
         </span>
         <span className={styles.chevron}>
           <Icon name="chevron-backward" />
