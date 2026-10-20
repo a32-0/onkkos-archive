@@ -80,4 +80,5 @@
   --blur-band: 4px;
 
   --gutter: 16px;
+  --link-card-height: calc(60px + 2 * var(--space-5));
 }

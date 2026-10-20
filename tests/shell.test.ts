@@ -1,12 +1,16 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { SHELL } from "@/content/nav";
 import { Profile } from "@/screens/shell/Profile";
 import { readCycle, type ShellPlayer } from "@/screens/shell/read-cycle";
 import { Shell, type ShellBar } from "@/screens/shell/Shell";
 import { openedFrom, tabItems, type ShellTab } from "@/screens/shell/tabs";
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push: () => {}, back: () => {} }),
+}));
 
 const READ_AT = Date.UTC(2026, 9, 14, 3, 30);
 const MINUTE = 60_000;

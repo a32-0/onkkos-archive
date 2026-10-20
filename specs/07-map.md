@@ -102,6 +102,9 @@ the top, as `662:5177` draws it:
    date" and names the newest update (owner, 2026-10-16).
 3. **Change location** (`Place switcher`): "Change location" as kicker, the
    place's name in the display face and a chevron that opens the place list.
+   It is always as tall as the Updates card above it, the taller of the two
+   setting the height, and so is Change system on the place list (owner,
+   2026-10-19).
 4. The **place** (`Place overview`, `656:211`), on the page and not on a
    card: its sphere in its colour inside a ring that fills counter-clockwise from the top with
    the share of its readable items mastered; under it "{n}/{m}" in the display
@@ -201,8 +204,9 @@ switch at any time.", and the systems in BR-47's order as one grouped list,
 each with its symbol (a large orb and a small one beside it, its satellite;
 the owner, 2026-10-08): its first place's sphere, and its second place's as
 the satellite, or the neutral sphere when it has no second place, as every
-`System row` draws one (owner, 2026-10-17), its name and its mastered count
-or tag, **Start here** on the system that holds it, and the system on view
+`System row` draws one (owner, 2026-10-17), its name and how many of its
+places are mastered, "{n}/{m} Mastered", counting the places that hold an
+item (owner, 2026-10-19), or the Mastered tag when all are, **Start here** on the system that holds it, and the system on view
 highlighted. Only the systems with a place in reach are listed, then a More
 line, "2 more systems open as you go further." (BR-60). Tau reads "Soon™",
 cannot be chosen, and shows disabled, dimmed (owner, 2026-10-18). Choosing a system returns to the place list, now listing

@@ -44,13 +44,15 @@ export function MapScreen({
         )}
         <div className={styles.main}>
           {voice && <OnkkoLine place="top" line={VOICE.place} />}
-          <FeaturedCard {...card} href={updatesRoute("navigation", null)} link={Link} />
-          <PlaceSwitcher
-            href={placesRoute(view.system, view.place)}
-            kicker={MAP.changeLocation}
-            name={view.place}
-            link={Link}
-          />
+          <div className={styles.cards}>
+            <FeaturedCard {...card} href={updatesRoute("navigation", null)} link={Link} />
+            <PlaceSwitcher
+              href={placesRoute(view.system, view.place)}
+              kicker={MAP.changeLocation}
+              name={view.place}
+              link={Link}
+            />
+          </div>
           <PlaceOverview {...view.overview} />
           {view.nothingLeft && (
             <EmptyState
@@ -61,7 +63,7 @@ export function MapScreen({
           )}
           {view.sections.map((section) => (
             <section key={section.id} className={styles.section}>
-              <Divider label={section.label} flush />
+              <Divider label={section.label} />
               <List label={section.label}>
                 {section.groups.map((group) => (
                   <ListEntry key={group.id}>

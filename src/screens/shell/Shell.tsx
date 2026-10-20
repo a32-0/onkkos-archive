@@ -17,7 +17,6 @@ import type { ShellChrome } from "./voice";
 export interface ShellBar {
   title: string;
   back: string;
-  history?: boolean;
 }
 
 export function Shell({
@@ -59,14 +58,7 @@ export function Shell({
             tabs={wide}
           />
         </div>
-        {bar && (
-          <TopBar
-            title={bar.title}
-            back={bar.back}
-            backLabel={SHELL.back}
-            link={bar.history ? BackLink : Link}
-          />
-        )}
+        {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={BackLink} />}
       </div>
       <main className={styles.main}>{children}</main>
       {tabs && (

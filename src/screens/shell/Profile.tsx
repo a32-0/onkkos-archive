@@ -50,7 +50,7 @@ export function Profile({
           </div>
         </div>
         <section className={styles.settings}>
-          <Divider label={SHELL.settings} flush />
+          <Divider label={SHELL.settings} />
           <List label={SHELL.settings}>
             <ListEntry>
               <ControlRow label={SHELL.language}>

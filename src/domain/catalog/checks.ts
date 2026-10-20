@@ -2,7 +2,7 @@ import { circuitStatus, type CircuitMode } from "@/domain/catalog/circuit";
 import type { CollectibleView } from "@/domain/catalog/collectibles";
 import { findCollectible, isCatalogued, type CatalogData } from "@/domain/catalog/data";
 import type { Dossier } from "@/domain/catalog/dossier";
-import type { SlotKind } from "@/domain/catalog/items";
+import { BLUEPRINT_ART, type SlotKind } from "@/domain/catalog/items";
 import { oneIn } from "@/domain/catalog/odds";
 import { rewardRoutes } from "@/domain/catalog/rewards";
 import {
@@ -348,6 +348,7 @@ const FOCUS_STORE = "the Focus Represent Store";
 const AYA = "Aya";
 const CAVALERO = "Cavalero";
 const CREDITS = "Credits";
+const CREDITS_ART = "https://wiki.warframe.com/images/Credits.png";
 const DUCATS = "Orokin Ducats";
 
 const MASTERY_WIKI = "Mastery Rank";
@@ -998,7 +999,10 @@ const arsenalImages = new WeakMap<CatalogData, Map<string, string | null>>();
 function resourceImage(data: CatalogData, name: string): string | null {
   let images = resourceImages.get(data);
   if (!images) {
-    images = new Map(data.resources.map((entry) => [entry.name, entry.imageUrl]));
+    images = new Map();
+    for (const entry of data.resources) {
+      if (entry.imageUrl && !images.has(entry.name)) images.set(entry.name, entry.imageUrl);
+    }
     resourceImages.set(data, images);
   }
   return images.get(name) ?? null;
@@ -1014,6 +1018,7 @@ function arsenalImage(data: CatalogData, name: string): string | null {
 }
 
 function thingImage(data: CatalogData, name: string): string | null {
+  if (name === MAIN_PART) return BLUEPRINT_ART;
   return (
     resourceImage(data, name) ?? findCollectible(data, name)?.imageUrl ?? arsenalImage(data, name)
   );
@@ -1138,6 +1143,7 @@ function gearGroups(data: CatalogData, sections: readonly StepSection[]): StepGr
       rows.push(
         row(`gear:${name}:credits`, say("creditsTitle", { credits: recipe.credits * count }), {
           wikiTitle: CREDITS,
+          imageUrl: CREDITS_ART,
           thing: CREDITS,
         }),
       );
@@ -1226,6 +1232,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     elsewhere.push(
       row(`currency:${key}`, say("currencyTitle", { cost, currency, vendor }), {
         wikiTitle: currency === "Standing" ? vendor : currency,
+        imageUrl: currency === "Standing" ? null : thingImage(data, currency),
         thing: currency === "Standing" ? null : currency,
       }),
     );
@@ -1235,6 +1242,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     elsewhere.push(
       row("credits", say("creditsTitle", { credits: found.totals.credits }), {
         wikiTitle: CREDITS,
+        imageUrl: CREDITS_ART,
         thing: CREDITS,
       }),
     );
@@ -1502,13 +1510,14 @@ function systemSteps(
   ];
 }
 
-function baroComponents(system: AcquisitionSystem): StepSection | null {
+function baroComponents(data: CatalogData, system: AcquisitionSystem): StepSection | null {
   if (system.kind !== "baro") return null;
   const rows: StepRow[] = [];
   if (system.ducats !== null) {
     rows.push(
       row(`currency:${DUCATS}`, say("ducatsTitle", { ducats: system.ducats }), {
         wikiTitle: DUCATS,
+        imageUrl: thingImage(data, DUCATS),
         thing: DUCATS,
       }),
     );
@@ -1517,6 +1526,7 @@ function baroComponents(system: AcquisitionSystem): StepSection | null {
     rows.push(
       row("credits", say("creditsTitle", { credits: system.credits }), {
         wikiTitle: CREDITS,
+        imageUrl: CREDITS_ART,
         thing: CREDITS,
       }),
     );
@@ -1545,7 +1555,7 @@ function systemPlan(
     section("how", say("sectionAcquisition"), systemSteps(data, reader, system, item.name)),
   ];
   const components =
-    system.kind === "baro" ? baroComponents(system) : componentsSection(data, found);
+    system.kind === "baro" ? baroComponents(data, system) : componentsSection(data, found);
   if (components) sections.push(components);
   return { sections };
 }

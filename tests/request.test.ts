@@ -761,6 +761,11 @@ describe("the map (spec 07, BR-46)", () => {
       await SystemsPage({ searchParams: Promise.resolve(query) }),
     );
     expect(systems).toMatch(/aria-disabled="true"[^]*>Tau</);
+    const { loadSystems } = await import("@/infra/place/load");
+    const origin = loadSystems().systems.find((one) => one.id === "origin");
+    const counts = [...systems.matchAll(/(\d+)\/(\d+)</g)].map((match) => Number(match[2]));
+    expect(counts.length).toBeGreaterThan(0);
+    expect(Math.max(...counts)).toBeLessThanOrEqual(origin?.places.length ?? 0);
   });
 
   it("lists the places and the systems on their own pages", async () => {

@@ -165,6 +165,8 @@ function placeList(input: MapViewInput): PlaceListSystem[] {
 function systemRow(standing: SystemStanding, input: MapViewInput): SystemRowView {
   const { system } = standing;
   const [first, second] = system.places;
+  const places = standing.places.filter((place) => place.readable > 0);
+  const done = places.filter((place) => place.mastered).length;
   return {
     id: system.id,
     name: system.name,
@@ -174,7 +176,7 @@ function systemRow(standing: SystemStanding, input: MapViewInput): SystemRowView
       ? { soon: MAP.soon }
       : standing.mastered
         ? { mastered: MAP.mastered }
-        : standing.readable > 0 && { count: fraction(standing.done, standing.readable) }),
+        : places.length > 0 && { count: fraction(done, places.length) }),
     ...(isStartAt(input.start, system.id) && { startHere: MAP.startHere }),
     onView: system.id === input.map.system.id,
   };

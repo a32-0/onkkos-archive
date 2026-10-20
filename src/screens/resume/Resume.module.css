@@ -66,7 +66,7 @@
   display: grid;
   grid-template-columns: var(--resume-cards);
   justify-content: center;
-  gap: var(--space-7);
+  gap: var(--space-4);
   margin: 0;
 }
 

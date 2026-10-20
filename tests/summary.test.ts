@@ -121,4 +121,37 @@ describe("what a Summary row names and opens (spec 09)", () => {
     expect(spores?.imageUrl).toContain("cdn.warframestat.us");
     expect(components?.lines.find((line) => line.id === "credits")?.thing).toBeNull();
   });
+
+  it("draws the credits, Kuva and a Misc resource", () => {
+    const art = (name: string, id: string) =>
+      briefOf(planOf(name))
+        .flatMap((block) => block.lines)
+        .find((line) => line.id === id)?.imageUrl;
+    expect(art("Mesa", "credits")).toBe("https://wiki.warframe.com/images/Credits.png");
+    expect(art("Broken Scepter", "resource:Kuva")).toContain("Kuva.png");
+    expect(art("Ack & Brunt", "resource:Cryotic")).toContain("cdn.warframestat.us");
+  });
+
+  it("names a part another item owns after it", () => {
+    const parts = (name: string) =>
+      briefOf(planOf(name))
+        .filter((block) => block.id === "blueprints")
+        .flatMap((block) => block.lines.map((line) => line.id));
+    expect(parts("Chroma")).toContain("part:Volt Neuroptics");
+    expect(parts("Pride")).toContain("part:Wrath Blade");
+    expect(parts("Wrath")).toContain("part:Pride Blade");
+    expect(parts("Paris Prime")).not.toContain("part:Bo Prime Grip");
+  });
+
+  it("gives every block and every row of every item its own key", () => {
+    for (const item of data.arsenal) {
+      const blocks = briefOf(stepPlan(data, dossier(item, data.arsenal), reader));
+      const ids = blocks.map((block) => block.id);
+      expect(new Set(ids).size, item.name).toBe(ids.length);
+      for (const block of blocks) {
+        const lines = block.lines.map((line) => line.id);
+        expect(new Set(lines).size, `${item.name} ${block.id}`).toBe(lines.length);
+      }
+    }
+  });
 });

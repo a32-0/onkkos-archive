@@ -82,6 +82,20 @@ mission as its `where`, as it already did for parts with their own routes.
   version, since two updates can share a month (spec 06).
 - Resume's list sits on the page's ground, as `662:4717` draws it.
 
+## Owner review, 2026-10-19
+
+- Every top bar's Back is the browser's back when the app came before the
+  page, and the screen above it otherwise (spec 04).
+- `Divider` has no padding of its own, as `465:225` draws it; `flush` is gone.
+- A part another item owns is named after it ("Volt Neuroptics" for Chroma,
+  "Wrath Blade" for Pride), so no two parts of a recipe share a name or a key.
+- Resources and currencies find their art among the game's Misc items too;
+  credits are drawn from the wiki. Standing, Stock and the Nautilus parts still
+  have none.
+- Updates, Change location and Change system are one height, the taller
+  setting it (spec 07). Resume's cards sit 8 px apart, as `662:4717` draws them.
+- A system row counts its mastered places, not its items (spec 07).
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 09 holds.

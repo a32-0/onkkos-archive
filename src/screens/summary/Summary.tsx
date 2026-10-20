@@ -51,7 +51,7 @@ export function Summary({
         ) : (
           sections.map((section) => (
             <section key={section.id} className={styles.section}>
-              <Divider label={section.label} flush />
+              <Divider label={section.label} />
               <List label={section.label}>
                 {section.groups.map((group) => (
                   <ListEntry key={group.id}>
