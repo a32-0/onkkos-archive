@@ -140,7 +140,7 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 
 | Folder or file                   | Holds                                                                                                          | Task       |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------- |
-| `catalog/`                       | The read of `@wfcd/items`, of `sources.yaml` and of the update art; the catalog's data, read once              | T-14, T-16 |
+| `catalog/`                       | The read of the items snapshot, of `sources.yaml` and of the update art; the catalog's data, read once         | T-14, T-16 |
 | `graph/`, `narrative/`, `place/` | The loaders of `data/`                                                                                         | T-13, T-15 |
 | `store/`                         | One store interface: Upstash in production, memory in tests and development (spec 11)                          | T-17       |
 | `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read         | T-18       |
@@ -175,6 +175,7 @@ readings a tile shows and completed by T-29.
 | `profile-cy.json`, `profile-ordis.json`                                   | The demos, output of `pnpm fixture`                                                                                  | T-11             |
 | `profile-veteran.json`, `profile-new-player.json`                         | Synthetic test profiles                                                                                              | T-11             |
 | `scripts/*`                                                               | `palette.mjs` measures the token layer; `trim-profile.mjs` takes `--from` with no default and imports the field list | T-04, T-11, T-12 |
+| `scripts/refresh-items.mjs`, `scripts/function-weight.mjs`                | `pnpm data:items` writes `data/vendor/items.json` from `@wfcd/items`; `pnpm weight` weighs each route after a build  | T-31             |
 | `scripts/content-update.ts`, `data/reviewed-update.json`, `docs/updates/` | `pnpm content:update` ([`content-updates.md`](../../docs/content-updates.md))                                        | T-31             |
 | `tests/*`                                                                 | One file per domain or infra module, written with it                                                                 | Each task        |
 

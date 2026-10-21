@@ -93,12 +93,39 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
 | Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
 | App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as production does until T-33       |
+| Weight    | `pnpm weight`                                       | No route's function carries more than 80 MB                    |
 
 The workflow holds no secret. It reads nothing outside the repository except
 the packages the lockfile names, the three fonts `next/font` downloads from
 Google Fonts during both builds, and Chromium with the system libraries it
 needs, which Playwright installs. Its token can only read the repository,
 checkout does not keep it, and the telemetry of Next and Storybook is off.
+
+## The weight of a function
+
+Vercel's Hobby plan takes at most 12 functions in a deployment. It bundles
+the routes into as few functions as it can, and a function holds at most
+250 MB, so the count stays low only while each route is light
+([plan part 4](../specs/plan/04-deployment.md#checked-when-the-deployment-is-set-up)).
+`pnpm weight` (`scripts/function-weight.mjs`) reads each route's trace in
+`.next/server/app` after `pnpm build`, adds up the files it names, each real
+file once however many links point to it, and fails when a route carries more
+than 80 MB. CI runs it after the App step; on 2026-10-21 every route weighs
+about 28 MB.
+
+Three things keep it there, in `next.config.ts` and `data/vendor/`:
+
+- The catalog is read from `data/vendor/items.json`, never from
+  `@wfcd/items` (`curated-files.md`, Vendored snapshots). The package stays a
+  dependency of the scripts and the tests only.
+- `outputFileTracingIncludes` names `data/*.yaml`, `data/vendor/*.json` and
+  `fixtures/*.json` exactly. A pattern of `./data/**/*` also brought in every
+  package's own `data/` folder, `@wfcd/items` and the translations of
+  `warframe-worldstate-data` among them.
+- `outputFileTracingExcludes` leaves out the translations of `@wfcd/items`,
+  should a route ever import the package again. Next matches it against
+  POSIX paths, so it applies on Linux, in CI and on Vercel, and not in a
+  build on Windows.
 
 ## The layers
 

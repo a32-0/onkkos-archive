@@ -1,6 +1,7 @@
 import "server-only";
 
-import Items from "@wfcd/items";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 
 import { glyphArt, GLYPH_SOURCES, type RawGlyph } from "@/domain/profile/avatar";
 import { COLLECTIBLE_SOURCES, GEAR_SOURCES, type RawEntry } from "@/domain/catalog/collectibles";
@@ -16,15 +17,29 @@ import {
 import { RELIC_SOURCES, type RawRelic } from "@/domain/catalog/relics";
 import type { Introduced } from "@/domain/catalog/updates";
 
+interface Snapshot {
+  categories: Record<string, unknown[]>;
+}
+
+let snapshot: string | undefined;
 let cached: CatalogItem[] | undefined;
 let cachedResources: CatalogResource[] | undefined;
 let cachedGlyphs: Map<string, string> | undefined;
 
-function readItems<T>(category?: readonly string[]): T[] {
-  return new Items({
-    ...(category ? { category: [...category] } : {}),
-    ignoreEnemies: true,
-  } as ConstructorParameters<typeof Items>[0]) as unknown as T[];
+function readSnapshot(): Snapshot {
+  snapshot ??= readFileSync(path.join(process.cwd(), "data", "vendor", "items.json"), "utf8");
+  return JSON.parse(snapshot) as Snapshot;
+}
+
+function byName(a: RawItem, b: RawItem): number {
+  return a.name.localeCompare(b.name) || a.uniqueName.localeCompare(b.uniqueName);
+}
+
+export function readItems<T>(category?: readonly string[]): T[] {
+  const { categories } = readSnapshot();
+  const wanted = category ?? Object.keys(categories);
+  const items = wanted.flatMap((name) => categories[name] ?? []) as RawItem[];
+  return items.sort(byName) as unknown as T[];
 }
 
 export function arsenalCatalog(): CatalogItem[] {

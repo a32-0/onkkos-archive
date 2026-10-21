@@ -49,3 +49,6 @@ jobs:
         run: pnpm build
         env:
           WF_PROFILE_SOURCE: fixture
+
+      - name: Weight
+        run: pnpm weight

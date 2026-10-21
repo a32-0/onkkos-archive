@@ -292,17 +292,37 @@ and the wiki's region resources are read. `place-index.md` explains why.
 
 ## Vendored snapshots
 
-Four scripts write `data/vendor/`, and nothing else does: `pnpm data:refresh`
+Five scripts write `data/vendor/`, and nothing else does: `pnpm data:refresh`
 (`scripts/refresh-drops.mjs`), `pnpm data:wiki` (`scripts/refresh-wiki.mjs`),
-`pnpm data:patch-notes` (`scripts/refresh-patch-notes.mjs`) and
+`pnpm data:patch-notes` (`scripts/refresh-patch-notes.mjs`),
 `pnpm data:vendor-art` (`scripts/refresh-vendor-art.mjs`), which reads
-`wiki-vendors.json` and so runs after `data:wiki`. Each reduces
+`wiki-vendors.json` and so runs after `data:wiki`, and `pnpm data:items`
+(`scripts/refresh-items.mjs`). Each reduces
 its source to the fields the app reads; `manifest.json` records when the first
-two ran and how much they kept, and `patch-notes.json` carries its own
-`refreshedAt`. A refresh is a commit of its own, never part of a feature.
+two ran and how much they kept, `patch-notes.json` carries its own
+`refreshedAt` and `items.json` the version of `@wfcd/items` it was written
+from. A refresh is a commit of its own, never part of a feature.
+
+`items.json` exists so that no deployed function carries `@wfcd/items`: the
+package is about 94 MB, two thirds of it translations the app never reads, and
+every route that read it weighed about 122 MB, too much for Vercel to put two
+routes in one function (plan part 4). The snapshot keeps each category file of
+the package, Enemy left out and Components last as the package loads them,
+each item resolved as the package resolves it and cut to the fields the domain
+reads; `readItems()` concatenates the categories asked for and sorts them by
+name, then `uniqueName`, as the package does. It is written one item per
+line, so a content update reads as a diff of the items it changed.
+`tests/items-snapshot.test.ts` builds every consumer, the arsenal, resources,
+glyphs, relics, collectibles, gear, the places' catalog and the updates, from
+the package and from the snapshot and requires the same result, and requires
+the snapshot's version to be the installed one: updating `@wfcd/items` without
+`pnpm data:items` fails `pnpm check`, and so does a field the domain starts
+reading that the snapshot does not keep. Such a field is added to `FIELDS` in
+the script.
 
 | File                     | Source                                                                                                                   |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `items.json`             | `@wfcd/items`: every category but Enemy, each item cut to the fields the domain reads, with the package's version        |
 | `place-rewards.json`     | WFCD's `warframe-drop-data`: the mission rewards and six bounty tables, built from DE's drop tables                      |
 | `region-resources.json`  | The wiki's `Module:Missions/data`                                                                                        |
 | `update-art.json`        | The wiki's API: the lead image of each update's page, as a link; used where `patch-notes.json` has no art                |

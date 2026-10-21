@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "weight": "node scripts/function-weight.mjs",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -25,6 +26,7 @@
     "data:wiki": "node scripts/refresh-wiki.mjs",
     "data:patch-notes": "node scripts/refresh-patch-notes.mjs",
     "data:vendor-art": "node scripts/refresh-vendor-art.mjs",
+    "data:items": "node scripts/refresh-items.mjs",
     "fixture": "node scripts/trim-profile.mjs"
   },
   "dependencies": {
