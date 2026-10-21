@@ -295,6 +295,9 @@ binding limit, not the space or the transfer. `public-release.md` estimated
 
 Every route runs on Node.js, not the edge: the store's compression uses
 `node:zlib`, and the loaders read `data/` and `fixtures/` from disk.
-`next.config.ts` names both folders in `outputFileTracingIncludes`, so the
-deployed function carries them. Part 4 checks it on the deployment, because a
+`next.config.ts` names their files in `outputFileTracingIncludes`
+(`data/*.yaml`, `data/vendor/*.json`, `fixtures/*.json`, never a `**`
+pattern, which also pulled in every package's own `data/` folder), so the
+deployed function carries them; `pnpm weight` keeps each function light
+(part 4). Part 4 checks it on the deployment, because a
 missing file passes locally.

@@ -4,7 +4,8 @@ The item page (spec 09) and its Summary answer one question: **what do I
 need, and where do I go for it?** They exist so the wiki is a fallback rather
 than the first stop. The catalog under them is `src/domain/catalog/`:
 `items.ts` builds the arsenal from the raw entries `src/infra/catalog/items.ts`
-reads out of `@wfcd/items`, and `dossier.ts` turns one item into its parts,
+reads out of `data/vendor/items.json`, the snapshot `pnpm data:items` writes
+from `@wfcd/items`, and `dossier.ts` turns one item into its parts,
 the arsenal items it is built from and the ones it goes into.
 
 ## What it carries, and why that list

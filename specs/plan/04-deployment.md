@@ -69,6 +69,7 @@ of the constitution:
 | Stories   | `pnpm test:stories`                           | A story fails to render, or the accessibility addon finds a violation |
 | Storybook | `pnpm storybook:build`                        | The catalogue does not build                                          |
 | App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture` | The app does not build                                                |
+| Weight    | `pnpm weight`                                 | A route's function carries more than 80 MB                            |
 
 `pnpm test:stories` runs every story as a test through Storybook's Vitest
 addon in a headless Chromium, with the accessibility checks on. It is kept out
@@ -147,3 +148,17 @@ task that creates the projects (T-03, on 2026-10-08), not assumed here:
   the owner as `VERCEL_AUTOMATION_BYPASS_SECRET` (T-30); with no secret it
   sends no header.
   That secret is `smoke.yml`'s only one; `check.yml` still holds none.
+- **Functions in a deployment** (added 2026-10-21, when phase 4's production
+  build failed). Hobby takes at most 12 functions in a deployment; with
+  Next.js, Vercel bundles the routes rendered on request into the fewest
+  functions it can
+  ([Vercel: functions created per deployment](https://vercel.com/docs/functions/runtimes#functions-created-per-deployment)).
+  A function's files weigh at most 250 MB uncompressed
+  ([function limitations, bundle size](https://vercel.com/docs/functions/limitations#bundle-size-limits)).
+  Each of the fourteen routes carried `@wfcd/items` and weighed about 122 MB,
+  and the build failed with more than 12 functions: what the failure implies,
+  and no page states, is that two routes that together pass 250 MB cannot
+  share a function. The next production build confirms it. The catalog is now read from a
+  snapshot in `data/vendor/` and each route weighs about 28 MB; `pnpm weight`
+  in `check.yml` fails a route past 80 MB, before Vercel does
+  ([`development.md`](../../docs/development.md#the-weight-of-a-function)).

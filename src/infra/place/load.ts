@@ -3,7 +3,6 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
-import Items from "@wfcd/items";
 import { parse as parseYaml } from "yaml";
 
 import { buildPlaceIndex, type PlaceView } from "@/domain/place/build";
@@ -22,6 +21,7 @@ import {
   type Research,
   type Systems,
 } from "@/domain/place/schema";
+import { readItems } from "@/infra/catalog/items";
 import { wikiModules } from "@/infra/wiki/modules";
 
 function readYaml(file: string): unknown {
@@ -72,11 +72,7 @@ export function loadResearch(): Research {
 }
 
 export function placeCatalog(): PlaceCatalog {
-  cachedCatalog ??= buildPlaceCatalog(
-    new Items({ ignoreEnemies: true } as ConstructorParameters<
-      typeof Items
-    >[0]) as unknown as RawEntry[],
-  );
+  cachedCatalog ??= buildPlaceCatalog(readItems<RawEntry>());
   return cachedCatalog;
 }
 

@@ -11,9 +11,16 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["warframe-worldstate-data"],
   outputFileTracingIncludes: {
     "/**": [
-      "./data/**/*",
-      "./fixtures/**/*",
+      "./data/*.yaml",
+      "./data/vendor/*.json",
+      "./fixtures/*.json",
       "./node_modules/warframe-worldstate-data/dist/data/*.json",
+    ],
+  },
+  outputFileTracingExcludes: {
+    "/**": [
+      "./node_modules/@wfcd/items/data/json/i18n/**/*",
+      "./node_modules/.pnpm/@wfcd+items@*/node_modules/@wfcd/items/data/json/i18n/**/*",
     ],
   },
 };
