@@ -62,6 +62,8 @@ interface Says {
   questsDetail: { quests: string[] };
   junctionsTitle: { count: number };
   junctionsDetail: { junctions: { junction: string; from: string | null }[] };
+  placesTitle: { count: number };
+  placesDetail: { places: { place: string; junction: string | null; from: string | null }[] };
   questStartTitle: { quest: string };
   intrinsicsTitle: { rank: number | null };
   intrinsicsDetail: None;
@@ -1738,6 +1740,8 @@ interface Linking {
 
 const QUESTS_ROW = "quests:";
 const JUNCTIONS_ROW = "junctions:";
+const PLACES_ROW = "places:";
+const PLACES_WIKI = "Star Chart";
 const QUESTS_WIKI = "Quests";
 const JUNCTIONS_WIKI = "Junction";
 const LIST_SEPARATOR = "|";
@@ -1788,7 +1792,37 @@ function gathered(data: CatalogData, rows: readonly StepRow[]): StepRow[] {
     }
     out.push(one);
   }
-  return out;
+  const places = out.filter((one) => one.id.startsWith(PLACE_ROW));
+  if (places.length < 2) return out;
+  return out.flatMap((one) => {
+    if (!one.id.startsWith(PLACE_ROW)) return [one];
+    return one === places[0]
+      ? [
+          placesRow(
+            data,
+            places.map((place) => place.id.slice(PLACE_ROW.length)),
+          ),
+        ]
+      : [];
+  });
+}
+
+function placesRow(data: CatalogData, names: readonly string[]): StepRow {
+  return row(
+    `${PLACES_ROW}${names.join(LIST_SEPARATOR)}`,
+    say("placesTitle", { count: names.length }),
+    {
+      detail: parts(
+        say("placesDetail", {
+          places: names.map((place) => {
+            const junction = junctionTo(data.wiki, place);
+            return { place, junction: junction?.name ?? null, from: junction?.from ?? null };
+          }),
+        }),
+      ),
+      wikiTitle: PLACES_WIKI,
+    },
+  );
 }
 
 function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking): StepRow[] {
@@ -2297,6 +2331,12 @@ function rowGap(entry: StepRow, reach: Reach): ReachGap | null {
   if (entry.id.startsWith(JUNCTIONS_ROW)) {
     for (const junction of entry.id.slice(JUNCTIONS_ROW.length).split(LIST_SEPARATOR)) {
       const gap = junctionGap(reach, junction.replace(JUNCTION, ""));
+      if (gap) return gap;
+    }
+  }
+  if (entry.id.startsWith(PLACES_ROW)) {
+    for (const place of entry.id.slice(PLACES_ROW.length).split(LIST_SEPARATOR)) {
+      const gap = junctionGap(reach, place);
       if (gap) return gap;
     }
   }

@@ -402,6 +402,9 @@ a reading of the earlier build against it was put to them.
   "just now" after a fresh read, "less than a minute ago", "1 minute ago",
   "{n} minutes ago", "1 hour ago", "{n} hours ago" (owner, 2026-10-14). The
   frame drew 24 until the owner corrected it to 12 on 2026-10-04.
+- Once the page loads, the browser writes the next read in the player's own
+  time, in place of UTC: "**9:30 AM your local time.**" (owner,
+  2026-10-21). The server cannot know the time zone, so it draws UTC alone.
 
 ## Resume: picking the last update played
 
@@ -825,6 +828,11 @@ settled where the frames disagreed with each other or with the docs.
   intent. The owner chose the drawing. It also reverses the choice of the
   lead over Mechanics for missions that `step-by-step.md` records; lore
   sections stay out.
+- Trimmed with no hand-written text (owner, 2026-10-21): a mission type's
+  Mechanics gives what comes before its first subsection, where the
+  variants begin (Mirror Defense's Tyana Pass and Munio); a line that is not a
+  sentence is dropped, so an audio caption or a list's lead never shows; a
+  footnote's number is taken off; and a passage stops at three sentences.
 
 ### BR-49 · Relic rows: Open the best, Or the rest
 
@@ -1085,8 +1093,10 @@ on 2026-10-08.
   Natah and The Second Dream."); more than one Junction share one row too,
   "Clear {n} Junctions", whose detail names each with the planet it is on. A
   single quest or Junction keeps its own row. A "Reach" row whose Junction the
-  Junctions row already names is dropped. The Hex goes from seventeen rows to
-  two.
+  Junctions row already names is dropped, and more than one place left to
+  reach share one row, "Reach {n} places", naming each with the Junction that
+  opens it when there is one (Ash's three Proxima, owner 2026-10-21). The Hex
+  goes from seventeen rows to two.
 - The row sits where the first of its kind stood. What the profile confirms is
   dropped before the rows are gathered (BR-28), and the lock (BR-63) reads the
   first Junction in the row the profile proves unmet.

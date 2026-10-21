@@ -10,7 +10,7 @@ import { List, ListEntry } from "@/ui/List/List";
 import { Segmented } from "@/ui/Segmented/Segmented";
 
 import styles from "./Profile.module.css";
-import { readCycle } from "./read-cycle";
+import { readCycle, useLocalTime } from "./read-cycle";
 import { Shell } from "./Shell";
 import type { ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
@@ -26,6 +26,7 @@ export function Profile({
 }) {
   const { player, voice, disconnect, setOnkko } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
+  const local = useLocalTime(player.nextReadAt);
   const [, start] = useTransition();
   const choose = (value: string) => {
     setChoice(value);
@@ -97,7 +98,7 @@ export function Profile({
             </Button>
           </form>
           <p className={styles.cycle}>
-            {readCycle(player).map((part, index) => (
+            {readCycle(player, local).map((part, index) => (
               <span key={index} className={part.strong ? styles.strong : undefined}>
                 {part.text}
               </span>

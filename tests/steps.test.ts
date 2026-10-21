@@ -254,3 +254,11 @@ describe("similar prerequisites share one row", () => {
     expect(titles).toContain("Complete 4 quests");
   });
 });
+
+describe("places to reach share one row", () => {
+  it("gathers Ash's three Proxima into one Reach row", () => {
+    const titles = viewOf("Ash").blocks[0]?.cards[0]?.groups[0]?.rows.map((row) => row.title) ?? [];
+    expect(titles).toContain("Reach 3 places");
+    expect(titles.filter((title) => title.startsWith("Reach "))).toHaveLength(1);
+  });
+});

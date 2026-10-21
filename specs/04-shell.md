@@ -102,7 +102,10 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
 3. **Disconnect**, a red button across the width. It forgets `wf_account`,
    `wf_since` and `wf_onkko` and opens `/connect` with an empty field.
 4. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
-   read was **{age}**, and the next one will be at **{HH:MM} hours UTC**."
+   read was **{age}**, and the next one will be at **{h:mm AM} your local
+   time**." The page is drawn with "**{HH:MM} hours UTC**", which the
+   browser turns into the player's own time once it loads, since only the
+   browser knows its time zone (owner, 2026-10-21).
 
 The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source.
 
@@ -138,7 +141,8 @@ Disconnect uses; Profile is a screen.
 4. From 840 the tabs sit in the header; at 360, 600, 840, 1280 and 1440
    nothing overlaps or is cut.
 5. Disconnect clears both cookies and lands on `/connect` with an empty field.
-6. The read cycle shows the real last read and the next read in UTC.
+6. The read cycle shows the real last read and the next read in the player's
+   own time.
 7. Every part has its stories, in every state the frames draw.
 8. `pnpm check` passes.
 

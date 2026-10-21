@@ -21,7 +21,7 @@ export const CONNECT = {
   exampleLead: "It will look something like this:",
   example: "gid   4b2e9f17c3a85d06e1f74a9c",
   publicNote:
-    "It’s a safe public read endpoint, the same one the game uses to view another player.",
+    "It’s safe: it’s the same public profile the game shows when you look at another player. We only remember your ID on this device, and Disconnect forgets it.",
   demoTitle: "Explore with a demo",
   demo: (name: string, masteryRank: number) => `${name} (Mastery Rank ${masteryRank})`,
 } as const;

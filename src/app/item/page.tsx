@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { chromeOf } from "@/app/chrome";
@@ -8,6 +9,15 @@ import { openedFrom, tabHome } from "@/screens/shell/tabs";
 
 import { itemOf } from "./item";
 import { ItemTicks } from "./ItemTicks";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}): Promise<Metadata> {
+  const name = readParam(await searchParams, "name");
+  return name ? { title: name } : {};
+}
 
 export default async function ItemPage({ searchParams }: { searchParams: SearchParams }) {
   const screen = await requireScreen();

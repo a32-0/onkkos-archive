@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { resume } from "@/app/actions";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen, startHereOf } from "@/app/screen";
@@ -9,7 +10,10 @@ import { readSince } from "@/infra/session";
 import { Resume } from "@/screens/resume/Resume";
 import { Summary } from "@/screens/summary/Summary";
 
+import { PAGE_TITLES } from "@/content/app";
 import { metaOf, summaryOf } from "./summary";
+
+export const metadata: Metadata = { title: PAGE_TITLES.resume };
 
 export default async function CatchUpPage({ searchParams }: { searchParams: SearchParams }) {
   const screen = await requireScreen();

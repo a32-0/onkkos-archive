@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { PAGE_TITLES } from "@/content/app";
 import { connect, demo } from "@/app/actions";
 import { readParam, type SearchParams } from "@/domain/types/next";
 import { toDisplayProfile } from "@/domain/profile/display";
@@ -19,6 +21,8 @@ function demos(): Demo[] {
     return [{ key, name: displayName ?? key, masteryRank: masteryRank ?? 0 }];
   });
 }
+
+export const metadata: Metadata = { title: PAGE_TITLES.connect };
 
 export default async function ConnectPage({ searchParams }: { searchParams: SearchParams }) {
   const query = await searchParams;

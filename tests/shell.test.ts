@@ -69,6 +69,12 @@ describe("the read cycle (BR-07)", () => {
     );
   });
 
+  it("names the next read in the player's own time once the browser knows it", () => {
+    expect(text(readCycle(PLAYER, "9:30 AM"))).toBe(
+      "Data is read every 12 hours. The last read was 12 minutes ago, and the next one will be at 9:30 AM your local time.",
+    );
+  });
+
   it("bolds the period, the age and the next read", () => {
     const strong = readCycle({ ...PLAYER, minutesSinceRead: 0 }).filter((part) => part.strong);
     expect(strong.map((part) => part.text)).toEqual([

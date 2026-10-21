@@ -94,6 +94,16 @@ function costsOf(costs: readonly Cost[]): string {
   return listOf(costs.map((one) => `${number(one.amount)} ${one.currency}`));
 }
 
+interface PlaceStop {
+  place: string;
+  junction: string | null;
+  from: string | null;
+}
+
+function placeThrough({ place, junction, from }: PlaceStop): string {
+  return junction === null || from === null ? place : `${place}, past the ${junction} on ${from}`;
+}
+
 function junctionOn({ junction, from }: { junction: string; from: string | null }): string {
   return from === null ? junction : `the ${junction} on ${from}`;
 }
@@ -167,6 +177,7 @@ export const TITLES = {
   questTitle: ({ quest }: { quest: string }) => `Complete ${quest}`,
   questsTitle: ({ count }: { count: number }) => `Complete ${count} quests`,
   junctionsTitle: ({ count }: { count: number }) => `Clear ${count} Junctions`,
+  placesTitle: ({ count }: { count: number }) => `Reach ${count} places`,
   questStartTitle: ({ quest }: { quest: string }) => `Start ${quest}`,
   intrinsicsTitle: ({ rank }: { rank: number | null }) =>
     rank === null ? "Railjack Intrinsics" : `Railjack Intrinsics rank ${rank}`,
@@ -289,6 +300,7 @@ export const DETAILS = {
     `In this order: ${listOf(quests)}. You will find them in your Codex.`,
   junctionsDetail: ({ junctions }: { junctions: { junction: string; from: string | null }[] }) =>
     `${capital(listOf(junctions.map(junctionOn)))}.`,
+  placesDetail: ({ places }: { places: PlaceStop[] }) => `${listOf(places.map(placeThrough))}.`,
   intrinsicsDetail: () => "Earned by flying Railjack missions.",
   nemesisDetail: () => "The node only opens while one is hunting you.",
   clanDetail: ({ item, lab }: { item: string; lab: string }) =>

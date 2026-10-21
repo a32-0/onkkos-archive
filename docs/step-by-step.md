@@ -59,9 +59,12 @@ is named by its node (BR-27).
 
 The detail is one line of data ("It drops at rotation C, 7.5% a run, so about
 13 runs for an even chance."). The prose under it is the wiki's passage in
-its paragraphs (BR-48): a mission type's Mechanics section, an item's
-Acquisition section for a route only prose names, and the page's lead
-otherwise. "Wiki ↗" closes the passage; a thing the app has its own page for
+its paragraphs (BR-48): a mission type's Mechanics section up to its first
+subsection, an item's Acquisition section for a route only prose names, and
+the page's lead otherwise. `brief()` in `src/infra/wiki/client.ts` trims it
+with no hand-written text: a line that is not a sentence is dropped (a
+list's lead ending in a colon, an audio caption), a footnote's number is
+taken off, and the passage stops at three sentences. "Wiki ↗" closes the passage; a thing the app has its own page for
 reads "How to get it" and opens that page instead (BR-30).
 
 ## Ticks only on Components

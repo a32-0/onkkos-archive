@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
 import { MAP } from "@/content/system";
@@ -6,7 +7,10 @@ import { placesRoute } from "@/routes";
 import { SystemList } from "@/screens/map/SystemList";
 import { Shell } from "@/screens/shell/Shell";
 
+import { PAGE_TITLES } from "@/content/app";
 import { mapAt, mapOf } from "../map";
+
+export const metadata: Metadata = { title: PAGE_TITLES.systems };
 
 export default async function SystemsPage({ searchParams }: { searchParams: SearchParams }) {
   const screen = await requireScreen();

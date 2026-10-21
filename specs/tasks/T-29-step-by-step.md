@@ -105,6 +105,33 @@ Written on 2026-10-19, during the task.
 - Goal's search finds every quest of the spine, "Quest" as its catalogue
   (spec 08).
 
+## Owner review, 2026-10-21
+
+- The wiki's prose is trimmed by rule, with no hand-written text: Mechanics
+  up to its first subsection, only lines that are sentences, no footnote
+  numbers, three sentences at most (BR-48). Citrine's Mirror Defense goes
+  from every variant and its audio captions to its three opening sentences.
+- The timeline's line runs from under a diamond to 4 px above the next one,
+  across the space between rows, as the frames draw it.
+
+## Owner review, 2026-10-21 (second)
+
+- Places to reach share one row too, "Reach {n} places" (BR-66); Ash's three
+  Proxima become one row, and Figma's Ash frame moves them out of each part
+  into Prerequisites, as the code has them.
+- The line runs on unbroken into an alternative ("Or play …"), which has no
+  diamond of its own.
+- Every page names itself in the browser's tab, "{Page} · Onkko's Archive",
+  an item or a category by its own name; the favicon is the quill of the
+  imagotype (`421:615`), `src/app/icon.svg`.
+- Profile writes the next read in the player's own time, "9:30 AM your local
+  time." (spec 04, BR-07).
+- Connect's public note says, in plain words, what is kept: "It's safe: it's
+  the same public profile the game shows when you look at another player. We
+  only remember your ID on this device, and Disconnect forgets it." No consent
+  banner, since the app keeps no cookie it does not need (spec 02). Connect's
+  cards sit 16 px apart, as the frame draws them.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

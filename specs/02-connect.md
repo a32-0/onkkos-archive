@@ -52,8 +52,11 @@ tabs or player chip. From the top, as `661:4354` draws it:
    same browser, open the developer tools and the cookies (**On Firefox:**
    Storage › Cookies, **On Chrome:** Application › Cookies, the browsers'
    names in bold); copy the value of the `gid` cookie. Then an example of that cookie and the
-   note "It's a safe public read endpoint, the same one the game uses to view
-   another player."
+   note "It's safe: it's the same public profile the game shows when you look at
+   another player. We only remember your ID on this device, and Disconnect
+   forgets it." The cookie is the app's only record of the
+   player and is needed to read their profile, so no consent banner is shown
+   (owner, 2026-10-21).
 4. **Explore with a demo**: **Ordis (Mastery Rank 2)**, then **Cy (Mastery
    Rank 27)**.
 

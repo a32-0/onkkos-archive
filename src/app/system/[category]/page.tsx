@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+import { MAP } from "@/content/system";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
 import { readParam, type SearchParams } from "@/domain/types/next";
@@ -8,6 +10,16 @@ import { nextLens } from "@/screens/map/lens";
 import { MapCategory } from "@/screens/map/MapCategory";
 
 import { mapAt, mapOf } from "../map";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const group = (MAP.groups as Record<string, { name: string } | undefined>)[category];
+  return group ? { title: group.name } : {};
+}
 
 export default async function MapCategoryPage({
   params,

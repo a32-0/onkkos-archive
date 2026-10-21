@@ -8,7 +8,7 @@ import { fontVariables } from "./fonts";
 import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
-  title: APP.name,
+  title: { default: APP.name, template: `%s · ${APP.name}` },
   description: APP.description,
 };
 

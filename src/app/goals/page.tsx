@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { PAGE_TITLES } from "@/content/app";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen, startHereOf } from "@/app/screen";
 import { lackingNecramechs } from "@/domain/catalog/necramechs";
@@ -80,6 +82,8 @@ function goalsOf(screen: Screen): GoalInput[] {
     return input ? [input] : [];
   });
 }
+
+export const metadata: Metadata = { title: PAGE_TITLES.goal };
 
 export default async function GoalsPage() {
   const screen = await requireScreen();

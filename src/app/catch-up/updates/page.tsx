@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { remeasure, resume } from "@/app/actions";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
@@ -6,7 +7,10 @@ import { readSince } from "@/infra/session";
 import { catchUpAt, ROUTES } from "@/routes";
 import { Updates } from "@/screens/summary/Updates";
 
+import { PAGE_TITLES } from "@/content/app";
 import { otherUpdates } from "../summary";
+
+export const metadata: Metadata = { title: PAGE_TITLES.updates };
 
 export default async function UpdatesPage({ searchParams }: { searchParams: SearchParams }) {
   const screen = await requireScreen();

@@ -115,7 +115,8 @@ A vertical gold line runs down the section. Each row:
 - **The detail**, one line of data when there is one: "It drops at rotation C,
   7.5% a run, so about 13 runs for an even chance." "Uncommon. 11% intact and
   20% radiant."
-- **The prose**, the wiki's passage in its paragraphs (BR-48).
+- **The prose**, the wiki's passage in its paragraphs, three sentences at
+  most (BR-48).
 - **Wiki ↗**, in the link colour, closing the passage. For a thing the app
   answers on its own page it reads "How to get it" and opens that page
   (BR-30).

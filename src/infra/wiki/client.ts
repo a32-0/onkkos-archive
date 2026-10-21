@@ -12,6 +12,12 @@ const HATNOTE = /^(For |This article is about|Not to be confused with)/;
 const BOILERPLATE = /^(All drop rates data|See Mission Rewards|For more detailed|visit here)/i;
 const ATTRIBUTION = /—[^—.!?]{1,60}$/;
 const QUOTE_LINES = 3;
+const MAX_SENTENCES = 3;
+const SENTENCE_END = /[.!?]["'”’)]*$/;
+const SENTENCE_BREAK = /(?<=[.!?]["'”’)]*)\s+(?=[A-Z0-9"“])/;
+const MEDIA = /\(download, history\)/;
+const FOOTNOTE = /(?<=[A-Za-z)][.!?,;:])\d+(?=\s|$)/g;
+const NBSP = / /g;
 const MECHANICS = ["Mechanics"] as const;
 const ACQUISITION = ["Acquisition"] as const;
 
@@ -91,6 +97,7 @@ function oneSection(extract: string, wanted: string): string | null {
     if (match) {
       const level = trimmed.match(/^=+/)?.[0].length ?? 2;
       if (depth > 0 && level <= depth) break;
+      if (depth > 0) collected.push(trimmed);
       if (depth === 0 && (match[1] ?? "").toLowerCase() === wanted) depth = level;
       continue;
     }
@@ -115,11 +122,25 @@ export function paragraphs(body: string): string[] {
   return body
     .split(/\n+/)
     .map(tidy)
-    .filter((line) => line.length > 0);
+    .filter((line) => SENTENCE_END.test(line) && !MEDIA.test(line));
+}
+
+export function brief(lines: readonly string[]): string[] {
+  const kept: string[] = [];
+  let left = MAX_SENTENCES;
+  for (const line of lines) {
+    if (left === 0) break;
+    const sentences = line.split(SENTENCE_BREAK).slice(0, left);
+    left -= sentences.length;
+    kept.push(sentences.join(" "));
+  }
+  return kept;
 }
 
 function tidy(line: string): string {
   return line
+    .replace(NBSP, " ")
+    .replace(FOOTNOTE, "")
     .replace(/\s{2,}/g, " ")
     .replace(/\s+([.,;:])/g, "$1")
     .trim();
@@ -151,7 +172,9 @@ function passageOf(extract: string, source: ProseSource, fragment: string | null
   switch (source) {
     case "mechanics": {
       const body = sectionOf(extract, MECHANICS);
-      return body === null ? lead(extract) : paragraphs(body);
+      if (body === null) return lead(extract);
+      const intro = paragraphs(leadOf(body) ?? "");
+      return intro.length > 0 ? intro : paragraphs(body);
     }
     case "acquisition": {
       const body = sectionOf(extract, fragment === null ? ACQUISITION : [fragment]);
@@ -165,6 +188,6 @@ function passageOf(extract: string, source: ProseSource, fragment: string | null
 export async function wikiPassage(title: string, source: ProseSource): Promise<string[] | null> {
   const extract = await wholePage(title);
   if (extract === null) return null;
-  const passage = passageOf(extract, source, fragmentOf(title));
+  const passage = brief(passageOf(extract, source, fragmentOf(title)));
   return passage.length > 0 ? passage : null;
 }

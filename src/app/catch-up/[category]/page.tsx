@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+import { SUMMARY } from "@/content/catch-up";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
 import { readParam, type SearchParams } from "@/domain/types/next";
@@ -8,6 +10,16 @@ import { catchUpAt } from "@/routes";
 import { SummaryCategory } from "@/screens/summary/SummaryCategory";
 
 import { summaryOf } from "../summary";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const group = (SUMMARY.groups as Record<string, { name: string } | undefined>)[category];
+  return group ? { title: group.name } : {};
+}
 
 export default async function CatchUpCategoryPage({
   params,

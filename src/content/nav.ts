@@ -66,12 +66,14 @@ export const SHELL = {
     const hours = Math.floor(minutes / 60);
     return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
   },
-  readCycle: (age: string, next: string) => [
+  readCycle: (age: string, next: string, local: string | null) => [
     { text: "Data is read every " },
     { text: "12 hours", strong: true },
     { text: ". The last read was " },
     { text: `${age},`, strong: true },
     { text: " and the next one will be at " },
-    { text: `${next} hours UTC.`, strong: true },
+    local === null
+      ? { text: `${next} hours UTC.`, strong: true }
+      : { text: `${local} your local time.`, strong: true },
   ],
 } as const;

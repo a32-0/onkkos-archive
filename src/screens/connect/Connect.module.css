@@ -2,12 +2,12 @@
   --connect-column: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-7);
+  gap: var(--space-6);
   box-sizing: border-box;
   width: 100%;
   max-width: var(--connect-column);
   margin: 0 auto;
-  padding: var(--space-7) var(--gutter);
+  padding: var(--space-6) var(--gutter);
 }
 
 .intro {
