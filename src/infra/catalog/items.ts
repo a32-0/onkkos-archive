@@ -21,14 +21,21 @@ interface Snapshot {
   categories: Record<string, unknown[]>;
 }
 
-let snapshot: string | undefined;
+let snapshot: Map<string, string> | undefined;
 let cached: CatalogItem[] | undefined;
 let cachedResources: CatalogResource[] | undefined;
 let cachedGlyphs: Map<string, string> | undefined;
 
-function readSnapshot(): Snapshot {
-  snapshot ??= readFileSync(path.join(process.cwd(), "data", "vendor", "items.json"), "utf8");
-  return JSON.parse(snapshot) as Snapshot;
+function readSnapshot(): Map<string, string> {
+  if (!snapshot) {
+    const { categories } = JSON.parse(
+      readFileSync(path.join(process.cwd(), "data", "vendor", "items.json"), "utf8"),
+    ) as Snapshot;
+    snapshot = new Map(
+      Object.entries(categories).map(([name, items]) => [name, JSON.stringify(items)]),
+    );
+  }
+  return snapshot;
 }
 
 function byName(a: RawItem, b: RawItem): number {
@@ -36,9 +43,12 @@ function byName(a: RawItem, b: RawItem): number {
 }
 
 export function readItems<T>(category?: readonly string[]): T[] {
-  const { categories } = readSnapshot();
-  const wanted = category ?? Object.keys(categories);
-  const items = wanted.flatMap((name) => categories[name] ?? []) as RawItem[];
+  const categories = readSnapshot();
+  const wanted = category ?? [...categories.keys()];
+  const items = wanted.flatMap((name) => {
+    const text = categories.get(name);
+    return text === undefined ? [] : (JSON.parse(text) as RawItem[]);
+  });
   return items.sort(byName) as unknown as T[];
 }
 
