@@ -21,7 +21,7 @@ export interface GoalCardView {
 }
 
 export interface SearchInput {
-  kind: "item" | "collectible" | "place";
+  kind: "item" | "collectible" | "place" | "quest";
   name: string;
   catalogue: keyof typeof CATALOGUES;
   art: string | null;

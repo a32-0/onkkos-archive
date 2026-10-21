@@ -130,7 +130,7 @@ describe("what a Summary row names and opens (spec 09)", () => {
       briefOf(planOf(name))
         .flatMap((block) => block.lines)
         .find((line) => line.id === id)?.imageUrl;
-    expect(art("Mesa", "credits")).toBe("https://wiki.warframe.com/images/Credits.png");
+    expect(art("Mesa", "credits")).toMatch(/\/Credits\.png\?\w+$/);
     expect(art("Broken Scepter", "resource:Kuva")).toContain("Kuva.png");
     expect(art("Ack & Brunt", "resource:Cryotic")).toContain("cdn.warframestat.us");
   });

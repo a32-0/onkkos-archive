@@ -61,7 +61,7 @@ export function Shell({
         {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={BackLink} />}
       </div>
       <main className={styles.main}>{children}</main>
-      {tabs && (
+      {tabs && !bar && (
         <div className={styles.bottom}>
           <TabBar label={NAV.label} items={items} placement="bottom" link={Link} />
         </div>

@@ -78,7 +78,8 @@ Summary's.
 In this order; a section with nothing in it does not render.
 
 1. **Prerequisites**: facts to read, never to tick. Mastery Rank (never 0,
-   BR-22), the slot (BR-23), quests root first (BR-28), hub unlocks, reaching
+   BR-22), the slot (BR-23), quests root first (BR-28) and Junctions, each
+   kind in one row when there is more than one (BR-66), hub unlocks, reaching
    a place, gear owned, standing, clan, a status row ("Prime Vaulted"), and
    last, "Buy … Blueprint" when the main blueprint is bought.
 2. **How to get**, when the parts share a source, or the system's steps

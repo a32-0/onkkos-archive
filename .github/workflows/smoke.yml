@@ -1,0 +1,41 @@
+name: smoke
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      startsWith(github.event.deployment_status.environment, 'Production') &&
+      !contains(github.event.deployment_status.environment, 'storybook')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BASE: ${{ github.event.deployment_status.environment_url || github.event.deployment_status.target_url }}
+      BYPASS: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+      DEMO: "000000000000000000000002"
+    steps:
+      - name: Connect
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' ${BYPASS:+-H "x-vercel-protection-bypass: $BYPASS"} "$BASE/connect")
+          echo "/connect $code"
+          test "$code" = 200
+
+      - name: The demo profile, from fixtures
+        run: |
+          code=$(curl -sS -o /dev/null -w '%{http_code}' ${BYPASS:+-H "x-vercel-protection-bypass: $BYPASS"} "$BASE/api/profile/$DEMO")
+          echo "/api/profile/$DEMO $code"
+          test "$code" = 200
+
+      - name: The map, from data
+        run: |
+          out=$(curl -sS -L -o /dev/null -w '%{http_code} %{url_effective}' -b "wf_account=$DEMO" ${BYPASS:+-H "x-vercel-protection-bypass: $BYPASS"} "$BASE/system")
+          echo "/system $out"
+          case "$out" in
+            "200 $BASE/system"*) ;;
+            *) exit 1 ;;
+          esac

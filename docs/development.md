@@ -65,6 +65,17 @@ against the colour blindness matrices. It reports and never fails;
 [`cetus.md`](cetus.md#the-palette-is-measured) explains what it
 measures and why.
 
+## Opening the dev server from a phone
+
+`pnpm dev -H 0.0.0.0` serves the app on the computer's address in the local
+network, and a phone on the same network opens it there
+(`http://192.168.x.x:3000`). Next.js blocks its development scripts for any
+host but `localhost` unless the host is listed, which leaves the page drawn
+but its buttons dead. `allowedDevOrigins` in `next.config.ts` lists the
+private ranges, `192.168.*.*`, `10.*.*.*` and `172.*.*.*`, so no address of
+anyone's machine is committed. It applies to `next dev` alone; `next start`
+and production never block a host. Restart the dev server after changing it.
+
 ## Continuous integration
 
 `.github/workflows/check.yml` runs the gates on every push and every pull

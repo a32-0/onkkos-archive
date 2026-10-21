@@ -10,6 +10,7 @@ const OUT = path.join(ROOT, "data", "vendor");
 const WIKI_API = "https://wiki.warframe.com/api.php";
 const STANDING = "Standing";
 const STOCK = "Stock (";
+const PAGES = ["Credits"];
 
 async function getJson(url) {
   const response = await fetch(url, { headers: { accept: "application/json" } });
@@ -27,7 +28,7 @@ function standingVendors() {
 async function main() {
   const vendors = standingVendors();
   const byLink = new Map(vendors.map((vendor) => [vendor.link, vendor]));
-  const links = [...byLink.keys()];
+  const links = [...byLink.keys(), ...PAGES];
   const art = {};
   for (let i = 0; i < links.length; i += 40) {
     const batch = links.slice(i, i + 40);
@@ -40,7 +41,9 @@ async function main() {
     for (const entry of payload.query?.redirects ?? []) back.set(entry.to, entry.from);
     for (const page of Object.values(payload.query?.pages ?? {})) {
       const source = page.original?.source ?? page.thumbnail?.source ?? null;
-      const vendor = byLink.get(back.get(page.title) ?? page.title);
+      const asked = back.get(page.title) ?? page.title;
+      if (source !== null && PAGES.includes(asked)) art[asked] = source;
+      const vendor = byLink.get(asked);
       if (source === null || !vendor) continue;
       art[vendor.name] = source;
       if (vendor.currency !== STANDING) art[vendor.currency] = source;

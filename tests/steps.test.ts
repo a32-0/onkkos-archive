@@ -217,3 +217,40 @@ describe("a quest's Step by step (BR-37)", () => {
     expect(start?.detail).toBe(quest.start);
   });
 });
+
+describe("similar prerequisites share one row", () => {
+  const hex = data.spine.arcs.flatMap((arc) => arc.quests).find((one) => one.name === "The Hex");
+
+  it("gathers The Hex's quests and Junctions into one row each, in order", () => {
+    if (!hex) throw new Error("The Hex is not in the spine");
+    const rows = questStepPlan(data, hex, reader).sections[0]?.groups[0]?.rows ?? [];
+    const quests = rows.filter((row) => row.id.startsWith("quests:"));
+    const junctions = rows.filter((row) => row.id.startsWith("junctions:"));
+    expect(quests).toHaveLength(1);
+    expect(junctions).toHaveLength(1);
+    expect(rows.some((row) => row.id.startsWith("quest:") || row.id.startsWith("junction:"))).toBe(
+      false,
+    );
+    expect(quests[0]?.title).toEqual({ say: "questsTitle", count: 12 });
+    expect(quests[0]?.id.split("|").at(-1)).toBe("The Lotus Eaters");
+  });
+
+  it("drops a Reach row its Junction already names", () => {
+    const war = data.spine.arcs
+      .flatMap((arc) => arc.quests)
+      .find((one) => one.name === "The War Within");
+    if (!war) throw new Error("The War Within is not in the spine");
+    const ids = (questStepPlan(data, war, reader).sections[0]?.groups[0]?.rows ?? []).map(
+      (row) => row.id,
+    );
+    expect(ids).not.toContain("place:Pluto");
+    expect(ids).not.toContain("place:Sedna");
+  });
+
+  it("titles a gathered row by its count", () => {
+    const view = viewOf("Kuva Sobek");
+    const titles = view.blocks[0]?.cards[0]?.groups[0]?.rows.map((row) => row.title) ?? [];
+    expect(titles).toContain("Clear 4 Junctions");
+    expect(titles).toContain("Complete 4 quests");
+  });
+});

@@ -20,7 +20,7 @@ import { canonicalPlace } from "@/domain/place/schema";
 import { itemRanks, stateByName } from "@/domain/place/state";
 import { wikiUrl } from "@/domain/wiki-links";
 import { catalogData } from "@/infra/catalog/data";
-import { updateArt } from "@/infra/catalog/update-art";
+import { questArt } from "@/infra/catalog/update-art";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
 import type { Screen } from "@/infra/screen";
 import { withProse } from "@/infra/wiki/prose";
@@ -137,7 +137,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
       item?.imageUrl ??
       collectible?.imageUrl ??
       entries.get(name)?.imageUrl ??
-      (quest ? (updateArt()[name] ?? null) : null),
+      (quest ? questArt(quest) : null),
     blueprint: BLUEPRINT_ART,
     prime: item?.isPrime ?? false,
     state: item

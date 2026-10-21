@@ -58,6 +58,10 @@ interface Says {
   masteryUnknownDetail: None;
   questTitle: { quest: string };
   questDetail: None;
+  questsTitle: { count: number };
+  questsDetail: { quests: string[] };
+  junctionsTitle: { count: number };
+  junctionsDetail: { junctions: { junction: string; from: string | null }[] };
   questStartTitle: { quest: string };
   intrinsicsTitle: { rank: number | null };
   intrinsicsDetail: None;
@@ -352,7 +356,6 @@ const FOCUS_STORE = "the Focus Represent Store";
 const AYA = "Aya";
 const CAVALERO = "Cavalero";
 const CREDITS = "Credits";
-const CREDITS_ART = "https://wiki.warframe.com/images/Credits.png";
 const DUCATS = "Orokin Ducats";
 
 const MASTERY_WIKI = "Mastery Rank";
@@ -1160,7 +1163,7 @@ function gearGroups(data: CatalogData, sections: readonly StepSection[]): StepGr
       rows.push(
         row(`gear:${name}:credits`, say("creditsTitle", { credits: recipe.credits * count }), {
           wikiTitle: CREDITS,
-          imageUrl: CREDITS_ART,
+          imageUrl: data.vendorArt[CREDITS] ?? null,
           thing: CREDITS,
         }),
       );
@@ -1262,7 +1265,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     elsewhere.push(
       row("credits", say("creditsTitle", { credits: found.totals.credits }), {
         wikiTitle: CREDITS,
-        imageUrl: CREDITS_ART,
+        imageUrl: data.vendorArt[CREDITS] ?? null,
         thing: CREDITS,
       }),
     );
@@ -1546,7 +1549,7 @@ function baroComponents(data: CatalogData, system: AcquisitionSystem): StepSecti
     rows.push(
       row("credits", say("creditsTitle", { credits: system.credits }), {
         wikiTitle: CREDITS,
-        imageUrl: CREDITS_ART,
+        imageUrl: data.vendorArt[CREDITS] ?? null,
         thing: CREDITS,
       }),
     );
@@ -1702,6 +1705,7 @@ function vaultedPlan(
 }
 
 const QUEST_ROW = "quest:";
+const PLACE_ROW = "place:";
 const JUNCTION_ROW = "junction:";
 const PREREQUISITES = "prerequisites";
 
@@ -1732,6 +1736,61 @@ interface Linking {
   done: ReadonlySet<string>;
 }
 
+const QUESTS_ROW = "quests:";
+const JUNCTIONS_ROW = "junctions:";
+const QUESTS_WIKI = "Quests";
+const JUNCTIONS_WIKI = "Junction";
+const LIST_SEPARATOR = "|";
+
+function questsRow(names: readonly string[]): StepRow {
+  return row(
+    `${QUESTS_ROW}${names.join(LIST_SEPARATOR)}`,
+    say("questsTitle", { count: names.length }),
+    {
+      detail: parts(say("questsDetail", { quests: [...names] })),
+      wikiTitle: QUESTS_WIKI,
+    },
+  );
+}
+
+function junctionsRow(data: CatalogData, names: readonly string[]): StepRow {
+  return row(
+    `${JUNCTIONS_ROW}${names.join(LIST_SEPARATOR)}`,
+    say("junctionsTitle", { count: names.length }),
+    {
+      detail: parts(
+        say("junctionsDetail", {
+          junctions: names.map((junction) => ({ junction, from: junctionFrom(data, junction) })),
+        }),
+      ),
+      wikiTitle: JUNCTIONS_WIKI,
+    },
+  );
+}
+
+function gathered(data: CatalogData, rows: readonly StepRow[]): StepRow[] {
+  const quests = rows.filter((one) => one.id.startsWith(QUEST_ROW));
+  const junctions = rows.filter((one) => one.id.startsWith(JUNCTION_ROW));
+  const junctionNames = junctions.map((one) => one.id.slice(JUNCTION_ROW.length));
+  const cleared = new Set(junctionNames);
+  const out: StepRow[] = [];
+  for (const one of rows) {
+    if (one.id.startsWith(PLACE_ROW) && cleared.has(`${one.id.slice(PLACE_ROW.length)} Junction`)) {
+      continue;
+    }
+    if (quests.length > 1 && one.id.startsWith(QUEST_ROW)) {
+      if (one === quests[0]) out.push(questsRow(quests.map((q) => q.id.slice(QUEST_ROW.length))));
+      continue;
+    }
+    if (junctions.length > 1 && one.id.startsWith(JUNCTION_ROW)) {
+      if (one === junctions[0]) out.push(junctionsRow(data, junctionNames));
+      continue;
+    }
+    out.push(one);
+  }
+  return out;
+}
+
 function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking): StepRow[] {
   const past = settled(data, linking.done);
   const kept = withoutRepeats(rows.filter((one) => pending(one, past)));
@@ -1741,7 +1800,10 @@ function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking)
   const needed = Math.max(linking.masteryReq, ...questMastery);
   return [
     ...masteryRows(needed, linking.masteryRank),
-    ...kept.filter((one) => one.id !== MASTERY_ROW),
+    ...gathered(
+      data,
+      kept.filter((one) => one.id !== MASTERY_ROW),
+    ),
   ];
 }
 
@@ -2219,8 +2281,6 @@ export interface PlanLock {
   gap: ReachGap;
 }
 
-const PLACE_ROW = "place:";
-
 function junctionGap(reach: Reach, place: string): ReachGap | null {
   const gap = placeGap(reach, place);
   return gap?.kind === "junction" ? gap : null;
@@ -2233,6 +2293,12 @@ function rowGap(entry: StepRow, reach: Reach): ReachGap | null {
   if (entry.id.startsWith(PLACE_ROW)) return junctionGap(reach, entry.id.slice(PLACE_ROW.length));
   if (entry.id.startsWith(JUNCTION_ROW)) {
     return junctionGap(reach, entry.id.slice(JUNCTION_ROW.length).replace(JUNCTION, ""));
+  }
+  if (entry.id.startsWith(JUNCTIONS_ROW)) {
+    for (const junction of entry.id.slice(JUNCTIONS_ROW.length).split(LIST_SEPARATOR)) {
+      const gap = junctionGap(reach, junction.replace(JUNCTION, ""));
+      if (gap) return gap;
+    }
   }
   return null;
 }

@@ -1,10 +1,10 @@
 # T-29 · Screen: Step by step
 
-|          |                                                                                                  |
-| -------- | ------------------------------------------------------------------------------------------------ |
-| Phase    | 4. Screens                                                                                       |
-| Serves   | [spec 10](../10-step-by-step.md); [plan 1](../plan/01-repository.md); BR-28, BR-37, BR-48, BR-63 |
-| Waits on | [T-28](T-28-item.md)                                                                             |
+|          |                                                                                                         |
+| -------- | ------------------------------------------------------------------------------------------------------- |
+| Phase    | 4. Screens                                                                                              |
+| Serves   | [spec 10](../10-step-by-step.md); [plan 1](../plan/01-repository.md); BR-28, BR-37, BR-48, BR-63, BR-66 |
+| Waits on | [T-28](T-28-item.md)                                                                                    |
 
 The plan of an item or a quest, section by section, with the wiki's prose and the ticks the player keeps in the browser.
 
@@ -90,6 +90,20 @@ Written on 2026-10-19, during the task.
   name shrinks its type down to a floor, then takes a second line, then
   ends in an ellipsis, instead of growing the card. This replaces "one height, the taller setting
   it" (spec 07, T-28).
+
+## Owner review, 2026-10-20
+
+- Similar prerequisites share one row: more than one quest read "Complete
+  {n} quests", more than one Junction "Clear {n} Junctions", each naming
+  its list in the detail; a Reach row its Junction already names is dropped
+  (BR-66). The Hex goes from seventeen rows to two.
+- A page with a back button has no tab bar below 840; from 840 the header
+  keeps its tabs (spec 04).
+- A quest's art is found under its name or its wiki title ("The Hex
+  (Quest)"), and Credits take the wiki's versioned image from
+  `vendor-art.json`: the wiki serves an image only with its version.
+- Goal's search finds every quest of the spine, "Quest" as its catalogue
+  (spec 08).
 
 ## Acceptance
 

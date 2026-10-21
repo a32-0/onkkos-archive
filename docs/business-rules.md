@@ -1074,3 +1074,19 @@ on 2026-10-08.
 - Since the Material pass (T-27b, owner, 2026-10-18) the place sits on the
   page (`Place overview`, `656:211`): the count is one chip per category,
   under the ring of its mastered share (spec 07).
+
+### BR-66 · Similar prerequisites share one row
+
+- Frame [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872).
+  Settled by the owner on 2026-10-20.
+- Type: content.
+- Rule: when Prerequisites holds more than one quest, they share one row,
+  "Complete {n} quests", whose detail names them root first ("In this order:
+  Natah and The Second Dream."); more than one Junction share one row too,
+  "Clear {n} Junctions", whose detail names each with the planet it is on. A
+  single quest or Junction keeps its own row. A "Reach" row whose Junction the
+  Junctions row already names is dropped. The Hex goes from seventeen rows to
+  two.
+- The row sits where the first of its kind stood. What the profile confirms is
+  dropped before the rows are gathered (BR-28), and the lock (BR-63) reads the
+  first Junction in the row the profile proves unmet.

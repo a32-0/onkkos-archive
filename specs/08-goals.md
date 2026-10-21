@@ -60,8 +60,9 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
   no screen frame of its own: it is the `Suggestion list` component, and
   `675:5962` draws it in place.
 - It reaches only what has a known source: an arsenal item, a mod, arcane,
-  resource or other entry with a drop, a region or a vendor, every relic, and
-  every place. About 8,000 cosmetics with no source never appear.
+  resource or other entry with a drop, a region or a vendor, every relic,
+  every quest of the narrative spine, with its art and "Quest" as its
+  catalogue (owner, 2026-10-20), and every place. About 8,000 cosmetics with no source never appear.
 - What is in the player's reach comes first. A match beyond reach is the
   Beyond reach row (`526:107`): its catalogue, then the gap, "Sniper · Needs
   Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on Earth" or

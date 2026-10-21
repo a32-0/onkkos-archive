@@ -301,28 +301,28 @@ its source to the fields the app reads; `manifest.json` records when the first
 two ran and how much they kept, and `patch-notes.json` carries its own
 `refreshedAt`. A refresh is a commit of its own, never part of a feature.
 
-| File                     | Source                                                                                                       |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `place-rewards.json`     | WFCD's `warframe-drop-data`: the mission rewards and six bounty tables, built from DE's drop tables          |
-| `region-resources.json`  | The wiki's `Module:Missions/data`                                                                            |
-| `update-art.json`        | The wiki's API: the lead image of each update's page, as a link; used where `patch-notes.json` has no art    |
-| `vendor-art.json`        | The wiki's API: the lead image of each page of a vendor paid in Standing or Stock, a syndicate's sigil       |
-| `patch-notes.json`       | DE's patch notes index and its JSON feed: each update's version, name, date, art and page, hotfixes left out |
-| `wiki-blueprints.json`   | `Module:Blueprints/data`                                                                                     |
-| `wiki-nodes.json`        | `Module:Missions/data`                                                                                       |
-| `wiki-resources.json`    | `Module:Resources/data`                                                                                      |
-| `wiki-research.json`     | `Module:Research/data`                                                                                       |
-| `wiki-vendors.json`      | `Module:Vendors/data`                                                                                        |
-| `wiki-traits.json`       | `Module:Weapons/data`                                                                                        |
-| `wiki-baro.json`         | `Module:Baro/data`                                                                                           |
-| `wiki-relics.json`       | `Module:Void/data`                                                                                           |
-| `wiki-companions.json`   | `Module:Companions/data`                                                                                     |
-| `wiki-honorias.json`     | `Module:Honorias/data`                                                                                       |
-| `wiki-titles.json`       | `Module:Weapons/data`, `Module:Companions/data`, `Module:Honorias/data`, `Module:Cosmetics/data/ephemera`    |
-| `wiki-circuit.json`      | The wiki's page "The Circuit"                                                                                |
-| `wiki-incarnons.json`    | Each Incarnon weapon's page on the wiki                                                                      |
-| `wiki-honoria-tags.json` | The wiki's page "Honoria"                                                                                    |
-| `wiki-adversaries.json`  | Each adversary's pages on the wiki                                                                           |
+| File                     | Source                                                                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `place-rewards.json`     | WFCD's `warframe-drop-data`: the mission rewards and six bounty tables, built from DE's drop tables                      |
+| `region-resources.json`  | The wiki's `Module:Missions/data`                                                                                        |
+| `update-art.json`        | The wiki's API: the lead image of each update's page, as a link; used where `patch-notes.json` has no art                |
+| `vendor-art.json`        | The wiki's API: the lead image of each page of a vendor paid in Standing or Stock, a syndicate's sigil; the Credits page |
+| `patch-notes.json`       | DE's patch notes index and its JSON feed: each update's version, name, date, art and page, hotfixes left out             |
+| `wiki-blueprints.json`   | `Module:Blueprints/data`                                                                                                 |
+| `wiki-nodes.json`        | `Module:Missions/data`                                                                                                   |
+| `wiki-resources.json`    | `Module:Resources/data`                                                                                                  |
+| `wiki-research.json`     | `Module:Research/data`                                                                                                   |
+| `wiki-vendors.json`      | `Module:Vendors/data`                                                                                                    |
+| `wiki-traits.json`       | `Module:Weapons/data`                                                                                                    |
+| `wiki-baro.json`         | `Module:Baro/data`                                                                                                       |
+| `wiki-relics.json`       | `Module:Void/data`                                                                                                       |
+| `wiki-companions.json`   | `Module:Companions/data`                                                                                                 |
+| `wiki-honorias.json`     | `Module:Honorias/data`                                                                                                   |
+| `wiki-titles.json`       | `Module:Weapons/data`, `Module:Companions/data`, `Module:Honorias/data`, `Module:Cosmetics/data/ephemera`                |
+| `wiki-circuit.json`      | The wiki's page "The Circuit"                                                                                            |
+| `wiki-incarnons.json`    | Each Incarnon weapon's page on the wiki                                                                                  |
+| `wiki-honoria-tags.json` | The wiki's page "Honoria"                                                                                                |
+| `wiki-adversaries.json`  | Each adversary's pages on the wiki                                                                                       |
 
 The licences, read from each source on 2026-10-13:
 

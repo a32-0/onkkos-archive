@@ -56,6 +56,7 @@ export const CATALOGUES = {
   incarnon: "Incarnon",
   other: "Item",
   place: "Place",
+  quest: "Quest",
 } as const;
 
 export const GAPS = {

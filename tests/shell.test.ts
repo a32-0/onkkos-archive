@@ -119,7 +119,7 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).toContain('aria-label="Back"');
     expect(html).toContain('href="/catch-up"');
     expect(html).toContain("Warframes");
-    expect(html.match(/<nav /g)).toHaveLength(2);
+    expect(html.match(/<nav /g)).toHaveLength(1);
   });
 
   it("holds Profile with Disconnect and the read cycle", () => {

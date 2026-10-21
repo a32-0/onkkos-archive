@@ -94,6 +94,10 @@ function costsOf(costs: readonly Cost[]): string {
   return listOf(costs.map((one) => `${number(one.amount)} ${one.currency}`));
 }
 
+function junctionOn({ junction, from }: { junction: string; from: string | null }): string {
+  return from === null ? junction : `the ${junction} on ${from}`;
+}
+
 function commaList(parts: readonly (string | null | undefined)[]): string | null {
   const kept = parts.filter((part): part is string => typeof part === "string" && part.length > 0);
   return kept.length > 0 ? kept.join(", ") : null;
@@ -161,6 +165,8 @@ export const TITLES = {
 
   masteryTitle: ({ rank }: { rank: number }) => `Mastery Rank ${rank}`,
   questTitle: ({ quest }: { quest: string }) => `Complete ${quest}`,
+  questsTitle: ({ count }: { count: number }) => `Complete ${count} quests`,
+  junctionsTitle: ({ count }: { count: number }) => `Clear ${count} Junctions`,
   questStartTitle: ({ quest }: { quest: string }) => `Start ${quest}`,
   intrinsicsTitle: ({ rank }: { rank: number | null }) =>
     rank === null ? "Railjack Intrinsics" : `Railjack Intrinsics rank ${rank}`,
@@ -279,6 +285,10 @@ export const DETAILS = {
   masteryUnknownDetail: () =>
     "Mastery comes from ranking weapons, Warframes, companions and vehicles you have never levelled.",
   questDetail: () => "You will find it in your Codex.",
+  questsDetail: ({ quests }: { quests: string[] }) =>
+    `In this order: ${listOf(quests)}. You will find them in your Codex.`,
+  junctionsDetail: ({ junctions }: { junctions: { junction: string; from: string | null }[] }) =>
+    `${capital(listOf(junctions.map(junctionOn)))}.`,
   intrinsicsDetail: () => "Earned by flying Railjack missions.",
   nemesisDetail: () => "The node only opens while one is hunting you.",
   clanDetail: ({ item, lab }: { item: string; lab: string }) =>

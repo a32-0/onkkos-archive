@@ -11,7 +11,7 @@ profile will be read again, and lets them disconnect.
   and the tab bar as they sit on a tab's root; the viewport shows the content
   stopping 8 px above the tab bar.
 - [`662:6837` Map>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
-  the tab bar still under it.
+  no tab bar under it (owner, 2026-10-20).
 - [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642): the Profile page.
 - [`679:4734` Resume — From Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the header with no tab bar,
   during onboarding.
@@ -31,14 +31,14 @@ profile will be read again, and lets them disconnect.
 
 ## Where the shell shows
 
-| Screen                                              | Header        | Tab bar                                          |
-| --------------------------------------------------- | ------------- | ------------------------------------------------ |
-| `/`, `/connect`, `/features`                        | Wordmark only | No                                               |
-| Resume and its Summary, from Two ways in (`?step=`) | With the chip | No                                               |
-| Resume and its Summary, from the Resume tab         | With the chip | Yes                                              |
-| The map, Goal                                       | With the chip | Yes                                              |
-| A page under a tab: a category, an item, a place    | Top bar       | Yes, but none from Two ways in (`?step=`, BR-41) |
-| Profile                                             | Top bar       | Yes                                              |
+| Screen                                              | Header        | Tab bar                                |
+| --------------------------------------------------- | ------------- | -------------------------------------- |
+| `/`, `/connect`, `/features`                        | Wordmark only | No                                     |
+| Resume and its Summary, from Two ways in (`?step=`) | With the chip | No                                     |
+| Resume and its Summary, from the Resume tab         | With the chip | Yes                                    |
+| The map, Goal                                       | With the chip | Yes                                    |
+| A page under a tab: a category, an item, a place    | Top bar       | No; from 840 the header keeps its tabs |
+| Profile                                             | Top bar       | No; from 840 the header keeps its tabs |
 
 ## The parts
 
@@ -65,7 +65,9 @@ root of the tab they were opened from (T-27b, owner 2026-10-18).
 Three tabs, in this order: **Navigation** (the map), **Resume** (the update
 picker), **Goal** (`/goals`). Each is an icon over its label. The active tab
 is raised on a lighter surface with a red rule along its top. The content
-above it stops 8 px short of it (owner, 2026-10-18).
+above it stops 8 px short of it (owner, 2026-10-18). It shows on a tab's
+root only: a page with a back button has no tab bar below 840, since Back is
+its way out (owner, 2026-10-20).
 
 Which tab is active:
 

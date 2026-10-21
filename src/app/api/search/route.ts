@@ -5,6 +5,7 @@ import { searchCatalog } from "@/domain/catalog/search";
 import { bestPlaces } from "@/domain/catalog/whats-new";
 import { itemGaps, placeGap, readReach } from "@/domain/place/reach";
 import { catalogData } from "@/infra/catalog/data";
+import { questArt } from "@/infra/catalog/update-art";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
 import { readScreen } from "@/infra/screen";
 import type { SearchInput } from "@/screens/goals/state";
@@ -38,9 +39,21 @@ export async function GET(request: NextRequest) {
   const best = bestPlaces(index);
   const groups = placeCatalog().entries;
   const { systems } = loadSystems();
+  const quests = data.spine.arcs.flatMap((arc) => arc.quests);
   const masteryReq = new Map(data.arsenal.map((item) => [item.name, item.masteryReq]));
 
   const hits: SearchInput[] = searchCatalog(data, index, term).map((hit) => {
+    if (hit.kind === "quest") {
+      const quest = quests.find((one) => one.name === hit.name);
+      return {
+        kind: "quest",
+        name: hit.name,
+        catalogue: "quest",
+        art: quest ? questArt(quest) : null,
+        system: null,
+        gap: null,
+      };
+    }
     if (hit.kind === "place") {
       return {
         kind: "place",
@@ -54,7 +67,10 @@ export async function GET(request: NextRequest) {
     const catalogue: Catalogue =
       hit.kind === "item"
         ? (groups.get(hit.name)?.group ?? BY_KIND[hit.type ?? ""] ?? "other")
-        : (hit.family ?? (hit.group === "arsenal" || hit.group === "places" ? "other" : hit.group));
+        : (hit.family ??
+          (hit.group === "arsenal" || hit.group === "places" || hit.group === "quests"
+            ? "other"
+            : hit.group));
     const gaps = itemGaps(reach, {
       masteryReq: masteryReq.get(hit.name) ?? 0,
       place: best.get(hit.name) ?? null,

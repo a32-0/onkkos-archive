@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { circuitStatus } from "@/domain/catalog/circuit";
-import { collectibleStepPlan, type Phrase } from "@/domain/catalog/checks";
+import { collectibleStepPlan } from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
 import { findCollectible } from "@/domain/catalog/data";
 import { allPlaces } from "@/domain/catalog/places";
@@ -30,6 +30,11 @@ function found(name: string) {
 describe("the catalog search", () => {
   it("waits for two characters", () => {
     expect(search("s")).toEqual([]);
+  });
+
+  it("finds a quest by its name", () => {
+    expect(hitNamed("the hex", "The Hex")).toMatchObject({ kind: "quest", group: "quests" });
+    expect(hitNamed("war within", "The War Within")?.kind).toBe("quest");
   });
 
   it("names the catalogue of each kind of thing", () => {
@@ -136,7 +141,15 @@ describe("collectibles with no drop of their own", () => {
     collectibleStepPlan(data, collectibleView(data, found(name), known, new Set()), {
       now,
     }).sections.flatMap((one) => one.groups.flatMap((group) => group.rows));
-  const quest = (name: string): Phrase => ({ say: "questTitle", quest: name });
+  function questsIn(rows: readonly { id: string }[]): string[] {
+    return rows.flatMap((row) =>
+      row.id.startsWith("quests:")
+        ? row.id.slice("quests:".length).split("|")
+        : row.id.startsWith("quest:")
+          ? [row.id.slice("quest:".length)]
+          : [],
+    );
+  }
 
   it("finds a Honoria, an Incarnon Genesis and an Ephemera", () => {
     for (const term of ["big spender", "torid incarnon", "eidolon ephemera"]) {
@@ -157,9 +170,7 @@ describe("collectibles with no drop of their own", () => {
         earned: null,
       },
     ]);
-    expect(steps("Big Spender Honoria").map((row) => row.title)).toContainEqual(
-      quest("The Old Peace"),
-    );
+    expect(questsIn(steps("Big Spender Honoria"))).toContain("The Old Peace");
     expect(honoria("90's Kid Honoria")?.detail.join(" ")).toMatch(/Nightwave/);
   });
 
@@ -169,8 +180,7 @@ describe("collectibles with no drop of their own", () => {
     expect(circuitStatus(circuit, "steelPath", "Braton Incarnon Genesis", now)?.weeksAway).toBe(5);
     const torid = steps("Torid Incarnon Genesis");
     expect(torid.some((row) => row.id === "cavalero")).toBe(true);
-    const titles = torid.map((row) => JSON.stringify(row.title));
-    const at = (name: string) => titles.indexOf(JSON.stringify(quest(name)));
+    const at = (name: string) => questsIn(torid).indexOf(name);
     expect(at("The Duviri Paradox")).toBeGreaterThanOrEqual(0);
     expect(at("Angels of the Zariman")).toBeGreaterThanOrEqual(0);
     expect(at("The New War")).toBeLessThan(at("Angels of the Zariman"));

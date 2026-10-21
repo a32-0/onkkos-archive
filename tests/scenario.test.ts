@@ -43,6 +43,16 @@ function rowsOf(section: StepSection | undefined) {
   return section?.groups.flatMap((group) => group.rows) ?? [];
 }
 
+function questsIn(rows: readonly { id: string }[]): string[] {
+  return rows.flatMap((row) =>
+    row.id.startsWith("quests:")
+      ? row.id.slice("quests:".length).split("|")
+      : row.id.startsWith("quest:")
+        ? [row.id.slice("quest:".length)]
+        : [],
+  );
+}
+
 function titlesOf(section: StepSection | undefined): Phrase[] {
   return rowsOf(section).map((row) => row.title);
 }
@@ -324,14 +334,8 @@ describe("items that come from a system rather than a place", () => {
     expect(rowsOf(sections[0]).map((row) => row.id)).toEqual([
       "mastery",
       "slot",
-      "junction:Uranus Junction",
-      "quest:Natah",
-      "junction:Neptune Junction",
-      "quest:The Second Dream",
-      "junction:Pluto Junction",
-      "junction:Sedna Junction",
-      "quest:The War Within",
-      "quest:Rising Tide",
+      "junctions:Uranus Junction|Neptune Junction|Pluto Junction|Sedna Junction",
+      "quests:Natah|The Second Dream|The War Within|Rising Tide",
       "railjack",
       "intrinsics:5",
     ]);
@@ -344,9 +348,9 @@ describe("items that come from a system rather than a place", () => {
   });
 
   it("reads a Sister's quests off the wiki's own links", () => {
-    const first = titlesOf(planOf("Tenet Tetra").sections[0]);
-    expect(first).toContainEqual({ say: "questTitle", quest: "The War Within" });
-    expect(first).toContainEqual({ say: "questTitle", quest: "Call of the Tempestarii" });
+    const first = questsIn(rowsOf(planOf("Tenet Tetra").sections[0]));
+    expect(first).toContain("The War Within");
+    expect(first).toContain("Call of the Tempestarii");
   });
 
   it("prices a Baro item in ducats and credits", () => {
@@ -530,13 +534,13 @@ describe("prerequisites followed to the root", () => {
   });
 
   it("drops every quest the profile confirms, and everything before it", () => {
-    const rows = (done: string[]) => rowsOf(planOf("Dante", done).sections[0]).map((row) => row.id);
-    expect(rows([])).toContain("quest:Natah");
+    const rows = (done: string[]) => rowsOf(planOf("Dante", done).sections[0]);
+    expect(questsIn(rows([]))).toContain("Natah");
     const after = rows(["The New War"]);
-    expect(after).not.toContain("quest:Natah");
-    expect(after).not.toContain("junction:Neptune Junction");
-    expect(after).toContain("quest:Whispers in the Walls");
-    expect(after).toContain("quest:Heart of Deimos");
+    expect(questsIn(after)).not.toContain("Natah");
+    expect(after.map((row) => row.id).join(" ")).not.toContain("Neptune Junction");
+    expect(questsIn(after)).toContain("Whispers in the Walls");
+    expect(questsIn(after)).toContain("Heart of Deimos");
   });
 
   it("raises the Mastery row to what a pending quest asks", () => {
