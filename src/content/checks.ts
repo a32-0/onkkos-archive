@@ -313,6 +313,11 @@ export const DETAILS = {
     `${item} is researched in the ${lab} of a clan dojo.`,
   junctionDetail: ({ junction, from }: { junction: string; from: string }) =>
     `Clear the ${junction} on ${from}.`,
+  rankDetail: ({ rank, vendor }: { rank: string; vendor: string }) =>
+    `Earn standing with ${vendor} until you reach ${/^\d+$/.test(rank) ? `rank ${rank}` : rank}.`,
+  firstPlanetDetail: () => "Every Tenno starts here, once Vor's Prize is done.",
+  openedByDetail: ({ quest }: { quest: string }) => `Complete ${quest} to open it.`,
+  openedAfterDetail: ({ place }: { place: string }) => `It opens once you reach ${place}.`,
   slotDetail: () => "Make sure you have an empty slot for it.",
   onPlanet: ({ planet }: { planet: string }) => `On ${planet}.`,
 

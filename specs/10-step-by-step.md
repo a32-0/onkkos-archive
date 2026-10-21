@@ -81,7 +81,13 @@ In this order; a section with nothing in it does not render.
    BR-22), the slot (BR-23), quests root first (BR-28) and Junctions, each
    kind in one row when there is more than one (BR-66), hub unlocks, reaching
    a place, gear owned, standing, clan, a status row ("Prime Vaulted"), and
-   last, "Buy … Blueprint" when the main blueprint is bought.
+   last, "Buy … Blueprint" when the main blueprint is bought. Every row says
+   how it is met (owner, 2026-10-21): a standing row, "Earn standing with
+   Red Veil until you reach Esteemed."; a place beyond a Junction, "Clear
+   the Venus Junction on Earth."; a place off the star chart, the quest
+   `grafo.yaml` names, "Complete Angels of the Zariman to open it.", or the
+   place it follows, "It opens once you reach Phobos."; Earth, "Every Tenno
+   starts here, once Vor's Prize is done."
 2. **How to get**, when the parts share a source, or the system's steps
    (Lich, Sister, Baro, Varzia, breeding, Son), under the same title.
 3. **Blueprints**, one flat list when every part shares a source; otherwise

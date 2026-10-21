@@ -64,7 +64,12 @@ describe("the goals offered (BR-05)", () => {
 });
 
 describe("the search rows (BR-53, BR-62)", () => {
-  const hit = (name: string, gap: SearchInput["gap"], kind: SearchInput["kind"] = "item") =>
+  const hit = (
+    name: string,
+    gap: SearchInput["gap"],
+    kind: SearchInput["kind"] = "item",
+    score = 1,
+  ) =>
     ({
       kind,
       name,
@@ -72,6 +77,7 @@ describe("the search rows (BR-53, BR-62)", () => {
       art: null,
       system: kind === "place" ? "origin" : null,
       gap,
+      score,
     }) satisfies SearchInput;
 
   it("puts what is in reach first and says the gap of the rest", () => {
@@ -98,6 +104,14 @@ describe("the search rows (BR-53, BR-62)", () => {
     expect(rows[0]?.href).toBe("/item?name=Braton&from=goal");
     expect(rows[1]).toMatchObject({ href: "/system?system=origin&place=Mars", round: true });
     expect(rows[2]?.href).toBe("/item?name=Rubico&from=goal&view=steps");
+  });
+
+  it("keeps a closer name above what is in reach (owner, 2026-10-21)", () => {
+    const rows = suggestionRows([
+      hit("Ash", { kind: "rank", need: 8, have: 5 }, "item", 4),
+      ...Array.from({ length: 9 }, (_, index) => hit(`Crash ${index}`, null)),
+    ]);
+    expect(rows[0]?.name).toBe("Ash");
   });
 
   it("keeps eight", () => {

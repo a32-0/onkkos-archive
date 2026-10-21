@@ -872,13 +872,18 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     expect(html).toContain("Nothing left to suggest");
   });
 
-  it("orders a search by reach, says the gap, and keeps it private", async () => {
+  it("puts the closest name first, says its gap, and keeps it private", async () => {
     const { response, results } = await search(ORDIS, "jup");
     expect(response.headers.get("cache-control")).toBe("private, no-store");
-    const jupiter = results.find((row) => row.name === "Jupiter");
-    expect(jupiter?.catalogue).toBe("Place · Clear the Mars Junction, on Earth");
-    const beyond = results.map((row) => row.catalogue.includes(" · "));
-    expect(beyond).toEqual([...beyond].sort((a, b) => Number(a) - Number(b)));
+    expect(results[0]).toMatchObject({
+      name: "Jupiter",
+      catalogue: "Place · Clear the Mars Junction, on Earth",
+    });
+  });
+
+  it("finds Ash first for a player not yet on Venus", async () => {
+    const { results } = await search(ORDIS, "ash");
+    expect(results[0]?.name).toBe("Ash");
   });
 
   it("opens an item beyond Ordis's rank on Step by step", async () => {

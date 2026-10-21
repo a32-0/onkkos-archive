@@ -1,6 +1,11 @@
 import { circuitStatus, type CircuitMode } from "@/domain/catalog/circuit";
 import type { CollectibleView } from "@/domain/catalog/collectibles";
-import { findCollectible, isCatalogued, type CatalogData } from "@/domain/catalog/data";
+import {
+  findCollectible,
+  isCatalogued,
+  type CatalogData,
+  type Opening,
+} from "@/domain/catalog/data";
 import type { Dossier } from "@/domain/catalog/dossier";
 import { BLUEPRINT_ART, type SlotKind } from "@/domain/catalog/items";
 import { oneIn } from "@/domain/catalog/odds";
@@ -72,8 +77,12 @@ interface Says {
   clanTitle: None;
   clanDetail: { item: string; lab: string };
   rankTitle: { rank: string; vendor: string };
+  rankDetail: { rank: string; vendor: string };
   reachTitle: { place: string };
   junctionDetail: { junction: string; from: string };
+  firstPlanetDetail: None;
+  openedByDetail: { quest: string };
+  openedAfterDetail: { place: string };
   slotTitle: { kind: SlotKind };
   slotDetail: None;
 
@@ -1021,6 +1030,7 @@ function requirementRows(
     if (one.kind === "rank" && one.label !== null) {
       out.push(
         row(`rank:${one.name}`, say("rankTitle", { rank: one.label, vendor: one.name }), {
+          detail: parts(say("rankDetail", { rank: one.label, vendor: one.name })),
           wikiTitle: one.name,
         }),
       );
@@ -1035,10 +1045,17 @@ function reachRows(data: CatalogData, places: readonly string[]): StepRow[] {
     return row(`place:${place}`, say("reachTitle", { place }), {
       detail: junction
         ? parts(say("junctionDetail", { junction: junction.name, from: junction.from }))
-        : [],
+        : openingDetail(data.openings.get(place)),
       wikiTitle: junction?.name ?? place,
     });
   });
+}
+
+function openingDetail(opening: Opening | undefined): Part[] {
+  if (!opening) return [];
+  if (opening.quest !== null) return parts(say("openedByDetail", { quest: opening.quest }));
+  if (opening.after !== null) return parts(say("openedAfterDetail", { place: opening.after }));
+  return parts(say("firstPlanetDetail"));
 }
 
 function partTitle(part: ResolvedPart): Phrase {

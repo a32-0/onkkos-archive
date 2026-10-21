@@ -27,6 +27,7 @@ export interface SearchInput {
   art: string | null;
   system: string | null;
   gap: ReachGap | null;
+  score: number;
 }
 
 export type SearchRow = Suggestion & { href: string };

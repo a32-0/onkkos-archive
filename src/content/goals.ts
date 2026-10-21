@@ -5,7 +5,7 @@ export const GOALS = {
   lead: "Curated against your profile and the planets you have reached.",
   search: {
     title: "Choose a target",
-    line: "Anything in the arsenal, any place on the chart.",
+    line: "Warframes, weapons, companions, mods, arcanes, relics, resources, quests and places.",
     placeholder: "A warframe, a weapon, or planet...",
     label: "Search a target",
     list: "Targets",

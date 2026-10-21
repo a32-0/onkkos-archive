@@ -75,12 +75,12 @@ cite one. The Figma comment id is given beside each for traceability.
   number of columns, where navigation sits, and how wide things grow.
 - The width classes are Material 3's, which the sweep already used:
 
-  | Width       | Class    | Layout                                                                                                                                                                                                                                             |
-  | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                     |
-  | 600 to 839  | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                 |
-  | 840 to 1199 | expanded | The tab bar moves into the header, the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
-  | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                          |
+  | Width       | Class    | Layout                                                                                                                                                                                                                                                                                      |
+  | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                                                              |
+  | 600 to 839  | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                                                          |
+  | 840 to 1199 | expanded | The tab bar floats, centred 48 px above the bottom of the screen (spec 04), the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
+  | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                                                                   |
 
 - Outside the shell, the splash and the id form follow the compact class below
   600, fluid with the 16 px gutter at the window's edges, and from 600 stay one
@@ -1024,7 +1024,7 @@ on 2026-10-08.
 - Type: behaviour.
 - Rule: a search is how the player lifts BR-59 for one thing. The Goal search
   and the place list's search reach everything they reached before (BR-53,
-  spec 07), what is in reach first. A result beyond reach is the Beyond reach
+  spec 07), what is in reach first among matches as close to the name. A result beyond reach is the Beyond reach
   row: its catalogue, then the gap, short enough for one line: "Sniper ·
   Needs Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on
   Earth", "Place · Join a clan".

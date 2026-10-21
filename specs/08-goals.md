@@ -45,9 +45,11 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
    futures."
 2. **Goal**, and "Curated against your profile and the planets you have
    reached."
-3. **Choose a target**: "Anything in the arsenal, any place on the chart." once
-   the frame drops "or a Mastery Rank"; the field, "A warframe, a weapon, or
-   planet"; and **Continue**.
+3. **Choose a target**: "Warframes, weapons, companions, mods, arcanes,
+   relics, resources, quests and places.", which names what the search
+   reaches now that the catalog holds every sourced resource (owner,
+   2026-10-21); the field, "A warframe, a weapon, or planet"; and
+   **Continue**.
 4. The goal cards, each a link with its icon, title and one line.
 5. **Skip**, in the secondary style, which opens the map on Start here
    (BR-40), as `662:4811` draws it since 2026-10-16.
@@ -63,7 +65,11 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
   resource or other entry with a drop, a region or a vendor, every relic,
   every quest of the narrative spine, with its art and "Quest" as its
   catalogue (owner, 2026-10-20), and every place. About 8,000 cosmetics with no source never appear.
-- What is in the player's reach comes first. A match beyond reach is the
+- Among matches as close to the name, what is in the player's reach comes
+  first; a closer name is never pushed down by reach, so "ash" finds Ash
+  first (owner, 2026-10-21). The closeness: the exact name, then a name
+  that starts with the term, then a word that starts with it, then the term
+  inside a word. A match beyond reach is the
   Beyond reach row (`526:107`): its catalogue, then the gap, "Sniper · Needs
   Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on Earth" or
   "Place · Join a clan" (BR-62).

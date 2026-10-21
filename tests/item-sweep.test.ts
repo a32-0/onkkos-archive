@@ -98,6 +98,17 @@ describe("every item page reads whole", () => {
     ).toEqual([]);
   });
 
+  it("gives every prerequisite a detail or a passage", () => {
+    expect(
+      each((_, plan) =>
+        plan.sections
+          .filter((section) => section.id === PREREQUISITES)
+          .flatMap((section) => section.groups.flatMap((group) => group.rows))
+          .flatMap((row) => (row.detail.length > 0 || row.prose !== null ? [] : [row.id])),
+      ),
+    ).toEqual([]);
+  });
+
   it("gives every Summary line a reading or a place", () => {
     expect(
       each((name, plan) =>

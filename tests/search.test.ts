@@ -28,6 +28,10 @@ function found(name: string) {
 }
 
 describe("the catalog search", () => {
+  it("puts the exact name first", () => {
+    expect(search("ash")[0]).toMatchObject({ name: "Ash", score: 4 });
+  });
+
   it("waits for two characters", () => {
     expect(search("s")).toEqual([]);
   });

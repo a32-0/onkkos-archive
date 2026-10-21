@@ -32,6 +32,8 @@
   },
   "dependencies": {
     "@upstash/redis": "1.39.0",
+    "@vercel/analytics": "2.0.1",
+    "@vercel/speed-insights": "2.0.0",
     "@wfcd/items": "1.1276.21",
     "next": "16.3.2",
     "react": "19.2.8",

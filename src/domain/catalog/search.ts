@@ -11,11 +11,12 @@ interface SearchHit {
   family: Collectible["family"];
   vaulted: boolean;
   imageUrl: string | null;
+  score: number;
 }
 
 interface Entry {
   needle: string;
-  hit: SearchHit;
+  hit: Omit<SearchHit, "score">;
 }
 
 const MIN_TERM = 2;
@@ -39,7 +40,7 @@ export function searchCatalog(
         a.entry.needle.length - b.entry.needle.length ||
         a.entry.needle.localeCompare(b.entry.needle),
     )
-    .map((row) => row.entry.hit);
+    .map((row) => ({ ...row.entry.hit, score: row.score }));
 }
 
 function scoreOf(name: string, needle: string): number {

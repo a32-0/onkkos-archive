@@ -52,6 +52,7 @@ export async function GET(request: NextRequest) {
         art: quest ? questArt(quest) : null,
         system: null,
         gap: null,
+        score: hit.score,
       };
     }
     if (hit.kind === "place") {
@@ -62,6 +63,7 @@ export async function GET(request: NextRequest) {
         art: null,
         system: systems.find((system) => system.places.includes(hit.name))?.id ?? null,
         gap: placeGap(reach, hit.name),
+        score: hit.score,
       };
     }
     const catalogue: Catalogue =
@@ -82,6 +84,7 @@ export async function GET(request: NextRequest) {
       art: hit.imageUrl,
       system: null,
       gap: gaps[0] ?? null,
+      score: hit.score,
     };
   });
 

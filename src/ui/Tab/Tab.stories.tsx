@@ -5,14 +5,14 @@ import { Tab } from "./Tab";
 const meta = {
   title: "Chrome/Tab",
   component: Tab,
-  args: { href: "#", icon: "explore", label: "Navigation", placement: "header", active: true },
+  args: { href: "#", icon: "explore", label: "Navigation", placement: "floating", active: true },
   decorators: [
     (Story) => (
       <div
         style={{
           display: "flex",
           padding: "var(--space-7)",
-          background: "var(--surface-header)",
+          background: "var(--surface-card)",
         }}
       >
         <Story />

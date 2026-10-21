@@ -65,7 +65,10 @@ A promise to every player who types an id here:
 - **On your device:** your id, the update you last played and the last place
   you opened, in cookies; the steps you ticked, in your browser. Disconnect
   forgets your id.
-- **No analytics and no tracking.** There is nothing to opt out of.
+- **Visits counted, never you.** Vercel Web Analytics counts page views and
+  Speed Insights measures how fast pages load. Neither sets a cookie, and no
+  address in the app carries your id; a visitor is an anonymous hash Vercel
+  discards after a day. There is no tracking across sites and no advertising.
 - **DE's endpoint is protected.** A profile read once is kept and shared, one
   read at a time, two new lookups per visitor every twelve hours, and the app
   stops asking for thirty minutes when DE refuses.
@@ -168,6 +171,7 @@ Onkko's Archive stands on the work of others. Thank you.
 | [WFCD · warframestat.us](https://docs.warframestat.us)                                                                                                                   | The items' art (`cdn.warframestat.us`) and Varzia's stock                                                                                                                            | Free public API                                                                             |
 | [The Warframe Wiki](https://wiki.warframe.com)                                                                                                                           | Missions, vendors, relics, resources and research from its data modules; the prose of a step; icons and update art, linked and never copied                                          | [CC BY-SA, page text CC BY-NC-SA 3.0](https://wiki.warframe.com/w/Warframe_Wiki:Copyrights) |
 | [Cinzel](https://fonts.google.com/specimen/Cinzel), [Inter](https://fonts.google.com/specimen/Inter), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) | The three typefaces                                                                                                                                                                  | SIL Open Font License 1.1                                                                   |
+| [Vercel Web Analytics and Speed Insights](https://vercel.com/docs/analytics)                                                                                             | How many people visit, and how fast the pages load                                                                                                                                   | Vercel's terms                                                                              |
 | [Material Symbols Rounded](https://fonts.google.com/icons)                                                                                                               | The interface's own icons                                                                                                                                                            | Apache License 2.0                                                                          |
 
 [`docs/curated-files.md`](docs/curated-files.md) lists every vendored file with

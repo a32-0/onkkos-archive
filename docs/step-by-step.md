@@ -27,7 +27,10 @@ card.
 1. **Prerequisites.** Mastery Rank when it is above 0, the slot, the quests
    the farm needs (root first, the ones the profile confirms left out), a
    Railjack Intrinsics rank, a clan for anything researched, a syndicate rank,
-   then one "Reach" row per place. More than one quest share one row, and so
+   then one "Reach" row per place. Each row says how it is met: standing
+   until the rank, the Junction to clear, or for a place off the star chart
+   the quest that opens it (`off_chart_places` in `grafo.yaml`, read into
+   `CatalogData.openings`). More than one quest share one row, and so
    do more than one Junction (BR-66). When the main blueprint is bought, the
    purchase closes the section: "Buy the Ember Blueprint".
 2. **How to get**, one row when the parts share a source. An item that comes

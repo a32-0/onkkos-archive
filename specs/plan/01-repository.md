@@ -80,11 +80,11 @@ them:
 
 ## Root and configuration
 
-| File           | Holds                                                                                                      | Task       |
-| -------------- | ---------------------------------------------------------------------------------------------------------- | ---------- |
-| `README.md`    | For the two readers of the constitution; part 5                                                            | T-01, T-32 |
-| `package.json` | Next, React, Storybook, `@upstash/redis`, `eslint-plugin-boundaries`, `knip`                               | T-01       |
-| `.env.example` | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `WF_PROFILE_SOURCE`; no default account id (spec 02) | T-01       |
+| File           | Holds                                                                                                                       | Task       |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `README.md`    | For the two readers of the constitution; part 5                                                                             | T-01, T-32 |
+| `package.json` | Next, React, Storybook, `@upstash/redis`, `@vercel/analytics`, `@vercel/speed-insights`, `eslint-plugin-boundaries`, `knip` | T-01       |
+| `.env.example` | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `WF_PROFILE_SOURCE`; no default account id (spec 02)                  | T-01       |
 
 `CLAUDE.md` and `.claude/` are local to the assistant and never committed. The
 rules they would carry are in the constitution and the docs.

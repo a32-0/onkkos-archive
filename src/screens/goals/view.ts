@@ -44,7 +44,7 @@ function hrefOf(hit: SearchInput): string {
 }
 
 export function suggestionRows(hits: readonly SearchInput[]): SearchRow[] {
-  const ordered = [...hits.filter((hit) => !hit.gap), ...hits.filter((hit) => hit.gap)];
+  const ordered = [...hits].sort((a, b) => b.score - a.score || Number(!!a.gap) - Number(!!b.gap));
   return ordered.slice(0, SHOWN).map((hit) => {
     const catalogue = CATALOGUES[hit.catalogue];
     return {

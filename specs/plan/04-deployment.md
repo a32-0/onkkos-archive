@@ -100,24 +100,40 @@ failure marks the deployment red on the commit; it does not roll it back.
 
 ## What the deployment does not have
 
-- **No analytics and no telemetry.** Nothing a spec names needs them, and a fan
-  app that reads profiles promises strangers as little collection as it can.
-  Vercel's function logs are the only record, and they hold no profile.
+- **Counts, not people.** The plan first had no analytics at all. The owner
+  asked on 2026-10-21, before the launch, to know how many people come:
+  Vercel Web Analytics counts page views and Speed Insights measures how fast
+  pages load, `<Analytics />` and `<SpeedInsights />` in the root layout,
+  from `@vercel/analytics` and `@vercel/speed-insights`. Web Analytics sets
+  no cookie; a visitor is a hash of the request, discarded after 24 hours,
+  and a page view keeps its path, referrer, country, browser and device
+  ([Vercel: Web Analytics privacy](https://vercel.com/docs/analytics/privacy-policy)).
+  No address in the app carries an account id, so nothing needs redacting
+  with `beforeSend`; a route that ever does must redact it. No custom event
+  is sent. Vercel's function logs stay the only other record, and they hold
+  no profile. Both are switched on per project in Vercel's dashboard
+  (Analytics, Speed Insights) by the owner; without that the components send
+  nothing.
 - **No cron.** Data refreshes (`pnpm data:refresh`, `pnpm data:wiki`) stay
   manual and are committed, as the architecture principle requires.
 - **No edge runtime.** Every route runs on Node.js (part 2).
 
 ## Limits to watch
 
-| Limit            | Free allowance     | Expected use                                         |
-| ---------------- | ------------------ | ---------------------------------------------------- |
-| Upstash commands | 500,000 a month    | About one per screen opened, plus seven per new read |
-| Upstash data     | 256 MB             | About 15 KB per stored profile, for twelve hours     |
-| Upstash transfer | 10 GB a month      | About 15 KB per screen opened                        |
-| Vercel Hobby     | Non-commercial use | A fan app with no revenue                            |
+| Limit            | Free allowance                    | Expected use                                                             |
+| ---------------- | --------------------------------- | ------------------------------------------------------------------------ |
+| Upstash commands | 500,000 a month                   | About one per screen opened, plus seven per new read                     |
+| Upstash data     | 256 MB                            | About 15 KB per stored profile, for twelve hours                         |
+| Upstash transfer | 10 GB a month                     | About 15 KB per screen opened                                            |
+| Vercel Hobby     | Non-commercial use                | A fan app with no revenue                                                |
+| Web Analytics    | 50,000 events a month             | One per page opened; past it, after three days' grace, collection pauses |
+| Speed Insights   | 10,000 events in 30 days, rolling | A few per page opened; past it, collection pauses for at least 14 days   |
 
 Upstash's console alerts at a share of the monthly commands; the owner sets the
-alert at 80 %. Past the allowance Upstash stops answering, and the store fails
+alert at 80 %. Neither Vercel allowance can cost money on Hobby: past it,
+collection stops and the app runs on
+([Web Analytics pricing](https://vercel.com/docs/analytics/limits-and-pricing),
+[Speed Insights limits](https://vercel.com/docs/speed-insights/limits-and-pricing)). Past the allowance Upstash stops answering, and the store fails
 closed: players see the band for `upstream`, and DE is never read without the
 locks.
 
