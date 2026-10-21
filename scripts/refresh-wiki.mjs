@@ -78,18 +78,46 @@ function buildNodes(raw) {
 }
 
 const LOCATION = /Location:\s*([\s\S]+)$/i;
+const SOURCE = /Source:\s*([\s\S]+)$/i;
+const LIST_HEAD = /:\s*$/;
+const SOURCE_VERB =
+  /^(Earn|Earned|Obtained|Dropped|Drops|Found|Gained|Rewarded|Acquired|Purchased|Sold|Cut|Dismantled|Harvested|Mined)\b/;
+
+const SOURCE_CLAUSE = /\b(gained|obtained|dropped|earned) (from|by)\b/i;
+
+function lastParagraph(description) {
+  const paragraphs = description.split(/\r?\n\s*\r?\n/).map((one) => one.trim());
+  const last = paragraphs.length > 1 ? paragraphs[paragraphs.length - 1] : "";
+  if (SOURCE_VERB.test(last)) return [last, last];
+  const told = [...paragraphs].reverse().find((one) => SOURCE_CLAUSE.test(one));
+  return told ? [told, told] : null;
+}
+
+function listed(text) {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+  const [head, ...items] = lines;
+  if (head === undefined || items.length === 0 || !LIST_HEAD.test(head)) return text;
+  const last = items.pop();
+  const names = items.length === 0 ? last : `${items.join(", ")} and ${last}`;
+  return `${head.trim()} ${names}.`;
+}
 
 function buildResources(raw) {
   const out = {};
   for (const [key, entry] of Object.entries(raw)) {
     if (!entry || typeof entry !== "object" || typeof entry.Name !== "string") continue;
     const description = typeof entry.Description === "string" ? entry.Description : "";
-    const location = LOCATION.exec(description);
+    const where =
+      LOCATION.exec(description) ?? SOURCE.exec(description) ?? lastParagraph(description);
     out[entry.Name ?? key] = {
       rarity: typeof entry.Rarity === "string" ? entry.Rarity : null,
       type: typeof entry.Type === "string" ? entry.Type : null,
-      location: location ? plain(location[1]) : null,
+      location: where ? plain(listed(where[1])) : null,
       link: typeof entry.Link === "string" ? entry.Link : entry.Name,
+      image: typeof entry.Image === "string" ? entry.Image : null,
     };
   }
   return out;

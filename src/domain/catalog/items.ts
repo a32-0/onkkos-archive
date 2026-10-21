@@ -122,6 +122,7 @@ export interface CatalogResource {
 }
 
 const ICON_BASE = "https://cdn.warframestat.us/img";
+const PLACEHOLDER_ART = "GenericComponent.png";
 
 export const BLUEPRINT_ART = `${ICON_BASE}/blueprint.png`;
 
@@ -197,7 +198,7 @@ export function catalogByUniqueName(catalog: CatalogItem[]): Map<string, Catalog
 }
 
 function iconUrl(imageName: string | undefined): string | null {
-  return imageName ? `${ICON_BASE}/${imageName}` : null;
+  return imageName && imageName !== PLACEHOLDER_ART ? `${ICON_BASE}/${imageName}` : null;
 }
 
 function acquisitionAnchor(wikiaUrl: string | undefined): string | null {
@@ -312,7 +313,7 @@ function readRecipe(item: RawItem, owners: Map<string, string>): CatalogRecipe |
         (entry) => entry.name === component.name && entry.uniqueName === uniqueName,
       );
       if (same) same.count += count;
-      else ingredients.push({ name: component.name, uniqueName, count, imageUrl });
+      else ingredients.push({ name: component.name.trim(), uniqueName, count, imageUrl });
     }
   }
 

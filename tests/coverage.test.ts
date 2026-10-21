@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { collectibleStepPlan, stepPlan, type StepPlan } from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
 import { dossier } from "@/domain/catalog/dossier";
+import { proseOnly, thinArsenal } from "@/domain/catalog/review";
 
 import { testData } from "./helpers";
 
@@ -13,25 +14,12 @@ function rowsOf(plan: StepPlan) {
   return plan.sections.flatMap((one) => one.groups.flatMap((group) => group.rows));
 }
 
-function proseOnly(plan: StepPlan): boolean {
-  const how = plan.sections.find((one) => one.id === "how");
-  const rows = how?.groups.flatMap((group) => group.rows) ?? [];
-  return (
-    rows.length === 0 || rows.every((row) => row.detail.length === 0 && row.brief.length === 0)
-  );
-}
-
 describe("every item is answered from data, not prose alone", () => {
   it("gives every arsenal item a route with a detail on every part", () => {
     const thin: string[] = [];
     for (const item of data.arsenal) {
       const plan = stepPlan(data, dossier(item, data.arsenal), { now, masteryRank: 10 });
-      const unknown = rowsOf(plan).some((row) => row.id.endsWith(":none"));
-      const noRecipe = !plan.sections.some(
-        (one) => one.id.startsWith("part:") || one.id === "blueprints",
-      );
-      const acquisition = plan.sections.some((one) => one.title.say === "sectionAcquisition");
-      if (unknown || (noRecipe && proseOnly(plan) && !acquisition)) thin.push(item.name);
+      if (thinArsenal(plan)) thin.push(item.name);
     }
     expect(thin).toEqual([]);
   });

@@ -39,8 +39,16 @@ card.
    divider, its header the part's art and name, best odds first (BR-25).
 4. **Components.** Every resource in the recipe tree, in groups split by a
    plain line with no title: what only that place gives, then the rest, then
-   one group per gear recipe; each group by rarity, credits last. The art has
-   no ground behind it.
+   the gear recipes summed in (`withGear()` in `checks.ts`): a required
+   gear's ingredients join the rows the plan has, an optional one's make one
+   last group of their own, each row optional; each group by rarity, credits
+   last. The art has
+   no ground behind it. A resource the wiki gives no place for reads its
+   recipe instead: `madeDetail()` in `checks.ts` takes it from the catalog's
+   recipes, which since 2026-10-21 read the Resources category beside Misc
+   and Gear (`GEAR_SOURCES`), where the Plains' and the Vallis's cut gems and
+   alloys keep theirs. What still has no description, fish parts, toroids,
+   standing and a few drops, needs a source of its own.
 
 A quest takes the same grammar (BR-37): Prerequisites with the quests and
 junctions before it and its Mastery Rank, then How to get with where it

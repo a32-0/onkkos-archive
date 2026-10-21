@@ -70,7 +70,10 @@ One rule makes the app feel old:
 
 The display face is Cinzel, drawn from Roman inscriptional capitals, which
 reads as carved stone rather than print. It has no lowercase of its own; its
-lowercase are small capitals, which is why Onkko's lines read in small caps.
+lowercase are small capitals. Every Cinzel style is set in capitals, Onkko's
+lines and the player's name included (owner, 2026-10-21): the small capitals
+read as a second, smaller size of the same letters, and a line in capitals
+keeps one.
 Body text is Inter. Readings are JetBrains Mono, which replaced Consolas
 because Consolas exists only on Windows. `tests/language.test.ts` checks that
 every name style uses Cinzel and every reading style uses JetBrains Mono.

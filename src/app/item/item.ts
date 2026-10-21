@@ -115,9 +115,13 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
       : item && stepPlan(data, dossier(item, data.arsenal), reader);
   if (!plan) return null;
   const blocks = briefOf(plan);
+  const how = plan.sections.filter((section) => section.id === "how");
   const place = quest
     ? (quest.availableAt[0] ?? quest.locations[0] ?? null)
-    : (namedPlace(blocks) ?? best.get(name) ?? null);
+    : collectible
+      ? (namedPlace(briefOf({ sections: how })) ??
+        (collectible.recipe === null ? (best.get(name) ?? null) : null))
+      : (namedPlace(blocks) ?? best.get(name) ?? null);
 
   const lines: Record<string, { reading: Part[]; where: Part[] }> = {};
   for (const line of blocks.flatMap((block) => block.lines)) {

@@ -9,7 +9,7 @@
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
   font-size: 36px;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .title {
@@ -23,7 +23,7 @@
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
   font-size: 32px;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .bar-title {
@@ -51,7 +51,7 @@
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
   font-size: 16px;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .name-s {
@@ -65,7 +65,7 @@
   font-family: var(--font-cinzel), serif;
   font-weight: 400;
   font-size: 14px;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .figure {

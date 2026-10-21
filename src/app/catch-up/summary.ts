@@ -13,6 +13,12 @@ import { gameIcons } from "@/infra/wiki/icons";
 import type { SummaryCardView, SummarySection, SummaryUpdate } from "@/screens/summary/state";
 import { summarySections } from "@/screens/summary/view";
 
+export function datesOf(update: GameUpdate): string[] {
+  return update.yearMonths.map((month) =>
+    [month, describeMonth(month), shortMonth(month)].join(" "),
+  );
+}
+
 export function metaOf(update: GameUpdate): string {
   return RESUME.meta(update.version, shortMonth(update.yearMonth));
 }
@@ -42,6 +48,8 @@ export function otherUpdates(screen: Screen, since: string | null): SummaryUpdat
     .filter((one) => one.version !== shown?.version)
     .map((one) => ({
       version: one.version,
+      versions: one.versions,
+      dates: datesOf(one),
       value: one.yearMonth,
       name: one.name,
       meta: metaOf(one),

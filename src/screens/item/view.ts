@@ -1,3 +1,4 @@
+import { STEPS as STEP_WORDS } from "@/content/checks";
 import { ITEM } from "@/content/item";
 import { MAP } from "@/content/system";
 import type { BriefLine } from "@/domain/catalog/summary";
@@ -6,7 +7,7 @@ import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import { openedFrom, tabHome } from "../shell/tabs";
 import { stepsView } from "./steps/view";
-import { tileLines, titled } from "../summary/lines";
+import { detailOf, tileLines, titled } from "../summary/lines";
 import type { ItemFacts, ItemPageView, ItemRowView, ItemSectionView } from "./state";
 
 const STEPS = "steps";
@@ -28,11 +29,13 @@ export function heroState(facts: ItemFacts): ItemHeroState {
 
 function rowOf(facts: ItemFacts, line: BriefLine, from: string, blueprint: boolean): ItemRowView {
   const own = line.thing === null ? undefined : facts.lines[line.thing];
-  const words = own ? tileLines(own.reading, own.where) : tileLines(line.reading, line.where);
+  const told = own ? tileLines(own.reading, own.where) : tileLines(line.reading, line.where);
+  const words =
+    told.reading || told.place ? told : { reading: "", place: detailOf(line.detail) ?? "" };
   const art = line.imageUrl ?? (facts.collectible && !blueprint ? facts.art : null);
   return {
     key: line.id,
-    name: titled(line.title),
+    name: line.optional ? STEP_WORDS.optional(titled(line.title)) : titled(line.title),
     reading: words.reading,
     place: words.place,
     art,

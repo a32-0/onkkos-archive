@@ -46,7 +46,16 @@ pnpm palette
 pnpm storybook        # the catalogue at localhost:6006
 pnpm storybook:build  # into storybook-static/
 pnpm test:stories     # every story in Chromium, with the accessibility checks
+pnpm weight           # each route's function after a build
+pnpm content:update   # after a mainline or an update (content-updates.md)
 ```
+
+`pnpm content:update` is the one script written in TypeScript, because it
+reads the catalog through the app's own modules. Node runs it with `tsx`
+loaded through `--import`, not through its command, whose Windows shim the
+command's own install rewrites while it runs; and with the `react-server`
+condition so that `server-only` lets the infra modules load
+outside Next.
 
 `pnpm test:stories` needs Chromium once on a machine:
 `pnpm exec playwright install chromium`. Each story is checked by axe, and a

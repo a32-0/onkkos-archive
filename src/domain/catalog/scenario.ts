@@ -613,9 +613,14 @@ function totalsOf(wiki: Wiki, item: CatalogItem): Totals {
   const tally = new Map<string, number>();
   const consumes = new Map<string, number>();
   const missing: string[] = [];
+  const own = new Set([
+    MAIN,
+    ...(item.recipe?.parts ?? []).flatMap((part) => [part.name, `${item.name} ${part.name}`]),
+  ]);
 
   if (!root) {
     for (const ingredient of item.recipe?.ingredients ?? []) {
+      if (own.has(ingredient.name)) continue;
       tally.set(ingredient.name, (tally.get(ingredient.name) ?? 0) + ingredient.count);
     }
     return {
@@ -629,6 +634,7 @@ function totalsOf(wiki: Wiki, item: CatalogItem): Totals {
   let credits = root.credits ?? 0;
   for (const part of root.parts) {
     if (part.type === "Resource") {
+      if (own.has(part.name)) continue;
       tally.set(part.name, (tally.get(part.name) ?? 0) + part.count);
       continue;
     }
@@ -658,7 +664,11 @@ function totalsOf(wiki: Wiki, item: CatalogItem): Totals {
 }
 
 function tallies(tally: Map<string, number>, resources: Map<string, WikiResource>): Tally[] {
-  return [...tally]
+  const trimmed = new Map<string, number>();
+  for (const [name, count] of tally) {
+    trimmed.set(name.trim(), (trimmed.get(name.trim()) ?? 0) + count);
+  }
+  return [...trimmed]
     .map(([name, count]) => {
       const fact = resources.get(name);
       return {

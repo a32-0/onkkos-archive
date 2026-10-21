@@ -28,6 +28,7 @@ const resource = z.object({
   type: z.string().nullable(),
   location: z.string().nullable(),
   link: z.string(),
+  image: z.string().nullable().default(null),
 });
 
 const offer = z.object({

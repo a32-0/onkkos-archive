@@ -26,8 +26,10 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             route: null,
             reading: [{ say: "oddsBrief", runs: 20, rotation: "C", stage: null, chance: 5 }],
             where: ["Armatus", "Disruption"],
+            detail: [],
             imageUrl: "helmet.png",
             thing: null,
+            optional: false,
             more: 0,
           },
         ],
@@ -42,8 +44,10 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             route: null,
             reading: [],
             where: [],
+            detail: [],
             imageUrl: "spores.png",
             thing: "Nano Spores",
+            optional: false,
             more: 0,
           },
           {
@@ -52,8 +56,10 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             route: null,
             reading: [],
             where: [],
+            detail: [{ say: "creditsDetail" }],
             imageUrl: null,
             thing: null,
+            optional: false,
             more: 0,
           },
         ],
@@ -149,6 +155,7 @@ describe("the item's page (spec 09)", () => {
     expect(spores?.reading).toBe("~4 Runs");
     expect(spores?.place).toBe("Deimos · Exterminate");
     expect(credits?.href).toBeUndefined();
+    expect(credits?.place).toBe("Every mission pays them; The Index, on Neptune, pays the most.");
   });
 
   it("speaks only for an item the player has (BR-64)", () => {

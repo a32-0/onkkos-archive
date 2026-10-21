@@ -68,7 +68,9 @@ interface Place {
 }
 
 const SENTENCE_LOCATION =
-  /^(Rewarded|Obtained|Dropped|Purchased|Awarded|Earned|Found|Sold|Bought|Acquired|Can|Only|Given)\b/;
+  /^(Rewarded|Obtained|Dropped|Drops|Purchased|Awarded|Earned|Found|Sold|Bought|Acquired|Can|Only|Given|Cut|Dismantled|Support|Earn|Gained|Harvested|Mined)\b/;
+
+const SOURCE_CLAUSE = /\b(gained|obtained|dropped|earned) (from|by)\b/i;
 
 function capital(text: string): string {
   return text.length > 0 ? text.charAt(0).toUpperCase() + text.slice(1) : text;
@@ -120,6 +122,9 @@ function runsLine(runs: number | null): string | null {
 }
 
 export const BRIEF = {
+  foundryBrief: () => "Your foundry",
+  relicsBrief: ({ count }: { count: number }) =>
+    `${number(count)} ${plural(count, "Relic", "Relics")}`,
   oddsBrief: ({ runs, rotation, stage, chance }: Odds) =>
     runs !== null
       ? joined([
@@ -190,6 +195,7 @@ export const TITLES = {
   buyTitle: ({ item }: { item: string }) => `Buy the ${item} Blueprint`,
   marketTitle: () => "Buy it in your ship's Market",
   vendorTitle: ({ vendor }: { vendor: string }) => `Buy it from ${vendor}`,
+  vendorBlueprintTitle: ({ vendor }: { vendor: string }) => `Buy its blueprint from ${vendor}`,
   researchTitle: ({ lab }: { lab: string }) => `Research it in the ${lab}`,
 
   playTitle: ({ node }: { node: string }) => `Play ${node}`,
@@ -219,6 +225,8 @@ export const TITLES = {
   ducatsTitle: ({ ducats }: { ducats: number }) => `${number(ducats)} Orokin Ducats`,
 
   getTitle: ({ name }: { name: string }) => name,
+  foundryTitle: () => "Build it in your foundry",
+  openVoidRelicTitle: () => "Open a Void Relic",
 
   railjackTitle: () => "Acquire a Railjack",
   relayTitle: () => "Reach a Tenno Relay",
@@ -286,8 +294,6 @@ export const TITLES = {
 export const DETAILS = {
   groupHere: ({ places }: { places: readonly string[] }) => `${listOf(places)} specific`,
   groupElsewhere: () => "Different locations",
-  groupForGear: ({ gear, optional }: { gear: string; optional: boolean }) =>
-    optional ? `For the ${gear} (Optional)` : `For the ${gear}`,
 
   masteryDetail: ({ now, required }: { now: number; required: number }) =>
     now >= required
@@ -318,11 +324,13 @@ export const DETAILS = {
     currency,
     rank,
     quest,
-  }: Price & { vendor: string; quest: string | null }) => {
+    blueprint,
+  }: Price & { vendor: string; quest: string | null; blueprint?: boolean }) => {
     const sold = price(cost, currency);
     const at = rank ? `, at ${rank}` : "";
     const after = quest ? `, once ${quest} is done` : "";
-    return `${vendor} sells it${sold ? ` for ${sold}` : ""}${at}${after}.`;
+    const what = blueprint ? "its blueprint" : "it";
+    return `${vendor} sells ${what}${sold ? ` for ${sold}` : ""}${at}${after}.`;
   },
   locatorDetail: ({ key, vendor, node }: { key: string; vendor: string; node: string | null }) =>
     node ? `Buy the ${key} from ${vendor}, then play ${node}.` : `Buy the ${key} from ${vendor}.`,
@@ -375,14 +383,50 @@ export const DETAILS = {
 
   resourceDetail: ({ rarity, location }: { rarity: string | null; location: string | null }) => {
     const where = location ? location.replace(/\.$/, "") : null;
-    if (where && SENTENCE_LOCATION.test(where)) return `${where}.`;
+    if (where && (SENTENCE_LOCATION.test(where) || SOURCE_CLAUSE.test(where))) return `${where}.`;
     const kind = rarity ? `${capital(article(rarity))} ${rarity.toLowerCase()} resource` : null;
     if (kind && where) return `${kind} from ${where}.`;
     if (where) return `From ${where}.`;
     return kind ? `${kind}.` : null;
   },
+  madeDetail: ({
+    ingredients,
+    credits,
+  }: {
+    ingredients: { name: string; count: number }[];
+    credits: number | null;
+  }) =>
+    `Made in your foundry from ${listOf([
+      ...ingredients.map((one) => `${number(one.count)} ${one.name}`),
+      ...(credits !== null && credits > 0 ? [`${number(credits)} Credits`] : []),
+    ])}.`,
+  foundryDetail: () => "With its blueprint, build it from what Components lists.",
+  partResearchedDetail: ({ lab }: { lab: string }) =>
+    `The ${lab}'s research gives its blueprint; build it in your foundry.`,
+  ducatsDetail: () => "Trade Prime parts for Ducats at the Ducat Kiosk of a Tenno Relay.",
+  standingDetail: ({ vendor }: { vendor: string }) =>
+    `Standing with ${vendor}, earned by doing what they ask of you.`,
+  creditsDetail: () => "Every mission pays them; The Index, on Neptune, pays the most.",
   weaponDetail: () => "Built in your foundry, then used up by this recipe.",
   partConsumedDetail: () => "Built in your foundry, then used up by this recipe.",
+  chanceUnknownDetail: () => "The drop tables list it here without a chance.",
+  sonDetail: () => "Son trades in the Necralisk, on Deimos.",
+  blueprintRelicDetail: ({
+    count,
+    relics,
+    vaulted,
+  }: {
+    count: number;
+    relics: string[];
+    vaulted: boolean;
+  }) =>
+    count <= relics.length
+      ? `Its blueprint opens from the ${listOf(relics)} ${plural(count, "Relic", "Relics")}${vaulted ? ", vaulted" : ""}.`
+      : `Its blueprint opens from ${number(count)} ${vaulted ? "vaulted " : ""}Void Relics, ${listOf(relics)} among them.`,
+  partOfDetail: ({ item }: { item: string }) =>
+    `A part of the ${item}: build it from its own blueprint in your foundry.`,
+  relicSourceDetail: ({ relics, vaulted }: { relics: string[]; vaulted: boolean }) =>
+    `Opens from the ${listOf(relics)} ${plural(relics.length, "Relic", "Relics")}${vaulted ? ", all vaulted" : ""}.`,
 
   collectibleDetail: ({ place, mission }: { place: string; mission: string | null }) =>
     mission ? `${place}, ${mission}.` : `${place}.`,

@@ -62,8 +62,10 @@ first because the player reads less. It is short and links out for the rest.
    - No analytics and no tracking.
    - How DE's endpoint is protected, in two lines, with a link to `api.md`.
 4. **How it was built.** For the reader evaluating the work: the order
-   (constitution, specs, plan, tasks, code), linked to `specs/`; the layers in
-   one diagram; the design system and a link to the Storybook. The owner writes
+   (constitution, specs, plan, tasks, code), linked to `specs/`, and the
+   layers as the road from an id to a screen, each in a Mermaid diagram in
+   the Cetus colours (owner, 2026-10-21: the arrows of the earlier diagram did
+   not explain themselves); the design system and a link to the Storybook. The owner writes
    the line saying that the work was done with Claude's help, in their own words
    (constitution).
 5. **Run it.** `pnpm install`, `pnpm dev` on fixtures, `pnpm check`,
@@ -75,6 +77,13 @@ first because the player reads less. It is short and links out for the rest.
 7. **Licence.** MIT for the code and the curated files. Warframe and its
    content belong to Digital Extremes; a fan project, not affiliated with or
    endorsed by them.
+
+The README wears Cetus (owner, 2026-10-21): a banner, the features in two
+columns with a screenshot each, the map, and a sheet of the design system.
+Their images are the owner's, in `docs/readme/`: `banner.png`, `summary.png`,
+`step-by-step.png`, `map.png` and `design-system.png`, every screenshot of the
+Ordis demo. Section 6 credits each source in a table, with what the app takes
+from it and its terms.
 
 What it does not have:
 

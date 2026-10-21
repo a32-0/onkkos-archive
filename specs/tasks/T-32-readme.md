@@ -8,6 +8,10 @@
 
 The public README's seven sections as plan part 5 sets them, `ui.md` checked against specs 01 to 10, and the docs index complete.
 
+## Brought forward (owner, 2026-10-21)
+
+The README was rewritten before the task, at the owner's request: Cetus's branding, credits for every source the data comes from, and two diagrams in place of the arrows of the layers, which did not explain themselves (plan part 5). The owner adds its five images to `docs/readme/`. What the task still does: read each licence from its source and quote it, `docs/ui.md`, the docs index, and the owner's line about Claude.
+
 ## The owner
 
 - Writes, in their own words, the line saying the work was done with Claude's help.

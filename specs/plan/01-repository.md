@@ -125,16 +125,16 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 
 ## `src/domain/`
 
-| Folder or file  | Holds                                                                                                                                                                                                                             | Task                   |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal, whether Onkko has been met (BR-64)                                                                                                   | T-12, T-14             |
-| `since.ts`      | The month a player last played                                                                                                                                                                                                    | T-12                   |
-| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                                                                                            | T-12, T-13, T-22       |
-| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion with the goal at the frontier or the focus first (BR-05), the frontier and the focus                                                                                   | T-13, T-27             |
-| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                                                                                  | T-13, T-16             |
-| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, what is new and in reach, the Summary, checks and search; the Necramechs a player lacks (BR-54) | T-14, T-16, T-25, T-27 |
-| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59), Start here (BR-44)                                                                                                                                                   | T-15, T-23             |
-| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                                                                                          | T-16                   |
+| Folder or file  | Holds                                                                                                                                                                                                                                                             | Task                         |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `profile/`      | The account id, the payload, the display name, nodes, the field list, the trim, the arsenal, whether Onkko has been met (BR-64)                                                                                                                                   | T-12, T-14                   |
+| `since.ts`      | The month a player last played                                                                                                                                                                                                                                    | T-12                         |
+| `types/`        | The profile, the plan with its reasons as values, the `next` parameter                                                                                                                                                                                            | T-12, T-13, T-22             |
+| `graph/`        | The goal graph: schema, predicates, evaluation, suggestion with the goal at the frontier or the focus first (BR-05), the frontier and the focus                                                                                                                   | T-13, T-27                   |
+| `narrative/`    | Quest prerequisites and quest evidence (BR-28, BR-37); the chain                                                                                                                                                                                                  | T-13, T-16                   |
+| `catalog/`      | Items, mastery, odds, the dossier; the wiki modules' shapes, the catalog's data as one value; sources, relics, releases, updates, what is new and in reach, the Summary, checks and search; the Necramechs a player lacks (BR-54); the levels of a content review | T-14, T-16, T-25, T-27, T-31 |
+| `place/`        | The place index, item state, tiles, the Dojo, reach (BR-59), Start here (BR-44)                                                                                                                                                                                   | T-15, T-23                   |
+| `wiki-links.ts` | A wiki URL from a name; it reads nothing                                                                                                                                                                                                                          | T-16                         |
 
 ## `src/infra/`
 
@@ -157,7 +157,9 @@ task that builds what speaks it. `failures.ts` holds the five band messages
 (BR-38), `engine.ts` the words of the engine's values, read by the map (T-26),
 `goals.ts` the cards and the search, `reach.ts` the More line's words (BR-61),
 and `checks.ts` the words of the step plan's phrases, begun by T-25 with the
-readings a tile shows and completed by T-29.
+readings a tile shows and completed by T-29. `review.ts` holds the words of
+the content review's report and of the command's lines in the terminal
+(T-31).
 
 ## `data/`
 
@@ -167,17 +169,18 @@ readings a tile shows and completed by T-29.
 | `narrative_spine.yaml`, `quest_evidence.yaml`, `sources.yaml`, `acquisition.yaml` | The spine, quest evidence, sources and placed acquisition                       | T-11, T-13, T-15 |
 | `systems.yaml`                                                                    | BR-47's order, the Dojo (BR-57), "Soon™", the places' aliases, the hubs' places | T-11, T-15, T-26 |
 | `vendor/*`                                                                        | Snapshots, each with its source and licence named (part 5)                      | T-11             |
+| `reviewed-update.json`                                                            | Where the last content review stopped: the update and the catalog version       | T-31             |
 
 ## `fixtures/`, `scripts/`, `tests/`
 
-| File                                                                      | Holds                                                                                                                | Task             |
-| ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `profile-cy.json`, `profile-ordis.json`                                   | The demos, output of `pnpm fixture`                                                                                  | T-11             |
-| `profile-veteran.json`, `profile-new-player.json`                         | Synthetic test profiles                                                                                              | T-11             |
-| `scripts/*`                                                               | `palette.mjs` measures the token layer; `trim-profile.mjs` takes `--from` with no default and imports the field list | T-04, T-11, T-12 |
-| `scripts/refresh-items.mjs`, `scripts/function-weight.mjs`                | `pnpm data:items` writes `data/vendor/items.json` from `@wfcd/items`; `pnpm weight` weighs each route after a build  | T-31             |
-| `scripts/content-update.ts`, `data/reviewed-update.json`, `docs/updates/` | `pnpm content:update` ([`content-updates.md`](../../docs/content-updates.md))                                        | T-31             |
-| `tests/*`                                                                 | One file per domain or infra module, written with it                                                                 | Each task        |
+| File                                                                                                  | Holds                                                                                                                                                            | Task             |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `profile-cy.json`, `profile-ordis.json`                                                               | The demos, output of `pnpm fixture`                                                                                                                              | T-11             |
+| `profile-veteran.json`, `profile-new-player.json`                                                     | Synthetic test profiles                                                                                                                                          | T-11             |
+| `scripts/*`                                                                                           | `palette.mjs` measures the token layer; `trim-profile.mjs` takes `--from` with no default and imports the field list                                             | T-04, T-11, T-12 |
+| `scripts/refresh-items.mjs`, `scripts/function-weight.mjs`                                            | `pnpm data:items` writes `data/vendor/items.json` from `@wfcd/items`; `pnpm weight` weighs each route after a build                                              | T-31             |
+| `scripts/content-update.ts`, `scripts/review-report.ts`, `data/reviewed-update.json`, `docs/updates/` | `pnpm content:update` ([`content-updates.md`](../../docs/content-updates.md)); the review's levels are `domain/catalog/review.ts`, its words `content/review.ts` | T-31             |
+| `tests/*`                                                                                             | One file per domain or infra module, written with it                                                                                                             | Each task        |
 
 No real capture is ever committed (constitution).
 

@@ -158,7 +158,8 @@ task that creates the projects (T-03, on 2026-10-08), not assumed here:
   Each of the fourteen routes carried `@wfcd/items` and weighed about 122 MB,
   and the build failed with more than 12 functions: what the failure implies,
   and no page states, is that two routes that together pass 250 MB cannot
-  share a function. The next production build confirms it. The catalog is now read from a
+  share a function. The production build of 2026-10-21, at about 28 MB a
+  route, passed and confirmed it. The catalog is now read from a
   snapshot in `data/vendor/` and each route weighs about 28 MB; `pnpm weight`
   in `check.yml` fails a route past 80 MB, before Vercel does
   ([`development.md`](../../docs/development.md#the-weight-of-a-function)).

@@ -729,6 +729,11 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - Rule: Components lists every ingredient of everything named above it: the
   Incubator Power Core's recipe, a Genetic Code Template, and the rest, not
   only the item's own recipe.
+- Each ingredient appears once (owner, 2026-10-21): what the gear asks for
+  is summed into the rows the plan already has, credits into one row, and
+  what only an optional step's gear asks for is summed into one last group,
+  each row "(Optional)". The Chesa Kubrow had listed its credits and Argon
+  Crystal three times, one group per recipe, with no title to tell them apart.
 - [`scenario-guidelines.md`](scenario-guidelines.md#components-gather-every-recipe-the-plan-names)
   says the same since 2026-10-04.
 
@@ -1100,3 +1105,20 @@ on 2026-10-08.
 - The row sits where the first of its kind stood. What the profile confirms is
   dropped before the rows are gathered (BR-28), and the lock (BR-63) reads the
   first Junction in the row the profile proves unmet.
+
+### BR-67 · Every component opens its own page
+
+- Settled by the owner on 2026-10-21, after Esher Devar and the fish parts
+  opened the wiki while Nano Spores opened its own page.
+- Type: content and behaviour.
+- Rule: a row in Components opens the thing's own page in the app, and its
+  description says where it comes from. The catalog keeps a resource when any
+  source places it: a drop, a region, a vendor (its blueprint included), the
+  wiki's "Location" or "Source", a sentence of the wiki that says how it is
+  earned, or a recipe the catalog has. Its How to get says that source in the
+  same order. A drop listed only as a bundle ("5X Fass Residue") counts when
+  the resource has no drop or region of its own.
+- A part of the thing itself is not a resource: it says it is a part, or the
+  relics it opens from, and opens no page.
+- What no source places keeps the wiki's prose and opens the wiki; the item
+  sweep test names each one.
