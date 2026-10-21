@@ -4,8 +4,19 @@
   display: block;
   height: var(--update-card-height);
   overflow: hidden;
+  border-radius: var(--radius-s);
   color: var(--ink);
   text-decoration: none;
+}
+
+.button {
+  composes: card;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: start;
+  cursor: pointer;
 }
 
 .card:hover .band {

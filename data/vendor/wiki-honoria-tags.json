@@ -6,7 +6,7 @@
    "quests": [
     "The Old Peace"
    ],
-   "line": "Specifically, purchased from Roathe, La Cathédrale."
+   "line": "Purchased from Roathe, La Cathédrale."
   },
   "Hunhow": {
    "vendor": "Hunhow",
@@ -14,16 +14,16 @@
    "quests": [
     "Jade Shadows: Constellations"
    ],
-   "line": "Specifically, purchased from Hunhow, Pontis Tower."
+   "line": "Purchased from Hunhow, Pontis Tower."
   },
   "Melica": {
-   "vendor": "Cephalon Melica",
-   "place": "Yuvan's Peak",
+   "vendor": null,
+   "place": null,
    "quests": [
     "Angels of the Zariman",
     "Whispers in the Walls"
    ],
-   "line": "Specifically, purchased from Cephalon Melica, Yuvan's Peak."
+   "line": "Purchased from Cephalon Melica at Yuvan's Peak or Chrysalith."
   },
   "Syndicate": {
    "vendor": null,

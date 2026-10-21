@@ -5,9 +5,11 @@ import { ownedArsenal } from "@/domain/profile/arsenal";
 import type { RawProfile } from "@/domain/types/profile";
 
 export interface GameUpdate {
-  version: number;
+  version: string;
+  versions: string[];
   name: string;
   yearMonth: string;
+  yearMonths: string[];
   date: string;
   wikiUrl: string | null;
   items: number;
@@ -27,8 +29,17 @@ export interface Introduced {
   introduced?: RawIntroduced;
 }
 
+export interface PatchNote {
+  version: string;
+  name: string;
+  date: string | null;
+  art: string | null;
+  url: string | null;
+}
+
 export interface UpdateSources {
   entries: readonly Introduced[];
+  patchNotes: readonly PatchNote[];
   spine: NarrativeSpine;
   art: Readonly<Record<string, string>>;
   arsenal: CatalogItem[];
@@ -41,8 +52,8 @@ const NUMERIC_ALIAS = /^[0-9]/;
 const VERSION_ALIAS = /^Update /;
 
 interface CatalogAnchors {
-  anchors: Map<number, RawIntroduced>;
-  items: Map<number, number>;
+  anchors: Map<string, RawIntroduced>;
+  items: Map<string, number>;
 }
 
 const anchorCache = new WeakMap<readonly Introduced[], CatalogAnchors>();
@@ -56,12 +67,20 @@ export function updateFor(
   sources: UpdateSources,
   yearMonth: string,
 ): GameUpdate | null {
-  return gameUpdates(graph, sources).find((update) => update.yearMonth === yearMonth) ?? null;
+  return playedIn(gameUpdates(graph, sources), yearMonth);
+}
+
+function playedIn(updates: readonly GameUpdate[], yearMonth: string): GameUpdate | null {
+  return (
+    updates.find((update) => update.yearMonth === yearMonth) ??
+    updates.find((update) => update.yearMonths.includes(yearMonth)) ??
+    null
+  );
 }
 
 interface BannerEntry {
   name: string;
-  version: number;
+  version: string;
   yearMonth: string;
   art: string | null;
 }
@@ -115,7 +134,7 @@ export function updateStanding(
     : null;
   const all = gameUpdates(graph, sources);
   const newest = all[0] ?? null;
-  const chosen = since ? (all.find((update) => update.yearMonth === since) ?? null) : null;
+  const chosen = since ? playedIn(all, since) : null;
   const caughtUp = since !== null && newest !== null && since >= newest.yearMonth;
   if (newest && (caughtUp || ownsLatest(all, sources.arsenal, owned))) {
     return { update: newest, current: true };
@@ -127,8 +146,8 @@ function readAnchors(entries: readonly Introduced[]): CatalogAnchors {
   const cached = anchorCache.get(entries);
   if (cached) return cached;
 
-  const anchors = new Map<number, RawIntroduced>();
-  const items = new Map<number, number>();
+  const anchors = new Map<string, RawIntroduced>();
+  const items = new Map<string, number>();
 
   for (const raw of entries) {
     const introduced = raw.introduced;
@@ -136,13 +155,13 @@ function readAnchors(entries: readonly Introduced[]): CatalogAnchors {
 
     const named = UPDATE_NAME.exec(introduced.name ?? "")?.[1];
     if (named !== undefined && isRealDate(introduced.date)) {
-      const version = Number(named);
+      const version = releaseOf(named);
       if (!anchors.has(version)) anchors.set(version, introduced);
     }
 
     const release = RELEASE_OF.exec(introduced.name ?? "")?.[1];
     if (release !== undefined) {
-      const version = Number(release);
+      const version = releaseOf(release);
       items.set(version, (items.get(version) ?? 0) + 1);
     }
   }
@@ -153,29 +172,64 @@ function readAnchors(entries: readonly Introduced[]): CatalogAnchors {
 }
 
 function buildUpdates(graph: Graph, sources: UpdateSources): GameUpdate[] {
-  const curated = new Map(graph.updateNames.map((entry) => [entry.version, entry.name]));
+  const curated = new Map(graph.updateNames.map((entry) => [String(entry.version), entry.name]));
   const questByDate = questReleases(sources.spine);
   const { anchors, items } = readAnchors(sources.entries);
 
-  const updates: GameUpdate[] = [];
-  for (const [version, introduced] of anchors) {
-    if (version < FIRST_TRACKED_VERSION) continue;
-    const date = introduced.date as string;
-    const name = curated.get(version) ?? titleAlias(introduced.aliases);
-    if (name === null) continue;
-    updates.push({
+  const updates = new Map<string, GameUpdate>();
+  const add = (
+    version: string,
+    name: string,
+    date: string,
+    anchor: RawIntroduced | undefined,
+    art: string | null,
+  ) =>
+    updates.set(version, {
       version,
+      versions: [version],
       name,
       date,
       yearMonth: date.slice(0, 7),
-      wikiUrl: typeof introduced.url === "string" ? introduced.url : null,
+      yearMonths: [date.slice(0, 7)],
+      wikiUrl: typeof anchor?.url === "string" ? anchor.url : null,
       items: items.get(version) ?? 0,
       quest: questByDate.get(date) ?? null,
-      art: sources.art[name] ?? null,
+      art: art ?? sources.art[name] ?? null,
     });
+
+  for (const note of sources.patchNotes) {
+    if (majorOf(note.version) < FIRST_TRACKED_VERSION) continue;
+    const anchor = anchors.get(note.version);
+    const date = note.date ?? (isRealDate(anchor?.date) ? (anchor?.date ?? null) : null);
+    if (date === null) continue;
+    add(note.version, curated.get(note.version) ?? note.name, date, anchor, note.art);
   }
 
-  return updates.sort((a, b) => b.version - a.version);
+  for (const [version, introduced] of anchors) {
+    if (updates.has(version) || majorOf(version) < FIRST_TRACKED_VERSION) continue;
+    const name = curated.get(version) ?? titleAlias(introduced.aliases);
+    if (name === null) continue;
+    add(version, name, introduced.date as string, introduced, null);
+  }
+
+  const sorted = [...updates.values()].sort(
+    (a, b) => b.date.localeCompare(a.date) || compareVersions(b.version, a.version),
+  );
+  return principals(sorted);
+}
+
+function principals(sorted: readonly GameUpdate[]): GameUpdate[] {
+  const byName = new Map<string, GameUpdate>();
+  for (const update of [...sorted].reverse()) {
+    const key = update.name.toLowerCase();
+    const principal = byName.get(key);
+    if (principal) {
+      principal.versions.push(update.version);
+      if (!principal.yearMonths.includes(update.yearMonth))
+        principal.yearMonths.push(update.yearMonth);
+    } else byName.set(key, update);
+  }
+  return sorted.filter((update) => byName.get(update.name.toLowerCase()) === update);
 }
 
 function titleAlias(aliases: string[] | undefined): string | null {
@@ -199,4 +253,19 @@ function questReleases(spine: NarrativeSpine): Map<string, string> {
 
 function isRealDate(date: string | undefined): boolean {
   return typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date) && !date.startsWith("0000");
+}
+
+function releaseOf(version: string): string {
+  const [major, minor] = version.split(".");
+  return minor && Number(minor) !== 0 ? `${Number(major)}.${Number(minor)}` : String(Number(major));
+}
+
+function majorOf(version: string): number {
+  return Number(version.split(".")[0]);
+}
+
+function compareVersions(a: string, b: string): number {
+  const [aMajor = 0, aMinor = 0] = a.split(".").map(Number);
+  const [bMajor = 0, bMinor = 0] = b.split(".").map(Number);
+  return aMajor - bMajor || aMinor - bMinor;
 }

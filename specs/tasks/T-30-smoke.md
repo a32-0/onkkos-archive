@@ -10,13 +10,14 @@
 
 ## The owner
 
-- If Deployment Protection is on, which puts a production deployment's own URL behind Vercel's login, creates the bypass for automation and holds its secret in the repository's Actions secrets.
+- If Deployment Protection is on, which puts a production deployment's own URL behind Vercel's login, creates the bypass for automation and holds its secret in the repository's Actions secrets as `VERCEL_AUTOMATION_BYPASS_SECRET`.
+- After the first production deployment, opens the run and confirms it ran for `onkkos-archive` and not for `onkkos-archive-storybook`: Vercel names the environment it reports to GitHub, and the workflow runs only on one that starts with "Production" and does not name the Storybook project.
 
 ## What it builds
 
-| File                          | Note |
-| ----------------------------- | ---- |
-| `.github/workflows/smoke.yml` |      |
+| File                          | Note                                                                                                                                                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.github/workflows/smoke.yml` | On a successful production `deployment_status`: the three requests with `curl`, the bypass header only when the secret is set, and `/system` followed through its redirect to prove it stays on the map |
 
 ## Acceptance
 

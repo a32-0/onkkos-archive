@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { toDisplayProfile } from "@/domain/profile/display";
 import { PROFILE_FIELDS } from "@/domain/profile/fields";
-import { regionsPlayed, nodeCountsByPlace } from "@/domain/profile/nodes";
+import { regionsPlayed } from "@/domain/profile/nodes";
 import { accountCreatedAt } from "@/domain/profile/payload";
 import { trimProfile } from "@/domain/profile/trim";
 import type { RawProfile } from "@/domain/types/profile";
@@ -14,6 +14,7 @@ import { CY, fixture, NEW_PLAYER } from "./helpers";
 const SYNTHETIC: RawProfile = {
   AccountId: { $oid: "000000000000000000000009" },
   DisplayName: "Synthetic",
+  ActiveAvatarImageType: "/Lotus/Types/StoreItems/AvatarImages/ImageCephalonCy",
   PlatformNames: ["Synthetic"],
   PlayerLevel: 12,
   GuildId: { $oid: "000000000000000000000010" },
@@ -39,7 +40,7 @@ const PROFILES: [string, RawProfile][] = [
 ];
 
 describe("trimProfile", () => {
-  it("keeps the eight fields and nothing else", () => {
+  it("keeps the nine fields and nothing else", () => {
     const trimmed = trimProfile(SYNTHETIC);
     expect(Object.keys(trimmed).sort()).toEqual([...PROFILE_FIELDS].sort());
   });
@@ -70,10 +71,6 @@ describe.each(PROFILES)("every reading of %s is the same once trimmed", (_, whol
 
   it("the account's creation", () => {
     expect(accountCreatedAt(trimmed)).toEqual(accountCreatedAt(whole));
-  });
-
-  it("the nodes run, per place", () => {
-    expect(nodeCountsByPlace(trimmed)).toEqual(nodeCountsByPlace(whole));
   });
 
   it("the regions played", () => {

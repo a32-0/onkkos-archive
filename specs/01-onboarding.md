@@ -6,8 +6,8 @@ player's id when this device remembers them.
 
 ## Frames
 
-- [`206:903` Onboarding](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=206-903),
-  in the pinned section `421:590`. It is the only frame for this screen.
+- [`661:4307` Start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4307),
+  in the pinned section `661:4302`. It is the only frame for this screen.
 
 The frame is the design (BR-33). This spec says what the frame cannot:
 behaviour and where things come from.
@@ -27,7 +27,8 @@ behaviour and where things come from.
 - It holds what the frame draws, and nothing else: the background art, the
   thin frame line, the wordmark (quill and "Onkko's Archive"), a **Begin**
   button, and Onkko's line under it, "You were anticipated. Our interaction
-  begins."
+  begins." The wordmark sits in the middle of the frame line, and Begin and
+  the line at its foot (owner, 2026-10-15).
 - **Begin** opens `/connect`. When the device remembers an account id
   (`wf_account`), the form opens with it already in the field, so the player
   only presses Connect (BR-01). The splash itself never reads the profile and
@@ -46,11 +47,13 @@ One. The screen has no data, so it has no loading, empty or error state.
 
 ## Acceptance
 
-1. At 390 px the screen matches `206:903`: layout, type, colour, spacing and
+1. At 390 px the screen matches `661:4307`: layout, type, colour, spacing and
    copy.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
-   page does not scroll sideways. Wider than the frame (BR-39), the wordmark,
-   the button and the line stay one centred column at the frame's width; the
+   page does not scroll sideways. Below 600 the frame line keeps 16 px from
+   the window's edges and Begin fills it; from 600 (BR-39), the wordmark
+   stays in the middle and the button and the line at the foot of the frame
+   line, one centred column at the frame's width; the
    art covers the whole window and the thin frame line stays inset from the
    window's edges.
 3. Begin opens `/connect`; with `wf_account` set, the field holds that id.

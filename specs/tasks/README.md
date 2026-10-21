@@ -79,7 +79,9 @@ into `main`.
 | [T-25 · Screen: the Summary](T-25-summary.md)                                                                 | 4     | 06                         | T-24             |
 | [T-26 · Screen: the map](T-26-map.md)                                                                         | 4     | 07                         | T-25, T-15, T-13 |
 | [T-27 · Screen: Goal](T-27-goal.md)                                                                           | 4     | 08                         | T-26             |
-| [T-28 · Screen: the item and its Summary](T-28-item.md)                                                       | 4     | 09                         | T-27             |
+| [T-27b · The Material pass](T-27b-material-pass.md)                                                           | 4     | 04 to 10                   | T-27             |
+| [T-27c · The Material pass in code](T-27c-material-code.md)                                                   | 4     | 02, 04 to 10               | T-27b            |
+| [T-28 · Screen: the item and its Summary](T-28-item.md)                                                       | 4     | 09                         | T-27c            |
 | [T-29 · Screen: Step by step](T-29-step-by-step.md)                                                           | 4     | 10                         | T-28             |
 | [T-30 · Check every deployment](T-30-smoke.md)                                                                | 4     | 00                         | T-22, T-26       |
 | [T-31 · The content update command](T-31-content-update.md)                                                   | 5     | 00                         | T-16             |

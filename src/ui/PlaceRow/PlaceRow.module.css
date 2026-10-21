@@ -5,12 +5,19 @@
   box-sizing: border-box;
   width: 100%;
   padding: var(--space-6);
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
   color: var(--ink);
   text-decoration: none;
 }
 
 .row[aria-current] {
-  background-color: var(--surface-raised);
+  background-color: var(--surface-raised-strong);
+}
+
+.row[aria-current] .count,
+.row[aria-current] .gap {
+  color: var(--ink-muted);
 }
 
 .row:hover {
@@ -22,27 +29,10 @@
   outline-offset: calc(var(--border-2) * -1);
 }
 
-.art {
-  --row-art-size: 48px;
-  display: block;
-  flex: none;
-  width: var(--row-art-size);
-  height: var(--row-art-size);
-  border-radius: var(--radius-full);
-  background: var(--surface-sunken);
-  object-fit: cover;
-}
-
 .text {
   display: flex;
+  flex: 1 0 0;
   flex-direction: column;
-  min-width: 0;
-}
-
-.inline {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
   min-width: 0;
 }
 

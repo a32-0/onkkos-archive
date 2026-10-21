@@ -7,47 +7,47 @@ answer on the item's page, and it is built exactly as the frames draw it.
 
 ## Frames
 
+- [`662:7143` Item>Step by step](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-7143):
+  the page as the owner drew it on 2026-10-18; every scenario below follows it.
+
 Row states:
 
-- [`367:291`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=367-291):
+- [`479:3620` Step row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=479-3620):
   a collapsed row.
-- [`382:2233`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=382-2233):
+- [`465:477` Component row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=465-477):
   a ticked component.
 
 The scenarios. Each is a case the grammar must place, and each is an
 acceptance test:
 
-| Frame      | Item             | What it proves                                                                            |
-| ---------- | ---------------- | ----------------------------------------------------------------------------------------- |
-| `323:689`  | Dante            | Every part from one place: How to get once, a flat Blueprints list                        |
-| `337:806`  | Ash              | Every part from a different place: one section per part, ordered by odds                  |
-| `368:865`  | Ember            | Parts share a place, the main blueprint is bought: "Buy … Blueprint" closes Prerequisites |
-| `371:1183` | Gyre             | One hub, different bounty tiers: one section per part, each its tier                      |
-| `372:355`  | Nesha            | No drop table: researched in the dojo, "Join or create a clan"                            |
-| `382:452`  | Kuva Sobek       | A Kuva Lich: steps, then an alternative ("Or trade…"), prerequisites to the root          |
-| `382:1010` | Tenet Tetra      | A Sister of Parvos: the same system as Kuva                                               |
-| `382:1153` | Prisma Gorgon    | Baro Ki'Teer: a rotating vendor, paid in Ducats and Credits                               |
-| `372:1070` | Gyre Prime       | A Prime in rotation: relics per part                                                      |
-| `382:1528` | Ember Prime      | A vaulted Prime: the Prime Vaulted status row, vaulted relics                             |
-| `382:1864` | Ivara Prime      | A vaulted Prime in Resurgence: Acquire Aya, Visit Varzia, then relics                     |
-| `385:498`  | Chesa Kubrow     | Bred: gear, optional steps, the Incubator                                                 |
-| `396:757`  | Adarza Kavat     | Bred from genetic codes                                                                   |
-| `398:1655` | Bhaira Hound     | Two systems composed: the Sister plan plus "The Hound"                                    |
-| `396:1179` | Vizier Predasite | Revived by Son: a procedure of steps                                                      |
-| `396:498`  | Vasca Kavat      | A special companion: infection, no Mastery row                                            |
+| Frame       | Item             | What it proves                                                                            |
+| ----------- | ---------------- | ----------------------------------------------------------------------------------------- |
+| `677:7827`  | Dante            | Every part from one place: How to get once, a flat Blueprints list                        |
+| `677:8763`  | Ash              | Every part from a different place: one section per part, ordered by odds                  |
+| `677:8135`  | Ember            | Parts share a place, the main blueprint is bought: "Buy … Blueprint" closes Prerequisites |
+| `677:8443`  | Gyre             | One hub, different bounty tiers: one section per part, each its tier                      |
+| `677:9075`  | Nesha            | No drop table: researched in the dojo, "Join or create a clan"                            |
+| `677:10331` | Kuva Sobek       | A Kuva Lich: steps, then an alternative ("Or trade…"), prerequisites to the root          |
+| `677:12268` | Tenet Tetra      | A Sister of Parvos: the same system as Kuva                                               |
+| `677:12568` | Prisma Gorgon    | Baro Ki'Teer: a rotating vendor, paid in Ducats and Credits                               |
+| `677:9379`  | Gyre Prime       | A Prime in rotation: relics per part                                                      |
+| `677:9695`  | Ember Prime      | A vaulted Prime: the Prime Vaulted status row, vaulted relics                             |
+| `677:10011` | Ivara Prime      | A vaulted Prime in Resurgence: Acquire Aya, Visit Varzia, then relics                     |
+| `677:11052` | Chesa Kubrow     | Bred: gear, optional steps, the Incubator                                                 |
+| `677:11660` | Adarza Kavat     | Bred from genetic codes                                                                   |
+| `677:10748` | Bhaira Hound     | Two systems composed: the Sister plan plus "The Hound"                                    |
+| `677:11964` | Vizier Predasite | Revived by Son: a procedure of steps                                                      |
+| `677:11356` | Vasca Kavat      | A special companion: infection, no Mastery row                                            |
 
 The scenario frames' texts are sample values; the data decides every title,
 reading and passage (BR-33). Their layout, row types, states and order are the
 design.
 
-Drawn on 2026-10-06 under **Documented states**, from the states this spec
-describes and no earlier frame drew. Their texts are sample values:
+The scenarios and the two states below were redrawn in "App flows" on
+2026-10-18 (T-27b). Their texts are sample values:
 
-- [`474:2152` Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-2152): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it; How to get with where it starts and the wiki's passage.
-
-Drawn on 2026-10-08 under **Documented states**, for BR-63:
-
-- [`533:5136` Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-5136): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.
+- [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it; How to get with where it starts and the wiki's passage.
+- [`677:13172` Item>Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-13172): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.
 
 ## Rules
 
@@ -69,30 +69,34 @@ Drawn on 2026-10-08 under **Documented states**, for BR-63:
 
 ## The page
 
-The same page as spec 09, with **Step by step** chosen: You're on, the hero
-and View stay; the sections below replace the Summary's. Onkko's line closes
-the page.
+The same page as spec 09, with **Step by step** chosen: the top bar, Onkko's
+line, You're on, the hero and View stay; the sections below replace the
+Summary's.
 
 ## The sections
 
 In this order; a section with nothing in it does not render.
 
 1. **Prerequisites**: facts to read, never to tick. Mastery Rank (never 0,
-   BR-22), the slot (BR-23), quests root first (BR-28), hub unlocks, reaching
+   BR-22), the slot (BR-23), quests root first (BR-28) and Junctions, each
+   kind in one row when there is more than one (BR-66), hub unlocks, reaching
    a place, gear owned, standing, clan, a status row ("Prime Vaulted"), and
    last, "Buy … Blueprint" when the main blueprint is bought.
 2. **How to get**, when the parts share a source, or the system's steps
-   (Lich, Sister, Baro, Varzia, breeding, Son) as the frames title them.
+   (Lich, Sister, Baro, Varzia, breeding, Son), under the same title.
 3. **Blueprints**, one flat list when every part shares a source; otherwise
-   **one section per part**, titled "{Part} Blueprint" with the part's art as
-   its icon, ordered by best odds (BR-25).
-4. **Components**: what the player collects, grouped under dividers, "{Place}
-   specific" for what only that place gives and "Different locations" for the
-   rest, each group ordered by rarity, credits last (BR-24), including every
+   **one card per part** under the same divider, each opening with its
+   header, "{Part} Blueprint" with the part's art as its icon, ordered by
+   best odds (BR-25).
+4. **Components**: what the player collects, in groups split by a plain
+   line inside the card, as `662:7558` draws it: first what only that place
+   gives, then the rest; a gear's recipe makes its own group. No group carries
+   a title (owner, 2026-10-19). Each group ordered by rarity, credits last (BR-24), including every
    recipe the plan names (BR-32).
 
-A section header is the section's icon (a part's art, or the game icon of
-BR-42) and its title in the display face.
+Each section is a card under a divider that names it (owner's frames,
+2026-10-18). A part's card opens with its header: the part's art and its
+title in the display face.
 
 ## The rows
 
@@ -111,7 +115,8 @@ A vertical gold line runs down the section. Each row:
 - **The detail**, one line of data when there is one: "It drops at rotation C,
   7.5% a run, so about 13 runs for an even chance." "Uncommon. 11% intact and
   20% radiant."
-- **The prose**, the wiki's passage in its paragraphs (BR-48).
+- **The prose**, the wiki's passage in its paragraphs, three sentences at
+  most (BR-48).
 - **Wiki ↗**, in the link colour, closing the passage. For a thing the app
   answers on its own page it reads "How to get it" and opens that page
   (BR-30).
@@ -121,18 +126,19 @@ diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
 
 ### Components
 
-No line and no diamond. Each row: a checkbox, the thing's art on the drawn
-ground (BR-18), "{name} ×{n}" in bold, a chevron, the description and **Wiki
-↗**. Ticking a row (`382:2233`):
+No line and no diamond. Each row: a checkbox, the thing's art with no ground
+behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, and under them, starting where the art
+starts so nothing sits under the checkbox, the description with **Wiki ↗**
+closing its line. Ticking a row (`465:477`):
 
-- fills the box, dims the title and strikes it through, fades the art's ground;
+- fills the box, dims the title and strikes it through, dims the art;
 - collapses the row, its chevron pointing down;
 - is kept on this device (`wf:manual:item:{name}:{rowId}`), never read from the
   profile, which lists no resources.
 
 Unticking brings the row back as it was.
 
-### A collapsed row (`367:291`)
+### A collapsed row (`479:3620`)
 
 Only the title and a chevron pointing down. The chevron opens it. A fold is per
 visit and is not kept.
@@ -176,18 +182,19 @@ reading measure of at most 62 characters.
 
 ## Components
 
-`SectionHeader` (icon kinds: game icon, part art), `Timeline`, `StepRow`
-(step, optional, alternative, best; open, collapsed, locked), `RowDetail`,
-`RowProse`, `WikiLink` (wiki, our page), `ComponentRow` (open, collapsed,
-ticked, locked),
-`GroupDivider`, `Checkbox`, each with its stories, and a story per scenario
-frame above, built from fixture plans.
+`Divider` (sections and component groups), `SectionHeader` (part art),
+`Timeline`, `StepRow` (step, optional, alternative, best; open, collapsed,
+locked), `RowDetail`, `RowProse`, `WikiLink` (wiki, our page), `ComponentRow`
+(open, collapsed, ticked, locked) and `Checkbox`, each with its stories. Each
+scenario frame above is a test of the view built from the catalogue's own
+plan (`tests/steps.test.ts`), not a story: the plan is built on the server
+from data Storybook does not load (2026-10-19).
 
 ## Acceptance
 
 1. At 390 px every scenario above matches its frame in layout, row types,
    states and order, with the data's own texts.
-2. A collapsed row matches `367:291`; a ticked component matches `382:2233`
+2. A collapsed row matches `479:3620`; a ticked component matches `465:477`
    and survives a reload.
 3. Prose shows the source's paragraphs, from the source BR-48 names for the
    row's kind: Mechanics for a mission, Acquisition for a prose-only route,

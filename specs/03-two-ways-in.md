@@ -7,7 +7,7 @@ goal. It is the last screen of onboarding.
 
 ## Frames
 
-- [`203:140` Features](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-140).
+- [`661:4591` Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4591).
 
 ## Rules
 
@@ -17,29 +17,33 @@ goal. It is the last screen of onboarding.
   the words on each card.
 - [BR-05](../docs/business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
   Set a goal leads to goals ordered by frontier and focus.
-- [BR-36](../docs/business-rules.md#br-36--from-the-summary-an-item-or-next-to-a-place):
-  the frontier or the focus, which Skip shares with Next.
+- [BR-36](../docs/business-rules.md#br-36--from-the-summary-an-item-or-skip-to-a-place):
+  the frontier or the focus, which Skip shares with the Summary's Skip.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   wider than the frame.
-- [BR-40](../docs/business-rules.md#br-40--two-ways-in-skip-goes-to-the-map-go-back-to-the-id-form):
-  Skip and Go back.
+- [BR-40](../docs/business-rules.md#br-40--before-the-map-skip-goes-to-the-map):
+  Skip and Back.
 
 ## What the screen does
 
 Route `/features`, outside the shell: the header carries the wordmark only, no
-tab bar and no player chip. From the top, as `203:140` draws it:
+tab bar and no player chip. From the top, as `661:4591` draws it:
 
 1. Onkko's line, "We have, and shall have a long association, {name}.", with
    the player's display name in the accent colour. A profile with no display
    name ends the line at "association."
-2. **Two ways in**, and "Pick one, you can switch at any time."
+2. **Two ways in**, and "Pick one, you can change at any time."
 3. Two cards, each a link, each with its icon, title and one line (BR-04):
    - **Pick up where you left off** opens `/catch-up`, the update picker
      (spec 05).
    - **Set a goal** opens `/goals` (spec 08).
 4. **Skip** opens the map on the frontier, or on the focus when the player has
    no frontier (BR-40).
-5. **Go back** opens `/connect` with the player's id in the field (BR-40).
+5. **Back**, in the text style, opens `/connect` with the player's id in the
+   field (BR-40); it read "Go back" until 2026-10-16.
+
+Onkko's line shows only once the player has reached Cetus and has not turned
+the phrases off (BR-64).
 
 A new player never sees this screen: `/connect` sends them to `/goals`
 (BR-03). A new player who opens `/features` by its address is sent to
@@ -55,20 +59,24 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
 - The display name: the profile's `DisplayName`, through the screen context.
 - Whether the player is past Venus: `asksWhenLastPlayed()` in
   `src/domain/graph/star-chart.ts`.
-- The frontier: `findNextPlanet`. The focus does not exist in code yet
-  (BR-05); spec 07 defines it, and Skip and Next use the same one.
+- Skip's place: `startHere()` in `src/domain/place/start-here.ts`, the
+  frontier (`findNextPlanet`) or else the focus (`findFocus`, as spec 07
+  defines it) over each released place's share of readable items mastered;
+  with neither, the first place of the Origin System (BR-46).
+  `startHereOf()` in `src/app/screen.ts` makes it the map's address, and
+  Skip on Resume and on the Summary uses the same one.
 - Copy lives in `src/content/` (`VOICE.features`, `FEATURES`).
 
 ## Acceptance
 
-1. At 390 px the screen matches `203:140`: layout, type, colour, spacing and
+1. At 390 px the screen matches `661:4591`: layout, type, colour, spacing and
    copy, with its Material Symbols icons (hourglass, flag).
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
    page does not scroll sideways. From 840 the heading and the buttons stay one
    centred column, and the two cards sit side by side under it, each at its
    frame width (BR-39).
 3. Each card opens its route. Skip opens the map on the frontier, or the focus
-   with no frontier. Go back opens `/connect` with the id in the field.
+   with no frontier. Back opens `/connect` with the id in the field.
 4. A new player opening `/features` lands on `/goals`.
 5. `pnpm check` passes.
 

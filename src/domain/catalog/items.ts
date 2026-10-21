@@ -113,7 +113,7 @@ const SOURCE_CATEGORIES: Record<string, ArsenalGroup> = {
 
 export const ARSENAL_SOURCES = Object.keys(SOURCE_CATEGORIES);
 
-export const RESOURCE_SOURCES = ["Resources"];
+export const RESOURCE_SOURCES = ["Resources", "Misc"];
 
 export interface CatalogResource {
   uniqueName: string;
@@ -122,13 +122,49 @@ export interface CatalogResource {
 }
 
 const ICON_BASE = "https://cdn.warframestat.us/img";
+
+export const BLUEPRINT_ART = `${ICON_BASE}/blueprint.png`;
+
 const ACQUISITION_ANCHOR = "#Acquisition";
+
+const BLUEPRINT = "Blueprint";
+
+function leafOf(uniqueName: string): string {
+  return uniqueName.slice(uniqueName.lastIndexOf("/") + 1).toLowerCase();
+}
+
+function stemOf(item: RawItem): string {
+  const unique = item.components?.find(
+    (component) => component.name === BLUEPRINT && component.uniqueName?.endsWith(BLUEPRINT),
+  )?.uniqueName;
+  return unique ? leafOf(unique).slice(0, -BLUEPRINT.length) : "";
+}
+
+function isNative(stem: string, uniqueName: string): boolean {
+  return stem.length > 0 && leafOf(uniqueName).startsWith(stem);
+}
+
+function partOwners(raw: RawItem[]): Map<string, string> {
+  const owners = new Map<string, { name: string; stem: number }>();
+  for (const item of raw) {
+    const stem = stemOf(item);
+    for (const { uniqueName } of item.components ?? []) {
+      if (!uniqueName || !isNative(stem, uniqueName)) continue;
+      const known = owners.get(uniqueName);
+      if (!known || stem.length > known.stem) {
+        owners.set(uniqueName, { name: item.name, stem: stem.length });
+      }
+    }
+  }
+  return new Map([...owners].map(([unique, owner]) => [unique, owner.name]));
+}
 
 export function buildArsenalCatalog(raw: RawItem[]): CatalogItem[] {
   const seen = new Set<string>();
+  const owners = partOwners(raw);
   return raw
     .filter((item) => item.masterable !== false && Boolean(item.name))
-    .map((item) => toCatalogItem(item))
+    .map((item) => toCatalogItem(item, owners))
     .filter((item): item is CatalogItem => {
       if (!item || seen.has(item.uniqueName)) return false;
       seen.add(item.uniqueName);
@@ -189,7 +225,7 @@ function readDrops(item: RawItem): CatalogDrop[] {
   return out;
 }
 
-function toCatalogItem(item: RawItem): CatalogItem | null {
+function toCatalogItem(item: RawItem, owners: Map<string, string>): CatalogItem | null {
   const group = item.category ? SOURCE_CATEGORIES[item.category] : undefined;
   if (!group) return null;
 
@@ -215,7 +251,7 @@ function toCatalogItem(item: RawItem): CatalogItem | null {
     releaseDate: typeof item.releaseDate === "string" ? item.releaseDate : null,
     update: readUpdate(item),
     drops: readDrops(item),
-    recipe: readRecipe(item),
+    recipe: readRecipe(item, owners),
   };
 }
 
@@ -241,7 +277,18 @@ function isPart(component: RawComponent, itemName: string, count: number): boole
   return count === 1 && component.name?.startsWith(`${itemName} `) === true;
 }
 
-function readRecipe(item: RawItem): CatalogRecipe | null {
+function partName(
+  item: RawItem,
+  name: string,
+  owners: Map<string, string>,
+  unique?: string,
+): string {
+  const owner = unique ? owners.get(unique) : undefined;
+  if (!unique || !owner || owner === item.name || isNative(stemOf(item), unique)) return name;
+  return `${owner} ${name}`;
+}
+
+function readRecipe(item: RawItem, owners: Map<string, string>): CatalogRecipe | null {
   const components = item.components ?? [];
   if (components.length === 0) return null;
 
@@ -253,7 +300,12 @@ function readRecipe(item: RawItem): CatalogRecipe | null {
     const count = typeof component.itemCount === "number" ? component.itemCount : 1;
     const imageUrl = iconUrl(component.imageName);
     if (isPart(component, item.name, count)) {
-      parts.push({ name: component.name, count, imageUrl, drops: readDropList(component.drops) });
+      parts.push({
+        name: partName(item, component.name, owners, component.uniqueName),
+        count,
+        imageUrl,
+        drops: readDropList(component.drops),
+      });
     } else {
       const uniqueName = component.uniqueName ?? null;
       const same = ingredients.find(

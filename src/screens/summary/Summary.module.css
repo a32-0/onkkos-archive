@@ -1,0 +1,55 @@
+.page {
+  --summary-column: none;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--summary-column);
+  margin: 0 auto;
+  padding: var(--space-6) var(--gutter);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.title {
+  composes: numeral from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.lead {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 600px) {
+  .page {
+    --summary-column: 640px;
+  }
+}
+
+@media (min-width: 840px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

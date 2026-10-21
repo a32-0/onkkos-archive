@@ -1,3 +1,5 @@
+import { Onboarding } from "@/screens/onboarding/Onboarding";
+
 export default function Home() {
-  return null;
+  return <Onboarding />;
 }

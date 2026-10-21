@@ -8,6 +8,7 @@ import { parse as parseYaml } from "yaml";
 
 import { buildPlaceIndex, type PlaceView } from "@/domain/place/build";
 import { buildPlaceCatalog, type PlaceCatalog, type RawEntry } from "@/domain/place/catalog";
+import { hubAcquisition } from "@/domain/place/hubs";
 import {
   normalizeAcquisition,
   normalizePlaceRewards,
@@ -21,6 +22,7 @@ import {
   type Research,
   type Systems,
 } from "@/domain/place/schema";
+import { wikiModules } from "@/infra/wiki/modules";
 
 function readYaml(file: string): unknown {
   return parseYaml(readFileSync(path.join(process.cwd(), "data", file), "utf8"));
@@ -84,7 +86,10 @@ export function placeIndex(): ReadonlyMap<string, PlaceView> {
     rewards: loadPlaceRewards(),
     resources: loadRegionResources(),
     systems: loadSystems().systems,
-    acquisition: loadAcquisition(),
+    acquisition: [
+      ...loadAcquisition(),
+      ...hubAcquisition(placeCatalog().entries, wikiModules(), loadSystems().hubs),
+    ],
     research: loadResearch(),
   });
   return cachedIndex;

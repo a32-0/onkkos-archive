@@ -11,7 +11,10 @@ repeating them, so this is the page that explains why a screen behaves the way
 it does.
 
 Read on 2026-10-03 through the Figma REST API: 66 comments, 53 open and 13
-resolved, all on the page Wireframes. The owner answered the open
+resolved, all on the page Wireframes. The frames they were pinned to were
+deleted with "High-fi Wireframes" on 2026-10-18; the links below open them in
+the file's version history, and T-27b names the frame that took each one's
+place. The owner answered the open
 readings on 2026-10-04, and those answers are folded into the rules below.
 
 ## How to read an entry
@@ -79,8 +82,9 @@ cite one. The Figma comment id is given beside each for traceability.
   | 840 to 1199 | expanded | The tab bar moves into the header, the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
   | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                          |
 
-- Outside the shell, the splash and the id form stay one centred column at the
-  frame's width. Background art covers the whole window at every width.
+- Outside the shell, the splash and the id form follow the compact class below
+  600, fluid with the 16 px gutter at the window's edges, and from 600 stay one
+  centred column at the frame's width (owner, 2026-10-15). Background art covers the whole window at every width.
 - A sheet or menu that the frame draws full width, such as the player menu
   (`270:1145`), opens from 840 up as a panel at the frame's 390 px, anchored to
   what opened it.
@@ -126,15 +130,16 @@ a reading of the earlier build against it was put to them.
   Nightwave ("Running now") and the suggested goal ("Pick up") are not part
   of it.
 
-### BR-36 · From the Summary: an item, or Next to a place
+### BR-36 · From the Summary: an item, or Skip to a place
 
-- Frame `206:774`, the tiles and the "Next" button.
+- Frame `206:774`, the tiles and the Skip button.
 - Type: behaviour.
 - Rule: from the Summary the player either opens an item, which opens that
-  item's page, or presses Next, which opens the map on one place: the
+  item's page, or presses Skip, which opens the map on one place: the
   frontier when the player has one, otherwise the focus
   ([`system.md`](system.md#two-lenses-that-cut-every-level-at-once)). The two
-  are separate decisions: Next does not lead to quests.
+  are separate decisions: Skip does not lead to quests.
+- The button read "Next" until the owner made it Skip on 2026-10-16 (BR-40).
 
 ### BR-37 · A goal opens the steps of what it names
 
@@ -162,7 +167,7 @@ a reading of the earlier build against it was put to them.
   both drawn on the Login frame (`202:38`), added by the owner on 2026-10-04.
 - Type: state.
 - Rule: while the profile is read, the form dims and a card with the quill
-  reads "Onkko's reading your codex...". When the read fails, the message sits
+  reads "Onkko is reading your archive...". When the read fails, the message sits
   in a red band under the account id field, and the form stays usable.
 - The band's words are not fixed by the frame. The owner drew one as an
   example and on 2026-10-04 left the messages to be written from the failures
@@ -173,7 +178,7 @@ a reading of the earlier build against it was put to them.
   | Reason                                  | The band                                                                     |
   | --------------------------------------- | ---------------------------------------------------------------------------- |
   | `invalid-id`                            | An account ID is 24 characters: digits 0–9 and letters a–f.                  |
-  | `not-found`                             | No account answers to this ID. Copy it again from user_id.                   |
+  | `not-found`                             | No account answers to this ID. Copy it again from the gid cookie.            |
   | `upstream`, `throttled`, `circuit-open` | Warframe isn't answering right now. Your ID is fine; try again at 15:30 UTC. |
   | `malformed`                             | Warframe's answer came back in a form we can't read yet. Your ID is fine.    |
   | `limited`                               | You've had your two readings for now. The next opens at 15:30 UTC.           |
@@ -188,16 +193,19 @@ a reading of the earlier build against it was put to them.
   the player is returned to this form with the band, which is the one place a
   failure is drawn.
 
-### BR-40 · Two ways in: Skip goes to the map, Go back to the id form
+### BR-40 · Before the map, Skip goes to the map
 
 - Frame [`203:140` Features](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-140),
-  the Skip and Go back buttons under the two cards. Settled by the
-  owner on 2026-10-05.
+  the Skip button under the two cards. Settled by the owner on 2026-10-05,
+  changed on 2026-10-16.
 - Type: behaviour.
-- Rule: Skip opens the map on one place, the same as Next on the Summary
-  (BR-36): the frontier when the player has one, otherwise the focus. Go
-  back returns to `/connect`, with the player's id in the field, which is
-  also how a player changes account or demo.
+- Rule: every screen between Connect and the map, Two ways in, Resume and the
+  Summary, ends in Skip, in the secondary style. It opens the map on one place
+  (BR-36): the frontier when the player has one, otherwise the focus.
+- Two ways in also keeps **Back**, in the text style, under Skip: it returns
+  to `/connect` with the player's id in the field. The screen has no player
+  menu, so Back is how a player changes account or demo there (owner,
+  2026-10-16; the button read "Go back" before).
 - The screen is still onboarding, so it draws no tab bar and no player chip
   (thread `1929710840`, "no navbar during onboarding until it ends").
 
@@ -207,9 +215,11 @@ a reading of the earlier build against it was put to them.
   Settled by the owner on 2026-10-05.
 - Type: behaviour.
 - Rule: reached from "Pick up where you left off" (BR-40's screen), Resume is
-  onboarding and looks as drawn: no tab bar, with Skip and Go back.
-  Reached from the Resume tab, it is a section of the shell: the tab bar
-  shows and Skip and Go back do not. Everything else is the same screen.
+  onboarding and looks as drawn: no tab bar. Reached from the Resume tab, it
+  is a section of the shell: the tab bar shows. Both end in Skip (BR-40, since
+  2026-10-16). Everything else is the same screen.
+- Resume has no Go back since 2026-10-16 (owner): the way back is the
+  browser's, and Skip is the one way forward without choosing.
 - The Summary that follows keeps the entrance: no tab bar after the onboarding
   entrance, the tab bar after the tab's. Its frames draw the first. Settled by
   the owner on 2026-10-05.
@@ -235,6 +245,9 @@ a reading of the earlier build against it was put to them.
   interface's own icons are Material Symbols Rounded, drawn in the frames on
   2026-10-06: the tab bar's explore, hourglass and flag; hourglass and flag on
   Two ways in; precision manufacturing and auto stories on the Goal cards.
+- Rule: a category the wiki has no white icon for takes a Material Symbol
+  (owner, 2026-10-16): Archgun rocket launch, Archmelee swords, Necramech
+  smart toy, Incarnons cyclone, Ephemera flare, Honoria military tech.
 
 ### BR-44 · Start here marks the frontier, or the focus
 
@@ -242,7 +255,7 @@ a reading of the earlier build against it was put to them.
   and [`270:786`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=270-786),
   the gold-outlined "Start here" badge. Settled by the owner on 2026-10-06.
 - Type: content.
-- Rule: Start here marks the one place Next and Skip open: the frontier, or the
+- Rule: Start here marks the one place Skip opens: the frontier, or the
   focus when the player has no frontier (BR-36). Exactly one place carries it,
   and so does that place's system in the system list. A player with neither
   sees no badge.
@@ -255,20 +268,28 @@ a reading of the earlier build against it was put to them.
 - Rule: by default a place shows only what is left: everything here the player
   has not mastered. That includes a ranked item short of its maximum and every
   collectible, since the profile cannot prove one is owned. The control has
-  two options, Mastered and New, and none is chosen by default.
-  Choosing Mastered shows only what is mastered here; choosing New shows only
-  what shipped since the player's month, mastered or not. Choosing the chosen
-  option again returns to the default.
-- New needs a month. Without `wf_since` the New option is not shown.
+  three options, To get, Mastered and New, and one is always chosen, To get
+  first (owner, 2026-10-16: with no name, the default was hard to read).
+  Mastered shows only what is mastered here; New shows only what shipped
+  since the player's month, mastered or not.
+- New needs a month. Without `wf_since` the New option is not shown; the
+  player is taken as up to date (spec 07).
 - A group with nothing to show under the current lens does not render, and a
   divider with no group under it does not render either. A place where every
   arsenal item is mastered and that holds no collectible shows the empty state
   under its card (spec 07).
+- When the chosen lens leaves no group at all, Show stays and an empty state
+  under it says so, naming the place: "Nothing left to get on {place}",
+  "Nothing mastered on {place} yet" or "Nothing new on {place}" (owner,
+  2026-10-17).
 - The frame draws three options (All / Mastered / New); the owner corrects it
   to the two. The `All` view leaves: the default is what is
   left.
 - Under the default and New, what is left is also what is in reach; the rest
   is counted in the group's More line (BR-61).
+- Since the Material pass (T-27b, owner, 2026-10-18) the control is the
+  **View** row on a category's page, and a lens filters that category's
+  items; the empty state takes the list's place (spec 07).
 
 ### BR-46 · The map reopens where the player left it
 
@@ -277,8 +298,8 @@ a reading of the earlier build against it was put to them.
 - Type: behaviour.
 - Rule: the Navigation tab opens the map on the last place the player viewed
   on this device. The first time, it opens on Start here (BR-44), and with no
-  Start here, on the first place of the Origin System. Next and Skip always
-  open Start here, whatever was viewed last.
+  Start here, on the first place of the Origin System. Skip always opens
+  Start here, whatever was viewed last.
 - The place is kept in a cookie, `wf_place`, as `{system}/{place}`, because the
   server renders the map. It is a convenience: losing it only reopens on Start
   here.
@@ -341,9 +362,11 @@ a reading of the earlier build against it was put to them.
   BR-35 took out of Catch me up. The owner chose to correct the frame with
   these two lines, which the build then follows:
   - "Pick up where you left off": "Name the last update you played and see
-    everything added to your arsenal and collection since."
+    everything added since."
   - "Set a goal": "Pick one thing to chase and get the road to it, in order,
     read from your profile."
+- The owner shortened the first line on 2026-10-15, dropping "to your arsenal
+  and collection".
 
 ### BR-05 · "Set a goal" runs on frontier and focus
 
@@ -361,6 +384,8 @@ a reading of the earlier build against it was put to them.
 - Rule: this frame is the player menu, opened from the player chip at the top
   right of every screen (avatar, display name, Mastery Rank and title,
   Disconnect).
+- Since the Material pass (T-27b, owner, 2026-10-18) the menu is a page,
+  **Profile**, under the top bar, with the same content (spec 04).
 
 ### BR-07 · One profile read per twelve hours
 
@@ -370,21 +395,30 @@ a reading of the earlier build against it was put to them.
   hours as an example and settled on twelve on 2026-10-04: nothing the app
   reads about an item changes faster than its build, and twelve hours is the
   arsenal's floor ([`public-release.md`](public-release.md#how-long-a-read-lasts)).
-- The footer reads "Read every twelve hours: last read 12 min ago, next at
-  15:30 UTC.", the next time being the last read plus `PROFILE_TTL_MS`
-  (`nextReadAt()` in `src/infra/screen.ts`). The frame drew 24 until the owner
-  corrected it to 12 on 2026-10-04.
+- The footer reads as the frame draws it: "Data is read every **12 hours**.
+  The last read was **12 minutes ago,** and the next one will be at **15:30
+  hours UTC.**", the next time being the last read plus `PROFILE_TTL_MS`
+  (`nextReadAt()` in `src/infra/screen.ts`). The age is said in whole words:
+  "just now" after a fresh read, "less than a minute ago", "1 minute ago",
+  "{n} minutes ago", "1 hour ago", "{n} hours ago" (owner, 2026-10-14). The
+  frame drew 24 until the owner corrected it to 12 on 2026-10-04.
+- Once the page loads, the browser writes the next read in the player's own
+  time, in place of UTC: "**9:30 AM your local time.**" (owner,
+  2026-10-21). The server cannot know the time zone, so it draws UTC alone.
 
 ## Resume: picking the last update played
 
-### BR-08 · Pick a date, or type it
+### BR-08 · Type a date in the search
 
 - Frame [`203:231` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231)
   · pin (344, 321) · layer: Shipment Section › Date Filter Container (the
   "Date" button) · comment `1931751624`
 - Type: behaviour.
-- Rule: "Date" opens a dropdown to choose a date. Beside it, a field accepts a
-  full date typed by hand.
+- Rule: a date is typed in the search (owner, 2026-10-16): a year, a month
+  or a day, as "2024", "2024-03", "Mar 2024" or "March 2024", filters the
+  cards to the updates of that time, and the player picks one. The "Date"
+  button and its month list were removed the same day, so the search is the
+  one field (`477:3022`).
 
 ### BR-09 · Main updates and minor updates both count
 
@@ -394,6 +428,17 @@ a reading of the earlier build against it was put to them.
 - Rule: the list shows main updates and the numbered updates in between
   (43, 43.5…), because minor updates also ship content. Reference: DE's patch
   notes index.
+- Since 2026-10-15 that index is the list's source (owner): `pnpm
+data:patch-notes` keeps every update it names, 41.1 Vauban Heirloom and 39.1
+  Caliban Prime included, with DE's name, date and art. Hotfixes are not
+  updates and stay out. The catalog's `introduced` fills what the index lacks:
+  the updates before 19, and a date the index leaves out.
+- One card per name (owner, 2026-10-16). Before Update 24 DE named the
+  numbered updates after the major they followed, so 22 to 22.11 all read
+  "Plains of Eidolon". Updates that share a name keep only the principal, the
+  oldest, with its date: measuring from it shows more, never less. Its later
+  versions and their months still find it in the search ("22.4", "Feb 2024"
+  finds Whispers in the Walls through 35.1).
 
 ### BR-10 · Update card title band
 
@@ -450,6 +495,8 @@ in force: BR-12, BR-13 and BR-14.
 - Type: behaviour.
 - Rule: the chevron opens a dropdown with the updates, ordered by date, newest
   first. Choosing one changes `since`.
+- Since the Material pass (T-27b, owner, 2026-10-18) the list is a page,
+  **Updates**, under the top bar (spec 06).
 
 ### BR-14 · Groups start closed
 
@@ -459,6 +506,9 @@ in force: BR-12, BR-13 and BR-14.
 - A closed group's chevron points down and an open one's points up, on every
   screen, the same as the rows in BR-20. `257:653` drew closed groups with an
   up chevron until the owner corrected it on 2026-10-04.
+- Retired by the Material pass (T-27b, owner, 2026-10-18): the Summary and
+  the map no longer fold their groups. Each category is a row that opens its
+  own page (specs 06 and 07).
 
 ### BR-15 · No Mastered or Rank here, only NEW
 
@@ -538,7 +588,8 @@ The item screen's hero card has four states. Each is a frame of its own,
 - Rule: tapping the checkbox ticks the row and:
   - fills the box, `#9f9486` (nearest `--ink-dim`);
   - dims the title to the same ink and strikes it through;
-  - fades the icon's ground to 20%;
+  - dims the icon (its ground was retired on 2026-10-19, when Step by step
+    dropped the ground behind a component's art);
   - collapses the row (the description is hidden, the chevron points down).
 
 ## Step by step: rules by scenario
@@ -750,7 +801,7 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - Rule: the Origin System holds a place, Dojo, that holds everything built
   from research in a clan dojo's labs, whichever lab researches it.
   It is listed with the other places, carries a mastered count and lenses like
-  any place, has no Nodes lines and never carries Start here.
+  any place, and never carries Start here.
 
 ## Step by step: settled when its spec was written
 
@@ -777,6 +828,11 @@ settled where the frames disagreed with each other or with the docs.
   intent. The owner chose the drawing. It also reverses the choice of the
   lead over Mechanics for missions that `step-by-step.md` records; lore
   sections stay out.
+- Trimmed with no hand-written text (owner, 2026-10-21): a mission type's
+  Mechanics gives what comes before its first subsection, where the
+  variants begin (Mirror Defense's Tyana Pass and Munio); a line that is not a
+  sentence is dropped, so an audio caption or a list's lead never shows; a
+  footnote's number is taken off; and a passage stops at three sentences.
 
 ### BR-49 · Relic rows: Open the best, Or the rest
 
@@ -943,6 +999,12 @@ on 2026-10-08.
   The line informs. It opens nothing; a search is the way to one of them
   (BR-62).
 
+- What only the Dojo holds is counted in the words of BR-59's Dojo row: "2
+  more weapons come from the Dojo. Join a clan to enter it." A group held
+  back by a rank and by a clan reads "need Mastery Rank {r} or a clan's
+  Dojo". `content/reach.ts` holds the words; the Summary (T-25) first speaks
+  them.
+
 - The group's count ("{n} NEW" in the Summary, "{n} New" on the map) counts
   everything new, in reach or not, so it adds up to the tiles and the line.
 - A group with nothing in reach and something beyond renders, its rail
@@ -980,46 +1042,61 @@ on 2026-10-08.
 - A quest with no evidence locks nothing, and neither does any prerequisite
   the profile cannot read: absence of evidence is never "not done" (BR-28).
 
-## Not applied
+## Onkko's voice: settled on 2026-10-16
 
-Two comments were set aside by the owner on 2026-10-04 and carry no rule:
-`1939170476` ("tell them which planet to go to next", on `323:689`) and
-`1923621464` ("add an open search input?", on the deleted node `163:103`).
+### BR-64 · Onkko speaks once the player has reached Cetus
 
-### Frames from deleted screens
+- Frame [`270:1145` Menú del jugador](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=270-1145),
+  Settings › Onkko's Phrases. Settled by the owner on 2026-10-16: "Activar
+  Onkko's sólo si ha desbloqueado Cetus. Después podrá activarlas o
+  desactivarlas."
+- Type: behaviour.
+- Rule: Onkko's lines (`OnkkoLine`) show only to a player who has reached
+  Cetus, where Onkko lives. The profile shows it in `Missions[]`: the Cetus
+  hub (`CetusHub4`) or the Plains of Eidolon (`SolNode228`). A profile with
+  no `Missions[]` counts as reached (BR-59).
+- From then on the player menu shows Settings › Onkko's Phrases, On and Off,
+  On by default. The choice is kept in a cookie, `wf_onkko`, for a year, and
+  Disconnect forgets it with the account.
+- Before Cetus the lines do not show and the setting is not offered.
+- The splash and Connect come before any profile is read, so their lines
+  always show.
+- The menu also shows Language (English, Español) and Tutorial (Reset),
+  disabled: they wait for later versions (owner, 2026-10-16).
 
-These frames are the desktop Home and star chart. The screens were removed,
-so the comments are kept here and not applied. The first of them,
-`1905320490` on `10:16` ("Content depends on the player's level"), was
-applied on 2026-10-08 as BR-59.
+### BR-65 · The place card shows what is still to master, by kind
 
-| Frame                 | Pin         | Comment      | Text                                                                            |
-| --------------------- | ----------- | ------------ | ------------------------------------------------------------------------------- |
-| `94:156` Home - 0.0.0 | (1400, 275) | `1918281689` | Use more symbols on labels                                                      |
-| `94:156` Home - 0.0.0 | (633, 227)  | `1918287698` | Nodes?                                                                          |
-| `94:156` Home - 0.0.0 | (1221, 478) | `1918287884` | A "platinum" completion system for free items, to find, track and guide to them |
-| reply to the above    | n/a         | `1918290338` | Track and guide what the game does not say; never be redundant                  |
-| `129:12` Home - 0.0.0 | (142, 116)  | `1918300458` | The places list becomes a planet menu, with a card on hover                     |
-| `129:118` Frame 83    | (167, 371)  | `1918304538` | Planet stats?                                                                   |
-| `128:2223` Frame 96   | (284, 53)   | `1918286062` | Shine effect (on the Mastered badge)                                            |
+- Frame [`463:335` Place card, In progress](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=463-335).
+  Settled by the owner on 2026-10-17.
+- Type: content.
+- Rule: while anything is left, the place card shows **Still to master here**
+  and, for each Arsenal group that holds something left in reach, the
+  group's game icon (BR-42) and how many of its items are still to master. No
+  percentage and no other word: the icons say what is counted, and the app
+  does the sums.
+- What lies beyond reach is not counted here; the groups' More lines count it
+  (BR-61). A mastered place shows no row.
+- The card counts items alone. It carried the place's nodes until
+  2026-10-17; the owner removed them, since a place is mastered by its items
+  and the game already shows its nodes.
+- Since the Material pass (T-27b, owner, 2026-10-18) the place sits on the
+  page (`Place overview`, `656:211`): the count is one chip per category,
+  under the ring of its mastered share (spec 07).
 
-`1918290338` still reads as a product principle, and the anchor in the
-[constitution](../specs/00-constitution.md#the-anchor-holds) already holds it ("Filter and curate; never mirror").
+### BR-66 · Similar prerequisites share one row
 
-## Resolved threads
-
-Thirteen threads are resolved. Three on `206:774` were reopened as BR-12,
-BR-13 and BR-14. The rest are recorded here and need nothing:
-
-| Frame                | Comment      | Text                                                                 |
-| -------------------- | ------------ | -------------------------------------------------------------------- |
-| `206:774` Summary    | `1924100394` | Only the first descriptive line of a quest                           |
-| `206:774` Summary    | `1924100483` | Only the first descriptive line of an item                           |
-| `212:159` Navigation | `1929710840` | No navbar during onboarding until it ends                            |
-| `212:159` Navigation | `1933693172` | Choose the System from here, not from the navbar                     |
-| `212:159` Navigation | `1933718008` | Show every catalogue: primaries, secondaries, melee                  |
-| `306:1456` Card      | `1937241802` | Show Playstyle and Progenitor Element                                |
-| `306:1456` Card      | `1937251280` | For weapons: projectile type and primary damage                      |
-| `306:1456` Card      | `1937263619` | For Archwing: themes                                                 |
-| `270:1270` (deleted) | `1933353580` | A guided route through planet and mission, after Marvel Future Fight |
-| `270:1270` (deleted) | `1939082421` | Which mission, and how                                               |
+- Frame [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872).
+  Settled by the owner on 2026-10-20.
+- Type: content.
+- Rule: when Prerequisites holds more than one quest, they share one row,
+  "Complete {n} quests", whose detail names them root first ("In this order:
+  Natah and The Second Dream."); more than one Junction share one row too,
+  "Clear {n} Junctions", whose detail names each with the planet it is on. A
+  single quest or Junction keeps its own row. A "Reach" row whose Junction the
+  Junctions row already names is dropped, and more than one place left to
+  reach share one row, "Reach {n} places", naming each with the Junction that
+  opens it when there is one (Ash's three Proxima, owner 2026-10-21). The Hex
+  goes from seventeen rows to two.
+- The row sits where the first of its kind stood. What the profile confirms is
+  dropped before the rows are gathered (BR-28), and the lock (BR-63) reads the
+  first Junction in the row the profile proves unmet.

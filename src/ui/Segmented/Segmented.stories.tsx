@@ -35,6 +35,20 @@ export const MasteredChosen: Story = { args: { chosen: "mastered" } };
 
 export const NewChosen: Story = { args: { chosen: "new" } };
 
+export const OneOption: Story = { args: { options: [SHOW[0]] } };
+
 export const SummaryChosen: Story = { args: { label: "View", options: VIEW, chosen: "summary" } };
 
 export const StepByStepChosen: Story = { args: { label: "View", options: VIEW, chosen: "steps" } };
+
+export const Disabled: Story = {
+  args: {
+    label: "Language",
+    options: [
+      { value: "en", label: "English" },
+      { value: "es", label: "Español" },
+    ],
+    chosen: "en",
+    disabled: true,
+  },
+};

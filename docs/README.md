@@ -49,6 +49,9 @@ arrives with the task that builds what it describes.
 - [`scenario-guidelines.md`](scenario-guidelines.md): the grammar every item
   view shares, the two densities of one answer, and how a family with no frame
   of its own is drawn.
+- [`step-by-step.md`](step-by-step.md): what Step by step draws, where its
+  words come from, the ticks kept in the browser, and how a plan locks behind
+  an unmet prerequisite.
 - [`api.md`](api.md): the outside sources. DE's profile endpoint as verified,
   what each answer means, how long a read is kept, the locks in front of it
   and the route that exposes it; then the wiki's prose and icons, and

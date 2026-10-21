@@ -6,14 +6,26 @@
   background-color: var(--surface-raised-strong);
 }
 
+.row[aria-current] .count {
+  color: var(--ink-muted);
+}
+
 .static {
+  --system-row-disabled-opacity: 0.4;
   display: flex;
   align-items: center;
   gap: var(--space-4);
   box-sizing: border-box;
   width: 100%;
   padding: var(--space-6);
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
   color: var(--ink);
+}
+
+.disabled {
+  composes: static;
+  opacity: var(--system-row-disabled-opacity);
 }
 
 .arts {
@@ -21,27 +33,14 @@
   flex: none;
 }
 
-.art {
-  composes: art from "../PlaceRow/PlaceRow.module.css";
-}
-
 .satellite {
-  --satellite-size: 16px;
   position: absolute;
   right: 0;
   bottom: 0;
-  width: var(--satellite-size);
-  height: var(--satellite-size);
-  border-radius: var(--radius-full);
-  object-fit: cover;
 }
 
 .text {
   composes: text from "../PlaceRow/PlaceRow.module.css";
-}
-
-.inline {
-  composes: inline from "../PlaceRow/PlaceRow.module.css";
 }
 
 .name {

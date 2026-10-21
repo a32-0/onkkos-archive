@@ -26,6 +26,13 @@
   text-transform: none;
 }
 
+.bar-title {
+  font-family: var(--font-cinzel), serif;
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
 .heading {
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
@@ -103,13 +110,6 @@
   text-transform: none;
 }
 
-.label-upper {
-  font-family: var(--font-inter), sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
 .label-s {
   font-family: var(--font-inter), sans-serif;
   font-weight: 700;
@@ -159,13 +159,6 @@
   text-transform: none;
 }
 
-.quiet-upper {
-  font-family: var(--font-inter), sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
 .reading {
   font-family: var(--font-jetbrains-mono), monospace;
   font-weight: 700;
@@ -199,4 +192,19 @@
   font-weight: 700;
   font-size: 14px;
   text-transform: none;
+}
+
+.fit {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: clamp(
+    var(--fit-min),
+    calc(100cqi / (var(--chars) * var(--fit-glyph))),
+    var(--fit-max)
+  );
+  line-height: 1;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }

@@ -22,3 +22,5 @@ type Story = StoryObj<typeof meta>;
 export const Arsenal: Story = {};
 
 export const Collection: Story = { args: { label: "Collection" } };
+
+export const Rule: Story = { args: { label: undefined } };

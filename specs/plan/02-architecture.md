@@ -31,11 +31,15 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
 
 ### One read per request
 
-The shell's header shows the player, so the layout and the page both need the
-profile. `readScreen()` is wrapped in React's `cache()`, which dedupes it for
-the length of one request: a screen costs one store read, however many server
-components ask. Without it every screen would cost two, and the command count
-in [`public-release.md`](../../docs/public-release.md#what-upstash-actually-spends)
+The shell's header shows the player, so the shell and the screen inside it both
+need the profile. The page renders the shell, not the root layout: Next 16.3
+gives a layout neither the pathname nor the query, so it cannot know the active
+tab, the item's `from` or Resume's entrance, and `/`, `/connect` and
+`/features` have no player to show. `readScreen()` is wrapped in React's
+`cache()`, which dedupes it for the length of one request: a screen costs one
+store read, however many server components ask. Without it a screen could cost
+two, and the command count in
+[`public-release.md`](../../docs/public-release.md#what-upstash-actually-spends)
 would be off by half.
 
 ## Where each kind of state lives
@@ -248,16 +252,17 @@ The trim is a domain function, `domain/profile/trim.ts`, over one list of the
 root fields the app reads, `domain/profile/fields.ts`. The list was read off
 every module that reads the profile, and the curated files' checks:
 
-| Field              | Read by                                                       |
-| ------------------ | ------------------------------------------------------------- |
-| `DisplayName`      | The player chip (spec 04)                                     |
-| `PlayerLevel`      | The chip's Mastery Rank, and goal checks in `grafo.yaml`      |
-| `Created`          | Resume's earliest month (spec 05)                             |
-| `Missions`         | The star chart, the frontier and every place's state          |
-| `Affiliations`     | Goal checks and quest evidence                                |
-| `LoadOutInventory` | Mastery per item (`XPInfo`), quest evidence, every item state |
-| `UnlockedOperator` | Quest evidence                                                |
-| `GuildId`          | The Dojo's reach (BR-59); kept as `true`, never the clan's id |
+| Field                   | Read by                                                                                                              |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `DisplayName`           | The player chip (spec 04)                                                                                            |
+| `PlayerLevel`           | The chip's Mastery Rank, and goal checks in `grafo.yaml`                                                             |
+| `Created`               | Resume's earliest month (spec 05)                                                                                    |
+| `Missions`              | The star chart, the frontier and every place's state                                                                 |
+| `Affiliations`          | Goal checks and quest evidence                                                                                       |
+| `LoadOutInventory`      | Mastery per item (`XPInfo`), quest evidence, every item state                                                        |
+| `UnlockedOperator`      | Quest evidence                                                                                                       |
+| `GuildId`               | The Dojo's reach (BR-59); kept as `true`, never the clan's id                                                        |
+| `ActiveAvatarImageType` | The player's glyph on the chip and in the menu (spec 04), added on 2026-10-16; a profile without it keeps the square |
 
 Left out, because nothing the app does reads them: `PlayerSkills` (the
 Intrinsics goal, deferred), `ChallengeProgress` (Nightwave, BR-35), `Stats`,

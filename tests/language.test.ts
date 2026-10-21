@@ -1,7 +1,9 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { describe, expect, it } from "vitest";
+
+import { VOICE } from "@/content/voice";
 
 const css = readFileSync(path.join(process.cwd(), "src/ui/type.module.css"), "utf8");
 
@@ -36,5 +38,43 @@ describe("the serif carries names, the mono carries readings", () => {
   it("sets every reading in the mono face", () => {
     const missing = READINGS.filter((name) => face(name) !== "--font-jetbrains-mono");
     expect(missing).toEqual([]);
+  });
+});
+
+describe("Onkko speaks on every screen", () => {
+  const root = path.join(process.cwd(), "src/screens");
+  const screens = readdirSync(root, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && entry.name !== "shell")
+    .map((entry) => entry.name);
+
+  const source = (screen: string) =>
+    readdirSync(path.join(root, screen), { recursive: true, encoding: "utf8" })
+      .filter((file) => file.endsWith(".tsx"))
+      .map((file) => readFileSync(path.join(root, screen, file), "utf8"))
+      .join("\n");
+
+  it("finds the screens beside the shell", () => {
+    expect(readdirSync(root)).toContain("shell");
+  });
+
+  it.each(screens)("gives %s a line from voice.ts", (screen) => {
+    expect(source(screen)).toMatch(/<OnkkoLine[^>]*line=\{[^}]*VOICE\./);
+  });
+
+  it("keeps the shell silent, since the screen inside it speaks", () => {
+    expect(source("shell")).not.toContain("OnkkoLine");
+  });
+});
+
+describe("Onkko's lines are the specs' own", () => {
+  const specs = readdirSync(path.join(process.cwd(), "specs"))
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => readFileSync(path.join(process.cwd(), "specs", file), "utf8"))
+    .join("\n")
+    .replace(/\s+/g, " ");
+
+  it.each(Object.entries(VOICE))("quotes %s as a spec writes it", (_key, line) => {
+    const said = typeof line === "function" ? line("{name}") : line;
+    expect(specs).toContain(said);
   });
 });

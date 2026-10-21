@@ -88,8 +88,11 @@ URL:
 1. `/connect` answers 200.
 2. `/api/profile/000000000000000000000002` answers 200: the Ordis demo, read
    from `fixtures/` on disk.
-3. `/system`, with `wf_account` set to the same demo id, answers 200: the
-   curated files and the vendored data were read from `data/`.
+3. `/system`, with `wf_account` set to the same demo id, answers 200 and
+   stays on `/system` after its redirect to the player's place: the curated
+   files and the vendored data were read from `data/`. Without the cookie it
+   would end on `/connect`, also with 200, so the final address is what
+   proves it.
 
 All three use a demo id, so the check never reaches DE, in production either. A
 failure marks the deployment red on the commit; it does not roll it back.
@@ -141,5 +144,6 @@ task that creates the projects (T-03, on 2026-10-08), not assumed here:
   ([Vercel: Protection Bypass for Automation](https://vercel.com/docs/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation)).
   `smoke.yml` reads the deployment's own URL, so while protection is on it
   sends that header, its secret held in the repository's Actions secrets by
-  the owner (T-30).
+  the owner as `VERCEL_AUTOMATION_BYPASS_SECRET` (T-30); with no secret it
+  sends no header.
   That secret is `smoke.yml`'s only one; `check.yml` still holds none.

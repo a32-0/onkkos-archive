@@ -18,6 +18,13 @@ const GROUP_ICONS = {
   resources: WHITE("Treasures"),
   gear: WHITE("Grenade"),
   parts: WHITE("CategoryModular"),
+  primary: WHITE("CategoryRifle"),
+  secondary: WHITE("CategoryPistol"),
+  melee: WHITE("CategoryMelee"),
+  amp: WHITE("CategoryAmp"),
+  companion: WHITE("Sentinel"),
+  archwing: WHITE("Archwing"),
+  railjack: WHITE("Railjack"),
 } as const;
 
 const MARK_ICONS = {
@@ -41,8 +48,4 @@ async function iconsFor(files: readonly (readonly [string, string])[]): Promise<
 
 export function gameIcons(): Promise<IconMap> {
   return iconsFor([...Object.entries(GROUP_ICONS), ...Object.entries(MARK_ICONS)]);
-}
-
-export function placeIcons(names: readonly string[]): Promise<IconMap> {
-  return iconsFor(names.map((name) => [name, `${name}.png`] as const));
 }

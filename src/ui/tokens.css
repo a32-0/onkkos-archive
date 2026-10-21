@@ -2,11 +2,8 @@
   --black: #000000;
   --night-900: #0f0f0f;
   --night-800: #16130e;
-  --night-700: #1f1b16;
+  --night-650: #2a251f;
   --night-600: #2e2924;
-  --night-500: #39342e;
-  --night-band: #37322ce5;
-  --night-card: #231f1acc;
   --ash-100: #eae1d9;
   --ash-300: #b1a595;
   --ash-500: #9f9486;
@@ -22,15 +19,17 @@
   --blue-700: #1d3c5c;
   --red-600: #b33419;
   --red-100: #ffd4cb;
+  --abyss-900: #00142c;
 
-  --canvas: var(--black);
-  --surface-header: var(--night-900);
-  --surface: var(--night-700);
+  --canvas: var(--night-800);
+  --surface-header: var(--night-800);
+  --surface: var(--night-650);
   --surface-sunken: var(--night-800);
-  --surface-raised: var(--night-600);
-  --surface-raised-strong: var(--night-500);
-  --surface-band: var(--night-band);
-  --surface-card: var(--night-card);
+  --orb-shade: var(--abyss-900);
+  --surface-raised: var(--night-650);
+  --surface-raised-strong: color-mix(in srgb, var(--ash-100) 8%, var(--night-650));
+  --surface-band: var(--night-650);
+  --surface-card: var(--night-650);
   --scrim: color-mix(in srgb, var(--black) 60%, transparent);
   --ink: var(--ash-100);
   --ink-muted: var(--ash-300);
@@ -57,14 +56,13 @@
   --state-rank-tint: color-mix(in srgb, var(--blue-400) 20%, transparent);
   --state-absent: var(--slate-400);
   --state-prime: var(--gold-400);
-  --art-done: color-mix(in srgb, var(--night-800) 20%, transparent);
   --hover: color-mix(in srgb, var(--ash-100) 8%, transparent);
   --focus: var(--gold-400);
 
   --radius-xs: 2px;
   --radius-s: 4px;
   --radius-m: 8px;
-  --radius-l: 24px;
+  --radius-l: 12px;
   --radius-full: 9999px;
 
   --space-1: 2px;
@@ -81,4 +79,5 @@
   --blur-band: 4px;
 
   --gutter: 16px;
+  --link-card-height: calc(60px + 2 * var(--space-5));
 }

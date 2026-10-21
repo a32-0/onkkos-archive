@@ -1,0 +1,42 @@
+.orb {
+  --orb-color: var(--fill-strong);
+  --orb-light-x: 32%;
+  --orb-light-y: 35%;
+  --orb-reach: 73%;
+  display: block;
+  flex: none;
+  border-radius: var(--radius-full);
+  background: radial-gradient(
+    circle at var(--orb-light-x) var(--orb-light-y),
+    var(--orb-color),
+    var(--orb-shade) var(--orb-reach)
+  );
+}
+
+.xs {
+  --orb-size: 16px;
+  composes: orb;
+  width: var(--orb-size);
+  height: var(--orb-size);
+}
+
+.s {
+  --orb-size: 32px;
+  composes: orb;
+  width: var(--orb-size);
+  height: var(--orb-size);
+}
+
+.m {
+  --orb-size: 48px;
+  composes: orb;
+  width: var(--orb-size);
+  height: var(--orb-size);
+}
+
+.l {
+  --orb-size: 120px;
+  composes: orb;
+  width: var(--orb-size);
+  height: var(--orb-size);
+}

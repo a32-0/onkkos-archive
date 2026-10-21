@@ -1,12 +1,13 @@
 import { Badge } from "../Badge/Badge";
 import type { LinkComponent } from "../link";
+import { Orb } from "../Orb/Orb";
 import type { RowCount } from "../PlaceRow/PlaceRow";
 import styles from "./SystemRow.module.css";
 
 export function SystemRow({
   href,
   name,
-  art,
+  orb,
   satellite,
   count,
   mastered,
@@ -17,8 +18,8 @@ export function SystemRow({
 }: {
   href?: string;
   name: string;
-  art: string | null;
-  satellite?: string;
+  orb: string | null;
+  satellite?: string | null;
   count?: RowCount;
   mastered?: string;
   startHere?: string;
@@ -29,16 +30,16 @@ export function SystemRow({
   const body = (
     <>
       <span className={styles.arts}>
-        {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
-        {satellite && <img className={styles.satellite} src={satellite} alt="" />}
+        <Orb color={orb} size="m" />
+        <span className={styles.satellite}>
+          <Orb color={satellite ?? null} size="xs" />
+        </span>
       </span>
-      <span className={mastered ? styles.inline : styles.text}>
+      <span className={styles.text}>
         <span className={styles.name}>{name}</span>
         {soon ? (
           <span className={styles.soon}>{soon}</span>
-        ) : mastered ? (
-          <Badge kind="mastered" label={mastered} />
-        ) : (
+        ) : mastered ? null : (
           count && (
             <span className={styles.count}>
               <b className={styles.strong}>{count.count}</b> {count.label}
@@ -46,10 +47,23 @@ export function SystemRow({
           )
         )}
       </span>
-      {startHere && <Badge kind="start-here" label={startHere} />}
+      {mastered ? (
+        <Badge kind="mastered" label={mastered} />
+      ) : (
+        startHere && <Badge kind="start-here" label={startHere} />
+      )}
     </>
   );
-  if (soon || !href) return <div className={styles.static}>{body}</div>;
+  if (soon || !href) {
+    return (
+      <div
+        className={soon ? styles.disabled : styles.static}
+        aria-disabled={soon ? true : undefined}
+      >
+        {body}
+      </div>
+    );
+  }
   const Link = link ?? "a";
   return (
     <Link href={href} className={styles.row} aria-current={onView || undefined}>

@@ -1,10 +1,10 @@
 import type { Collectible, CollectibleGroup } from "@/domain/catalog/collectibles";
 import type { CatalogData } from "@/domain/catalog/data";
 
-type SearchGroup = "arsenal" | CollectibleGroup | "places";
+type SearchGroup = "arsenal" | CollectibleGroup | "places" | "quests";
 
 interface SearchHit {
-  kind: "item" | "collectible" | "place";
+  kind: "item" | "collectible" | "place" | "quest";
   group: SearchGroup;
   name: string;
   type: string | null;
@@ -82,6 +82,21 @@ function index(data: CatalogData, places: ReadonlyMap<string, unknown>): Entry[]
         family: entry.family,
         vaulted: entry.relic?.vaulted === true,
         imageUrl: entry.imageUrl,
+      },
+    });
+  }
+
+  for (const quest of data.spine.arcs.flatMap((arc) => arc.quests)) {
+    entries.push({
+      needle: quest.name.toLowerCase(),
+      hit: {
+        kind: "quest",
+        group: "quests",
+        name: quest.name,
+        type: null,
+        family: null,
+        vaulted: false,
+        imageUrl: null,
       },
     });
   }

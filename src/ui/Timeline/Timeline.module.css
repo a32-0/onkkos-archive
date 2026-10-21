@@ -9,10 +9,13 @@
 .step {
   display: flex;
   gap: var(--space-6);
-  padding-bottom: var(--space-7);
 }
 
-.step:last-child {
+.alternative {
+  composes: step;
+}
+
+.step:has(+ .alternative) .rail {
   padding-bottom: 0;
 }
 
@@ -23,6 +26,7 @@
   align-items: center;
   gap: var(--space-2);
   width: var(--timeline-marker);
+  padding-bottom: var(--space-2);
 }
 
 .marker {
@@ -52,4 +56,9 @@
 .content {
   flex: 1 0 0;
   min-width: 0;
+  padding-bottom: var(--space-7);
+}
+
+.step:last-child .content {
+  padding-bottom: 0;
 }

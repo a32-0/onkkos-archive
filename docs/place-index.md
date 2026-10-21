@@ -126,6 +126,29 @@ system field. `data/systems.yaml` is therefore hand-written:
 - Tau is carried as announced, with `released: false` and no places, because
   it has no nodes and no items.
 
+## What a hub hands out
+
+Incarnons, Honoria and Ephemera are not dropped either. The wiki's tables say
+who hands them out: The Circuit gives the Incarnon Genesis, an Honoria's tag
+names the vendor and the hub that sell it, and a vendor's offers list the
+Ephemera it sells. None of those hubs is a place of the map, so
+`data/systems.yaml` maps each one to the place a player goes through to reach
+it (owner, 2026-10-16):
+
+| Hub           | Place          | Why                                         |
+| ------------- | -------------- | ------------------------------------------- |
+| The Circuit   | Duviri         | It is run from Duviri                       |
+| La Cathédrale | Deimos         | Its portal is in the Sanctum Anatomica      |
+| Pontis Tower  | Uranus Proxima | It sits in the Proxima, reached from Uranus |
+| Nightcap      | Venus          | He trades in Fortuna                        |
+
+`hubAcquisition()` (`src/domain/place/hubs.ts`) turns those into rows like the
+curated file's: the verb `drop` for The Circuit and `vendor` for the rest.
+Measured on 2026-10-16: 45 Incarnon Genesis at Duviri, 60 Honoria at Deimos
+and 8 at Uranus Proxima, and one Ephemera at Venus. The rest come from events,
+the Market, Nightwave or hubs with no place (Kahl's Garrison, the relays), and
+stay off the map.
+
 ## The Dojo
 
 BR-57 makes the Dojo a place in the Origin System that holds everything built
@@ -147,8 +170,10 @@ is the clan: a profile that names one (`GuildId`) can enter it
 Constellations", not "Update 43"), and the wiki has a page image under that
 name for almost every major update. `pnpm data:refresh` asks the wiki by
 **name**, never by version: `Update 43` has no page, the name it shipped under
-does. `data/vendor/update-art.json` holds art for 61 names; a name with no art
-renders as a name, never as a placeholder.
+does. Since 2026-10-15 the art comes first from DE's patch notes
+(`data/vendor/patch-notes.json`), which carry an image for every update after
+28.3; `update-art.json` (62 names) fills the older ones. A name with
+no art renders as a name, never as a placeholder.
 
 ## What the profile cannot date
 

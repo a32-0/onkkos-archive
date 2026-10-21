@@ -1,0 +1,48 @@
+.shell {
+  --shell-viewport: 100dvh;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--shell-viewport);
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.bottom {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  padding-top: var(--space-4);
+  background: var(--canvas);
+}
+
+.desktop {
+  display: none;
+}
+
+.wide {
+  display: none;
+}
+
+@media (min-width: 840px) {
+  .wide {
+    display: contents;
+  }
+
+  .bottom {
+    display: none;
+  }
+
+  .desktop {
+    display: block;
+  }
+}

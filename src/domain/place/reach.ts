@@ -8,7 +8,7 @@ export type ReachGap =
   | { kind: "junction"; from: string; to: string }
   | { kind: "clan" };
 
-interface Reach {
+export interface Reach {
   places: ReadonlySet<string> | null;
   measured: ReadonlySet<string>;
   junction: { from: string; to: string } | null;

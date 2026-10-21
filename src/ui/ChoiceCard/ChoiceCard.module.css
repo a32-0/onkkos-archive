@@ -4,6 +4,7 @@
   gap: var(--space-6);
   padding: var(--space-6);
   border-left: var(--border-1) solid var(--accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
   color: var(--ink);
   text-decoration: none;
   backdrop-filter: blur(calc(var(--blur-band) / 2));

@@ -1,0 +1,161 @@
+.page {
+  --connect-column: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--connect-column);
+  margin: 0 auto;
+  padding: var(--space-6) var(--gutter);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.lead {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: 0;
+  padding: var(--space-6);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+}
+
+.demo {
+  composes: card;
+}
+
+.page:has(.reading) .demo {
+  display: none;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.label {
+  composes: mono-label from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.numeral {
+  composes: numeral from "../../ui/type.module.css";
+  flex: none;
+  color: var(--accent);
+}
+
+.stepText {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.text {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.box {
+  padding: var(--space-2);
+  background: var(--surface-sunken);
+}
+
+.mono {
+  composes: mono from "../../ui/type.module.css";
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.line {
+  composes: mono;
+  composes: mono from "../../ui/type.module.css";
+  display: block;
+}
+
+.strong {
+  composes: mono-strong from "../../ui/type.module.css";
+}
+
+.url {
+  composes: mono;
+  composes: mono from "../../ui/type.module.css";
+  text-decoration: underline;
+}
+
+.url:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.url:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+}
+
+.rule {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: var(--border-1) solid var(--line);
+}
+
+.note {
+  composes: body from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.demos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.reading {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .page {
+    --connect-column: 390px;
+  }
+}

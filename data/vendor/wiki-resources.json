@@ -1482,6 +1482,12 @@
    "location": null,
    "link": "Omni Forma"
   },
+  "Forma Bundle": {
+   "rarity": null,
+   "type": "Item",
+   "location": null,
+   "link": "Forma Bundle"
+  },
   "Stance Forma": {
    "rarity": null,
    "type": "Item",

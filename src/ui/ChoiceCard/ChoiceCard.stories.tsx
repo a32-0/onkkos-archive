@@ -10,7 +10,7 @@ const meta = {
     href: "#",
     icon: "hourglass",
     title: "Pick up where you left off",
-    line: "Name the last update you played and see everything added to your arsenal and collection since.",
+    line: "Name the last update you played and see everything added since.",
   },
   decorators: [
     (Story) => (

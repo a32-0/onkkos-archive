@@ -19,8 +19,11 @@ GET https://api.warframe.com/cdn/getProfileViewingData.php?playerId={account_id}
 ```
 
 - `account_id` is a 24-character hexadecimal ObjectId. There is no lookup by
-  username: the id comes from the `gid` cookie on warframe.com, or from
-  `https://www.warframe.com/api/user-data` while logged in (`user_id`).
+  username: the id is the value of the `gid` cookie on warframe.com, read in
+  the browser's developer tools while logged in (Storage › Cookies in
+  Firefox, Application › Cookies in Chrome and Edge; owner, 2026-10-15).
+  `https://www.warframe.com/api/user-data` used to answer it as `user_id`;
+  it answers 404 since October 2026.
 - The response is JSON wrapped in `Results[0]`, with a `Stats` block as a
   sibling of `Results`. `profileFromResponse()` in
   `src/domain/profile/payload.ts` merges the two, and the trim then drops
@@ -199,6 +202,6 @@ The app never asks a player for a platform, and only one source names one.
   player.
 
 Not verified: whether Varzia's stock differs on another platform, and whether
-a player who has never set up Cross Save can reach
-`warframe.com/api/user-data` at all. The steps on `/connect` assume a
+a player who has never set up Cross Save has a `gid`
+cookie at all. The steps on `/connect` assume a
 warframe.com login exists.

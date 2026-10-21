@@ -45,6 +45,7 @@
 
 .best {
   composes: title;
+  composes: label from "../type.module.css";
   color: var(--accent);
 }
 
@@ -68,4 +69,15 @@
   flex-direction: column;
   gap: var(--space-6);
   padding-right: var(--space-7);
+}
+
+.status {
+  --status-size: 1px;
+  position: absolute;
+  width: var(--status-size);
+  height: var(--status-size);
+  overflow: hidden;
+  --status-clip: inset(50%);
+  clip-path: var(--status-clip);
+  white-space: nowrap;
 }

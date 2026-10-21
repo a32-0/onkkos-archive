@@ -264,10 +264,12 @@ A change is done when all of these hold:
 Nothing is left open. These were the last questions, closed by the owner on
 2026-10-04:
 
-- **The pinned design** is the section `421:590` "High-fi Wireframes" on the page
-  Wireframes of the Figma file `unteOMr3YYUIyBE6XF0AD6`, as it stood on
-  2026-10-04. Every spec is written against it. A frame changed inside it after
-  that date is a design change: the spec is updated before the code follows.
+- **The pinned design** is the section `661:4302` "App flows" on the page
+  Wireframes of the Figma file `unteOMr3YYUIyBE6XF0AD6`, as the owner approved
+  it on 2026-10-18 (T-27b). It replaced `421:590` "High-fi Wireframes", pinned
+  on 2026-10-04 and since deleted. Every spec is written against it. A frame
+  changed inside it after that date is a design change: the spec is updated
+  before the code follows.
 - **The Figma file is private**, for the owner's design and development use. It
   is never linked from the README. A spec still links its frames by node-id; a reader without access reads the spec's behaviour and
   acceptance criteria, which stand without the picture. Publishing the file to

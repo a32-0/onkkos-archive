@@ -65,9 +65,7 @@ export const UnderADivider: Story = {
   decorators: [
     (Story) => (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-6)" }}>
-        <div style={{ margin: "0 calc(var(--space-6) * -1)" }}>
-          <Divider label="Different locations" />
-        </div>
+        <Divider label="Different locations" />
         <Story />
       </div>
     ),

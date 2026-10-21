@@ -1,0 +1,17 @@
+export const VOICE = {
+  onboarding: "You were anticipated. Our interaction begins.",
+  onboardingEnter: "Begin",
+  connect: "It is time. Utter the name.",
+  features: (name: string | null) =>
+    name
+      ? `We have, and shall have a long association, ${name}.`
+      : "We have, and shall have a long association.",
+  resume:
+    "Once, long ago, I would look backwards, feeling for the fading tendrils of our might-have-beens.",
+  summary: "We are prepared to provide.",
+  goals: "Every choice closes off an infinite number of possible futures.",
+  item: "These will assist.",
+  itemOwned: "Well chosen.",
+  place: "We watch, we anticipate, we intercede.",
+  farewell: "Ah, the history you will have.",
+} as const;

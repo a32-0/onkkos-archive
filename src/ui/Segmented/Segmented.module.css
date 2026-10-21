@@ -1,10 +1,11 @@
 .segmented {
+  --segmented-disabled-opacity: 0.4;
   display: inline-flex;
   align-items: center;
   padding: var(--space-2);
-  border: var(--border-1) solid var(--line-subtle);
+  border: var(--border-1) solid var(--line);
   border-radius: var(--radius-l);
-  background: var(--surface);
+  background: transparent;
 }
 
 .segment {
@@ -24,6 +25,15 @@
   background-image: linear-gradient(var(--hover), var(--hover));
 }
 
+.segment:disabled {
+  opacity: var(--segmented-disabled-opacity);
+  cursor: default;
+}
+
+.segment:disabled:hover {
+  background-image: none;
+}
+
 .segment:focus-visible {
   outline: var(--border-2) solid var(--focus);
   outline-offset: calc(var(--border-2) * -1);
@@ -37,5 +47,6 @@
 .chosen {
   composes: segment;
   composes: label from "../type.module.css";
-  background-color: var(--surface-raised);
+  background-color: var(--fill-strong);
+  color: var(--ink-inverse);
 }

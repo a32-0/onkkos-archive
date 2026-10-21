@@ -29,11 +29,28 @@ export function suggestedGoals(
   graph: Graph,
   masteryRank: number | undefined,
   done: ReadonlySet<string> = new Set(),
+  first: string | null = null,
 ): string[] {
   const mr = masteryRank ?? 0;
+  const lead = (id: string) => (id === first ? 0 : 1);
   return Object.values(graph.goals)
     .filter((goal) => !done.has(goal.id))
     .map((goal) => ({ goal, rank: AUDIENCE_BANDS[goal.audience ?? "both"]?.(mr) ?? 1 }))
-    .sort((a, b) => a.rank - b.rank || a.goal.label.localeCompare(b.goal.label))
+    .sort(
+      (a, b) =>
+        lead(a.goal.id) - lead(b.goal.id) ||
+        a.rank - b.rank ||
+        a.goal.label.localeCompare(b.goal.label),
+    )
     .map((entry) => entry.goal.id);
+}
+
+export function goalAtPlace(
+  graph: Graph,
+  frontier: string | null,
+  place: string | null,
+): string | null {
+  if (frontier !== null) return "unlock_next_planet";
+  if (place === null) return null;
+  return Object.values(graph.goals).find((goal) => goal.place === place)?.id ?? null;
 }

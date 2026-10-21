@@ -1,0 +1,139 @@
+.page {
+  --map-column: none;
+  --map-pane: 390px;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.pane {
+  display: none;
+}
+
+.main,
+.category,
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--map-column);
+  margin: 0 auto;
+  padding: var(--space-6) var(--gutter);
+}
+
+.main,
+.category {
+  flex: 1 0 auto;
+}
+
+.cards {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.system {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--link-card-height);
+  padding: var(--space-5) var(--space-6);
+  border-left: var(--border-1) solid var(--accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.system:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.system:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.system-text {
+  container-type: inline-size;
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.system-kicker {
+  composes: eyebrow from "../../ui/type.module.css";
+  color: var(--ink-muted);
+}
+
+.system-name {
+  composes: heading from "../../ui/type.module.css";
+  composes: fit from "../../ui/type.module.css";
+  --fit-max: 24px;
+  --fit-glyph: 0.8;
+  --fit-min: 14px;
+}
+
+.chevron {
+  display: flex;
+  flex: none;
+  transform: rotate(180deg);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.title {
+  composes: numeral from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.place-title {
+  composes: display-name from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+.lead {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink);
+}
+
+@media (min-width: 600px) {
+  .page,
+  .category,
+  .list {
+    --map-column: 640px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page {
+    display: grid;
+    grid-template-columns: var(--map-pane) minmax(0, 1fr);
+  }
+
+  .pane {
+    display: block;
+    border-right: var(--border-1) solid var(--line-subtle);
+  }
+
+  .pane .list {
+    max-width: none;
+  }
+}

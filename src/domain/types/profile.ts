@@ -42,6 +42,7 @@ interface RawStats {
 export interface RawProfile {
   AccountId?: unknown;
   DisplayName?: string;
+  ActiveAvatarImageType?: string;
   PlatformNames?: string[];
   PlayerLevel?: number;
   GuildId?: unknown;

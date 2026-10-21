@@ -91,7 +91,7 @@ describe("systems", () => {
 
   it("lists the systems in BR-47's order", () => {
     expect(systems().map((system) => system.name)).toEqual([
-      "Origin System",
+      "Origin",
       "Pom-2 PC",
       "Duviri",
       "Empyrean Proxima",

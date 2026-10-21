@@ -2,9 +2,48 @@ aliases:
   "Dark Refractory, Deimos": Dark Refractory
   "Zariman Ten Zero": Zariman
 
+hubs:
+  The Circuit: Duviri
+  La Cathédrale: Deimos
+  Pontis Tower: Uranus Proxima
+  Nightcap: Venus
+
+colors:
+  Earth: "#2f8cff"
+  Venus: "#e8a33d"
+  Mercury: "#b9a08a"
+  Mars: "#d4502a"
+  Deimos: "#b2306e"
+  Phobos: "#a0786a"
+  Void: "#d4af37"
+  Ceres: "#7d8794"
+  Jupiter: "#d98e5a"
+  Europa: "#bfe3f5"
+  Sanctuary: "#22e0e8"
+  Saturn: "#ecd59a"
+  Uranus: "#4fb8e8"
+  Neptune: "#2a46d6"
+  Lua: "#d6d0cc"
+  Pluto: "#7f93b5"
+  Eris: "#7fbf3f"
+  Sedna: "#8e1c2b"
+  "Kuva Fortress": "#e3122d"
+  Zariman: "#a5f0d0"
+  Dojo: "#fff0f0"
+  "Höllvania": "#39ff14"
+  Duviri: "#ddc986"
+  "Earth Proxima": "#a7d9ff"
+  "Venus Proxima": "#fff7aa"
+  "Saturn Proxima": "#c9ffe0"
+  "Uranus Proxima": "#ececff"
+  "Neptune Proxima": "#1f6ec7"
+  "Pluto Proxima": "#8ad8e0"
+  "Veil Proxima": "#c71d00"
+  "Dark Refractory": "#d4320b"
+
 systems:
   - id: origin
-    name: Origin System
+    name: Origin
     released: true
     places:
       - Earth

@@ -2,7 +2,7 @@ import { circuitStatus, type CircuitMode } from "@/domain/catalog/circuit";
 import type { CollectibleView } from "@/domain/catalog/collectibles";
 import { findCollectible, isCatalogued, type CatalogData } from "@/domain/catalog/data";
 import type { Dossier } from "@/domain/catalog/dossier";
-import type { SlotKind } from "@/domain/catalog/items";
+import { BLUEPRINT_ART, type SlotKind } from "@/domain/catalog/items";
 import { oneIn } from "@/domain/catalog/odds";
 import { rewardRoutes } from "@/domain/catalog/rewards";
 import {
@@ -21,6 +21,8 @@ import {
 import { curatedFor, vendorGates, type Cost, type CuratedSource } from "@/domain/catalog/sources";
 import { researchFor, sameName } from "@/domain/catalog/wiki";
 import { questNeeds, questsBefore } from "@/domain/narrative/chain";
+import type { Quest } from "@/domain/narrative/schema";
+import { placeGap, rankGap, type Reach, type ReachGap } from "@/domain/place/reach";
 
 type None = Record<never, never>;
 
@@ -56,6 +58,13 @@ interface Says {
   masteryUnknownDetail: None;
   questTitle: { quest: string };
   questDetail: None;
+  questsTitle: { count: number };
+  questsDetail: { quests: string[] };
+  junctionsTitle: { count: number };
+  junctionsDetail: { junctions: { junction: string; from: string | null }[] };
+  placesTitle: { count: number };
+  placesDetail: { places: { place: string; junction: string | null; from: string | null }[] };
+  questStartTitle: { quest: string };
   intrinsicsTitle: { rank: number | null };
   intrinsicsDetail: None;
   nemesisTitle: { name: string };
@@ -103,6 +112,7 @@ interface Says {
   relicOdds: RelicFacts;
   relicBrief: RelicFacts;
   dropDetail: { place: string; node: string };
+  nodeOn: { node: string; place: string };
   partsUnknown: None;
   noRouteTitle: { item: string };
 
@@ -750,7 +760,7 @@ function routeRow(
     case "drop":
       return row(id, say("playTitle", { node: route.node }), {
         ...shared,
-        where: parts(route.node, route.mission),
+        where: parts(say("nodeOn", { node: route.node, place: route.place }), route.mission),
         prose: mechanics(route.mission),
         wikiTitle: route.node,
       });
@@ -998,7 +1008,10 @@ const arsenalImages = new WeakMap<CatalogData, Map<string, string | null>>();
 function resourceImage(data: CatalogData, name: string): string | null {
   let images = resourceImages.get(data);
   if (!images) {
-    images = new Map(data.resources.map((entry) => [entry.name, entry.imageUrl]));
+    images = new Map();
+    for (const entry of data.resources) {
+      if (entry.imageUrl && !images.has(entry.name)) images.set(entry.name, entry.imageUrl);
+    }
     resourceImages.set(data, images);
   }
   return images.get(name) ?? null;
@@ -1013,9 +1026,23 @@ function arsenalImage(data: CatalogData, name: string): string | null {
   return images.get(name) ?? null;
 }
 
+function partImage(data: CatalogData, name: string): string | null {
+  for (const item of data.arsenal) {
+    if (!name.startsWith(`${item.name} `)) continue;
+    const part = name.slice(item.name.length + 1);
+    const art = item.recipe?.parts.find((one) => one.name === part)?.imageUrl;
+    if (art) return art;
+  }
+  return null;
+}
+
 function thingImage(data: CatalogData, name: string): string | null {
+  if (name === MAIN_PART) return BLUEPRINT_ART;
   return (
-    resourceImage(data, name) ?? findCollectible(data, name)?.imageUrl ?? arsenalImage(data, name)
+    resourceImage(data, name) ??
+    findCollectible(data, name)?.imageUrl ??
+    arsenalImage(data, name) ??
+    partImage(data, name)
   );
 }
 
@@ -1138,6 +1165,7 @@ function gearGroups(data: CatalogData, sections: readonly StepSection[]): StepGr
       rows.push(
         row(`gear:${name}:credits`, say("creditsTitle", { credits: recipe.credits * count }), {
           wikiTitle: CREDITS,
+          imageUrl: data.vendorArt[CREDITS] ?? null,
           thing: CREDITS,
         }),
       );
@@ -1194,7 +1222,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
       {
         detail: parts(resourceDetail(tally.rarity, tally.location)),
         wikiTitle: tally.link,
-        imageUrl: resourceImage(data, tally.name),
+        imageUrl: thingImage(data, tally.name),
         thing: tally.name,
       },
     );
@@ -1226,6 +1254,10 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     elsewhere.push(
       row(`currency:${key}`, say("currencyTitle", { cost, currency, vendor }), {
         wikiTitle: currency === "Standing" ? vendor : currency,
+        imageUrl:
+          currency === "Standing"
+            ? (data.vendorArt[vendor] ?? null)
+            : (thingImage(data, currency) ?? data.vendorArt[currency] ?? null),
         thing: currency === "Standing" ? null : currency,
       }),
     );
@@ -1235,6 +1267,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     elsewhere.push(
       row("credits", say("creditsTitle", { credits: found.totals.credits }), {
         wikiTitle: CREDITS,
+        imageUrl: data.vendorArt[CREDITS] ?? null,
         thing: CREDITS,
       }),
     );
@@ -1502,13 +1535,14 @@ function systemSteps(
   ];
 }
 
-function baroComponents(system: AcquisitionSystem): StepSection | null {
+function baroComponents(data: CatalogData, system: AcquisitionSystem): StepSection | null {
   if (system.kind !== "baro") return null;
   const rows: StepRow[] = [];
   if (system.ducats !== null) {
     rows.push(
       row(`currency:${DUCATS}`, say("ducatsTitle", { ducats: system.ducats }), {
         wikiTitle: DUCATS,
+        imageUrl: thingImage(data, DUCATS),
         thing: DUCATS,
       }),
     );
@@ -1517,6 +1551,7 @@ function baroComponents(system: AcquisitionSystem): StepSection | null {
     rows.push(
       row("credits", say("creditsTitle", { credits: system.credits }), {
         wikiTitle: CREDITS,
+        imageUrl: data.vendorArt[CREDITS] ?? null,
         thing: CREDITS,
       }),
     );
@@ -1545,7 +1580,7 @@ function systemPlan(
     section("how", say("sectionAcquisition"), systemSteps(data, reader, system, item.name)),
   ];
   const components =
-    system.kind === "baro" ? baroComponents(system) : componentsSection(data, found);
+    system.kind === "baro" ? baroComponents(data, system) : componentsSection(data, found);
   if (components) sections.push(components);
   return { sections };
 }
@@ -1672,6 +1707,7 @@ function vaultedPlan(
 }
 
 const QUEST_ROW = "quest:";
+const PLACE_ROW = "place:";
 const JUNCTION_ROW = "junction:";
 const PREREQUISITES = "prerequisites";
 
@@ -1702,6 +1738,93 @@ interface Linking {
   done: ReadonlySet<string>;
 }
 
+const QUESTS_ROW = "quests:";
+const JUNCTIONS_ROW = "junctions:";
+const PLACES_ROW = "places:";
+const PLACES_WIKI = "Star Chart";
+const QUESTS_WIKI = "Quests";
+const JUNCTIONS_WIKI = "Junction";
+const LIST_SEPARATOR = "|";
+
+function questsRow(names: readonly string[]): StepRow {
+  return row(
+    `${QUESTS_ROW}${names.join(LIST_SEPARATOR)}`,
+    say("questsTitle", { count: names.length }),
+    {
+      detail: parts(say("questsDetail", { quests: [...names] })),
+      wikiTitle: QUESTS_WIKI,
+    },
+  );
+}
+
+function junctionsRow(data: CatalogData, names: readonly string[]): StepRow {
+  return row(
+    `${JUNCTIONS_ROW}${names.join(LIST_SEPARATOR)}`,
+    say("junctionsTitle", { count: names.length }),
+    {
+      detail: parts(
+        say("junctionsDetail", {
+          junctions: names.map((junction) => ({ junction, from: junctionFrom(data, junction) })),
+        }),
+      ),
+      wikiTitle: JUNCTIONS_WIKI,
+    },
+  );
+}
+
+function gathered(data: CatalogData, rows: readonly StepRow[]): StepRow[] {
+  const quests = rows.filter((one) => one.id.startsWith(QUEST_ROW));
+  const junctions = rows.filter((one) => one.id.startsWith(JUNCTION_ROW));
+  const junctionNames = junctions.map((one) => one.id.slice(JUNCTION_ROW.length));
+  const cleared = new Set(junctionNames);
+  const out: StepRow[] = [];
+  for (const one of rows) {
+    if (one.id.startsWith(PLACE_ROW) && cleared.has(`${one.id.slice(PLACE_ROW.length)} Junction`)) {
+      continue;
+    }
+    if (quests.length > 1 && one.id.startsWith(QUEST_ROW)) {
+      if (one === quests[0]) out.push(questsRow(quests.map((q) => q.id.slice(QUEST_ROW.length))));
+      continue;
+    }
+    if (junctions.length > 1 && one.id.startsWith(JUNCTION_ROW)) {
+      if (one === junctions[0]) out.push(junctionsRow(data, junctionNames));
+      continue;
+    }
+    out.push(one);
+  }
+  const places = out.filter((one) => one.id.startsWith(PLACE_ROW));
+  if (places.length < 2) return out;
+  return out.flatMap((one) => {
+    if (!one.id.startsWith(PLACE_ROW)) return [one];
+    return one === places[0]
+      ? [
+          placesRow(
+            data,
+            places.map((place) => place.id.slice(PLACE_ROW.length)),
+          ),
+        ]
+      : [];
+  });
+}
+
+function placesRow(data: CatalogData, names: readonly string[]): StepRow {
+  return row(
+    `${PLACES_ROW}${names.join(LIST_SEPARATOR)}`,
+    say("placesTitle", { count: names.length }),
+    {
+      detail: parts(
+        say("placesDetail", {
+          places: names.map((place) => {
+            const junction = junctionTo(data.wiki, place);
+            return { place, junction: junction?.name ?? null, from: junction?.from ?? null };
+          }),
+        }),
+      ),
+      wikiTitle: PLACES_WIKI,
+    },
+  );
+}
+
 function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking): StepRow[] {
   const past = settled(data, linking.done);
   const kept = withoutRepeats(rows.filter((one) => pending(one, past)));
@@ -1711,7 +1834,10 @@ function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking)
   const needed = Math.max(linking.masteryReq, ...questMastery);
   return [
     ...masteryRows(needed, linking.masteryRank),
-    ...kept.filter((one) => one.id !== MASTERY_ROW),
+    ...gathered(
+      data,
+      kept.filter((one) => one.id !== MASTERY_ROW),
+    ),
   ];
 }
 
@@ -1828,6 +1954,7 @@ function itemPlan(data: CatalogData, reader: Reader, view: Dossier): StepPlan {
                 ? []
                 : routeDetail(data, reader, route),
             brief: route ? routeBrief(data, reader, route) : [],
+            where: route ? routeRow(data, reader, `part:${part.name}`, route).where : [],
             imageUrl: images.get(part.name) ?? null,
           });
         }),
@@ -1890,7 +2017,12 @@ function dropRows(view: CollectibleView): StepRow[] {
         oddsDetail(value),
       ),
       brief: parts(route.place, route.mission, oddsBrief(value)),
-      where: parts(route.node ?? route.place, route.mission),
+      where: parts(
+        route.node && route.place && !route.node.includes(", ")
+          ? say("nodeOn", { node: route.node, place: route.place })
+          : (route.node ?? route.place),
+        route.mission,
+      ),
       prose: mechanics(route.place ? route.mission : null),
       wikiTitle: route.node ?? collectible.name,
       imageUrl: index === 0 ? collectible.imageUrl : null,
@@ -2147,4 +2279,77 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
   const recipe = recipeSection(data, collectible);
   if (recipe) sections.push(recipe);
   return { sections: sections.filter((entry) => entry.groups.some((g) => g.rows.length > 0)) };
+}
+
+export function questStepPlan(data: CatalogData, quest: Quest, reader: Reader): StepPlan {
+  const needs = questNeeds(data.spine, quest.name);
+  const prerequisites = [
+    ...questRowsFor(data, needs.quests),
+    ...needs.junctions.map((junction) => junctionRow(data, junction)),
+    ...reachRows(data, quest.availableAt),
+  ];
+  const start = row(`start:${quest.name}`, say("questStartTitle", { quest: quest.name }), {
+    detail: parts(quest.start),
+    prose: lead(quest.wikiTitle),
+    wikiTitle: quest.wikiTitle,
+  });
+  return linked(
+    data,
+    {
+      sections: [
+        section(PREREQUISITES, say("sectionPrerequisites"), prerequisites),
+        section("how", say("sectionHowToGet"), [start]),
+      ],
+    },
+    {
+      self: quest.name,
+      masteryReq: needs.mastery,
+      masteryRank: reader.masteryRank,
+      done: reader.done ?? new Set(),
+    },
+  );
+}
+
+export interface PlanLock {
+  row: string;
+  gap: ReachGap;
+}
+
+function junctionGap(reach: Reach, place: string): ReachGap | null {
+  const gap = placeGap(reach, place);
+  return gap?.kind === "junction" ? gap : null;
+}
+
+function rowGap(entry: StepRow, reach: Reach): ReachGap | null {
+  if (entry.id === MASTERY_ROW && entry.title.say === "masteryTitle") {
+    return rankGap(reach, entry.title.rank);
+  }
+  if (entry.id.startsWith(PLACE_ROW)) return junctionGap(reach, entry.id.slice(PLACE_ROW.length));
+  if (entry.id.startsWith(JUNCTION_ROW)) {
+    return junctionGap(reach, entry.id.slice(JUNCTION_ROW.length).replace(JUNCTION, ""));
+  }
+  if (entry.id.startsWith(JUNCTIONS_ROW)) {
+    for (const junction of entry.id.slice(JUNCTIONS_ROW.length).split(LIST_SEPARATOR)) {
+      const gap = junctionGap(reach, junction.replace(JUNCTION, ""));
+      if (gap) return gap;
+    }
+  }
+  if (entry.id.startsWith(PLACES_ROW)) {
+    for (const place of entry.id.slice(PLACES_ROW.length).split(LIST_SEPARATOR)) {
+      const gap = junctionGap(reach, place);
+      if (gap) return gap;
+    }
+  }
+  return null;
+}
+
+export function planLock(plan: StepPlan, reach: Reach): PlanLock | null {
+  const rows = plan.sections
+    .filter((entry) => entry.id === PREREQUISITES)
+    .flatMap((entry) => entry.groups.flatMap((group) => group.rows));
+  for (const entry of rows) {
+    const gap = rowGap(entry, reach);
+    if (gap) return { row: entry.id, gap };
+  }
+  return null;
 }

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { SAMPLE_ART } from "../stories/art";
-import { UpdateList } from "../UpdateList/UpdateList";
 import { FeaturedCard } from "./FeaturedCard";
 
 const meta = {
@@ -13,9 +12,7 @@ const meta = {
     name: "The Shadowgrapher",
     meta: "Update 42 · Mar, 2026",
     art: SAMPLE_ART[2],
-    open: false,
-    listId: "updates",
-    onToggle: () => {},
+    href: "/catch-up/updates?from=resume",
   },
   decorators: [
     (Story) => (
@@ -32,35 +29,6 @@ type Story = StoryObj<typeof meta>;
 
 export const LastPlayed: Story = {};
 
-export const LastPlayedOpen: Story = {
-  args: { open: true },
-  decorators: [
-    (Story) => (
-      <>
-        <Story />
-        <UpdateList
-          id="updates"
-          onChoose={() => {}}
-          items={[
-            {
-              value: "41.1",
-              name: "Vauban Heirloom",
-              meta: "Update 41.1 · Feb, 2026",
-              art: SAMPLE_ART[0],
-            },
-            {
-              value: "41",
-              name: "The Old Peace",
-              meta: "Update 41 · Dec, 2025",
-              art: SAMPLE_ART[1],
-            },
-          ]}
-        />
-      </>
-    ),
-  ],
-};
-
 export const UpToDate: Story = {
   args: {
     kind: "up-to-date",
@@ -69,6 +37,10 @@ export const UpToDate: Story = {
     meta: "Update 43.5 · Aug, 2026",
     art: SAMPLE_ART[0],
   },
+};
+
+export const NoMonth: Story = {
+  args: { kind: "up-to-date", eyebrow: "You're up to date", meta: "" },
 };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

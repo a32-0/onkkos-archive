@@ -8,7 +8,7 @@ export function Timeline({ steps }: { steps: readonly TimelineStep[] }) {
   return (
     <ol className={styles.timeline}>
       {steps.map((step) => (
-        <li key={step.id} className={styles.step}>
+        <li key={step.id} className={step.alternative ? styles.alternative : styles.step}>
           <span className={styles.rail} aria-hidden>
             {!step.alternative && (
               <span className={styles.marker}>

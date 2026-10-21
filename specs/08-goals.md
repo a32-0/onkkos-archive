@@ -6,18 +6,16 @@ opens the steps to it.
 
 ## Frames
 
-- [`208:90` Goal](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-90).
+- [`662:4811` Goal](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4811).
 
-Drawn on 2026-10-06 under **Documented states**, from the states this spec
-describes and no earlier frame drew. Their texts are sample values:
+Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
+describes. Their texts are sample values:
 
-- [`474:920` Goal — Results](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-920): typing, the suggestion list under the field.
-- [`474:1013` Goal — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1013): typing, "Nothing by that name."
-- [`474:1090` Goal — Every goal done](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=474-1090): the search card, then the empty state (flag, "Nothing left to suggest", "Every goal we curate is behind you. Name anything above and chase it.") where the goal cards would be.
-
-Drawn on 2026-10-08 under **Documented states**, for BR-62:
-
-- [`533:5041` Goal — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=533-5041): the last match beyond reach, after those in reach, with its gap.
+- [`675:5962` Goal — Results](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5962): typing, the suggestion list under the field.
+- [`675:5989` Goal — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5989): typing, "Nothing by that name."
+- [`675:6049` Goal — Every goal done](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6049): the search card, then the empty state (flag, "Nothing left to suggest", "Every goal we curate is behind you. Name anything above and chase it.") where the goal cards would be.
+- [`675:6022` Goal — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6022): the last match beyond reach, after those in reach, with its gap.
+- [`675:6088` Goal — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6088): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
 
 ## Rules
 
@@ -41,7 +39,7 @@ Drawn on 2026-10-08 under **Documented states**, for BR-62:
 ## What the screen does
 
 Route `/goals`, inside the shell, the Goal tab lit. A new player lands here
-from `/connect` (BR-03). From the top, as `208:90` draws it:
+from `/connect` (BR-03). From the top, as `662:4811` draws it:
 
 1. Onkko's line, "Every choice closes off an infinite number of possible
    futures."
@@ -51,6 +49,8 @@ from `/connect` (BR-03). From the top, as `208:90` draws it:
    the frame drops "or a Mastery Rank"; the field, "A warframe, a weapon, or
    planet"; and **Continue**.
 4. The goal cards, each a link with its icon, title and one line.
+5. **Skip**, in the secondary style, which opens the map on Start here
+   (BR-40), as `662:4811` draws it since 2026-10-16.
 
 ### The search (BR-53)
 
@@ -58,10 +58,11 @@ from `/connect` (BR-03). From the top, as `208:90` draws it:
   matches, best first, each a row with its icon, its name and its catalogue.
   The list reuses the place list's row (spec 07) in a compact form. It has
   no screen frame of its own: it is the `Suggestion list` component, and
-  `474:920` draws it in place.
+  `675:5962` draws it in place.
 - It reaches only what has a known source: an arsenal item, a mod, arcane,
-  resource or other entry with a drop, a region or a vendor, every relic, and
-  every place. About 8,000 cosmetics with no source never appear.
+  resource or other entry with a drop, a region or a vendor, every relic,
+  every quest of the narrative spine, with its art and "Quest" as its
+  catalogue (owner, 2026-10-20), and every place. About 8,000 cosmetics with no source never appear.
 - What is in the player's reach comes first. A match beyond reach is the
   Beyond reach row (`526:107`): its catalogue, then the gap, "Sniper · Needs
   Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on Earth" or
@@ -95,7 +96,11 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
   Rank band (`suggestedGoals`).
 - Each card carries its icon, as the frame draws it: `precision_manufacturing`
   for the Necramech, `auto_stories` for a quest, `flag` otherwise.
-- The card's line is the goal's curated line in `grafo.yaml`.
+- The card's line lives in `src/content/goals.ts`, as every string does:
+  "Build a Necramech" and "Play the Hex Quest" carry the lines `662:4811`
+  draws; "Unlock the next planet" names the junction the frontier needs,
+  "Clear the Mars Junction, on Earth, to open the next planet." (owner,
+  2026-10-17).
 
 ## States
 
@@ -113,7 +118,11 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
   never ships the whole index.
 - Goals: `data/grafo.yaml` through `suggestedGoals()`; the frontier and the
   focus as in spec 07.
-- Necramechs: the catalog's Necramech category against `XPInfo`.
+- Necramechs: the catalog's Necramech category against `XPInfo`
+  (`lackingNecramechs()` in `src/domain/catalog/necramechs.ts`).
+- Search: the route reads the player's screen, from the profile's cache, to
+  order by reach and say each gap; it is private to the player and never
+  cached in public.
 - Copy lives in `src/content/`.
 
 ## Desktop (BR-39)
@@ -131,8 +140,7 @@ active, beyond reach), `ChoiceCard`
 
 ## Acceptance
 
-1. At 390 px the screen matches `208:90`, and the list matches its frame once
-   drawn.
+1. At 390 px each state matches its frame in "App flows".
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps or is cut.
 3. Typing two characters shows matches; a place opens the map, an item its
    page; Continue opens the first.
@@ -146,5 +154,5 @@ active, beyond reach), `ChoiceCard`
 ## Drawn on the Design System page
 
 The suggestion list is the `Suggestion list` component (Results, No match),
-approved by the owner on 2026-10-06, and drawn in place on `474:920` and
-`474:1013`.
+approved by the owner on 2026-10-06, and drawn in place on `675:5962` and
+`675:5989`.

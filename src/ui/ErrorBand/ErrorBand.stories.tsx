@@ -23,7 +23,7 @@ export const InvalidId: Story = {
 };
 
 export const NotFound: Story = {
-  args: { message: "No account answers to this ID. Copy it again from user_id." },
+  args: { message: "No account answers to this ID. Copy it again from the gid cookie." },
 };
 
 export const NotAnswering: Story = {

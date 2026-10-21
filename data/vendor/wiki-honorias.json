@@ -1010,7 +1010,7 @@
    ],
    "price": []
   },
-  "On-Lyne Superfan Honoria": {
+  "On-lyne Superfan Honoria": {
    "description": "Reach Max Rank (40) with 5 Coda Weapons.",
    "tags": [
     "Adversary",
@@ -1914,6 +1914,19 @@
     "Miscellaneous"
    ],
    "price": []
+  },
+  "The Moon Killer Honoria": {
+   "description": null,
+   "tags": [
+    "Praghasa",
+    "Event"
+   ],
+   "price": [
+    {
+     "currency": "Moonflesh",
+     "amount": 175
+    }
+   ]
   }
  }
 }

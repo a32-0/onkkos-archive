@@ -5,12 +5,13 @@ import type { StepPlan, StepRow } from "@/domain/catalog/checks";
 import { namesItem, partKey, vendorOffer } from "@/domain/catalog/rewards";
 import {
   acquisitionParagraphs,
+  brief,
   leadParagraphs,
   paragraphs,
   sectionOf,
   wikiPassage,
 } from "@/infra/wiki/client";
-import { gameIcons, placeIcons } from "@/infra/wiki/icons";
+import { gameIcons } from "@/infra/wiki/icons";
 import { withProse } from "@/infra/wiki/prose";
 
 import { testData } from "./helpers";
@@ -77,12 +78,32 @@ describe("sectionOf", () => {
 });
 
 describe("paragraphs", () => {
-  it("keeps every paragraph of the passage (BR-48)", () => {
-    expect(paragraphs("one\n\ntwo\n\nthree\n\nfour\n\nfive")).toHaveLength(5);
+  it("keeps every paragraph that is a sentence (BR-48)", () => {
+    expect(paragraphs("One.\n\nTwo.\n\nThree.\n\nFour.\n\nFive.")).toHaveLength(5);
   });
 
   it("drops empty lines and closes the gap an icon leaves", () => {
-    expect(paragraphs("one\n\n\n\ntwo  words .")).toEqual(["one", "two words."]);
+    expect(paragraphs("One.\n\n\n\ntwo  words .")).toEqual(["One.", "two words."]);
+  });
+
+  it("drops what is not a sentence: a list's lead, an audio caption", () => {
+    expect(
+      paragraphs(
+        "Remnant audio cues:\nSpawn  (download, history)\nRemnants despawn when time ends.",
+      ),
+    ).toEqual(["Remnants despawn when time ends."]);
+  });
+
+  it("drops a footnote's number and keeps a decimal", () => {
+    expect(paragraphs("They cannot be healed.1 It costs 3.5 credits.")).toEqual([
+      "They cannot be healed. It costs 3.5 credits.",
+    ]);
+  });
+});
+
+describe("brief", () => {
+  it("keeps three sentences at most, across paragraphs (BR-48)", () => {
+    expect(brief(["One. Two.", "Three. Four.", "Five."])).toEqual(["One. Two.", "Three."]);
   });
 });
 
@@ -118,13 +139,19 @@ describe("the wiki's Acquisition prose", () => {
 });
 
 describe("the passage each source names (BR-48)", () => {
-  it("reads a mission type's Mechanics, subsections included", async () => {
+  it("reads a mission type's Mechanics, up to its first subsection", async () => {
     wikiReturns({ "Shrine Defense": EXTRACT });
     expect(await wikiPassage("Shrine Defense", "mechanics")).toEqual([
       "Unlike standard Defense, the objective has no health bar.",
       "Offerings are prepared every 30 seconds.",
-      "The shrine produces Health Orbs.",
     ]);
+  });
+
+  it("reads the first subsection when Mechanics opens on one", async () => {
+    wikiReturns({
+      Defense: "Defense is a mission.\n\n== Mechanics ==\n=== Waves ===\nEnemies come in waves.",
+    });
+    expect(await wikiPassage("Defense", "mechanics")).toEqual(["Enemies come in waves."]);
   });
 
   it("falls back to the lead when a page has no Mechanics", async () => {
@@ -290,14 +317,6 @@ describe("the wiki's icons", () => {
     });
   });
 
-  it("reads each place's art by its name, in one request", async () => {
-    const asked = filesReturn(["File:Earth.png"]);
-    expect(await placeIcons(["Earth", "Venus"])).toEqual({
-      Earth: "https://wiki.test/File:Earth.png",
-    });
-    expect(asked).toEqual([["File:Earth.png", "File:Venus.png"]]);
-  });
-
   it("answers no icon rather than failing when the wiki is down", async () => {
     vi.stubGlobal(
       "fetch",
@@ -305,7 +324,7 @@ describe("the wiki's icons", () => {
         throw new Error("offline");
       }),
     );
-    expect(await placeIcons(["Earth"])).toEqual({});
+    expect(await gameIcons()).toEqual({});
   });
 });
 

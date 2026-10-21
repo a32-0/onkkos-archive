@@ -11,10 +11,11 @@
   min-height: var(--button-height);
   padding: var(--space-5);
   border: var(--border-1) solid transparent;
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-full);
   background-color: transparent;
   color: var(--ink);
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -34,6 +35,7 @@
 
 .primary {
   composes: button;
+  composes: label from "../type.module.css";
   border-color: var(--fill-strong);
   background-color: var(--fill-strong);
   color: var(--ink-inverse);
@@ -41,15 +43,19 @@
 
 .secondary {
   composes: button;
+  composes: label from "../type.module.css";
   border-color: var(--line-strong);
 }
 
 .danger {
   composes: button;
+  composes: label from "../type.module.css";
   border-color: var(--danger);
-  color: var(--danger);
+  background-color: var(--danger);
+  color: var(--ink);
 }
 
 .text {
   composes: button;
+  composes: label from "../type.module.css";
 }

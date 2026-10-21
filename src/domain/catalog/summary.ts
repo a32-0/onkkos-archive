@@ -3,17 +3,18 @@ import type { Part, Phrase, StepPlan } from "@/domain/catalog/checks";
 type Section = StepPlan["sections"][number];
 type Row = Section["groups"][number]["rows"][number];
 
-interface BriefLine {
+export interface BriefLine {
   id: string;
   title: Phrase;
   route: Phrase | null;
   reading: Part[];
   where: Part[];
   imageUrl: string | null;
+  thing: string | null;
   more: number;
 }
 
-interface BriefBlock {
+export interface BriefBlock {
   id: "blueprints" | "components" | "how";
   title: Phrase;
   lines: BriefLine[];
@@ -36,6 +37,7 @@ function line(row: Row): BriefLine {
     reading: row.brief,
     where: row.where,
     imageUrl: row.imageUrl,
+    thing: row.thing,
     more: 0,
   };
 }
@@ -61,6 +63,7 @@ export function briefOf(plan: StepPlan): BriefBlock[] {
         reading: first.brief,
         where: first.where,
         imageUrl: section.imageUrl,
+        thing: null,
         more: rows.length - 1,
       });
     } else if (section.checkable) {

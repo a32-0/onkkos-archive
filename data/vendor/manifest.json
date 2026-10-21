@@ -1,27 +1,11 @@
 {
- "dropDataHash": "a0ece5e9be2e2d55c75040720ef3226a",
- "dropDataModified": "2026-06-25T20:33:31.000Z",
- "refreshedAt": "2026-09-13T07:24:01.942Z",
+ "dropDataHash": "142932ad92328573f6a7527c0b4c8998",
+ "dropDataModified": "2026-10-07T15:18:33.000Z",
+ "refreshedAt": "2026-10-16T04:25:31.767Z",
  "places": 24,
  "nodes": 485,
- "rewards": 12530,
+ "rewards": 12553,
  "regions": 20,
- "updateArt": 61,
- "updateNamesAsked": 84,
- "wiki": {
-  "refreshedAt": "2026-10-04T03:14:26.886Z",
-  "blueprints": 1163,
-  "nodes": 357,
-  "resources": 929,
-  "research": 188,
-  "vendors": 66,
-  "offers": 2843,
-  "traits": 667,
-  "baro": 468,
-  "adversaries": 2,
-  "companions": 41,
-  "honorias": 209,
-  "titles": 1074,
-  "relics": 799
- }
+ "updateArt": 62,
+ "updateNamesAsked": 85
 }

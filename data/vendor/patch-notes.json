@@ -1,0 +1,894 @@
+{
+ "refreshedAt": "2026-10-16T04:39:38.658Z",
+ "updates": [
+  {
+   "version": "44.1",
+   "name": "Iceblade of Narin: The Icebind",
+   "date": "2026-10-07",
+   "art": "https://www-static.warframe.com/uploads/9e61b529af304890e78504a1abbcec3f.png",
+   "url": "https://www.warframe.com/patch-notes/pc/44-1-0"
+  },
+  {
+   "version": "44",
+   "name": "Iceblade of Narin",
+   "date": "2026-09-23",
+   "art": "https://www-static.warframe.com/uploads/d3f02f0999a06482f724b3eaefa9e68f.png",
+   "url": "https://www.warframe.com/patch-notes/pc/44-0-0"
+  },
+  {
+   "version": "43.5",
+   "name": "Amir's Shockwave",
+   "date": "2026-08-12",
+   "art": "https://www-static.warframe.com/uploads/4d1889bf71973361cfa2d22b78278607.png",
+   "url": "https://www.warframe.com/patch-notes/pc/43-5-0"
+  },
+  {
+   "version": "43",
+   "name": "Jade Shadows: Constellations",
+   "date": "2026-06-17",
+   "art": "https://www-static.warframe.com/uploads/cbfc0aa6c024489bad6d5fb2a620cc99.png",
+   "url": "https://www.warframe.com/patch-notes/pc/43-0-0"
+  },
+  {
+   "version": "42",
+   "name": "The Shadowgrapher",
+   "date": "2026-03-26",
+   "art": "https://www-static.warframe.com/uploads/950c4eef3cb583e58fdfb2d1bea6fe55.png",
+   "url": "https://www.warframe.com/patch-notes/pc/42-0-0"
+  },
+  {
+   "version": "41.1",
+   "name": "Vauban Heirloom",
+   "date": "2026-02-11",
+   "art": "https://www-static.warframe.com/uploads/e67d41c1e778a3b89a908a8281ac8108.png",
+   "url": "https://www.warframe.com/patch-notes/pc/41-1-0"
+  },
+  {
+   "version": "41",
+   "name": "The Old Peace",
+   "date": "2025-12-10",
+   "art": "https://www-static.warframe.com/uploads/45ed75e5b8127cbf6a798f690d55be82.png",
+   "url": "https://www.warframe.com/patch-notes/pc/41-0-0"
+  },
+  {
+   "version": "40",
+   "name": "The Vallis Undermind",
+   "date": "2025-10-15",
+   "art": "https://www-static.warframe.com/uploads/b07c750c85af3553718367b6f2673aa9.png",
+   "url": "https://www.warframe.com/patch-notes/pc/40-0-0"
+  },
+  {
+   "version": "39",
+   "name": "Isleweaver",
+   "date": "2025-06-25",
+   "art": "https://www-static.warframe.com/uploads/3d0109a7760ebc44e8190b9759d41de5.png",
+   "url": "https://www.warframe.com/patch-notes/pc/39-0-0"
+  },
+  {
+   "version": "38.6",
+   "name": "Yareli Prime",
+   "date": "2025-05-22",
+   "art": "https://www-static.warframe.com/uploads/2be469bab3b038fa228f2d57062766cf.png",
+   "url": "https://www.warframe.com/patch-notes/pc/38-6-0"
+  },
+  {
+   "version": "38.5",
+   "name": "Techrot Encore",
+   "date": "2025-03-19",
+   "art": "https://www-static.warframe.com/uploads/9df12c5e2fdd71cb0117aa0314d9d67d.png",
+   "url": "https://www.warframe.com/patch-notes/pc/38-5-0"
+  },
+  {
+   "version": "38",
+   "name": "Warframe: 1999",
+   "date": "2024-12-13",
+   "art": "https://www-static.warframe.com/uploads/c4ba46ca129c95969024b60a339f96d2.png",
+   "url": "https://www.warframe.com/patch-notes/pc/38-0-0"
+  },
+  {
+   "version": "37",
+   "name": "Koumei & the Five Fates",
+   "date": "2024-10-02",
+   "art": "https://www-static.warframe.com/uploads/f7f5c1bd71e846c92a1d33357ef72685.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/37-0-0"
+  },
+  {
+   "version": "36.1",
+   "name": "The Lotus Eaters",
+   "date": "2024-08-21",
+   "art": "https://www-static.warframe.com/uploads/0313a139e9332bf4cdeff40de1cce29a.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/36-1-0"
+  },
+  {
+   "version": "36",
+   "name": "Jade Shadows",
+   "date": "2024-06-18",
+   "art": "https://www-static.warframe.com/uploads/a483d631d3f837b7f3e97b935f007b4d.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/36-0-0"
+  },
+  {
+   "version": "35.6",
+   "name": "Nightwave: Nora's Mix Vol.6",
+   "date": "2024-05-15",
+   "art": "https://www-static.warframe.com/uploads/fe24396c92d4b27943b9422326fede63.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/35-6-0"
+  },
+  {
+   "version": "35.5",
+   "name": "Dante Unbound",
+   "date": "2024-03-27",
+   "art": "https://www-static.warframe.com/uploads/17333b7dbd480a1bf95ec79606226399.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/35-5-0"
+  },
+  {
+   "version": "35.1",
+   "name": "Whispers in the Walls",
+   "date": "2024-02-20",
+   "art": "https://www-static.warframe.com/uploads/8bfc34af8708eb3916fe29bf70790af3.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/35-1-0"
+  },
+  {
+   "version": "35",
+   "name": "Whispers in the Walls",
+   "date": "2023-12-13",
+   "art": "https://www-static.warframe.com/uploads/d43157022cb53acd5a837f749bf42ca7.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/35-0-0"
+  },
+  {
+   "version": "34",
+   "name": "Abyss of Dagath",
+   "date": "2023-10-18",
+   "art": "https://www-static.warframe.com/uploads/f2ee4f74e977324f52d1e3a82d1552b8.png",
+   "url": "https://www.warframe.com/patch-notes/pc/34-0-0"
+  },
+  {
+   "version": "33.5",
+   "name": "The Seven Crimes of Kullervo",
+   "date": "2023-06-21",
+   "art": "https://www-static.warframe.com/uploads/6f3b946db9de2324a24258e5cc2cba16.png",
+   "url": "https://www.warframe.com/patch-notes/pc/33-5-0"
+  },
+  {
+   "version": "33",
+   "name": "The Duviri Paradox",
+   "date": "2023-04-26",
+   "art": "https://www-static.warframe.com/uploads/2f2170efb1ded5c4e575d9cdbb76a948.png",
+   "url": "https://www.warframe.com/patch-notes/pc/33-0-0"
+  },
+  {
+   "version": "32.3",
+   "name": "Citrine's Last Wish",
+   "date": "2023-02-15",
+   "art": "https://www-static.warframe.com/uploads/6c30409aad49de4738245d678b15ec65.png",
+   "url": "https://www.warframe.com/patch-notes/pc/32-3-0"
+  },
+  {
+   "version": "32.2",
+   "name": "Lua's Prey",
+   "date": "2022-11-30",
+   "art": "https://www-static.warframe.com/uploads/dcb7ffc1470745a1df4ac77542114260.png",
+   "url": "https://www.warframe.com/patch-notes/pc/32-2-0"
+  },
+  {
+   "version": "32.1",
+   "name": "Echoes of Veilbreaker",
+   "date": "2022-11-02",
+   "art": "https://www-static.warframe.com/uploads/4e23fce6b58d2090bd5558edd954f8ca.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/32-1-0"
+  },
+  {
+   "version": "32",
+   "name": "Veilbreaker",
+   "date": "2022-09-07",
+   "art": "https://www-static.warframe.com/uploads/82e414d72b20efe6304612ea113d112e.png",
+   "url": "https://www.warframe.com/patch-notes/pc/32-0-0"
+  },
+  {
+   "version": "31.7",
+   "name": "Khora Prime",
+   "date": "2022-07-16",
+   "art": "https://www-static.warframe.com/uploads/034b9f44419b7c71aca2bf00c66ee71c.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/31-7-0"
+  },
+  {
+   "version": "31.6",
+   "name": "Echoes of the Zariman",
+   "date": "2022-06-09",
+   "art": "https://www-static.warframe.com/uploads/9a8f2db69fcfc0e229f69c2d75555764.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/31-6-0"
+  },
+  {
+   "version": "31.5",
+   "name": "Angels of the Zariman",
+   "date": "2022-04-27",
+   "art": "https://www-static.warframe.com/uploads/bc49bbf6e6a19559bffb0e0e100b4888.png",
+   "url": "https://www.warframe.com/patch-notes/pc/31-5-0"
+  },
+  {
+   "version": "31.3",
+   "name": "Garuda Prime",
+   "date": "2022-03-28",
+   "art": "https://www-static.warframe.com/uploads/301a6774ef5b829d3765188b16f9e38f.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/31-3-0"
+  },
+  {
+   "version": "31.2",
+   "name": "Nora's Mix Volume 1",
+   "date": "2022-03-16",
+   "art": "https://www-static.warframe.com/uploads/7f0f7f8c2ded2f37e43a6005bfbc985a.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/31-2-0"
+  },
+  {
+   "version": "31.1",
+   "name": "Echoes of War",
+   "date": "2022-02-09",
+   "art": "https://www-static.warframe.com/uploads/0610dbdd672fc6fc8a47d2ffcd16a50b.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/31-1-0"
+  },
+  {
+   "version": "31",
+   "name": "The New War",
+   "date": "2021-12-15",
+   "art": "https://www-static.warframe.com/uploads/c6a16b70dcc4b648e2eecfdd62c33e40.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/31-0-0"
+  },
+  {
+   "version": "30.9",
+   "name": "Prime Resurgence",
+   "date": "2021-11-11",
+   "art": "https://www-static.warframe.com/uploads/9315c8e5471dc8046167ac970aa32525.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/30-9-0"
+  },
+  {
+   "version": "30.8",
+   "name": "Nights of Naberus",
+   "date": "2021-10-04",
+   "art": "https://www-static.warframe.com/uploads/67955465478ce9d5c08008f894163810.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/30-8-0"
+  },
+  {
+   "version": "30.7",
+   "name": "Nidus Prime & Plague Star",
+   "date": "2021-09-08",
+   "art": "https://www-static.warframe.com/uploads/6e494407b4db333e6743ef17c7a93c0d.png",
+   "url": "https://www.warframe.com/patch-notes/pc/30-7-0"
+  },
+  {
+   "version": "30.6",
+   "name": "Nightwave: Nora's Choice",
+   "date": "2021-08-04",
+   "art": "https://www-static.warframe.com/uploads/36be62fb8b87a219eed77bd3626924a8.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/30-6-0"
+  },
+  {
+   "version": "30.5",
+   "name": "Sisters of Parvos",
+   "date": "2021-07-06",
+   "art": "https://www-static.warframe.com/uploads/f04314f6a87c594ab5018b18d39cc899.png",
+   "url": "https://www.warframe.com/patch-notes/pc/30-5-0"
+  },
+  {
+   "version": "30.3",
+   "name": "Gara Prime",
+   "date": "2021-05-25",
+   "art": "https://www-static.warframe.com/uploads/bed75001959a80e804e3a9a5f68c2639.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/30-3-0"
+  },
+  {
+   "version": "30.1",
+   "name": "Call of the Tempestarii: TennoGen",
+   "date": "2021-04-29",
+   "art": "https://www-static.warframe.com/uploads/b9ca701c65ae300ec5cb530c1adf8e26.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/30-1-0"
+  },
+  {
+   "version": "30",
+   "name": "Call of the Tempestarii",
+   "date": "2021-04-13",
+   "art": "https://www-static.warframe.com/uploads/64f4c05acca1d039109a71bc0727c5fd.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/30-0-0"
+  },
+  {
+   "version": "29.1",
+   "name": "Heart of Deimos",
+   "date": "2020-09-17",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-29-1.png",
+   "url": "https://www.warframe.com/patch-notes/pc/29-1-0"
+  },
+  {
+   "version": "29",
+   "name": "Heart of Deimos",
+   "date": "2020-08-25",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-29-0.png",
+   "url": "https://www.warframe.com/patch-notes/pc/29-0-0"
+  },
+  {
+   "version": "28.3",
+   "name": "Derelict Shift",
+   "date": "2020-08-12",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/28-3-0"
+  },
+  {
+   "version": "28.1",
+   "name": "The Steel Path",
+   "date": "2020-07-08",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/28-1-0"
+  },
+  {
+   "version": "28",
+   "name": "The Deadlock Protocol",
+   "date": "2020-06-11",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-28-0.png",
+   "url": "https://www.warframe.com/patch-notes/pc/28-0-0"
+  },
+  {
+   "version": "27.5",
+   "name": "Nightwave Series 3: Glassmaker",
+   "date": "2020-05-12",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/27-5-0"
+  },
+  {
+   "version": "27.4",
+   "name": "Warframe Revised: Railjack Revisited (Part 1)",
+   "date": "2020-05-01",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/27-4-0"
+  },
+  {
+   "version": "27.2",
+   "name": "Warframe Revised",
+   "date": "2020-03-05",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/27-2-0"
+  },
+  {
+   "version": "27",
+   "name": "Empyrean",
+   "date": "2019-12-13",
+   "art": "https://www-static.warframe.com/uploads/cbd231870a8f38729db7fe08dadb541c.png",
+   "url": "https://www.warframe.com/patch-notes/pc/27-0-0"
+  },
+  {
+   "version": "26.1",
+   "name": "Rising Tide",
+   "date": "2019-11-22",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-26-1.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/26-1-0"
+  },
+  {
+   "version": "26",
+   "name": "The Old Blood",
+   "date": "2019-10-31",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-26-0.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/26-0-0"
+  },
+  {
+   "version": "25.8",
+   "name": "Atlas Prime",
+   "date": "2019-10-01",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-25-8.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/25-8-0"
+  },
+  {
+   "version": "25.7",
+   "name": "Saint of Altra",
+   "date": "2019-08-29",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/25-7-0"
+  },
+  {
+   "version": "25.6",
+   "name": "Augment Tweaks",
+   "date": "2019-08-08",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-25-6.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/25-6-0"
+  },
+  {
+   "version": "25.5",
+   "name": "Wukong Deluxe",
+   "date": "2019-07-31",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/25-5-0"
+  },
+  {
+   "version": "25.4",
+   "name": "Tenno Reinforcements",
+   "date": "2019-07-18",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-25-4.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/25-4-0"
+  },
+  {
+   "version": "25.3",
+   "name": "Wukong Prime",
+   "date": "2019-07-06",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-25-3.png",
+   "url": "https://www.warframe.com/patch-notes/pc/25-3-0"
+  },
+  {
+   "version": "25.2",
+   "name": "The Jovian Concord",
+   "date": "2019-06-19",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/25-2-0"
+  },
+  {
+   "version": "25.1",
+   "name": "The Jovian Concord",
+   "date": "2019-06-05",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/25-1-0"
+  },
+  {
+   "version": "25",
+   "name": "The Jovian Concord",
+   "date": "2019-05-22",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-25-0.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/25-0-0"
+  },
+  {
+   "version": "24.8",
+   "name": "Plains of Eidolon Remaster",
+   "date": "2019-04-24",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-24-8.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/24-8-0"
+  },
+  {
+   "version": "24.7",
+   "name": "Plains of Eidolon Remaster",
+   "date": "2019-04-10",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/24-7-0"
+  },
+  {
+   "version": "24.6",
+   "name": "Plains of Eidolon Remaster",
+   "date": "2019-04-04",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-24-6.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/24-6-0"
+  },
+  {
+   "version": "24.5",
+   "name": "Buried Debts",
+   "date": "2019-03-14",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/24-5-0"
+  },
+  {
+   "version": "24.4",
+   "name": "Buried Debts",
+   "date": "2019-03-08",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/24-4-0"
+  },
+  {
+   "version": "24.3",
+   "name": "Fortuna: Nightwave",
+   "date": "2019-02-27",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/24-3-0"
+  },
+  {
+   "version": "24.2",
+   "name": "Fortuna: The Profit-Taker",
+   "date": "2018-12-18",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-24-2.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/24-2-0"
+  },
+  {
+   "version": "24.1",
+   "name": "Fortuna: TennoGen Round 14",
+   "date": "2018-11-22",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/24-1-0"
+  },
+  {
+   "version": "24",
+   "name": "Fortuna",
+   "date": "2018-11-08",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-24-0.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/24-0-0"
+  },
+  {
+   "version": "23.10",
+   "name": "Chimera",
+   "date": "2018-10-12",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-10-0"
+  },
+  {
+   "version": "23.8",
+   "name": "Mask of the Revenant",
+   "date": "2018-09-12",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-8-0"
+  },
+  {
+   "version": "23.7",
+   "name": "Mask of the Revenant",
+   "date": "2018-09-06",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-7-0"
+  },
+  {
+   "version": "23.6",
+   "name": "Mask of the Revenant",
+   "date": "2018-08-30",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-6-0"
+  },
+  {
+   "version": "23.5",
+   "name": "Mask of the Revenant",
+   "date": "2018-08-24",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-5-0"
+  },
+  {
+   "version": "23.4",
+   "name": "The Sacrifice",
+   "date": "2018-08-16",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-4-0"
+  },
+  {
+   "version": "23.3",
+   "name": "The Sacrifice",
+   "date": "2018-08-09",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/23-3-0"
+  },
+  {
+   "version": "23.2",
+   "name": "The Sacrifice",
+   "date": "2018-08-02",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-23-8.png",
+   "url": "https://www.warframe.com/patch-notes/pc/23-2-0"
+  },
+  {
+   "version": "23.1",
+   "name": "The Sacrifice: TennoGen Round 13",
+   "date": "2018-07-18",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-23-1.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/23-1-0"
+  },
+  {
+   "version": "23",
+   "name": "The Sacrifice",
+   "date": "2018-06-15",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-23-0.png",
+   "url": "https://www.warframe.com/patch-notes/pc/23-0-0"
+  },
+  {
+   "version": "22.20",
+   "name": "Beasts of the Sanctuary",
+   "date": "2018-05-17",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-20-0"
+  },
+  {
+   "version": "22.19",
+   "name": "Beasts of the Sanctuary",
+   "date": "2018-05-02",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-19-0"
+  },
+  {
+   "version": "22.18",
+   "name": "Beasts of the Sanctuary",
+   "date": "2018-04-20",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-18-0"
+  },
+  {
+   "version": "22.17",
+   "name": "Shrine of the Eidolon",
+   "date": "2018-03-28",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-17.png",
+   "url": "https://www.warframe.com/patch-notes/pc/22-17-0"
+  },
+  {
+   "version": "22.16",
+   "name": "Shrine of the Eidolon",
+   "date": "2018-03-15",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-16-0"
+  },
+  {
+   "version": "22.15",
+   "name": "Shrine of the Eidolon",
+   "date": "2018-03-07",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-15.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/22-15-0"
+  },
+  {
+   "version": "22.14",
+   "name": "Shrine of the Eidolon",
+   "date": "2018-03-01",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-14-0"
+  },
+  {
+   "version": "22.13",
+   "name": "Shrine of the Eidolon",
+   "date": "2018-02-15",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-13-0"
+  },
+  {
+   "version": "22.12",
+   "name": "Shrine of the Eidolon",
+   "date": "2018-02-09",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-12-0"
+  },
+  {
+   "version": "22.11",
+   "name": "Plains of Eidolon",
+   "date": "2018-01-31",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-11.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/22-11-0"
+  },
+  {
+   "version": "22.10",
+   "name": "Plains of Eidolon",
+   "date": "2018-01-25",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-10.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/22-10-0"
+  },
+  {
+   "version": "22.9",
+   "name": "Plains of Eidolon",
+   "date": "2018-01-17",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-9-0"
+  },
+  {
+   "version": "22.5",
+   "name": "Plains of Eidolon",
+   "date": "2017-11-30",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-5.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/22-5-0"
+  },
+  {
+   "version": "22.4",
+   "name": "Plains of Eidolon",
+   "date": "2017-11-23",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-4-0"
+  },
+  {
+   "version": "22.3",
+   "name": "Plains of Eidolon",
+   "date": "2017-11-15",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-3.png",
+   "url": "https://www.warframe.com/patch-notes/pc/22-3-0"
+  },
+  {
+   "version": "22.2",
+   "name": "Plains of Eidolon",
+   "date": "2017-11-01",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-2-0"
+  },
+  {
+   "version": "22.1",
+   "name": "Plains of Eidolon",
+   "date": "2017-10-25",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/22-1-0"
+  },
+  {
+   "version": "22",
+   "name": "Plains of Eidolon",
+   "date": "2017-10-12",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-22-0.png",
+   "url": "https://www.warframe.com/patch-notes/pc/22-0-0"
+  },
+  {
+   "version": "21.7",
+   "name": "Hydroid Prime",
+   "date": "2017-09-07",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-7-0"
+  },
+  {
+   "version": "21.6",
+   "name": "Hydroid Prime",
+   "date": "2017-08-29",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-6-0"
+  },
+  {
+   "version": "21.5",
+   "name": "Chains of Harrow",
+   "date": "2017-08-16",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-5-0"
+  },
+  {
+   "version": "21.4",
+   "name": "Chains of Harrow",
+   "date": "2017-08-10",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-4-0"
+  },
+  {
+   "version": "21.3",
+   "name": "Chains of Harrow",
+   "date": "2017-08-02",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-3-0"
+  },
+  {
+   "version": "21.2",
+   "name": "Chains of Harrow",
+   "date": "2017-07-26",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-2-0"
+  },
+  {
+   "version": "21.1",
+   "name": "Chains of Harrow",
+   "date": "2017-07-19",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/21-1-0"
+  },
+  {
+   "version": "21",
+   "name": "Chains of Harrow",
+   "date": "2017-06-29",
+   "art": "https://www-static.warframe.com/uploads/65a041e13aced6792d216874227c98d4.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/21-0-0"
+  },
+  {
+   "version": "20.7",
+   "name": "Oberon Prime",
+   "date": "2017-06-07",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-20-7.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/20-7-0"
+  },
+  {
+   "version": "20.6",
+   "name": "Octavia's Anthem",
+   "date": "2017-05-24",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/20-6-0"
+  },
+  {
+   "version": "20.5",
+   "name": "Octavia's Anthem",
+   "date": "2017-05-17",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/20-5-0"
+  },
+  {
+   "version": "20.4",
+   "name": "Octavia's Anthem",
+   "date": "2017-05-04",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/20-4-0"
+  },
+  {
+   "version": "20.3",
+   "name": "Octavia's Anthem",
+   "date": "2017-04-26",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/20-3-0"
+  },
+  {
+   "version": "20.2",
+   "name": "Octavia's Anthem",
+   "date": "2017-04-12",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/20-2-0"
+  },
+  {
+   "version": "20.1",
+   "name": "Octavia's Anthem",
+   "date": "2017-04-05",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/20-1-0"
+  },
+  {
+   "version": "20",
+   "name": "Octavia's Anthem",
+   "date": "2017-03-24",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-20-0.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/20-0-0"
+  },
+  {
+   "version": "19.12",
+   "name": "The Pacifism Defect",
+   "date": "2017-03-02",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-12-0"
+  },
+  {
+   "version": "19.11",
+   "name": "The Glast Gambit",
+   "date": "2017-02-15",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-11-0"
+  },
+  {
+   "version": "19.10",
+   "name": "The Glast Gambit",
+   "date": "2017-02-09",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-10-0"
+  },
+  {
+   "version": "19.9",
+   "name": "The Glast Gambit",
+   "date": "2017-02-01",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-9-0"
+  },
+  {
+   "version": "19.8",
+   "name": "The Glast Gambit",
+   "date": "2017-01-25",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-8-0"
+  },
+  {
+   "version": "19.7",
+   "name": "The Glast Gambit",
+   "date": "2017-01-18",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-7-0"
+  },
+  {
+   "version": "19.6",
+   "name": "The Glast Gambit",
+   "date": "2017-01-11",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-6-0"
+  },
+  {
+   "version": "19.5",
+   "name": "The Glast Gambit",
+   "date": "2016-12-22",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-5-0"
+  },
+  {
+   "version": "19.4",
+   "name": "The War Within",
+   "date": "2016-12-16",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-19-4.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/19-4-1"
+  },
+  {
+   "version": "19.3",
+   "name": "The War Within",
+   "date": "2016-12-06",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-3-0"
+  },
+  {
+   "version": "19.2",
+   "name": "The War Within",
+   "date": "2016-12-01",
+   "art": null,
+   "url": "https://www.warframe.com/patch-notes/pc/19-2-0"
+  },
+  {
+   "version": "19",
+   "name": "The War Within",
+   "date": "2016-11-12",
+   "art": "https://www-static.warframe.com/uploads/buildnotes-19-0.jpg",
+   "url": "https://www.warframe.com/patch-notes/pc/19-0-0"
+  },
+  {
+   "version": "39.1",
+   "name": "Caliban Prime",
+   "date": null,
+   "art": "https://www-static.warframe.com/uploads/2744cd1c637f877cfdf61e30b4bf86a1.png",
+   "url": "https://www.warframe.com/patch-notes/pc/39-1-0"
+  }
+ ]
+}

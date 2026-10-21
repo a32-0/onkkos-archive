@@ -104,3 +104,68 @@ describe("the gold line reads in runs (BR-56)", () => {
     }
   });
 });
+
+describe("what a Summary row names and opens (spec 09)", () => {
+  it("gives each part the node and mission of the one source they share", () => {
+    const blueprints = briefOf(planOf("Dante")).find((block) => block.id === "blueprints");
+    expect(blueprints?.lines.length).toBeGreaterThan(0);
+    for (const line of blueprints?.lines ?? []) {
+      expect(line.where).toEqual([
+        { say: "nodeOn", node: "Armatus", place: "Deimos" },
+        "Disruption",
+      ]);
+    }
+  });
+
+  it("keeps the thing a component opens, and none for credits", () => {
+    const components = briefOf(planOf("Mesa")).find((block) => block.id === "components");
+    const spores = components?.lines.find((line) => line.id === "resource:Nano Spores");
+    expect(spores?.thing).toBe("Nano Spores");
+    expect(spores?.imageUrl).toContain("cdn.warframestat.us");
+    expect(components?.lines.find((line) => line.id === "credits")?.thing).toBeNull();
+  });
+
+  it("draws the credits, Kuva and a Misc resource", () => {
+    const art = (name: string, id: string) =>
+      briefOf(planOf(name))
+        .flatMap((block) => block.lines)
+        .find((line) => line.id === id)?.imageUrl;
+    expect(art("Mesa", "credits")).toMatch(/\/Credits\.png\?\w+$/);
+    expect(art("Broken Scepter", "resource:Kuva")).toContain("Kuva.png");
+    expect(art("Ack & Brunt", "resource:Cryotic")).toContain("cdn.warframestat.us");
+  });
+
+  it("draws every component of every item", () => {
+    const blank = new Set<string>();
+    for (const item of data.arsenal) {
+      for (const block of briefOf(stepPlan(data, dossier(item, data.arsenal), reader))) {
+        if (block.id !== "components") continue;
+        for (const line of block.lines) if (!line.imageUrl) blank.add(line.id);
+      }
+    }
+    expect([...blank]).toEqual([]);
+  });
+
+  it("names a part another item owns after it", () => {
+    const parts = (name: string) =>
+      briefOf(planOf(name))
+        .filter((block) => block.id === "blueprints")
+        .flatMap((block) => block.lines.map((line) => line.id));
+    expect(parts("Chroma")).toContain("part:Volt Neuroptics");
+    expect(parts("Pride")).toContain("part:Wrath Blade");
+    expect(parts("Wrath")).toContain("part:Pride Blade");
+    expect(parts("Paris Prime")).not.toContain("part:Bo Prime Grip");
+  });
+
+  it("gives every block and every row of every item its own key", () => {
+    for (const item of data.arsenal) {
+      const blocks = briefOf(stepPlan(data, dossier(item, data.arsenal), reader));
+      const ids = blocks.map((block) => block.id);
+      expect(new Set(ids).size, item.name).toBe(ids.length);
+      for (const block of blocks) {
+        const lines = block.lines.map((line) => line.id);
+        expect(new Set(lines).size, `${item.name} ${block.id}`).toBe(lines.length);
+      }
+    }
+  });
+});

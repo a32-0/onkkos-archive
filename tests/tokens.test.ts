@@ -7,8 +7,6 @@ const root = process.cwd();
 const TOKENS = "src/ui/tokens.css";
 const TYPE = "src/ui/type.module.css";
 
-const UNAPPLIED = ["--scrim", ".numeral", ".heading", ".mono-label"];
-
 function files(dir: string, suffix: string): string[] {
   const out: string[] = [];
   for (const entry of readdirSync(path.join(root, dir))) {
@@ -80,6 +78,36 @@ describe("no raw value outside the token layer", () => {
   });
 });
 
+describe("a composed type style reaches the page", () => {
+  const composes = (body: string) =>
+    [...body.matchAll(/composes:\s*([a-z0-9\s-]+?)\s*(?:from\s+["']([^"']+)["'])?\s*;/g)].map(
+      ([, names, from]) => ({ names: names!.trim().split(/\s+/), from }),
+    );
+
+  it("names every class from another file itself, since Next does not follow a chain", () => {
+    const found = modules.flatMap((rel) => {
+      const rules = new Map(
+        [...read(rel).matchAll(/^\.([a-z0-9-]+)\s*\{([^}]*)\}/gm)].map(([, name, body]) => [
+          name!,
+          composes(body!),
+        ]),
+      );
+      return [...rules].flatMap(([name, own]) => {
+        const direct = new Set(own.filter((c) => c.from).flatMap((c) => c.names));
+        return own
+          .filter((c) => !c.from)
+          .flatMap((c) => c.names)
+          .flatMap((local) => rules.get(local) ?? [])
+          .filter((c) => c.from)
+          .flatMap((c) => c.names)
+          .filter((outside) => !direct.has(outside))
+          .map((outside) => `${rel}: .${name} reaches .${outside} only through a chain`);
+      });
+    });
+    expect(found).toEqual([]);
+  });
+});
+
 describe("no token that nothing applies", () => {
   const moduleText = modules.map(read).join("\n");
   const composed = new Set(
@@ -114,13 +142,7 @@ describe("no token that nothing applies", () => {
   const isApplied = (token: string) =>
     token.startsWith(".") ? composed.has(token) : applied.has(token);
 
-  it("applies every token not on the allowance list", () => {
-    const unapplied = everything.filter((token) => !isApplied(token) && !UNAPPLIED.includes(token));
-    expect(unapplied).toEqual([]);
-  });
-
-  it("lists only tokens that exist and are still unapplied", () => {
-    const stale = UNAPPLIED.filter((token) => !everything.includes(token) || isApplied(token));
-    expect(stale).toEqual([]);
+  it("applies every token", () => {
+    expect(everything.filter((token) => !isApplied(token))).toEqual([]);
   });
 });
