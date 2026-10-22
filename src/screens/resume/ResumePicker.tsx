@@ -10,21 +10,7 @@ import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
 import { FIRST, useMore } from "./batches";
 import styles from "./Resume.module.css";
-import type { ResumeAction, ResumeUpdate } from "./state";
-
-function matches(update: ResumeUpdate, query: string): boolean {
-  const name = update.name.toLowerCase();
-  const dates = update.dates.map((date) => date.toLowerCase());
-  const rest = query
-    .toLowerCase()
-    .split(/[\s,]+/)
-    .filter((word) => word.length > 0)
-    .filter(
-      (word) =>
-        !name.includes(word) && !update.versions.some((version) => version.startsWith(word)),
-    );
-  return rest.length === 0 || dates.some((date) => rest.every((word) => date.includes(word)));
-}
+import { matchesUpdate, type ResumeAction, type ResumeUpdate } from "./state";
 
 export function ResumePicker({
   updates,
@@ -39,7 +25,7 @@ export function ResumePicker({
   const [shown, setShown] = useState(FIRST);
   const more = useMore();
 
-  const found = updates.filter((update) => matches(update, query));
+  const found = updates.filter((update) => matchesUpdate(update, query));
   const listed = found.slice(0, shown);
   const hidden = found.length - listed.length;
 

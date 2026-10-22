@@ -87,6 +87,7 @@ into `main`.
 | [T-31 · The content update command](T-31-content-update.md)                                                   | 5     | 00                         | T-16             |
 | [T-32 · The README and the last documents](T-32-readme.md)                                                    | 5     | 00                         | T-29, T-31       |
 | [T-33 · Production reads DE](T-33-production.md)                                                              | 5     | 11, 00                     | T-30, T-32       |
+| [T-34 · Screen: Advanced search](T-34-advanced-search.md)                                                     | 5     | 12, 08                     | T-27, T-29       |
 
 ## Nothing left out, nothing out of order
 

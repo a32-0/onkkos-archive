@@ -1,0 +1,42 @@
+.list {
+  composes: list from "../SuggestionList/SuggestionList.module.css";
+}
+
+.row {
+  composes: row from "../SuggestionRow/SuggestionRow.module.css";
+  text-decoration: none;
+}
+
+.row:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.art {
+  composes: art from "../SuggestionRow/SuggestionRow.module.css";
+}
+
+.round {
+  composes: round from "../SuggestionRow/SuggestionRow.module.css";
+}
+
+.blank {
+  composes: blank from "../SuggestionRow/SuggestionRow.module.css";
+}
+
+.blank-round {
+  composes: blank-round from "../SuggestionRow/SuggestionRow.module.css";
+}
+
+.text {
+  composes: text from "../SuggestionRow/SuggestionRow.module.css";
+}
+
+.name {
+  composes: label from "../type.module.css";
+}
+
+.catalogue {
+  composes: eyebrow-s from "../type.module.css";
+  color: var(--ink-dim);
+}

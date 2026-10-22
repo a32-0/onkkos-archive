@@ -25,14 +25,24 @@ Each route now weighs about 28 MB. The command this task builds runs `pnpm data:
 
 ## What it builds
 
-| File                          | Note                                                |
-| ----------------------------- | --------------------------------------------------- |
-| `scripts/content-update.ts`   | Updates the sources, wires them in, checks, reports |
-| `scripts/refresh-items.mjs`   | Built before the task (2026-10-21): the snapshot    |
-| `data/vendor/items.json`      | Built before the task (2026-10-21)                  |
-| `scripts/function-weight.mjs` | Built before the task (2026-10-21): `pnpm weight`   |
-| `data/reviewed-update.json`   | Set to the update current at launch                 |
-| `docs/updates/`               |                                                     |
+| File                           | Note                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| `scripts/content-update.ts`    | Updates the sources, wires them in, checks, reports          |
+| `scripts/review-report.ts`     | The report's shape                                           |
+| `src/domain/catalog/review.ts` | The three levels, mechanical; the coverage test's two rules  |
+| `src/content/review.ts`        | The report's words and the command's lines                   |
+| `tests/review.test.ts`         | The levels, the update window, the report                    |
+| `scripts/refresh-items.mjs`    | Built before the task (2026-10-21): the snapshot             |
+| `data/vendor/items.json`       | Built before the task (2026-10-21)                           |
+| `scripts/function-weight.mjs`  | Built before the task (2026-10-21): `pnpm weight`            |
+| `data/reviewed-update.json`    | Set to the update current at launch: 44.1, catalog 1.1276.21 |
+| `docs/updates/`                |                                                              |
+
+Found while building it (2026-10-21):
+
+- The command is TypeScript and reads the catalog through the app's modules, so `tsx` joins the dev dependencies. Node runs it with `--import tsx` and the `react-server` condition, which lets `server-only` load; `tsx`'s own command fails on Windows, because the command's install rewrites its shim while it runs.
+- The mark alone would miss an item the catalog brings after its update was reviewed: the catalog often lags DE's patch, and 1.1276.21 has nothing from Update 44.1. So the command also reviews every item the catalog did not have before, whatever its update, under a heading of its own.
+- The `warframe-worldstate-data` update the original process named is not part of it: the app reads only its star-chart nodes, and the wiki's missions are what the review compares.
 
 ## From T-24
 

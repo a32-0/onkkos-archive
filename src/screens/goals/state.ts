@@ -20,6 +20,8 @@ export interface GoalCardView {
   line: string;
 }
 
+export type Standing = "absent" | "ranked" | "done";
+
 export interface SearchInput {
   kind: "item" | "collectible" | "place" | "quest";
   name: string;
@@ -27,6 +29,9 @@ export interface SearchInput {
   art: string | null;
   system: string | null;
   gap: ReachGap | null;
+  score: number;
+  standing: Standing | null;
+  vaulted: boolean;
 }
 
 export type SearchRow = Suggestion & { href: string };

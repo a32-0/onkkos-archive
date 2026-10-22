@@ -4,7 +4,7 @@ import type { Relic, RelicReward } from "@/domain/catalog/relics";
 import { NameMap, type Wiki, type WikiHonoria } from "@/domain/catalog/wiki";
 import { proximaPlace } from "@/domain/place/proxima";
 import type { PlaceRewards, RegionResources } from "@/domain/place/schema";
-import { wikiUrl } from "@/domain/wiki-links";
+import { wikiFileUrl, wikiUrl } from "@/domain/wiki-links";
 
 export type CollectibleGroup = "mods" | "arcanes" | "relics" | "resources" | "other";
 
@@ -18,6 +18,7 @@ interface CollectibleOffer {
   rank: string | null;
   quest: string | null;
   event: boolean;
+  blueprint: boolean;
 }
 
 export interface Collectible {
@@ -35,6 +36,7 @@ export interface Collectible {
   honoria: WikiHonoria | null;
   incarnon: boolean;
   recipe: CollectibleRecipe | null;
+  source: string | null;
   releaseDate: string | null;
 }
 
@@ -57,6 +59,7 @@ export interface RawEntry {
 }
 
 const ICON_BASE = "https://cdn.warframestat.us/img";
+const PLACEHOLDER_ART = "GenericComponent.png";
 
 const CATEGORIES: Record<string, CollectibleGroup> = {
   Mods: "mods",
@@ -74,7 +77,7 @@ const CATEGORIES: Record<string, CollectibleGroup> = {
 
 export const COLLECTIBLE_SOURCES = Object.keys(CATEGORIES);
 
-export const GEAR_SOURCES = ["Misc", "Gear"];
+export const GEAR_SOURCES = ["Misc", "Gear", "Resources"];
 
 const RESOURCE_TYPES = new Set(["Resource", "Gem", "Plant"]);
 const RESOURCE_PATH = /\/Types\/Items\/MiscItems\//;
@@ -105,24 +108,39 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
   const out = new Map<string, Collectible>();
 
   for (const entry of sources.raw) {
-    const name = entry.name;
+    const name = entry.name?.trim();
     const category = entry.category;
     if (!name || !category || arsenal.has(name)) continue;
     const family = FAMILIES.find((one) => one.pattern.test(name)) ?? null;
     const group = family ? "other" : groupOf(category, entry.type, entry.uniqueName ?? "");
     if (!group) continue;
 
-    const drops = ownDrops(entry, name);
     const found = regions.get(name) ?? [];
+    const drops = ownDrops(entry, name, found.length === 0);
     const sold = offers.get(name) ?? [];
     const honoria = honorias.get(name) ?? null;
     const incarnon = INCARNON.test(name);
-    const known = drops.length > 0 || found.length > 0 || sold.length > 0;
+    const fact = sources.wiki.resources.get(name);
+    const source = fact?.location ?? null;
+    const recipe = recipeOf(entry);
+    const made = (recipe?.ingredients.length ?? 0) > 0;
+    const known =
+      drops.length > 0 || found.length > 0 || sold.length > 0 || source !== null || made;
     const documented = family !== null && (told(honoria) || incarnon || sources.curated.has(name));
     if (!known && !documented) continue;
 
+    const imageUrl = artOf(entry.imageName, fact?.image ?? null);
     const existing = out.get(name);
-    if (existing && existing.drops.length >= drops.length) continue;
+    if (existing && existing.drops.length >= drops.length) {
+      if (existing.imageUrl === null && imageUrl !== null) {
+        out.set(name, {
+          ...existing,
+          imageUrl,
+          uniqueName: entry.uniqueName ?? existing.uniqueName,
+        });
+      }
+      continue;
+    }
 
     out.set(name, {
       name,
@@ -133,7 +151,7 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
           ? RESOURCE_KIND
           : (entry.type ?? category),
       family: family?.family ?? null,
-      imageUrl: entry.imageName ? `${ICON_BASE}/${entry.imageName}` : null,
+      imageUrl: imageUrl ?? existing?.imageUrl ?? null,
       wikiUrl: entry.wikiaUrl ?? titleUrl(sources.wiki, name),
       drops,
       regions: found,
@@ -141,7 +159,8 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
       offers: sold,
       honoria,
       incarnon,
-      recipe: recipeOf(entry),
+      recipe,
+      source,
       releaseDate: typeof entry.releaseDate === "string" ? entry.releaseDate : null,
     });
   }
@@ -162,6 +181,7 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
       honoria: null,
       incarnon: false,
       recipe: null,
+      source: null,
       releaseDate: null,
     });
   }
@@ -181,11 +201,17 @@ function groupOf(
   return group;
 }
 
-function ownDrops(entry: RawEntry, name: string): CatalogDrop[] {
+function ownDrops(entry: RawEntry, name: string, bundles: boolean): CatalogDrop[] {
+  const single = dropsNamed(entry, (type) => type === name);
+  if (single.length > 0 || !bundles) return single;
+  return dropsNamed(entry, (type) => type.replace(BUNDLE, "") === name);
+}
+
+function dropsNamed(entry: RawEntry, named: (type: string) => boolean): CatalogDrop[] {
   const out: CatalogDrop[] = [];
   for (const drop of entry.drops ?? []) {
     if (typeof drop.location !== "string") continue;
-    if (typeof drop.type === "string" && drop.type !== name) continue;
+    if (typeof drop.type === "string" && !named(drop.type)) continue;
     out.push({
       location: drop.location,
       type: drop.type ?? null,
@@ -197,13 +223,15 @@ function ownDrops(entry: RawEntry, name: string): CatalogDrop[] {
 }
 
 const BLUEPRINT_SUFFIX = / Blueprint$/i;
+const QUANTITY = / x\d+$/i;
+const BUNDLE = /^\d+x /i;
 
 const RECIPE_SKIP = "Blueprint";
 
 function recipeOf(entry: RawEntry): CollectibleRecipe | null {
   const ingredients = (entry.components ?? [])
     .filter((one) => typeof one.name === "string" && one.name !== RECIPE_SKIP)
-    .map((one) => ({ name: one.name ?? "", count: one.itemCount ?? 1 }));
+    .map((one) => ({ name: (one.name ?? "").trim(), count: one.itemCount ?? 1 }));
   if (ingredients.length === 0 && !entry.buildPrice) return null;
   return { credits: entry.buildPrice ?? null, ingredients };
 }
@@ -226,7 +254,7 @@ function vendorIndex(wiki: Wiki): NameMap<CollectibleOffer[]> {
   const out = new NameMap<CollectibleOffer[]>();
   for (const vendor of wiki.vendors) {
     for (const offer of vendor.offers) {
-      const item = offer.item.replace(BLUEPRINT_SUFFIX, "");
+      const item = offer.item.replace(BLUEPRINT_SUFFIX, "").replace(QUANTITY, "");
       const list = out.get(item) ?? [];
       list.push({
         vendor: vendor.name,
@@ -236,6 +264,7 @@ function vendorIndex(wiki: Wiki): NameMap<CollectibleOffer[]> {
         rank: offer.rank,
         quest: offer.quest,
         event: vendor.kind === EVENT,
+        blueprint: BLUEPRINT_SUFFIX.test(offer.item),
       });
       out.set(item, list);
     }
@@ -355,4 +384,9 @@ function rewardArt(sources: ViewSources): Map<string, string> {
 
 function told(honoria: WikiHonoria | null): boolean {
   return honoria !== null && (honoria.description !== null || honoria.price.length > 0);
+}
+
+function artOf(imageName: string | undefined, wikiImage: string | null): string | null {
+  if (imageName && imageName !== PLACEHOLDER_ART) return `${ICON_BASE}/${imageName}`;
+  return wikiImage === null ? null : wikiFileUrl(wikiImage);
 }

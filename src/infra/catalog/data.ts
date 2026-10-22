@@ -6,7 +6,7 @@ import path from "node:path";
 import { parse as parseYaml } from "yaml";
 
 import { buildCollectibleCatalog, buildGearRecipes } from "@/domain/catalog/collectibles";
-import type { CatalogData } from "@/domain/catalog/data";
+import type { CatalogData, Opening } from "@/domain/catalog/data";
 import { buildRelicCatalog } from "@/domain/catalog/relics";
 import { normalizeSources } from "@/domain/catalog/sources";
 import type { UpdateSources } from "@/domain/catalog/updates";
@@ -18,6 +18,7 @@ import {
   relicEntries,
   resourceCatalog,
 } from "@/infra/catalog/items";
+import { loadGraph } from "@/infra/graph/load";
 import { patchNotes } from "@/infra/catalog/patch-notes";
 import { updateArt, vendorArt } from "@/infra/catalog/update-art";
 import { loadSpine } from "@/infra/narrative/load";
@@ -57,6 +58,7 @@ export function catalogData(): CatalogData {
     }),
     gear: buildGearRecipes(gearEntries()),
     vendorArt: vendorArt(),
+    openings: openings(),
   };
   return cached;
 }
@@ -70,4 +72,15 @@ export function updateSources(): UpdateSources {
     arsenal: arsenalCatalog(),
   };
   return cachedUpdates;
+}
+
+function openings(): Map<string, Opening> {
+  const graph = loadGraph();
+  const first = graph.starChartOrder[0]?.planet;
+  return new Map<string, Opening>([
+    ...(first ? [[first, { quest: null, after: null }] as const] : []),
+    ...graph.offChartPlaces.map(
+      (entry) => [entry.place, { quest: entry.unlockedBy, after: entry.after }] as const,
+    ),
+  ]);
 }

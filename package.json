@@ -27,10 +27,13 @@
     "data:patch-notes": "node scripts/refresh-patch-notes.mjs",
     "data:vendor-art": "node scripts/refresh-vendor-art.mjs",
     "data:items": "node scripts/refresh-items.mjs",
+    "content:update": "node --import tsx --conditions=react-server scripts/content-update.ts",
     "fixture": "node scripts/trim-profile.mjs"
   },
   "dependencies": {
     "@upstash/redis": "1.39.0",
+    "@vercel/analytics": "2.0.1",
+    "@vercel/speed-insights": "2.0.0",
     "@wfcd/items": "1.1276.21",
     "next": "16.3.2",
     "react": "19.2.8",
@@ -60,6 +63,7 @@
     "prettier": "3.9.6",
     "storybook": "10.6.1",
     "storybook-addon-pseudo-states": "10.6.1",
+    "tsx": "4.23.15",
     "typescript": "5.9.3",
     "vite": "8.3.3",
     "vitest": "4.1.11"

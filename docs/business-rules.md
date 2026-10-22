@@ -75,12 +75,12 @@ cite one. The Figma comment id is given beside each for traceability.
   number of columns, where navigation sits, and how wide things grow.
 - The width classes are Material 3's, which the sweep already used:
 
-  | Width       | Class    | Layout                                                                                                                                                                                                                                             |
-  | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                     |
-  | 600 to 839  | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                 |
-  | 840 to 1199 | expanded | The tab bar moves into the header, the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
-  | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                          |
+  | Width       | Class    | Layout                                                                                                                                                                                                                                                                                      |
+  | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                                                              |
+  | 600 to 839  | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                                                          |
+  | 840 to 1199 | expanded | The tab bar floats, centred 48 px above the bottom of the screen (spec 04), the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
+  | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                                                                   |
 
 - Outside the shell, the splash and the id form follow the compact class below
   600, fluid with the 16 px gutter at the window's edges, and from 600 stay one
@@ -729,6 +729,11 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - Rule: Components lists every ingredient of everything named above it: the
   Incubator Power Core's recipe, a Genetic Code Template, and the rest, not
   only the item's own recipe.
+- Each ingredient appears once (owner, 2026-10-21): what the gear asks for
+  is summed into the rows the plan already has, credits into one row, and
+  what only an optional step's gear asks for is summed into one last group,
+  each row "(Optional)". The Chesa Kubrow had listed its credits and Argon
+  Crystal three times, one group per recipe, with no title to tell them apart.
 - [`scenario-guidelines.md`](scenario-guidelines.md#components-gather-every-recipe-the-plan-names)
   says the same since 2026-10-04.
 
@@ -1019,7 +1024,7 @@ on 2026-10-08.
 - Type: behaviour.
 - Rule: a search is how the player lifts BR-59 for one thing. The Goal search
   and the place list's search reach everything they reached before (BR-53,
-  spec 07), what is in reach first. A result beyond reach is the Beyond reach
+  spec 07), what is in reach first among matches as close to the name. A result beyond reach is the Beyond reach
   row: its catalogue, then the gap, short enough for one line: "Sniper ·
   Needs Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on
   Earth", "Place · Join a clan".
@@ -1100,3 +1105,31 @@ on 2026-10-08.
 - The row sits where the first of its kind stood. What the profile confirms is
   dropped before the rows are gathered (BR-28), and the lock (BR-63) reads the
   first Junction in the row the profile proves unmet.
+
+### BR-67 · Every component opens its own page
+
+- Settled by the owner on 2026-10-21, after Esher Devar and the fish parts
+  opened the wiki while Nano Spores opened its own page.
+- Type: content and behaviour.
+- Rule: a row in Components opens the thing's own page in the app, and its
+  description says where it comes from. The catalog keeps a resource when any
+  source places it: a drop, a region, a vendor (its blueprint included), the
+  wiki's "Location" or "Source", a sentence of the wiki that says how it is
+  earned, or a recipe the catalog has. Its How to get says that source in the
+  same order. A drop listed only as a bundle ("5X Fass Residue") counts when
+  the resource has no drop or region of its own.
+- A part of the thing itself is not a resource: it says it is a part, or the
+  relics it opens from, and opens no page.
+- What no source places keeps the wiki's prose and opens the wiki; the item
+  sweep test names each one.
+
+### BR-68 · A filter narrows and never hides why
+
+- Settled by the owner on 2026-10-21, with the advanced search (spec 12).
+- Type: behaviour.
+- Rule: a filter on the advanced search takes results out of the list; it
+  never takes out the reason one is there. A result beyond the player's reach
+  stays in the list with its gap (BR-62) unless **In my reach** is chosen. A
+  state chosen (Not obtained, Ranking, Mastered) keeps only what the profile
+  can tell that state of, so it leaves out places, quests and what has no
+  rank.

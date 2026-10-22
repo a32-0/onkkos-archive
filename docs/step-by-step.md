@@ -27,7 +27,10 @@ card.
 1. **Prerequisites.** Mastery Rank when it is above 0, the slot, the quests
    the farm needs (root first, the ones the profile confirms left out), a
    Railjack Intrinsics rank, a clan for anything researched, a syndicate rank,
-   then one "Reach" row per place. More than one quest share one row, and so
+   then one "Reach" row per place. Each row says how it is met: standing
+   until the rank, the Junction to clear, or for a place off the star chart
+   the quest that opens it (`off_chart_places` in `grafo.yaml`, read into
+   `CatalogData.openings`). More than one quest share one row, and so
    do more than one Junction (BR-66). When the main blueprint is bought, the
    purchase closes the section: "Buy the Ember Blueprint".
 2. **How to get**, one row when the parts share a source. An item that comes
@@ -39,8 +42,16 @@ card.
    divider, its header the part's art and name, best odds first (BR-25).
 4. **Components.** Every resource in the recipe tree, in groups split by a
    plain line with no title: what only that place gives, then the rest, then
-   one group per gear recipe; each group by rarity, credits last. The art has
-   no ground behind it.
+   the gear recipes summed in (`withGear()` in `checks.ts`): a required
+   gear's ingredients join the rows the plan has, an optional one's make one
+   last group of their own, each row optional; each group by rarity, credits
+   last. The art has
+   no ground behind it. A resource the wiki gives no place for reads its
+   recipe instead: `madeDetail()` in `checks.ts` takes it from the catalog's
+   recipes, which since 2026-10-21 read the Resources category beside Misc
+   and Gear (`GEAR_SOURCES`), where the Plains' and the Vallis's cut gems and
+   alloys keep theirs. What still has no description, fish parts, toroids,
+   standing and a few drops, needs a source of its own.
 
 A quest takes the same grammar (BR-37): Prerequisites with the quests and
 junctions before it and its Mastery Rank, then How to get with where it

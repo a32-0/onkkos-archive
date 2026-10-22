@@ -17,9 +17,3 @@
   composes: bar;
   justify-content: center;
 }
-
-.tabs {
-  display: flex;
-  flex: 1 0 0;
-  justify-content: center;
-}

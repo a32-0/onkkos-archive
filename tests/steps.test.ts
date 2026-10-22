@@ -83,6 +83,23 @@ describe("Step by step draws each scenario as its frame does (spec 10)", () => {
     expect(rest.every((row) => row.alternative && row.title.startsWith("Or play "))).toBe(true);
   });
 
+  it("says how a refined resource is made, and where credits come from", () => {
+    const rows = (name: string) =>
+      viewOf(name)
+        .blocks.find((block) => block.title === "Components")
+        ?.cards.flatMap((card) => card.groups.flatMap((group) => group.rows)) ?? [];
+    const citrine = rows("Citrine");
+    expect(citrine.find((row) => row.title.startsWith("Faceted Tiametrite"))?.detail).toBe(
+      "Made in your foundry from 10 Tiametrite and 1,000 Credits.",
+    );
+    expect(citrine.find((row) => row.title.endsWith("Credits"))?.detail).toBe(
+      "Every mission pays them; The Index, on Neptune, pays the most.",
+    );
+    expect(rows("Koumei").find((row) => row.title.startsWith("Tear Azurite"))?.detail).toMatch(
+      /^Made in your foundry from 10 Azurite/,
+    );
+  });
+
   it("closes Ember's Prerequisites with the bought blueprint", () => {
     const rows = viewOf("Ember").blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
     expect(rows.at(-1)?.title).toBe("Buy the Ember Blueprint");

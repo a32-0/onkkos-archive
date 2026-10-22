@@ -471,16 +471,21 @@ describe("companions", () => {
     ]);
     expect(steps.map((row) => row.optional)).toEqual([true, true, false]);
     const components = sectionNamed(plan, "components");
-    expect(components?.groups.map((group) => group.title)).toEqual([
-      { say: "groupForGear", gear: "Incubator Power Core", optional: false },
-      { say: "groupForGear", gear: "Genetic Code Template", optional: true },
-      { say: "groupForGear", gear: "Nutrio Incubator Upgrade Segment", optional: true },
+    expect(components?.groups).toHaveLength(2);
+    const [needed, optional] = components?.groups ?? [];
+    expect(needed?.rows.map((row) => row.title)).toEqual([
+      { say: "resourceTitle", name: "Nano Spores", count: 4500 },
+      { say: "resourceTitle", name: "Argon Crystal", count: 1 },
+      { say: "resourceTitle", name: "Control Module", count: 2 },
+      { say: "creditsTitle", credits: 100000 },
     ]);
-    expect(components?.groups[0]?.rows.map((row) => row.title)).toContainEqual({
-      say: "resourceTitle",
-      name: "Control Module",
-      count: 2,
-    });
+    expect(needed?.rows.every((row) => !row.optional)).toBe(true);
+    const titles = optional?.rows.map((row) => row.title) ?? [];
+    expect(titles).toContainEqual({ say: "resourceTitle", name: "Nano Spores", count: 700 });
+    expect(titles).toContainEqual({ say: "resourceTitle", name: "Control Module", count: 1 });
+    expect(titles.at(-1)).toEqual({ say: "creditsTitle", credits: 110000 });
+    expect(new Set(titles.map((title) => JSON.stringify(title))).size).toBe(titles.length);
+    expect(optional?.rows.every((row) => row.optional)).toBe(true);
   });
 
   it("multiplies a gear recipe by how many the plan asks for", () => {

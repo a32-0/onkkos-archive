@@ -9,8 +9,10 @@ export interface BriefLine {
   route: Phrase | null;
   reading: Part[];
   where: Part[];
+  detail: Part[];
   imageUrl: string | null;
   thing: string | null;
+  optional: boolean;
   more: number;
 }
 
@@ -36,8 +38,10 @@ function line(row: Row): BriefLine {
     route: null,
     reading: row.brief,
     where: row.where,
+    detail: row.detail,
     imageUrl: row.imageUrl,
     thing: row.thing,
+    optional: row.optional,
     more: 0,
   };
 }
@@ -62,8 +66,10 @@ export function briefOf(plan: StepPlan): BriefBlock[] {
         route: first.title,
         reading: first.brief,
         where: first.where,
+        detail: first.detail,
         imageUrl: section.imageUrl,
         thing: null,
+        optional: false,
         more: rows.length - 1,
       });
     } else if (section.checkable) {

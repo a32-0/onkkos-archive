@@ -872,13 +872,18 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     expect(html).toContain("Nothing left to suggest");
   });
 
-  it("orders a search by reach, says the gap, and keeps it private", async () => {
+  it("puts the closest name first, says its gap, and keeps it private", async () => {
     const { response, results } = await search(ORDIS, "jup");
     expect(response.headers.get("cache-control")).toBe("private, no-store");
-    const jupiter = results.find((row) => row.name === "Jupiter");
-    expect(jupiter?.catalogue).toBe("Place · Clear the Mars Junction, on Earth");
-    const beyond = results.map((row) => row.catalogue.includes(" · "));
-    expect(beyond).toEqual([...beyond].sort((a, b) => Number(a) - Number(b)));
+    expect(results[0]).toMatchObject({
+      name: "Jupiter",
+      catalogue: "Place · Clear the Mars Junction, on Earth",
+    });
+  });
+
+  it("finds Ash first for a player not yet on Venus", async () => {
+    const { results } = await search(ORDIS, "ash");
+    expect(results[0]?.name).toBe("Ash");
   });
 
   it("opens an item beyond Ordis's rank on Step by step", async () => {
@@ -892,6 +897,53 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     const { GET } = await import("@/app/api/search/route");
     const response = await GET(new NextRequest("http://localhost/api/search?q=ember"));
     expect(response.status).toBe(401);
+  });
+});
+
+describe("the advanced search (spec 12, BR-68)", () => {
+  beforeEach(() => vi.stubGlobal("fetch", async () => Response.json({})));
+  afterEach(() => vi.unstubAllGlobals());
+
+  async function page(query: Record<string, string>): Promise<string> {
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: SearchPage } = await import("@/app/search/page");
+    return renderToStaticMarkup(await SearchPage({ searchParams: Promise.resolve(query) }));
+  }
+
+  const names = (html: string) =>
+    [
+      ...html.matchAll(
+        /<li><a [^>]*>.*?<span[^>]*>([^<]+)<\/span><span[^>]*>([^<]+)<\/span><\/span><\/a><\/li>/g,
+      ),
+    ].map((match) => [match[1], match[2]]);
+
+  it("opens with Goal lit, the term carried and the filters open", async () => {
+    const html = await page({ q: "ash" });
+    expect(html).toContain("Advanced search");
+    expect(html).toContain('value="ash"');
+    expect(html).toContain('aria-expanded="true"');
+    expect(names(html)[0]?.[0]).toBe("Ash");
+  });
+
+  it("narrows to a type and says the count", async () => {
+    const html = await page({ q: "em", type: "mods" });
+    const rows = names(html);
+    expect(rows.length).toBeGreaterThan(0);
+    expect(rows.every(([, catalogue]) => catalogue?.startsWith("Mod"))).toBe(true);
+    expect(html).toMatch(/\d+ results?/);
+    expect(html).toContain('aria-expanded="false"');
+  });
+
+  it("lists by name with no term, and keeps out what is beyond reach on request", async () => {
+    const all = names(await page({ type: "warframes" }));
+    expect(all.length).toBe(20);
+    const near = names(await page({ type: "warframes", reach: "1" }));
+    expect(near.every(([, catalogue]) => !catalogue?.includes(" · "))).toBe(true);
+  });
+
+  it("says nothing matches", async () => {
+    expect(await page({ q: "zzzzqx" })).toContain("Nothing matches.");
   });
 });
 

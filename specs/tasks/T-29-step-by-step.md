@@ -132,6 +132,44 @@ Written on 2026-10-19, during the task.
   banner, since the app keeps no cookie it does not need (spec 02). Connect's
   cards sit 16 px apart, as the frame draws them.
 
+## Owner review, 2026-10-21 (third)
+
+The owner asked for a full sweep of the item page, Summary and Step by step,
+after finding fish parts with no description, refined gems that opened the
+wiki instead of their own page, and Forma and Kuva with no art.
+
+- Every Cinzel style is set in capitals (plan part 3).
+- Updates carries Resume's search (spec 06).
+- A gear recipe is summed into Components, what only an optional step asks
+  for in one last group, each row "(Optional)", in Step by step and Summary
+  alike (BR-32).
+- Every resource a recipe names has its own page (BR-67): the catalog keeps a
+  resource whose wiki entry says where it comes from (its "Location", "Source"
+  or a sentence that says how it is earned), whose recipe the catalog has, or
+  whose blueprint a vendor sells. Its How to get says so: where the wiki sends
+  the player, "Buy its blueprint from {vendor}", "Build it in your foundry",
+  and for Forma, the Void Relics its blueprint opens from.
+- A component's description, in order: where the wiki says it comes from,
+  what it is made from, the relics it opens from; a part of the thing itself
+  (a landing craft's Avionics, a collar's Band) says it is a part. Standing,
+  Ducats and the other currencies say what they are; credits say where they
+  come from.
+- An item researched in the dojo says, on each part, that the lab's research
+  gives its blueprint. A modular weapon no longer lists its blueprint as a
+  resource, and a weapon a recipe uses up is a weapon row.
+- Art falls back to the wiki's own file when the catalog's art is missing or
+  WFCD's placeholder (Forma, Kuva, the fish).
+- A Summary line with no reading shows its description instead; a component
+  bought from a vendor names the vendor.
+- A collectible's "You're on" comes from its own How to get; one built in the
+  foundry has none.
+- `tests/item-sweep.test.ts` holds every item and collectible to all of it.
+  Ten components keep the wiki's prose and link to the wiki, because no
+  source says where they come from: the Greater Focus Lens, the Javlok
+  Capacitor, the three Mandachord parts, Orion's and Sirius' Swaddle
+  Syandanas, the Proof Fragment, the Trembera Essence and the Vizier
+  Predasite Tag.
+
 ## Acceptance
 
 - [ ] Every acceptance item of spec 10 holds.

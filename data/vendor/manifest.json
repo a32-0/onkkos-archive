@@ -7,5 +7,21 @@
  "rewards": 12553,
  "regions": 20,
  "updateArt": 62,
- "updateNamesAsked": 85
+ "updateNamesAsked": 85,
+ "wiki": {
+  "refreshedAt": "2026-10-21T20:07:17.380Z",
+  "blueprints": 1163,
+  "nodes": 357,
+  "resources": 930,
+  "research": 188,
+  "vendors": 66,
+  "offers": 2843,
+  "traits": 667,
+  "baro": 472,
+  "adversaries": 2,
+  "companions": 41,
+  "honorias": 210,
+  "titles": 1075,
+  "relics": 799
+ }
 }

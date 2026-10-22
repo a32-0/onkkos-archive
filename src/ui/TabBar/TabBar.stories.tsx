@@ -24,7 +24,7 @@ export const ResumeActive: Story = { args: { items: tabs("/catch-up") } };
 
 export const GoalActive: Story = { args: { items: tabs("/goals") } };
 
-export const InTheHeader: Story = {
-  args: { placement: "header" },
+export const Floating: Story = {
+  args: { placement: "floating" },
   globals: { viewport: { value: "w1280", isRotated: false } },
 };

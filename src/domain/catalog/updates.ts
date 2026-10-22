@@ -159,11 +159,8 @@ function readAnchors(entries: readonly Introduced[]): CatalogAnchors {
       if (!anchors.has(version)) anchors.set(version, introduced);
     }
 
-    const release = RELEASE_OF.exec(introduced.name ?? "")?.[1];
-    if (release !== undefined) {
-      const version = releaseOf(release);
-      items.set(version, (items.get(version) ?? 0) + 1);
-    }
+    const version = releaseOfName(introduced.name);
+    if (version !== null) items.set(version, (items.get(version) ?? 0) + 1);
   }
 
   const found = { anchors, items };
@@ -255,6 +252,11 @@ function isRealDate(date: string | undefined): boolean {
   return typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date) && !date.startsWith("0000");
 }
 
+export function releaseOfName(name: string | undefined): string | null {
+  const release = RELEASE_OF.exec(name ?? "")?.[1];
+  return release === undefined ? null : releaseOf(release);
+}
+
 function releaseOf(version: string): string {
   const [major, minor] = version.split(".");
   return minor && Number(minor) !== 0 ? `${Number(major)}.${Number(minor)}` : String(Number(major));
@@ -264,7 +266,7 @@ function majorOf(version: string): number {
   return Number(version.split(".")[0]);
 }
 
-function compareVersions(a: string, b: string): number {
+export function compareVersions(a: string, b: string): number {
   const [aMajor = 0, aMinor = 0] = a.split(".").map(Number);
   const [bMajor = 0, bMinor = 0] = b.split(".").map(Number);
   return aMajor - bMajor || aMinor - bMinor;

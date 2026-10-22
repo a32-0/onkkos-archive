@@ -86,6 +86,10 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
      that groups nodes of several planets names the nodes alone.
    - **Components**: one row per ingredient, "{name} ×{n}", with its art, its
      reading and its place when it has a known drop, and "{n} Credits" last.
+     A row with no reading and no place shows its description from Step by
+     step instead, so no row is a bare name; a thing bought from a vendor
+     names the vendor; what only an optional step asks for ends "(Optional)"
+     (owner, 2026-10-21).
    - With neither, **How to get**: the item's How to get or Acquisition rows
      in the same row style.
 

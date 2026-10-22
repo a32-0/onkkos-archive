@@ -3,7 +3,7 @@ import { Icon } from "../Icon/Icon";
 import type { LinkComponent } from "../link";
 import styles from "./Tab.module.css";
 
-export type TabPlacement = "bottom" | "header";
+export type TabPlacement = "bottom" | "floating";
 
 export function Tab({
   href,

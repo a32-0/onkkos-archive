@@ -6,6 +6,11 @@ import type { Wiki } from "@/domain/catalog/wiki";
 import type { NarrativeSpine } from "@/domain/narrative/schema";
 import type { CuratedAcquisition, PlaceRewards, RegionResources } from "@/domain/place/schema";
 
+export interface Opening {
+  quest: string | null;
+  after: string | null;
+}
+
 export interface CatalogData {
   wiki: Wiki;
   curated: Curated;
@@ -19,6 +24,7 @@ export interface CatalogData {
   collectibles: ReadonlyMap<string, Collectible>;
   gear: ReadonlyMap<string, CollectibleRecipe>;
   vendorArt: Readonly<Record<string, string>>;
+  openings: ReadonlyMap<string, Opening>;
 }
 
 export function findCollectible(data: CatalogData, name: string): Collectible | null {

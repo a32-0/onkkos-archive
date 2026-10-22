@@ -34,11 +34,6 @@ export function Shell({
 }) {
   const { player } = chrome;
   const items = tabItems(tab);
-  const wide = tabs ? (
-    <div className={styles.wide}>
-      <TabBar label={NAV.label} items={items} placement="header" link={Link} />
-    </div>
-  ) : undefined;
   return (
     <div className={styles.shell}>
       <Visit />
@@ -55,15 +50,19 @@ export function Shell({
                 link={Link}
               />
             }
-            tabs={wide}
           />
         </div>
         {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={BackLink} />}
       </div>
-      <main className={styles.main}>{children}</main>
+      <main className={tabs ? styles.clear : styles.main}>{children}</main>
       {tabs && !bar && (
         <div className={styles.bottom}>
           <TabBar label={NAV.label} items={items} placement="bottom" link={Link} />
+        </div>
+      )}
+      {tabs && (
+        <div className={styles.floating}>
+          <TabBar label={NAV.label} items={items} placement="floating" link={Link} />
         </div>
       )}
     </div>

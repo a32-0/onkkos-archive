@@ -37,7 +37,7 @@ it records a decision that governs future work.
 | `api.md`                           | The endpoint's verified behaviour; spec 11 cites it                                                                                                           | T-18, T-19       |
 | `step-by-step.md`                  | Spec 10 cites it                                                                                                                                              | T-29             |
 | `content-updates.md`               | How a mainline or an update enters the app, and the command that runs it                                                                                      | T-31             |
-| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 10 line by line                                                                  | T-32             |
+| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 12 line by line                                                                  | T-32             |
 | `README.md` (the index)            | Every document above, in this order                                                                                                                           | T-01, T-32       |
 
 Each document is written in the task that builds the code it describes, so the
@@ -59,11 +59,15 @@ first because the player reads less. It is short and links out for the rest.
      nothing. Never the full profile and never a computed result.
    - On the device: the id, the update last played and the last place, in
      cookies; the ticked steps in the browser.
-   - No analytics and no tracking.
+   - Visits counted, never the player: Vercel's page views and load times,
+     with no cookie and no id in any address (owner, 2026-10-21; plan part
+     4).
    - How DE's endpoint is protected, in two lines, with a link to `api.md`.
 4. **How it was built.** For the reader evaluating the work: the order
-   (constitution, specs, plan, tasks, code), linked to `specs/`; the layers in
-   one diagram; the design system and a link to the Storybook. The owner writes
+   (constitution, specs, plan, tasks, code), linked to `specs/`, and the
+   layers as the road from an id to a screen, each in a Mermaid diagram in
+   the Cetus colours (owner, 2026-10-21: the arrows of the earlier diagram did
+   not explain themselves); the design system and a link to the Storybook. The owner writes
    the line saying that the work was done with Claude's help, in their own words
    (constitution).
 5. **Run it.** `pnpm install`, `pnpm dev` on fixtures, `pnpm check`,
@@ -75,6 +79,15 @@ first because the player reads less. It is short and links out for the rest.
 7. **Licence.** MIT for the code and the curated files. Warframe and its
    content belong to Digital Extremes; a fan project, not affiliated with or
    endorsed by them.
+
+The README wears Cetus (owner, 2026-10-21): a banner, the features in two
+columns with a screenshot each, the map, and a sheet of the design system.
+Its images are in `docs/readme/`: `banner.png`, the splash over its Cetus
+art; `summary.png`, `step-by-step.png` (Rhino) and `map.png` (Mars), each of
+the Ordis demo at 390 px; and `design-system.png`, the colours of Storybook's
+Foundations page. They were taken from the running app on 2026-10-21, at the
+owner's request, and are taken again the same way when a screen changes. Section 6 credits each source in a table, with what the app takes
+from it and its terms.
 
 What it does not have:
 

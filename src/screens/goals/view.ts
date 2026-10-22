@@ -43,9 +43,16 @@ function hrefOf(hit: SearchInput): string {
   return itemRoute(hit.name, FROM, hit.gap ? "steps" : undefined);
 }
 
+export function orderedInputs(hits: readonly SearchInput[]): SearchInput[] {
+  return [...hits].sort((a, b) => b.score - a.score || Number(!!a.gap) - Number(!!b.gap));
+}
+
 export function suggestionRows(hits: readonly SearchInput[]): SearchRow[] {
-  const ordered = [...hits.filter((hit) => !hit.gap), ...hits.filter((hit) => hit.gap)];
-  return ordered.slice(0, SHOWN).map((hit) => {
+  return searchRows(orderedInputs(hits).slice(0, SHOWN));
+}
+
+export function searchRows(hits: readonly SearchInput[]): SearchRow[] {
+  return hits.map((hit) => {
     const catalogue = CATALOGUES[hit.catalogue];
     return {
       value: `${hit.kind}:${hit.name}`,

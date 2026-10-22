@@ -1,6 +1,11 @@
 import { circuitStatus, type CircuitMode } from "@/domain/catalog/circuit";
 import type { CollectibleView } from "@/domain/catalog/collectibles";
-import { findCollectible, isCatalogued, type CatalogData } from "@/domain/catalog/data";
+import {
+  findCollectible,
+  isCatalogued,
+  type CatalogData,
+  type Opening,
+} from "@/domain/catalog/data";
 import type { Dossier } from "@/domain/catalog/dossier";
 import { BLUEPRINT_ART, type SlotKind } from "@/domain/catalog/items";
 import { oneIn } from "@/domain/catalog/odds";
@@ -23,6 +28,7 @@ import { researchFor, sameName } from "@/domain/catalog/wiki";
 import { questNeeds, questsBefore } from "@/domain/narrative/chain";
 import type { Quest } from "@/domain/narrative/schema";
 import { placeGap, rankGap, type Reach, type ReachGap } from "@/domain/place/reach";
+import { wikiFileUrl } from "@/domain/wiki-links";
 
 type None = Record<never, never>;
 
@@ -51,7 +57,6 @@ interface Says {
   partTitle: { part: string; count: number };
   groupHere: { places: string[] };
   groupElsewhere: None;
-  groupForGear: { gear: string; optional: boolean };
 
   masteryTitle: { rank: number };
   masteryDetail: { now: number; required: number };
@@ -72,8 +77,12 @@ interface Says {
   clanTitle: None;
   clanDetail: { item: string; lab: string };
   rankTitle: { rank: string; vendor: string };
+  rankDetail: { rank: string; vendor: string };
   reachTitle: { place: string };
   junctionDetail: { junction: string; from: string };
+  firstPlanetDetail: None;
+  openedByDetail: { quest: string };
+  openedAfterDetail: { place: string };
   slotTitle: { kind: SlotKind };
   slotDetail: None;
 
@@ -82,12 +91,14 @@ interface Says {
   marketDetail: { credits: number };
   marketBrief: { credits: number };
   vendorTitle: { vendor: string };
+  vendorBlueprintTitle: { vendor: string };
   vendorDetail: {
     vendor: string;
     cost: number | null;
     currency: string | null;
     rank: string | null;
     quest: string | null;
+    blueprint?: boolean;
   };
   vendorBrief: {
     vendor: string;
@@ -99,6 +110,7 @@ interface Says {
   locatorDetail: { key: string; vendor: string; node: string | null };
   researchTitle: { lab: string };
   researchDetail: { lab: string };
+  partResearchedDetail: { lab: string };
 
   playTitle: { node: string };
   playBountiesTitle: { place: string };
@@ -118,14 +130,28 @@ interface Says {
 
   resourceTitle: { name: string; count: number };
   resourceDetail: { rarity: string | null; location: string | null };
+  madeDetail: { ingredients: { name: string; count: number }[]; credits: number | null };
   weaponTitle: { name: string; count: number };
   weaponDetail: None;
   partConsumedDetail: None;
+  partOfDetail: { item: string };
+  sonDetail: None;
+  openVoidRelicTitle: None;
+  blueprintRelicDetail: { count: number; relics: string[]; vaulted: boolean };
+  relicsBrief: { count: number };
+  chanceUnknownDetail: None;
+  relicSourceDetail: { relics: string[]; vaulted: boolean };
   creditsTitle: { credits: number };
+  creditsDetail: None;
   currencyTitle: { cost: number; currency: string; vendor: string };
   ducatsTitle: { ducats: number };
+  ducatsDetail: None;
+  standingDetail: { vendor: string };
 
   getTitle: { name: string };
+  foundryTitle: None;
+  foundryDetail: None;
+  foundryBrief: None;
   collectibleDetail: { place: string; mission: string | null };
   foundOnDetail: { regions: string[] };
   relicVaulted: None;
@@ -359,6 +385,8 @@ const AYA = "Aya";
 const CAVALERO = "Cavalero";
 const CREDITS = "Credits";
 const DUCATS = "Orokin Ducats";
+const DEIMOS = "Deimos";
+const VOID_RELIC_WIKI = "Void Relic";
 
 const MASTERY_WIKI = "Mastery Rank";
 const INTRINSICS_WIKI = "Intrinsics";
@@ -476,6 +504,34 @@ function priceBrief(cost: number | null, currency: string | null, rank: string |
 
 function resourceDetail(rarity: string | null, location: string | null): Phrase | null {
   return rarity === null && location === null ? null : say("resourceDetail", { rarity, location });
+}
+
+function madeDetail(data: CatalogData, name: string): Phrase | null {
+  const recipe = data.gear.get(name);
+  if (!recipe || recipe.ingredients.length === 0) return null;
+  return say("madeDetail", { ingredients: [...recipe.ingredients], credits: recipe.credits });
+}
+
+function resourceFacts(
+  data: CatalogData,
+  name: string,
+  fact: { rarity: string | null; location: string | null } | undefined,
+): Part[] {
+  return parts(
+    (fact ? resourceDetail(fact.rarity, fact.location) : null) ??
+      madeDetail(data, name) ??
+      relicDetail(data, name),
+  );
+}
+
+function relicDetail(data: CatalogData, name: string): Phrase | null {
+  const relics = [...data.relics.values()].filter((relic) =>
+    relic.rewards.some((reward) => reward.name === name),
+  );
+  if (relics.length === 0) return null;
+  const open = relics.filter((relic) => !relic.vaulted);
+  const shown = (open.length > 0 ? open : relics).map((relic) => relic.name.replace(/ Relic$/, ""));
+  return say("relicSourceDetail", { relics: shown.slice(0, 3), vaulted: open.length === 0 });
 }
 
 function levels(tier: string): { low: string; high: string } | null {
@@ -974,6 +1030,7 @@ function requirementRows(
     if (one.kind === "rank" && one.label !== null) {
       out.push(
         row(`rank:${one.name}`, say("rankTitle", { rank: one.label, vendor: one.name }), {
+          detail: parts(say("rankDetail", { rank: one.label, vendor: one.name })),
           wikiTitle: one.name,
         }),
       );
@@ -988,10 +1045,17 @@ function reachRows(data: CatalogData, places: readonly string[]): StepRow[] {
     return row(`place:${place}`, say("reachTitle", { place }), {
       detail: junction
         ? parts(say("junctionDetail", { junction: junction.name, from: junction.from }))
-        : [],
+        : openingDetail(data.openings.get(place)),
       wikiTitle: junction?.name ?? place,
     });
   });
+}
+
+function openingDetail(opening: Opening | undefined): Part[] {
+  if (!opening) return [];
+  if (opening.quest !== null) return parts(say("openedByDetail", { quest: opening.quest }));
+  if (opening.after !== null) return parts(say("openedAfterDetail", { place: opening.after }));
+  return parts(say("firstPlanetDetail"));
 }
 
 function partTitle(part: ResolvedPart): Phrase {
@@ -1038,11 +1102,13 @@ function partImage(data: CatalogData, name: string): string | null {
 
 function thingImage(data: CatalogData, name: string): string | null {
   if (name === MAIN_PART) return BLUEPRINT_ART;
+  const wiki = data.wiki.resources.get(name)?.image;
   return (
-    resourceImage(data, name) ??
     findCollectible(data, name)?.imageUrl ??
+    resourceImage(data, name) ??
     arsenalImage(data, name) ??
-    partImage(data, name)
+    partImage(data, name) ??
+    (wiki ? wikiFileUrl(wiki) : null)
   );
 }
 
@@ -1136,49 +1202,116 @@ function gearRow(
   });
 }
 
-function gearGroups(data: CatalogData, sections: readonly StepSection[]): StepGroup[] {
-  const groups: StepGroup[] = [];
+interface GearTotals {
+  required: Map<string, number>;
+  requiredCredits: number;
+  optional: Map<string, number>;
+  optionalCredits: number;
+}
+
+function gearTotals(data: CatalogData, sections: readonly StepSection[]): GearTotals | null {
+  const totals: GearTotals = {
+    required: new Map(),
+    requiredCredits: 0,
+    optional: new Map(),
+    optionalCredits: 0,
+  };
   const seen = new Set<string>();
-  const resources = data.wiki.resources;
   for (const used of sections.flatMap((one) => one.groups.flatMap((group) => group.rows))) {
     if (used.gear === null || seen.has(used.gear.name)) continue;
     const recipe = data.gear.get(used.gear.name) ?? null;
     if (recipe === null) continue;
     seen.add(used.gear.name);
-    const { name, count } = used.gear;
-    const rows = [...recipe.ingredients]
-      .map((one) => ({ ...one, fact: resources.get(one.name) }))
-      .sort((a, b) => rarityRank(a.fact?.rarity ?? null) - rarityRank(b.fact?.rarity ?? null))
-      .map((one) =>
-        row(
-          `gear:${name}:${one.name}`,
-          say("resourceTitle", { name: one.name, count: one.count * count }),
-          {
-            detail: one.fact ? parts(resourceDetail(one.fact.rarity, one.fact.location)) : [],
-            wikiTitle: one.fact?.link ?? one.name,
-            imageUrl: thingImage(data, one.name),
-            thing: one.name,
-          },
-        ),
-      );
-    if (recipe.credits !== null && recipe.credits > 0) {
-      rows.push(
-        row(`gear:${name}:credits`, say("creditsTitle", { credits: recipe.credits * count }), {
-          wikiTitle: CREDITS,
-          imageUrl: data.vendorArt[CREDITS] ?? null,
-          thing: CREDITS,
-        }),
-      );
+    const { count } = used.gear;
+    const into = used.optional ? totals.optional : totals.required;
+    for (const one of recipe.ingredients) {
+      into.set(one.name, (into.get(one.name) ?? 0) + one.count * count);
     }
-    groups.push({ title: say("groupForGear", { gear: name, optional: used.optional }), rows });
+    const credits = (recipe.credits ?? 0) * count;
+    if (used.optional) totals.optionalCredits += credits;
+    else totals.requiredCredits += credits;
   }
-  return groups;
+  return seen.size === 0 ? null : totals;
+}
+
+function creditsRow(data: CatalogData, id: string, credits: number, optional: boolean): StepRow {
+  return row(id, say("creditsTitle", { credits }), {
+    detail: parts(say("creditsDetail")),
+    wikiTitle: CREDITS,
+    imageUrl: data.vendorArt[CREDITS] ?? null,
+    thing: CREDITS,
+    optional,
+  });
+}
+
+function gearRows(
+  data: CatalogData,
+  counts: ReadonlyMap<string, number>,
+  credits: number,
+  optional: boolean,
+): StepRow[] {
+  const prefix = optional ? "optional" : "resource";
+  const resources = data.wiki.resources;
+  const rows = [...counts]
+    .map(([name, count]) => ({ name, count, fact: resources.get(name) }))
+    .sort((a, b) => rarityRank(a.fact?.rarity ?? null) - rarityRank(b.fact?.rarity ?? null))
+    .map((one) => ({ ...one, detail: resourceFacts(data, one.name, one.fact) }))
+    .map((one) =>
+      row(`${prefix}:${one.name}`, say("resourceTitle", { name: one.name, count: one.count }), {
+        detail: one.detail,
+        prose: one.detail.length > 0 ? null : acquisition(one.name),
+        wikiTitle: one.fact?.link ?? one.name,
+        imageUrl: thingImage(data, one.name),
+        thing: one.name,
+        optional,
+      }),
+    );
+  if (credits > 0) {
+    rows.push(creditsRow(data, optional ? "optional:credits" : "credits", credits, optional));
+  }
+  return rows;
+}
+
+function summed(data: CatalogData, groups: readonly StepGroup[], totals: GearTotals): StepGroup[] {
+  const left = new Map(totals.required);
+  let credits = totals.requiredCredits;
+  const merged = groups.map((group) => ({
+    ...group,
+    rows: group.rows.map((one) => {
+      if (one.title.say === "creditsTitle" && one.id === "credits" && credits > 0) {
+        const total = one.title.credits + credits;
+        credits = 0;
+        return { ...one, title: say("creditsTitle", { credits: total }) };
+      }
+      const name = one.thing;
+      if (one.title.say !== "resourceTitle" || name === null || !left.has(name)) return one;
+      const more = left.get(name) ?? 0;
+      left.delete(name);
+      return { ...one, title: say("resourceTitle", { name, count: one.title.count + more }) };
+    }),
+  }));
+  const extra = gearRows(data, left, credits, false);
+  if (extra.length === 0) return merged;
+  const last = merged.at(-1);
+  if (!last) return [{ title: null, rows: extra }];
+  const isCredits = (one: StepRow) => one.title.say === "creditsTitle";
+  const rows = [...last.rows, ...extra];
+  return [
+    ...merged.slice(0, -1),
+    { ...last, rows: [...rows.filter((one) => !isCredits(one)), ...rows.filter(isCredits)] },
+  ];
 }
 
 function withGear(data: CatalogData, sections: StepSection[]): StepSection[] {
-  const groups = gearGroups(data, sections);
-  if (groups.length === 0) return sections;
+  const totals = gearTotals(data, sections);
+  if (totals === null) return sections;
   const index = sections.findIndex((one) => one.id === "components");
+  const existing = index === -1 ? [] : (sections[index]?.groups ?? []);
+  const optional = gearRows(data, totals.optional, totals.optionalCredits, true);
+  const groups = [
+    ...summed(data, existing, totals),
+    ...(optional.length > 0 ? [{ title: null, rows: optional }] : []),
+  ];
   if (index === -1) {
     return [
       ...sections,
@@ -1191,9 +1324,7 @@ function withGear(data: CatalogData, sections: StepSection[]): StepSection[] {
       },
     ];
   }
-  return sections.map((one, at) =>
-    at === index ? { ...one, groups: [...one.groups, ...groups] } : one,
-  );
+  return sections.map((one, at) => (at === index ? { ...one, groups } : one));
 }
 
 function specificTo(
@@ -1216,11 +1347,24 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     (a, b) => rarityRank(a.rarity) - rarityRank(b.rarity),
   );
   for (const tally of resources) {
+    if (arsenalImage(data, tally.name) !== null) {
+      elsewhere.push(
+        row(`weapon:${tally.name}`, say("weaponTitle", { name: tally.name, count: tally.count }), {
+          detail: parts(say("weaponDetail")),
+          wikiTitle: tally.name,
+          imageUrl: arsenalImage(data, tally.name),
+          thing: tally.name,
+        }),
+      );
+      continue;
+    }
+    const detail = resourceFacts(data, tally.name, tally);
     const entry = row(
       `resource:${tally.name}`,
       say("resourceTitle", { name: tally.name, count: tally.count }),
       {
-        detail: parts(resourceDetail(tally.rarity, tally.location)),
+        detail,
+        prose: detail.length > 0 ? null : acquisition(tally.name),
         wikiTitle: tally.link,
         imageUrl: thingImage(data, tally.name),
         thing: tally.name,
@@ -1253,6 +1397,8 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     const currency = key.startsWith("Standing:") ? "Standing" : key;
     elsewhere.push(
       row(`currency:${key}`, say("currencyTitle", { cost, currency, vendor }), {
+        ...currencyFacts(data, currency, vendor),
+        where: currency === "Standing" ? [] : [vendor],
         wikiTitle: currency === "Standing" ? vendor : currency,
         imageUrl:
           currency === "Standing"
@@ -1266,6 +1412,7 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
   if (found.totals.credits !== null && found.totals.credits > 0) {
     elsewhere.push(
       row("credits", say("creditsTitle", { credits: found.totals.credits }), {
+        detail: parts(say("creditsDetail")),
         wikiTitle: CREDITS,
         imageUrl: data.vendorArt[CREDITS] ?? null,
         thing: CREDITS,
@@ -1285,6 +1432,20 @@ function componentsSection(data: CatalogData, found: Acquisition): StepSection |
     checkable: true,
     groups,
   };
+}
+
+function currencyFacts(
+  data: CatalogData,
+  currency: string,
+  vendor: string,
+): Pick<StepRow, "detail" | "prose"> {
+  if (currency === "Standing") {
+    return { detail: parts(say("standingDetail", { vendor })), prose: lead(vendor) };
+  }
+  if (currency === DUCATS) return { detail: parts(say("ducatsDetail")), prose: null };
+  const fact = data.wiki.resources.get(currency);
+  const detail = resourceFacts(data, currency, fact);
+  return { detail, prose: detail.length > 0 ? null : acquisition(currency) };
 }
 
 function slotRow(kind: SlotKind): StepRow {
@@ -1469,7 +1630,12 @@ function companionSteps(
       const mutagen = sonOffers(data, MUTAGEN);
       const antigen = sonOffers(data, ANTIGEN);
       return [
-        row("son", say("visitSonTitle"), { prose: lead(SON_WIKI), wikiTitle: SON_WIKI }),
+        row("son", say("visitSonTitle"), {
+          detail: parts(say("sonDetail")),
+          where: [DEIMOS],
+          prose: lead(SON_WIKI),
+          wikiTitle: SON_WIKI,
+        }),
         ...lureRow(data, reader, system.lure),
         row("capture", say("captureTitle"), {
           detail: parts(say("captureDetail", { species: system.species })),
@@ -1541,6 +1707,7 @@ function baroComponents(data: CatalogData, system: AcquisitionSystem): StepSecti
   if (system.ducats !== null) {
     rows.push(
       row(`currency:${DUCATS}`, say("ducatsTitle", { ducats: system.ducats }), {
+        detail: parts(say("ducatsDetail")),
         wikiTitle: DUCATS,
         imageUrl: thingImage(data, DUCATS),
         thing: DUCATS,
@@ -1550,6 +1717,7 @@ function baroComponents(data: CatalogData, system: AcquisitionSystem): StepSecti
   if (system.credits !== null) {
     rows.push(
       row("credits", say("creditsTitle", { credits: system.credits }), {
+        detail: parts(say("creditsDetail")),
         wikiTitle: CREDITS,
         imageUrl: data.vendorArt[CREDITS] ?? null,
         thing: CREDITS,
@@ -1951,7 +2119,7 @@ function itemPlan(data: CatalogData, reader: Reader, view: Dossier): StepPlan {
             detail: !route
               ? parts(say("partsUnknown"))
               : route.kind === "research"
-                ? []
+                ? parts(say("partResearchedDetail", { lab: route.lab }))
                 : routeDetail(data, reader, route),
             brief: route ? routeBrief(data, reader, route) : [],
             where: route ? routeRow(data, reader, `part:${part.name}`, route).where : [],
@@ -2003,7 +2171,9 @@ function dropRows(view: CollectibleView): StepRow[] {
     const title =
       route.place === null
         ? route.mission === null
-          ? say("getTitle", { name: collectible.name })
+          ? route.node === null
+            ? say("getTitle", { name: collectible.name })
+            : say("defeatTitle", { source: route.node })
           : say("defeatTitle", { source: route.mission })
         : route.node === null
           ? say("getTitle", { name: collectible.name })
@@ -2014,7 +2184,7 @@ function dropRows(view: CollectibleView): StepRow[] {
         route.place
           ? say("collectibleDetail", { place: route.place, mission: route.mission })
           : null,
-        oddsDetail(value),
+        oddsDetail(value) ?? (route.chance === null ? say("chanceUnknownDetail") : null),
       ),
       brief: parts(route.place, route.mission, oddsBrief(value)),
       where: parts(
@@ -2156,23 +2326,77 @@ function baroRows(data: CatalogData, name: string): StepRow[] {
   ];
 }
 
+function blueprintRelicRow(
+  data: CatalogData,
+  collectible: CollectibleView["collectible"],
+): StepRow | null {
+  const blueprint = `${collectible.name} Blueprint`;
+  const relics = [...data.relics.values()].filter((relic) =>
+    relic.rewards.some((reward) => reward.name === blueprint),
+  );
+  if (relics.length === 0) return null;
+  const open = relics.filter((relic) => !relic.vaulted);
+  const named = (open.length > 0 ? open : relics).map((relic) => relic.name.replace(/ Relic$/, ""));
+  return row("relic", say("openVoidRelicTitle"), {
+    detail: parts(
+      say("blueprintRelicDetail", {
+        count: open.length > 0 ? open.length : relics.length,
+        relics: named.slice(0, 3),
+        vaulted: open.length === 0,
+      }),
+    ),
+    brief: parts(say("relicsBrief", { count: open.length > 0 ? open.length : relics.length })),
+    prose: lead(VOID_RELIC_WIKI),
+    wikiTitle: VOID_RELIC_WIKI,
+  });
+}
+
+function sourceRow(data: CatalogData, collectible: CollectibleView["collectible"]): StepRow {
+  const fact = data.wiki.resources.get(collectible.name);
+  const source = collectible.source ?? "";
+  const places = [...new Set([...Object.keys(data.regions), ...Object.keys(data.rewards)])]
+    .map((place) => ({ place, at: source.indexOf(place) }))
+    .filter((one) => one.at >= 0)
+    .sort((a, b) => a.at - b.at)
+    .map((one) => one.place);
+  return row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
+    detail: parts(resourceDetail(fact?.rarity ?? null, source)),
+    where: places.slice(0, 2),
+    wikiTitle: fact?.link ?? collectible.name,
+    imageUrl: collectible.imageUrl,
+  });
+}
+
 function vendorRows(collectible: CollectibleView["collectible"], room: number): StepRow[] {
   return collectible.offers.slice(0, room).map((offer, index) =>
-    row(`vendor:${index}`, say("vendorTitle", { vendor: offer.vendor }), {
-      detail: parts(
-        say("vendorDetail", {
-          vendor: offer.vendor,
-          cost: offer.cost,
-          currency: offer.currency,
-          rank: offer.rank,
-          quest: offer.quest,
-        }),
-      ),
-      brief: parts(priceBrief(offer.cost, offer.currency, offer.rank)),
-      prose: lead(offer.link),
-      wikiTitle: offer.link,
-    }),
+    row(
+      `vendor:${index}`,
+      say(offer.blueprint ? "vendorBlueprintTitle" : "vendorTitle", { vendor: offer.vendor }),
+      {
+        detail: parts(
+          say("vendorDetail", {
+            vendor: offer.vendor,
+            cost: offer.cost,
+            currency: offer.currency,
+            rank: offer.rank,
+            quest: offer.quest,
+            blueprint: offer.blueprint,
+          }),
+        ),
+        brief: parts(priceBrief(offer.cost, offer.currency, offer.rank)),
+        where: [offer.vendor],
+        prose: lead(offer.link),
+        wikiTitle: offer.link,
+      },
+    ),
   );
+}
+
+const PART_OF = /^(Avionics|Engines|Fuselage|Systems|Chassis|Neuroptics|Carapace|Cerebrum)$/;
+
+function sharesFamily(item: string, ingredient: string): boolean {
+  const family = item.split(" ").slice(0, 2).join(" ");
+  return family.includes(" ") && ingredient.startsWith(`${family} `) && ingredient !== item;
 }
 
 function recipeSection(
@@ -2185,20 +2409,33 @@ function recipeSection(
   const resources = data.wiki.resources;
   const rows = ingredients.map((one) => {
     const fact = resources.get(one.name);
-    return row(`resource:${one.name}`, say("resourceTitle", { name: one.name, count: one.count }), {
-      detail: fact
-        ? parts(resourceDetail(fact.rarity, fact.location))
+    const part =
+      PART_OF.test(one.name) ||
+      (sharesFamily(collectible.name, one.name) && !isCatalogued(data, one.name));
+    const detail = part
+      ? parts(relicDetail(data, one.name) ?? say("partOfDetail", { item: collectible.name }))
+      : fact
+        ? resourceFacts(data, one.name, fact)
         : arsenalImage(data, one.name.replace(/ (Systems|Chassis|Neuroptics)$/, "")) !== null
           ? parts(say("partConsumedDetail"))
-          : [],
-      wikiTitle: fact?.link ?? one.name,
-      imageUrl: thingImage(data, one.name),
-      thing: one.name,
+          : resourceFacts(data, one.name, undefined);
+    const title = say("resourceTitle", { name: one.name, count: one.count });
+    return row(`${part ? "part" : "resource"}:${one.name}`, title, {
+      detail,
+      prose: detail.length > 0 ? null : acquisition(one.name),
+      wikiTitle: part ? collectible.name : (fact?.link ?? one.name),
+      imageUrl: part ? BLUEPRINT_ART : thingImage(data, one.name),
+      thing: part ? null : one.name,
     });
   });
   if (credits !== null && credits > 0) {
     rows.push(
-      row("credits", say("creditsTitle", { credits }), { wikiTitle: CREDITS, thing: CREDITS }),
+      row("credits", say("creditsTitle", { credits }), {
+        detail: parts(say("creditsDetail")),
+        wikiTitle: CREDITS,
+        imageUrl: data.vendorArt[CREDITS] ?? null,
+        thing: CREDITS,
+      }),
     );
   }
   return rows.length === 0
@@ -2222,19 +2459,31 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
 
   const honoria = honoriaRows(data, collectible);
   const curated = curatedCollectibleRows(data, reader, collectible.name);
+  const relic = blueprintRelicRow(data, collectible);
   const how = [
+    ...(relic ? [relic] : []),
     ...dropRows(view),
     ...(collectible.incarnon ? incarnonRows(data, reader, collectible.name) : []),
     ...baroRows(data, collectible.name),
     ...curated,
     ...honoria.rows,
   ];
+  if (how.length === 0 && collectible.source !== null) how.push(sourceRow(data, collectible));
   const sold = new Set(how.map(titleKey));
-  how.push(
-    ...vendorRows(collectible, Math.max(ALTERNATIVES_SHOWN - how.length, 0)).filter(
-      (entry) => !sold.has(titleKey(entry)),
-    ),
+  const vendors = vendorRows(collectible, Math.max(ALTERNATIVES_SHOWN - how.length, 0)).filter(
+    (entry) => !sold.has(titleKey(entry)),
   );
+  how.push(...vendors);
+  if ((collectible.recipe?.ingredients.length ?? 0) > 0 && !collectible.incarnon) {
+    how.push(
+      row(`build:${collectible.name}`, say("foundryTitle"), {
+        detail: parts(say("foundryDetail")),
+        brief: parts(say("foundryBrief")),
+        wikiTitle: collectible.name,
+        imageUrl: how.length === 0 ? collectible.imageUrl : null,
+      }),
+    );
+  }
   if (how.length === 0) {
     how.push(
       row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
@@ -2250,7 +2499,9 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
     ...curatedFor(data.curated, collectible.name, null).flatMap((source) =>
       "quest" in source && source.quest && source.type !== "quest" ? [source.quest] : [],
     ),
-    ...collectible.offers.slice(0, 1).flatMap((offer) => vendorGates(data.curated, offer.vendor)),
+    ...(vendors.length > 0 ? collectible.offers.slice(0, 1) : []).flatMap((offer) =>
+      vendorGates(data.curated, offer.vendor),
+    ),
   ];
   const requires = incarnon?.requires ?? [];
   const unlocks = requires.filter((name) => sameName(name, STEEL_PATH));

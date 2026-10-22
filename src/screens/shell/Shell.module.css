@@ -29,12 +29,21 @@
   display: none;
 }
 
-.wide {
+.clear {
+  composes: main;
+}
+
+.floating {
   display: none;
 }
 
 @media (min-width: 840px) {
-  .wide {
+  .clear {
+    --shell-floating-clearance: 130px;
+    padding-bottom: var(--shell-floating-clearance);
+  }
+
+  .floating {
     display: contents;
   }
 

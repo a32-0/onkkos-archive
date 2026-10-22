@@ -9,7 +9,7 @@ const meta = {
   component: SearchCard,
   args: {
     title: "Choose a target",
-    line: "Anything in the arsenal, any place on the chart.",
+    line: "Warframes, weapons, companions, mods, arcanes, relics, resources, quests and places.",
     children: (
       <>
         <SearchField label="Target" placeholder="A warframe, a weapon, or planet" />

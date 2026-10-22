@@ -36,6 +36,8 @@ export interface SummaryCardView {
 
 export interface SummaryUpdate {
   version: string;
+  versions: readonly string[];
+  dates: readonly string[];
   value: string;
   name: string;
   meta: string;

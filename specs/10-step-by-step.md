@@ -81,7 +81,13 @@ In this order; a section with nothing in it does not render.
    BR-22), the slot (BR-23), quests root first (BR-28) and Junctions, each
    kind in one row when there is more than one (BR-66), hub unlocks, reaching
    a place, gear owned, standing, clan, a status row ("Prime Vaulted"), and
-   last, "Buy … Blueprint" when the main blueprint is bought.
+   last, "Buy … Blueprint" when the main blueprint is bought. Every row says
+   how it is met (owner, 2026-10-21): a standing row, "Earn standing with
+   Red Veil until you reach Esteemed."; a place beyond a Junction, "Clear
+   the Venus Junction on Earth."; a place off the star chart, the quest
+   `grafo.yaml` names, "Complete Angels of the Zariman to open it.", or the
+   place it follows, "It opens once you reach Phobos."; Earth, "Every Tenno
+   starts here, once Vor's Prize is done."
 2. **How to get**, when the parts share a source, or the system's steps
    (Lich, Sister, Baro, Varzia, breeding, Son), under the same title.
 3. **Blueprints**, one flat list when every part shares a source; otherwise
@@ -90,8 +96,13 @@ In this order; a section with nothing in it does not render.
    best odds (BR-25).
 4. **Components**: what the player collects, in groups split by a plain
    line inside the card, as `662:7558` draws it: first what only that place
-   gives, then the rest; a gear's recipe makes its own group. No group carries
-   a title (owner, 2026-10-19). Each group ordered by rarity, credits last (BR-24), including every
+   gives, then the rest. What a gear's recipe asks for is added in: a resource
+   the plan already needs is summed into its row, and credits into the one
+   credits row. What only an optional step's gear asks for is summed the same
+   way into one last group, each row ending "(Optional)", so no resource
+   appears twice (owner, 2026-10-21; the Chesa Kubrow had shown its credits
+   and Argon Crystal three times). No group carries a title (owner,
+   2026-10-19). Each group ordered by rarity, credits last (BR-24), including every
    recipe the plan names (BR-32).
 
 Each section is a card under a divider that names it (owner's frames,
@@ -129,7 +140,11 @@ diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
 No line and no diamond. Each row: a checkbox, the thing's art with no ground
 behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, and under them, starting where the art
 starts so nothing sits under the checkbox, the description with **Wiki ↗**
-closing its line. Ticking a row (`465:477`):
+closing its line. A resource's description is where it comes from; one that
+comes from nowhere but the foundry, a cut gem or an alloy, says what it is made
+from ("Made in your foundry from 10 Azurite and 1,000 Credits."), and the
+credits say where credits come from (owner, 2026-10-21). The row opens the
+thing's own page (BR-67). Ticking a row (`465:477`):
 
 - fills the box, dims the title and strikes it through, dims the art;
 - collapses the row, its chevron pointing down;

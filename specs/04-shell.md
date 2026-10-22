@@ -22,7 +22,7 @@ profile will be read again, and lets them disconnect.
 - [BR-07](../docs/business-rules.md#br-07--one-profile-read-per-twelve-hours):
   the read cycle in the menu's footer.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
-  the tab bar in the header from 840.
+  from 840 the tab bar floats at the bottom of the screen.
 - [BR-41](../docs/business-rules.md#br-41--resume-has-two-entrances): Resume
   shows the tab bar only when reached from its tab.
 - [BR-42](../docs/business-rules.md#br-42--the-placeholder-circles-are-the-games-icons):
@@ -31,14 +31,14 @@ profile will be read again, and lets them disconnect.
 
 ## Where the shell shows
 
-| Screen                                              | Header        | Tab bar                                |
-| --------------------------------------------------- | ------------- | -------------------------------------- |
-| `/`, `/connect`, `/features`                        | Wordmark only | No                                     |
-| Resume and its Summary, from Two ways in (`?step=`) | With the chip | No                                     |
-| Resume and its Summary, from the Resume tab         | With the chip | Yes                                    |
-| The map, Goal                                       | With the chip | Yes                                    |
-| A page under a tab: a category, an item, a place    | Top bar       | No; from 840 the header keeps its tabs |
-| Profile                                             | Top bar       | No; from 840 the header keeps its tabs |
+| Screen                                              | Header        | Tab bar                       |
+| --------------------------------------------------- | ------------- | ----------------------------- |
+| `/`, `/connect`, `/features`                        | Wordmark only | No                            |
+| Resume and its Summary, from Two ways in (`?step=`) | With the chip | No                            |
+| Resume and its Summary, from the Resume tab         | With the chip | Yes                           |
+| The map, Goal                                       | With the chip | Yes                           |
+| A page under a tab: a category, an item, a place    | Top bar       | No; from 840 the floating bar |
+| Profile                                             | Top bar       | No; from 840 the floating bar |
 
 ## The parts
 
@@ -118,11 +118,17 @@ The avatar is the player's active glyph (owner, 2026-10-16): the profile's `Acti
 
 ## Desktop (BR-39)
 
-- From 840 the tab bar leaves the bottom and its three tabs sit in the header,
-  between the wordmark and the chip, in the same order and with the same
-  active treatment.
-- From 840 a page under a tab keeps the header, with the tabs in it, above
-  its top bar, so the tabs stay in reach. Profile and every page under a tab
+- From 840 the tab bar floats (owner, 2026-10-21; it had sat in the header,
+  between the wordmark and the chip): a card on `--surface-header`, the
+  header's ground, with a `--line-subtle` border, `--radius-l` and 8 px
+  inside, centred, 48 px above the bottom of the screen, over the content.
+  Its three tabs keep the same order and the same active treatment, each 96
+  by 56 px with square corners (owner, 2026-10-21). The content ends 130 px
+  above the bottom, 8 px over the bar, so the last row scrolls clear of it.
+  [`Tab bar` Placement=Floating](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=757-564)
+  draws it, and `Search — Desktop` (spec 12) shows it in place.
+- From 840 a page under a tab keeps the header above its top bar and the
+  floating bar under it, so the tabs stay in reach. Profile and every page under a tab
   stay one centred column at the frame's width, as the other pages do.
 
 ## Components
@@ -138,7 +144,7 @@ Disconnect uses; Profile is a screen.
    `662:5177`, `662:6188`, `662:6837` and `662:4642`.
 2. The shell shows and hides as the table above says, on every route.
 3. The active tab follows the table above, `/item` included.
-4. From 840 the tabs sit in the header; at 360, 600, 840, 1280 and 1440
+4. From 840 the tabs float at the bottom; at 360, 600, 840, 1280 and 1440
    nothing overlaps or is cut.
 5. Disconnect clears both cookies and lands on `/connect` with an empty field.
 6. The read cycle shows the real last read and the next read in the player's

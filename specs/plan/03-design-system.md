@@ -124,39 +124,40 @@ counts 28, and the five it adds have not been read.
 ## Type
 
 Line height is the font's own (`auto` in every frame) and letter spacing 0.
-Cinzel has no lowercase of its own; its lowercase are small capitals, which is
-why the frames' Onkko lines read in small caps without `textCase`.
+Cinzel has no lowercase of its own; its lowercase are small capitals. Every
+Cinzel style is upper (owner, 2026-10-21), Onkko's lines and the player's name
+included, so no Cinzel text shows the small capitals.
 
-| Class             | Figma style       | Face           | Weight | Size | Case  | Used for                                             |
-| ----------------- | ----------------- | -------------- | ------ | ---- | ----- | ---------------------------------------------------- |
-| `.place`          | Display/Place     | Cinzel         | 700    | 40   | upper | the place card's name                                |
-| `.numeral`        | Display/Numeral   | Cinzel         | 700    | 36   |       | screen titles, the numbered steps on the id form     |
-| `.title`          | Display/Title     | Cinzel         | 700    | 32   | upper | the hero's name                                      |
-| `.display-name`   | Display/Name      | Cinzel         | 700    | 32   |       | the player's name                                    |
-| `.bar-title`      | Display/Bar       | Cinzel         | 700    | 22   | upper | the top bar's title                                  |
-| `.heading`        | Display/Heading   | Cinzel         | 700    | 24   | upper | the system card of the place list                    |
-| `.name`           | Name/Default      | Cinzel         | 700    | 16   | upper | card, tile, group, place and update names            |
-| `.name-caps`      | Name/Small Caps   | Cinzel         | 700    | 16   |       | the choice cards' titles, in Cinzel's small capitals |
-| `.name-s`         | Name/Small        | Cinzel         | 700    | 14   | upper | section titles, dividers, the featured card          |
-| `.voice`          | Voice             | Cinzel         | 400    | 14   |       | Onkko's lines                                        |
-| `.figure`         | Figure/Value      | Inter          | 700    | 24   |       | "Mastery Rank 27"                                    |
-| `.figure-caption` | Figure/Caption    | Inter          | 400    | 24   |       | the rank's title                                     |
-| `.body-l`         | Body/Large        | Inter          | 400    | 16   |       | leads, the search field                              |
-| `.body`           | Body/Default      | Inter          | 400    | 14   |       | descriptions, prose, dates                           |
-| `.body-s`         | Body/Small        | Inter          | 400    | 12   |       | places under a tile, the update list                 |
-| `.label`          | Label/Default     | Inter          | 700    | 16   |       | buttons, step titles                                 |
-| `.label-s`        | Label/Small       | Inter          | 700    | 14   |       | tabs, counts                                         |
-| `.label-s-upper`  | Label/Small Upper | Inter          | 700    | 14   | upper | the counts on the place card                         |
-| `.kicker`         | Kicker            | Inter          | 400    | 16   | upper | the hero's catalogue                                 |
-| `.eyebrow`        | Eyebrow/Default   | Inter          | 400    | 14   | upper | "Origin", "Change location"                          |
-| `.eyebrow-s`      | Eyebrow/Small     | Inter          | 400    | 12   | upper | "You're on", "System"                                |
-| `.badge`          | Badge             | Inter          | 700    | 12   | upper | every badge, "You last played"                       |
-| `.quiet`          | Quiet             | Inter          | 300    | 14   |       | "12/21 Mastered"                                     |
-| `.reading`        | Reading/Default   | JetBrains Mono | 700    | 12   |       | the gold line, "~24 Runs · Rotation A"               |
-| `.reading-l`      | Reading/Large     | JetBrains Mono | 700    | 16   |       | the gold line in Summary rows                        |
-| `.mono`           | Mono              | JetBrains Mono | 400    | 14   |       | the read cycle, addresses                            |
-| `.mono-label`     | Mono/Label        | JetBrains Mono | 400    | 14   | upper | field labels                                         |
-| `.mono-strong`    | Mono/Strong       | JetBrains Mono | 700    | 14   |       | the bold part of the read cycle                      |
+| Class             | Figma style       | Face           | Weight | Size | Case  | Used for                                         |
+| ----------------- | ----------------- | -------------- | ------ | ---- | ----- | ------------------------------------------------ |
+| `.place`          | Display/Place     | Cinzel         | 700    | 40   | upper | the place card's name                            |
+| `.numeral`        | Display/Numeral   | Cinzel         | 700    | 36   | upper | screen titles, the numbered steps on the id form |
+| `.title`          | Display/Title     | Cinzel         | 700    | 32   | upper | the hero's name                                  |
+| `.display-name`   | Display/Name      | Cinzel         | 700    | 32   | upper | the player's name                                |
+| `.bar-title`      | Display/Bar       | Cinzel         | 700    | 22   | upper | the top bar's title                              |
+| `.heading`        | Display/Heading   | Cinzel         | 700    | 24   | upper | the system card of the place list                |
+| `.name`           | Name/Default      | Cinzel         | 700    | 16   | upper | card, tile, group, place and update names        |
+| `.name-caps`      | Name/Small Caps   | Cinzel         | 700    | 16   | upper | the choice cards' titles                         |
+| `.name-s`         | Name/Small        | Cinzel         | 700    | 14   | upper | section titles, dividers, the featured card      |
+| `.voice`          | Voice             | Cinzel         | 400    | 14   | upper | Onkko's lines                                    |
+| `.figure`         | Figure/Value      | Inter          | 700    | 24   |       | "Mastery Rank 27"                                |
+| `.figure-caption` | Figure/Caption    | Inter          | 400    | 24   |       | the rank's title                                 |
+| `.body-l`         | Body/Large        | Inter          | 400    | 16   |       | leads, the search field                          |
+| `.body`           | Body/Default      | Inter          | 400    | 14   |       | descriptions, prose, dates                       |
+| `.body-s`         | Body/Small        | Inter          | 400    | 12   |       | places under a tile, the update list             |
+| `.label`          | Label/Default     | Inter          | 700    | 16   |       | buttons, step titles                             |
+| `.label-s`        | Label/Small       | Inter          | 700    | 14   |       | tabs, counts                                     |
+| `.label-s-upper`  | Label/Small Upper | Inter          | 700    | 14   | upper | the counts on the place card                     |
+| `.kicker`         | Kicker            | Inter          | 400    | 16   | upper | the hero's catalogue                             |
+| `.eyebrow`        | Eyebrow/Default   | Inter          | 400    | 14   | upper | "Origin", "Change location"                      |
+| `.eyebrow-s`      | Eyebrow/Small     | Inter          | 400    | 12   | upper | "You're on", "System"                            |
+| `.badge`          | Badge             | Inter          | 700    | 12   | upper | every badge, "You last played"                   |
+| `.quiet`          | Quiet             | Inter          | 300    | 14   |       | "12/21 Mastered"                                 |
+| `.reading`        | Reading/Default   | JetBrains Mono | 700    | 12   |       | the gold line, "~24 Runs · Rotation A"           |
+| `.reading-l`      | Reading/Large     | JetBrains Mono | 700    | 16   |       | the gold line in Summary rows                    |
+| `.mono`           | Mono              | JetBrains Mono | 400    | 14   |       | the read cycle, addresses                        |
+| `.mono-label`     | Mono/Label        | JetBrains Mono | 400    | 14   | upper | field labels                                     |
+| `.mono-strong`    | Mono/Strong       | JetBrains Mono | 700    | 14   |       | the bold part of the read cycle                  |
 
 A type token is a set of properties (`font-family`, `font-weight`, `font-size`,
 `text-transform`), one class each in `src/ui/type.module.css`, named in the
@@ -207,7 +208,7 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `List`                  | a grouped list: its rows 2 px apart, the ends at `--radius-m` (T-27b)                                                                                                                                                                                                                                  | 04, 06, 07     |
 | `ControlRow`            | a label and its control on the surface: View, and every setting (T-27b)                                                                                                                                                                                                                                | 04, 07, 09     |
 | `PlayerChip`            |                                                                                                                                                                                                                                                                                                        | 04             |
-| `TabBar`, `Tab`         | active, inactive; bottom, in the header                                                                                                                                                                                                                                                                | 04             |
+| `TabBar`, `Tab`         | active, inactive; bottom, floating from 840                                                                                                                                                                                                                                                            | 04             |
 | `ChoiceCard`            | with icon, title, line; link                                                                                                                                                                                                                                                                           | 03, 08         |
 | `UpdateCard`            | plain, Newest; with art, without; with `href` a link, without it a submit button named by `field` (Resume's form)                                                                                                                                                                                      | 05             |
 | `FeaturedCard`          | last played, up to date; 84 px, the name shrinks to fit                                                                                                                                                                                                                                                | 06, 07         |
@@ -234,6 +235,8 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `RowDetail`             | the reading under a step                                                                                                                                                                                                                                                                               | 10             |
 | `RowProse`              | the wiki's paragraphs under a step                                                                                                                                                                                                                                                                     | 10             |
 | `WikiLink`              | wiki, our page                                                                                                                                                                                                                                                                                         | 09, 10         |
+| `FilterChip`            | off, on, hover, focus; a filter of the advanced search, pressed or not                                                                                                                                                                                                                                 | 12             |
+| `ResultList`            | the advanced search's results: rows as links, in the `Suggestion list`'s frame                                                                                                                                                                                                                         | 12             |
 | `EmptyState`            | icon, title, one line                                                                                                                                                                                                                                                                                  | 06, 07, 08     |
 
 ## Storybook
@@ -284,8 +287,8 @@ styles of their own: `Label/Small Upper` (Inter 700 14, upper: the counts on
 the place card), `Label/Upper` (Inter 700 16, upper: Newest, system names),
 `Quiet/Upper`, `Mono/Label` (JetBrains Mono 400 14, upper: field labels),
 `Mono/Strong` (JetBrains Mono 700 14: the bold part of the read cycle),
-`Name/Small Caps` (Cinzel 700 16 in its own small capitals: the choice cards'
-titles) and `Display/Name` (Cinzel 700 32: the player's name). It found five
+`Name/Small Caps` (Cinzel 700 16: the choice cards' titles; upper since
+2026-10-21, its name kept) and `Display/Name` (Cinzel 700 32: the player's name). It found five
 colour roles too: `--state-mastered-tint` and `--state-rank-tint` (the 20%
 grounds behind a part's art), `--art-done` (a ticked component's faded art,
 retired on 2026-10-19 when the art lost its ground), `--surface-card` (`#231f1a` at 80%, the choice cards) and `--fill-dim`.
