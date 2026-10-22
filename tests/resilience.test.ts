@@ -46,8 +46,6 @@ beforeEach(() => {
   });
   vi.stubGlobal("fetch", network);
   vi.stubEnv("WF_PROFILE_SOURCE", "live");
-  vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
-  vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
 });
 
 afterEach(() => {

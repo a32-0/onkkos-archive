@@ -150,10 +150,10 @@ pnpm check          # types, lint, format and tests
 pnpm storybook      # the design system at localhost:6006
 ```
 
-| Variable                                             | What it does                                                                                                 |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `WF_PROFILE_SOURCE`                                  | `fixture` serves the two anonymised demo profiles and never calls DE. Development always uses it             |
-| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | The shared store that holds the locks, in production only. Without them, development uses an in-memory store |
+| Variable            | What it does                                                                                                |
+| ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `WF_PROFILE_SOURCE` | `fixture` serves the two anonymised demo profiles and never calls DE. Development always uses it            |
+| `WF_STORE_FILE`     | The file that keeps the locks across restarts, set by the app. Without it, development keeps them in memory |
 
 [`docs/development.md`](docs/development.md) covers the tooling.
 [`docs/content-updates.md`](docs/content-updates.md) explains how a new

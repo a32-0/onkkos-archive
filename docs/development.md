@@ -196,33 +196,37 @@ accident.
 
 - `WF_PROFILE_SOURCE`: with `fixture`, every profile is served from
   `fixtures/` and DE is never reached. With `live`, DE's endpoint is read
-  through the locks. Development uses `fixture`; production reads fixtures
-  too until T-33 sets `live` there, and Vercel deploys only `main`
-  ([plan part 4](../specs/plan/04-deployment.md#two-environments)).
-- `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`: the shared store,
-  set in production only.
+  through the locks. Development uses `fixture`, and so does the demo on
+  Vercel, for good; only the app on a player's machine reads `live` by default
+  ([spec 13](../specs/13-desktop.md)).
+- `WF_STORE_FILE`: the store file the app keeps its locks in. The app sets it;
+  development leaves it unset and keeps the locks in memory.
 
-## The shared store
+## The store
 
 The profile's locks live in one store with two backends behind one interface,
 `src/infra/store/`
 ([plan part 2](../specs/plan/02-architecture.md#the-store)). `store()` in
 `index.ts` picks one on each call:
 
-| Backend | File         | Used when                                                        |
-| ------- | ------------ | ---------------------------------------------------------------- |
-| Upstash | `upstash.ts` | Both Upstash variables are set: production only                  |
-| Memory  | `memory.ts`  | Either is missing: the tests, development, production until T-33 |
-| None    | `index.ts`   | Either is missing in production reading live: it throws          |
+| Backend | File        | Used when                                                |
+| ------- | ----------- | -------------------------------------------------------- |
+| File    | `file.ts`   | `WF_STORE_FILE` is set: the app                          |
+| Memory  | `memory.ts` | It is not: the demo, the tests, development              |
+| None    | `index.ts`  | It is not, in a production build reading live: it throws |
 
-Only `upstash.ts` reads the two variables, and it reads them by name rather
-than through `Redis.fromEnv()`, which would also accept Vercel's `KV_*` names.
-It turns off the client's automatic JSON parsing, so a value comes back as the
-string that was stored, as it does from memory. The tests need neither
-variable.
+Both backends are one map, `mapStore()` in `memory.ts`, so a key expires the
+same way in each: a key read after its time is gone, `increment` sets the time
+only when it creates the key, and a later increment leaves it.
 
 The memory backend keeps its map on `globalThis`, so it survives the hot reload
 of `pnpm dev`, which evaluates the modules again, and is lost only when the
-process stops. Its keys expire as Upstash's do: a key read after its time is
-gone, `increment` sets the time only when it creates the key, and a later
-increment leaves it. `flush()` empties it between tests.
+process stops. `flush()` empties it between tests.
+
+The file backend reads its file once, when the server opens it, dropping what
+expired while the app was closed. After each change it writes the whole map to
+`{file}.tmp` and renames it over the file, so a write cut short leaves the last
+complete file. A missing or unreadable file starts empty. Only one server
+writes it, because the app runs one at a time (spec 13).
+`tests/store-file.test.ts` reads a profile, spends a budget and opens the
+circuit, then opens the store again as a restart would.
