@@ -114,6 +114,13 @@ failure marks the deployment red on the commit; it does not roll it back.
   no profile. Both are switched on per project in Vercel's dashboard
   (Analytics, Speed Insights) by the owner; without that the components send
   nothing.
+- **What a shared link and a search engine see** (owner, 2026-10-21). The
+  root layout's metadata gives the app's name and summary to Open Graph and
+  to X's large card; `src/app/opengraph-image.png` is the splash over Cetus,
+  1200 by 630, without its button. `apple-icon.png`, `manifest.ts` and the
+  two icons in `public/` let a phone keep the app on its home screen.
+  `robots.ts` lets crawlers read `/` and `/connect` only, since every other
+  page needs an account, and `sitemap.ts` names those two.
 - **No cron.** Data refreshes (`pnpm data:refresh`, `pnpm data:wiki`) stay
   manual and are committed, as the architecture principle requires.
 - **No edge runtime.** Every route runs on Node.js (part 2).

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "/",
     locale: "en",
   },
-  twitter: { card: "summary", title: APP.name, description: APP.summary },
+  twitter: { card: "summary_large_image", title: APP.name, description: APP.summary },
   formatDetection: { telephone: false, email: false, address: false },
 };
 
@@ -30,7 +30,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#16130e",
+  themeColor: APP.ground,
   colorScheme: "dark",
 };
 

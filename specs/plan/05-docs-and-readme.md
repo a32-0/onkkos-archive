@@ -37,7 +37,7 @@ it records a decision that governs future work.
 | `api.md`                           | The endpoint's verified behaviour; spec 11 cites it                                                                                                           | T-18, T-19       |
 | `step-by-step.md`                  | Spec 10 cites it                                                                                                                                              | T-29             |
 | `content-updates.md`               | How a mainline or an update enters the app, and the command that runs it                                                                                      | T-31             |
-| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 10 line by line                                                                  | T-32             |
+| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 12 line by line                                                                  | T-32             |
 | `README.md` (the index)            | Every document above, in this order                                                                                                                           | T-01, T-32       |
 
 Each document is written in the task that builds the code it describes, so the
@@ -59,7 +59,9 @@ first because the player reads less. It is short and links out for the rest.
      nothing. Never the full profile and never a computed result.
    - On the device: the id, the update last played and the last place, in
      cookies; the ticked steps in the browser.
-   - No analytics and no tracking.
+   - Visits counted, never the player: Vercel's page views and load times,
+     with no cookie and no id in any address (owner, 2026-10-21; plan part
+     4).
    - How DE's endpoint is protected, in two lines, with a link to `api.md`.
 4. **How it was built.** For the reader evaluating the work: the order
    (constitution, specs, plan, tasks, code), linked to `specs/`, and the
@@ -80,9 +82,11 @@ first because the player reads less. It is short and links out for the rest.
 
 The README wears Cetus (owner, 2026-10-21): a banner, the features in two
 columns with a screenshot each, the map, and a sheet of the design system.
-Their images are the owner's, in `docs/readme/`: `banner.png`, `summary.png`,
-`step-by-step.png`, `map.png` and `design-system.png`, every screenshot of the
-Ordis demo. Section 6 credits each source in a table, with what the app takes
+Its images are in `docs/readme/`: `banner.png`, the splash over its Cetus
+art; `summary.png`, `step-by-step.png` (Rhino) and `map.png` (Mars), each of
+the Ordis demo at 390 px; and `design-system.png`, the colours of Storybook's
+Foundations page. They were taken from the running app on 2026-10-21, at the
+owner's request, and are taken again the same way when a screen changes. Section 6 credits each source in a table, with what the app takes
 from it and its terms.
 
 What it does not have:

@@ -1,5 +1,7 @@
 export const APP = {
   name: "Onkko's Archive",
+  shortName: "Onkko",
+  ground: "#16130e",
   description: "What's left, and in what order.",
   summary:
     "For Warframe players coming back: what shipped while you were away, what you still lack, and the steps to the thing you want next. A fan project, not affiliated with Digital Extremes.",

@@ -10,7 +10,7 @@ The public README's seven sections as plan part 5 sets them, `ui.md` checked aga
 
 ## Brought forward (owner, 2026-10-21)
 
-The README was rewritten before the task, at the owner's request: Cetus's branding, credits for every source the data comes from, and two diagrams in place of the arrows of the layers, which did not explain themselves (plan part 5). The owner adds its five images to `docs/readme/`. What the task still does: read each licence from its source and quote it, `docs/ui.md`, the docs index, and the owner's line about Claude.
+The README was rewritten before the task, at the owner's request: Cetus's branding, credits for every source the data comes from, and two diagrams in place of the arrows of the layers, which did not explain themselves (plan part 5). Its five images in `docs/readme/` were taken from the running app on 2026-10-21, at the owner's request, and the text was rewritten for the people who read it. What the task still does: read each licence from its source and quote it, `docs/ui.md`, the docs index, and the owner's line about Claude.
 
 ## The owner
 
@@ -29,7 +29,11 @@ The README was rewritten before the task, at the owner's request: Cetus's brandi
 
 ## Acceptance
 
-- [ ] Every document in plan part 5's table is in `docs/` and in the index.
-- [ ] No link to the Figma file, no mention of a real capture, no third demo.
-- [ ] Every licence is quoted from its source, with the link.
+- [x] Every document in plan part 5's table is in `docs/` and in the index,
+      in the table's order.
+- [x] No link to the Figma file, no mention of a real capture, no third demo.
+- [x] Every licence is quoted from its source, with the link: each WFCD
+      repository's `LICENSE` (MIT), the wiki's copyrights page, each font's
+      OFL file, Material Symbols' Apache 2.0, Vercel's terms; read on
+      2026-10-21.
 - [ ] `check.yml` passes on `dev`.

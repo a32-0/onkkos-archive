@@ -91,23 +91,24 @@ rules they would carry are in the constitution and the docs.
 
 ## `src/app/`: routes
 
-| Route                                                                                                                                                                  | Spec       | Task                   |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------- |
-| `layout.tsx`                                                                                                                                                           | 04         | T-20                   |
-| `page.tsx` (`/`)                                                                                                                                                       | 01         | T-21                   |
-| `connect/page.tsx`                                                                                                                                                     | 02         | T-22                   |
-| `features/page.tsx`                                                                                                                                                    | 03         | T-23                   |
-| `catch-up/page.tsx`                                                                                                                                                    | 05, 06     | T-24, T-25             |
-| `system/page.tsx`                                                                                                                                                      | 07         | T-26                   |
-| `goals/page.tsx`                                                                                                                                                       | 08         | T-27                   |
-| `search/page.tsx`                                                                                                                                                      | 12         | T-34                   |
-| `targets.ts`: every search hit as a screen's input, with its gap, its standing and whether it is vaulted                                                               | 08, 12     | T-34                   |
-| `item/page.tsx`                                                                                                                                                        | 09, 10     | T-28, T-29             |
-| `actions.ts`: connect, demo, disconnect, resume (`wf_since`), setOnkko (`wf_onkko`, BR-64)                                                                             | 02, 04, 05 | T-20, T-22, T-24, T-25 |
-| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03); Start here's address (BR-40); whether Onkko speaks (BR-64) | 02, 03, 04 | T-19, T-20, T-22, T-23 |
-| `chrome.ts`: what every screen of the shell passes to `Shell`, the player, Onkko's voice and the two actions                                                           | 04         | T-25                   |
-| `api/profile/[accountId]/route.ts`                                                                                                                                     | 11         | T-18                   |
-| `api/search/route.ts`: items, collectibles and places                                                                                                                  | 08         | T-27                   |
+| Route                                                                                                                                                                                                       | Spec       | Task                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ---------------------- |
+| `layout.tsx`                                                                                                                                                                                                | 04         | T-20                   |
+| `page.tsx` (`/`)                                                                                                                                                                                            | 01         | T-21                   |
+| `connect/page.tsx`                                                                                                                                                                                          | 02         | T-22                   |
+| `features/page.tsx`                                                                                                                                                                                         | 03         | T-23                   |
+| `catch-up/page.tsx`                                                                                                                                                                                         | 05, 06     | T-24, T-25             |
+| `system/page.tsx`                                                                                                                                                                                           | 07         | T-26                   |
+| `goals/page.tsx`                                                                                                                                                                                            | 08         | T-27                   |
+| `search/page.tsx`                                                                                                                                                                                           | 12         | T-34                   |
+| `targets.ts`: every search hit as a screen's input, with its gap, its standing and whether it is vaulted                                                                                                    | 08, 12     | T-34                   |
+| `item/page.tsx`                                                                                                                                                                                             | 09, 10     | T-28, T-29             |
+| `actions.ts`: connect, demo, disconnect, resume (`wf_since`), setOnkko (`wf_onkko`, BR-64)                                                                                                                  | 02, 04, 05 | T-20, T-22, T-24, T-25 |
+| `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03); Start here's address (BR-40); whether Onkko speaks (BR-64)                                      | 02, 03, 04 | T-19, T-20, T-22, T-23 |
+| `chrome.ts`: what every screen of the shell passes to `Shell`, the player, Onkko's voice and the two actions                                                                                                | 04         | T-25                   |
+| `api/profile/[accountId]/route.ts`                                                                                                                                                                          | 11         | T-18                   |
+| `api/search/route.ts`: items, collectibles and places                                                                                                                                                       | 08         | T-27                   |
+| `layout.tsx` metadata, `opengraph-image.png`, `apple-icon.png`, `manifest.ts`, `robots.ts`, `sitemap.ts`, and `public/` with the two home-screen icons: what a shared link, a phone and a search engine see | 00         | Launch                 |
 
 No route has a `loading.tsx`: no frame draws a route loading, and the one
 loading drawn is the id form's (BR-38). A goal opens Step by step, so there is
