@@ -7,6 +7,7 @@ export const ROUTES = {
   item: "/item",
   profile: "/profile",
   search: "/api/search",
+  advanced: "/search",
 } as const;
 
 export function connectAfter(reason: string, retryAt: number | null): string {
@@ -81,4 +82,8 @@ export function placesRoute(system: string, place: string, list: string | null =
 
 export function systemsRoute(system: string, place: string, list: string | null = null): string {
   return withQuery(`${ROUTES.system}/systems`, { system, place, list });
+}
+
+export function advancedRoute(query: Record<string, string | null>): string {
+  return withQuery(ROUTES.advanced, query);
 }

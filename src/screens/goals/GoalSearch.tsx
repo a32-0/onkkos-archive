@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import { GOALS } from "@/content/goals";
-import { searchRoute } from "@/routes";
+import { ADVANCED } from "@/content/search";
+import { advancedRoute, searchRoute } from "@/routes";
 import { Button } from "@/ui/Button/Button";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { nextActive, optionId, SuggestionList } from "@/ui/SuggestionList/SuggestionList";
@@ -112,6 +114,9 @@ export function GoalSearch() {
         }
       />
       <Button onClick={() => go(current?.[0])}>{GOALS.search.continue}</Button>
+      <Button variant="text" href={advancedRoute({ q: term || null })} link={Link}>
+        {ADVANCED.open}
+      </Button>
     </div>
   );
 }

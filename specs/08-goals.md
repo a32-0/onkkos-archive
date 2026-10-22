@@ -48,8 +48,9 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
 3. **Choose a target**: "Warframes, weapons, companions, mods, arcanes,
    relics, resources, quests and places.", which names what the search
    reaches now that the catalog holds every sourced resource (owner,
-   2026-10-21); the field, "A warframe, a weapon, or planet"; and
-   **Continue**.
+   2026-10-21); the field, "A warframe, a weapon, or planet";
+   **Continue**; and **Advanced search**, in the text style, which opens
+   spec 12's page with the term typed (`752:4545`).
 4. The goal cards, each a link with its icon, title and one line.
 5. **Skip**, in the secondary style, which opens the map on Start here
    (BR-40), as `662:4811` draws it since 2026-10-16.

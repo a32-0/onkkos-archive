@@ -39,7 +39,7 @@
 
 @media (min-width: 840px) {
   .clear {
-    --shell-floating-clearance: 128px;
+    --shell-floating-clearance: 130px;
     padding-bottom: var(--shell-floating-clearance);
   }
 

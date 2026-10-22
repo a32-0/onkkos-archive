@@ -1,0 +1,29 @@
+.chip {
+  padding: var(--space-4) var(--space-5);
+  border: var(--border-1) solid var(--line);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+.chip:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+}
+
+.off {
+  composes: chip;
+  composes: label from "../type.module.css";
+  background: var(--surface-sunken);
+  color: var(--ink);
+}
+
+.off:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.on {
+  composes: chip;
+  composes: label from "../type.module.css";
+  background: var(--fill-strong);
+  color: var(--ink-inverse);
+}

@@ -78,6 +78,8 @@ describe("the search rows (BR-53, BR-62)", () => {
       system: kind === "place" ? "origin" : null,
       gap,
       score,
+      standing: null,
+      vaulted: false,
     }) satisfies SearchInput;
 
   it("puts what is in reach first and says the gap of the rest", () => {

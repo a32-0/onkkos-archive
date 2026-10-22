@@ -12,7 +12,7 @@ const meta = {
         style={{
           display: "flex",
           padding: "var(--space-7)",
-          background: "var(--surface-card)",
+          background: "var(--surface-header)",
         }}
       >
         <Story />

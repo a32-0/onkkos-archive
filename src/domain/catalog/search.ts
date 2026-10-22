@@ -43,6 +43,15 @@ export function searchCatalog(
     .map((row) => ({ ...row.entry.hit, score: row.score }));
 }
 
+export function browseCatalog(
+  data: CatalogData,
+  places: ReadonlyMap<string, unknown>,
+): SearchHit[] {
+  return [...index(data, places)]
+    .sort((a, b) => a.needle.localeCompare(b.needle))
+    .map(({ hit }) => ({ ...hit, score: 0 }));
+}
+
 function scoreOf(name: string, needle: string): number {
   if (name === needle) return 4;
   if (name.startsWith(needle)) return 3;
@@ -67,7 +76,7 @@ function index(data: CatalogData, places: ReadonlyMap<string, unknown>): Entry[]
       name: item.name,
       type: item.kind,
       family: null,
-      vaulted: false,
+      vaulted: item.vaulted,
       imageUrl: item.imageUrl,
     },
   }));

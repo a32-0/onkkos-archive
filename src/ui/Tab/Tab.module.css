@@ -31,7 +31,6 @@
   --tab-floating-height: 56px;
   width: var(--tab-floating-width);
   height: var(--tab-floating-height);
-  border-radius: var(--radius-m);
 }
 
 .active {

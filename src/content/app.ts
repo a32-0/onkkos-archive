@@ -15,5 +15,6 @@ export const PAGE_TITLES = {
   locations: "Locations",
   systems: "Systems",
   goal: "Goal",
+  search: "Advanced search",
   profile: "Profile",
 } as const;

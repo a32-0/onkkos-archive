@@ -1122,3 +1122,14 @@ on 2026-10-08.
   relics it opens from, and opens no page.
 - What no source places keeps the wiki's prose and opens the wiki; the item
   sweep test names each one.
+
+### BR-68 · A filter narrows and never hides why
+
+- Settled by the owner on 2026-10-21, with the advanced search (spec 12).
+- Type: behaviour.
+- Rule: a filter on the advanced search takes results out of the list; it
+  never takes out the reason one is there. A result beyond the player's reach
+  stays in the list with its gap (BR-62) unless **In my reach** is chosen. A
+  state chosen (Not obtained, Ranking, Mastered) keeps only what the profile
+  can tell that state of, so it leaves out places, quests and what has no
+  rank.

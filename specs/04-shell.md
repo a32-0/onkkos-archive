@@ -119,11 +119,12 @@ The avatar is the player's active glyph (owner, 2026-10-16): the profile's `Acti
 ## Desktop (BR-39)
 
 - From 840 the tab bar floats (owner, 2026-10-21; it had sat in the header,
-  between the wordmark and the chip): a card on `--surface-card` with a
-  `--line-subtle` border and `--radius-l`, centred, 48 px above the bottom of
-  the screen, over the content. Its three tabs keep the same order and the
-  same active treatment, each 96 by 56 px at `--radius-m`. The content ends
-  128 px above the bottom, so the last row scrolls clear of the bar.
+  between the wordmark and the chip): a card on `--surface-header`, the
+  header's ground, with a `--line-subtle` border, `--radius-l` and 8 px
+  inside, centred, 48 px above the bottom of the screen, over the content.
+  Its three tabs keep the same order and the same active treatment, each 96
+  by 56 px with square corners (owner, 2026-10-21). The content ends 130 px
+  above the bottom, 8 px over the bar, so the last row scrolls clear of it.
   [`Tab bar` Placement=Floating](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=757-564)
   draws it, and `Search — Desktop` (spec 12) shows it in place.
 - From 840 a page under a tab keeps the header above its top bar and the

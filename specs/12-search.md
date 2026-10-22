@@ -1,7 +1,7 @@
 # 12 · Search
 
-Status: a proposal, drawn on 2026-10-21 and waiting for the owner. Nothing in
-it is built, and no task cuts it yet.
+Approved by the owner on 2026-10-21 and built by
+[T-34](tasks/T-34-advanced-search.md) the same day.
 
 Goal's search answers a name in eight rows. This page answers a narrower
 question: "the Mods I have not got", "the relics still dropping", "what is in
@@ -34,24 +34,27 @@ On the Design System page, a new component, [`751:542` Filter chip](https://www.
   the same index, the same closeness and the same gap as Goal's search.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   the width classes.
-- A new rule, to be numbered when the owner approves it: a filter narrows and
-  never hides why. A result beyond reach stays in the list with its gap
-  unless "In my reach" is chosen.
+- [BR-68](../docs/business-rules.md#br-68--a-filter-narrows-and-never-hides-why):
+  a filter narrows and never hides why. A result beyond reach stays in the
+  list with its gap unless "In my reach" is chosen.
 
 ## What the screen does
 
 Route `/search`, inside the shell, with the Goal tab lit. It opens from
 **Advanced search** on Goal, carrying the term already typed (`/search?q=ash`).
-Every filter lives in the address (`/search?q=&type=mods&status=missing`), so
-Back returns to the same results and a search can be shared.
+Every filter lives in the address (`/search?q=em&type=mods&state=absent&reach=1`),
+so Back returns to the same results and a search can be shared.
 
 From the top:
 
-1. `Top bar`, "Advanced search", with Back.
-2. The `Search field`, filled with the term carried from Goal.
-3. **Filters**, open at rest, its title with a chevron that folds it:
+1. `Top bar`, "Advanced search", with Back, which returns to Goal.
+2. Onkko's line, Goal's own: "Every choice closes off an infinite number of
+   possible futures."
+3. The `Search field`, filled with the term carried from Goal; the results
+   follow a quarter of a second after the player stops typing.
+4. **Filters**, open at rest, its title with a chevron that folds it:
    - **Type**, one or more `Filter chip`s: Warframes, Weapons, Companions,
-     Vehicles, Mods, Arcanes, Relics, Resources, Cosmetics, Places, Quests.
+     Vehicles, Mods, Arcanes, Relics, Resources, Other, Places, Quests.
      None chosen means all of them.
    - **State**, one chip at a time: All, Not obtained, Ranking, Mastered. The
      hero's states (BR-17); it narrows to what the profile can tell, so a
@@ -59,14 +62,15 @@ From the top:
    - **In my reach** and **Hide vaulted**, each a `Checkbox`.
    - **Clear**, in the text style, when anything is chosen; the desktop
      column draws it beside the title.
-4. The count, "128 results", as the label of a `Divider`.
-5. The results: `Suggestion row`s in the `Suggestion list`'s frame, best
-   first (spec 08), 20 at a time, then **Show more** in the text style.
+5. The count, "128 results", as the label of a `Divider`.
+6. The results: `ResultList`, the `Suggestion row`s as links in the
+   `Suggestion list`'s frame, best first (spec 08), 20 at a time, then
+   **Show more** in the text style, which adds twenty and keeps the scroll.
 
-Once the player scrolls past the filters, chooses one, or taps the chevron,
-the filters fold into one row: "Filters", how many are on ("2 on"), and the
-ones chosen under it ("Mods, In my reach"), with a chevron that opens them
-again.
+The chevron folds the filters into one row: "Filters", how many are on ("2
+on"), and the ones chosen under it ("Mods, In my reach"), with a chevron that
+opens them again. The page opens folded when its address already carries a
+filter. A chip or a box changes as it is pressed, while the results load.
 
 The term may be empty: filters alone list everything they hold, by name.
 
@@ -82,13 +86,14 @@ The term may be empty: filters alone list everything they hold, by name.
 
 ## Data and sources
 
-- `GET /api/search?q=&type=&status=&reach=&vaulted=&from=`, the same route
-  as Goal's, which gains the filters and a page; the page never ships the
-  whole index.
+- The page reads its results on the server, from the address, through
+  `targetInputs()` in `src/app/targets.ts`, the same reading Goal's
+  `/api/search` makes; the page never ships the whole index, only the rows
+  it shows.
 - The type groups map onto `CATALOGUES` in `src/content/goals.ts`: Weapons
   holds Primary, Secondary, Melee, Archgun, Archmelee, Amp and Incarnon;
-  Vehicles holds Archwing, Necramech and Railjack; Cosmetics holds Ephemera,
-  Honoria and the rest.
+  Vehicles holds Archwing, Necramech and Railjack; Other holds Ephemera,
+  Honoria and the rest, Kitgun parts and Misc items among them.
 - The state comes from the profile, as the hero reads it; vaulted from the
   relic and Prime data the catalog already holds.
 - Copy lives in `src/content/search.ts`.
@@ -100,12 +105,13 @@ the results fill the rest. From 1280 the results keep a reading width.
 
 ## Components
 
-`TopBar`, `SearchField`, `FilterChip` (new), `Checkbox`, `Button` (text),
-`Divider`, `SuggestionList`, `SuggestionRow` (default, beyond reach),
-`EmptyState`, and on Goal `Button` (text).
+`TopBar`, `OnkkoLine`, `SearchField`, `FilterChip` (new), `Checkbox`,
+`Button` (text), `Divider`, `ResultList` (new), `EmptyState`, and on Goal
+`Button` (text).
 
-## Open questions for the owner
+## Settled by the owner
 
-1. Whether the page is reached from elsewhere too: the map's category pages
-   and Resume's search are candidates.
-2. Whether to add sorting (best match, A to Z, Mastery Rank) now or later.
+- The page opens from Goal only, for now; the map's category pages and
+  Resume's search may open it later.
+- No sorting: the results keep the search's own order, by closeness and then
+  by reach, and by name when no term is given.

@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="docs/readme/banner.png" alt="Onkko's Archive: Quill Onkko's quill over the Plains of Eidolon at dusk" width="100%">
+  <img src="docs/readme/banner.png" alt="The opening screen of Onkko's Archive: the wordmark over Cetus at dusk" width="100%">
 </p>
 
 <h1 align="center">Onkko's Archive</h1>
 
 <p align="center">
   <em>"We watch, we anticipate, we intercede."</em><br>
-  Been away from the Origin System for months? Onkko reads your public Warframe
-  profile, tells you what shipped while you were gone, and shows you the road to
-  the thing you want next.
+  Been away from the Origin System for a while? Give Onkko your public Warframe
+  profile and you'll see what shipped while you were gone, what you're still
+  missing, and how to get the next thing you want.
 </p>
 
 <p align="center">
@@ -28,56 +28,59 @@
 
 ## What it does
 
-Two features, and the map they both lead to.
+It does two things, and both end on the same map.
 
 <table>
   <tr>
     <td width="50%" valign="top">
       <img src="docs/readme/summary.png" alt="The Summary on the Ordis demo">
       <h3>Catch up</h3>
-      Pick the update you last played. Onkko lists every warframe, weapon,
-      companion and resource that shipped since then, and which of them you
-      still lack.
+      Tell it the last update you played. You get every warframe, weapon,
+      companion and resource that came out after it, and the ones you don't
+      have yet are marked.
     </td>
     <td width="50%" valign="top">
-      <img src="docs/readme/step-by-step.png" alt="Step by step for a warframe on the Ordis demo">
+      <img src="docs/readme/step-by-step.png" alt="Step by step for Rhino on the Ordis demo">
       <h3>Get the thing you want</h3>
-      Search any item or quest. Onkko lays out what it takes, step by step:
-      the quests first, then where each part drops, then what to build it from.
+      Search for an item, a quest or a place. The page lists what it takes in
+      the order you'll do it: the quests first, then where each part drops,
+      then what you build it from. When a name isn't enough, the advanced
+      search narrows the whole catalog by type, by what you own and by what
+      you can reach.
     </td>
   </tr>
 </table>
 
 <p align="center">
-  <img src="docs/readme/map.png" alt="The map: a planet, its mastery ring and what is left to master there" width="420">
+  <img src="docs/readme/map.png" alt="The map on Mars: the planet, its mastery ring and what is left to master there" width="420">
   <br>
-  <em>Both end on the map: the place you are in, what is left to master there, and where to go next.</em>
+  <em>The map shows where you are, what you haven't mastered there yet, and where to go next.</em>
 </p>
 
 ## Privacy
 
-A promise to every player who types an id here:
+If you type your id here, this is what happens to it.
 
-- **One public id, nothing else.** The app reads the same public profile the
-  game shows when you look at another player. No login, no password, no email.
-- **Kept for twelve hours, then gone.** Only the fields the app reads are kept,
-  never the full profile and never a computed result.
-- **On your device:** your id, the update you last played and the last place
-  you opened, in cookies; the steps you ticked, in your browser. Disconnect
-  forgets your id.
-- **Visits counted, never you.** Vercel Web Analytics counts page views and
-  Speed Insights measures how fast pages load. Neither sets a cookie, and no
-  address in the app carries your id; a visitor is an anonymous hash Vercel
-  discards after a day. There is no tracking across sites and no advertising.
-- **DE's endpoint is protected.** A profile read once is kept and shared, one
-  read at a time, two new lookups per visitor every twelve hours, and the app
-  stops asking for thirty minutes when DE refuses.
-  [`docs/api.md`](docs/api.md) has the detail.
+- The app only needs your public id. It reads the same profile the game shows
+  anyone who looks you up. There's no login, no password and no email.
+- It keeps the fields it reads for twelve hours and then drops them. It never
+  stores your full profile or anything it worked out from it.
+- Your id, the last update you played and the last place you opened live in
+  cookies on your device. The steps you tick stay in your browser.
+  Disconnect forgets your id.
+- Vercel Web Analytics counts page views, and Speed Insights measures how fast
+  pages load. Neither sets a cookie, and your id never appears in an address.
+  Vercel counts a visitor as an anonymous hash and throws it away after a day.
+  Nothing follows you to other sites, and there are no ads.
+- DE's servers get looked after too. Once a profile is read, it's kept and
+  shared. Reads happen one at a time, each visitor gets two new lookups every
+  twelve hours, and if DE says no, the app waits thirty minutes before asking
+  again. [`docs/api.md`](docs/api.md) has the details.
 
 ## How it was built
 
-Nothing here was written before it was decided. The work follows one order, and
-every step answers to the one before it:
+Nothing was coded before it was decided. Each step below had to agree with the
+one before it:
 
 ```mermaid
 flowchart LR
@@ -93,15 +96,16 @@ flowchart LR
     class F code;
 ```
 
-The [constitution](specs/00-constitution.md), [specs](specs/), [plan](specs/plan/)
-and [tasks](specs/tasks/README.md#the-tasks) are all here, and each commit is
-named after its task. [`docs/spec-driven-order.md`](docs/spec-driven-order.md)
-explains the order.
+You can read all of it: the [constitution](specs/00-constitution.md), the
+[specs](specs/), the [plan](specs/plan/) and the
+[tasks](specs/tasks/README.md#the-tasks). Every commit is named after its task,
+and [`docs/spec-driven-order.md`](docs/spec-driven-order.md) explains why the
+work runs in this order.
 
 ### Where a screen comes from
 
-What happens between typing an id and seeing a screen, and which part of the
-code does each step:
+Here's what happens between typing an id and seeing a screen, and which part
+of the code handles each step:
 
 ```mermaid
 flowchart LR
@@ -120,20 +124,19 @@ flowchart LR
     class DOMAIN heart;
 ```
 
-The rules in `domain/` never touch the network, React or Next, so they can be
-tested on their own. A lint rule fails any import that goes against the
-arrows.
+The rules in `domain/` never touch the network, React or Next, so you can test
+them on their own. A lint rule fails any import that goes against the arrows.
 
 ### The Cetus design system
 
 <p align="center">
-  <img src="docs/readme/design-system.png" alt="The Cetus palette, the three typefaces and a few components" width="100%">
+  <img src="docs/readme/design-system.png" alt="The Foundations page in Storybook: the Cetus colour roles and the colours they point at" width="100%">
 </p>
 
-The look is Cetus, the Ostron town of the Plains of Eidolon, where scavenged
-craft meets the Orokin's leftovers. Names are carved in Cinzel, prose is set
-in Inter and the machine's readings in JetBrains Mono. Every colour is
-measured for contrast and for colour blindness. [`docs/cetus.md`](docs/cetus.md)
+The look comes from Cetus, the Ostron town on the Plains of Eidolon, built from
+scavenged craft and Orokin leftovers. Names are set in Cinzel, running text in
+Inter, and the machine's readings in JetBrains Mono. Every colour was checked
+for contrast and for colour blindness. [`docs/cetus.md`](docs/cetus.md)
 explains the choices, and the [Storybook](https://onkkos-archive-storybook.vercel.app)
 shows every token and component.
 
@@ -149,18 +152,18 @@ pnpm check          # types, lint, format and tests
 pnpm storybook      # the design system at localhost:6006
 ```
 
-| Variable                                             | What it does                                                                                            |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `WF_PROFILE_SOURCE`                                  | `fixture` serves the two anonymised demo profiles and never reaches DE. Development always uses it      |
-| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | The shared store for the locks, in production only. Without them, an in-memory store serves development |
+| Variable                                             | What it does                                                                                                 |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `WF_PROFILE_SOURCE`                                  | `fixture` serves the two anonymised demo profiles and never calls DE. Development always uses it             |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | The shared store that holds the locks, in production only. Without them, development uses an in-memory store |
 
-[`docs/development.md`](docs/development.md) covers the tooling, and
-[`docs/content-updates.md`](docs/content-updates.md) how a new Warframe update
-enters the app.
+[`docs/development.md`](docs/development.md) covers the tooling.
+[`docs/content-updates.md`](docs/content-updates.md) explains how a new
+Warframe update gets into the app.
 
 ## Data and credits
 
-Onkko's Archive stands on the work of others. Thank you.
+This app wouldn't exist without other people's work. Thank you to all of them.
 
 | Source                                                                                                                                                                   | What the app takes from it                                                                                                                                                           | Terms                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
@@ -174,11 +177,11 @@ Onkko's Archive stands on the work of others. Thank you.
 | [Vercel Web Analytics and Speed Insights](https://vercel.com/docs/analytics)                                                                                             | How many people visit, and how fast the pages load                                                                                                                                   | Vercel's terms                                                                              |
 | [Material Symbols Rounded](https://fonts.google.com/icons)                                                                                                               | The interface's own icons                                                                                                                                                            | Apache License 2.0                                                                          |
 
-[`docs/curated-files.md`](docs/curated-files.md) lists every vendored file with
-its source.
+[`docs/curated-files.md`](docs/curated-files.md) lists every vendored file and
+where it came from.
 
 ## Licence
 
 The [MIT licence](LICENSE) covers the code and the curated files. Warframe and
-its content belong to Digital Extremes. This is a fan project, not affiliated
-with or endorsed by them.
+its content belong to Digital Extremes. This is a fan project, and Digital
+Extremes doesn't endorse it or have anything to do with it.

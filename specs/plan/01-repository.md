@@ -61,7 +61,7 @@ them:
 ├── .env.example               The store's variables and the profile source
 ├── .github/workflows/         check.yml on every push, smoke.yml on every deployment (part 4)
 ├── .storybook/
-├── specs/                     The constitution, the eleven specs, the plan and the tasks
+├── specs/                     The constitution, the twelve specs, the plan and the tasks
 ├── docs/                      The documents of part 5
 ├── data/                      Curated files and vendored snapshots
 ├── fixtures/                  The two demos and the synthetic test profiles
@@ -100,6 +100,8 @@ rules they would carry are in the constitution and the docs.
 | `catch-up/page.tsx`                                                                                                                                                    | 05, 06     | T-24, T-25             |
 | `system/page.tsx`                                                                                                                                                      | 07         | T-26                   |
 | `goals/page.tsx`                                                                                                                                                       | 08         | T-27                   |
+| `search/page.tsx`                                                                                                                                                      | 12         | T-34                   |
+| `targets.ts`: every search hit as a screen's input, with its gap, its standing and whether it is vaulted                                                               | 08, 12     | T-34                   |
 | `item/page.tsx`                                                                                                                                                        | 09, 10     | T-28, T-29             |
 | `actions.ts`: connect, demo, disconnect, resume (`wf_since`), setOnkko (`wf_onkko`, BR-64)                                                                             | 02, 04, 05 | T-20, T-22, T-24, T-25 |
 | `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03); Start here's address (BR-40); whether Onkko speaks (BR-64) | 02, 03, 04 | T-19, T-20, T-22, T-23 |
@@ -121,7 +123,7 @@ variants (T-04 to T-10b).
 
 One folder per spec, built from the frames: `onboarding`, `connect`,
 `two-ways-in`, `shell`, `resume`, `summary`, `map`, `goals`, `item`, `steps`
-(T-20 to T-29).
+(T-20 to T-29), and `search` (T-34).
 
 ## `src/domain/`
 
