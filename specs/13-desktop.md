@@ -1,0 +1,199 @@
+# 13 · The app on the player's machine
+
+A player's own account is read by an app they install on Windows or Linux, not
+by the website. DE's CDN refuses a cloud server's address and a web page may
+not read DE's answer, while a player's own machine reads it as their game does
+([`public-release.md`](../docs/public-release.md#why-the-app-moved-to-the-players-machine)).
+This spec covers what the app is: the window the screens run in, the server
+inside it and who may talk to it, where it keeps what it keeps, how its data
+stays current after each Warframe update, and how it updates itself. The
+screens are the same screens, specs 01 to 12; nothing here changes what any
+of them shows.
+
+## Frames
+
+To be drawn in Figma and approved by the owner before this spec is pinned:
+
+- **Desktop — Starting**: the window while the app opens: the wordmark and the
+  quill card with its line, centred, on the ground of Onboarding.
+- **Desktop — Can't start**: the same window when the server inside cannot
+  start, with one line and a way to close.
+
+No other state needs a frame. The update notice is the operating system's own
+notification, and every data failure is silent by design (below).
+
+## Rules
+
+- The constitution: "It runs on the player's machine, and it protects DE's
+  endpoint", "No computed state", "Nothing real about a person ships".
+- [Spec 11](11-profile-proxy.md): the read order and every lock, kept on the
+  machine's disk.
+- [BR-01](../docs/business-rules.md#br-01--remember-the-player-on-this-device):
+  the device remembers the id.
+- [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
+  a window of any size follows the width classes.
+
+## What it is
+
+An Electron app. Its main process starts the app's own Next server, built
+`standalone`, on the player's machine, and opens one window on it. The window
+renders the routes of [`docs/ui.md`](../docs/ui.md) exactly as the demo does,
+with the profile source set to `live`. One build serves both targets: the app
+is the same `src/` tree, never a copy.
+
+| Platform | Package                                          | Updates itself |
+| -------- | ------------------------------------------------ | -------------- |
+| Windows  | An installer, for the current user, no admin     | Yes            |
+| Linux    | An AppImage                                      | Yes            |
+| Android  | Phase 7, after the refactor that needs no server | n/a            |
+
+Neither package is signed (owner, 2026-10-22). A signature would prove who
+published a package and that nobody changed it since; without one, Windows
+shows SmartScreen's warning on the first run, and the README says what to
+press. What stands in its place: each package is built by the release workflow
+from the public source, which anyone can build themselves, and reaches the
+player only from the repository's GitHub Releases, over HTTPS.
+
+## The window
+
+- One window, opened at 1280 by 800 and never narrower than 360 or shorter
+  than 640, with the system's own title bar. Its title is the page's.
+- No menu bar and no developer tools in a packaged build.
+- One app at a time: opening it again brings the open window forward.
+- **Desktop — Starting** shows from the first frame, before the server
+  answers, and gives way to the route BR-03 picks once it does: `/` for a
+  device that remembers no id, the screen the id leads to otherwise.
+- If the server cannot start, **Desktop — Can't start** replaces it. Nothing
+  else is tried; closing and opening the app tries again.
+
+## How it reads DE
+
+The server inside the app reads DE with its own `fetch`, as development
+does, and says what it is: no browser's headers, no browser's network stack
+borrowed to look like one, nothing that hides the app from a refusal
+(constitution). The owner's machine read a profile this way on 2026-10-22,
+with Node. Electron's Node runs on another TLS library, so the first thing
+the window's task builds is one read of the owner's account from inside
+Electron; if DE refuses it, the refusal's log line is recorded and the phase
+stops for the owner's decision.
+
+## Who may talk to the server
+
+The server inside the app reads DE from the player's address, so anything
+that can reach it can spend the player's reads. Only the app's window may:
+
+- It listens on `127.0.0.1` alone, on a port the operating system picks at
+  each start. Nothing on the network reaches it.
+- Each start draws a secret that only the main process knows. The main
+  process adds it to every request the window makes to the server, and to no
+  other address; the server answers any
+  request without it, or with a `Host` other than its own address, with
+  `403` and does nothing else. A web page open in the player's browser cannot
+  know the secret, so it cannot make the app call DE.
+- The window's origin stays the same across starts, so cookies (BR-01) and
+  the ticks of spec 10 survive a restart. The window loads the app through an
+  origin the app registers for itself and forwards to the server; the first
+  task that builds the window proves both survive, and if Electron's cookies
+  do not hold on that origin it records the measurement and keeps the port
+  instead, with the same secret.
+
+## What it keeps, and where
+
+Everything lives in the app's own folder in the player's profile (Electron's
+`userData`), never beside the program, which Windows may protect and an
+AppImage mounts read-only:
+
+| What                                          | Where                 | Lives for                          |
+| --------------------------------------------- | --------------------- | ---------------------------------- |
+| The trimmed profile and every lock of spec 11 | One store file        | Each lock's own window, as spec 11 |
+| `wf_account`, `wf_since`, `wf_place`          | The window's cookies  | As on the demo                     |
+| The ticks of spec 10                          | The window's storage  | Until cleared                      |
+| Wiki prose and icons, Varzia, rotations       | Next's fetch cache    | A day; Varzia ten minutes          |
+| The current `data/`                           | A data folder (below) | Until a newer set replaces it      |
+
+On Windows the uninstaller removes the folder. An AppImage has no
+uninstaller: deleting it leaves the folder, `~/.config/Onkko's Archive`, which
+the README names so a player can remove it. Disconnect clears the cookies; the
+stored profile expires on its own.
+
+What leaves the machine, and nothing else, each read the demo already makes
+but the first and the last:
+
+| To                                            | For                                                      |
+| --------------------------------------------- | -------------------------------------------------------- |
+| `api.warframe.com`                            | The profile, from the player's address (spec 11)         |
+| `wiki.warframe.com`                           | Prose, icons, place art and update art                   |
+| `www.warframe.com`, `www-static.warframe.com` | DE's own art named in the vendored data                  |
+| `cdn.warframestat.us`, `api.warframestat.us`  | Item art; Varzia's stock and the rotations               |
+| GitHub                                        | The data manifest and its files, and the updates (below) |
+
+The app sends no analytics.
+
+## The data, after each Warframe update
+
+`data/` changes with every content update (`content-updates.md`); the code
+rarely does. So the app fetches the data published on `main` rather than
+waiting for a new version of itself:
+
+1. `pnpm content:update` writes `data/manifest.json`: a schema number and,
+   for each file, its size and SHA-256. A test fails when the manifest does
+   not match the files.
+2. Each start, while **Desktop — Starting** shows, the main process reads the
+   manifest from `main` on GitHub, for at most thirty seconds in all.
+3. A manifest with the app's own schema whose files differ from the current
+   set is fetched file by file into a new folder. Every file is checked
+   against its hash; only a complete, verified set replaces the current one,
+   by renaming the folder. The old set is then deleted.
+4. A manifest with another schema is ignored: that data needs a different
+   version of the app, and the update below brings both.
+5. Offline, slow, a failed hash, a full disk: the app opens with the set it
+   has and tries again at the next start. Nothing is shown, because the set
+   it has is always complete and correct for its version.
+
+The installer carries the set that was on `main` when it was built, so the
+first start and every offline start have one. The server reads `data/` from
+the folder the main process names: that bundled set, read in place, until a
+downloaded set in the app's own folder replaces it. Nothing is ever written
+beside the program.
+
+## Updates
+
+The app checks GitHub Releases at each start and every six hours. A newer
+version downloads in the background and installs when the player closes the
+app; the operating system's notification says so once: "A new version is
+ready. It installs when you close Onkko's Archive." Its words live in
+`src/content/`, like every word the player reads.
+
+A version is published by the owner. A tag `v{version}` on `main` builds both
+packages in GitHub Actions and attaches them to a draft release; publishing
+the draft is what reaches players. A tag whose version differs from the
+app's own fails the build.
+
+## Data and sources
+
+- The read, the store and every lock: spec 11.
+- The demos: the same fixtures and buttons as the demo (spec 02).
+- The server: the app's own Next build, `output: "standalone"`, set for this
+  target alone, so the demo's build and its weight do not change.
+
+## Acceptance
+
+1. A packaged build on Windows and on Linux opens on **Desktop — Starting**
+   and then the screen BR-03 picks, and matches the demo screen for screen.
+2. The window cannot reach Node, opens no other origin inside itself, and
+   sends every link outside the app (the wiki, warframe.com, GitHub) to the
+   system's browser; any other address is refused.
+3. A request to the server from outside the window (a browser tab, `curl`)
+   answers `403` and never reads a profile or calls DE.
+4. After closing and opening the app within twelve hours, the same account
+   is read from the store, with no request to DE; the id, the month, the last
+   place and the ticks are all still there.
+5. A manifest with a newer set replaces the data in one start; a wrong hash,
+   another schema or no connection leaves the current set in use, and the
+   app opens normally.
+6. A tagged version builds both packages and a draft release; a published
+   release reaches an installed app, which installs it on close.
+7. Development still reads fixtures by default; only the packaged app reads
+   live without being told.
+8. `pnpm check` passes, with tests for the store file, the request guard and
+   the manifest.

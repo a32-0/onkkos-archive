@@ -88,6 +88,14 @@ into `main`.
 | [T-32 · The README and the last documents](T-32-readme.md)                                                    | 5     | 00                         | T-29, T-31       |
 | [T-33 · Production reads DE](T-33-production.md)                                                              | 5     | 11, 00                     | T-30, T-32       |
 | [T-34 · Screen: Advanced search](T-34-advanced-search.md)                                                     | 5     | 12, 08                     | T-27, T-29       |
+| [T-35 · The store on disk, and Upstash removed](T-35-store-on-disk.md)                                        | 6     | 11, 13                     | T-33             |
+| [T-36 · The window: Electron, the server inside it, the guard](T-36-window.md)                                | 6     | 13, 00                     | T-35             |
+| [T-37 · The data at each start](T-37-data-at-start.md)                                                        | 6     | 13, 00                     | T-36             |
+| [T-38 · Installers, releases and updates](T-38-releases.md)                                                   | 6     | 13                         | T-37             |
+| [T-39 · The demo reads no account](T-39-demo-edition.md)                                                      | 6     | 02, 11                     | T-33             |
+| [T-40 · The platform glyph in a display name](T-40-platform-glyph.md)                                         | 6     | 04, 11                     | T-35             |
+| [T-41 · The README and the documents for the app](T-41-documents.md)                                          | 6     | 00, 13                     | T-38, T-42       |
+| [T-42 · The way from the demo to the app](T-42-download-card.md)                                              | 6     | 02, 13                     | T-38, T-39       |
 
 ## Nothing left out, nothing out of order
 

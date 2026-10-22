@@ -37,7 +37,8 @@ it records a decision that governs future work.
 | `api.md`                           | The endpoint's verified behaviour; spec 11 cites it                                                                                                           | T-18, T-19       |
 | `step-by-step.md`                  | Spec 10 cites it                                                                                                                                              | T-29             |
 | `content-updates.md`               | How a mainline or an update enters the app, and the command that runs it                                                                                      | T-31             |
-| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 12 line by line                                                                  | T-32             |
+| `ui.md`                            | The routes with their frames and the link rules, checked against specs 01 to 12 line by line                                                                  | T-32, T-41       |
+| `desktop.md`                       | The app on the player's machine: how it is built, run, packaged and released, its data folder, and why each part of its security baseline is there            | T-36 to T-38     |
 | `README.md` (the index)            | Every document above, in this order                                                                                                                           | T-01, T-32       |
 
 Each document is written in the task that builds the code it describes, so the
@@ -49,19 +50,24 @@ The README has the two readers of the constitution, and it serves the player
 first because the player reads less. It is short and links out for the rest.
 
 1. **Onkko's Archive**, then one sentence: what it does for a returning player,
-   in the voice of the app. A link to the app.
+   in the voice of the app. Two ways in: the demo, which needs nothing
+   installed, and the download for Windows or Linux, with what SmartScreen
+   asks on the first run (spec 13).
 2. **What it does.** The two features, each in one line, and the map they end
    on. A screenshot of the Summary on the Ordis demo, which is anonymised.
 3. **Privacy.** A promise to strangers, in plain words:
-   - The only input is a public account id, read through the same endpoint the
-     game uses to show another player's profile. No login, no password.
-   - What the app keeps: only the fields it reads, for twelve hours, then
-     nothing. Never the full profile and never a computed result.
+   - The only input is a public account id, read by the app on the player's
+     own computer through the same endpoint the game uses to show another
+     player's profile. No login, no password, and no server of ours in
+     between.
+   - What the app keeps, on that computer: only the fields it reads, for
+     twelve hours, then nothing. Never the full profile and never a computed
+     result. What leaves it, and nothing else, as spec 13 lists.
    - On the device: the id, the update last played and the last place, in
-     cookies; the ticked steps in the browser.
-   - Visits counted, never the player: Vercel's page views and load times,
-     with no cookie and no id in any address (owner, 2026-10-21; plan part
-     4).
+     cookies; the ticked steps in the app's storage.
+   - The demo reads no account. Its visits are counted, never the player:
+     Vercel's page views and load times, with no cookie and no id in any
+     address (owner, 2026-10-21; plan part 4). The app sends no analytics.
    - How DE's endpoint is protected, in two lines, with a link to `api.md`.
 4. **How it was built.** For the reader evaluating the work: the order
    (constitution, specs, plan, tasks, code), linked to `specs/`, and the

@@ -2,7 +2,9 @@
 
 On 2026-10-04 the owner decided to release Onkko's Archive from this public
 repository, deployed for anyone to use and built through the
-[spec-driven order](spec-driven-order.md). This page records each decision
+[spec-driven order](spec-driven-order.md). On 2026-10-22 the player's own
+account moved to an app on their machine, with the website kept as a demo
+(below). This page records each decision
 made on the way: the question that raised it, the options weighed and the
 measurement that settled it, so the reasoning is still there for the
 project's case study. The rules that came out of it are in
@@ -222,10 +224,61 @@ All of this is recorded as BR-34 to BR-37 in
 constitution's feature definitions were corrected the same day. Story quests leave Catch me up but not the app: a quest
 still has its Step by step, and its chain still comes from the spine (BR-28).
 
+## Why the app moved to the player's machine
+
+On 2026-10-21 production was set to read DE, through Upstash and every lock,
+and the owner's own account answered `throttled`. The client logged nothing
+then, so it was made to log each refusal's status and the headers that say
+who refused, never the id. Three single reads, each of the owner's own
+account, settled the cause:
+
+| Read from                                          | Answer                                                                                         |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Production on Vercel                               | `403` from `AkamaiGHost`, empty body, no `retry-after`, on the deployment's very first request |
+| The owner's browser, a `fetch` from the app's page | DE answered without `Access-Control-Allow-Origin`, so the page could not read it               |
+| The owner's machine, `pnpm dev` with `live`        | The profile                                                                                    |
+
+DE's CDN refuses a cloud server's address before DE sees the request, and a
+web page is not allowed to read the answer. The player's own machine reads it,
+as their game does. Nothing that hides a server from that refusal was
+considered: no rotating addresses, no borrowed residential ones, no posing as
+a browser. The refusal is DE's choice.
+
+The options weighed that day:
+
+| Option                                   | For                                                | Against                                                                                               |
+| ---------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Ask DE to let the server read            | Nothing changes for a player                       | Depends on an answer that may never come                                                              |
+| A browser extension                      | Reads from the player's address                    | A second product to publish per browser, and the screens still render on a server                     |
+| A desktop app, Electron                  | The Next server runs unchanged inside it           | Heavier than a native app: its own Chromium, about 100 MB to download                                 |
+| A desktop app, Tauri with Node beside it | A smaller installer                                | A second process to manage, Rust in the build, and WebKitGTK on Linux; the Next server's weight stays |
+| A desktop app, Tauri with no server      | About 10 MB, and the same code for Android and iOS | Every page's data loading rewritten first                                                             |
+| Native, WinUI or WPF                     | The lightest and most native                       | Windows only, and every screen and the engine rewritten in C#                                         |
+
+The owner chose on 2026-10-22: **Electron, for Windows and Linux first, then
+Android**, in this repository, with the website kept as a demo that needs
+nothing installed. Electron is the one option that keeps every screen, the
+engine and the locks as they are, for a first desktop app. Android cannot run
+a Next server, so its phase starts with the refactor that loads each page's
+data without one; the desktop app does not wait for it.
+
+What moving changes:
+
+- **A refusal now costs the player, not everyone.** The locks protect that
+  player's own game, so they stay in code, kept on the machine's disk across
+  restarts, and no setting shortens one.
+- **No shared store.** One machine runs one server, so the locks need no
+  Upstash; the demo never calls DE and needs no store either.
+- **Who plays where** was not published by DE when asked (2026-10-22). Steam
+  alone holds 45,000 to 86,000 players at once on monthly average, which
+  suggests PC is most of the active players, and every console player can
+  still use the app on a computer or, later, a phone: cross-save makes the
+  profile the same wherever they play.
+
 ## What follows for the plan
 
-- The cache, the visitor budget and the circuit breaker live in the shared
-  store.
+- The cache, the visitor budget and the circuit breaker live in the app's
+  store on the player's disk, since 2026-10-22; before, in the shared store.
 - The stored profile is the whitelisted, compressed form, not the raw payload.
 - The budget can stay as it is: with a twelve-hour window, re-reading one's own
   profile costs at most one lookup per window.
