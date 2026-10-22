@@ -44,9 +44,7 @@ It does two things, and both end on the same map.
       <h3>Get the thing you want</h3>
       Search for an item, a quest or a place. The page lists what it takes in
       the order you'll do it: the quests first, then where each part drops,
-      then what you build it from. When a name isn't enough, the advanced
-      search narrows the whole catalog by type, by what you own and by what
-      you can reach.
+      then what you build it from.
     </td>
   </tr>
 </table>
@@ -59,13 +57,13 @@ It does two things, and both end on the same map.
 
 ## Privacy
 
-If you type your id here, this is what happens to it.
+If you type your ID here, this is what happens to it.
 
-- The app only needs your public id. It reads the same profile the game shows
+- The app only needs your public ID. It reads the same profile the game shows
   anyone who looks you up. There's no login, no password and no email.
 - It keeps the fields it reads for twelve hours and then drops them. It never
   stores your full profile or anything it worked out from it.
-- Your id, the last update you played and the last place you opened live in
+- Your ID, the last update you played and the last place you opened live in
   cookies on your device. The steps you tick stay in your browser.
   Disconnect forgets your id.
 - Vercel Web Analytics counts page views, and Speed Insights measures how fast

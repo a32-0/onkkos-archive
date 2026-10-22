@@ -22,9 +22,20 @@ export async function requestProfile(accountId: string): Promise<Reading> {
       cache: "no-store",
     });
     return await classify(response);
-  } catch {
+  } catch (error) {
+    console.warn(`DE gave no answer: ${error instanceof Error ? error.name : "unknown"}`);
     return { kind: "refused", reason: "upstream" };
   }
+}
+
+function refused(response: Response, body: string, reason: "throttled" | "upstream"): Reading {
+  const header = (name: string) => response.headers.get(name) ?? "-";
+  console.warn(
+    `DE refused a read: ${reason}, status ${response.status}, server ${header("server")}, ` +
+      `cf-mitigated ${header("cf-mitigated")}, retry-after ${header("retry-after")}, ` +
+      `${header("content-type")}, ${body.length} characters`,
+  );
+  return { kind: "refused", reason };
 }
 
 async function classify(response: Response): Promise<Reading> {
@@ -36,12 +47,12 @@ async function classify(response: Response): Promise<Reading> {
         ttlMs: ttlFromCacheControl(response.headers.get("cache-control")),
       };
     }
-    return { kind: "refused", reason: "throttled" };
+    return refused(response, body, "throttled");
   }
   if (response.status === 403 || response.status === 429) {
-    return { kind: "refused", reason: "throttled" };
+    return refused(response, await response.text(), "throttled");
   }
-  if (!response.ok) return { kind: "refused", reason: "upstream" };
+  if (!response.ok) return refused(response, await response.text(), "upstream");
 
   let parsed: RawProfileResponse;
   try {

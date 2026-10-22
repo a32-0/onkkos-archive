@@ -172,6 +172,24 @@ describe("fetchProfile", () => {
     network.mockRejectedValue(new DOMException("The operation timed out", "TimeoutError"));
     expect(await fetchProfile(ACCOUNT_ID, VISITOR)).toEqual({ ok: false, reason: "upstream" });
   });
+
+  it("logs why DE refused, and never the id", async () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    network.mockResolvedValue(
+      new Response("<html>blocked</html>", {
+        status: 403,
+        headers: { server: "cloudflare", "cf-mitigated": "challenge", "content-type": "text/html" },
+      }),
+    );
+    expect(await fetchProfile(ACCOUNT_ID, VISITOR)).toEqual({ ok: false, reason: "throttled" });
+    const line = String(warn.mock.calls[0]?.[0]);
+    expect(line).toContain("status 403");
+    expect(line).toContain("server cloudflare");
+    expect(line).toContain("cf-mitigated challenge");
+    expect(line).not.toContain(ACCOUNT_ID);
+    expect(line).not.toContain(VISITOR);
+    warn.mockRestore();
+  });
 });
 
 describe("what the store keeps", () => {

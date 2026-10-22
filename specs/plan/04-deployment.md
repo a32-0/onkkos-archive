@@ -111,7 +111,8 @@ failure marks the deployment red on the commit; it does not roll it back.
   No address in the app carries an account id, so nothing needs redacting
   with `beforeSend`; a route that ever does must redact it. No custom event
   is sent. Vercel's function logs stay the only other record, and they hold
-  no profile. Both are switched on per project in Vercel's dashboard
+  no profile: a refused profile read writes its status there, never the id
+  ([`api.md`](../../docs/api.md#status-codes)). Both are switched on per project in Vercel's dashboard
   (Analytics, Speed Insights) by the owner; without that the components send
   nothing.
 - **What a shared link and a search engine see** (owner, 2026-10-21). The
