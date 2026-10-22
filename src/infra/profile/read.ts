@@ -49,7 +49,12 @@ export async function fetchProfile(rawAccountId: string, visitor: string): Promi
   const existing = inFlight.get(key);
   if (existing) return existing;
   const read = readLive(accountId, visitor)
-    .catch(() => failure("upstream"))
+    .catch((error: unknown) => {
+      console.warn(
+        `The store failed a read: ${error instanceof Error ? error.message : "unknown"}`,
+      );
+      return failure("upstream");
+    })
     .finally(() => inFlight.delete(key));
   inFlight.set(key, read);
   return read;

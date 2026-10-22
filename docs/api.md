@@ -50,6 +50,13 @@ GET https://api.warframe.com/cdn/getProfileViewingData.php?playerId={account_id}
 | No answer in fifteen seconds, or no connection                    | Upstream problem                                                 | `upstream`, never kept, a refusal      |
 | `200` + a body that is not JSON, or has no `Results[0]`           | Upstream HTML error page                                         | `malformed`, never kept, not a refusal |
 
+Every refusal writes one line to Vercel's function log, `DE refused a read:`,
+with the status, the `server`, `cf-mitigated` and `retry-after` headers, the
+content type and the body's length; a read with no answer writes `DE gave no
+answer:` and the error's name, and a store that fails writes `The store
+failed a read:` and its message. None of them holds the id, the visitor or
+the profile.
+
 The two `409` variants are the trap: keeping the empty-body one would pin a
 false "account not found" for ten minutes, the default when no `max-age` comes.
 `tests/client.test.ts` covers it.

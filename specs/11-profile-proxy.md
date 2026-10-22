@@ -52,6 +52,12 @@ In order, for every read:
 9. **Keep** only what the app reads: the profile cut to the fields any spec
    uses, compressed, for twelve hours. The raw payload is never stored.
 
+A refusal, a read that gets no answer and a store that fails each write one
+line to the host's function log: DE's status and the headers that say who
+refused, or the error's name. The line never holds the account id, the
+visitor or the profile (added 2026-10-21, when production's first read was
+refused and nothing said why).
+
 How the store implements each step: [plan part 2](plan/02-architecture.md).
 
 ## Shared, never per instance
