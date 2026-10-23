@@ -17,6 +17,9 @@ arrives with the task that builds what it describes.
 - [`spec-driven-order.md`](spec-driven-order.md): the order the work follows
   (constitution, design, spec, plan, tasks, code) and how a spec carries the
   visuals.
+- [`desktop.md`](desktop.md): the app on the player's machine. It covers how
+  it is staged and run, what each file in `desktop/` does, the window, the
+  guard in front of the server and why the window is shut tight.
 - [`development.md`](development.md): the tooling, what CI runs, the palette
   check, the layers and the rule that enforces them, the conventions, the
   environment variables, and the shared store's two backends.

@@ -1,76 +1,18 @@
-import { app, BrowserWindow, screen, session, utilityProcess } from "electron";
-import { readFileSync, writeFileSync } from "node:fs";
-import { createServer } from "node:net";
 import path from "node:path";
+
+import { app, BrowserWindow, screen, session } from "electron";
+
+import { LAUNCH_HEADER } from "./guard.js";
+import { holdLinks } from "./links.js";
+import { startServer } from "./server.js";
 
 const WINDOW = { width: 390, widest: 600, height: 844, lowest: 640 } as const;
 const GROUND = "#16130e";
-const READY_MS = 30_000;
 const RETURNING = "/system";
+const STARTING = path.join(import.meta.dirname, "starting");
+const NO_SCROLL_BAR = "html { scrollbar-width: none; }";
 
-function listenable(port: number): Promise<number> {
-  return new Promise((resolve, reject) => {
-    const probe = createServer();
-    probe.once("error", reject);
-    probe.listen(port, "127.0.0.1", () => {
-      const address = probe.address();
-      probe.close(() =>
-        typeof address === "object" && address
-          ? resolve(address.port)
-          : reject(new Error("No port")),
-      );
-    });
-  });
-}
-
-async function keptPort(): Promise<number> {
-  const file = path.join(app.getPath("userData"), "port");
-  const kept = Number.parseInt(readFileSync(file, { encoding: "utf8", flag: "a+" }), 10);
-  const port = await listenable(kept > 0 ? kept : 0).catch(() => listenable(0));
-  if (port !== kept) writeFileSync(file, String(port));
-  return port;
-}
-
-async function answers(url: string): Promise<void> {
-  const deadline = Date.now() + READY_MS;
-  while (Date.now() < deadline) {
-    const ok = await fetch(url).then(
-      (response) => response.ok,
-      () => false,
-    );
-    if (ok) return;
-    await new Promise((resolve) => setTimeout(resolve, 250));
-  }
-  throw new Error("The server did not answer");
-}
-
-function serverFolder(): string {
-  return app.isPackaged
-    ? path.join(process.resourcesPath, "server")
-    : path.join(import.meta.dirname, "..", "..", ".next", "standalone");
-}
-
-async function start(): Promise<void> {
-  const port = await keptPort();
-  const folder = serverFolder();
-  const server = utilityProcess.fork(path.join(folder, "server.js"), [], {
-    cwd: folder,
-    stdio: "inherit",
-    env: {
-      ...process.env,
-      NODE_ENV: "production",
-      PORT: String(port),
-      HOSTNAME: "127.0.0.1",
-      WF_EDITION: "app",
-      WF_PROFILE_SOURCE: "live",
-      WF_STORE_FILE: path.join(app.getPath("userData"), "store.json"),
-    },
-  });
-  app.on("will-quit", () => server.kill());
-
-  const origin = `http://127.0.0.1:${port}`;
-  await answers(`${origin}/connect`);
-
+function openWindow(): BrowserWindow {
   const height = Math.min(WINDOW.height, screen.getPrimaryDisplay().workAreaSize.height);
   const window = new BrowserWindow({
     width: WINDOW.width,
@@ -82,13 +24,57 @@ async function start(): Promise<void> {
     maximizable: false,
     fullscreenable: false,
     backgroundColor: GROUND,
-    webPreferences: { contextIsolation: true, sandbox: true, nodeIntegration: false },
+    webPreferences: {
+      contextIsolation: true,
+      sandbox: true,
+      nodeIntegration: false,
+      devTools: !app.isPackaged,
+    },
   });
   window.removeMenu();
-  const remembered = await session.defaultSession.cookies.get({ url: origin, name: "wf_account" });
-  await window.loadURL(remembered.length > 0 ? `${origin}${RETURNING}` : origin);
+  window.webContents.on("dom-ready", () => void window.webContents.insertCSS(NO_SCROLL_BAR));
+  return window;
 }
 
-app.whenReady().then(start, () => app.quit());
-app.on("before-quit", () => void session.defaultSession.cookies.flushStore());
-app.on("window-all-closed", () => app.quit());
+function signRequests(origin: string, token: string): void {
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    const own = URL.parse(details.url)?.origin === origin;
+    callback({
+      requestHeaders: own
+        ? { ...details.requestHeaders, [LAUNCH_HEADER]: token }
+        : details.requestHeaders,
+    });
+  });
+}
+
+async function start(): Promise<void> {
+  let origin: string | null = null;
+  const window = openWindow();
+  holdLinks(window, () => origin);
+  app.on("second-instance", () => {
+    if (window.isMinimized()) window.restore();
+    window.focus();
+  });
+  await window.loadFile(path.join(STARTING, "starting.html"));
+  try {
+    const server = await startServer();
+    origin = server.origin;
+    signRequests(server.origin, server.token);
+    const remembered = await session.defaultSession.cookies.get({
+      url: server.origin,
+      name: "wf_account",
+    });
+    await window.loadURL(remembered.length > 0 ? `${server.origin}${RETURNING}` : server.origin);
+  } catch (error) {
+    console.error(error);
+    await window.loadFile(path.join(STARTING, "failed.html"));
+  }
+}
+
+if (app.requestSingleInstanceLock()) {
+  app.whenReady().then(start, () => app.quit());
+  app.on("before-quit", () => void session.defaultSession.cookies.flushStore());
+  app.on("window-all-closed", () => app.quit());
+} else {
+  app.quit();
+}

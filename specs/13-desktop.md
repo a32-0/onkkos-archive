@@ -64,15 +64,16 @@ player only from the repository's GitHub Releases, over HTTPS.
   wide, the frames' width, and can be widened to 600, the top of BR-39's
   first class, never past it nor narrower than 390. It opens 844 tall, or as
   tall as the screen allows, and is never shorter than 640. It cannot be
-  maximised or made full screen. The scroll bar draws over the content, so
-  the content keeps its full width. The system's own title bar; its title is
+  maximised or made full screen. The scroll bar is hidden, so the content
+  keeps its full width (Chromium's overlay bar cannot be switched on from
+  inside the app; `docs/desktop.md`). The system's own title bar; its title is
   the page's. A desktop layout was drawn and set aside the same day: the
   first version ships at a phone's width.
 - No menu bar and no developer tools in a packaged build.
 - One app at a time: opening it again brings the open window forward.
 - **Desktop — Starting** shows from the first frame, before the server
-  answers, and gives way to the route BR-03 picks once it does: `/` for a
-  device that remembers no id, the screen the id leads to otherwise.
+  answers, and gives way once it does: to `/` for a device that remembers no
+  id, and to the map (`/system`) for one that does (owner, 2026-10-23).
 - If the server cannot start, **Desktop — Can't start** replaces it. Nothing
   else is tried; closing and opening the app tries again.
 
@@ -99,7 +100,8 @@ that can reach it can spend the player's reads. Only the app's window may:
   other address; the server answers any
   request without it, or with a `Host` other than its own address, with
   `403` and does nothing else. A web page open in the player's browser cannot
-  know the secret, so it cannot make the app call DE.
+  know the secret, so it cannot make the app call DE. The check runs in the
+  server's own process, in front of Next, so the demo's proxy stays as it is.
 - The window's origin stays the same across starts, so cookies (BR-01) and
   the ticks of spec 10 survive a restart. The window loads the app through an
   origin the app registers for itself and forwards to the server; the first
@@ -179,6 +181,11 @@ app; the operating system's notification says so once: "A new version is
 ready. It installs when you close Onkko's Archive." Its words live in
 `src/content/`, like every word the player reads.
 
+Profile's **Check** (spec 04) asks at once instead of waiting. While it asks,
+the button reads "Checking…" and is disabled; then the row says "Up to date"
+or that the new version is downloading, and the notification above follows
+as usual. Without a network the row says the check could not reach GitHub.
+
 A version is published by the owner. A tag `v{version}` on `main` builds both
 packages in GitHub Actions and attaches them to a draft release; publishing
 the draft is what reaches players. A tag whose version differs from the
@@ -194,7 +201,7 @@ app's own fails the build.
 ## Acceptance
 
 1. A packaged build on Windows and on Linux opens on **Desktop — Starting**
-   and then the screen BR-03 picks, 390 wide, matching each frame; widened to
+   and then the splash or the map (The window, above), 390 wide, matching each frame; widened to
    600 it holds BR-39, and it can be neither narrower nor wider.
 2. The window cannot reach Node, opens no other origin inside itself, and
    sends every link outside the app (the wiki, warframe.com, GitHub) to the

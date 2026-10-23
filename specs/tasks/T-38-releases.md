@@ -23,6 +23,7 @@ it.
 | `desktop/src/updates.ts`        | `electron-updater` at each start and every six hours; install on close; the one notification                                                                    |
 | `desktop/package.json`          | `electron-builder` and `electron-updater`, pinned; the app's version                                                                                            |
 | `src/content/desktop.ts`        | The notification's words                                                                                                                                        |
+| `src/screens/shell/Profile.tsx` | About (spec 04): the version the main process passes as `WF_APP_VERSION`, and Check, which asks the main process over the server's `parentPort` to look now     |
 | `.github/workflows/release.yml` | Plan 4's three steps, on a `v*` tag alone, with `contents: write`                                                                                               |
 
 ## Documents

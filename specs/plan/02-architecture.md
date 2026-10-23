@@ -19,15 +19,16 @@ them apart:
 | `WF_PROFILE_SOURCE` | `fixture`           | `live`                             | `fixture` (`.env.example`)  |
 | `WF_STORE_FILE`     | Unset: memory       | The store file in the app's folder | Unset: memory               |
 
-The main process of the app sets the app's column, with `WF_DATA_DIR` (the
-current data set), `WF_LAUNCH_TOKEN` (the start's secret) and the cache folder
-below; nothing in the player's hands sets any of them.
+The main process of the app sets the app's column, with `WF_LAUNCH_TOKEN`
+(the start's secret) and `WF_LAUNCH_HOST` (the server's own address), and
+T-37 adds the current data set; nothing in the player's hands sets any of
+them.
 
 ```
 Electron main ──► Next server (standalone, 127.0.0.1, any port)
    │  secret on each request to it   │
    ▼                                 ▼
-the window ──► proxy.ts: secret and Host checked, else 403 ──► the routes below
+the window ──► guard: secret and Host checked, else 403 ──► Next ──► the routes below
 ```
 
 - **The build.** The app's build sets `output: "standalone"` for its target
@@ -35,18 +36,22 @@ the window ──► proxy.ts: secret and Host checked, else 403 ──► the r
   functions and `pnpm weight` are what they are today. `server.js` serves
   `public/` and `.next/static` once they are copied beside it, as Next's
   `output` reference says.
-- **The guard is `proxy.ts`.** When `WF_LAUNCH_TOKEN` is set, a request without
-  it in its header, or with a `Host` other than the server's own, answers
-  `403` before any route runs. The demo and development set no token, and the
-  proxy behaves as it does today.
+- **The guard sits in front of Next, in the server's own process**
+  (`desktop/src/guard.ts`). A request without the secret in its header, or
+  with a `Host` other than the server's own, answers `403` before Next sees
+  it. It is not `proxy.ts`: a proxy's matcher is fixed at build time, so the
+  app's guard would have made the demo run its proxy on every page, where it
+  runs on `/system` alone (2026-10-23). The demo and development are
+  untouched.
 - **Writable folders.** The program's folder is read-only on an AppImage and
   may be on Windows, so every write goes under Electron's `userData`: the
-  store file, the data sets and Next's fetch cache. The fetch cache moves
-  through `cacheHandler`, which Next 16's `incrementalCacheHandlerPath`
-  reference documents as covering the patched `fetch`; the task that builds
-  the window confirms it before relying on it.
-- **The loaders read `WF_DATA_DIR`** when it is set, and `data/` beside the
-  code otherwise, so the demo and development are unchanged.
+  store file and the data sets. Next's cache never reaches the disk: the
+  app's `cacheHandler` (`desktop/next-cache.cjs`) keeps it in memory, so the
+  wiki and the worldstate are read again after each start (2026-10-23).
+- **The loaders read the app's current data set** (T-37), and `data/` beside
+  the code otherwise, so the demo and development are unchanged. A path read
+  from a variable makes Turbopack trace the whole project, so the shape is
+  T-37's to find.
 
 ## A request, end to end
 

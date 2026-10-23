@@ -12,15 +12,16 @@ in a complete, verified set at its next start.
 
 ## What it builds
 
-| File                          | Note                                                                                                        |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `scripts/data-manifest.ts`    | `pnpm data:manifest`: the schema and each file's size and SHA-256 into `data/manifest.json`                 |
-| `scripts/content-update.ts`   | Runs `pnpm data:manifest` last                                                                              |
-| `data/manifest.json`          | The manifest; the schema starts at 1 and rises when a file's shape changes                                  |
-| `desktop/src/data.ts`         | The check of spec 13, thirty seconds at most; the download into a new folder, each hash; the swap by rename |
-| `desktop/src/main.ts`         | Runs the check while **Desktop — Starting** shows, then starts the server on the current set                |
-| `tests/data-manifest.test.ts` | The manifest matches the files; `check.yml` fails when a data commit forgets it                             |
-| `desktop/tests/data.test.ts`  | A newer set swapped; a wrong hash, another schema, a timeout and no connection each keep the current set    |
+| File                          | Note                                                                                                            |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `scripts/data-manifest.ts`    | `pnpm data:manifest`: the schema and each file's size and SHA-256 into `data/manifest.json`                     |
+| `scripts/content-update.ts`   | Runs `pnpm data:manifest` last                                                                                  |
+| `data/manifest.json`          | The manifest; the schema starts at 1 and rises when a file's shape changes                                      |
+| `desktop/src/data.ts`         | The check of spec 13, thirty seconds at most; the download into a new folder, each hash; the swap by rename     |
+| `desktop/src/main.ts`         | Runs the check while **Desktop — Starting** shows, then starts the server on the current set                    |
+| `src/infra/*` loaders         | `data/` read from the app's current set, in a shape Turbopack can trace without taking the whole project (T-36) |
+| `tests/data-manifest.test.ts` | The manifest matches the files; `check.yml` fails when a data commit forgets it                                 |
+| `desktop/tests/data.test.ts`  | A newer set swapped; a wrong hash, another schema, a timeout and no connection each keep the current set        |
 
 ## Documents
 

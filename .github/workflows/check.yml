@@ -36,6 +36,12 @@ jobs:
       - name: Dead code
         run: pnpm knip
 
+      - name: Desktop install
+        run: pnpm --dir desktop install --frozen-lockfile --ignore-scripts
+
+      - name: Desktop check
+        run: pnpm --dir desktop check
+
       - name: Chromium
         run: pnpm exec playwright install --with-deps chromium
 

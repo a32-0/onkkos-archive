@@ -180,20 +180,23 @@ the content review's report and of the command's lines in the terminal
 Electron's side of the app (spec 13; part 2, "Two targets, one tree"). It has
 its own `package.json`, lockfile and TypeScript settings, so Electron and its
 packager never enter the demo's install, its build or its functions; it is not
-a pnpm workspace. It imports nothing from `src/` but the words it shows, from
-`src/content/desktop.ts`.
+a pnpm workspace. It reads nothing from `src/` but what the starting frames
+draw: the words of `src/content/`, `src/ui/tokens.css` and the wordmark's
+paths.
 
-| File                   | Holds                                                                                                        | Task       |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------ | ---------- |
-| `package.json`         | The app's version, Electron, `electron-builder`, `electron-updater`; the scripts that build and package      | T-36, T-38 |
-| `src/main.ts`          | One app at a time, the window, the secret, starting the server, the links sent to the system's browser       | T-36       |
-| `src/server.ts`        | Starts the standalone server on `127.0.0.1` with the app's variables, and stops it with the app              | T-36       |
-| `src/origin.ts`        | The window's origin, forwarded to the server with the secret                                                 | T-36       |
-| `src/starting.html`    | **Desktop — Starting** and **Desktop — Can't start**, as plain HTML on the tokens, before the server answers | T-36       |
-| `src/data.ts`          | The manifest check, the download, the hashes and the swap of the data set                                    | T-37       |
-| `src/updates.ts`       | `electron-updater` against GitHub Releases, and the one notification                                         | T-38       |
-| `electron-builder.yml` | The Windows installer and the AppImage, what each carries, and the release they go to                        | T-38       |
-| `scripts/stage.mjs`    | Builds the app's target, copies `public/`, `.next/static` and `data/` beside `server.js`                     | T-36       |
+| File                   | Holds                                                                                                               | Task       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `package.json`         | The app's version, Electron, `electron-builder`, `electron-updater`; the scripts that build and package             | T-36, T-38 |
+| `src/main.ts`          | One app at a time, the window, the secret, starting the server, the links sent to the system's browser              | T-36       |
+| `src/server.ts`        | Starts the standalone server on `127.0.0.1` on the kept port with the app's variables, and stops it with the app    | T-36       |
+| `src/guard.ts`         | Runs in the server's process: the secret and the `Host` checked before Next answers                                 | T-36       |
+| `scripts/starting.mjs` | Writes **Desktop — Starting** and **Desktop — Can't start** as local pages on the tokens, before the server answers | T-36       |
+| `src/links.ts`         | Navigation held to the server's origin; the wiki, warframe.com and GitHub sent to the system's browser              | T-36       |
+| `next-cache.cjs`       | Next's cache for the app, in memory                                                                                 | T-36       |
+| `src/data.ts`          | The manifest check, the download, the hashes and the swap of the data set                                           | T-37       |
+| `src/updates.ts`       | `electron-updater` against GitHub Releases, and the one notification                                                | T-38       |
+| `electron-builder.yml` | The Windows installer and the AppImage, what each carries, and the release they go to                               | T-38       |
+| `scripts/stage.mjs`    | Builds the app's target, copies `public/`, `.next/static` and `data/` beside `server.js`                            | T-36       |
 
 `check.yml` typechecks and lints `desktop/` with its own settings, and its
 tests run with the rest (part 4).
