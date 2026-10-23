@@ -12,12 +12,15 @@ of them shows.
 
 ## Frames
 
-To be drawn in Figma and approved by the owner before this spec is pinned:
+Drawn on 2026-10-22 in the first row of "App flows", from Onboarding —
+Loading, for the owner to approve before this spec is pinned:
 
-- **Desktop — Starting**: the window while the app opens: the wordmark and the
-  quill card with its line, centred, on the ground of Onboarding.
-- **Desktop — Can't start**: the same window when the server inside cannot
-  start, with one line and a way to close.
+- [`764:5335` Desktop — Starting](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5335): the window while the app
+  opens: the header's wordmark, and the quill card centred under it reading
+  "Onkko is opening the archive...".
+- [`764:5389` Desktop — Can't start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5389): the same window when the
+  server inside cannot start: the error band, "Onkko's Archive couldn't
+  start. Close it and open it again.", and **Close**, which quits the app.
 
 No other state needs a frame. The update notice is the operating system's own
 notification, and every data failure is silent by design (below).

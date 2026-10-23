@@ -29,6 +29,7 @@ its card to the download, which T-42 adds once a release exists (owner,
 
 ## Acceptance
 
-- [ ] Spec 02's acceptance 8; acceptance 1 to 7 still hold in the app and in development.
-- [ ] At 390 px **Connect — Demo** matches its frame but for the card; at 360, 600, 840, 1280 and 1440 it holds BR-39.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm build`, `pnpm weight` and `pnpm test:stories` pass; `check.yml` passes on `dev`.
+- [x] Spec 02's acceptance 8; acceptance 1 to 7 still hold in the app and in development.
+- [x] At 390 px **Connect — Demo** matches its frame but for the card; at 360, 600, 840, 1280 and 1440 it holds BR-39.
+- [x] `pnpm check`, `pnpm knip`, `pnpm build`, `pnpm weight` and `pnpm test:stories` pass.
+- [ ] `check.yml` passes on `dev`.

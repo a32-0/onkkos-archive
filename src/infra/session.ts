@@ -5,6 +5,8 @@ import { cookies } from "next/headers";
 import { normalizeAccountId } from "@/domain/profile/account-id";
 import { isOnkkoChoice, type OnkkoChoice } from "@/domain/profile/onkko";
 import { isYearMonth } from "@/domain/since";
+import { isDemoSite } from "@/infra/edition";
+import { isDemoAccountId } from "@/infra/profile/fixture-source";
 
 const ACCOUNT_COOKIE = "wf_account";
 const SINCE_COOKIE = "wf_since";
@@ -23,7 +25,9 @@ export interface LastPlace {
 
 export async function readAccountId(): Promise<string | null> {
   const value = (await cookies()).get(ACCOUNT_COOKIE)?.value;
-  return value ? normalizeAccountId(value) : null;
+  const accountId = value ? normalizeAccountId(value) : null;
+  if (accountId && isDemoSite() && !isDemoAccountId(accountId)) return null;
+  return accountId;
 }
 
 export async function writeAccountId(accountId: string): Promise<void> {

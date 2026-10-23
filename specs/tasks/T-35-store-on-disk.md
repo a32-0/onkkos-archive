@@ -36,4 +36,4 @@ longer say "shared".
 - [x] Spec 11's acceptance 2, 3, 4 and 9 hold against the file backend, a restart between reads included.
 - [x] No file names Upstash but the history: `git grep -i upstash` finds only the record of its removal: `docs/public-release.md`, the plan's notes that it was removed, and the tasks up to this one.
 - [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm weight` pass; the demo's build is unchanged.
-- [ ] `check.yml` passes on `dev`.
+- [x] `check.yml` passes on `dev`.

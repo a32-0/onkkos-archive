@@ -190,6 +190,15 @@ describe("fetchProfile", () => {
   });
 });
 
+describe("on the demo (spec 02)", () => {
+  it("reads nothing for an id that is no demo's, and still opens a demo", async () => {
+    vi.stubEnv("WF_EDITION", "demo");
+    expect(await fetchProfile(ACCOUNT_ID, VISITOR)).toEqual({ ok: false, reason: "not-found" });
+    expect((await fetchProfile("000000000000000000000002", VISITOR)).ok).toBe(true);
+    expect(network).not.toHaveBeenCalled();
+  });
+});
+
 describe("what the store keeps", () => {
   it("only the trimmed profile, compressed, never the raw payload", async () => {
     network.mockResolvedValue(profileResponse());

@@ -15,11 +15,15 @@ fails.
 - [`662:6943` Onboarding>Error](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6943):
   the form after a failed read.
 
-To be drawn by the owner and approved before this part of the spec is
-pinned (2026-10-22):
+Drawn on 2026-10-22 from Onboarding, for the owner to approve before this
+part of the spec is pinned:
 
-- **Connect — Demo**: the screen on the demo website, which reads no account
-  (below).
+- [`764:4753` Connect — Demo](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-4753): the screen on the demo website,
+  which reads no account (below). Its lead reads "This is a demo: two
+  players' archives to explore. Nothing here reads an account."; the card
+  under the demos is headed **Your own account** and reads "The app reads
+  your profile from your own computer, through your own connection. For
+  Windows and Linux.", over **Download the app**.
 
 The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
 answers 404, so the id is read from the `gid` cookie instead (owner).
@@ -116,12 +120,12 @@ draws a failure.
 
 ## States
 
-| State   | Frame       | What differs from rest                                     |
-| ------- | ----------- | ---------------------------------------------------------- |
-| Rest    | `661:4354`  | Empty field, or the remembered id                          |
-| Loading | `675:5392`  | Connect disabled, the quill card in place of the demos     |
-| Error   | `662:6943`  | The red band under the field with one of the five messages |
-| Demo    | To be drawn | The demos and the card to the download, no field           |
+| State   | Frame      | What differs from rest                                     |
+| ------- | ---------- | ---------------------------------------------------------- |
+| Rest    | `661:4354` | Empty field, or the remembered id                          |
+| Loading | `675:5392` | Connect disabled, the quill card in place of the demos     |
+| Error   | `662:6943` | The red band under the field with one of the five messages |
+| Demo    | `764:4753` | The demos and the card to the download, no field           |
 
 ## Data and sources
 

@@ -2,6 +2,7 @@ import { BAND } from "./failures";
 
 export const CONNECT = {
   lead: "Onkko will read your public profile and tell you what's left. Nothing is written to your account.",
+  demoLead: "This is a demo: two players' archives to explore. Nothing here reads an account.",
   fieldLabel: "Account ID",
   fieldPlaceholder: "4b2e9f17c3a85d06e1f74a9c",
   submit: "Connect",

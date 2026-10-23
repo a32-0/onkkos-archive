@@ -5,6 +5,7 @@ import { cache } from "react";
 import { normalizeAccountId } from "@/domain/profile/account-id";
 import { trimProfile } from "@/domain/profile/trim";
 import type { FailureReason, RawProfile } from "@/domain/types/profile";
+import { isDemoSite } from "@/infra/edition";
 import { store } from "@/infra/store";
 import { storeKeys, type Store } from "@/infra/store/store";
 
@@ -38,6 +39,7 @@ export const readProfile = cache(async (accountId: string): Promise<ProfileResul
 export async function fetchProfile(rawAccountId: string, visitor: string): Promise<ProfileResult> {
   const accountId = normalizeAccountId(rawAccountId);
   if (!accountId) return failure("invalid-id");
+  if (isDemoSite() && !isDemoAccountId(accountId)) return failure("not-found");
 
   if (!liveSource() || isDemoAccountId(accountId)) {
     const profile = loadFixtureProfile(accountId);

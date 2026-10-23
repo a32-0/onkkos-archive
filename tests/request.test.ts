@@ -59,6 +59,16 @@ describe("the cookies (BR-46, spec 02, spec 04)", () => {
     expect(await readAccountId()).toBe(ORDIS);
   });
 
+  it("forgets on the demo a remembered id that is no demo's", async () => {
+    vi.stubEnv("WF_EDITION", "demo");
+    const { readAccountId } = await import("@/infra/session");
+    jar.set("wf_account", { value: "0f0f0f0f0f0f0f0f0f0f0f0f", options: {} });
+    expect(await readAccountId()).toBeNull();
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(await readAccountId()).toBe(ORDIS);
+    vi.unstubAllEnvs();
+  });
+
   it("reads no account from a cookie that is not an id", async () => {
     const { readAccountId } = await import("@/infra/session");
     jar.set("wf_account", { value: "not-an-id", options: {} });
