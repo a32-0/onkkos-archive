@@ -4,17 +4,17 @@ import styles from "./ControlRow.module.css";
 
 export function ControlRow({
   label,
-  fill = false,
+  action = false,
   children,
 }: {
   label: string;
-  fill?: boolean;
+  action?: boolean;
   children: ReactNode;
 }) {
   return (
     <div className={styles.row}>
       <span className={styles.label}>{label}</span>
-      <span className={fill ? styles.fill : styles.control}>{children}</span>
+      <span className={action ? styles.action : styles.control}>{children}</span>
     </div>
   );
 }

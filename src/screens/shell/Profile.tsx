@@ -83,7 +83,7 @@ export function Profile({
               </ListEntry>
             )}
             <ListEntry>
-              <ControlRow label={SHELL.tutorial} fill>
+              <ControlRow label={SHELL.tutorial} action>
                 <Button variant="secondary" disabled>
                   {SHELL.reset}
                 </Button>

@@ -1,0 +1,21 @@
+{
+  "name": "onkkos-archive-desktop",
+  "productName": "Onkko's Archive",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "postinstall": "node node_modules/electron/install.js",
+    "stage": "node scripts/stage.mjs",
+    "build": "tsc -p .",
+    "start": "pnpm build && electron .",
+    "dev": "pnpm stage && pnpm start"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.12",
+    "electron": "44.9.3",
+    "typescript": "5.9.3"
+  },
+  "packageManager": "pnpm@10.10.0"
+}

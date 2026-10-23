@@ -77,5 +77,10 @@
     "trailingComma": "all",
     "semi": true,
     "endOfLine": "lf"
+  },
+  "knip": {
+    "ignore": [
+      "desktop/**"
+    ]
   }
 }

@@ -1,4 +1,3 @@
-import { Icon } from "../Icon/Icon";
 import type { LinkComponent } from "../link";
 import styles from "./PlayerChip.module.css";
 
@@ -22,9 +21,6 @@ export function PlayerChip({
         <span className={styles.avatar} aria-hidden />
       )}
       <span>{name}</span>
-      <span className={styles.chevron}>
-        <Icon name="chevron-backward" />
-      </span>
     </Link>
   );
 }

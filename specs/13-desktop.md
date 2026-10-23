@@ -34,7 +34,8 @@ notification, and every data failure is silent by design (below).
 - [BR-01](../docs/business-rules.md#br-01--remember-the-player-on-this-device):
   the device remembers the id.
 - [BR-39](../docs/business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
-  a window of any size follows the width classes.
+  the window stays inside its first width class, the frames' own, so the app
+  is the frames at every size it allows.
 
 ## What it is
 
@@ -59,8 +60,14 @@ player only from the repository's GitHub Releases, over HTTPS.
 
 ## The window
 
-- One window, opened at 1280 by 800 and never narrower than 360 or shorter
-  than 640, with the system's own title bar. Its title is the page's.
+- One window the width of a phone (owner, 2026-10-22): its content opens 390
+  wide, the frames' width, and can be widened to 600, the top of BR-39's
+  first class, never past it nor narrower than 390. It opens 844 tall, or as
+  tall as the screen allows, and is never shorter than 640. It cannot be
+  maximised or made full screen. The scroll bar draws over the content, so
+  the content keeps its full width. The system's own title bar; its title is
+  the page's. A desktop layout was drawn and set aside the same day: the
+  first version ships at a phone's width.
 - No menu bar and no developer tools in a packaged build.
 - One app at a time: opening it again brings the open window forward.
 - **Desktop — Starting** shows from the first frame, before the server
@@ -182,7 +189,8 @@ app's own fails the build.
 ## Acceptance
 
 1. A packaged build on Windows and on Linux opens on **Desktop — Starting**
-   and then the screen BR-03 picks, and matches the demo screen for screen.
+   and then the screen BR-03 picks, 390 wide, matching each frame; widened to
+   600 it holds BR-39, and it can be neither narrower nor wider.
 2. The window cannot reach Node, opens no other origin inside itself, and
    sends every link outside the app (the wiki, warframe.com, GitHub) to the
    system's browser; any other address is refused.

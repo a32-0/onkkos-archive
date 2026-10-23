@@ -154,7 +154,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 840px) {
   .page {
     --connect-column: 390px;
   }

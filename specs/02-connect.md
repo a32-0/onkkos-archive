@@ -152,8 +152,8 @@ draws a failure.
 1. At 390 px each state matches its frame: layout, type, colour, spacing and
    copy.
 2. At 360, 600, 840, 1280 and 1440 nothing overlaps, nothing is cut and the
-   page does not scroll sideways. Below 600 the cards keep 16 px from the
-   window's edges at every width; from 600 the page stays one centred column
+   page does not scroll sideways. Below 840 the cards keep 16 px from the
+   window's edges at every width; from 840 the page stays one centred column
    at the frame's width (BR-39).
 3. A malformed id shows the `invalid-id` band and makes no request.
 4. Each of the seven reasons shows its BR-38 message; the three that share a

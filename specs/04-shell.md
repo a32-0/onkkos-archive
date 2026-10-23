@@ -45,7 +45,9 @@ profile will be read again, and lets them disconnect.
 ### Header
 
 The wordmark at the left, and at the right the **player chip**: the avatar
-square, the display name and a chevron. A thin red rule runs under the header.
+square and the display name on a card of `--surface`, `--space-4` inside it,
+with `--radius-m` corners; no chevron (owner, 2026-10-22, on `306:1099`). A
+thin red rule runs under the header.
 The chip opens Profile. The wordmark is not a link. The header shows on a
 tab's root only.
 
@@ -96,7 +98,7 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    {n}" and the rank's title under it ("Middle Master").
 2. **Settings**: a divider, then the settings as a grouped list, one row
    each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
-   **Tutorial** (Reset). Onkko's Phrases shows once the player has reached
+   **Tutorial** (Reset, a button 200 px wide; owner, 2026-10-22). Onkko's Phrases shows once the player has reached
    Cetus (BR-64). Language and Tutorial show disabled; they wait for later
    versions (owner, 2026-10-16).
 3. **Disconnect**, a red button across the width. It forgets `wf_account`,

@@ -1,8 +1,8 @@
 .card {
-  --update-card-height: 202px;
+  --update-card-ratio: 358 / 202;
   position: relative;
   display: block;
-  height: var(--update-card-height);
+  aspect-ratio: var(--update-card-ratio);
   overflow: hidden;
   border-radius: var(--radius-s);
   color: var(--ink);

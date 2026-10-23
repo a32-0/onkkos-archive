@@ -55,7 +55,7 @@ export const Settings: Story = {
         </ControlRow>
       </ListEntry>
       <ListEntry>
-        <ControlRow label="Tutorial" fill>
+        <ControlRow label="Tutorial" action>
           <Button variant="secondary" disabled>
             Reset
           </Button>

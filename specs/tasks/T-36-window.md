@@ -25,22 +25,22 @@ owner with its log line.
 
 ## What it builds
 
-| File                                    | Note                                                                                                                                          |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `desktop/package.json`, `tsconfig.json` | Electron, pinned; its own lockfile; `pnpm --dir desktop check` typechecks, lints and tests                                                    |
-| `desktop/src/main.ts`                   | One app at a time; the window of spec 13 with `contextIsolation`, `sandbox`, no `nodeIntegration`, no menu, no tools                          |
-| `desktop/src/server.ts`                 | The standalone server on `127.0.0.1`, a port the system picks, the app's variables; stopped with the app                                      |
-| `desktop/src/origin.ts`                 | The window's own origin, forwarded to the server with the secret; the measurement that cookies and storage survive                            |
-| `desktop/src/links.ts`                  | Navigation held to the app's origin; the wiki, warframe.com and GitHub to the system's browser; any other address refused                     |
-| `desktop/src/starting.html`             | The two frames, on the tokens of `src/ui/tokens.css`; their words filled in by `stage.mjs` from `src/content/desktop.ts`, never written in it |
-| `desktop/scripts/stage.mjs`             | The app's build with `output: "standalone"`, and `public/`, `.next/static` and `data/` copied beside `server.js`                              |
-| `next.config.ts`                        | `output` and `cacheHandler` for the app's target alone, read from the build's own variable                                                    |
-| `src/proxy.ts`                          | With `WF_LAUNCH_TOKEN` set, `403` for a request without it or with another `Host`                                                             |
-| `src/infra/*` loaders                   | `data/` read from `WF_DATA_DIR` when it is set                                                                                                |
-| `src/app/layout.tsx`                    | Analytics and Speed Insights on the demo alone                                                                                                |
-| `src/content/desktop.ts`                | Every word of the two frames                                                                                                                  |
-| `.github/workflows/check.yml`           | `desktop/`'s own checks                                                                                                                       |
-| `tests/proxy.test.ts`                   | The guard: no secret, a wrong secret, another `Host`, each `403`; the demo's proxy unchanged                                                  |
+| File                                    | Note                                                                                                                                                                                 |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `desktop/package.json`, `tsconfig.json` | Electron, pinned; its own lockfile; `pnpm --dir desktop check` typechecks, lints and tests                                                                                           |
+| `desktop/src/main.ts`                   | One app at a time; the window of spec 13, its content 390 to 600 wide and 640 tall at least, never maximised; `contextIsolation`, `sandbox`, no `nodeIntegration`, no menu, no tools |
+| `desktop/src/server.ts`                 | The standalone server on `127.0.0.1`, a port the system picks, the app's variables; stopped with the app                                                                             |
+| `desktop/src/origin.ts`                 | The window's own origin, forwarded to the server with the secret; the measurement that cookies and storage survive                                                                   |
+| `desktop/src/links.ts`                  | Navigation held to the app's origin; the wiki, warframe.com and GitHub to the system's browser; any other address refused                                                            |
+| `desktop/src/starting.html`             | The two frames, on the tokens of `src/ui/tokens.css`; their words filled in by `stage.mjs` from `src/content/desktop.ts`, never written in it                                        |
+| `desktop/scripts/stage.mjs`             | The app's build with `output: "standalone"`, and `public/`, `.next/static` and `data/` copied beside `server.js`                                                                     |
+| `next.config.ts`                        | `output` and `cacheHandler` for the app's target alone, read from the build's own variable                                                                                           |
+| `src/proxy.ts`                          | With `WF_LAUNCH_TOKEN` set, `403` for a request without it or with another `Host`                                                                                                    |
+| `src/infra/*` loaders                   | `data/` read from `WF_DATA_DIR` when it is set                                                                                                                                       |
+| `src/app/layout.tsx`                    | Analytics and Speed Insights on the demo alone                                                                                                                                       |
+| `src/content/desktop.ts`                | Every word of the two frames                                                                                                                                                         |
+| `.github/workflows/check.yml`           | `desktop/`'s own checks                                                                                                                                                              |
+| `tests/proxy.test.ts`                   | The guard: no secret, a wrong secret, another `Host`, each `403`; the demo's proxy unchanged                                                                                         |
 
 ## Documents
 
