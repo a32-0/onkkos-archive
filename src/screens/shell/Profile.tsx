@@ -19,10 +19,12 @@ export function Profile({
   chrome,
   tab,
   back,
+  version = null,
 }: {
   chrome: ShellChrome;
   tab: ShellTab | null;
   back: string;
+  version?: string | null;
 }) {
   const { player, voice, disconnect, setOnkko } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
@@ -91,6 +93,25 @@ export function Profile({
             </ListEntry>
           </List>
         </section>
+        {version && (
+          <section className={styles.settings}>
+            <Divider label={SHELL.about} />
+            <List label={SHELL.about}>
+              <ListEntry>
+                <ControlRow label={SHELL.version}>
+                  <span className={styles.version}>{version}</span>
+                </ControlRow>
+              </ListEntry>
+              <ListEntry>
+                <ControlRow label={SHELL.updates} action>
+                  <Button variant="secondary" disabled>
+                    {SHELL.check}
+                  </Button>
+                </ControlRow>
+              </ListEntry>
+            </List>
+          </section>
+        )}
         <div className={styles.foot}>
           <form action={disconnect}>
             <Button variant="danger" type="submit">

@@ -146,6 +146,7 @@ interface Says {
   currencyTitle: { cost: number; currency: string; vendor: string };
   ducatsTitle: { ducats: number };
   ducatsDetail: None;
+  invasionDetail: None;
   standingDetail: { vendor: string };
 
   getTitle: { name: string };
@@ -1695,6 +1696,7 @@ function systemSteps(
   }
   return [
     row("invasion", say("invasionTitle"), {
+      detail: parts(say("invasionDetail")),
       prose: mechanics(INVASION_WIKI),
       wikiTitle: INVASION_WIKI,
     }),

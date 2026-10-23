@@ -61,6 +61,15 @@
   gap: var(--space-4);
 }
 
+.version {
+  composes: body-l from "../../ui/type.module.css";
+  --profile-version-height: 45px;
+  display: flex;
+  align-items: center;
+  min-height: var(--profile-version-height);
+  color: var(--ink-muted);
+}
+
 .foot {
   display: flex;
   flex-direction: column;

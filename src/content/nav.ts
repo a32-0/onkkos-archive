@@ -57,6 +57,10 @@ export const SHELL = {
   onkko: "Onkko’s Phrases",
   tutorial: "Tutorial",
   reset: "Reset",
+  about: "About",
+  version: "Version",
+  updates: "Updates",
+  check: "Check",
   on: "On",
   off: "Off",
   age: (minutes: number, fresh: boolean) => {

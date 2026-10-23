@@ -68,6 +68,23 @@ describe("the item's Summary (BR-55)", () => {
     }
     expect(fellBack).toBeGreaterThan(0);
   });
+  it("leads with How to get when the item has no blueprint to build, then Components", () => {
+    for (const name of ["Thornbak", "Thalys"]) {
+      const blocks = briefOf(planOf(name));
+      expect(
+        blocks.map((block) => block.id),
+        name,
+      ).toEqual(["how", "components"]);
+    }
+  });
+
+  it("names Acrithis, after The Hex, for the store the wiki calls Exchange Scuttler Husks", () => {
+    const how = planOf("Thalys").sections.find((section) => section.id === "how");
+    const row = how?.groups[0]?.rows[0];
+    expect(row?.title).toEqual({ say: "vendorTitle", vendor: "Acrithis" });
+    expect(row?.wikiTitle).toBe("Scuttler Husk");
+    expect(JSON.stringify(row?.detail)).toContain("The Hex");
+  });
 });
 
 describe("the gold line reads in runs (BR-56)", () => {

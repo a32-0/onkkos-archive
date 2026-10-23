@@ -5,7 +5,7 @@ import type { Beyond, NewGroup, WhatsNew } from "@/domain/catalog/whats-new";
 import { itemRoute } from "@/routes";
 
 import { GROUP_SYMBOLS } from "../map/symbols";
-import { tileLines } from "./lines";
+import { tileLines, titled } from "./lines";
 import type { SummaryGroup, SummarySection } from "./state";
 
 const FROM = "resume";
@@ -22,6 +22,11 @@ function moreLine(beyond: Beyond, kind: Kind): string {
   return REACH.both(beyond.count, kind, beyond.need, beyond.junction?.to ?? null);
 }
 
+function routeLines(tile: NewGroup["tiles"][number]): { reading: string; place: string } {
+  const lines = tileLines(tile.reading, tile.where);
+  return lines.reading === "" && tile.route ? { ...lines, reading: titled(tile.route) } : lines;
+}
+
 function groupView(group: NewGroup, icons: Readonly<Record<string, string>>): SummaryGroup {
   const words = SUMMARY.groups[group.group];
   return {
@@ -35,7 +40,7 @@ function groupView(group: NewGroup, icons: Readonly<Record<string, string>>): Su
       name: shortName(tile.name, group.group),
       href: itemRoute(tile.name, FROM),
       art: tile.art,
-      ...tileLines(tile.reading, tile.where),
+      ...routeLines(tile),
     })),
     more: group.beyond ? moreLine(group.beyond, words) : null,
   };

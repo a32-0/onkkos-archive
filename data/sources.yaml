@@ -22,6 +22,13 @@ vendors:
   - { vendor: Daughter, quests: [Heart of Deimos], cite: Heart of Deimos }
   - { vendor: Otak, quests: [Heart of Deimos], cite: Heart of Deimos }
 
+stores:
+  - store: Exchange Scuttler Husks
+    vendor: Acrithis
+    link: Scuttler Husk
+    quest: The Hex
+    cite: Scuttler Husk
+
 items:
   - item: Argo & Vel
     cite: Argo & Vel

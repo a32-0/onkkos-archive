@@ -106,7 +106,9 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    owner on 2026-10-23): a divider, then two rows: **Version**,
    the app's version in `--ink-muted`, and **Updates**, a **Check** button
    200 px wide that asks GitHub Releases at once (spec 13, "Updates"). The
-   demo site shows neither.
+   demo site shows neither. The version comes from the main process
+   (`WF_APP_VERSION`, `appVersion()`). Built on 2026-10-23 with Check shown
+   disabled, as Reset is, until T-38 brings the updater it asks.
 4. **Disconnect**, a red button across the width. It forgets `wf_account`,
    `wf_since` and `wf_onkko` and opens `/connect` with an empty field.
 5. Under it, the read cycle in mono: "Data is read every **12 hours**. The last

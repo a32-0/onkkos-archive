@@ -1,4 +1,10 @@
-import { collectibleStepPlan, stepPlan, type Part, type StepPlan } from "@/domain/catalog/checks";
+import {
+  collectibleStepPlan,
+  stepPlan,
+  type Part,
+  type Phrase,
+  type StepPlan,
+} from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
 import type { CatalogData } from "@/domain/catalog/data";
 import { dossier } from "@/domain/catalog/dossier";
@@ -15,6 +21,7 @@ interface NewTile {
   art: string | null;
   reading: Part[];
   where: Part[];
+  route: Phrase | null;
 }
 
 export interface Beyond {
@@ -85,6 +92,14 @@ function firstLine(parts: ReturnType<typeof briefOf>): { reading: Part[]; where:
   return { reading: line?.reading ?? NO_PARTS, where: line?.where ?? NO_PARTS };
 }
 
+function tileLine(parts: ReturnType<typeof briefOf>): Pick<NewTile, "reading" | "where" | "route"> {
+  const line = parts[0]?.lines[0];
+  return {
+    ...firstLine(parts),
+    route: line && line.reading.length === 0 ? line.title : null,
+  };
+}
+
 function arsenalCandidate(
   sources: WhatsNewSources,
   item: CatalogItem,
@@ -93,7 +108,7 @@ function arsenalCandidate(
   const { data, bestPlaces: places, reach, now } = sources;
   const plan = stepPlan(data, dossier(item, data.arsenal), { now, masteryRank });
   return {
-    tile: { name: item.name, art: item.imageUrl, ...firstLine(briefOf(plan)) },
+    tile: { name: item.name, art: item.imageUrl, ...tileLine(briefOf(plan)) },
     gaps: itemGaps(reach, { masteryReq: item.masteryReq, place: places.get(item.name) ?? null }),
   };
 }
@@ -107,14 +122,14 @@ function collectionCandidate(
   const collectible = data.collectibles.get(name);
   if (!collectible) {
     return {
-      tile: { name, art, reading: NO_PARTS, where: NO_PARTS },
+      tile: { name, art, reading: NO_PARTS, where: NO_PARTS, route: null },
       gaps: itemGaps(reach, { masteryReq: 0, place: best.get(name) ?? null }),
     };
   }
   const view = collectibleView(data, collectible, places, reach.places ?? places);
   const place = view.routes[0]?.place ?? best.get(name) ?? null;
   return {
-    tile: { name, art, ...firstLine(briefOf(collectibleStepPlan(data, view, { now }))) },
+    tile: { name, art, ...tileLine(briefOf(collectibleStepPlan(data, view, { now }))) },
     gaps: itemGaps(reach, { masteryReq: 0, place }),
   };
 }

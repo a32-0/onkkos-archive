@@ -77,6 +77,7 @@ export async function startServer(): Promise<Server> {
         WF_STORE_FILE: path.join(app.getPath("userData"), "store.json"),
         WF_LAUNCH_TOKEN: token,
         WF_LAUNCH_HOST: host,
+        WF_APP_VERSION: app.getVersion(),
       },
     },
   );

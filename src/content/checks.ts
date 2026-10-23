@@ -409,6 +409,7 @@ export const DETAILS = {
   partResearchedDetail: ({ lab }: { lab: string }) =>
     `The ${lab}'s research gives its blueprint; build it in your foundry.`,
   ducatsDetail: () => "Trade Prime parts for Ducats at the Ducat Kiosk of a Tenno Relay.",
+  invasionDetail: () => "Win three missions for one side of an Invasion to earn its reward.",
   standingDetail: ({ vendor }: { vendor: string }) =>
     `Standing with ${vendor}, earned by doing what they ask of you.`,
   creditsDetail: () => "Every mission pays them; The Index, on Neptune, pays the most.",
