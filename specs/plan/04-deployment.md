@@ -84,9 +84,9 @@ the workflow runs on that tag alone:
 
 | Step    | Runs on                   | Does                                                                                   |
 | ------- | ------------------------- | -------------------------------------------------------------------------------------- |
-| Version | Ubuntu                    | Fails when the tag and `desktop/package.json` disagree                                 |
+| Version | Ubuntu                    | Fails when the tag and `desktop/package.json` disagree; opens the draft release        |
 | Build   | Windows and Ubuntu, apart | The app's target and `desktop/scripts/stage.mjs`, then `electron-builder` for each one |
-| Publish | Each of the two           | Attaches the installer, the AppImage and their update files to one draft release       |
+| Publish | Each of the two           | Attaches the installer, the AppImage and their update files to the draft               |
 
 The draft is the owner's to read and publish; publishing it is what reaches
 installed apps. It is the only workflow that writes to the repository: it holds

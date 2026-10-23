@@ -110,6 +110,14 @@ Google Fonts during both builds, and Chromium with the system libraries it
 needs, which Playwright installs. Its token can only read the repository,
 checkout does not keep it, and the telemetry of Next and Storybook is off.
 
+## Releases
+
+`.github/workflows/release.yml` runs on a `v*` tag alone and turns it into a
+draft release with the Windows installer and the Linux AppImage
+([plan part 4](../specs/plan/04-deployment.md#on-a-version-tag-releaseyml),
+[`desktop.md`](desktop.md#cutting-a-version)). It is the one workflow that
+writes to the repository, with `contents: write` and nothing else.
+
 ## The weight of a function
 
 Vercel's Hobby plan takes at most 12 functions in a deployment. It bundles

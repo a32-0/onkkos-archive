@@ -4,8 +4,8 @@ The app a player installs on Windows or Linux, so DE's profile is read from
 their own machine ([spec 13](../specs/13-desktop.md)). It lives in `desktop/`,
 with its own `package.json` and lockfile, outside the demo's install and
 build. This page covers how it is built and run, what each file does, and why
-each part of the security baseline is there. Packaging and updates arrive with
-T-38, the data set at each start with T-37.
+each part of the security baseline is there, how a version is packaged and
+published, and how an installed app updates itself.
 
 ## Running it from the tree
 
@@ -24,27 +24,35 @@ If Electron starts as plain Node ("does not provide an export named
 BrowserWindow"), the shell has `ELECTRON_RUN_AS_NODE` set, as some editors'
 terminals do. Clear it (`Remove-Item Env:ELECTRON_RUN_AS_NODE`) and run again.
 
+`pnpm --dir desktop package`, after a stage, writes the package for the
+machine it runs on into `desktop/release/`, and publishes nothing: the
+installer on Windows, the AppImage on Linux. `electron-builder --dir` stops at
+the unpacked folder, which opens without installing.
+
 The app reads a real account: the server inside it runs with
 `WF_PROFILE_SOURCE=live`. Development of the screens stays on the demo's
 fixtures (`pnpm dev`); the app is for checking the app.
 
 ## What each file does
 
-| File                      | What it does                                                                                                                                                                      |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scripts/stage.mjs`       | Builds the app's target (`WF_BUILD_TARGET=app`), copies `public/` and `.next/static` beside `server.js`, writes the starting frames, builds the main process and checks the guard |
-| `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                           |
-| `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the wordmark's paths, the build's own fonts and `src/content/desktop.ts`                         |
-| `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                              |
-| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                         |
-| `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                   |
-| `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                   |
-| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                      |
-| `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                          |
-| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                |
-| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                            |
-| `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                             |
-| `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                           |
+| File                      | What it does                                                                                                                                                                                                                                   |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/stage.mjs`       | Builds the app's target (`WF_BUILD_TARGET=app`), copies `public/` and `.next/static` beside `server.js`, writes the starting frames, builds the main process and checks the guard                                                              |
+| `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                        |
+| `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the wordmark's paths, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
+| `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                 |
+| `electron-builder.yml`    | The two packages, what each carries, and GitHub Releases as the place updates come from                                                                                                                                                        |
+| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**                                                                                                                                    |
+| `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                           |
+| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                      |
+| `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                |
+| `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                |
+| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                   |
+| `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                                                                                       |
+| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                             |
+| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                         |
+| `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                          |
+| `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                                                                                        |
 
 ## The window
 
@@ -167,6 +175,69 @@ Nothing is shown in any of these cases. A refusal leaves one line,
 the tree, the app checks only with `WF_DATA_CHECK=1`; otherwise it would
 replace the working tree's data with `main`'s.
 
+## The packages
+
+`electron-builder.yml` builds an NSIS installer for Windows, one click, for
+the current user, with no administrator, and an AppImage for Linux. Both are
+named `onkkos-archive-{version}`, with no space or apostrophe, because GitHub
+renames such characters on upload and the update files would then name an
+asset that does not exist. The program carries `dist/` and `electron-updater`
+in `app.asar`; the server goes beside it in `resources/server`.
+
+The server is copied by `scripts/after-pack.mjs` rather than by
+`extraResources`, which drops a `node_modules` folder, and the staged one is
+pnpm's, made of links that an installer cannot hold. So every link is
+resolved, and each package under `node_modules/.pnpm` is lifted to the top of
+`node_modules`, where Node finds it from anywhere in the server. The script
+stops the package if two versions of one package are found.
+
+Both carry the site's own icon, `public/icon-512.png`, the quill on the
+canvas: electron-builder turns it into the installer's and the program's icon,
+and the window shows it from `dist/icon.png`.
+
+On uninstall, Windows removes the app's folder under `%APPDATA%`. The
+installer is not signed (spec 13), so SmartScreen shows "Windows protected
+your PC" on the first run: **More info**, then **Run anyway**. Windows
+remembers the choice for that file.
+
+## Updates
+
+`src/updates.ts` runs `electron-updater` in a packaged app alone. It asks
+GitHub Releases once the window shows its first page and every six hours
+after. A newer version downloads in the background and installs when the app
+quits; when it has downloaded, the system shows one notification with the
+words of `src/content/desktop.ts`, which the stage writes into
+`dist/words.json` since the main process cannot read `src/`. The app's
+`AppUserModelId` is the `appId`, which Windows needs to show it.
+
+Profile's **Check** is a server action, `checkUpdates` in `src/app/actions.ts`.
+The server cannot reach the updater, which lives in the main process, so it
+asks over the utility process's `parentPort` (`src/infra/app-updates.ts`) and
+waits a minute at most. The main process answers with one of four states, which
+the row then shows in place of the button: up to date, downloading a version,
+that version installs on close, or GitHub could not be reached. Leaving
+Profile and coming back shows the button again. Started from the tree, the
+main process answers "up to date" without asking GitHub; on the demo site the
+action answers that GitHub could not be reached, and the row never shows.
+
+Until the first release is published, a packaged app finds no release and its
+row reads that GitHub could not be reached.
+
+## Cutting a version
+
+1. Raise `version` in `desktop/package.json` on `dev` and take it to `main`.
+2. Tag `main` with the same version, `v` before it, and push the tag.
+3. `release.yml` checks that the tag and `desktop/package.json` agree, opens
+   a draft release, and builds the installer on Windows and the AppImage on
+   Ubuntu, each uploading its package and its update file (`latest.yml`,
+   `latest-linux.yml`) to the draft.
+4. Read the draft, write its notes, and publish it. Installed apps see it at
+   their next check.
+
+A tag that disagrees with `desktop/package.json` fails before anything is
+built. The workflow holds `contents: write`, GitHub's own token, and nothing
+else.
+
 ## Where it writes
 
 Everything goes under Electron's `userData`: `%APPDATA%\Onkko's Archive` on
@@ -175,3 +246,8 @@ Windows, `~/.config/Onkko's Archive` on Linux. It holds `store.json` (spec
 data set has been downloaded, and Chromium's own folders, the cookies among
 them. Next's cache stays in memory, so the wiki and the worldstate are read
 again after each start.
+
+The updater keeps the version it downloads in its own cache,
+`%LOCALAPPDATA%\onkkos-archive-desktop-updater` on Windows and
+`~/.cache/onkkos-archive-desktop-updater` on Linux, until it installs. The
+uninstaller leaves that folder.

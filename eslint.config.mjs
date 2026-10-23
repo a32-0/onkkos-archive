@@ -13,6 +13,7 @@ export default defineConfig([
     "coverage/**",
     "storybook-static/**",
     "desktop/dist/**",
+    "desktop/release/**",
   ]),
   ...nextVitals,
   ...nextTypescript,

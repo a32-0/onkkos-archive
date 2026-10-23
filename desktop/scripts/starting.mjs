@@ -72,3 +72,5 @@ ${state === "starting" ? opening : failing}
 `;
 writeFileSync(path.join(out, "starting.html"), page("starting"));
 writeFileSync(path.join(out, "failed.html"), page("failed"));
+copyFileSync(path.join(root, "public", "icon-512.png"), path.join(out, "..", "icon.png"));
+writeFileSync(path.join(out, "..", "words.json"), JSON.stringify({ ready: DESKTOP.ready }));

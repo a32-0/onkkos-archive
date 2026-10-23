@@ -120,7 +120,8 @@ that can reach it can spend the player's reads. Only the app's window may:
 
 Everything lives in the app's own folder in the player's profile (Electron's
 `userData`), never beside the program, which Windows may protect and an
-AppImage mounts read-only:
+AppImage mounts read-only. The one exception is the updater's cache, which
+`electron-updater` keeps in the system's cache folder (`docs/desktop.md`):
 
 | What                                          | Where                 | Lives for                          |
 | --------------------------------------------- | --------------------- | ---------------------------------- |
@@ -129,6 +130,7 @@ AppImage mounts read-only:
 | The ticks of spec 10                          | The window's storage  | Until cleared                      |
 | Wiki prose and icons, Varzia, rotations       | Next's fetch cache    | A day; Varzia ten minutes          |
 | The current `data/`                           | A data folder (below) | Until a newer set replaces it      |
+| A downloaded version of the app               | The updater's cache   | Until it installs                  |
 
 On Windows the uninstaller removes the folder. An AppImage has no
 uninstaller: deleting it leaves the folder, `~/.config/Onkko's Archive`, which
@@ -185,9 +187,14 @@ ready. It installs when you close Onkko's Archive." Its words live in
 `src/content/`, like every word the player reads.
 
 Profile's **Check** (spec 04) asks at once instead of waiting. While it asks,
-the button reads "Checking…" and is disabled; then the row says "Up to date"
-or that the new version is downloading, and the notification above follows
-as usual. Without a network the row says the check could not reach GitHub.
+the button reads "Checking…" and is disabled; then the answer takes the
+button's place, in the row's value style: "Up to date", "Downloading
+{version}", "{version} installs on close" once it has downloaded, or
+"Couldn’t reach GitHub" without a network. The notification above follows as
+usual. Leaving Profile and coming back shows the button again. Drawn on
+2026-10-23 in
+[`827:4748` Profile — App — Check states](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=827-4748),
+beside Profile — App, for the owner to confirm.
 
 A version is published by the owner. A tag `v{version}` on `main` builds both
 packages in GitHub Actions and attaches them to a draft release; publishing

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PAGE_TITLES } from "@/content/app";
+import { checkUpdates } from "@/app/actions";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
 import { appVersion } from "@/infra/edition";
@@ -13,6 +14,12 @@ export default async function ProfilePage({ searchParams }: { searchParams: Sear
   const screen = await requireScreen();
   const tab = openedFrom(readParam(await searchParams, "from"));
   return (
-    <Profile chrome={await chromeOf(screen)} tab={tab} back={tabHome(tab)} version={appVersion()} />
+    <Profile
+      chrome={await chromeOf(screen)}
+      tab={tab}
+      back={tabHome(tab)}
+      version={appVersion()}
+      check={checkUpdates}
+    />
   );
 }

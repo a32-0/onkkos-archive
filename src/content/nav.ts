@@ -61,6 +61,11 @@ export const SHELL = {
   version: "Version",
   updates: "Updates",
   check: "Check",
+  checking: "Checking…",
+  upToDate: "Up to date",
+  downloading: (version: string) => `Downloading ${version}`,
+  installsOnClose: (version: string) => `${version} installs on close`,
+  unreachable: "Couldn’t reach GitHub",
   on: "On",
   off: "Off",
   age: (minutes: number, fresh: boolean) => {

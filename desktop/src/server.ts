@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
 import path from "node:path";
 
-import { app, utilityProcess } from "electron";
+import { app, utilityProcess, type UtilityProcess } from "electron";
 
 import { LAUNCH_HEADER } from "./guard.js";
 
@@ -12,6 +12,7 @@ const READY_MS = 30_000;
 export interface Server {
   origin: string;
   token: string;
+  child: UtilityProcess;
 }
 
 function listenable(port: number): Promise<number> {
@@ -83,5 +84,5 @@ export async function startServer(folder: string): Promise<Server> {
   app.on("will-quit", () => server.kill());
   const origin = `http://${host}`;
   await answers(`${origin}/connect`, token);
-  return { origin, token };
+  return { origin, token, child: server };
 }

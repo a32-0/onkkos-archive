@@ -5,6 +5,7 @@ build/
 coverage/
 storybook-static/
 desktop/dist/
+desktop/release/
 *.tsbuildinfo
 next-env.d.ts
 .vscode

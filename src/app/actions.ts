@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 
 import { normalizeAccountId } from "@/domain/profile/account-id";
 import { isOnkkoChoice } from "@/domain/profile/onkko";
+import type { UpdateState } from "@/domain/types/update-state";
+import { askUpdates } from "@/infra/app-updates";
+import { appVersion } from "@/infra/edition";
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
 import { readProfile } from "@/infra/profile/read";
 import { sinceFrom } from "@/domain/since";
@@ -65,4 +68,8 @@ export async function setOnkko(form: FormData): Promise<void> {
   if (!isOnkkoChoice(choice)) return;
   await writeOnkko(choice);
   refresh();
+}
+
+export async function checkUpdates(): Promise<UpdateState> {
+  return appVersion() ? askUpdates() : { state: "unreachable" };
 }

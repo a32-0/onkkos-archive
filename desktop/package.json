@@ -11,12 +11,18 @@
     "build": "tsc -p .",
     "check": "tsc -p . && tsc -p tests && node --test \"tests/*.test.ts\"",
     "start": "pnpm build && electron .",
-    "dev": "pnpm stage && pnpm start"
+    "dev": "pnpm stage && pnpm start",
+    "package": "electron-builder --publish never",
+    "release": "electron-builder --publish always"
   },
   "devDependencies": {
     "@types/node": "22.18.12",
     "electron": "44.9.3",
+    "electron-builder": "26.15.3",
     "typescript": "5.9.3"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "electron-updater": "6.8.9"
+  }
 }
