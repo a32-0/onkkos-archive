@@ -43,7 +43,7 @@
   background: var(--surface);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 840px) {
   .page {
     --item-column: var(--item-reading);
   }

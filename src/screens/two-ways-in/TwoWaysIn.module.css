@@ -58,12 +58,6 @@
   margin-top: auto;
 }
 
-@media (min-width: 600px) {
-  .page {
-    --features-column: 390px;
-  }
-}
-
 @media (min-width: 840px) {
   .page {
     --features-column: none;

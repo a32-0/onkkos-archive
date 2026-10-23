@@ -10,16 +10,33 @@ const DEMOS = [
   { key: "cy", name: "Cy", masteryRank: 27 },
 ];
 
-function page(initial: ConnectState): string {
+function page(initial: ConnectState, demoSite = false): string {
   return renderToStaticMarkup(
     Connect({
       initial,
       demos: DEMOS,
       connect: async (state) => state,
       demo: async () => {},
+      demoSite,
     }),
   );
 }
+
+describe("on the demo (spec 02)", () => {
+  const html = page({ value: "", reason: null, retryAt: null }, true);
+
+  it("asks for no account: no field, no Connect, no steps", () => {
+    expect(html).not.toContain("<input");
+    expect(html).not.toContain("Where do I find this?");
+    expect(html).not.toContain(">gid<");
+  });
+
+  it("says it is a demo and offers both demos", () => {
+    expect(html).toContain("This is a demo: two players");
+    expect(html).toContain("Ordis (Mastery Rank 2)");
+    expect(html).toContain("Cy (Mastery Rank 27)");
+  });
+});
 
 describe("the id form (spec 02)", () => {
   it("holds the remembered id, or nothing, under the frame's placeholder", () => {

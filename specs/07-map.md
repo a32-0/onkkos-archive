@@ -177,7 +177,7 @@ A row opens the item's page, with Navigation as its origin (spec 04).
 Change location opens `662:6528`, a page under the top bar (spec 04):
 
 1. Onkko's line, "Ah, the history you will have.", then **Choose a location**
-   and "You can switch at any time."
+   in the screen titles' 36 (`.numeral`; owner, 2026-10-23), and "You can switch at any time."
 2. The **system card**: the system's sphere, "Change system" and its name,
    and a chevron that opens the system list.
 3. A search field, "Search a planet, location or celestial body...", which

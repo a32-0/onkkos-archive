@@ -1,7 +1,8 @@
 # Plan · 4 · Deployment and continuous integration
 
-Where the app and its Storybook run, what each environment reads, and what
-every push has to pass before it reaches a player. The host was chosen in
+Where the demo and its Storybook run, how the app reaches a player's machine,
+what each environment reads, and what every push has to pass before it
+reaches a player. The host was chosen in
 [`public-release.md`](../../docs/public-release.md#which-host); this part says how
 it is used.
 
@@ -23,38 +24,35 @@ every credential. No token, project id or URL is committed.
 
 ## Two environments
 
-| Environment | When                                    | Profile source                                    | Store                           |
-| ----------- | --------------------------------------- | ------------------------------------------------- | ------------------------------- |
-| Production  | A phase merged into `main`              | Fixtures until T-33, then live, through the locks | Memory until T-33, then Upstash |
-| Development | `pnpm dev` or `pnpm start` on a machine | Fixtures, unless set to live on purpose           | Memory                          |
+| Environment | When                                    | Profile source                          | Store                     |
+| ----------- | --------------------------------------- | --------------------------------------- | ------------------------- |
+| Production  | A phase merged into `main`              | Fixtures, for good: it is the demo      | Memory, never used for DE |
+| Development | `pnpm dev` or `pnpm start` on a machine | Fixtures, unless set to live on purpose | Memory                    |
 
 - **Only `main` deploys.** The owner chose on 2026-10-08 that Vercel builds no
   preview: `vercel.json`, at the root both projects build from, turns
   deployments off for every branch but `main`. A push to `dev` and a phase's
   pull request are checked by `check.yml`, and the owner looks at the screens
   on their own machine; a phase reaches a URL when it is merged.
-- **Only production reads DE, and only from T-33.** Until the owner sets
-  `WF_PROFILE_SOURCE=live` for Production, the variable is unset or `fixture`
-  there, and every id, typed or demo, reads a fixture (spec 11), so each merged phase
-  shows every screen without reaching DE.
-- **One namespace in the store.** Since only production reads live, the keys
-  carry no environment prefix (part 2).
+- **Production is the demo, and never reads DE.** On 2026-10-21 DE's CDN
+  refused production's first read with a `403` (T-33), so a player's own
+  account is read by the app on their machine (spec 13). Production keeps
+  `WF_PROFILE_SOURCE=fixture` and sets `WF_EDITION=demo`: the two demos read
+  their fixtures, and no other id reads anything (spec 02).
 - **Development reads fixtures by default**, as the constitution requires.
   Setting `WF_PROFILE_SOURCE=live` locally is the deliberate act; it then uses
   the memory store, so the locks hold within the one process that exists.
 
 ### Variables
 
-| Variable                   | Production        | Development                |
-| -------------------------- | ----------------- | -------------------------- |
-| `WF_PROFILE_SOURCE`        | `live`, from T-33 | `fixture` (`.env.example`) |
-| `UPSTASH_REDIS_REST_URL`   | Set, from T-33    | Unset                      |
-| `UPSTASH_REDIS_REST_TOKEN` | Set, from T-33    | Unset                      |
+| Variable            | Production | Development                |
+| ------------------- | ---------- | -------------------------- |
+| `WF_PROFILE_SOURCE` | `fixture`  | `fixture` (`.env.example`) |
+| `WF_EDITION`        | `demo`     | Unset                      |
 
-The two Upstash values come from the database's page in Upstash's console and
-are entered in Vercel's settings for the Production environment only. They are
-the names `@upstash/redis` reads on its own. The database is created in the
-region of the app's functions, so a screen's one store read stays inside it.
+The app sets its own variables when it starts the server inside it (part 2);
+none of them is entered anywhere by hand. The Upstash database and its two
+variables, created for T-33, are deleted by the owner (T-35).
 
 ## On every push: `check.yml`
 
@@ -77,6 +75,23 @@ of `pnpm check` because it needs a browser; CI installs one.
 
 The workflow never reads DE and never holds a secret. `main` is protected so
 that a pull request merges only when it passes; the owner sets that rule.
+
+## On a version tag: `release.yml`
+
+The app reaches players through GitHub Releases (spec 13). The owner pushes a
+tag `v{version}` on `main`, where `{version}` is `desktop/package.json`'s;
+the workflow runs on that tag alone:
+
+| Step    | Runs on                   | Does                                                                                   |
+| ------- | ------------------------- | -------------------------------------------------------------------------------------- |
+| Version | Ubuntu                    | Fails when the tag and `desktop/package.json` disagree; opens the draft release        |
+| Build   | Windows and Ubuntu, apart | The app's target and `desktop/scripts/stage.mjs`, then `electron-builder` for each one |
+| Publish | Each of the two           | Attaches the installer, the AppImage and their update files to the draft               |
+
+The draft is the owner's to read and publish; publishing it is what reaches
+installed apps. It is the only workflow that writes to the repository: it holds
+`contents: write`, from GitHub's own token, and nothing else. No signing key
+exists (spec 13).
 
 ## After a deployment: `smoke.yml`
 
@@ -110,7 +125,8 @@ failure marks the deployment red on the commit; it does not roll it back.
   ([Vercel: Web Analytics privacy](https://vercel.com/docs/analytics/privacy-policy)).
   No address in the app carries an account id, so nothing needs redacting
   with `beforeSend`; a route that ever does must redact it. No custom event
-  is sent. Vercel's function logs stay the only other record, and they hold
+  is sent. Both render on the demo alone (`WF_EDITION=demo`); the app sends
+  no analytics (spec 13). Vercel's function logs stay the only other record, and they hold
   no profile: a refused profile read writes its status there, never the id
   ([`api.md`](../../docs/api.md#status-codes)). Both are switched on per project in Vercel's dashboard
   (Analytics, Speed Insights) by the owner; without that the components send
@@ -128,22 +144,16 @@ failure marks the deployment red on the commit; it does not roll it back.
 
 ## Limits to watch
 
-| Limit            | Free allowance                    | Expected use                                                             |
-| ---------------- | --------------------------------- | ------------------------------------------------------------------------ |
-| Upstash commands | 500,000 a month                   | About one per screen opened, plus seven per new read                     |
-| Upstash data     | 256 MB                            | About 15 KB per stored profile, for twelve hours                         |
-| Upstash transfer | 10 GB a month                     | About 15 KB per screen opened                                            |
-| Vercel Hobby     | Non-commercial use                | A fan app with no revenue                                                |
-| Web Analytics    | 50,000 events a month             | One per page opened; past it, after three days' grace, collection pauses |
-| Speed Insights   | 10,000 events in 30 days, rolling | A few per page opened; past it, collection pauses for at least 14 days   |
+| Limit          | Free allowance                    | Expected use                                                             |
+| -------------- | --------------------------------- | ------------------------------------------------------------------------ |
+| Vercel Hobby   | Non-commercial use                | A fan app with no revenue                                                |
+| Web Analytics  | 50,000 events a month             | One per page opened; past it, after three days' grace, collection pauses |
+| Speed Insights | 10,000 events in 30 days, rolling | A few per page opened; past it, collection pauses for at least 14 days   |
 
-Upstash's console alerts at a share of the monthly commands; the owner sets the
-alert at 80 %. Neither Vercel allowance can cost money on Hobby: past it,
+Neither Vercel allowance can cost money on Hobby: past it,
 collection stops and the app runs on
 ([Web Analytics pricing](https://vercel.com/docs/analytics/limits-and-pricing),
-[Speed Insights limits](https://vercel.com/docs/speed-insights/limits-and-pricing)). Past the allowance Upstash stops answering, and the store fails
-closed: players see the band for `upstream`, and DE is never read without the
-locks.
+[Speed Insights limits](https://vercel.com/docs/speed-insights/limits-and-pricing)).
 
 ## Checked when the deployment is set up
 

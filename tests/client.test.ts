@@ -54,8 +54,6 @@ beforeEach(() => {
   });
   vi.stubGlobal("fetch", network);
   vi.stubEnv("WF_PROFILE_SOURCE", "live");
-  vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
-  vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
 });
 
 afterEach(() => {
@@ -189,6 +187,15 @@ describe("fetchProfile", () => {
     expect(line).not.toContain(ACCOUNT_ID);
     expect(line).not.toContain(VISITOR);
     warn.mockRestore();
+  });
+});
+
+describe("on the demo (spec 02)", () => {
+  it("reads nothing for an id that is no demo's, and still opens a demo", async () => {
+    vi.stubEnv("WF_EDITION", "demo");
+    expect(await fetchProfile(ACCOUNT_ID, VISITOR)).toEqual({ ok: false, reason: "not-found" });
+    expect((await fetchProfile("000000000000000000000002", VISITOR)).ok).toBe(true);
+    expect(network).not.toHaveBeenCalled();
   });
 });
 

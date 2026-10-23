@@ -12,6 +12,8 @@ export default defineConfig([
     "next-env.d.ts",
     "coverage/**",
     "storybook-static/**",
+    "desktop/dist/**",
+    "desktop/release/**",
   ]),
   ...nextVitals,
   ...nextTypescript,

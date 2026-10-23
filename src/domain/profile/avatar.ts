@@ -9,6 +9,8 @@ export interface RawGlyph {
 
 export const GLYPH_SOURCES = ["Glyphs"] as const;
 
+export const DEFAULT_GLYPH = "/Lotus/Types/StoreItems/AvatarImages/AvatarImageDefault";
+
 export function glyphArt(raw: readonly RawGlyph[]): Map<string, string> {
   const art = new Map<string, string>();
   for (const glyph of raw) {
@@ -21,5 +23,6 @@ export function glyphArt(raw: readonly RawGlyph[]): Map<string, string> {
 
 export function avatarOf(profile: RawProfile, art: ReadonlyMap<string, string>): string | null {
   const glyph = profile.ActiveAvatarImageType;
-  return typeof glyph === "string" ? (art.get(glyph) ?? null) : null;
+  const own = typeof glyph === "string" ? art.get(glyph) : undefined;
+  return own ?? art.get(DEFAULT_GLYPH) ?? null;
 }

@@ -210,6 +210,12 @@ Two lists:
   offer. Amir needs The Hex, Cavalero needs Angels of the Zariman, Roathe needs
   The Old Peace. Every offer from that vendor adds those quests to
   Prerequisites. Each entry has `vendor`, `quests` and `cite`.
+- `stores`: a store the wiki's Vendors module names by its button rather than
+  by who sells it. Each entry has `store` (the module's key), `vendor` (who
+  the player buys from), `link` (the wiki page that lists the store's wares),
+  an optional `quest` that gates every offer, and `cite`. Exchange Scuttler
+  Husks is Acrithis in the Dormizone, after The Hex; the module links a page
+  that does not exist (found on 2026-10-23 on Thalys).
 - `items`: one entry per item, spelled as `@wfcd/items` spells it (the match
   ignores case). `cite` is the wiki page the routes were read from; it is also
   the row's Wiki link. `routes` is a list of typed sources.

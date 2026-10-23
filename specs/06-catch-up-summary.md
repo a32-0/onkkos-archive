@@ -91,7 +91,9 @@ category already says ("Hunhow" under Honoria, "Axi A21" under Relics; owner,
 2026-10-16), and under it the first line of the item's own Summary
 (`briefOf()`, spec 09): the reading in gold, "~{n} Runs · Rotation {x}"
 (BR-56), and the place under it ("Saya's Visions · Shrine Defense"). A line the
-data does not have is left out, never filled with a placeholder. The gold line
+data does not have is left out, never filled with a placeholder. A first
+line with no reading reads its title instead ("Complete The Teacher", "Find
+a Kuva Larvling"), so no row shows a bare name (2026-10-23). The gold line
 is the line's phrases in words (a drop's runs, a relic's rarity and chances, a
 vendor's price); the place is its `where`, or the names the reading carries
 when it has none ("Zariman" for Cephalon Melica's wares). No Mastered or Rank

@@ -37,3 +37,11 @@ How they worked, for whoever brings them back:
 
 Bringing one back needs a frame first: none of the pinned frames draws a goal
 that is a number to reach rather than a thing to get.
+
+## The player's own glyph
+
+DE's public profile carries no glyph (read on 2026-10-23), so a live player
+wears the game's default, Lotus Symbol (spec 04). The owner wants a later
+version to let the player choose their glyph in Profile, from the catalog's
+glyphs (`@wfcd/items`, category `Glyphs`), kept on the device like the other
+choices; the chip and Profile would wear it in place of the default.

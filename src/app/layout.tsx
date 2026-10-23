@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import { APP } from "@/content/app";
+import { isDemoSite } from "@/infra/edition";
 import "@/ui/tokens.css";
 
 import { fontVariables } from "./fonts";
@@ -39,8 +40,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={fontVariables}>
       <body className={styles.body}>
         {children}
-        <Analytics />
-        <SpeedInsights />
+        {isDemoSite() && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

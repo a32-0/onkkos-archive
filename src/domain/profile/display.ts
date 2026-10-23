@@ -5,9 +5,13 @@ export interface DisplayProfile {
   masteryRank?: number;
 }
 
+const PRIVATE_USE = /[-]/gu;
+
 export function toDisplayProfile(raw: RawProfile): DisplayProfile {
   const display: DisplayProfile = {};
-  if (typeof raw.DisplayName === "string") display.displayName = raw.DisplayName;
+  const name =
+    typeof raw.DisplayName === "string" ? raw.DisplayName.replace(PRIVATE_USE, "").trim() : "";
+  if (name) display.displayName = name;
   if (typeof raw.PlayerLevel === "number") display.masteryRank = raw.PlayerLevel;
   return display;
 }

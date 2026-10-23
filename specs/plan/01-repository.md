@@ -21,14 +21,14 @@ app ──► screens ──► ui
  └──────────────────► infra
 ```
 
-| Layer      | Holds                                                                                                                                   | May import                              |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| `app/`     | Routes and server actions. Read, call the domain, hand results to a screen.                                                             | screens, domain, infra, content, routes |
-| `screens/` | One folder per screen of the specs: the composition of `ui/` parts for it.                                                              | ui, domain types, content, routes       |
-| `ui/`      | The design system: tokens and components, each with its styles and stories.                                                             | nothing but itself                      |
-| `domain/`  | Plain TypeScript: profile reading, the catalog, places, the rules engine, plans. No React, no Next, no I/O.                             | nothing but itself                      |
-| `infra/`   | Everything that touches the outside: DE's endpoint, the shared store, the wiki, the worldstate, cookies, and reading `data/` from disk. | domain                                  |
-| `content/` | Every user-facing string.                                                                                                               | nothing                                 |
+| Layer      | Holds                                                                                                                            | May import                              |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `app/`     | Routes and server actions. Read, call the domain, hand results to a screen.                                                      | screens, domain, infra, content, routes |
+| `screens/` | One folder per screen of the specs: the composition of `ui/` parts for it.                                                       | ui, domain types, content, routes       |
+| `ui/`      | The design system: tokens and components, each with its styles and stories.                                                      | nothing but itself                      |
+| `domain/`  | Plain TypeScript: profile reading, the catalog, places, the rules engine, plans. No React, no Next, no I/O.                      | nothing but itself                      |
+| `infra/`   | Everything that touches the outside: DE's endpoint, the store, the wiki, the worldstate, cookies, and reading `data/` from disk. | domain                                  |
+| `content/` | Every user-facing string.                                                                                                        | nothing                                 |
 
 `ui/` never imports `domain/`: a component takes plain props, so it renders in
 Storybook with no profile behind it.
@@ -58,12 +58,13 @@ them:
 ├── eslint.config.mjs          The layer boundaries
 ├── .prettierignore, .editorconfig, .gitattributes
 ├── .gitignore                 CLAUDE.md and .claude/ ignored
-├── .env.example               The store's variables and the profile source
-├── .github/workflows/         check.yml on every push, smoke.yml on every deployment (part 4)
+├── .env.example               The profile source and the edition (part 2)
+├── .github/workflows/         check.yml on every push, smoke.yml on every deployment, release.yml on a version tag (part 4)
 ├── .storybook/
-├── specs/                     The constitution, the twelve specs, the plan and the tasks
+├── specs/                     The constitution, the thirteen specs, the plan and the tasks
 ├── docs/                      The documents of part 5
-├── data/                      Curated files and vendored snapshots
+├── desktop/                   The app on the player's machine: Electron's main process and its packaging (spec 13)
+├── data/                      Curated files, vendored snapshots and manifest.json
 ├── fixtures/                  The two demos and the synthetic test profiles
 ├── scripts/                   Data refreshes, the fixture cutter, the palette
 ├── tests/                     Domain and infra tests
@@ -80,11 +81,11 @@ them:
 
 ## Root and configuration
 
-| File           | Holds                                                                                                                       | Task       |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| `README.md`    | For the two readers of the constitution; part 5                                                                             | T-01, T-32 |
-| `package.json` | Next, React, Storybook, `@upstash/redis`, `@vercel/analytics`, `@vercel/speed-insights`, `eslint-plugin-boundaries`, `knip` | T-01       |
-| `.env.example` | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `WF_PROFILE_SOURCE`; no default account id (spec 02)                  | T-01       |
+| File           | Holds                                                                                                     | Task       |
+| -------------- | --------------------------------------------------------------------------------------------------------- | ---------- |
+| `README.md`    | For the two readers of the constitution; part 5                                                           | T-01, T-32 |
+| `package.json` | Next, React, Storybook, `@vercel/analytics`, `@vercel/speed-insights`, `eslint-plugin-boundaries`, `knip` | T-01       |
+| `.env.example` | `WF_PROFILE_SOURCE`; no default account id (spec 02)                                                      | T-01, T-35 |
 
 `CLAUDE.md` and `.claude/` are local to the assistant and never committed. The
 rules they would carry are in the constitution and the docs.
@@ -145,7 +146,7 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------- |
 | `catalog/`                       | The read of the items snapshot, of `sources.yaml` and of the update art; the catalog's data, read once         | T-14, T-16 |
 | `graph/`, `narrative/`, `place/` | The loaders of `data/`                                                                                         | T-13, T-15 |
-| `store/`                         | One store interface: Upstash in production, memory in tests and development (spec 11)                          | T-17       |
+| `store/`                         | One store interface: the file in the app, memory on the demo, in tests and development (spec 11)               | T-17, T-35 |
 | `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read         | T-18       |
 | `wiki/`                          | The vendored modules, the wiki's client and its prose (BR-48)                                                  | T-16, T-19 |
 | `worldstate/`                    | Varzia's stock                                                                                                 | T-19       |
@@ -174,6 +175,32 @@ the content review's report and of the command's lines in the terminal
 | `vendor/*`                                                                        | Snapshots, each with its source and licence named (part 5)                      | T-11             |
 | `reviewed-update.json`                                                            | Where the last content review stopped: the update and the catalog version       | T-31             |
 
+## `desktop/`: the app
+
+Electron's side of the app (spec 13; part 2, "Two targets, one tree"). It has
+its own `package.json`, lockfile and TypeScript settings, so Electron and its
+packager never enter the demo's install, its build or its functions; it is not
+a pnpm workspace. It reads nothing from `src/` but what the starting frames
+draw: the words of `src/content/`, `src/ui/tokens.css` and the wordmark's
+paths.
+
+| File                   | Holds                                                                                                               | Task       |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `package.json`         | The app's version, Electron, `electron-builder`, `electron-updater`; the scripts that build and package             | T-36, T-38 |
+| `src/main.ts`          | One app at a time, the window, the secret, starting the server, the links sent to the system's browser              | T-36       |
+| `src/server.ts`        | Starts the standalone server on `127.0.0.1` on the kept port with the app's variables, and stops it with the app    | T-36       |
+| `src/guard.ts`         | Runs in the server's process: the secret and the `Host` checked before Next answers                                 | T-36       |
+| `scripts/starting.mjs` | Writes **Desktop — Starting** and **Desktop — Can't start** as local pages on the tokens, before the server answers | T-36       |
+| `src/links.ts`         | Navigation held to the server's origin; the wiki, warframe.com and GitHub sent to the system's browser              | T-36       |
+| `next-cache.cjs`       | Next's cache for the app, in memory                                                                                 | T-36       |
+| `src/data.ts`          | The manifest check, the download, the hashes and the swap of the data set                                           | T-37       |
+| `src/updates.ts`       | `electron-updater` against GitHub Releases, and the one notification                                                | T-38       |
+| `electron-builder.yml` | The Windows installer and the AppImage, what each carries, and the release they go to                               | T-38       |
+| `scripts/stage.mjs`    | Builds the app's target, copies `public/`, `.next/static` and `data/` beside `server.js`                            | T-36       |
+
+`check.yml` typechecks and lints `desktop/` with its own settings, and its
+tests run with the rest (part 4).
+
 ## `fixtures/`, `scripts/`, `tests/`
 
 | File                                                                                                  | Holds                                                                                                                                                            | Task             |
@@ -183,6 +210,7 @@ the content review's report and of the command's lines in the terminal
 | `scripts/*`                                                                                           | `palette.mjs` measures the token layer; `trim-profile.mjs` takes `--from` with no default and imports the field list                                             | T-04, T-11, T-12 |
 | `scripts/refresh-items.mjs`, `scripts/function-weight.mjs`                                            | `pnpm data:items` writes `data/vendor/items.json` from `@wfcd/items`; `pnpm weight` weighs each route after a build                                              | T-31             |
 | `scripts/content-update.ts`, `scripts/review-report.ts`, `data/reviewed-update.json`, `docs/updates/` | `pnpm content:update` ([`content-updates.md`](../../docs/content-updates.md)); the review's levels are `domain/catalog/review.ts`, its words `content/review.ts` | T-31             |
+| `scripts/data-manifest.ts`, `data/manifest.json`                                                      | `pnpm data:manifest`, run by `pnpm content:update`: the schema and each file's size and SHA-256, which the app checks (spec 13)                                  | T-37             |
 | `tests/*`                                                                                             | One file per domain or infra module, written with it                                                                                                             | Each task        |
 
 No real capture is ever committed (constitution).

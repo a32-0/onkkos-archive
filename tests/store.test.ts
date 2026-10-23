@@ -3,7 +3,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { store } from "@/infra/store";
 import { flush, memoryStore } from "@/infra/store/memory";
 import { storeKeys } from "@/infra/store/store";
-import { upstashStore } from "@/infra/store/upstash";
 
 const minute = 60_000;
 
@@ -90,16 +89,13 @@ describe("the keys", () => {
 });
 
 describe("choosing the backend", () => {
-  it("needs no Upstash variable to run", () => {
-    vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
-    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
-    expect(upstashStore()).toBeNull();
+  it("uses memory when no store file is named", () => {
+    vi.stubEnv("WF_STORE_FILE", "");
     expect(store()).toBe(memoryStore);
   });
 
   it("refuses the memory backend in production reading live", () => {
-    vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
-    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
+    vi.stubEnv("WF_STORE_FILE", "");
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("WF_PROFILE_SOURCE", "live");
     expect(() => store()).toThrow();

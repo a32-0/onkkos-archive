@@ -8,7 +8,7 @@ import { parse as parseYaml } from "yaml";
 import { buildCollectibleCatalog, buildGearRecipes } from "@/domain/catalog/collectibles";
 import type { CatalogData, Opening } from "@/domain/catalog/data";
 import { buildRelicCatalog } from "@/domain/catalog/relics";
-import { normalizeSources } from "@/domain/catalog/sources";
+import { normalizeSources, withStores } from "@/domain/catalog/sources";
 import type { UpdateSources } from "@/domain/catalog/updates";
 import {
   arsenalCatalog,
@@ -30,7 +30,6 @@ let cachedUpdates: UpdateSources | undefined;
 
 export function catalogData(): CatalogData {
   if (cached) return cached;
-  const wiki = wikiModules();
   const rewards = loadPlaceRewards();
   const regions = loadRegionResources();
   const arsenal = arsenalCatalog();
@@ -38,6 +37,7 @@ export function catalogData(): CatalogData {
   const curated = normalizeSources(
     parseYaml(readFileSync(path.join(process.cwd(), "data", "sources.yaml"), "utf8")),
   );
+  const wiki = withStores(wikiModules(), curated);
   cached = {
     wiki,
     curated,

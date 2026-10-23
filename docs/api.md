@@ -9,7 +9,7 @@ DE's endpoint was verified against the live service. Third-party
 documentation (FrameHub, the `@wfcd/profile-parser` README) describes a
 `content.warframe.com/dynamic/...` host that no longer answers. How the app
 protects the endpoint is [spec 11](../specs/11-profile-proxy.md); how the
-shared store holds each lock is
+store holds each lock is
 [plan part 2](../specs/plan/02-architecture.md#the-store).
 
 ## Endpoint
@@ -90,8 +90,8 @@ minutes earlier.
 ## The locks
 
 `fetchProfile()` in `src/infra/profile/read.ts` reads in the order of spec 11,
-and every lock lives in the shared store, so each one holds across every
-serverless instance:
+and every lock lives in the store: on the app, a file in its own folder, so
+each one holds across a restart (spec 13):
 
 1. **Format first.** `normalizeAccountId()` refuses anything that is not 24
    hexadecimal characters before any request is built.
@@ -105,7 +105,7 @@ serverless instance:
 4. **The circuit.** Three refusals with no profile or not-found between them
    open it for thirty minutes (`circuit.ts`). A legitimate not-found never
    counts.
-5. **The read lock.** One instance takes `wf:lock:{id}`; another asking for the
+5. **The read lock.** One read takes `wf:lock:{id}`; another asking for the
    same id reads the store every half second for up to fifteen seconds and
    answers with what the first one kept. The lock lives twenty seconds, longer
    than the request's fifteen, so the one that holds it can release it
@@ -116,13 +116,12 @@ serverless instance:
    `limited` with the time the window ends, and never reaches DE.
 
 The visitor is the first `x-forwarded-for` address, then `x-real-ip`, then
-`local` (`visitor.ts`). The host overwrites `x-forwarded-for` with the client's
-own address, so a client cannot choose its key. An address is still not a
-player: a household or a mobile carrier puts many players behind one address,
-and they share its two lookups.
+`local` (`visitor.ts`). On the app no request carries either, since only its
+own window reaches its server (spec 13), so every lookup is the machine's
+`local` and the budget is the machine's two.
 
-A store that is missing in production, or stops answering, fails closed: the
-read answers `upstream` and DE is never read without the locks.
+A store that is missing in a production build reading live, or fails, fails
+closed: the read answers `upstream` and DE is never read without the locks.
 
 No failure blames the account id when the cause is upstream. The read returns
 one of seven reasons (`FailureReason` in `src/domain/types/profile.ts`), never
@@ -187,8 +186,8 @@ that need no live data. Nightwave is not read (BR-35).
 | Varzia | Ten minutes | `REVALIDATE_SECONDS` in `worldstate/client.ts`, as BR-29 says |
 
 Both requests say `cache: "force-cache"` beside `next: { revalidate }`, so
-Next keeps them in its data cache, which Vercel shares across instances; they
-cost no store command. A page reads its cookies before it fetches, and Next
+Next keeps them in its data cache, which Vercel shares across instances and
+the app keeps in its own folder; they never touch the store. A page reads its cookies before it fetches, and Next
 caches a `fetch` met after that only when the call opts in
 ([plan part 2](../specs/plan/02-architecture.md#where-each-kind-of-state-lives)).
 Checked on 2026-10-14 with `logging.fetches` in development: on a page that

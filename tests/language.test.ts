@@ -27,7 +27,7 @@ describe("the four states keep their vocabulary", () => {
 });
 
 describe("the serif carries names, the mono carries readings", () => {
-  const NAMES = ["place", "title", "display-name", "heading", "name", "name-caps", "name-s"];
+  const NAMES = ["place", "title", "heading", "name", "name-s"];
   const READINGS = ["reading", "reading-l"];
 
   it("sets every name in the display face", () => {

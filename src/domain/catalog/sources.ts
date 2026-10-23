@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { NameMap } from "@/domain/catalog/wiki";
+import { NameMap, type Wiki } from "@/domain/catalog/wiki";
 
 const cost = z.object({ currency: z.string(), amount: z.number() });
 const part = { part: z.string().optional() };
@@ -88,6 +88,13 @@ const source = z.discriminatedUnion("type", [
 
 const entry = z.object({ item: z.string(), cite: z.string(), routes: z.array(source).min(1) });
 const gate = z.object({ vendor: z.string(), quests: z.array(z.string()).min(1), cite: z.string() });
+const store = z.object({
+  store: z.string(),
+  vendor: z.string(),
+  link: z.string(),
+  quest: z.string().optional(),
+  cite: z.string(),
+});
 
 export type Cost = z.infer<typeof cost>;
 export type CuratedSource = z.infer<typeof source>;
@@ -96,16 +103,42 @@ type CuratedEntry = z.infer<typeof entry>;
 export interface Curated {
   gates: NameMap<string[]>;
   items: NameMap<CuratedEntry>;
+  stores: NameMap<z.infer<typeof store>>;
 }
 
 export function normalizeSources(input: unknown): Curated {
-  const raw = z.object({ vendors: z.array(gate), items: z.array(entry) }).parse(input);
+  const raw = z
+    .object({ vendors: z.array(gate), stores: z.array(store).default([]), items: z.array(entry) })
+    .parse(input);
   const items = new NameMap<CuratedEntry>();
   for (const one of raw.items) {
     if (items.has(one.item)) throw new Error(`duplicate source: ${one.item}`);
     items.set(one.item, one);
   }
-  return { gates: new NameMap(raw.vendors.map((one) => [one.vendor, one.quests])), items };
+  return {
+    gates: new NameMap(raw.vendors.map((one) => [one.vendor, one.quests])),
+    items,
+    stores: new NameMap(raw.stores.map((one) => [one.store, one])),
+  };
+}
+
+export function withStores(wiki: Wiki, curated: Curated): Wiki {
+  return {
+    ...wiki,
+    vendors: wiki.vendors.map((vendor) => {
+      const named = curated.stores.get(vendor.key);
+      if (!named) return vendor;
+      return {
+        ...vendor,
+        name: named.vendor,
+        link: named.link,
+        offers: vendor.offers.map((offer) => ({
+          ...offer,
+          quest: offer.quest ?? named.quest ?? null,
+        })),
+      };
+    }),
+  };
 }
 
 export function vendorGates(curated: Curated, vendor: string): string[] {

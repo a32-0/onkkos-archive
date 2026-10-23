@@ -73,9 +73,13 @@ What it does, in order (`scripts/content-update.ts`):
    stops: a hotfix alone, or a catalog version that adds nothing, is never
    reviewed.
 4. **Sorts each new thing into a level** (below).
-5. **Runs `pnpm check`**, so the report says whether the app still builds and
+5. **Writes `data/manifest.json`** (`pnpm data:manifest`): each file the
+   server reads, with its size and SHA-256, and the schema. The desktop app
+   reads it from `main` at each start and downloads what changed (spec 13),
+   so a merged content update reaches installed apps without a new version.
+6. **Runs `pnpm check`**, so the report says whether the app still builds and
    its tests still pass with the new data.
-6. **Writes the report** to `docs/updates/<version>.md`, named after the newest
+7. **Writes the report** to `docs/updates/<version>.md`, named after the newest
    update reviewed, or after the day when it found only late items or new
    nodes, prints its first lines in the terminal, and moves
    `data/reviewed-update.json` to the newest update and the new catalog
@@ -178,7 +182,15 @@ places", each in the same three levels.
 | `scripts/content-update.ts` | The command                                         |
 | `scripts/review-report.ts`  | The report's shape                                  |
 | `data/reviewed-update.json` | Where the last review stopped, committed            |
+| `scripts/data-manifest.ts`  | `pnpm data:manifest`, which writes the manifest     |
+| `data/manifest.json`        | What the desktop app downloads, committed           |
 | `docs/updates/`             | One report per review, committed with what it wired |
+
+A hand edit to a file in `data/` needs `pnpm data:manifest` too:
+`tests/data-manifest.test.ts` fails until the manifest matches the files. The
+schema starts at 1 and is raised by hand, in `data/manifest.json`, when a
+file's shape changes so that an older app could not read it; an app then
+ignores the newer data until its own update brings both.
 
 The mark was set to Update 44.1 and catalog 1.1276.21 at launch, so the first
 report is written by the first review after it. The reports are committed so

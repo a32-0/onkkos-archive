@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { avatarOf, glyphArt } from "@/domain/profile/avatar";
+import { avatarOf, DEFAULT_GLYPH, glyphArt } from "@/domain/profile/avatar";
 import { trimProfile } from "@/domain/profile/trim";
 import { glyphImages } from "@/infra/catalog/items";
 
@@ -18,7 +18,15 @@ describe("the player's glyph (spec 04)", () => {
     );
   });
 
-  it("keeps the square when the profile names no glyph, or one the catalog lacks", () => {
+  it("wears the game's default glyph when the profile names none, as a live profile never does", () => {
+    const art = glyphImages();
+    const lotus = "https://cdn.warframestat.us/img/LotusSymbol.png";
+    expect(art.get(DEFAULT_GLYPH)).toBe(lotus);
+    expect(avatarOf({}, art)).toBe(lotus);
+    expect(avatarOf({ ActiveAvatarImageType: "/Lotus/Unknown" }, art)).toBe(lotus);
+  });
+
+  it("keeps the square when the catalog lacks the default glyph too", () => {
     const art = glyphArt([{ uniqueName: CY, imageName: "CyGlyph.png" }, { uniqueName: "x" }]);
     expect(avatarOf({}, art)).toBeNull();
     expect(avatarOf({ ActiveAvatarImageType: "/Lotus/Unknown" }, art)).toBeNull();

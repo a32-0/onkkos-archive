@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "files": {
+    "acquisition.yaml": {
+      "size": 3690,
+      "sha256": "c2800320b3d3463da60847fef4e38fabcf14f02f121c160751ae2bd33f3cac74"
+    },
+    "grafo.yaml": {
+      "size": 4639,
+      "sha256": "5e7b976b5287b009459c35482b8e40c7a4c7d308a0067bd58b4424216e5a1654"
+    },
+    "narrative_spine.yaml": {
+      "size": 13510,
+      "sha256": "819ff36c47dd6309cb6fc1ed745ebd64ff7df7eaa6b75b7d39ac159b2730e7b7"
+    },
+    "quest_evidence.yaml": {
+      "size": 3565,
+      "sha256": "4cb5e4457b5d3ec2c9492866ab2dfd4d5fe64b85031a9c0fc4a966031a12b59e"
+    },
+    "sources.yaml": {
+      "size": 24200,
+      "sha256": "42f4e59a9b3982594e0bc88fbb6128d3c851f4395fe7e96675490f1e90c8adaa"
+    },
+    "systems.yaml": {
+      "size": 1838,
+      "sha256": "b7090b313a7ff29c43fa10596b12039960f89ac30c5023e3a6aa7cf1180c842d"
+    },
+    "vendor/items.json": {
+      "size": 20266992,
+      "sha256": "5ef2bd4375cb983add7592a274743880797ecdd5fc7d33156967d730b391a34a"
+    },
+    "vendor/manifest.json": {
+      "size": 554,
+      "sha256": "0364645e91c0637ede896b5d7f5b5a637b3624d3b2e7f1be934008496306b662"
+    },
+    "vendor/patch-notes.json": {
+      "size": 25649,
+      "sha256": "7fd5adfb1f2134a29db19877f2b8aa65f99f74a11edb86ce0026c6edcad12639"
+    },
+    "vendor/place-rewards.json": {
+      "size": 1765948,
+      "sha256": "9e234a2cd8ed11438e9e0fc11dd81d9e3de53ecb63ed835c9993bbe970047b22"
+    },
+    "vendor/region-resources.json": {
+      "size": 1862,
+      "sha256": "d9fefbeae1fe8d59b4db90581ec1c7eb3e3360a7a8908d449814cc6f2aff3347"
+    },
+    "vendor/update-art.json": {
+      "size": 5178,
+      "sha256": "afab898c9ddc5d55eb6976f10ce311605fc12128f215e7fff0b4ac52bfe10ca6"
+    },
+    "vendor/vendor-art.json": {
+      "size": 2813,
+      "sha256": "a69f103b7c813b3465c8cf9e46081a89d6faeb6f685c4d34596e0ceaa1d8f6a7"
+    },
+    "vendor/wiki-adversaries.json": {
+      "size": 2392,
+      "sha256": "017b24616904a7be7692e6190285e2fddd4217df0de278903228afbd35373069"
+    },
+    "vendor/wiki-baro.json": {
+      "size": 48857,
+      "sha256": "52e137517e99249c2ad9a013fa44c8f4d88834e1ddd0da51cfb3ec0dcfa6f478"
+    },
+    "vendor/wiki-blueprints.json": {
+      "size": 536433,
+      "sha256": "d6acafe68febf8ae7417d2a6a82d7911dfe29ab4fa7ed976022cb64d951259c0"
+    },
+    "vendor/wiki-circuit.json": {
+      "size": 3146,
+      "sha256": "64cac121af9a3c0dea85e7e24f23326b8cad8dbd8edd812fb77484bb4acbc9df"
+    },
+    "vendor/wiki-companions.json": {
+      "size": 1159,
+      "sha256": "0d8809c047382a8c2635b2bafe3e4470633ab33ebfee51293ca9bad74e66191d"
+    },
+    "vendor/wiki-honoria-tags.json": {
+      "size": 3559,
+      "sha256": "82cd7d2007407c076f4efcb8b5bd784242408f4a8a4254484b72d8dcc8f22619"
+    },
+    "vendor/wiki-honorias.json": {
+      "size": 34766,
+      "sha256": "87d13f01027708b3de1ebbb147e39d429626182f1bbc03cc78bea7dd76c1ae9c"
+    },
+    "vendor/wiki-incarnons.json": {
+      "size": 15693,
+      "sha256": "062c03c7f03e5c424c73520470b2d5495d2bd846be8f3b7651e2ae0c16731c74"
+    },
+    "vendor/wiki-nodes.json": {
+      "size": 63123,
+      "sha256": "2a15a9eff8c0078d7a7cfb7f9bf09391568a36608252336e3ffe2411175f6e16"
+    },
+    "vendor/wiki-relics.json": {
+      "size": 476618,
+      "sha256": "26da0c98d0f8a8b133f38e8580dcafcaa02206cde068e3a8c0cad8ee8db33b6c"
+    },
+    "vendor/wiki-research.json": {
+      "size": 68668,
+      "sha256": "c12d1c6a1cd3e087974c4d1aacdfcda475f7d23ac1e6031761cb33c4bef99338"
+    },
+    "vendor/wiki-resources.json": {
+      "size": 171756,
+      "sha256": "98e7fbecf6baa78bfb12a36d9ecf95c6350653ae21521a326741c5c98055ffb0"
+    },
+    "vendor/wiki-titles.json": {
+      "size": 36154,
+      "sha256": "c33021aa25857930ddf24c5f85bd7f23c42fcad21fc451a7185d50a701a1baff"
+    },
+    "vendor/wiki-traits.json": {
+      "size": 26643,
+      "sha256": "2cf9ced9e43c45f98ec2e0c3272de1ba1ce67bbc7b4d6e954a8e996bfc55da33"
+    },
+    "vendor/wiki-vendors.json": {
+      "size": 456773,
+      "sha256": "dcaa938b6c714ddac67c9db3df93137684cf78c8843bda0e497f08ef736a33b6"
+    }
+  }
+}

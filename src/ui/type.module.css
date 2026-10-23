@@ -19,20 +19,6 @@
   text-transform: uppercase;
 }
 
-.display-name {
-  font-family: var(--font-cinzel), serif;
-  font-weight: 700;
-  font-size: 32px;
-  text-transform: uppercase;
-}
-
-.bar-title {
-  font-family: var(--font-cinzel), serif;
-  font-weight: 700;
-  font-size: 22px;
-  text-transform: uppercase;
-}
-
 .heading {
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
@@ -41,13 +27,6 @@
 }
 
 .name {
-  font-family: var(--font-cinzel), serif;
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.name-caps {
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
   font-size: 16px;

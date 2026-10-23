@@ -90,8 +90,10 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
      step instead, so no row is a bare name; a thing bought from a vendor
      names the vendor; what only an optional step asks for ends "(Optional)"
      (owner, 2026-10-21).
-   - With neither, **How to get**: the item's How to get or Acquisition rows
-     in the same row style.
+   - Without Blueprints, **How to get** comes first: the item's How to get or
+     Acquisition rows in the same row style, then Components. A quest's
+     reward or a bought blueprint is how the item is had, so it leads, never
+     its first ingredient (owner, 2026-10-23, on Thornbak and Thalys).
 
 ### What a row does
 

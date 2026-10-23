@@ -20,12 +20,14 @@ measurements that settled it, is in [`docs/public-release.md`](../docs/public-re
 
 ## Where the work ends
 
-In this repository, which is public, and at the public URL it is deployed to.
-It serves two readers, and neither is optional:
+In this repository, which is public, in the app it builds for Windows and
+Linux, and at the public URL where the same screens run as a demo. It serves
+two readers, and neither is optional:
 
-- **A returning player.** Someone back after months opens the URL, pastes an
-  account id, and learns what the Origin System did while they were away and
-  what stands between them and one concrete goal. They never read the source.
+- **A returning player.** Someone back after months installs the app, pastes
+  an account id, and learns what the Origin System did while they were away
+  and what stands between them and one concrete goal. They may first try the
+  demo at the URL, which needs nothing installed. They never read the source.
 - **Someone evaluating the work.** A designer or an engineer who opens the
   repository to see how it was reasoned. They may never type an account id.
 
@@ -60,6 +62,9 @@ the Figma section `421:614` draws (BR-34).
 
 The shell both features live in, and whatever either depends on, are built
 with them. Anything else is filler by definition, however well it works.
+The app's window, its updates and the data it downloads, and the demo's way
+to the download, are that shell: without them no player reaches either
+feature with their own account (owner, 2026-10-22; spec 13).
 
 ## The cut rule
 
@@ -148,32 +153,47 @@ of the player or not claimed at all. The app never infers to fill a gap.
 
 Three sources with three rates of change, crossed on every request and never
 copied into one another: the player profile, the game catalog (with the
-snapshots vendored in `data/vendor/`, which are source data and never written at
-runtime), and the curated files. No database, no search index, no stored result
-to invalidate later. A proposal to store a computed value is a change to this
-document first.
+snapshots vendored in `data/vendor/`, which are source data), and the curated
+files. No database, no search index, no stored result to invalidate later. A
+proposal to store a computed value is a change to this document first.
 
-## It is deployed, and it protects DE's endpoint
+Source data is written only by a commit to this repository. The app on a
+player's machine replaces its copy of `data/` with the set published from
+`main`, whole and verified, and never with anything it worked out itself
+(owner, 2026-10-22; spec 13).
 
-DE refuses an **IP address**, not an account. Every call to DE leaves from our
-server, so a refusal takes the app down for every player for up to a day, while
-each player's game is untouched. In development the server is the developer's
-own machine, whose IP is also their game's: a refusal there locks the developer
-out of Warframe. Hence:
+## It runs on the player's machine, and it protects DE's endpoint
 
-- **One read per account every twelve hours, across the whole deployment.** The
-  window holds for the app as a whole, never per instance or per process. It is
-  never shorter than DE's own `Cache-Control` allows.
-- **Every lock is shared the same way:** the account-id format check before any
-  call, the cached not-found, each visitor's budget of new lookups, and the
-  circuit breaker after consecutive refusals.
+DE refuses an **IP address**, not an account, and its edge refuses a server's
+address outright: on 2026-10-21 production's very first read was answered
+`403` by DE's CDN, while the same read from a player's own machine answered
+with the profile, and a web page cannot read it at all
+([`public-release.md`](../docs/public-release.md#why-the-app-moved-to-the-players-machine)).
+So a player's own account is read by the app on their own machine, from their
+own address. The website is a demo of the same screens and never calls DE.
+
+That address is also their game's: a refusal locks the player out of Warframe
+itself for up to a day. The locks protect the player first, so they live in
+the code and no setting turns one off or shortens it. Hence:
+
+- **One read per account every twelve hours, on each machine.** The window
+  holds for the app on that machine, across restarts, and is never shorter
+  than DE's own `Cache-Control` allows.
+- **Every lock is kept the same way, on the machine's disk:** the account-id
+  format check before any call, the cached not-found, the machine's budget of
+  new lookups, and the circuit breaker after consecutive refusals.
 - **No refresh action**, now or later.
 - **Only what the app reads is kept**, and only for the window. Nothing about a
-  player is persisted beyond it.
+  player is persisted beyond it, and nothing leaves their machine but the read
+  itself.
+- **Only the app reaches DE, and only for the player at its window.** The
+  server it runs answers its own window and nothing else on the machine, so
+  no web page the player visits can make it call DE.
 - **Development reads fixtures by default.** Calling DE from a developer's
-  machine is a deliberate act, never the default.
+  machine is a deliberate act, never the default. The installed app is the
+  one place that reads live by default.
 
-The host and the shared store are named in the plan.
+The app, its store and the demo's host are named in the plan.
 
 ## Nothing real about a person ships
 
@@ -215,7 +235,7 @@ implementation.
   state its frame draws, is visible on its own in Storybook, so a component is
   checked against its Figma component before any screen uses it. The owner
   chose it on 2026-10-05; it is free and open source, and is published as a
-  static site from the same host as the app.
+  static site from the same host as the demo.
 
 ## The code is built to be read
 
@@ -251,7 +271,9 @@ A change is done when all of these hold:
   protanope and deuteranope matrices, because the owner is colour blind. Its
   findings go back to the owner as feedback on the frame. It never blocks a
   build and never overrules a frame.
-- The build passes on the deployment target, not only locally.
+- The build passes on both targets, not only locally: the demo on its host,
+  and the app's installers for Windows and Linux, built by the release
+  workflow.
 - No comments in any file. What needs explaining goes in `docs/`.
 - No user-facing string outside `src/content/`, no internal href outside
   `src/routes.ts`, no hard-coded colour, radius, duration or easing outside

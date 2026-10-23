@@ -3,6 +3,7 @@ import { PAGE_TITLES } from "@/content/app";
 import { connect, demo } from "@/app/actions";
 import { readParam, type SearchParams } from "@/domain/types/next";
 import { toDisplayProfile } from "@/domain/profile/display";
+import { isDemoSite } from "@/infra/edition";
 import { DEMO_ACCOUNT_IDS, loadFixtureProfile } from "@/infra/profile/fixture-source";
 import { readAccountId } from "@/infra/session";
 import { Connect } from "@/screens/connect/Connect";
@@ -37,6 +38,7 @@ export default async function ConnectPage({ searchParams }: { searchParams: Sear
       demos={demos()}
       connect={connect}
       demo={demo}
+      demoSite={isDemoSite()}
     />
   );
 }

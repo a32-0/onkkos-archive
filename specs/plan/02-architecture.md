@@ -1,9 +1,57 @@
 # Plan · 2 · Architecture and the shared store
 
 How a request moves through the layers of part 1, where each kind of state
-lives, and how the four locks of spec 11 hold across every serverless instance.
-Part 1 says where each file goes; this part says how the files work together.
-Each decision records the question, the options and what settled it.
+lives, how the four locks of spec 11 hold on the player's machine, and how one
+build runs as the demo and as the app. Part 1 says where each file goes; this
+part says how the files work together. Each decision records the question,
+the options and what settled it.
+
+## Two targets, one tree
+
+The owner chose on 2026-10-22 that a player's own account is read by an app on
+their machine, and that the website stays as a demo (constitution; spec 13).
+Both run the same `src/` tree and the same Next build; three variables tell
+them apart:
+
+| Variable            | The demo, on Vercel | The app, on the player's machine   | Development                 |
+| ------------------- | ------------------- | ---------------------------------- | --------------------------- |
+| `WF_EDITION`        | `demo`              | `app`                              | Unset: the form, as the app |
+| `WF_PROFILE_SOURCE` | `fixture`           | `live`                             | `fixture` (`.env.example`)  |
+| `WF_STORE_FILE`     | Unset: memory       | The store file in the app's folder | Unset: memory               |
+
+The main process of the app sets the app's column, with `WF_LAUNCH_TOKEN`
+(the start's secret) and `WF_LAUNCH_HOST` (the server's own address), and
+T-37 adds the current data set; nothing in the player's hands sets any of
+them.
+
+```
+Electron main ──► Next server (standalone, 127.0.0.1, any port)
+   │  secret on each request to it   │
+   ▼                                 ▼
+the window ──► guard: secret and Host checked, else 403 ──► Next ──► the routes below
+```
+
+- **The build.** The app's build sets `output: "standalone"` for its target
+  alone, from the desktop build's own command, so the demo's build, its
+  functions and `pnpm weight` are what they are today. `server.js` serves
+  `public/` and `.next/static` once they are copied beside it, as Next's
+  `output` reference says.
+- **The guard sits in front of Next, in the server's own process**
+  (`desktop/src/guard.ts`). A request without the secret in its header, or
+  with a `Host` other than the server's own, answers `403` before Next sees
+  it. It is not `proxy.ts`: a proxy's matcher is fixed at build time, so the
+  app's guard would have made the demo run its proxy on every page, where it
+  runs on `/system` alone (2026-10-23). The demo and development are
+  untouched.
+- **Writable folders.** The program's folder is read-only on an AppImage and
+  may be on Windows, so every write goes under Electron's `userData`: the
+  store file and the data sets. Next's cache never reaches the disk: the
+  app's `cacheHandler` (`desktop/next-cache.cjs`) keeps it in memory, so the
+  wiki and the worldstate are read again after each start (2026-10-23).
+- **The loaders read the app's current data set** (T-37), and `data/` beside
+  the code otherwise, so the demo and development are unchanged. A path read
+  from a variable makes Turbopack trace the whole project, so the shape is
+  T-37's to find.
 
 ## A request, end to end
 
@@ -12,8 +60,8 @@ browser ──► proxy.ts ──► app/<route>/page.tsx ──► screens/<scr
               │                 │
           wf_place          readScreen()   (once per request)
                                 │
-                     infra/profile/read.ts ──► infra/store ──► Upstash
-                                │                          (memory in tests and dev)
+                     infra/profile/read.ts ──► infra/store ──► the store file
+                                │                (memory on the demo, in tests and dev)
                                 ├──► DE's endpoint, only on a miss
                                 ▼
                      domain/*: readings, places, plans
@@ -38,29 +86,27 @@ tab, the item's `from` or Resume's entrance, and `/`, `/connect` and
 `/features` have no player to show. `readScreen()` is wrapped in React's
 `cache()`, which dedupes it for the length of one request: a screen costs one
 store read, however many server components ask. Without it a screen could cost
-two, and the command count in
-[`public-release.md`](../../docs/public-release.md#what-upstash-actually-spends)
-would be off by half.
+two.
 
 ## Where each kind of state lives
 
 | State                                   | Where                                               | Lives for                      | Set by                          |
 | --------------------------------------- | --------------------------------------------------- | ------------------------------ | ------------------------------- |
-| The trimmed profile                     | The shared store                                    | Twelve hours                   | `fetchProfile`                  |
-| Not-found, budget, circuit, lock        | The shared store                                    | Each lock's own window (below) | `fetchProfile`                  |
+| The trimmed profile                     | The store                                           | Twelve hours                   | `fetchProfile`                  |
+| Not-found, budget, circuit, lock        | The store                                           | Each lock's own window (below) | `fetchProfile`                  |
 | `wf_account`                            | Cookie, `httpOnly`                                  | One year                       | The connect action              |
 | `wf_since`                              | Cookie, `httpOnly`                                  | One year                       | A server action, from Resume    |
 | `wf_place`                              | Cookie, `httpOnly`                                  | One year                       | `proxy.ts`                      |
 | The ticks of spec 10                    | Browser storage                                     | Until cleared                  | The checkbox, in the client     |
 | Wiki prose and icons, Varzia, rotations | Next's data cache (`force-cache` with `revalidate`) | A day; Varzia ten minutes      | The wiki and worldstate clients |
-| Curated files and vendored data         | `data/`, read from disk                             | The deployment                 | Commits                         |
+| Curated files and vendored data         | `data/`, or the app's current set, read from disk   | The deployment, or the set     | Commits                         |
 
 **Why the wiki and the worldstate stay out of the store.** The question was
-whether every outside read should go through Upstash. Next 16.3, without Cache
-Components, keeps a `fetch` in its data cache when the call opts in, and Vercel
-shares that cache across instances. It already does what the store would, at
-no command cost, and neither source protects anything of DE's. Only the
-profile's locks need the store.
+whether every outside read should go through the store. Next 16.3, without
+Cache Components, keeps a `fetch` in its data cache when the call opts in,
+Vercel shares that cache across instances, and the app keeps it in its own
+folder. It already does what the store would, and neither source protects
+anything of DE's. Only the profile's locks need the store.
 
 Two things make the opt-in hold, and both are checked rather than assumed:
 
@@ -152,10 +198,18 @@ interface Store {
 }
 ```
 
-| Backend | File                     | Used                                               |
-| ------- | ------------------------ | -------------------------------------------------- |
-| Upstash | `infra/store/upstash.ts` | Production, through `@upstash/redis` over REST     |
-| Memory  | `infra/store/memory.ts`  | Tests and development; exposes `flush()` for tests |
+| Backend | File                    | Used                                                         |
+| ------- | ----------------------- | ------------------------------------------------------------ |
+| File    | `infra/store/file.ts`   | The app: the memory backend's map, kept in one file          |
+| Memory  | `infra/store/memory.ts` | The demo, tests and development; exposes `flush()` for tests |
+
+Upstash, the shared backend until 2026-10-22, is removed: no target reads DE
+from a server any more, and the cut rule keeps nothing for later. The file
+backend is a plain JSON file, not a database (constitution, "No computed
+state"). It loads once when the server starts, drops what has expired, and
+writes the whole map after each change to a temporary file it then renames
+over the old one, so a crash leaves the last complete file. One server runs
+per machine (spec 13: one app at a time), so no second writer exists.
 
 The memory backend keeps its map on `globalThis`. A hot reload in development
 re-evaluates the modules, and a map held in a module would start empty: with
@@ -164,11 +218,11 @@ developer's own address, the lockout the constitution warns about. On
 `globalThis` the cache, the budget and the circuit survive every reload and are
 lost only when the process stops, so development needs no disk cache.
 
-`infra/store/index.ts` picks the backend: Upstash when its two variables are
-set, memory otherwise. In production with the source set to live, a missing
-store is a configuration error: the read fails closed and never falls back to an
-instance's memory, because that would quietly break the window across
-instances (constitution).
+`infra/store/index.ts` picks the backend: the file when `WF_STORE_FILE` is set,
+memory otherwise. In a production build with the source set to live, a
+missing file is a configuration error: the read fails closed and never falls
+back to memory, which a restart would empty and with it the window
+(constitution).
 
 `increment` sets the expiry only when it creates the key, in the same call
 (`SET NX PX` then `INCR`, pipelined), so a window is never extended by a later
@@ -176,8 +230,8 @@ spend.
 
 ### The keys
 
-Every key starts with `wf:`. Only production deploys and reads live (part 4), so
-one namespace serves the one deployment that does.
+Every key starts with `wf:`. Each machine has its own file, so one namespace
+serves it.
 
 | Lock           | Key                   | Value                                                        | Lives for                                   |
 | -------------- | --------------------- | ------------------------------------------------------------ | ------------------------------------------- |
@@ -190,9 +244,10 @@ one namespace serves the one deployment that does.
 
 ### Two instances, one id
 
-The in-process map of reads in flight dedupes one visitor's requests for an id
-inside one instance only.
-Across instances, `wf:lock:{id}` is taken with `setIfAbsent`. The owner chose on
+The in-process map of reads in flight dedupes one visitor's requests for an id.
+The app runs one server, but the lock is kept as it was written for many,
+because it costs one key and holds whatever runs the server:
+`wf:lock:{id}` is taken with `setIfAbsent`. The owner chose on
 2026-10-06 what the instance that loses does: every half second, for up to fifteen
 seconds, it reads the same keys as step 3 in one `MGET`, and
 answers with whichever result the winner left:
@@ -285,11 +340,9 @@ profile in hand, so it sets the figure; only its sizes are recorded here:
 | The seven fields, minified    | 63 KB            | 2.1 KB |
 | Gzip, base64 (what is stored) | 15 KB            | 0.6 KB |
 
-Upstash's REST interface carries strings, hence base64. At 15 KB for a full
-veteran, the 256 MB hold about 17,000 profiles at once, and the 10 GB of monthly
-transfer covers about 660,000 reads. The 500,000 commands a month are the
-binding limit, not the space or the transfer. `public-release.md` estimated
-18 KB with more fields; its figures are corrected.
+The store holds strings, hence base64. At 15 KB for a full veteran, a machine's
+store file stays a few dozen kilobytes. `public-release.md` estimated 18 KB
+with more fields; its figures are corrected.
 
 ## The runtime
 

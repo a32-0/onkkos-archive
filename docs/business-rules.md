@@ -78,13 +78,19 @@ cite one. The Figma comment id is given beside each for traceability.
   | Width       | Class    | Layout                                                                                                                                                                                                                                                                                      |
   | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                                                              |
-  | 600 to 839  | medium   | The frame's single column, centred, at most 600 px wide. The bottom tab bar stays.                                                                                                                                                                                                          |
+  | 600 to 839  | medium   | The frame's single column, fluid, with the 16 px gutter. The bottom tab bar stays.                                                                                                                                                                                                          |
   | 840 to 1199 | expanded | The tab bar floats, centred 48 px above the bottom of the screen (spec 04), the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
   | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                                                                   |
 
-- Outside the shell, the splash and the id form follow the compact class below
-  600, fluid with the 16 px gutter at the window's edges, and from 600 stay one
-  centred column at the frame's width (owner, 2026-10-15). Background art covers the whole window at every width.
+- Up to 840 every screen is fluid, with the 16 px gutter at the window's
+  edges, the screens outside the shell and Profile included: the app's window
+  never passes 600, and a column narrower than the window only left two empty
+  bands (owner, 2026-10-22). From 840, the splash, the id form and Two ways in
+  stay one centred column at the frame's width, as the owner set on
+  2026-10-15. Background art covers the whole window at every width.
+- An illustration keeps the proportions its frame draws as it grows: an update
+  card's art grows taller with its width, 358 by 202 in the frame, and is never
+  cropped to a fixed height (owner, 2026-10-22).
 - A sheet or menu that the frame draws full width, such as the player menu
   (`270:1145`), opens from 840 up as a panel at the frame's 390 px, anchored to
   what opened it.

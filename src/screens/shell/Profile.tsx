@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 
 import { SHELL } from "@/content/nav";
+import type { UpdateState } from "@/domain/types/update-state";
 import { Button } from "@/ui/Button/Button";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
@@ -15,19 +16,39 @@ import { Shell } from "./Shell";
 import type { ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
 
+function updateLine(update: UpdateState): string {
+  if (update.state === "current") return SHELL.upToDate;
+  if (update.state === "downloading") return SHELL.downloading(update.version);
+  if (update.state === "ready") return SHELL.installsOnClose(update.version);
+  return SHELL.unreachable;
+}
+
 export function Profile({
   chrome,
   tab,
   back,
+  version = null,
+  check,
 }: {
   chrome: ShellChrome;
   tab: ShellTab | null;
   back: string;
+  version?: string | null;
+  check?: () => Promise<UpdateState>;
 }) {
   const { player, voice, disconnect, setOnkko } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
   const local = useLocalTime(player.nextReadAt);
   const [, start] = useTransition();
+  const [update, setUpdate] = useState<UpdateState | null>(null);
+  const [checking, startCheck] = useTransition();
+  const ask = () => {
+    if (!check) return;
+    startCheck(async () => {
+      const answer = await check();
+      startCheck(() => setUpdate(answer));
+    });
+  };
   const choose = (value: string) => {
     setChoice(value);
     const form = new FormData();
@@ -83,7 +104,7 @@ export function Profile({
               </ListEntry>
             )}
             <ListEntry>
-              <ControlRow label={SHELL.tutorial} fill>
+              <ControlRow label={SHELL.tutorial} action>
                 <Button variant="secondary" disabled>
                   {SHELL.reset}
                 </Button>
@@ -91,6 +112,33 @@ export function Profile({
             </ListEntry>
           </List>
         </section>
+        {version && (
+          <section className={styles.settings}>
+            <Divider label={SHELL.about} />
+            <List label={SHELL.about}>
+              <ListEntry>
+                <ControlRow label={SHELL.version}>
+                  <span className={styles.version}>{version}</span>
+                </ControlRow>
+              </ListEntry>
+              <ListEntry>
+                {update ? (
+                  <ControlRow label={SHELL.updates}>
+                    <span className={styles.version} role="status">
+                      {updateLine(update)}
+                    </span>
+                  </ControlRow>
+                ) : (
+                  <ControlRow label={SHELL.updates} action>
+                    <Button variant="secondary" loading={checking} disabled={!check} onClick={ask}>
+                      {checking ? SHELL.checking : SHELL.check}
+                    </Button>
+                  </ControlRow>
+                )}
+              </ListEntry>
+            </List>
+          </section>
+        )}
         <div className={styles.foot}>
           <form action={disconnect}>
             <Button variant="danger" type="submit">

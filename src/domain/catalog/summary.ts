@@ -78,18 +78,11 @@ export function briefOf(plan: StepPlan): BriefBlock[] {
     }
   }
 
-  const blocks: BriefBlock[] = [
-    ...(blueprints.length === 0
-      ? []
-      : [
-          {
-            id: "blueprints" as const,
-            title: { say: "sectionBlueprints" } as Phrase,
-            lines: blueprints,
-          },
-        ]),
-    ...components,
-  ];
-  if (blocks.length > 0) return blocks;
-  return how === null ? [] : [how];
+  const first: BriefBlock[] =
+    blueprints.length > 0
+      ? [{ id: "blueprints", title: { say: "sectionBlueprints" } as Phrase, lines: blueprints }]
+      : how === null
+        ? []
+        : [how];
+  return [...first, ...components];
 }

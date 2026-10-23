@@ -45,7 +45,10 @@ profile will be read again, and lets them disconnect.
 ### Header
 
 The wordmark at the left, and at the right the **player chip**: the avatar
-square, the display name and a chevron. A thin red rule runs under the header.
+square and the display name on a card of `--surface`, `--space-4` inside it,
+with `--radius-m` corners, and a chevron pointing forward after the name
+(owner, 2026-10-22 and 2026-10-23, on `306:1099`). A
+thin red rule runs under the header.
 The chip opens Profile. The wordmark is not a link. The header shows on a
 tab's root only.
 
@@ -96,18 +99,26 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    {n}" and the rank's title under it ("Middle Master").
 2. **Settings**: a divider, then the settings as a grouped list, one row
    each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
-   **Tutorial** (Reset). Onkko's Phrases shows once the player has reached
+   **Tutorial** (Reset, a button 200 px wide; owner, 2026-10-22). Onkko's Phrases shows once the player has reached
    Cetus (BR-64). Language and Tutorial show disabled; they wait for later
    versions (owner, 2026-10-16).
-3. **Disconnect**, a red button across the width. It forgets `wf_account`,
+3. **About**, in the app alone (`819:48` Profile — App; approved by the
+   owner on 2026-10-23): a divider, then two rows: **Version**,
+   the app's version in `--ink-muted`, and **Updates**, a **Check** button
+   200 px wide that asks GitHub Releases at once (spec 13, "Updates"). The
+   demo site shows neither. The version comes from the main process
+   (`WF_APP_VERSION`, `appVersion()`). Built on 2026-10-23 with Check shown
+   disabled, as Reset is, until T-38 brings the updater it asks; enabled by
+   T-38, its states are spec 13's "Updates".
+4. **Disconnect**, a red button across the width. It forgets `wf_account`,
    `wf_since` and `wf_onkko` and opens `/connect` with an empty field.
-4. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
+5. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
    read was **{age}**, and the next one will be at **{h:mm AM} your local
    time**." The page is drawn with "**{HH:MM} hours UTC**", which the
    browser turns into the player's own time once it loads, since only the
    browser knows its time zone (owner, 2026-10-21).
 
-The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source.
+The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source. A live response read on 2026-10-23 carries no glyph anywhere: its only image-like fields are `LoadOutPreset.PresetIcon`, empty, and `GuildEmblem`, a flag. A live player therefore wears the game's default glyph, Lotus Symbol (`AvatarImageDefault`, the one every account starts with; owner, 2026-10-23), until the player can choose one; the square stays only if the catalog lacks it.
 
 ## Data and sources
 

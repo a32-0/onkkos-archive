@@ -9,6 +9,7 @@ import { catalogData, updateSources } from "@/infra/catalog/data";
 import { readItems } from "@/infra/catalog/items";
 import { loadGraph } from "@/infra/graph/load";
 import { loadSystems } from "@/infra/place/load";
+import { writeManifest } from "./data-manifest";
 import { isEmpty, renderReport } from "./review-report";
 
 const say = (line: string) => process.stdout.write(`${line}\n`);
@@ -16,6 +17,7 @@ const say = (line: string) => process.stdout.write(`${line}\n`);
 const ROOT = process.cwd();
 const VENDOR = path.join(ROOT, "data", "vendor");
 const MARK = path.join(ROOT, "data", "reviewed-update.json");
+const MANIFEST = path.join(ROOT, "data", "manifest.json");
 const REPORTS = path.join(ROOT, "docs", "updates");
 const PACKAGE_FILES = ["package.json", "pnpm-lock.yaml"];
 const WIKI_FILE = /^wiki-(.+)\.json$/;
@@ -67,6 +69,7 @@ function backUp(): Map<string, string | null> {
     files.set(path.join(VENDOR, file), readFileSync(path.join(VENDOR, file), "utf8"));
   }
   files.set(MARK, existsSync(MARK) ? readFileSync(MARK, "utf8") : null);
+  files.set(MANIFEST, existsSync(MANIFEST) ? readFileSync(MANIFEST, "utf8") : null);
   return files;
 }
 
@@ -187,6 +190,7 @@ function main(): number {
       return 0;
     }
 
+    writeManifest(path.join(ROOT, "data"));
     const passed = pnpm(["check"]);
     const today = new Date().toISOString().slice(0, 10);
     const catalogTo = snapshotNames(after).version;

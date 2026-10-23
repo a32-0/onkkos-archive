@@ -1,10 +1,10 @@
 # specs/
 
-The constitution, the twelve specs, the plan and the tasks.
+The constitution, the thirteen specs, the plan and the tasks.
 
 - [`00-constitution.md`](00-constitution.md) holds the rules every other file
   answers to.
-- `01` to `12` are the specs, one per screen or service, each written against
+- `01` to `13` are the specs, one per screen or service, each written against
   the pinned frames.
 - [`plan/`](plan/) sets the repository's tree, its architecture, the design
   system, the deployment, the documents and the roadmap.

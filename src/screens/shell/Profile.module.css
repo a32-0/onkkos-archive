@@ -35,7 +35,7 @@
 }
 
 .name {
-  composes: display-name from "../../ui/type.module.css";
+  composes: title from "../../ui/type.module.css";
   margin: 0;
 }
 
@@ -61,6 +61,15 @@
   gap: var(--space-4);
 }
 
+.version {
+  composes: body-l from "../../ui/type.module.css";
+  --profile-version-height: 45px;
+  display: flex;
+  align-items: center;
+  min-height: var(--profile-version-height);
+  color: var(--ink-muted);
+}
+
 .foot {
   display: flex;
   flex-direction: column;
@@ -79,7 +88,7 @@
   composes: mono-strong from "../../ui/type.module.css";
 }
 
-@media (min-width: 600px) {
+@media (min-width: 840px) {
   .page {
     --profile-column: 422px;
   }

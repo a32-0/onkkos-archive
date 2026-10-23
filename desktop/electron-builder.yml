@@ -1,0 +1,26 @@
+appId: onkkos-archive
+productName: Onkko's Archive
+icon: ../public/icon-512.png
+directories:
+  output: release
+files:
+  - dist/**
+  - package.json
+afterPack: scripts/after-pack.mjs
+win:
+  target: nsis
+nsis:
+  oneClick: true
+  perMachine: false
+  deleteAppDataOnUninstall: true
+  artifactName: onkkos-archive-${version}-setup.${ext}
+linux:
+  target: AppImage
+  category: Game
+appImage:
+  artifactName: onkkos-archive-${version}.${ext}
+publish:
+  provider: github
+  owner: a32-0
+  repo: onkkos-archive
+  releaseType: draft

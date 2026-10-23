@@ -30,7 +30,7 @@
 }
 
 .titleCaps {
-  composes: name-caps from "../type.module.css";
+  composes: name from "../type.module.css";
 }
 
 .titleUpper {
