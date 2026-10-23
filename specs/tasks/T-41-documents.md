@@ -10,6 +10,14 @@ Every document describes the app as it is (constitution): the README offers
 the demo and the download, and promises what the app on a player's machine
 does with their account.
 
+## Brought forward (owner, 2026-10-23)
+
+The README was rewritten before T-42, at the owner's request, ahead of the
+first release: the two ways in, the download and what SmartScreen asks, the
+privacy section for the app, the desktop commands, a new banner with the
+wordmark alone, and the three screens retaken. What the task still does: the
+other documents of its table, and the README checked again once T-42 ships.
+
 ## What it builds
 
 | File                  | Note                                                                                                                    |

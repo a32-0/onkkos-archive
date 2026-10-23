@@ -88,11 +88,14 @@ first because the player reads less. It is short and links out for the rest.
 
 The README wears Cetus (owner, 2026-10-21): a banner, the features in two
 columns with a screenshot each, the map, and a sheet of the design system.
-Its images are in `docs/readme/`: `banner.png`, the splash over its Cetus
-art; `summary.png`, `step-by-step.png` (Rhino) and `map.png` (Mars), each of
+Its images are in `docs/readme/`: `banner.png`, the wordmark alone over the
+splash's Cetus art and its frame line, drawn in Figma as **README — Banner**
+and exported at 2x (owner, 2026-10-23: the splash's button and line left
+out); `summary.png`, `step-by-step.png` (Rhino) and `map.png` (Mars), each of
 the Ordis demo at 390 px; and `design-system.png`, the colours of Storybook's
-Foundations page. They were taken from the running app on 2026-10-21, at the
-owner's request, and are taken again the same way when a screen changes. Section 6 credits each source in a table, with what the app takes
+Foundations page. The screens were taken from the running app on 2026-10-21
+and again on 2026-10-23, at the owner's request, and are taken again the same
+way when a screen changes. Section 6 credits each source in a table, with what the app takes
 from it and its terms.
 
 What it does not have:
