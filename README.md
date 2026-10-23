@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/readme/banner.png" alt="The opening screen of Onkko's Archive: the wordmark over Cetus at dusk" width="100%">
+  <img src="docs/readme/banner.png" alt="Onkko's Archive: the wordmark over Cetus at dusk" width="100%">
 </p>
 
 <h1 align="center">Onkko's Archive</h1>
@@ -12,7 +12,9 @@
 </p>
 
 <p align="center">
-  <a href="https://onkkos-archive.vercel.app"><strong>Open the app</strong></a>
+  <a href="https://github.com/a32-0/onkkos-archive/releases/latest"><strong>Download for Windows or Linux</strong></a>
+  ·
+  <a href="https://onkkos-archive.vercel.app">Try the demo</a>
   ·
   <a href="https://onkkos-archive-storybook.vercel.app">Design system</a>
   ·
@@ -25,6 +27,26 @@
   <img alt="Licence MIT" src="https://img.shields.io/badge/licence-MIT-b33419?style=flat-square&labelColor=2a251f">
   <img alt="Fan project" src="https://img.shields.io/badge/fan%20project-not%20affiliated%20with%20DE-fcbb4a?style=flat-square&labelColor=2a251f">
 </p>
+
+## Two ways in
+
+- **Try the demo** at [onkkos-archive.vercel.app](https://onkkos-archive.vercel.app).
+  Nothing to install: it opens on two demo players, Cy and Ordis, and reads no
+  account.
+- **Download the app** from the
+  [latest release](https://github.com/a32-0/onkkos-archive/releases/latest) to
+  see your own account. It reads your profile from your computer, the way your
+  game does.
+  - **Windows 10 or 11:** run `onkkos-archive-{version}-setup.exe`. It installs
+    for your user, with no administrator rights. The installer isn't signed, so
+    the first time Windows says _"Windows protected your PC"_: click **More
+    info**, then **Run anyway**.
+  - **Linux:** make `onkkos-archive-{version}.AppImage` executable
+    (`chmod +x`) and open it.
+
+  The app updates itself: it downloads a new version in the background and
+  installs it when you close it. New game data after each Warframe update
+  arrives at the next start, without a new version.
 
 ## What it does
 
@@ -57,23 +79,33 @@ It does two things, and both end on the same map.
 
 ## Privacy
 
-If you type your ID here, this is what happens to it.
+If you give the app your ID, this is what happens to it.
 
-- The app only needs your public ID. It reads the same profile the game shows
-  anyone who looks you up. There's no login, no password and no email.
-- It keeps the fields it reads for twelve hours and then drops them. It never
-  stores your full profile or anything it worked out from it.
+- The app only needs your public ID. It reads, from your own computer, the
+  same profile the game shows anyone who looks you up. There's no login, no
+  password, no email, and no server of ours in between.
+- It keeps what it reads on your computer, in its own folder: only the fields
+  it uses, for twelve hours, then nothing. Never your full profile and never
+  anything it worked out from it.
 - Your ID, the last update you played and the last place you opened live in
-  cookies on your device. The steps you tick stay in your browser.
-  Disconnect forgets your id.
-- Vercel Web Analytics counts page views, and Speed Insights measures how fast
-  pages load. Neither sets a cookie, and your id never appears in an address.
-  Vercel counts a visitor as an anonymous hash and throws it away after a day.
-  Nothing follows you to other sites, and there are no ads.
-- DE's servers get looked after too. Once a profile is read, it's kept and
-  shared. Reads happen one at a time, each visitor gets two new lookups every
-  twelve hours, and if DE says no, the app waits thirty minutes before asking
-  again. [`docs/api.md`](docs/api.md) has the details.
+  the app's cookies. The steps you tick stay in its storage. Disconnect
+  forgets your ID.
+- Nothing else leaves your computer but these reads: your profile from
+  `api.warframe.com`; prose, icons and art from `wiki.warframe.com`,
+  `www.warframe.com` and `www-static.warframe.com`; item art, Varzia's stock
+  and the rotations from `warframestat.us`; and the data and updates from
+  GitHub. The app sends no analytics.
+- The demo reads no account. Its visits are counted, never you: Vercel Web
+  Analytics counts page views and Speed Insights measures how fast pages load,
+  with no cookie and no ID in any address. Nothing follows you to other sites,
+  and there are no ads.
+- DE's servers get looked after too. Reads happen one at a time, each
+  computer gets two new lookups every twelve hours, and if DE says no, the
+  app waits thirty minutes before asking again.
+  [`docs/api.md`](docs/api.md) has the details.
+
+Uninstalling the app on Windows removes its folder. On Linux, delete the
+AppImage and `~/.config/Onkko's Archive`.
 
 ## How it was built
 
@@ -155,7 +187,16 @@ pnpm storybook      # the design system at localhost:6006
 | `WF_PROFILE_SOURCE` | `fixture` serves the two anonymised demo profiles and never calls DE. Development always uses it            |
 | `WF_STORE_FILE`     | The file that keeps the locks across restarts, set by the app. Without it, development keeps them in memory |
 
-[`docs/development.md`](docs/development.md) covers the tooling.
+To run the desktop app from the tree:
+
+```bash
+pnpm --dir desktop install
+pnpm --dir desktop dev   # stages the app's build and opens its window
+```
+
+[`docs/development.md`](docs/development.md) covers the tooling, and
+[`docs/desktop.md`](docs/desktop.md) the desktop app and how a version is
+released.
 [`docs/content-updates.md`](docs/content-updates.md) explains how a new
 Warframe update gets into the app.
 
@@ -172,7 +213,7 @@ This app wouldn't exist without other people's work. Thank you to all of them.
 | [WFCD · warframestat.us](https://docs.warframestat.us)                                                                                                                   | The items' art (`cdn.warframestat.us`) and Varzia's stock                                                                                                                            | The API: [MIT](https://github.com/WFCD/warframe-status/blob/main/LICENSE). The art is DE's                                                                                                                                                      |
 | [The Warframe Wiki](https://wiki.warframe.com)                                                                                                                           | Missions, vendors, relics, resources and research from its data modules; the prose of a step; icons and update art, linked and never copied                                          | Text and modules: "Creative Commons Attribution–Share Alike License (CC BY-SA)"; the site's footer: "CC BY-NC-SA 3.0" ([copyrights](https://wiki.warframe.com/w/Warframe_Wiki:Copyrights))                                                      |
 | [Cinzel](https://fonts.google.com/specimen/Cinzel), [Inter](https://fonts.google.com/specimen/Inter), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) | The three typefaces                                                                                                                                                                  | SIL Open Font License 1.1 ([Cinzel](https://github.com/NDISCOVER/Cinzel/blob/master/OFL.txt), [Inter](https://github.com/rsms/inter/blob/master/LICENSE.txt), [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt)) |
-| [Vercel Web Analytics and Speed Insights](https://vercel.com/docs/analytics)                                                                                             | How many people visit, and how fast the pages load                                                                                                                                   | [Vercel's terms](https://vercel.com/legal/terms)                                                                                                                                                                                                |
+| [Vercel Web Analytics and Speed Insights](https://vercel.com/docs/analytics)                                                                                             | How many people visit the demo, and how fast its pages load                                                                                                                          | [Vercel's terms](https://vercel.com/legal/terms)                                                                                                                                                                                                |
 | [Material Symbols Rounded](https://fonts.google.com/icons)                                                                                                               | The interface's own icons                                                                                                                                                            | [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE)                                                                                                                                                       |
 
 [`docs/curated-files.md`](docs/curated-files.md) lists every vendored file and
