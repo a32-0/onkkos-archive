@@ -1,6 +1,7 @@
 {
   "name": "onkkos-archive-desktop",
   "productName": "Onkko's Archive",
+  "desktopName": "onkkos-archive.desktop",
   "version": "0.1.0",
   "private": true,
   "type": "module",

@@ -181,8 +181,12 @@ replace the working tree's data with `main`'s.
 the current user, with no administrator, and an AppImage for Linux. Both are
 named `onkkos-archive-{version}`, with no space or apostrophe, because GitHub
 renames such characters on upload and the update files would then name an
-asset that does not exist. The program carries `dist/` and `electron-updater`
-in `app.asar`; the server goes beside it in `resources/server`.
+asset that does not exist. The AppImage also refuses an apostrophe in the
+program's file, so on Linux the program and its `.desktop` entry are
+`onkkos-archive` (`executableName`, `desktopName`), while the window and the
+menus still read Onkko's Archive. The program carries `dist/` and
+`electron-updater` in `app.asar`; the server goes beside it in
+`resources/server`.
 
 The server is copied by `scripts/after-pack.mjs` rather than by
 `extraResources`, which drops a `node_modules` folder, and the staged one is
