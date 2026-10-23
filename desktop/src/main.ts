@@ -1,16 +1,18 @@
-import { app, BrowserWindow, screen, utilityProcess } from "electron";
+import { app, BrowserWindow, screen, session, utilityProcess } from "electron";
+import { readFileSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
 import path from "node:path";
 
 const WINDOW = { width: 390, widest: 600, height: 844, lowest: 640 } as const;
 const GROUND = "#16130e";
 const READY_MS = 30_000;
+const RETURNING = "/system";
 
-function freePort(): Promise<number> {
+function listenable(port: number): Promise<number> {
   return new Promise((resolve, reject) => {
     const probe = createServer();
     probe.once("error", reject);
-    probe.listen(0, "127.0.0.1", () => {
+    probe.listen(port, "127.0.0.1", () => {
       const address = probe.address();
       probe.close(() =>
         typeof address === "object" && address
@@ -19,6 +21,14 @@ function freePort(): Promise<number> {
       );
     });
   });
+}
+
+async function keptPort(): Promise<number> {
+  const file = path.join(app.getPath("userData"), "port");
+  const kept = Number.parseInt(readFileSync(file, { encoding: "utf8", flag: "a+" }), 10);
+  const port = await listenable(kept > 0 ? kept : 0).catch(() => listenable(0));
+  if (port !== kept) writeFileSync(file, String(port));
+  return port;
 }
 
 async function answers(url: string): Promise<void> {
@@ -41,7 +51,7 @@ function serverFolder(): string {
 }
 
 async function start(): Promise<void> {
-  const port = await freePort();
+  const port = await keptPort();
   const folder = serverFolder();
   const server = utilityProcess.fork(path.join(folder, "server.js"), [], {
     cwd: folder,
@@ -75,8 +85,10 @@ async function start(): Promise<void> {
     webPreferences: { contextIsolation: true, sandbox: true, nodeIntegration: false },
   });
   window.removeMenu();
-  await window.loadURL(origin);
+  const remembered = await session.defaultSession.cookies.get({ url: origin, name: "wf_account" });
+  await window.loadURL(remembered.length > 0 ? `${origin}${RETURNING}` : origin);
 }
 
 app.whenReady().then(start, () => app.quit());
+app.on("before-quit", () => void session.defaultSession.cookies.flushStore());
 app.on("window-all-closed", () => app.quit());

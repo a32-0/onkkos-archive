@@ -41,7 +41,7 @@
   gap: var(--space-4);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 840px) {
   .page {
     --summary-column: 640px;
   }

@@ -29,3 +29,8 @@
   height: var(--space-7);
   object-fit: contain;
 }
+
+.chevron {
+  display: flex;
+  transform: rotate(180deg);
+}

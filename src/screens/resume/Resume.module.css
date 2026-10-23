@@ -81,14 +81,6 @@
   padding: 0 var(--gutter) var(--space-6);
 }
 
-@media (min-width: 600px) {
-  .page {
-    --resume-column: 600px;
-    --resume-intro: 632px;
-    --resume-area: 600px;
-  }
-}
-
 @media (min-width: 840px) {
   .page {
     --resume-column: 640px;

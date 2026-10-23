@@ -105,7 +105,12 @@ that can reach it can spend the player's reads. Only the app's window may:
   origin the app registers for itself and forwards to the server; the first
   task that builds the window proves both survive, and if Electron's cookies
   do not hold on that origin it records the measurement and keeps the port
-  instead, with the same secret.
+  instead, with the same secret. Measured on 2026-10-23: a new port at each
+  start lost the cookies, since Chromium keeps them per port, so the app
+  keeps the port the system first gave it in a file under its own folder,
+  and picks another only when that one is taken.
+- A returning player, whose `wf_account` cookie the window still holds, opens
+  on the map (`/system`), not on the splash (owner, 2026-10-23).
 
 ## What it keeps, and where
 

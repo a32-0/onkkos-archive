@@ -46,7 +46,8 @@ profile will be read again, and lets them disconnect.
 
 The wordmark at the left, and at the right the **player chip**: the avatar
 square and the display name on a card of `--surface`, `--space-4` inside it,
-with `--radius-m` corners; no chevron (owner, 2026-10-22, on `306:1099`). A
+with `--radius-m` corners, and a chevron pointing forward after the name
+(owner, 2026-10-22 and 2026-10-23, on `306:1099`). A
 thin red rule runs under the header.
 The chip opens Profile. The wordmark is not a link. The header shows on a
 tab's root only.

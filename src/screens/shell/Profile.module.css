@@ -35,7 +35,7 @@
 }
 
 .name {
-  composes: display-name from "../../ui/type.module.css";
+  composes: title from "../../ui/type.module.css";
   margin: 0;
 }
 

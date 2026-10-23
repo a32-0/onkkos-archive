@@ -23,6 +23,12 @@ through it, on the owner's machine (spec 13, "How it reads DE"). The answer is
 recorded here, the profile never. A refusal stops the task and goes to the
 owner with its log line.
 
+Read on 2026-10-22, on the owner's machine: DE answered and the profile
+opened. The second start asked for the id again, because the port had
+changed and the cookies with it; the port is now kept (spec 13). The same
+read showed the platform glyph in the name (T-40) and no
+`ActiveAvatarImageType` in the profile, so the avatar keeps its square.
+
 ## What it builds
 
 | File                                    | Note                                                                                                                                                                                 |

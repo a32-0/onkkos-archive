@@ -21,5 +21,5 @@ replaced.
 
 ## Acceptance
 
-- [ ] The player chip and the menu show the name with no box, for a profile whose name carries the glyph.
+- [x] The player chip and the menu show the name with no box, for a profile whose name carries the glyph.
 - [ ] `pnpm check` and `pnpm knip` pass; `check.yml` passes on `dev`.
