@@ -39,7 +39,10 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                         |
 | `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                   |
 | `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                   |
+| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                      |
 | `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                          |
+| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                |
+| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                            |
 | `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                             |
 | `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                           |
 
@@ -50,6 +53,12 @@ can be widened to 600 and never goes below 390 by 640. It cannot be maximised
 or made full screen, and it has no menu. These are the `minWidth`, `maxWidth`
 and `minHeight` of `BrowserWindow` with `useContentSize`, so the limits hold for
 the content and not for the system's frame around it.
+
+When the window closes, its content size goes to `window.json` in the app's
+folder, and the next start opens at that size. A saved size is held inside the
+same limits and the screen's height, so a smaller screen or a broken file
+opens at 390 by 844 or the screen's height. Checked on 2026-10-23: widened to
+520 by 760, closed, and reopened at 520 by 760.
 
 The scroll bar is hidden: the app inserts `html { scrollbar-width: none; }`
 into each page it loads, and the content keeps its full width. Chromium's
@@ -128,10 +137,41 @@ port the system first gave it, in `port` under its own folder, and takes
 another only when that one is taken. The cookies are flushed to disk before
 the app quits.
 
+## The data at each start
+
+While **Desktop — Starting** shows, a packaged app reads
+`data/manifest.json` from `main` on GitHub, for thirty seconds at most. When
+the files differ from the set in use and the schema is the app's own, it
+builds a new server folder, `server-next` under its own folder. The program's
+server is copied there without its `data/` (about 31 MB). The data files that
+did not change are copied from the set in use, and the rest are downloaded and
+checked against their size and SHA-256. Only then does `server-next` become
+`server`, by renaming, and the old one is deleted. The server then starts from
+that folder.
+
+The server's code reads `data/` beside itself, from the folder it runs in, so
+nothing in `src/` changes for this and the demo's build does not see it. A
+data path read from a variable would have made Turbopack trace the whole
+project into the demo's functions.
+
+| What happens                                 | The set used              |
+| -------------------------------------------- | ------------------------- |
+| The published set equals the one in use      | The one in use            |
+| A newer set, every file verified             | The new one               |
+| A wrong size or hash, another schema, a 404  | The one in use            |
+| No connection, or thirty seconds run out     | The one in use            |
+| The app updated since the set was downloaded | The installer's own again |
+
+Nothing is shown in any of these cases. A refusal leaves one line,
+`The data stayed as it was: …`, on the main process's output. Started from
+the tree, the app checks only with `WF_DATA_CHECK=1`; otherwise it would
+replace the working tree's data with `main`'s.
+
 ## Where it writes
 
 Everything goes under Electron's `userData`: `%APPDATA%\Onkko's Archive` on
 Windows, `~/.config/Onkko's Archive` on Linux. It holds `store.json` (spec
-11's locks and the last profile, [`api.md`](api.md)), `port`, and Chromium's
-own folders, the cookies among them. Next's cache stays in memory, so the
-wiki and the worldstate are read again after each start.
+11's locks and the last profile, [`api.md`](api.md)), `port`, `window.json`, `server` once a
+data set has been downloaded, and Chromium's own folders, the cookies among
+them. Next's cache stays in memory, so the wiki and the worldstate are read
+again after each start.

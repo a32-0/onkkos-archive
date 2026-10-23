@@ -27,6 +27,7 @@
     "data:patch-notes": "node scripts/refresh-patch-notes.mjs",
     "data:vendor-art": "node scripts/refresh-vendor-art.mjs",
     "data:items": "node scripts/refresh-items.mjs",
+    "data:manifest": "node scripts/data-manifest.ts",
     "content:update": "node --import tsx --conditions=react-server scripts/content-update.ts",
     "fixture": "node scripts/trim-profile.mjs"
   },

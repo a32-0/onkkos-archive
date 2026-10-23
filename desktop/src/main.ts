@@ -4,19 +4,36 @@ import { app, BrowserWindow, screen, session } from "electron";
 
 import { LAUNCH_HEADER } from "./guard.js";
 import { holdLinks } from "./links.js";
-import { startServer } from "./server.js";
+import { currentServer, refreshData, type DataPlaces } from "./data.js";
+import { bundledServer, startServer } from "./server.js";
+import { fitSize, readSize, writeSize } from "./window-size.js";
 
 const WINDOW = { width: 390, widest: 600, height: 844, lowest: 640 } as const;
 const GROUND = "#16130e";
 const RETURNING = "/system";
 const STARTING = path.join(import.meta.dirname, "starting");
 const NO_SCROLL_BAR = "html { scrollbar-width: none; }";
+const DATA_SOURCE = "https://raw.githubusercontent.com/a32-0/onkkos-archive/main/data";
+
+function dataPlaces(): DataPlaces {
+  return {
+    bundled: bundledServer(),
+    ownRoot: path.join(app.getPath("userData"), "server"),
+    version: app.getVersion(),
+    source: DATA_SOURCE,
+  };
+}
+
+function checksData(): boolean {
+  return app.isPackaged || process.env.WF_DATA_CHECK === "1";
+}
 
 function openWindow(): BrowserWindow {
-  const height = Math.min(WINDOW.height, screen.getPrimaryDisplay().workAreaSize.height);
+  const kept = path.join(app.getPath("userData"), "window.json");
+  const size = fitSize(readSize(kept), WINDOW, screen.getPrimaryDisplay().workAreaSize.height);
   const window = new BrowserWindow({
-    width: WINDOW.width,
-    height,
+    width: size.width,
+    height: size.height,
     useContentSize: true,
     minWidth: WINDOW.width,
     maxWidth: WINDOW.widest,
@@ -33,6 +50,10 @@ function openWindow(): BrowserWindow {
   });
   window.removeMenu();
   window.webContents.on("dom-ready", () => void window.webContents.insertCSS(NO_SCROLL_BAR));
+  window.on("close", () => {
+    const [width = size.width, height = size.height] = window.getContentSize();
+    writeSize(kept, { width, height });
+  });
   return window;
 }
 
@@ -57,7 +78,9 @@ async function start(): Promise<void> {
   });
   await window.loadFile(path.join(STARTING, "starting.html"));
   try {
-    const server = await startServer();
+    const places = dataPlaces();
+    const folder = checksData() ? await refreshData(places) : await currentServer(places);
+    const server = await startServer(folder);
     origin = server.origin;
     signRequests(server.origin, server.token);
     const remembered = await session.defaultSession.cookies.get({

@@ -18,6 +18,7 @@ cpSync(path.join(root, "public"), path.join(standalone, "public"), { recursive: 
 cpSync(path.join(root, ".next", "static"), path.join(standalone, ".next", "static"), {
   recursive: true,
 });
+cpSync(path.join(root, "data", "manifest.json"), path.join(standalone, "data", "manifest.json"));
 execSync("node desktop/scripts/starting.mjs", { cwd: root, stdio: "inherit" });
 execSync("pnpm --dir desktop build", { cwd: root, stdio: "inherit" });
 execSync("node desktop/scripts/guard-check.mjs", { cwd: root, stdio: "inherit" });

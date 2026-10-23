@@ -63,7 +63,9 @@ player only from the repository's GitHub Releases, over HTTPS.
 - One window the width of a phone (owner, 2026-10-22): its content opens 390
   wide, the frames' width, and can be widened to 600, the top of BR-39's
   first class, never past it nor narrower than 390. It opens 844 tall, or as
-  tall as the screen allows, and is never shorter than 640. It cannot be
+  tall as the screen allows, and is never shorter than 640. After the first
+  start it opens at the size the player left it, kept inside those limits
+  and the screen (owner, 2026-10-23). It cannot be
   maximised or made full screen. The scroll bar is hidden, so the content
   keeps its full width (Chromium's overlay bar cannot be switched on from
   inside the app; `docs/desktop.md`). The system's own title bar; its title is
@@ -168,9 +170,10 @@ waiting for a new version of itself:
    it has is always complete and correct for its version.
 
 The installer carries the set that was on `main` when it was built, so the
-first start and every offline start have one. The server reads `data/` from
-the folder the main process names: that bundled set, read in place, until a
-downloaded set in the app's own folder replaces it. Nothing is ever written
+first start and every offline start have one. The server runs in place from
+the program's folder, with that set, until a downloaded set replaces it. The
+app then runs a copy of the server from its own folder, with the new set beside
+it, and drops that copy when the app itself updates. Nothing is ever written
 beside the program.
 
 ## Updates

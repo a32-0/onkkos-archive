@@ -50,17 +50,16 @@ async function answers(url: string, token: string): Promise<void> {
   throw new Error("The server did not answer");
 }
 
-function serverFolder(): string {
+export function bundledServer(): string {
   return app.isPackaged
     ? path.join(process.resourcesPath, "server")
     : path.join(import.meta.dirname, "..", "..", ".next", "standalone");
 }
 
-export async function startServer(): Promise<Server> {
+export async function startServer(folder: string): Promise<Server> {
   const port = await keptPort();
   const host = `127.0.0.1:${port}`;
   const token = randomBytes(32).toString("hex");
-  const folder = serverFolder();
   const server = utilityProcess.fork(
     path.join(import.meta.dirname, "serve.js"),
     [path.join(folder, "server.js")],
