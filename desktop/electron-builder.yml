@@ -16,6 +16,8 @@ nsis:
   artifactName: onkkos-archive-${version}-setup.${ext}
 linux:
   target: AppImage
+  executableName: onkkos-archive
+  syncDesktopName: true
   category: Game
 appImage:
   artifactName: onkkos-archive-${version}.${ext}
