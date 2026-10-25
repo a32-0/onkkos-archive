@@ -76,9 +76,14 @@ tabs or player chip. From the top, as `661:4354` draws it:
    either case) before any call. A bad shape shows the `invalid-id` band
    without reading anything.
 2. Otherwise the form enters **Loading** (`675:5392`): Connect is disabled,
-   and the quill card reads "Onkko is reading your archive...", centred under
-   the quill (owner, 2026-10-16), between the form and the steps, where the
-   demos give way to it (T-27b). The card is announced to screen readers.
+   and the loading quill takes the place of the demos (T-27b), between the
+   form and the steps: the quill alone, 64 × 96, on the page's own background,
+   with no card and no visible words (owner, 2026-10-24). Screen readers hear
+   "Onkko is reading your archive...". The quill writes a stroke, lifts, and
+   starts again every 2.4 s
+   ([`841:536` Loading — Quill motion](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=841-536);
+   owner, 2026-10-23); with reduced motion it stands still and draws no
+   stroke (T-44).
 3. On success the id is saved in `wf_account` for a year, and the player goes
    on by BR-03: a player who has reached Venus to `/features`, a new player to
    `/goals`. A profile whose `Missions[]` cannot be read counts as reached.

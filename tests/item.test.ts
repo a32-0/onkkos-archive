@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import type { BriefLine } from "@/domain/catalog/summary";
 import type { ItemState } from "@/domain/place/state";
 import { titled } from "@/screens/summary/lines";
 import type { ItemFacts } from "@/screens/item/state";
@@ -161,6 +162,28 @@ describe("the item's page (spec 09)", () => {
   it("speaks only for an item the player has (BR-64)", () => {
     expect(itemPage(facts(), null, null).owned).toBe(true);
     expect(itemPage(facts({ state: { kind: "absent" } }), null, null).owned).toBe(false);
+  });
+
+  it("shows a quest's own art on the row that starts it", () => {
+    const start: BriefLine = {
+      id: "start:Octavia's Anthem",
+      title: { say: "questStartTitle", quest: "Octavia's Anthem" },
+      route: null,
+      reading: [],
+      where: [],
+      detail: [],
+      imageUrl: null,
+      thing: null,
+      optional: false,
+      more: 0,
+    };
+    const quest = facts({
+      quest: true,
+      art: "anthem.png",
+      blocks: [{ id: "how", title: { say: "sectionHowToGet" }, lines: [start] }],
+    });
+    const [how] = itemPage(quest, "goal", null).sections;
+    expect(how?.rows[0]?.art).toBe("anthem.png");
   });
 
   it("keeps the view in the link it writes", () => {

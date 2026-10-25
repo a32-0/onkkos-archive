@@ -39,4 +39,5 @@
 
 .line {
   composes: body-l from "../type.module.css";
+  color: var(--ink-muted);
 }

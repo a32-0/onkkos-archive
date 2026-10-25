@@ -234,6 +234,44 @@ describe("Disconnect (spec 04)", () => {
   });
 });
 
+describe("the first tour (T-45)", () => {
+  async function resume(): Promise<string> {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: CatchUpPage } = await import("@/app/catch-up/page");
+    return renderToStaticMarkup(await CatchUpPage({ searchParams: Promise.resolve({}) }));
+  }
+
+  it("shows once, until it ends, and again after Tutorial's Reset", async () => {
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(await resume()).toContain("1 of 4");
+    const { endTour, resetTour } = await import("@/app/actions");
+    await endTour();
+    expect(jar.get("wf_tour")?.value).toBe("seen");
+    expect(await resume()).not.toContain("1 of 4");
+    await expect(resetTour()).rejects.toMatchObject({ url: "/system" });
+    expect(jar.get("wf_tour")).toBeUndefined();
+    expect(await resume()).toContain("1 of 4");
+  });
+
+  it("is not shown on a step of Two ways in, where the tab bar is not", async () => {
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: CatchUpPage } = await import("@/app/catch-up/page");
+    const html = renderToStaticMarkup(
+      await CatchUpPage({ searchParams: Promise.resolve({ step: "resume" }) }),
+    );
+    expect(html).not.toContain("1 of 4");
+  });
+
+  it("outlives Disconnect, since it belongs to the device", async () => {
+    await (await import("@/infra/session")).writeAccountId(ORDIS);
+    const { disconnect, endTour } = await import("@/app/actions");
+    await endTour();
+    await expect(disconnect()).rejects.toMatchObject({ url: "/connect" });
+    expect(jar.get("wf_tour")?.value).toBe("seen");
+  });
+});
+
 describe("the player the shell shows", () => {
   it("carries the name, the rank and the read times", async () => {
     const { playerOf, requireScreen } = await import("@/app/screen");

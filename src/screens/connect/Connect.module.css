@@ -19,7 +19,7 @@
 .lead {
   composes: body-l from "../../ui/type.module.css";
   margin: 0;
-  color: var(--ink);
+  color: var(--ink-muted);
 }
 
 .card {

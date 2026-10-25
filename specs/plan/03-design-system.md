@@ -121,6 +121,27 @@ A role at a fraction of a primitive's opacity is written as `color-mix()` on
 that primitive. `tokens.css` has 21 primitives; Figma's Primitives collection
 counts 28, and the five it adds have not been read.
 
+### The three inks
+
+Text takes one of three inks, by the role it plays, never by its length
+(owner, 2026-10-24, T-46):
+
+| Ink           | Role                                                                                                                   | On canvas | On a card | On raised-strong |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------- | --------- | --------- | ---------------- |
+| `--ink`       | What is read first: titles, names, values, labels, buttons and tabs, and an instruction the player follows             | 14.35:1   | 11.77:1   | 9.54:1           |
+| `--ink-muted` | What explains it: a screen's lead, a card's subtitle, a row's place or reading, an empty state's line, a dialog's body | 7.66:1    | 6.28:1    | 5.10:1           |
+| `--ink-dim`   | What frames it: kickers, eyebrows, dividers, counts, Onkko's line, the read cycle, placeholders                        | 6.22:1    | 5.10:1    | 4.14:1, never    |
+
+- Every pair passes WCAG AA (4.5:1) but `--ink-dim` on `--surface-raised-strong`,
+  so a row that takes that ground (the current place or system) lifts its
+  dim text to `--ink-muted`, as `PlaceRow` and `SystemRow` do.
+- The gain is hierarchy: the eye finds the titles first and reads the
+  explanation after. A lower contrast does not make long text easier to read
+  in itself, and WCAG names no such benefit; `--ink` is already an off-white,
+  which spares the glare of pure white on black.
+- Colour that carries meaning keeps its own token: `--accent` for odds and
+  what is new, `--link`, the states' inks.
+
 ## Type
 
 Line height is the font's own (`auto` in every frame) and letter spacing 0.
@@ -181,6 +202,7 @@ through `next/font/google`, self-hosted at build time, as the variables
 | Border       | `--border-1` 1, `--border-2` 2 (a field in error)                                                                                                                                                                                                                                            |
 | Blur         | `--blur-band` 4 (`Blur/Band`)                                                                                                                                                                                                                                                                |
 | Gutter       | `--gutter` 16, the frames' side margin                                                                                                                                                                                                                                                       |
+| Motion       | `--motion-quill` 2400 ms, the loading quill's loop; `--motion-ease` ease-in-out                                                                                                                                                                                                              |
 
 The frames draw no motion, so there is no duration or easing token yet; the
 check below still refuses a raw one in a module.
@@ -228,7 +250,7 @@ Each lives in `src/ui/<Name>/` with `Name.tsx`, `Name.module.css` and
 | `ComponentRow`          | open, collapsed, ticked, locked (BR-63)                                                                                                                                                                                                                                                                | 10             |
 | `Checkbox`              | off, on                                                                                                                                                                                                                                                                                                | 10             |
 | `ErrorBand`             |                                                                                                                                                                                                                                                                                                        | 02             |
-| `LoadingCard`           | the quill                                                                                                                                                                                                                                                                                              | 02             |
+| `LoadingCard`           | the quill, writing (T-44)                                                                                                                                                                                                                                                                              | 02             |
 | `SuggestionList`        | the search's list (BR-53): results, no match                                                                                                                                                                                                                                                           | 08             |
 | `Orb`                   | a place's sphere in its colour, four sizes; with its nodes, lit as played                                                                                                                                                                                                                              | 07             |
 | `MoreLine`              | the count of what lies beyond reach and its gap (BR-60, BR-61); one line, opens nothing                                                                                                                                                                                                                | 06, 07         |

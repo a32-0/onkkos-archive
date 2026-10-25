@@ -50,6 +50,10 @@ export const SHELL = {
       ? `Legendary ${rank - LEGENDARY_FROM + 1}`
       : (RANK_TITLES[rank] ?? RANK_TITLES[0]),
   disconnect: "Disconnect",
+  disconnectTitle: "Disconnect?",
+  disconnectBody:
+    "This device will forget your ID. Next time you’ll need to paste it again. Your Warframe account isn’t touched.",
+  cancel: "Cancel",
   settings: "Settings",
   language: "Language",
   english: "English",

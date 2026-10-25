@@ -92,6 +92,7 @@ The app asks only what it cannot read.
 | The month the player last played | the `wf_since` cookie, as `YYYY-MM`             | the server  |
 | The last place opened            | the `wf_place` cookie, as `{system}/{place}`    | the server  |
 | Whether Onkko speaks             | the `wf_onkko` cookie, a year (BR-64)           | the server  |
+| The first tour was seen          | the `wf_tour` cookie, a year (T-45)             | the server  |
 | A ticked component               | the browser, `wf:manual:item:{name}:{rowId}`    | the browser |
 
 A tick is the player's own word, never read from the profile, which lists no

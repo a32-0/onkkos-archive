@@ -11,7 +11,14 @@ import { appVersion } from "@/infra/edition";
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
 import { readProfile } from "@/infra/profile/read";
 import { sinceFrom } from "@/domain/since";
-import { forgetAccount, writeAccountId, writeOnkko, writeSince } from "@/infra/session";
+import {
+  forgetAccount,
+  forgetTour,
+  writeAccountId,
+  writeOnkko,
+  writeSince,
+  writeTourSeen,
+} from "@/infra/session";
 import { catchUpAt, connectAfter, ROUTES } from "@/routes";
 import type { ConnectState } from "@/screens/connect/state";
 
@@ -68,6 +75,15 @@ export async function setOnkko(form: FormData): Promise<void> {
   if (!isOnkkoChoice(choice)) return;
   await writeOnkko(choice);
   refresh();
+}
+
+export async function endTour(): Promise<void> {
+  await writeTourSeen();
+}
+
+export async function resetTour(): Promise<void> {
+  await forgetTour();
+  redirect(ROUTES.system);
 }
 
 export async function checkUpdates(): Promise<UpdateState> {

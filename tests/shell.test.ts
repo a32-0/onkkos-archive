@@ -29,8 +29,11 @@ const text = (parts: readonly { text: string }[]) => parts.map((part) => part.te
 const CHROME = {
   player: PLAYER,
   voice: { met: true, on: true },
+  tour: false,
   disconnect: async () => {},
   setOnkko: async () => {},
+  endTour: async () => {},
+  resetTour: async () => {},
 };
 
 function shell(tab: ShellTab | null, tabs: boolean, bar?: ShellBar): string {
@@ -137,5 +140,18 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).toContain("Gold Sage");
     expect(html).toContain("Disconnect");
     expect(html).toContain("15:30 hours UTC.");
+  });
+
+  it("asks before Disconnect forgets the account", () => {
+    const html = renderToStaticMarkup(
+      createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals" }),
+    );
+    const dialog = html.slice(html.indexOf("<dialog"), html.indexOf("</dialog>"));
+    expect(dialog).toContain("Disconnect?");
+    expect(dialog).toContain("Your Warframe account isn’t touched.");
+    expect(dialog).toContain('type="submit"');
+    expect(dialog).toContain("Cancel");
+    expect(html.match(/<button type="submit"[^>]*>Disconnect<\/button>/g)).toHaveLength(1);
+    expect(dialog).toMatch(/<button type="submit"[^>]*>Disconnect<\/button>/);
   });
 });

@@ -16,8 +16,10 @@ Drawn on 2026-10-22 in the first row of "App flows", from Onboarding —
 Loading, for the owner to approve before this spec is pinned:
 
 - [`764:5335` Desktop — Starting](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5335): the window while the app
-  opens: the header's wordmark, and the quill card centred under it reading
-  "Onkko is opening the archive...".
+  opens: the header's wordmark, and the loading quill centred under it, with
+  no card and no visible words; screen readers hear "Onkko is opening the
+  archive...". The quill moves as Connect's does
+  (`841:536`, T-44).
 - [`764:5389` Desktop — Can't start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5389): the same window when the
   server inside cannot start: the error band, "Onkko's Archive couldn't
   start. Close it and open it again.", and **Close**, which quits the app.
@@ -123,18 +125,18 @@ Everything lives in the app's own folder in the player's profile (Electron's
 AppImage mounts read-only. The one exception is the updater's cache, which
 `electron-updater` keeps in the system's cache folder (`docs/desktop.md`):
 
-| What                                          | Where                 | Lives for                          |
-| --------------------------------------------- | --------------------- | ---------------------------------- |
-| The trimmed profile and every lock of spec 11 | One store file        | Each lock's own window, as spec 11 |
-| `wf_account`, `wf_since`, `wf_place`          | The window's cookies  | As on the demo                     |
-| The ticks of spec 10                          | The window's storage  | Until cleared                      |
-| Wiki prose and icons, Varzia, rotations       | Next's fetch cache    | A day; Varzia ten minutes          |
-| The current `data/`                           | A data folder (below) | Until a newer set replaces it      |
-| A downloaded version of the app               | The updater's cache   | Until it installs                  |
+| What                                            | Where                 | Lives for                          |
+| ----------------------------------------------- | --------------------- | ---------------------------------- |
+| The trimmed profile and every lock of spec 11   | One store file        | Each lock's own window, as spec 11 |
+| `wf_account`, `wf_since`, `wf_place`, `wf_tour` | The window's cookies  | As on the demo                     |
+| The ticks of spec 10                            | The window's storage  | Until cleared                      |
+| Wiki prose and icons, Varzia, rotations         | Next's fetch cache    | A day; Varzia ten minutes          |
+| The current `data/`                             | A data folder (below) | Until a newer set replaces it      |
+| A downloaded version of the app                 | The updater's cache   | Until it installs                  |
 
 On Windows the uninstaller removes the folder. An AppImage has no
 uninstaller: deleting it leaves the folder, `~/.config/Onkko's Archive`, which
-the README names so a player can remove it. Disconnect clears the cookies; the
+the README names so a player can remove it. Disconnect clears the account's cookies; the
 stored profile expires on its own.
 
 What leaves the machine, and nothing else, each read the demo already makes

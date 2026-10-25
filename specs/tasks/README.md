@@ -96,6 +96,10 @@ into `main`.
 | [T-40 · The platform glyph in a display name](T-40-platform-glyph.md)                                         | 6     | 04, 11                     | T-35             |
 | [T-41 · The README and the documents for the app](T-41-documents.md)                                          | 6     | 00, 13                     | T-38, T-42       |
 | [T-42 · The way from the demo to the app](T-42-download-card.md)                                              | 6     | 02, 13                     | T-38, T-39       |
+| [T-43 · What the first installed release showed](T-43-first-fixes.md)                                         | 6     | 04, 09, 12, 13             | T-38             |
+| [T-44 · The quill that writes while it loads](T-44-quill-loading.md)                                          | 6     | 02, 13                     | T-43             |
+| [T-45 · A first tour](T-45-tour.md)                                                                           | 6     | 04                         | T-43             |
+| [T-46 · Three inks, and Figma bound to its variables](T-46-three-inks.md)                                     | 6     | plan 3                     | T-43             |
 
 ## Nothing left out, nothing out of order
 

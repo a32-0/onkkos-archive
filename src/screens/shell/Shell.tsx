@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { APP } from "@/content/app";
 import { NAV, SHELL } from "@/content/nav";
+import { TOUR } from "@/content/tour";
 import { profileRoute } from "@/routes";
 import { Header } from "@/ui/Header/Header";
 import { PlayerChip } from "@/ui/PlayerChip/PlayerChip";
@@ -12,11 +13,23 @@ import { TopBar } from "@/ui/TopBar/TopBar";
 import { BackLink, Visit } from "./history";
 import styles from "./Shell.module.css";
 import { tabItems, type ShellTab } from "./tabs";
+import { Tour, type TourStep } from "./Tour";
 import type { ShellChrome } from "./voice";
 
 export interface ShellBar {
   title: string;
   back: string;
+}
+
+function tourSteps(tab: ShellTab | null): TourStep[] {
+  const tabs = tabItems(tab).map((item) => `nav[aria-label="${NAV.label}"] a[href="${item.href}"]`);
+  const [navigation = "", resume = "", goal = ""] = tabs;
+  return [
+    { key: "navigation", anchor: navigation, ...TOUR.steps.navigation },
+    { key: "resume", anchor: resume, ...TOUR.steps.resume },
+    { key: "goal", anchor: goal, ...TOUR.steps.goal },
+    { key: "profile", anchor: `header a[href="${profileRoute(tab)}"]`, ...TOUR.steps.profile },
+  ];
 }
 
 export function Shell({
@@ -65,6 +78,7 @@ export function Shell({
           <TabBar label={NAV.label} items={items} placement="floating" link={Link} />
         </div>
       )}
+      {chrome.tour && tabs && !bar && <Tour steps={tourSteps(tab)} end={chrome.endTour} />}
     </div>
   );
 }

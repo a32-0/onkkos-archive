@@ -104,7 +104,7 @@ rules they would carry are in the constitution and the docs.
 | `search/page.tsx`                                                                                                                                                                                           | 12         | T-34                   |
 | `targets.ts`: every search hit as a screen's input, with its gap, its standing and whether it is vaulted                                                                                                    | 08, 12     | T-34                   |
 | `item/page.tsx`                                                                                                                                                                                             | 09, 10     | T-28, T-29             |
-| `actions.ts`: connect, demo, disconnect, resume (`wf_since`), setOnkko (`wf_onkko`, BR-64)                                                                                                                  | 02, 04, 05 | T-20, T-22, T-24, T-25 |
+| `actions.ts`: connect, demo, disconnect, resume (`wf_since`), setOnkko (`wf_onkko`, BR-64), endTour and resetTour (`wf_tour`, T-45)                                                                         | 02, 04, 05 | T-20, T-22, T-24, T-25 |
 | `screen.ts`: a failed read redirects to `/connect`; the player the shell shows; where a read leads (BR-03); Start here's address (BR-40); whether Onkko speaks (BR-64)                                      | 02, 03, 04 | T-19, T-20, T-22, T-23 |
 | `chrome.ts`: what every screen of the shell passes to `Shell`, the player, Onkko's voice and the two actions                                                                                                | 04         | T-25                   |
 | `api/profile/[accountId]/route.ts`                                                                                                                                                                          | 11         | T-18                   |
@@ -150,7 +150,7 @@ One folder per spec, built from the frames: `onboarding`, `connect`,
 | `profile/`                       | DE's client, the fixture source (two demos), the visitor, the cache, the budget, the circuit, the read         | T-18       |
 | `wiki/`                          | The vendored modules, the wiki's client and its prose (BR-48)                                                  | T-16, T-19 |
 | `worldstate/`                    | Varzia's stock                                                                                                 | T-19       |
-| `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46), `wf_onkko` (BR-64)                                               | T-19       |
+| `session.ts`                     | `wf_account`, `wf_since`, `wf_place` (BR-46), `wf_onkko` (BR-64), `wf_tour` (T-45)                             | T-19       |
 | `screen.ts`                      | The screen read: the profile and its readings, or a failed read's reason and retry time (BR-38); the next read | T-19, T-20 |
 | `ticks.ts`                       | The ticks of spec 10, in browser storage                                                                       | T-29       |
 

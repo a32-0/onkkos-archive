@@ -110,7 +110,7 @@
 .down {
   display: flex;
   flex: none;
-  transform: rotate(180deg);
+  transform: rotate(-90deg);
 }
 
 .clear {

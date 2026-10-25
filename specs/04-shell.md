@@ -100,8 +100,9 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
 2. **Settings**: a divider, then the settings as a grouped list, one row
    each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
    **Tutorial** (Reset, a button 200 px wide; owner, 2026-10-22). Onkko's Phrases shows once the player has reached
-   Cetus (BR-64). Language and Tutorial show disabled; they wait for later
-   versions (owner, 2026-10-16).
+   Cetus (BR-64). Language shows disabled; it waits for a later version
+   (owner, 2026-10-16). Tutorial's Reset shows the first tour again: it
+   forgets `wf_tour` and opens the map, where the tour starts (T-45).
 3. **About**, in the app alone (`819:48` Profile — App; approved by the
    owner on 2026-10-23): a divider, then two rows: **Version**,
    the app's version in `--ink-muted`, and **Updates**, a **Check** button
@@ -110,8 +111,12 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    (`WF_APP_VERSION`, `appVersion()`). Built on 2026-10-23 with Check shown
    disabled, as Reset is, until T-38 brings the updater it asks; enabled by
    T-38, its states are spec 13's "Updates".
-4. **Disconnect**, a red button across the width. It forgets `wf_account`,
-   `wf_since` and `wf_onkko` and opens `/connect` with an empty field.
+4. **Disconnect**, a red button across the width. It asks first, in a dialog
+   over a scrim ([`838:4762` Profile — Disconnect](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=838-4762);
+   owner, 2026-10-24): "Disconnect?", "This device will forget your ID. Next time you'll need to paste it again. Your Warframe account isn't touched.", a red
+   **Disconnect** and **Cancel**, which has the focus. Cancel and Escape close
+   the dialog. Its Disconnect forgets `wf_account`, `wf_since` and `wf_onkko`
+   and opens `/connect` with an empty field.
 5. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
    read was **{age}**, and the next one will be at **{h:mm AM} your local
    time**." The page is drawn with "**{HH:MM} hours UTC**", which the
@@ -119,6 +124,33 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    browser knows its time zone (owner, 2026-10-21).
 
 The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source. A live response read on 2026-10-23 carries no glyph anywhere: its only image-like fields are `LoadOutPreset.PresetIcon`, empty, and `GuildEmblem`, a flag. A live player therefore wears the game's default glyph, Lotus Symbol (`AvatarImageDefault`, the one every account starts with; owner, 2026-10-23), until the player can choose one; the square stays only if the catalog lacks it.
+
+## The first tour
+
+Built by T-45 (owner, 2026-10-24). The first time a player reaches a screen
+with both the header's chip and the tab bar, four hotspots walk them through
+the shell, one at a time, each drawn by its frame. Each says what the
+section holds and what the player can do there, in two to four short
+sentences (owner, 2026-10-24):
+
+| Step | Points at        | Frame                          | Words                                                                                                                                                                                                                                        |
+| ---- | ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Navigation's tab | `844:4776` Tour — 1 Navigation | "The star chart, one place at a time. Change location to jump to another planet or system. The ring shows how much gear here you've mastered, ranked to the max. Only what you can master or collect is listed, not every item in the game." |
+| 2    | Resume's tab     | `844:5065` Tour — 2 Resume     | "Everything the game added since the update you last played, grouped by category. Name your last update and the app counts from there. Open a category to see each new thing and how to get it."                                             |
+| 3    | Goal's tab       | `844:5354` Tour — 3 Goal       | "Pick one thing to chase: take a suggestion or search for it. You get the steps in order: what it needs, where each part drops and what to unlock first."                                                                                    |
+| 4    | The player chip  | `844:5643` Tour — 4 Profile    | "Your account, and when it's read again, every 12 hours. Change your settings or disconnect here. Tutorial plays this tour again."                                                                                                           |
+
+- A scrim covers the screen but the hotspot, which a 2 px `--brand` ring
+  outlines. The coach mark, on `--surface-raised`, says "{n} of 4", the
+  step's name and its words, with **Skip** and **Next** sharing the row
+  (**Done** alone on the last, 120 px at the right), 12 px between its parts. It sits above a tab and below the chip, 16 px from the window's
+  edges; from 840 it centres on the hotspot over the floating bar.
+- It is a modal dialog: the focus starts on Next, Escape skips. Skip, Done
+  or Escape end the tour and keep `wf_tour` for a year, so it never shows
+  again on this device. Disconnect leaves it: the tour belongs to the
+  device, not the account.
+- The server leaves the tour out of the page once `wf_tour` is set, so it
+  never flashes in.
 
 ## Data and sources
 

@@ -8,6 +8,9 @@ export interface OnkkoVoice {
 export interface ShellChrome {
   player: ShellPlayer;
   voice: OnkkoVoice;
+  tour: boolean;
   disconnect: () => Promise<void>;
   setOnkko: (form: FormData) => Promise<void>;
+  endTour: () => Promise<void>;
+  resetTour: () => Promise<void>;
 }

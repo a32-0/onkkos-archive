@@ -66,6 +66,7 @@
 
 .meta {
   composes: body from "../type.module.css";
+  color: var(--ink-muted);
 }
 
 .chevron {

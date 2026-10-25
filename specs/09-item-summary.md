@@ -93,7 +93,9 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
    - Without Blueprints, **How to get** comes first: the item's How to get or
      Acquisition rows in the same row style, then Components. A quest's
      reward or a bought blueprint is how the item is had, so it leads, never
-     its first ingredient (owner, 2026-10-23, on Thornbak and Thalys).
+     its first ingredient (owner, 2026-10-23, on Thornbak and Thalys). A
+     quest's own page leads with the row that starts it, which wears the
+     quest's art, as a collectible's rows wear the collectible's (T-43).
 
 ### What a row does
 

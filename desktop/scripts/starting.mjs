@@ -10,6 +10,11 @@ const out = path.join(root, "desktop", "dist", "starting");
 const chunks = path.join(root, ".next", "static", "chunks");
 
 const tokens = readFileSync(path.join(root, "src", "ui", "tokens.css"), "utf8");
+const card = path.join(root, "src", "ui", "LoadingCard");
+const motion = readFileSync(path.join(card, "LoadingCard.module.css"), "utf8");
+const stroke = /const STROKE = "([^"]+)"/.exec(
+  readFileSync(path.join(card, "LoadingCard.tsx"), "utf8"),
+)[1];
 const quill = /d="([^"]+)"/
   .exec(readFileSync(path.join(root, "src", "ui", "Wordmark", "Quill.tsx"), "utf8"))[1]
   .replace(/\s+/g, " ");
@@ -31,7 +36,7 @@ const escape = (text) =>
 const quillSvg = (attributes) =>
   `<svg ${attributes} viewBox="15 0 79 144" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="${quill}" fill="var(--brand)"/></svg>`;
 
-const opening = `<div class="card" role="status">${quillSvg("")}<p class="line">${escape(DESKTOP.opening)}</p></div>`;
+const opening = `<div class="card" role="status"><span class="stage" aria-hidden="true"><span class="pen">${quillSvg('class="quill"')}</span><svg class="stroke" viewBox="0 0 88 8" preserveAspectRatio="none" focusable="false"><path d="${stroke}" pathLength="1"/></svg></span><p class="line">${escape(DESKTOP.opening)}</p></div>`;
 const failing = `<div class="failing" role="alert"><p class="band">${escape(DESKTOP.cantStart)}</p><a class="close" href="app:close">${escape(DESKTOP.close)}</a></div>`;
 
 const page = (state) => `<!doctype html>
@@ -50,9 +55,7 @@ header { display: flex; justify-content: center; padding: var(--space-6); border
 header svg { display: block; height: 48px; width: auto; }
 .letters { fill: var(--ink); }
 main { display: flex; flex: 1; flex-direction: column; justify-content: center; gap: var(--space-6); padding: var(--space-6) var(--gutter); }
-.card { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); padding: var(--space-6); border-left: var(--border-1) solid var(--accent); border-radius: 0 var(--radius-m) var(--radius-m) 0; background: var(--surface-card); }
-.card svg { display: block; width: var(--space-8); height: calc(var(--space-8) + var(--space-6)); }
-.line { margin: 0; font: 700 24px var(--font-inter), sans-serif; text-align: center; }
+${motion}
 .band { margin: 0; padding: var(--space-2); border-radius: var(--radius-m); background: var(--danger); color: var(--danger-ink); font: 400 14px var(--font-jetbrains-mono), monospace; }
 .close { display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 45px; padding: var(--space-5); border: var(--border-1) solid var(--line-strong); border-radius: var(--radius-full); color: var(--ink); font: 700 16px var(--font-inter), sans-serif; text-decoration: none; }
 .close:hover { background-image: linear-gradient(var(--hover), var(--hover)); }
@@ -72,5 +75,5 @@ ${state === "starting" ? opening : failing}
 `;
 writeFileSync(path.join(out, "starting.html"), page("starting"));
 writeFileSync(path.join(out, "failed.html"), page("failed"));
-copyFileSync(path.join(root, "public", "icon-512.png"), path.join(out, "..", "icon.png"));
+copyFileSync(path.join(root, "desktop", "icon.png"), path.join(out, "..", "icon.png"));
 writeFileSync(path.join(out, "..", "words.json"), JSON.stringify({ ready: DESKTOP.ready }));
