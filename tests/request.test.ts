@@ -559,14 +559,14 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       );
     }
 
-    it("opens a category under the top bar, its things as rows, with the tab bar", async () => {
+    it("opens a category under the top bar, its things as rows, with no tab bar", async () => {
       jar.set("wf_since", { value: "2026-03", options: {} });
       const html = await category("warframes");
       expect(html).toContain("Warframes");
       expect(html).toContain('aria-label="Back"');
       expect(html).toContain("New since you left off. Pick one to see how to get it.");
       expect(html).toMatch(/href="\/item\?name=[^"]+&amp;from=resume"/);
-      expect(html).toMatch(/<nav/);
+      expect(html).not.toMatch(/<nav/);
     });
 
     it("sends a category with nothing new back to the Summary", async () => {
@@ -1018,9 +1018,7 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).toContain("/item?name=Dante&amp;from=navigation&amp;view=steps#part-neuroptics");
     expect(html).toContain("Armatus (Deimos) · Disruption");
     expect(html).toContain(">70,000 Credits<");
-    expect(html).toMatch(
-      /<a [^>]*aria-current="page"[^>]*href="\/system"|href="\/system"[^>]*aria-current="page"/,
-    );
+    expect(html).not.toMatch(/<nav/);
   });
 
   it("opens an item beyond reach on Step by step, unless the link says Summary", async () => {

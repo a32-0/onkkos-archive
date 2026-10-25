@@ -1,8 +1,5 @@
 .page {
   --item-column: none;
-  --item-pane: 390px;
-  --item-reading: 640px;
-  --item-pane-top: var(--space-6);
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
@@ -41,26 +38,4 @@
   padding: var(--space-6);
   border-radius: var(--radius-m);
   background: var(--surface);
-}
-
-@media (min-width: 840px) {
-  .page {
-    --item-column: var(--item-reading);
-  }
-}
-
-@media (min-width: 1200px) {
-  .page {
-    --item-column: none;
-    display: grid;
-    grid-template-columns: var(--item-pane) minmax(0, var(--item-reading));
-    align-items: start;
-    justify-content: center;
-    gap: var(--space-8);
-  }
-
-  .head {
-    position: sticky;
-    top: var(--item-pane-top);
-  }
 }

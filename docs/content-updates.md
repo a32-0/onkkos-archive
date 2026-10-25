@@ -94,11 +94,11 @@ A review written with `--since` still moves the mark forward, never back.
 
 ## The three levels
 
-| Level                 | What it is                                                                                                      | What the owner does                                                                  |
-| --------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **Enters on its own** | An item the app answers from data, a quest the story already tells, a node on a planet the app knows            | Reads the list. No code                                                              |
-| **Needs a source**    | A kind the app knows, but no source says how to get it; a quest the story does not tell; a node on a new planet | Curates it in `data/` with a `cite`, as `curated-files.md` sets out                  |
-| **New to the app**    | An item of a category no list of the catalog knows                                                              | Opens the spec-driven order for it: a rule, a frame if one is needed, a spec, a task |
+| Level                 | What it is                                                                                                      | What the owner does                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **Enters on its own** | An item the app answers from data, a quest the story already tells, a node on a planet the app knows            | Reads the list. No code                                                                                     |
+| **Needs a source**    | A kind the app knows, but no source says how to get it; a quest the story does not tell; a node on a new planet | Curates it in `data/` with a `cite`, as `curated-files.md` sets out                                         |
+| **New to the app**    | An item of a category no list of the catalog knows                                                              | Changes the app for it, as `maintaining.md` says: a rule, a frame if one is needed, the spec, then the code |
 
 The levels are mechanical, never a judgement (`reviewOf()` in
 `src/domain/catalog/review.ts`):

@@ -59,7 +59,7 @@ cite one. The Figma comment id is given beside each for traceability.
   `pnpm palette` is a measurement, not a gate: it reports and never blocks a
   build.
 - Verified by putting each screen beside its frame at the frame's width
-  (390 px), and then sweeping the wider widths against BR-39. `pnpm check`
+  (390 px), and then sweeping 360 and 600 against BR-39. `pnpm check`
   cannot see either.
 
 ### BR-39 · Wider than the frames: the layout follows width classes
@@ -73,34 +73,24 @@ cite one. The Figma comment id is given beside each for traceability.
   screen holds what its frame holds, in the same order, with the same copy,
   components, states, type and colours. A wider window may change only the
   number of columns, where navigation sits, and how wide things grow.
-- The width classes are Material 3's, which the sweep already used:
-
-  | Width       | Class    | Layout                                                                                                                                                                                                                                                                                      |
-  | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | below 600   | compact  | The frame as drawn, fluid between 360 and 599.                                                                                                                                                                                                                                              |
-  | 600 to 839  | medium   | The frame's single column, fluid, with the 16 px gutter. The bottom tab bar stays.                                                                                                                                                                                                          |
-  | 840 to 1199 | expanded | The tab bar floats, centred 48 px above the bottom of the screen (spec 04), the same three destinations in the same order. Reading screens keep one column, at most 640 px. Grids of tiles or cards keep the frame's tile size and add columns, inside a content area at most 1200 px wide. |
-  | 1200 and up | large    | A screen that is a choice and its answer shows both side by side: the map (the system and its places, then the chosen place) and the item (the hero, then Summary or Step by step). Everything else stays as in expanded.                                                                   |
-
-- Up to 840 every screen is fluid, with the 16 px gutter at the window's
-  edges, the screens outside the shell and Profile included: the app's window
-  never passes 600, and a column narrower than the window only left two empty
-  bands (owner, 2026-10-22). From 840, the splash, the id form and Two ways in
-  stay one centred column at the frame's width, as the owner set on
-  2026-10-15. Background art covers the whole window at every width.
+- The app is never wider than 600 px (owner, 2026-10-24). The desktop
+  window cannot pass 600 (spec 13), and the demo and development keep the
+  same width, so every place the screens run looks like the app. Between 360
+  and 600 every screen is fluid, with the 16 px gutter at the window's edges,
+  the screens outside the shell and Profile included. In a window wider than
+  600 the page is a centred column 600 px wide on the canvas.
+- Until 2026-10-24 the rule followed Material 3's width classes, with a
+  floating tab bar from 840 and two panes from 1200 for the map and the item.
+  The owner retired them with the 600 px column: nobody drew them, and the
+  app never reached them.
+- Background art covers the whole column at every width.
 - An illustration keeps the proportions its frame draws as it grows: an update
   card's art grows taller with its width, 358 by 202 in the frame, and is never
   cropped to a fixed height (owner, 2026-10-22).
-- A sheet or menu that the frame draws full width, such as the player menu
-  (`270:1145`), opens from 840 up as a panel at the frame's 390 px, anchored to
-  what opened it.
-- Pointer and keyboard: the frames draw no hover. From 840 up, anything
-  pressable takes one hover treatment, the same token everywhere. Keyboard
-  focus is always visible, at every width.
-- Each spec states how its screen lands in the expanded and large classes.
-  Where a frame leaves a doubt this rule does not answer, the spec settles it
-  and cites this rule.
-- Verified by sweeping 360, 600, 840, 1280 and 1440.
+- Pointer and keyboard: the frames draw no hover. Anything pressable takes
+  one hover treatment, the same token everywhere. Keyboard focus is always
+  visible.
+- Verified by sweeping 360, 390 and 600, and once wider than 600.
 
 ## The flow between screens
 
@@ -400,7 +390,7 @@ a reading of the earlier build against it was put to them.
 - Rule: one profile read every twelve hours. The owner first gave 8 to 12
   hours as an example and settled on twelve on 2026-10-04: nothing the app
   reads about an item changes faster than its build, and twelve hours is the
-  arsenal's floor ([`public-release.md`](public-release.md#how-long-a-read-lasts)).
+  arsenal's floor ([`public-release.md`](history/public-release.md#how-long-a-read-lasts)).
 - The footer reads as the frame draws it: "Data is read every **12 hours**.
   The last read was **12 minutes ago,** and the next one will be at **15:30
   hours UTC.**", the next time being the last read plus `PROFILE_TTL_MS`
@@ -916,7 +906,7 @@ three adjustments the same day: exploring hides and counts, a plan dims and
 never hides, a search shows everything. It applies the comment `1905320490`
 ("Content depends on the player's level"), whose screen was deleted. The
 constitution states it in
-[The anchor holds](../specs/00-constitution.md#the-anchor-holds). The pieces
+[The anchor holds](specs/00-constitution.md#the-anchor-holds). The pieces
 it adds are on the Design System page, under New designs, and the screens
 that use them under Documented states (2026-10-08). The owner approved both
 on 2026-10-08.

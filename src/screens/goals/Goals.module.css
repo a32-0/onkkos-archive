@@ -52,16 +52,3 @@
   width: 100%;
   padding: 0 var(--gutter);
 }
-
-@media (min-width: 840px) {
-  .page {
-    --goals-column: 390px;
-    --goals-cards: minmax(0, 358px);
-  }
-}
-
-@media (min-width: 840px) {
-  .page {
-    --goals-cards: repeat(auto-fit, 358px);
-  }
-}

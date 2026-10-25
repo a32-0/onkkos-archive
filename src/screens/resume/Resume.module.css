@@ -80,12 +80,3 @@
   margin: auto auto 0;
   padding: 0 var(--gutter) var(--space-6);
 }
-
-@media (min-width: 840px) {
-  .page {
-    --resume-column: 640px;
-    --resume-intro: 672px;
-    --resume-area: 1200px;
-    --resume-cards: repeat(auto-fill, 358px);
-  }
-}

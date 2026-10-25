@@ -1,5 +1,7 @@
 .body {
-  margin: 0;
+  --app-width: 600px;
+  max-width: var(--app-width);
+  margin: 0 auto;
   background: var(--canvas);
   color: var(--ink);
 }

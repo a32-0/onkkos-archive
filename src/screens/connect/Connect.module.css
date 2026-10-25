@@ -153,9 +153,3 @@
   display: flex;
   flex-direction: column;
 }
-
-@media (min-width: 840px) {
-  .page {
-    --connect-column: 390px;
-  }
-}

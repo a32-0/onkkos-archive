@@ -8,7 +8,7 @@ import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
-import { FIRST, useMore } from "./batches";
+import { FIRST, MORE } from "./batches";
 import styles from "./Resume.module.css";
 import { matchesUpdate, type ResumeAction, type ResumeUpdate } from "./state";
 
@@ -23,7 +23,6 @@ export function ResumePicker({
 }) {
   const [query, setQuery] = useState("");
   const [shown, setShown] = useState(FIRST);
-  const more = useMore();
 
   const found = updates.filter((update) => matchesUpdate(update, query));
   const listed = found.slice(0, shown);
@@ -63,7 +62,7 @@ export function ResumePicker({
         </form>
       )}
       {hidden > 0 && (
-        <Button variant="text" onClick={() => setShown(shown + more)}>
+        <Button variant="text" onClick={() => setShown(shown + MORE)}>
           {RESUME.more}
         </Button>
       )}

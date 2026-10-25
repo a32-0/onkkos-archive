@@ -8,9 +8,9 @@ kept in Next's data cache.
 DE's endpoint was verified against the live service. Third-party
 documentation (FrameHub, the `@wfcd/profile-parser` README) describes a
 `content.warframe.com/dynamic/...` host that no longer answers. How the app
-protects the endpoint is [spec 11](../specs/11-profile-proxy.md); how the
+protects the endpoint is [spec 11](specs/11-profile-proxy.md); how the
 store holds each lock is
-[plan part 2](../specs/plan/02-architecture.md#the-store).
+[plan part 2](history/plan/02-architecture.md#the-store).
 
 ## Endpoint
 
@@ -50,7 +50,7 @@ GET https://api.warframe.com/cdn/getProfileViewingData.php?playerId={account_id}
 | No answer in fifteen seconds, or no connection                    | Upstream problem                                                 | `upstream`, never kept, a refusal      |
 | `200` + a body that is not JSON, or has no `Results[0]`           | Upstream HTML error page                                         | `malformed`, never kept, not a refusal |
 
-Every refusal writes one line to Vercel's function log, `DE refused a read:`,
+Every refusal writes one line to the server's log, `DE refused a read:`,
 with the status, the `server`, `cf-mitigated` and `retry-after` headers, the
 content type and the body's length; a read with no answer writes `DE gave no
 answer:` and the error's name, and a store that fails writes `The store
@@ -66,7 +66,7 @@ false "account not found" for ten minutes, the default when no `max-age` comes.
 - A valid response carries `Cache-Control: max-age=600`. The app ignores it
   and keeps the profile for twelve hours (`PROFILE_TTL_MS` in
   `src/infra/profile/cache.ts`): nothing the app reads changes faster, as
-  [`public-release.md`](public-release.md#how-long-a-read-lasts) records.
+  [`public-release.md`](history/public-release.md#how-long-a-read-lasts) records.
 - A not-found keeps DE's own `max-age` (86400 on a missing account), clamped
   by `ttlFromCacheControl()` to between one minute and a day, so retyping the
   same wrong id costs nothing. With no header it keeps ten minutes.
@@ -194,10 +194,10 @@ that need no live data. Nightwave is not read (BR-35).
 | Varzia | Ten minutes | `REVALIDATE_SECONDS` in `worldstate/client.ts`, as BR-29 says |
 
 Both requests say `cache: "force-cache"` beside `next: { revalidate }`, so
-Next keeps them in its data cache, which Vercel shares across instances and
-the app keeps in its own folder; they never touch the store. A page reads its cookies before it fetches, and Next
+Next keeps them in its data cache, which the app keeps in memory
+(`desktop/next-cache.cjs`) and the demo on Vercel shares across instances; they never touch the store. A page reads its cookies before it fetches, and Next
 caches a `fetch` met after that only when the call opts in
-([plan part 2](../specs/plan/02-architecture.md#where-each-kind-of-state-lives)).
+([plan part 2](history/plan/02-architecture.md#where-each-kind-of-state-lives)).
 Checked on 2026-10-14 with `logging.fetches` in development: on a page that
 reads its cookies first, the first render fetched the icons, a page's prose
 and Varzia's stock from their sources, and the second answered all three as

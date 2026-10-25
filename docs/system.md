@@ -72,7 +72,7 @@ A place hierarchy is one axis of four. The others cut across it.
 
 Provenance is not a fifth axis on screen. The engine still knows which source
 proved what, but the screens never recite it: that is the constitution's
-[never explain the machine](../specs/00-constitution.md#the-anchor-holds).
+[never explain the machine](specs/00-constitution.md#the-anchor-holds).
 
 ## Time is a dial, not the top of the tree
 

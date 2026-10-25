@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
-import { mapCategoryRoute, placesRoute, systemsRoute, updatesRoute } from "@/routes";
+import { mapCategoryRoute, placesRoute, updatesRoute } from "@/routes";
 import { Divider } from "@/ui/Divider/Divider";
 import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { FeaturedCard } from "@/ui/FeaturedCard/FeaturedCard";
@@ -16,7 +16,6 @@ import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import type { SummaryCardView } from "../summary/state";
 import styles from "./Map.module.css";
-import { PlaceList } from "./PlaceList";
 import type { MapView } from "./state";
 
 export function MapScreen({
@@ -29,19 +28,9 @@ export function MapScreen({
   card: SummaryCardView;
 }) {
   const voice = chrome.voice.on;
-  const here = view.places.find((one) => one.id === view.system);
   return (
     <Shell chrome={chrome} tab="navigation" tabs>
       <div className={styles.page}>
-        {here && (
-          <aside className={styles.pane}>
-            <PlaceList
-              system={here}
-              systemsHref={systemsRoute(view.system, view.place, here.id)}
-              voice={voice}
-            />
-          </aside>
-        )}
         <div className={styles.main}>
           {voice && <OnkkoLine place="top" line={VOICE.place} />}
           <div className={styles.cards}>

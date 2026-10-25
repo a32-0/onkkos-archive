@@ -3,7 +3,7 @@
 This page explains why Onkko's Archive looks the way it does: where its look
 comes from, how its colours are measured for a colour blind owner, why it uses
 three typefaces, and where its icons come from. The values themselves are not
-here. They live in [plan part 3](../specs/plan/03-design-system.md) and in
+here. They live in [plan part 3](history/plan/03-design-system.md) and in
 `src/ui/tokens.css`, and the Figma frames are the design: where this page and a
 frame disagree, the frame wins
 ([BR-33](business-rules.md#br-33--the-build-looks-exactly-like-the-frames)).

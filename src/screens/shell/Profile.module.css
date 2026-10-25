@@ -132,9 +132,3 @@
 .strong {
   composes: mono-strong from "../../ui/type.module.css";
 }
-
-@media (min-width: 840px) {
-  .page {
-    --profile-column: 422px;
-  }
-}

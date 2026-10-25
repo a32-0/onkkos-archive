@@ -1,0 +1,86 @@
+# 03 · Two ways in
+
+Where a returning player chooses what to do first: catch up on what the game
+added while they were away, or pick one thing to chase. Only a player who has
+played past the first planet sees it; a newer player goes straight to picking a
+goal. It is the last screen of onboarding.
+
+## Frames
+
+- [`661:4591` Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4591).
+
+## Rules
+
+- [BR-03](../business-rules.md#br-03--a-low-level-player-is-not-asked-when-they-last-played):
+  only a player past Venus reaches this screen.
+- [BR-04](../business-rules.md#br-04--explain-each-choice-so-a-player-can-act-on-it):
+  the words on each card.
+- [BR-05](../business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
+  Set a goal leads to goals ordered by frontier and focus.
+- [BR-36](../business-rules.md#br-36--from-the-summary-an-item-or-skip-to-a-place):
+  the frontier or the focus, which Skip shares with the Summary's Skip.
+- [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
+  wider than the frame.
+- [BR-40](../business-rules.md#br-40--before-the-map-skip-goes-to-the-map):
+  Skip and Back.
+
+## What the screen does
+
+Route `/features`, outside the shell: the header carries the wordmark only, no
+tab bar and no player chip. From the top, as `661:4591` draws it:
+
+1. Onkko's line, "We have, and shall have a long association, {name}.", with
+   the player's display name in the accent colour. A profile with no display
+   name ends the line at "association."
+2. **Two ways in**, and "Pick one, you can change at any time."
+3. Two cards, each a link, each with its icon, title and one line (BR-04):
+   - **Pick up where you left off** opens `/catch-up`, the update picker
+     (spec 05).
+   - **Set a goal** opens `/goals` (spec 08).
+4. **Skip** opens the map on the frontier, or on the focus when the player has
+   no frontier (BR-40).
+5. **Back**, in the text style, opens `/connect` with the player's id in the
+   field (BR-40); it read "Go back" until 2026-10-16.
+
+Onkko's line shows only once the player has reached Cetus and has not turned
+the phrases off (BR-64).
+
+A new player never sees this screen: `/connect` sends them to `/goals`
+(BR-03). A new player who opens `/features` by its address is sent to
+`/goals` too, so the screen has a single form.
+
+## States
+
+One. The profile has been read on `/connect`, so the screen has data when it
+renders. A read that fails here sends the player to `/connect` (BR-38).
+
+## Data and sources
+
+- The display name: the profile's `DisplayName`, through the screen context.
+- Whether the player is past Venus: `asksWhenLastPlayed()` in
+  `src/domain/graph/star-chart.ts`.
+- Skip's place: `startHere()` in `src/domain/place/start-here.ts`, the
+  frontier (`findNextPlanet`) or else the focus (`findFocus`, as spec 07
+  defines it) over each released place's share of readable items mastered;
+  with neither, the first place of the Origin System (BR-46).
+  `startHereOf()` in `src/app/screen.ts` makes it the map's address, and
+  Skip on Resume and on the Summary uses the same one.
+- Copy lives in `src/content/` (`VOICE.features`, `FEATURES`).
+
+## Acceptance
+
+1. At 390 px the screen matches `661:4591`: layout, type, colour, spacing and
+   copy, with its Material Symbols icons (hourglass, flag).
+2. At 360 and 600 nothing overlaps, nothing is cut and the page does not
+   scroll sideways. Wider than 600 the page stays a centred 600 px column
+   (BR-39).
+3. Each card opens its route. Skip opens the map on the frontier, or the focus
+   with no frontier. Back opens `/connect` with the id in the field.
+4. A new player opening `/features` lands on `/goals`.
+5. `pnpm check` passes.
+
+## Frame corrections
+
+The owner corrected this screen's frames on 2026-10-06, and the corrections
+were applied in Figma the same day. The frames linked above are the design as
+it stands.

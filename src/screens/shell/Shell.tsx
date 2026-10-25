@@ -51,7 +51,7 @@ export function Shell({
     <div className={styles.shell}>
       <Visit />
       <div className={styles.top}>
-        <div className={bar ? styles.desktop : undefined}>
+        {!bar && (
           <Header
             variant="chip"
             wordmark={APP.name}
@@ -64,18 +64,13 @@ export function Shell({
               />
             }
           />
-        </div>
+        )}
         {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={BackLink} />}
       </div>
-      <main className={tabs ? styles.clear : styles.main}>{children}</main>
+      <main className={styles.main}>{children}</main>
       {tabs && !bar && (
         <div className={styles.bottom}>
           <TabBar label={NAV.label} items={items} placement="bottom" link={Link} />
-        </div>
-      )}
-      {tabs && (
-        <div className={styles.floating}>
-          <TabBar label={NAV.label} items={items} placement="floating" link={Link} />
         </div>
       )}
       {chrome.tour && tabs && !bar && <Tour steps={tourSteps(tab)} end={chrome.endTour} />}

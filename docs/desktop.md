@@ -1,7 +1,7 @@
 # The desktop app
 
 The app a player installs on Windows or Linux, so DE's profile is read from
-their own machine ([spec 13](../specs/13-desktop.md)). It lives in `desktop/`,
+their own machine ([spec 13](specs/13-desktop.md)). It lives in `desktop/`,
 with its own `package.json` and lockfile, outside the demo's install and
 build. This page covers how it is built and run, what each file does, and why
 each part of the security baseline is there, how a version is packaged and
