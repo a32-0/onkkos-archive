@@ -36,4 +36,4 @@ The README was rewritten before the task, at the owner's request: Cetus's brandi
       repository's `LICENSE` (MIT), the wiki's copyrights page, each font's
       OFL file, Material Symbols' Apache 2.0, Vercel's terms; read on
       2026-10-21.
-- [ ] `check.yml` passes on `dev`.
+- [x] `check.yml` passes on `dev`.

@@ -33,7 +33,7 @@ The store of plan part 2: `getMany`, `set`, `setIfAbsent`, `increment`, `remove`
 
 ## Acceptance
 
-- [ ] A key expires after its time in the memory backend as in Upstash.
-- [ ] The memory store survives a hot reload in `pnpm dev`.
-- [ ] No Upstash variable is read outside `upstash.ts`, and none is needed to run the tests.
-- [ ] `check.yml` passes on `dev`.
+- [x] A key expires after its time in the memory backend as in Upstash.
+- [x] The memory store survives a hot reload in `pnpm dev`.
+- [x] No Upstash variable is read outside `upstash.ts`, and none is needed to run the tests.
+- [x] `check.yml` passes on `dev`.

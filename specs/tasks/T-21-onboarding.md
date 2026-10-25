@@ -39,7 +39,7 @@ The first screen a new visitor sees, as spec 01 sets it.
 
 ## Acceptance
 
-- [ ] Every acceptance item of spec 01 holds.
-- [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
-- [ ] `check.yml` passes on `dev`.
+- [x] Every acceptance item of spec 01 holds.
+- [x] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
+- [x] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [x] `check.yml` passes on `dev`.

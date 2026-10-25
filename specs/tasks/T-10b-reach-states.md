@@ -35,7 +35,7 @@ The states are new here.
 
 ## Acceptance
 
-- [ ] Each state has its story, and the owner has checked each against its Figma state.
-- [ ] No component holds a user-facing string: the gaps and counts arrive as props.
-- [ ] The half opacity is a component token (`--row-locked-opacity`), as the Button's disabled opacity is.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass.
+- [x] Each state has its story, and the owner has checked each against its Figma state.
+- [x] No component holds a user-facing string: the gaps and counts arrive as props.
+- [x] The half opacity is a component token (`--row-locked-opacity`), as the Button's disabled opacity is.
+- [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass.

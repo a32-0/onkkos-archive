@@ -46,6 +46,6 @@ shows. `development.md`: the release in the list of workflows.
 ## Acceptance
 
 - [ ] Spec 13's acceptance 6.
-- [ ] A tag that disagrees with `desktop/package.json` fails before building.
-- [ ] `check.yml` holds no new permission, and `release.yml` none beyond `contents: write`.
-- [ ] `check.yml` passes on `dev`.
+- [x] A tag that disagrees with `desktop/package.json` fails before building.
+- [x] `check.yml` holds no new permission, and `release.yml` none beyond `contents: write`.
+- [x] `check.yml` passes on `dev`.

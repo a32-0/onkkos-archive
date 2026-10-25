@@ -27,6 +27,6 @@ The part of the catalog that everything else reads: an item's name, category and
 
 ## Acceptance
 
-- [ ] The arsenal reads every item's mastery from `XPInfo`.
-- [ ] No module under `domain/` reads a file or the network.
-- [ ] `check.yml` passes on `dev`.
+- [x] The arsenal reads every item's mastery from `XPInfo`.
+- [x] No module under `domain/` reads a file or the network.
+- [x] `check.yml` passes on `dev`.

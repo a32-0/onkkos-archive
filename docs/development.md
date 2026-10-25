@@ -2,8 +2,8 @@
 
 This page is for anyone who runs the project or changes it: the tools it uses,
 the commands that check a change before it merges, what CI runs on every push,
-how the code is split into layers, the conventions every file follows, and
-the shared store behind the profile's locks.
+how the code is split into layers, the conventions every file follows, the
+two targets one build serves, and the store behind the profile's locks.
 
 ## Tooling
 
@@ -101,7 +101,7 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Chromium  | `pnpm exec playwright install --with-deps chromium` | The browser the story tests run in                             |
 | Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
 | Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
-| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as production does until T-33       |
+| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as the demo on Vercel does          |
 | Weight    | `pnpm weight`                                       | No route's function carries more than 80 MB                    |
 
 The workflow holds no secret. It reads nothing outside the repository except
@@ -117,6 +117,16 @@ draft release with the Windows installer and the Linux AppImage
 ([plan part 4](../specs/plan/04-deployment.md#on-a-version-tag-releaseyml),
 [`desktop.md`](desktop.md#cutting-a-version)). It is the one workflow that
 writes to the repository, with `contents: write` and nothing else.
+
+## After a deployment
+
+`.github/workflows/smoke.yml` runs when Vercel reports a finished production
+deployment of the demo, against that deployment's own address
+([plan part 4](../specs/plan/04-deployment.md#after-a-deployment-smokeyml)):
+`/connect` answers 200, the Ordis demo's profile answers 200 from
+`fixtures/`, and `/system` with that demo's id stays on `/system`, which
+proves the function carries `data/`. Its one secret,
+`VERCEL_AUTOMATION_BYPASS_SECRET`, passes Vercel's deployment protection.
 
 ## The weight of a function
 
@@ -198,17 +208,39 @@ coding agent (`node_modules/next/dist/server/lib/generate-agent-files.js`).
 Git ignores both, along with `.claude/`, so neither can enter the history by
 accident.
 
-## Environment variables
+## Two targets, one build
 
-`.env.example` lists them. Copy it to `.env.local` for development.
+The demo on Vercel and the app on a player's machine are the same `src/`
+tree and the same Next build; variables tell them apart
+([plan part 2](../specs/plan/02-architecture.md)):
 
+| Variable            | The demo, on Vercel | The app                            | Development                 |
+| ------------------- | ------------------- | ---------------------------------- | --------------------------- |
+| `WF_EDITION`        | `demo`              | `app`                              | Unset: the form, as the app |
+| `WF_PROFILE_SOURCE` | `fixture`           | `live`                             | `fixture` (`.env.example`)  |
+| `WF_STORE_FILE`     | Unset: memory       | The store file in the app's folder | Unset: memory               |
+
+- `WF_EDITION`: `demo` hides the id form, offers the two demos and the card
+  to the download, and refuses any id but the demos'; `app` shows the app's
+  version on Profile. `src/infra/edition.ts` reads it.
 - `WF_PROFILE_SOURCE`: with `fixture`, every profile is served from
   `fixtures/` and DE is never reached. With `live`, DE's endpoint is read
-  through the locks. Development uses `fixture`, and so does the demo on
-  Vercel, for good; only the app on a player's machine reads `live` by default
+  through the locks. Only the app reads `live`
   ([spec 13](../specs/13-desktop.md)).
-- `WF_STORE_FILE`: the store file the app keeps its locks in. The app sets it;
-  development leaves it unset and keeps the locks in memory.
+- `WF_STORE_FILE`: the store file the app keeps its locks in.
+
+The app's main process sets the app's column and three more, and nothing in
+the player's hands sets any of them: `WF_LAUNCH_TOKEN`, the start's secret,
+and `WF_LAUNCH_HOST`, the server's own address, which the guard checks; and
+`WF_APP_VERSION`. Two more are for the build and the tree alone:
+`WF_BUILD_TARGET=app`, which `pnpm --dir desktop stage` sets so
+`next.config.ts` builds `standalone` with the app's cache handler, and
+`WF_DATA_CHECK=1`, which makes an unpackaged app check the data manifest at
+start as a packaged one does ([`desktop.md`](desktop.md)).
+
+`.env.example` holds development's one variable; copy it to `.env.local`.
+[`desktop.md`](desktop.md#running-it-from-the-tree) has `desktop/`'s
+commands: `dev`, `start`, `check`, `stage`, `package` and `release`.
 
 ## The store
 

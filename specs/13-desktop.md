@@ -125,14 +125,14 @@ Everything lives in the app's own folder in the player's profile (Electron's
 AppImage mounts read-only. The one exception is the updater's cache, which
 `electron-updater` keeps in the system's cache folder (`docs/desktop.md`):
 
-| What                                            | Where                 | Lives for                          |
-| ----------------------------------------------- | --------------------- | ---------------------------------- |
-| The trimmed profile and every lock of spec 11   | One store file        | Each lock's own window, as spec 11 |
-| `wf_account`, `wf_since`, `wf_place`, `wf_tour` | The window's cookies  | As on the demo                     |
-| The ticks of spec 10                            | The window's storage  | Until cleared                      |
-| Wiki prose and icons, Varzia, rotations         | Next's fetch cache    | A day; Varzia ten minutes          |
-| The current `data/`                             | A data folder (below) | Until a newer set replaces it      |
-| A downloaded version of the app                 | The updater's cache   | Until it installs                  |
+| What                                                        | Where                 | Lives for                          |
+| ----------------------------------------------------------- | --------------------- | ---------------------------------- |
+| The trimmed profile and every lock of spec 11               | One store file        | Each lock's own window, as spec 11 |
+| `wf_account`, `wf_since`, `wf_place`, `wf_onkko`, `wf_tour` | The window's cookies  | As on the demo                     |
+| The ticks of spec 10                                        | The window's storage  | Until cleared                      |
+| Wiki prose and icons, Varzia, rotations                     | Next's fetch cache    | A day; Varzia ten minutes          |
+| The current `data/`                                         | A data folder (below) | Until a newer set replaces it      |
+| A downloaded version of the app                             | The updater's cache   | Until it installs                  |
 
 On Windows the uninstaller removes the folder. An AppImage has no
 uninstaller: deleting it leaves the folder, `~/.config/Onkko's Archive`, which

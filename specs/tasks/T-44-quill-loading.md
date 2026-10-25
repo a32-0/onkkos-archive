@@ -33,6 +33,6 @@ its quill and `841:536` were enlarged to match.
 
 ## Acceptance
 
-- [ ] The motion matches its frame; with `prefers-reduced-motion` the quill is still.
+- [x] The motion matches its frame; with `prefers-reduced-motion` the quill is still.
 - [x] Connect's loading card and the starting page use it.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.
+- [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.

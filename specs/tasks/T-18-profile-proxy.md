@@ -51,6 +51,6 @@ Spec 11 whole: shape, demo, stored, circuit, lock, budget, read, classify, keep,
 
 ## Acceptance
 
-- [ ] Every acceptance item of spec 11 holds against the memory store.
-- [ ] No test reaches DE; with `WF_PROFILE_SOURCE=fixture` no code path can.
-- [ ] `check.yml` passes on `dev`.
+- [x] Every acceptance item of spec 11 holds against the memory store.
+- [x] No test reaches DE; with `WF_PROFILE_SOURCE=fixture` no code path can.
+- [x] `check.yml` passes on `dev`.

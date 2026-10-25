@@ -24,29 +24,35 @@ how much a screen shows.
 
 ## The routes
 
-| Route                                     | Screen                                                                                    | Spec   | Frames                                                                          |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------- |
-| `/`                                       | The splash, outside the shell                                                             | 01     | `661:4307` Start                                                                |
-| `/connect`                                | The id form; it reads the profile before keeping the id, then goes where BR-03 says       | 02     | `661:4354` Onboarding, `675:5392` Loading, `662:6943` Error                     |
-| `/features`                               | Two ways in: pick up where you left off, or set a goal                                    | 03     | `661:4591` Two Ways In                                                          |
-| `/catch-up`                               | Resume, the update picker, with no month kept; the Summary once `wf_since` holds one      | 05, 06 | `662:4709` Resume, `662:4885` Summary and their states                          |
-| `/catch-up/{category}`                    | What a category brought since the month, under the top bar                                | 06     | `662:5040` Summary>Warframes                                                    |
-| `/catch-up/updates`                       | Every update, with Resume's search; opened from the Summary or from the map               | 06     | `662:6072` Summary>Updates                                                      |
-| `/system?system=&place=`                  | The map: a place, what it holds for this player, its mastery and the update card          | 07     | `662:5177` Map, `662:6188` Map — Viewport                                       |
-| `/system/{category}?system=&place=&view=` | What a category holds at the place, by lens (To get, Mastered, New)                       | 07     | `662:6837` Map>Warframes and its states                                         |
-| `/system/places`, `/system/systems`       | The place list and the system list                                                        | 07     | `662:6528` Locations, `662:6556` Systems                                        |
-| `/goals`                                  | Goal: the search and the goals offered                                                    | 08     | `662:4811` Goal and its states                                                  |
-| `/search?q=&type=&state=&reach=&vaulted=` | The advanced search: a term and filters over the whole catalog                            | 12     | `753:4593` Search, `753:5217` Filtered, `753:5317` No match, `753:5351` Desktop |
-| `/item?name=&from=&view=`                 | The one item page, Summary or Step by step (`view=steps`), for anything the catalog holds | 09, 10 | `662:5503` Item>Summary, `662:7143` Item>Step by step and their states          |
-| `/profile?from=`                          | Who is connected, the settings, Disconnect                                                | 04     | `662:4642` Profile                                                              |
-| `/api/profile/[accountId]`                | The proxy: the profile's display and the raw payload, as JSON                             | 11     |                                                                                 |
-| `/api/search?q=`                          | Goal's eight suggestions                                                                  | 08     |                                                                                 |
+| Route                                     | Screen                                                                                                                                       | Spec   | Frames                                                                          |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------- |
+| `/`                                       | The splash, outside the shell                                                                                                                | 01     | `661:4307` Start                                                                |
+| `/connect`                                | The id form; it reads the profile before keeping the id, then goes where BR-03 says; on the demo, the two demos and the card to the download | 02     | `661:4354` Onboarding, `675:5392` Loading, `662:6943` Error, `764:4753` Demo    |
+| `/features`                               | Two ways in: pick up where you left off, or set a goal                                                                                       | 03     | `661:4591` Two Ways In                                                          |
+| `/catch-up`                               | Resume, the update picker, with no month kept; the Summary once `wf_since` holds one                                                         | 05, 06 | `662:4709` Resume, `662:4885` Summary and their states                          |
+| `/catch-up/{category}`                    | What a category brought since the month, under the top bar                                                                                   | 06     | `662:5040` Summary>Warframes                                                    |
+| `/catch-up/updates`                       | Every update, with Resume's search; opened from the Summary or from the map                                                                  | 06     | `662:6072` Summary>Updates                                                      |
+| `/system?system=&place=`                  | The map: a place, what it holds for this player, its mastery and the update card                                                             | 07     | `662:5177` Map, `662:6188` Map — Viewport                                       |
+| `/system/{category}?system=&place=&view=` | What a category holds at the place, by lens (To get, Mastered, New)                                                                          | 07     | `662:6837` Map>Warframes and its states                                         |
+| `/system/places`, `/system/systems`       | The place list and the system list                                                                                                           | 07     | `662:6528` Locations, `662:6556` Systems                                        |
+| `/goals`                                  | Goal: the search and the goals offered                                                                                                       | 08     | `662:4811` Goal and its states                                                  |
+| `/search?q=&type=&state=&reach=&vaulted=` | The advanced search: a term and filters over the whole catalog                                                                               | 12     | `753:4593` Search, `753:5217` Filtered, `753:5317` No match, `753:5351` Desktop |
+| `/item?name=&from=&view=`                 | The one item page, Summary or Step by step (`view=steps`), for anything the catalog holds                                                    | 09, 10 | `662:5503` Item>Summary, `662:7143` Item>Step by step and their states          |
+| `/profile?from=`                          | Who is connected, the settings, Disconnect and its dialog                                                                                    | 04     | `662:4642` Profile, `838:4762` Profile — Disconnect                             |
+| `/api/profile/[accountId]`                | The proxy: the profile's display and the raw payload, as JSON                                                                                | 11     |                                                                                 |
+| `/api/search?q=`                          | Goal's eight suggestions                                                                                                                     | 08     |                                                                                 |
 
 `/`, `/connect` and `/features` render outside the shell. Every other screen
 sits inside it: the header with the player chip on a tab's root, the top bar
 on every page under a tab, and the three tabs (spec 04). A profile that cannot
 be read sends the player to `/connect` with the band for its reason
 ([BR-38](business-rules.md#br-38--loading-and-errors-happen-on-the-id-form)).
+The first time the shell opens, the first tour points at the three tabs and
+the player chip, from `844:4776` to `844:5643` (spec 04).
+
+The routes are the same in the app on a player's machine (spec 13), which
+adds only **Desktop — Starting** (`764:5335`) and **Desktop — Can't start**
+(`764:5389`), drawn by its main process before the server answers.
 
 ## Which tab, and where Back goes
 
@@ -78,9 +84,11 @@ advanced search to Goal (spec 04).
   app does not answer link to `wiki.warframe.com`. An item's or a resource's
   wiki link ends in `#Acquisition`, since the app's question is always where
   to get it; a quest's link comes from the narrative spine and has no anchor.
-- **Two links to `warframe.com`**, both on `/connect`: the site to log in at,
-  and `warframe.com/api/user-data`, the one place a player can read their own
-  account id (spec 02).
+- **One link to `warframe.com`**, on `/connect`: the site to log in at, where
+  the player reads their id from the `gid` cookie (spec 02).
+- **One link to GitHub**, on the demo's `/connect`: **Download the app** opens
+  the latest release in a new tab, which lists the Windows installer and the
+  Linux AppImage.
 
 ## What the player answers, and where it is kept
 

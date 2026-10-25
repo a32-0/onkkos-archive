@@ -29,10 +29,10 @@ Corrected on 2026-10-08, before the work: progressive disclosure (BR-59 to BR-63
 
 ## Acceptance
 
-- [ ] Each of the eleven components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
-- [ ] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
-- [ ] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
-- [ ] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
-- [ ] `Rail` is a sideways rail below 840 and a grid from 840 (BR-39).
-- [ ] `SuggestionList` is a list box, navigable by keyboard, in its stories: the Keyboard story's play function moves with the arrows, chooses with Enter and closes with Escape.
-- [ ] `check.yml` passes on `dev`.
+- [x] Each of the eleven components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
+- [x] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
+- [x] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
+- [x] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
+- [x] `Rail` is a sideways rail below 840 and a grid from 840 (BR-39).
+- [x] `SuggestionList` is a list box, navigable by keyboard, in its stories: the Keyboard story's play function moves with the arrows, chooses with Enter and closes with Escape.
+- [x] `check.yml` passes on `dev`.

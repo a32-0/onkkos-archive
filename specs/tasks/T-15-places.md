@@ -40,8 +40,8 @@ The map's data: every place in BR-47's order, the Dojo in the Origin System (BR-
 
 ## Acceptance
 
-- [ ] The systems come in BR-47's order and Tau cannot be opened.
-- [ ] The Dojo holds everything researched.
-- [ ] Each item state is one of `done | ranked | absent | unknown`.
-- [ ] Reach follows BR-59: a place up to the frontier, or off the chart after a place in reach, or with no `after`; an item whose `masteryReq` the player meets and whose place is in reach; everything when `Missions[]` or `PlayerLevel` cannot be read. Each gap reads as BR-59 words it, as values the screens word.
-- [ ] `check.yml` passes on `dev`.
+- [x] The systems come in BR-47's order and Tau cannot be opened.
+- [x] The Dojo holds everything researched.
+- [x] Each item state is one of `done | ranked | absent | unknown`.
+- [x] Reach follows BR-59: a place up to the frontier, or off the chart after a place in reach, or with no `after`; an item whose `masteryReq` the player meets and whose place is in reach; everything when `Missions[]` or `PlayerLevel` cannot be read. Each gap reads as BR-59 words it, as values the screens word.
+- [x] `check.yml` passes on `dev`.

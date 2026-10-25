@@ -60,7 +60,7 @@ The header, the player chip and its menu with Disconnect, the tab bar and its or
 
 ## Acceptance
 
-- [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] Every acceptance item of spec 04 holds, but 1 and 4, which T-24 checks on the first screen that shows the shell.
-- [ ] The comparison with the frames at 390 px and the sweep at 360, 600, 840, 1280 and 1440 move to T-24 (owner, 2026-10-14).
-- [ ] `check.yml` passes on `dev`.
+- [x] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
+- [x] Every acceptance item of spec 04 holds, but 1 and 4, which T-24 checks on the first screen that shows the shell.
+- [x] The comparison with the frames at 390 px and the sweep at 360, 600, 840, 1280 and 1440 move to T-24 (owner, 2026-10-14).
+- [x] `check.yml` passes on `dev`.

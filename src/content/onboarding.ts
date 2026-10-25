@@ -25,6 +25,10 @@ export const CONNECT = {
     "It’s safe: it’s the same public profile the game shows when you look at another player. We only remember your ID on this device, and Disconnect forgets it.",
   demoTitle: "Explore with a demo",
   demo: (name: string, masteryRank: number) => `${name} (Mastery Rank ${masteryRank})`,
+  ownTitle: "Your own account",
+  ownLine:
+    "The app reads your profile from your own computer, through your own connection. For Windows and Linux.",
+  download: "Download the app",
 } as const;
 
 export function connectError(reason: string, retryAt: number | null): string | null {

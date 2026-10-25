@@ -60,12 +60,12 @@ the map as menus whose categories open pages of their own.
 
 ## Acceptance
 
-- [ ] Every screen built so far matches its frame in "App flows" at 390 px,
+- [x] Every screen built so far matches its frame in "App flows" at 390 px,
       each state included.
-- [ ] Specs 02 and 04 to 10 hold as they read since T-27b.
+- [x] Specs 02 and 04 to 10 hold as they read since T-27b.
 - [x] No component deleted above is imported anywhere; `pnpm knip` is clean.
 - [x] `tests/tokens.test.ts` passes with the new radii and grounds; no module
       holds a raw radius or colour.
 - [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass.
-- [ ] The owner has compared the app on their machine with the frames, and the
+- [x] The owner has compared the app on their machine with the frames, and the
       sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.

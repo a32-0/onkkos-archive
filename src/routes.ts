@@ -10,6 +10,8 @@ export const ROUTES = {
   advanced: "/search",
 } as const;
 
+export const LATEST_RELEASE = "https://github.com/a32-0/onkkos-archive/releases/latest";
+
 export function connectAfter(reason: string, retryAt: number | null): string {
   const query = new URLSearchParams({ reason });
   if (retryAt !== null) query.set("retry", String(retryAt));

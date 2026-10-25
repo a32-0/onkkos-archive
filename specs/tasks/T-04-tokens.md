@@ -36,7 +36,7 @@ The token layer of plan part 3: primitives, semantic roles, type, shape, space a
 
 ## Acceptance
 
-- [ ] Every token in plan part 3 exists with the value its table gives, and nothing else does.
-- [ ] The dead-token half of `tests/tokens.test.ts` reads an allowance list of tokens not yet applied. It starts as every token; each component task removes the ones it applies; T-10 leaves it empty and deletes it.
-- [ ] `pnpm palette` runs and its findings are listed for the owner when the task is handed over.
-- [ ] `check.yml` passes on `dev`.
+- [x] Every token in plan part 3 exists with the value its table gives, and nothing else does.
+- [x] The dead-token half of `tests/tokens.test.ts` reads an allowance list of tokens not yet applied. It starts as every token; each component task removes the ones it applies; T-10 leaves it empty and deletes it.
+- [x] `pnpm palette` runs and its findings are listed for the owner when the task is handed over.
+- [x] `check.yml` passes on `dev`.

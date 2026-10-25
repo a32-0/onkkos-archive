@@ -63,7 +63,7 @@ Everything else that touches the outside: the wiki's prose and icons, Varzia's s
 
 ## Acceptance
 
-- [ ] In development, `logging.fetches` shows the wiki and worldstate reads as hits on a second render; the commit message records what it showed.
-- [ ] A prefetch of a place does not change `wf_place`.
-- [ ] A failed read lands on `/connect` with the reason and the retry time.
-- [ ] `check.yml` passes on `dev`.
+- [x] In development, `logging.fetches` shows the wiki and worldstate reads as hits on a second render; the commit message records what it showed.
+- [x] A prefetch of a place does not change `wf_place`.
+- [x] A failed read lands on `/connect` with the reason and the retry time.
+- [x] `check.yml` passes on `dev`.

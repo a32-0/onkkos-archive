@@ -18,6 +18,11 @@ privacy section for the app, the desktop commands, a new banner with the
 wordmark alone, and the three screens retaken. What the task still does: the
 other documents of its table, and the README checked again once T-42 ships.
 
+Checked on 2026-10-24: spec 13's list of cookies left out `wf_onkko`, which
+the app keeps (whether Onkko speaks, BR-64), so spec 13 names it now and the
+README with it; the README also lists the rest of spec 13's table: the
+fetch cache, the data folder and the updater's cache.
+
 ## What it builds
 
 | File                  | Note                                                                                                                    |
@@ -32,7 +37,7 @@ other documents of its table, and the README checked again once T-42 ships.
 
 ## Acceptance
 
-- [ ] Every document in plan part 5's table is in `docs/` and in the index, and none says production reads DE or names a shared store.
-- [ ] The README's privacy section matches spec 13's "What it keeps, and where" line for line.
-- [ ] The migration check and `git grep` for personal ids find nothing.
+- [x] Every document in plan part 5's table is in `docs/` and in the index, and none says production reads DE or names a shared store.
+- [x] The README's privacy section matches spec 13's "What it keeps, and where" line for line.
+- [x] The migration check and `git grep` for personal ids find nothing.
 - [ ] `check.yml` passes on `dev`.

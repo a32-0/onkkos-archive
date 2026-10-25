@@ -56,7 +56,7 @@ Corrected on 2026-10-13, when the task was built. Each module arrives with somet
 
 ## Acceptance
 
-- [ ] A player with no frontier gets the focus: the place with the highest share mastered short of all, ties by BR-47 then `star_chart_order`.
-- [ ] A player with everything mastered has no focus.
-- [ ] A goal the profile proves done is not suggested.
-- [ ] `check.yml` passes on `dev`.
+- [x] A player with no frontier gets the focus: the place with the highest share mastered short of all, ties by BR-47 then `star_chart_order`.
+- [x] A player with everything mastered has no focus.
+- [x] A goal the profile proves done is not suggested.
+- [x] `check.yml` passes on `dev`.

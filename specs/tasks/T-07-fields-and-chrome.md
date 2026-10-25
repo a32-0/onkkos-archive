@@ -26,9 +26,9 @@ What the player types into and what frames every screen: the header with the pla
 
 ## Acceptance
 
-- [ ] Each of the eleven components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
-- [ ] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
-- [ ] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
-- [ ] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
-- [ ] `Sheet` is full screen below 840 and an anchored panel from 840 (BR-39), shown at both widths in its stories.
-- [ ] `check.yml` passes on `dev`.
+- [x] Each of the eleven components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
+- [x] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
+- [x] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
+- [x] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
+- [x] `Sheet` is full screen below 840 and an anchored panel from 840 (BR-39), shown at both widths in its stories.
+- [x] `check.yml` passes on `dev`.

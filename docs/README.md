@@ -13,16 +13,15 @@ arrives with the task that builds what it describes.
   releasing the app publicly. It covers the real
   profile, why DE refuses an address rather than an account, why serverless
   memory breaks the locks, the host chosen against the free tiers, why a read
-  lasts twelve hours, and what the shared store spends.
+  lasts twelve hours, what the shared store spent, and why the app moved to
+  the player's machine.
 - [`spec-driven-order.md`](spec-driven-order.md): the order the work follows
   (constitution, design, spec, plan, tasks, code) and how a spec carries the
   visuals.
-- [`desktop.md`](desktop.md): the app on the player's machine. It covers how
-  it is staged and run, what each file in `desktop/` does, the window, the
-  guard in front of the server and why the window is shut tight.
 - [`development.md`](development.md): the tooling, what CI runs, the palette
   check, the layers and the rule that enforces them, the conventions, the
-  environment variables, and the shared store's two backends.
+  two targets one build serves and their variables, and the store behind the
+  locks.
 - [`cetus.md`](cetus.md): why the app looks as it does. It covers the Cetus
   direction, how every colour is measured for a colour blind owner, the three
   typefaces and what each carries, and where the icons come from.
@@ -67,5 +66,8 @@ arrives with the task that builds what it describes.
 - [`ui.md`](ui.md): every route with its spec and its frames, which tab stays
   lit and where Back goes, where a link goes, what the player answers and
   where it is kept, how much a screen shows, and the states of a step.
+- [`desktop.md`](desktop.md): the app on the player's machine. It covers how
+  it is staged and run, what each file in `desktop/` does, the window, the
+  guard in front of the server and why the window is shut tight.
 
 All documentation is written in English.

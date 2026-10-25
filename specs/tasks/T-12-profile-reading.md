@@ -39,6 +39,6 @@ Corrected on 2026-10-13, when the task was built. Each module arrives with somet
 
 ## Acceptance
 
-- [ ] Every reading gives the same result on a trimmed profile as on the whole one; the test grows as later tasks add readings.
-- [ ] The trimmed Cy fixture, gzipped and base64-encoded, is near the 15 KB plan part 2 measured, and the test states the bound.
-- [ ] `check.yml` passes on `dev`.
+- [x] Every reading gives the same result on a trimmed profile as on the whole one; the test grows as later tasks add readings.
+- [x] The trimmed Cy fixture, gzipped and base64-encoded, is near the 15 KB plan part 2 measured, and the test states the bound.
+- [x] `check.yml` passes on `dev`.

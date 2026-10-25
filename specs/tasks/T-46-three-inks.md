@@ -39,4 +39,4 @@ Figma, on 2026-10-24:
 
 - [x] Every text in the Mobile section and the components takes its ink by role; no loose colour is left there.
 - [x] Every pair of ink and ground in the code passes AA, or lifts as the rule says.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.
+- [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.

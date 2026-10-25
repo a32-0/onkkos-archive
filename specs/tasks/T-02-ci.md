@@ -28,7 +28,7 @@
 
 ## Acceptance
 
-- [ ] A push runs install (`--frozen-lockfile`), `pnpm check`, `pnpm knip` and `pnpm build` with `WF_PROFILE_SOURCE=fixture`.
-- [ ] The workflow holds no secret and reads nothing outside the repository.
-- [ ] A pull request with a format error fails, and the failure names the step.
-- [ ] `check.yml` passes on `dev`.
+- [x] A push runs install (`--frozen-lockfile`), `pnpm check`, `pnpm knip` and `pnpm build` with `WF_PROFILE_SOURCE=fixture`.
+- [x] The workflow holds no secret and reads nothing outside the repository.
+- [x] A pull request with a format error fails, and the failure names the step.
+- [x] `check.yml` passes on `dev`.

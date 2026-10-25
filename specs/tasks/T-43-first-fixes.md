@@ -43,5 +43,5 @@ cuts 0.1.1 once T-44 and T-45 are done too (owner, 2026-10-24).
 - [x] The filters' chevron points down when folded and up when open, as `753:5217` and `753:4593`.
 - [ ] The installer, the program and the window show the quill on no background.
 - [x] At 390 px the dialog matches `838:4762`; Escape and Cancel close it, and only its Disconnect forgets the account.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.
+- [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.
 - [ ] 0.1.1 is published, and 0.1.0 installed updates itself to it.

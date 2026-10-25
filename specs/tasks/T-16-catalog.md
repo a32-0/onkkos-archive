@@ -51,8 +51,8 @@ Everything else the app knows about where things come from. `releases.ts` loses 
 
 ## Acceptance
 
-- [ ] `tests/coverage.test.ts` passes: every arsenal item and collectible answered from data.
-- [ ] `releasesSince()` returns no quest.
-- [ ] A search for a place's name returns the place.
-- [ ] No module under `domain/` reads a file or the network.
-- [ ] `check.yml` passes on `dev`.
+- [x] `tests/coverage.test.ts` passes: every arsenal item and collectible answered from data.
+- [x] `releasesSince()` returns no quest.
+- [x] A search for a place's name returns the place.
+- [x] No module under `domain/` reads a file or the network.
+- [x] `check.yml` passes on `dev`.

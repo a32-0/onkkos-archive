@@ -45,7 +45,7 @@ The empty tree of plan part 1, with every tool configured, so the first commit a
 
 ## Acceptance
 
-- [ ] `pnpm install`, `pnpm check`, `pnpm knip` and `pnpm build` pass on a clean clone.
-- [ ] An import from `ui/` into `domain/`, or from `domain/` into `infra/`, fails `pnpm lint` (checked once by hand, not committed).
-- [ ] No file holds a comment, a real account id, a display name or a local path.
-- [ ] `git log` holds the owner's commits only, with no attribution line.
+- [x] `pnpm install`, `pnpm check`, `pnpm knip` and `pnpm build` pass on a clean clone.
+- [x] An import from `ui/` into `domain/`, or from `domain/` into `infra/`, fails `pnpm lint` (checked once by hand, not committed).
+- [x] No file holds a comment, a real account id, a display name or a local path.
+- [x] `git log` holds the owner's commits only, with no attribution line.

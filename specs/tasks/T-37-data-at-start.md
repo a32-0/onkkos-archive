@@ -39,9 +39,9 @@ start.
 
 ## Acceptance
 
-- [ ] Spec 13's acceptance 5. Covered by `desktop/tests/data.test.ts`
+- [x] Spec 13's acceptance 5. Covered by `desktop/tests/data.test.ts`
       (2026-10-23). Started from the tree with `WF_DATA_CHECK=1` and no
       manifest on `main` yet, the app opened normally on the set it carries.
       The first real swap waits for the manifest to reach `main`.
 - [ ] A data set from `main` reaches an installed app at its next start, checked once by the owner after a content update.
-- [ ] `pnpm check`, `pnpm knip` and `desktop/`'s checks pass; `check.yml` passes on `dev`.
+- [x] `pnpm check`, `pnpm knip` and `desktop/`'s checks pass; `check.yml` passes on `dev`.

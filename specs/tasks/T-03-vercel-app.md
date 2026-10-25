@@ -25,7 +25,7 @@ The first preview. While it is set up, the two limits plan part 4 leaves open ar
 
 ## Acceptance
 
-- [ ] A push to a branch builds a preview that serves the blank root.
-- [ ] Both limits are recorded with the link to the page of Vercel's documentation that states them.
-- [ ] No project id, token or URL is committed.
-- [ ] `check.yml` passes on `dev`.
+- [x] A push to a branch builds a preview that serves the blank root.
+- [x] Both limits are recorded with the link to the page of Vercel's documentation that states them.
+- [x] No project id, token or URL is committed.
+- [x] `check.yml` passes on `dev`.

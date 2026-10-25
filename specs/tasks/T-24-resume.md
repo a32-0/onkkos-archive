@@ -46,8 +46,8 @@ Settled by the owner on 2026-10-13: a server action sets `wf_since` and opens th
 
 ## Acceptance
 
-- [ ] Every acceptance item of spec 05 holds.
-- [ ] Acceptance 1 and 4 of spec 04 hold for the shell around Resume (From T-20).
-- [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
-- [ ] `check.yml` passes on `dev`.
+- [x] Every acceptance item of spec 05 holds.
+- [x] Acceptance 1 and 4 of spec 04 hold for the shell around Resume (From T-20).
+- [x] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
+- [x] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [x] `check.yml` passes on `dev`.

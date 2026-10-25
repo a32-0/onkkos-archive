@@ -66,4 +66,4 @@ there.
 - [ ] Spec 13's acceptance 1 to 4 and 7. From the tree on Windows, 2026-10-23: 1 (both frames against Figma, the widths), 2 (no Node, the wiki out, another site and `window.open` refused, Close quits), 3 (`403` without the secret, with another, on another host) and 7 hold, and the cookies survive a restart (`docs/desktop.md`). 4 held on the owner's account the same day: reopened, it opened on the map with no request to DE. Still open: the same on a packaged build, once T-38 packages one, on Windows and Linux. The owner kept the hidden scroll bar.
 - [x] Whether cookies hold across starts is measured and recorded (spec 13): a new port each start lost them, so the port is kept, with the same secret.
 - [x] The demo's `pnpm build` and `pnpm weight` give what they gave before this task.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm test:stories` and `desktop/`'s checks pass; `check.yml` passes on `dev`.
+- [x] `pnpm check`, `pnpm knip`, `pnpm test:stories` and `desktop/`'s checks pass; `check.yml` passes on `dev`.

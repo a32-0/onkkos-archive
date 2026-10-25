@@ -87,9 +87,13 @@ If you give the app your ID, this is what happens to it.
 - It keeps what it reads on your computer, in its own folder: only the fields
   it uses, for twelve hours, then nothing. Never your full profile and never
   anything it worked out from it.
-- Your ID, the last update you played, the last place you opened and whether
-  you have seen the first tour live in the app's cookies. The steps you tick
-  stay in its storage. Disconnect forgets your ID.
+- Your ID, the last update you played, the last place you opened, whether
+  Onkko speaks and whether you have seen the first tour live in the app's
+  cookies. The steps you tick stay in its storage. Disconnect forgets your ID.
+- In the same folder it keeps the wiki's prose and icons, Varzia's stock and
+  the rotations for a day (Varzia's for ten minutes), and the game's data
+  until a newer set replaces it. A downloaded update waits in your system's
+  cache folder until it installs.
 - Nothing else leaves your computer but these reads: your profile from
   `api.warframe.com`; prose, icons and art from `wiki.warframe.com`,
   `www.warframe.com` and `www-static.warframe.com`; item art, Varzia's stock

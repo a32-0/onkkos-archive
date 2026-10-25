@@ -55,8 +55,8 @@ Found while building it (2026-10-21):
 
 ## Acceptance
 
-- [ ] With no new mainline or update, it says so, restores every source and stops.
-- [ ] `--dry-run` writes the report only and restores every source and the mark.
-- [ ] Without `--dry-run`, the updated sources and what they wire in stay in the working tree, and `pnpm check` passes on them.
-- [ ] The report has no file path and no rule id in its findings.
-- [ ] `check.yml` passes on `dev`.
+- [x] With no new mainline or update, it says so, restores every source and stops.
+- [x] `--dry-run` writes the report only and restores every source and the mark.
+- [x] Without `--dry-run`, the updated sources and what they wire in stay in the working tree, and `pnpm check` passes on them.
+- [x] The report has no file path and no rule id in its findings.
+- [x] `check.yml` passes on `dev`.

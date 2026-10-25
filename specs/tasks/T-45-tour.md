@@ -45,4 +45,4 @@ alone on the last step, keeps 120 px at the right.
 - [x] At 390 px each step matches its frame; at 1280 the coach mark sits by the floating bar and the chip.
 - [x] The focus starts on Next; Skip, Done and Escape end the tour, and it does not show again.
 - [x] Reset shows it again; Disconnect does not.
-- [ ] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.
+- [x] `pnpm check`, `pnpm knip`, `pnpm build` and `pnpm test:stories` pass; `check.yml` passes on `dev`.

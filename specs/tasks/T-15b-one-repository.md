@@ -34,7 +34,7 @@ The Resume picker's month is written by a server action, as the connect action w
 
 ## Acceptance
 
-- [ ] Every path under `specs/` and `docs/`, and in the README, is this repository's own, and no section or column records where a file came from.
-- [ ] No rule is lost: whatever a removed section held is stated in its spec's body, drawn in its frames or pinned in a business rule.
-- [ ] No spec, plan part, task or document holds an open question.
-- [ ] `pnpm check` passes, and `check.yml` passes on `dev`.
+- [x] Every path under `specs/` and `docs/`, and in the README, is this repository's own, and no section or column records where a file came from.
+- [x] No rule is lost: whatever a removed section held is stated in its spec's body, drawn in its frames or pinned in a business rule.
+- [x] No spec, plan part, task or document holds an open question.
+- [x] `pnpm check` passes, and `check.yml` passes on `dev`.

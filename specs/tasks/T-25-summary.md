@@ -72,8 +72,8 @@ What shipped since the month chosen, its groups and tiles, the last-played card 
 
 ## Acceptance
 
-- [ ] Every acceptance item of spec 06 holds.
-- [ ] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
-- [ ] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
-- [ ] The screen applies `--scrim` (the veil behind the open card, `264:67`).
-- [ ] `check.yml` passes on `dev`.
+- [x] Every acceptance item of spec 06 holds.
+- [x] Every string is in `src/content/`, every internal href comes from `src/routes.ts`, and the screen composes `ui/` components without restyling one.
+- [x] The owner has compared the app on their machine with the frames at 390 px, and the sweep at 360, 600, 840, 1280 and 1440 shows nothing overlapping or cut.
+- [x] The screen applies `--scrim` (the veil behind the open card, `264:67`).
+- [x] `check.yml` passes on `dev`.

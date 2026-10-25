@@ -36,7 +36,7 @@ Corrected on 2026-10-13, when the task was built:
 
 ## Acceptance
 
-- [ ] No real capture is committed, in the tree or in the history.
-- [ ] A search of the tree for the real capture's account id and display name finds nothing.
-- [ ] Each script reads and writes the new tree's paths; none runs in CI, and no refresh is committed in this task.
-- [ ] `check.yml` passes on `dev`.
+- [x] No real capture is committed, in the tree or in the history.
+- [x] A search of the tree for the real capture's account id and display name finds nothing.
+- [x] Each script reads and writes the new tree's paths; none runs in CI, and no refresh is committed in this task.
+- [x] `check.yml` passes on `dev`.

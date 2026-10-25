@@ -49,4 +49,4 @@ acceptance, built in phase 6 (T-35 to T-42).
 - [x] Production serves the two demos and calls DE no more.
 - [x] `pnpm dev` with no `WF_PROFILE_SOURCE` set still reads fixtures (`tests/resilience.test.ts`).
 - [x] No secret is in the tree or the history: no Upstash address or token, no bypass secret (searched on 2026-10-21).
-- [ ] `check.yml` passes on `dev`.
+- [x] `check.yml` passes on `dev`.

@@ -25,9 +25,9 @@ The cards the screens stack: the two ways in and the goal cards (`ChoiceCard`), 
 
 ## Acceptance
 
-- [ ] Each of the nine components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
-- [ ] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
-- [ ] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
-- [ ] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
-- [ ] `ErrorBand` has a story for each of the five BR-38 messages; `EmptyState` one for each of the four frames that use it.
-- [ ] `check.yml` passes on `dev`.
+- [x] Each of the nine components lives in `src/ui/<Name>/` with its `.tsx`, `.module.css` and `.stories.tsx`.
+- [x] Each has one story per variant and state in plan part 3's table, and the owner has checked each against its Figma component in Storybook.
+- [x] No component imports `domain/`, fetches, or holds a user-facing string: text arrives as props.
+- [x] The tokens these components apply are removed from the allowance list of `tests/tokens.test.ts`.
+- [x] `ErrorBand` has a story for each of the five BR-38 messages; `EmptyState` one for each of the four frames that use it.
+- [x] `check.yml` passes on `dev`.

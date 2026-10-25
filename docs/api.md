@@ -80,8 +80,9 @@ false "account not found" for ten minutes, the default when no `max-age` comes.
 Misuse of this endpoint gets the calling address refused, and the game client
 uses the same endpoint: a developer building another tracker reported being
 locked out of Warframe itself for up to 24 hours, mostly after players typed
-wrong ids. Behind the app the refused address is the server's, so the cost is
-the app for everyone; in local development it is the developer's own game.
+wrong ids. The app reads from the player's own computer, so the refused address
+is the player's and the cost is their own game; in local development it is
+the developer's.
 
 After a burst of requests the endpoint escalates from `409` (empty body) to
 `403 Forbidden` for the whole address, including ids that answered `200`
@@ -98,8 +99,10 @@ each one holds across a restart (spec 13):
 2. **Fixtures by default.** Only `WF_PROFILE_SOURCE=live` reaches DE; unset,
    `fixture` or anything else reads a fixture. The two demo ids, `…0001` Cy
    and `…0002` Ordis, read theirs even when live, so the demo entrance on
-   `/connect` always works and never spends a lookup.
-3. **Stored first.** One `MGET` reads the profile, the not-found, the read
+   `/connect` always works and never spends a lookup. On the demo
+   (`WF_EDITION=demo`) any other id answers `not-found` before anything is
+   read, so the demo reads no account.
+3. **Stored first.** One read of the store takes the profile, the not-found, the read
    lock and the circuit. A stored profile answers even while the circuit is
    open.
 4. **The circuit.** Three refusals with no profile or not-found between them
@@ -119,6 +122,11 @@ The visitor is the first `x-forwarded-for` address, then `x-real-ip`, then
 `local` (`visitor.ts`). On the app no request carries either, since only its
 own window reaches its server (spec 13), so every lookup is the machine's
 `local` and the budget is the machine's two.
+
+Only the app's own window reaches its server: a guard in front of Next answers
+`403` to any request without the start's secret or with another `Host`, so a
+page in the player's browser cannot spend their reads
+([`desktop.md`](desktop.md#who-may-talk-to-the-server)).
 
 A store that is missing in a production build reading live, or fails, fails
 closed: the read answers `upstream` and DE is never read without the locks.

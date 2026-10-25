@@ -21,6 +21,6 @@
 
 ## Acceptance
 
-- [ ] The production deployment of phase 4's merge turns the merge commit green after `/connect`, `/api/profile/000000000000000000000002` and `/system` answer 200.
-- [ ] The workflow never reaches DE.
-- [ ] `check.yml` passes on `dev`.
+- [x] The production deployment of phase 4's merge turns the merge commit green after `/connect`, `/api/profile/000000000000000000000002` and `/system` answer 200.
+- [x] The workflow never reaches DE.
+- [x] `check.yml` passes on `dev`.

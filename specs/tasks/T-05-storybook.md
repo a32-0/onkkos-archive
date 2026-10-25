@@ -37,7 +37,7 @@ The catalogue the constitution asks for, its tests in CI, and a Foundations page
 
 ## Acceptance
 
-- [ ] `pnpm storybook` serves the Foundations page; every token in `tokens.css` appears on it.
-- [ ] `pnpm test:stories` runs in CI with the accessibility checks on. It passes with no story (`--passWithNoTests`) until T-06 adds the first.
-- [ ] The Storybook project deploys from the repository.
-- [ ] `check.yml` passes on `dev`.
+- [x] `pnpm storybook` serves the Foundations page; every token in `tokens.css` appears on it.
+- [x] `pnpm test:stories` runs in CI with the accessibility checks on. It passes with no story (`--passWithNoTests`) until T-06 adds the first.
+- [x] The Storybook project deploys from the repository.
+- [x] `check.yml` passes on `dev`.
