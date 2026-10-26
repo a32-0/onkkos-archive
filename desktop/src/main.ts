@@ -4,6 +4,7 @@ import { app, BrowserWindow, screen, session } from "electron";
 
 import { LAUNCH_HEADER } from "./guard.js";
 import { holdLinks } from "./links.js";
+import { keepLog } from "./log.js";
 import { currentServer, refreshData, type DataPlaces } from "./data.js";
 import { bundledServer, startServer } from "./server.js";
 import { answerChecks, keepUpdated } from "./updates.js";
@@ -101,6 +102,7 @@ async function start(): Promise<void> {
 }
 
 if (app.requestSingleInstanceLock()) {
+  keepLog();
   app.setAppUserModelId(APP_ID);
   app.whenReady().then(start, () => app.quit());
   app.on("before-quit", () => void session.defaultSession.cookies.flushStore());

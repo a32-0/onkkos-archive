@@ -181,7 +181,10 @@ a reading of the earlier build against it was put to them.
 
 - The time is when a retry can succeed: the circuit's reopening or the end of
   the visitor's window (`retryAfterSeconds`). With no time known, the third row
-  ends "try again in a few minutes." The machine stays out of the band: no
+  ends "try again in a few minutes." Once the page loads, the browser writes
+  the time in the player's own time, as the read cycle does: "try again at
+  **3:30 PM your local time**." (owner, 2026-10-25); the server, which cannot
+  know the time zone, draws UTC until then. The machine stays out of the band: no
   status code, no refusal count, no "circuit". `malformed` is apart from the
   others because waiting does not fix it; the app has to be updated.
 - The profile is read on this form and then kept for twelve hours, so the

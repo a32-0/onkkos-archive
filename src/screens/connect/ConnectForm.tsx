@@ -8,6 +8,7 @@ import { ErrorBand } from "@/ui/ErrorBand/ErrorBand";
 import { Field } from "@/ui/Field/Field";
 import { LoadingCard } from "@/ui/LoadingCard/LoadingCard";
 
+import { useLocalTime } from "../shell/read-cycle";
 import styles from "./Connect.module.css";
 import type { ConnectAction, ConnectState } from "./state";
 
@@ -21,7 +22,9 @@ export function ConnectForm({
   initial: ConnectState;
 }) {
   const [state, action, pending] = useActionState(connect, initial);
-  const message = !pending && state.reason ? connectError(state.reason, state.retryAt) : null;
+  const local = useLocalTime((state.retryAt ?? 0) * 1000);
+  const message =
+    !pending && state.reason ? connectError(state.reason, state.retryAt, local) : null;
 
   return (
     <>
@@ -40,6 +43,7 @@ export function ConnectForm({
             invalid={message !== null}
           />
           {message && <ErrorBand message={message} />}
+          <p className={styles.hint}>{CONNECT.readsNote}</p>
         </div>
         <Button type="submit" loading={pending}>
           {CONNECT.submit}

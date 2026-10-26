@@ -68,14 +68,15 @@ up, so there's no login, no password and no email.
 The app reads your profile from your own computer, the way your game does.
 There's no server of ours in between, and this is everything it keeps:
 
-| What                                                                                                               | Where on your computer     | For how long                  |
-| ------------------------------------------------------------------------------------------------------------------ | -------------------------- | ----------------------------- |
-| The fields of your profile it uses, never the whole profile                                                        | The app's folder           | Twelve hours                  |
-| Your ID, the update you last played, the last place you opened, whether Onkko speaks, whether you've seen the tour | The app's cookies          | Up to a year                  |
-| The steps you tick                                                                                                 | The app's storage          | Until you clear them          |
-| The wiki's text and icons, Varzia's stock, the rotations                                                           | The app's folder           | A day; Varzia's ten minutes   |
-| The game's data                                                                                                    | The app's folder           | Until a newer set replaces it |
-| A downloaded update                                                                                                | Your system's cache folder | Until it installs             |
+| What                                                                                                               | Where on your computer         | For how long                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ----------------------------------- |
+| The fields of your profile it uses, never the whole profile                                                        | The app's folder               | Twelve hours                        |
+| Your ID, the update you last played, the last place you opened, whether Onkko speaks, whether you've seen the tour | The app's cookies              | Up to a year                        |
+| The steps you tick                                                                                                 | The app's storage              | Until you clear them                |
+| The wiki's text and icons, Varzia's stock, the rotations                                                           | Memory, while the app is open  | A day at most; Varzia's ten minutes |
+| The game's data                                                                                                    | The app's folder               | Until a newer set replaces it       |
+| A downloaded update                                                                                                | Your system's cache folder     | Until it installs                   |
+| What went wrong, if anything: DE refusing a read, a failed update. Never your ID                                   | `app.log`, in the app's folder | Until it passes 1 MB                |
 
 It never keeps anything it works out from your profile. Disconnect forgets
 your ID. Uninstalling on Windows removes the app's folder; on Linux, delete

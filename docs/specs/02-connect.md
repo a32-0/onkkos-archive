@@ -25,6 +25,10 @@ part of the spec is pinned:
   your profile from your own computer, through your own connection. For
   Windows and Linux.", over **Download the app**.
 
+- [`864:5693` Connect — Reads note](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=864-5693):
+  Onboarding with the note under the field (approved by the owner on
+  2026-10-25).
+
 The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
 answers 404, so the id is read from the `gid` cookie instead (owner).
 
@@ -57,6 +61,11 @@ tabs or player chip. From the top, as `661:4354` draws it:
 2. The **Account ID** field and **Connect**. The field's placeholder is the
    frame's `4b2e9f17c3a85d06e1f74a9c`, an invented id of the real shape. When
    the device remembers an id (`wf_account`), the field holds it (BR-01).
+   Under the field, and under the band when one shows, a note in
+   `--ink-muted` says what a wrong id costs before it is sent: "This device can read 2 profiles from Warframe every 12 hours, and a wrong ID uses one. Check it's the gid value before you connect."
+   Two ids with the right shape that answer no account spend both reads and
+   lock the device out for twelve hours (spec 11), so the note stands before
+   the first try rather than after (owner, 2026-10-25).
 3. **Where do I find this?**: three numbered steps. On a computer,
    log in at `https://www.warframe.com`, a link that opens in a new tab; in the
    same browser, open the developer tools and the cookies (**On Firefox:**
@@ -136,7 +145,8 @@ draws a failure.
 
 - The read: `fetchProfile()` in `src/infra/profile/read.ts`, with the shared
   locks the constitution names. Its `FailureReason` picks the band's message;
-  its `retryAfterSeconds` gives the time in it, shown as `HH:MM UTC`.
+  its `retryAfterSeconds` gives the time in it, in the player's own time once
+  the page loads, and as `HH:MM UTC` before (BR-38).
 - The demos: `fixtures/profile-ordis.json` and `fixtures/profile-cy.json`,
   both output of `pnpm fixture`, matched by the ids `…0002` and `…0001` in
   `src/infra/profile/fixture-source.ts`. The Mastery Rank on each button is

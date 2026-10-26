@@ -50,6 +50,7 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                                 |
 | `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                                                                    |
 | `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                                                                                                                                        |
+| `src/log.ts`              | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                                 |
 | `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                                                                              |
 | `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                                                                          |
 | `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                                                                           |
@@ -249,10 +250,16 @@ else.
 
 Everything goes under Electron's `userData`: `%APPDATA%\Onkko's Archive` on
 Windows, `~/.config/Onkko's Archive` on Linux. It holds `store.json` (spec
-11's locks and the last profile, [`api.md`](api.md)), `port`, `window.json`, `server` once a
+11's locks and the last profile, [`api.md`](api.md)), `port`, `window.json`, `app.log`, `server` once a
 data set has been downloaded, and Chromium's own folders, the cookies among
 them. Next's cache stays in memory, so the wiki and the worldstate are read
 again after each start.
+
+`app.log` keeps what the server prints and what the main process warns of,
+each line stamped with its time (`src/log.ts`). The server's output is piped
+into it; the main process's `console.warn` and `console.error` write to it as
+well as to the terminal. It starts over at the first start after it passes
+1 MB. A player who meets a problem sends it; the app's own lines never name the account.
 
 The updater keeps the version it downloads in its own cache,
 `%LOCALAPPDATA%\onkkos-archive-desktop-updater` on Windows and

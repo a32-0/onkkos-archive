@@ -54,6 +54,15 @@ describe("the band says one of five things (BR-38)", () => {
     );
   });
 
+  it("says the time in the player's own time once the browser knows it (BR-38)", () => {
+    expect(connectError("limited", AT, "9:30 AM")).toBe(
+      "You've had your two readings for now. The next opens at 9:30 AM your local time.",
+    );
+    expect(connectError("throttled", AT, "9:30 AM")).toBe(
+      "Warframe isn't answering right now. Your ID is fine; try again at 9:30 AM your local time.",
+    );
+  });
+
   it("shows no band for a reason it does not know", () => {
     expect(connectError("teapot", AT)).toBeNull();
   });

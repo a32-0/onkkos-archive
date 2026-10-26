@@ -53,6 +53,13 @@ describe("on the demo (spec 02)", () => {
 });
 
 describe("the id form (spec 02)", () => {
+  it("says what a wrong id costs before it is sent, and again under a band", () => {
+    const note = "This device can read 2 profiles from Warframe every 12 hours";
+    expect(page({ value: "", reason: null, retryAt: null })).toContain(note);
+    expect(page({ value: REMEMBERED, reason: "not-found", retryAt: null })).toContain(note);
+    expect(page({ value: "", reason: null, retryAt: null }, true)).not.toContain(note);
+  });
+
   it("holds the remembered id, or nothing, under the frame's placeholder", () => {
     const empty = page({ value: "", reason: null, retryAt: null });
     expect(empty).toContain('placeholder="4b2e9f17c3a85d06e1f74a9c"');

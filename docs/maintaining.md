@@ -176,15 +176,16 @@ Check every month or two, and after each mainline:
 
 ## When something goes wrong
 
-| What you see                                    | What to do                                                                                               |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| A check fails on GitHub but not on your machine | Run `pnpm install --frozen-lockfile`; the lockfile may be stale                                          |
-| `pnpm content:update` stops on a source         | That site is down. Wait and run it again; nothing was changed                                            |
-| The manifest test fails                         | Run `pnpm data:manifest` after changing anything in `data/`                                              |
-| A function is over the weight limit             | See [`development.md`](development.md#the-weight-of-a-function)                                          |
-| Electron starts as plain Node                   | Your shell sets `ELECTRON_RUN_AS_NODE`; clear it ([`desktop.md`](desktop.md#running-it-from-the-tree))   |
-| The app says DE isn't answering, for a while    | DE refused reads and the app is waiting thirty minutes; it recovers alone ([`api.md`](api.md#the-locks)) |
-| Windows warns about the installer               | Expected: the installer isn't signed. The README tells players what to click                             |
+| What you see                                    | What to do                                                                                                                                                                                               |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A check fails on GitHub but not on your machine | Run `pnpm install --frozen-lockfile`; the lockfile may be stale                                                                                                                                          |
+| `pnpm content:update` stops on a source         | That site is down. Wait and run it again; nothing was changed                                                                                                                                            |
+| The manifest test fails                         | Run `pnpm data:manifest` after changing anything in `data/`                                                                                                                                              |
+| A function is over the weight limit             | See [`development.md`](development.md#the-weight-of-a-function)                                                                                                                                          |
+| Electron starts as plain Node                   | Your shell sets `ELECTRON_RUN_AS_NODE`; clear it ([`desktop.md`](desktop.md#running-it-from-the-tree))                                                                                                   |
+| The app says DE isn't answering, for a while    | DE refused reads and the app is waiting thirty minutes; it recovers alone ([`api.md`](api.md#the-locks))                                                                                                 |
+| Windows warns about the installer               | Expected: the installer isn't signed. The README tells players what to click                                                                                                                             |
+| A player reports a problem you can't reproduce  | Ask for `app.log`: `%APPDATA%\Onkko's Archive\app.log` on Windows, `~/.config/Onkko's Archive/app.log` on Linux. DE's refusals and failed updates are there ([`desktop.md`](desktop.md#where-it-writes)) |
 
 ## What could come next
 
