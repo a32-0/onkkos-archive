@@ -1,206 +1,129 @@
 <p align="center">
-  <img src="docs/readme/banner.png" alt="Onkko's Archive: the wordmark over Cetus at dusk" width="100%">
-</p>
-
-<h1 align="center">Onkko's Archive</h1>
-
-<p align="center">
-  <em>"We watch, we anticipate, we intercede."</em><br>
-  Been away from the Origin System for a while? Give Onkko your public Warframe
-  profile and you'll see what shipped while you were gone, what you're still
-  missing, and how to get the next thing you want.
+  <img src="docs/readme/banner.png" alt="Onkko's Archive" width="100%">
 </p>
 
 <p align="center">
   <a href="https://github.com/a32-0/onkkos-archive/releases/latest"><strong>Download for Windows or Linux</strong></a>
   ·
   <a href="https://onkkos-archive.vercel.app">Try the demo</a>
-  ·
-  <a href="https://onkkos-archive-storybook.vercel.app">Design system</a>
-  ·
-  <a href="specs/00-constitution.md">Constitution</a>
 </p>
+
+Back in Warframe after a long break? Onkko's Archive reads your public
+profile and tells you two things: what came out while you were away that you
+don't have yet, and how to get the next thing you want, step by step.
+
+The [demo](https://onkkos-archive.vercel.app) runs in your browser with two
+sample players and needs nothing installed. To see your own account, download
+the app:
+
+- On Windows 10 or 11, run `onkkos-archive-{version}-setup.exe`. It installs
+  for your user only and needs no admin rights. The installer isn't signed,
+  so the first time Windows shows "Windows protected your PC". Click **More
+  info**, then **Run anyway**.
+- On Linux, make `onkkos-archive-{version}.AppImage` executable
+  (`chmod +x`) and open it.
+
+The app updates itself when you close it, and picks up new game data after
+each Warframe update without a new version.
 
 <p align="center">
-  <img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-16130e?style=flat-square&labelColor=2a251f">
-  <img alt="TypeScript strict" src="https://img.shields.io/badge/TypeScript-strict-16130e?style=flat-square&labelColor=2a251f">
-  <img alt="Licence MIT" src="https://img.shields.io/badge/licence-MIT-b33419?style=flat-square&labelColor=2a251f">
-  <img alt="Fan project" src="https://img.shields.io/badge/fan%20project-not%20affiliated%20with%20DE-fcbb4a?style=flat-square&labelColor=2a251f">
+  <img src="docs/readme/what-it-does.png" alt="What it does" width="100%">
 </p>
 
-## Two ways in
+**To catch up,** tell it the last update you played. It lists everything released
+since then, sorted by category, and marks the ones you're missing.
 
-- **Try the demo** at [onkkos-archive.vercel.app](https://onkkos-archive.vercel.app).
-  Nothing to install: it opens on two demo players, Cy and Ordis, and reads no
-  account.
-- **Download the app** from the
-  [latest release](https://github.com/a32-0/onkkos-archive/releases/latest) to
-  see your own account. It reads your profile from your computer, the way your
-  game does.
-  - **Windows 10 or 11:** run `onkkos-archive-{version}-setup.exe`. It installs
-    for your user, with no administrator rights. The installer isn't signed, so
-    the first time Windows says _"Windows protected your PC"_: click **More
-    info**, then **Run anyway**.
-  - **Linux:** make `onkkos-archive-{version}.AppImage` executable
-    (`chmod +x`) and open it.
+**To reach a goal,** pick something you want or search for it. You get its steps
+in the order you'll do them: the quests that unlock it, where each part drops,
+and what you build it from.
 
-  The app updates itself: it downloads a new version in the background and
-  installs it when you close it. New game data after each Warframe update
-  arrives at the next start, without a new version.
-
-## What it does
-
-It does two things, and both end on the same map.
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <img src="docs/readme/summary.png" alt="The Summary on the Ordis demo">
-      <h3>Catch up</h3>
-      Tell it the last update you played. You get every warframe, weapon,
-      companion and resource that came out after it, and the ones you don't
-      have yet are marked.
-    </td>
-    <td width="50%" valign="top">
-      <img src="docs/readme/step-by-step.png" alt="Step by step for Rhino on the Ordis demo">
-      <h3>Get the thing you want</h3>
-      Search for an item, a quest or a place. The page lists what it takes in
-      the order you'll do it: the quests first, then where each part drops,
-      then what you build it from.
-    </td>
-  </tr>
-</table>
+Both end on the star chart, one place at a time, showing how much of what's
+there you have mastered and where to go next.
 
 <p align="center">
-  <img src="docs/readme/map.png" alt="The map on Mars: the planet, its mastery ring and what is left to master there" width="420">
-  <br>
-  <em>The map shows where you are, what you haven't mastered there yet, and where to go next.</em>
+  <img src="docs/readme/why-onkko.png" alt="Why Onkko" width="100%">
 </p>
 
-## Privacy
+The wiki can tell you everything about one item, but it doesn't know what you
+already have. An inventory tracker knows what you have, but it can't tell you
+what you missed or what to do first. Onkko reads your profile and answers
+those two questions, and nothing else.
 
-If you give the app your ID, this is what happens to it.
-
-- The app only needs your public ID. It reads, from your own computer, the
-  same profile the game shows anyone who looks you up. There's no login, no
-  password, no email, and no server of ours in between.
-- It keeps what it reads on your computer, in its own folder: only the fields
-  it uses, for twelve hours, then nothing. Never your full profile and never
-  anything it worked out from it.
-- Your ID, the last update you played and the last place you opened live in
-  the app's cookies. The steps you tick stay in its storage. Disconnect
-  forgets your ID.
-- Nothing else leaves your computer but these reads: your profile from
-  `api.warframe.com`; prose, icons and art from `wiki.warframe.com`,
-  `www.warframe.com` and `www-static.warframe.com`; item art, Varzia's stock
-  and the rotations from `warframestat.us`; and the data and updates from
-  GitHub. The app sends no analytics.
-- The demo reads no account. Its visits are counted, never you: Vercel Web
-  Analytics counts page views and Speed Insights measures how fast pages load,
-  with no cookie and no ID in any address. Nothing follows you to other sites,
-  and there are no ads.
-- DE's servers get looked after too. Reads happen one at a time, each
-  computer gets two new lookups every twelve hours, and if DE says no, the
-  app waits thirty minutes before asking again.
-  [`docs/api.md`](docs/api.md) has the details.
-
-Uninstalling the app on Windows removes its folder. On Linux, delete the
-AppImage and `~/.config/Onkko's Archive`.
-
-## How it was built
-
-Nothing was coded before it was decided. Each step below had to agree with the
-one before it:
-
-```mermaid
-flowchart LR
-    A["📜 Constitution<br/><sub>what the app is,<br/>and the rules</sub>"] --> B["🎨 Design<br/><sub>the Figma frames</sub>"]
-    B --> C["📐 Specs<br/><sub>each screen, its states,<br/>where its data comes from</sub>"]
-    C --> D["🗺️ Plan<br/><sub>architecture, design system,<br/>deployment</sub>"]
-    D --> E["✅ Tasks<br/><sub>small pieces, one commit each</sub>"]
-    E --> F["⚙️ Code<br/><sub>last</sub>"]
-
-    classDef step fill:#2a251f,stroke:#765824,color:#eae1d9;
-    classDef code fill:#b33419,stroke:#fcbb4a,color:#eae1d9;
-    class A,B,C,D,E step;
-    class F code;
-```
-
-You can read all of it: the [constitution](specs/00-constitution.md), the
-[specs](specs/), the [plan](specs/plan/) and the
-[tasks](specs/tasks/README.md#the-tasks). Every commit is named after its task,
-and [`docs/spec-driven-order.md`](docs/spec-driven-order.md) explains why the
-work runs in this order.
-
-### Where a screen comes from
-
-Here's what happens between typing an id and seeing a screen, and which part
-of the code handles each step:
-
-```mermaid
-flowchart LR
-    P(["🧑‍🚀 Player"]) -->|"public id"| APP["<b>app/</b><br/><sub>the pages: reads the cookie,<br/>asks for the data</sub>"]
-    APP -->|"read the profile"| INFRA["<b>infra/</b><br/><sub>the only code that talks to<br/>DE, the wiki and the store</sub>"]
-    INFRA -->|"profile and catalog"| DOMAIN["<b>domain/</b><br/><sub>the rules: what is new,<br/>what is missing, the steps</sub>"]
-    DOMAIN -->|"plain answers"| SCREENS["<b>screens/</b><br/><sub>turns answers into<br/>Onkko's words</sub>"]
-    SCREENS --> UI["<b>ui/</b><br/><sub>the Cetus design system:<br/>cards, rows, buttons</sub>"]
-    UI --> P
-
-    classDef edge fill:#16130e,stroke:#fcbb4a,color:#eae1d9;
-    classDef layer fill:#2a251f,stroke:#765824,color:#eae1d9;
-    classDef heart fill:#b33419,stroke:#fcbb4a,color:#eae1d9;
-    class P edge;
-    class APP,INFRA,SCREENS,UI layer;
-    class DOMAIN heart;
-```
-
-The rules in `domain/` never touch the network, React or Next, so you can test
-them on their own. A lint rule fails any import that goes against the arrows.
-
-### The Cetus design system
+That's why it only lists what you can master or collect: your arsenal
+(warframes, weapons, companions, vehicles) and your collection (mods, arcanes,
+relics, resources and the like). Skins, decorations and the rest of the game
+aren't there, on purpose. The app also never reads your
+screen or your game files, and it can't change anything in your account.
 
 <p align="center">
-  <img src="docs/readme/design-system.png" alt="The Foundations page in Storybook: the Cetus colour roles and the colours they point at" width="100%">
+  <img src="docs/readme/your-id.png" alt="Your ID" width="100%">
 </p>
 
-The look comes from Cetus, the Ostron town on the Plains of Eidolon, built from
-scavenged craft and Orokin leftovers. Names are set in Cinzel, running text in
-Inter, and the machine's readings in JetBrains Mono. Every colour was checked
-for contrast and for colour blindness. [`docs/cetus.md`](docs/cetus.md)
-explains the choices, and the [Storybook](https://onkkos-archive-storybook.vercel.app)
-shows every token and component.
+The app needs one thing from you: your account ID, a 24-character code. You
+find it by logging in at [warframe.com](https://www.warframe.com), opening
+your browser's developer tools (F12) and copying the value of the `gid`
+cookie. It's public. The game shows the same profile to anyone who looks you
+up, so there's no login, no password and no email.
 
-Claude assisted with research, implementation, debugging and documentation.
+The app reads your profile from your own computer, the way your game does.
+There's no server of ours in between, and this is everything it keeps:
 
-## Run it
+| What                                                                                                               | Where on your computer         | For how long                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ----------------------------------- |
+| The fields of your profile it uses, never the whole profile                                                        | The app's folder               | Twelve hours                        |
+| Your ID, the update you last played, the last place you opened, whether Onkko speaks, whether you've seen the tour | The app's cookies              | Up to a year                        |
+| The steps you tick                                                                                                 | The app's storage              | Until you clear them                |
+| The wiki's text and icons, Varzia's stock, the rotations                                                           | Memory, while the app is open  | A day at most; Varzia's ten minutes |
+| The game's data                                                                                                    | The app's folder               | Until a newer set replaces it       |
+| A downloaded update                                                                                                | Your system's cache folder     | Until it installs                   |
+| What went wrong, if anything: DE refusing a read, a failed update. Never your ID                                   | `app.log`, in the app's folder | Until it passes 1 MB                |
 
-```bash
-pnpm install
-cp .env.example .env.local
-pnpm dev            # localhost:3000, on the two demo profiles
-pnpm check          # types, lint, format and tests
-pnpm storybook      # the design system at localhost:6006
-```
+It never keeps anything it works out from your profile. Disconnect forgets
+your ID. Uninstalling on Windows removes the app's folder; on Linux, delete
+the AppImage and `~/.config/Onkko's Archive`.
 
-| Variable            | What it does                                                                                                |
-| ------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `WF_PROFILE_SOURCE` | `fixture` serves the two anonymised demo profiles and never calls DE. Development always uses it            |
-| `WF_STORE_FILE`     | The file that keeps the locks across restarts, set by the app. Without it, development keeps them in memory |
+What leaves your computer is only these reads: your profile from
+`api.warframe.com`, text and art from `wiki.warframe.com`, `www.warframe.com`
+and `www-static.warframe.com`, item art, Varzia's stock and the rotations from
+`warframestat.us`, and the game data and app updates from GitHub. The app
+sends no analytics. The demo reads no account at all; Vercel counts its page
+views and how fast pages load, with no cookie and no ID.
 
-To run the desktop app from the tree:
+DE's servers are looked after too. The app asks for one profile at a time,
+each computer gets two new lookups every twelve hours, and if DE refuses, it
+waits thirty minutes before asking again. [`docs/api.md`](docs/api.md) has the
+details.
 
-```bash
-pnpm --dir desktop install
-pnpm --dir desktop dev   # stages the app's build and opens its window
-```
+<p align="center">
+  <img src="docs/readme/how-it-was-built.png" alt="How it was built" width="100%">
+</p>
 
-[`docs/development.md`](docs/development.md) covers the tooling, and
-[`docs/desktop.md`](docs/desktop.md) the desktop app and how a version is
-released.
-[`docs/content-updates.md`](docs/content-updates.md) explains how a new
-Warframe update gets into the app.
+Every part of the app was decided in writing before any code. The work went
+in six steps, and each one had to agree with the one before it:
 
-## Data and credits
+1. The [constitution](docs/specs/00-constitution.md) is one page that says what the
+   app is for, who it serves and what it must never do. When anything later
+   disagrees with it, the constitution wins.
+2. The design came next: every screen drawn in Figma, along with its other
+   states, like an empty list, an error or a loading screen.
+3. The [specs](docs/specs/) describe one screen each, written against those
+   drawings. A spec says what the screen shows, where its data comes from,
+   and how to check that it works.
+4. The [plan](docs/history/plan/) decides how the code is organized, which design
+   system the screens share, and how the app is built and released.
+5. The [tasks](docs/history/tasks/README.md#the-tasks) cut the plan into small
+   pieces. Each lists what must be true before it counts as done, and every
+   commit is named after its task.
+6. The code came last, one task at a time, with tests for what each task
+   promises.
+
+When code showed that a decision was wrong, the decision was changed first,
+then the code. [`docs/history/spec-driven-order.md`](docs/history/spec-driven-order.md)
+explains why the work runs in this order. **Claude assisted with research, implementation, debugging and documentation.**
+
+<p align="center">
+  <img src="docs/readme/credits.png" alt="Credits" width="100%">
+</p>
 
 This app wouldn't exist without other people's work. Thank you to all of them.
 
@@ -217,10 +140,9 @@ This app wouldn't exist without other people's work. Thank you to all of them.
 | [Material Symbols Rounded](https://fonts.google.com/icons)                                                                                                               | The interface's own icons                                                                                                                                                            | [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE)                                                                                                                                                       |
 
 [`docs/curated-files.md`](docs/curated-files.md) lists every vendored file and
-where it came from.
-
-## Licence
+where it came from. To run the project or keep it going, see
+[`docs/maintaining.md`](docs/maintaining.md).
 
 The [MIT licence](LICENSE) covers the code and the curated files. Warframe and
-its content belong to Digital Extremes. This is a fan project, and Digital
-Extremes doesn't endorse it or have anything to do with it.
+its content belong to Digital Extremes. This is a fan project, not affiliated
+with or endorsed by Digital Extremes.

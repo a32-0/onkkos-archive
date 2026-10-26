@@ -1,7 +1,7 @@
 # The desktop app
 
 The app a player installs on Windows or Linux, so DE's profile is read from
-their own machine ([spec 13](../specs/13-desktop.md)). It lives in `desktop/`,
+their own machine ([spec 13](specs/13-desktop.md)). It lives in `desktop/`,
 with its own `package.json` and lockfile, outside the demo's install and
 build. This page covers how it is built and run, what each file does, and why
 each part of the security baseline is there, how a version is packaged and
@@ -35,24 +35,26 @@ fixtures (`pnpm dev`); the app is for checking the app.
 
 ## What each file does
 
-| File                      | What it does                                                                                                                                                                                                                                   |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scripts/stage.mjs`       | Builds the app's target (`WF_BUILD_TARGET=app`), copies `public/` and `.next/static` beside `server.js`, writes the starting frames, builds the main process and checks the guard                                                              |
-| `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                        |
-| `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the wordmark's paths, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
-| `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                 |
-| `electron-builder.yml`    | The two packages, what each carries, and GitHub Releases as the place updates come from                                                                                                                                                        |
-| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**                                                                                                                                    |
-| `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                           |
-| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                      |
-| `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                |
-| `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                |
-| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                   |
-| `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                                                                                       |
-| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                             |
-| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                         |
-| `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                          |
-| `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                                                                                        |
+| File                      | What it does                                                                                                                                                                                                                                                                                    |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/stage.mjs`       | Builds the app's target (`WF_BUILD_TARGET=app`), copies `public/` and `.next/static` beside `server.js`, writes the starting frames, builds the main process and checks the guard                                                                                                               |
+| `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                                                                         |
+| `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the wordmark's paths, `LoadingCard.module.css` for the quill's motion, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
+| `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                                                                  |
+| `icon.png`                | The app's icon: the quill alone on no background                                                                                                                                                                                                                                                |
+| `electron-builder.yml`    | The two packages, what each carries, and GitHub Releases as the place updates come from                                                                                                                                                                                                         |
+| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**                                                                                                                                                                                     |
+| `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                                                                            |
+| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                                                                       |
+| `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                                 |
+| `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                                 |
+| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                                                                    |
+| `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                                                                                                                                        |
+| `src/log.ts`              | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                                 |
+| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                                                                              |
+| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                                                                          |
+| `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                                                                           |
+| `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                                                                                                                                         |
 
 ## The window
 
@@ -195,9 +197,11 @@ resolved, and each package under `node_modules/.pnpm` is lifted to the top of
 `node_modules`, where Node finds it from anywhere in the server. The script
 stops the package if two versions of one package are found.
 
-Both carry the site's own icon, `public/icon-512.png`, the quill on the
-canvas: electron-builder turns it into the installer's and the program's icon,
-and the window shows it from `dist/icon.png`.
+Both carry the app's icon, `desktop/icon.png`: the quill alone, 512 px on
+no background, as most Windows programs draw theirs (the site keeps
+`public/icon-512.png`, the quill on the canvas). electron-builder turns it
+into the installer's and the program's icon, and the window shows it from
+`dist/icon.png`. It was drawn from the wordmark's quill path in `--brand`.
 
 On uninstall, Windows removes the app's folder under `%APPDATA%`. The
 installer is not signed (spec 13), so SmartScreen shows "Windows protected
@@ -246,10 +250,16 @@ else.
 
 Everything goes under Electron's `userData`: `%APPDATA%\Onkko's Archive` on
 Windows, `~/.config/Onkko's Archive` on Linux. It holds `store.json` (spec
-11's locks and the last profile, [`api.md`](api.md)), `port`, `window.json`, `server` once a
+11's locks and the last profile, [`api.md`](api.md)), `port`, `window.json`, `app.log`, `server` once a
 data set has been downloaded, and Chromium's own folders, the cookies among
 them. Next's cache stays in memory, so the wiki and the worldstate are read
 again after each start.
+
+`app.log` keeps what the server prints and what the main process warns of,
+each line stamped with its time (`src/log.ts`). The server's output is piped
+into it; the main process's `console.warn` and `console.error` write to it as
+well as to the terminal. It starts over at the first start after it passes
+1 MB. A player who meets a problem sends it; the app's own lines never name the account.
 
 The updater keeps the version it downloads in its own cache,
 `%LOCALAPPDATA%\onkkos-archive-desktop-updater` on Windows and

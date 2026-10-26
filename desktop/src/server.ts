@@ -6,6 +6,7 @@ import path from "node:path";
 import { app, utilityProcess, type UtilityProcess } from "electron";
 
 import { LAUNCH_HEADER } from "./guard.js";
+import { logFrom } from "./log.js";
 
 const READY_MS = 30_000;
 
@@ -66,7 +67,7 @@ export async function startServer(folder: string): Promise<Server> {
     [path.join(folder, "server.js")],
     {
       cwd: folder,
-      stdio: "inherit",
+      stdio: "pipe",
       env: {
         ...process.env,
         NODE_ENV: "production",
@@ -81,6 +82,8 @@ export async function startServer(folder: string): Promise<Server> {
       },
     },
   );
+  logFrom(server.stdout, process.stdout);
+  logFrom(server.stderr, process.stderr);
   app.on("will-quit", () => server.kill());
   const origin = `http://${host}`;
   await answers(`${origin}/connect`, token);

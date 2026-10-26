@@ -10,6 +10,7 @@ export function Button({
   loading = false,
   href,
   link,
+  external = false,
   disabled,
   type = "button",
   children,
@@ -19,7 +20,21 @@ export function Button({
   loading?: boolean;
   href?: string;
   link?: LinkComponent;
+  external?: boolean;
 }) {
+  if (href !== undefined && external) {
+    return (
+      <a
+        href={href}
+        className={styles[variant]}
+        data-variant={variant}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {children}
+      </a>
+    );
+  }
   if (href !== undefined) {
     const Link = link ?? "a";
     return (

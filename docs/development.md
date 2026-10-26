@@ -2,8 +2,8 @@
 
 This page is for anyone who runs the project or changes it: the tools it uses,
 the commands that check a change before it merges, what CI runs on every push,
-how the code is split into layers, the conventions every file follows, and
-the shared store behind the profile's locks.
+how the code is split into layers, the conventions every file follows, the
+two targets one build serves, and the store behind the profile's locks.
 
 ## Tooling
 
@@ -22,8 +22,8 @@ the shared store behind the profile's locks.
   a headless Chromium. A unit run with no test file fails.
 - Storybook (`@storybook/nextjs-vite`) is the catalogue of the design system.
   It loads `tokens.css` and the same three fonts as the app, from
-  `src/app/fonts.ts`, and offers the widths the constitution sweeps: 360, 390,
-  600, 840, 1280 and 1440. The Foundations page, `src/ui/Foundations.mdx`,
+  `src/app/fonts.ts`, and offers the widths the constitution sweeps: 360, 390
+  and 600. The Foundations page, `src/ui/Foundations.mdx`,
   reads `tokens.css` and `type.module.css` as text and shows every token and
   every type style, so nothing can be added to either without appearing there.
 - knip finds files, exports and dependencies that nothing reaches. Its Vitest
@@ -90,7 +90,7 @@ and production never block a host. Restart the dev server after changing it.
 `.github/workflows/check.yml` runs the gates on every push and every pull
 request, on GitHub's Ubuntu runner with Node 24 and the pnpm version
 `packageManager` names
-([plan part 4](../specs/plan/04-deployment.md#on-every-push-checkyml)). Each
+([plan part 4](history/plan/04-deployment.md#on-every-push-checkyml)). Each
 step is named after the gate it runs, so a failed run shows which gate failed:
 
 | Step      | Command                                             | Why it runs                                                    |
@@ -101,7 +101,7 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Chromium  | `pnpm exec playwright install --with-deps chromium` | The browser the story tests run in                             |
 | Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
 | Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
-| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as production does until T-33       |
+| App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as the demo on Vercel does          |
 | Weight    | `pnpm weight`                                       | No route's function carries more than 80 MB                    |
 
 The workflow holds no secret. It reads nothing outside the repository except
@@ -114,16 +114,37 @@ checkout does not keep it, and the telemetry of Next and Storybook is off.
 
 `.github/workflows/release.yml` runs on a `v*` tag alone and turns it into a
 draft release with the Windows installer and the Linux AppImage
-([plan part 4](../specs/plan/04-deployment.md#on-a-version-tag-releaseyml),
+([plan part 4](history/plan/04-deployment.md#on-a-version-tag-releaseyml),
 [`desktop.md`](desktop.md#cutting-a-version)). It is the one workflow that
 writes to the repository, with `contents: write` and nothing else.
+
+## The demo and the Storybook on Vercel
+
+Two Vercel projects build from this repository: `onkkos-archive` serves the
+demo (`next build`, with `WF_EDITION=demo` and `WF_PROFILE_SOURCE=fixture` set
+in the project), and `onkkos-archive-storybook` serves the design system
+(`storybook build`). `vercel.json` turns deployments off for every branch
+but `main`, so a push to `dev` deploys nothing and a merge to `main` deploys
+both. Vercel's Web Analytics and Speed Insights are switched on for the demo
+alone, in the project's dashboard. No token, project id or URL of either
+project is committed; the owner holds them.
+
+## After a deployment
+
+`.github/workflows/smoke.yml` runs when Vercel reports a finished production
+deployment of the demo, against that deployment's own address
+([plan part 4](history/plan/04-deployment.md#after-a-deployment-smokeyml)):
+`/connect` answers 200, the Ordis demo's profile answers 200 from
+`fixtures/`, and `/system` with that demo's id stays on `/system`, which
+proves the function carries `data/`. Its one secret,
+`VERCEL_AUTOMATION_BYPASS_SECRET`, passes Vercel's deployment protection.
 
 ## The weight of a function
 
 Vercel's Hobby plan takes at most 12 functions in a deployment. It bundles
 the routes into as few functions as it can, and a function holds at most
 250 MB, so the count stays low only while each route is light
-([plan part 4](../specs/plan/04-deployment.md#checked-when-the-deployment-is-set-up)).
+([plan part 4](history/plan/04-deployment.md#checked-when-the-deployment-is-set-up)).
 `pnpm weight` (`scripts/function-weight.mjs`) reads each route's trace in
 `.next/server/app` after `pnpm build`, adds up the files it names, each real
 file once however many links point to it, and fails when a route carries more
@@ -147,7 +168,7 @@ Three things keep it there, in `next.config.ts` and `data/vendor/`:
 ## The layers
 
 `src/` holds six layers, and every import points one way
-([plan part 1](../specs/plan/01-repository.md#the-layers)):
+([plan part 1](history/plan/01-repository.md#the-layers)):
 
 ```
 app ──► screens ──► ui
@@ -198,23 +219,45 @@ coding agent (`node_modules/next/dist/server/lib/generate-agent-files.js`).
 Git ignores both, along with `.claude/`, so neither can enter the history by
 accident.
 
-## Environment variables
+## Two targets, one build
 
-`.env.example` lists them. Copy it to `.env.local` for development.
+The demo on Vercel and the app on a player's machine are the same `src/`
+tree and the same Next build; variables tell them apart
+([plan part 2](history/plan/02-architecture.md)):
 
+| Variable            | The demo, on Vercel | The app                            | Development                 |
+| ------------------- | ------------------- | ---------------------------------- | --------------------------- |
+| `WF_EDITION`        | `demo`              | `app`                              | Unset: the form, as the app |
+| `WF_PROFILE_SOURCE` | `fixture`           | `live`                             | `fixture` (`.env.example`)  |
+| `WF_STORE_FILE`     | Unset: memory       | The store file in the app's folder | Unset: memory               |
+
+- `WF_EDITION`: `demo` hides the id form, offers the two demos and the card
+  to the download, and refuses any id but the demos'; `app` shows the app's
+  version on Profile. `src/infra/edition.ts` reads it.
 - `WF_PROFILE_SOURCE`: with `fixture`, every profile is served from
   `fixtures/` and DE is never reached. With `live`, DE's endpoint is read
-  through the locks. Development uses `fixture`, and so does the demo on
-  Vercel, for good; only the app on a player's machine reads `live` by default
-  ([spec 13](../specs/13-desktop.md)).
-- `WF_STORE_FILE`: the store file the app keeps its locks in. The app sets it;
-  development leaves it unset and keeps the locks in memory.
+  through the locks. Only the app reads `live`
+  ([spec 13](specs/13-desktop.md)).
+- `WF_STORE_FILE`: the store file the app keeps its locks in.
+
+The app's main process sets the app's column and three more, and nothing in
+the player's hands sets any of them: `WF_LAUNCH_TOKEN`, the start's secret,
+and `WF_LAUNCH_HOST`, the server's own address, which the guard checks; and
+`WF_APP_VERSION`. Two more are for the build and the tree alone:
+`WF_BUILD_TARGET=app`, which `pnpm --dir desktop stage` sets so
+`next.config.ts` builds `standalone` with the app's cache handler, and
+`WF_DATA_CHECK=1`, which makes an unpackaged app check the data manifest at
+start as a packaged one does ([`desktop.md`](desktop.md)).
+
+`.env.example` holds development's one variable; copy it to `.env.local`.
+[`desktop.md`](desktop.md#running-it-from-the-tree) has `desktop/`'s
+commands: `dev`, `start`, `check`, `stage`, `package` and `release`.
 
 ## The store
 
 The profile's locks live in one store with two backends behind one interface,
 `src/infra/store/`
-([plan part 2](../specs/plan/02-architecture.md#the-store)). `store()` in
+([plan part 2](history/plan/02-architecture.md#the-store)). `store()` in
 `index.ts` picks one on each call:
 
 | Backend | File        | Used when                                                |

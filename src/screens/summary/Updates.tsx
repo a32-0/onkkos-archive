@@ -10,7 +10,7 @@ import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
-import { FIRST, useMore } from "../resume/batches";
+import { FIRST, MORE } from "../resume/batches";
 import { matchesUpdate } from "../resume/state";
 import { Shell } from "../shell/Shell";
 import type { ShellTab } from "../shell/tabs";
@@ -35,7 +35,6 @@ export function Updates({
 }) {
   const [query, setQuery] = useState("");
   const [shown, setShown] = useState(FIRST);
-  const more = useMore();
   const found = updates.filter((update) => matchesUpdate(update, query));
   const listed = found.slice(0, shown);
 
@@ -74,7 +73,7 @@ export function Updates({
           </form>
         )}
         {found.length > listed.length && (
-          <Button variant="text" onClick={() => setShown(shown + more)}>
+          <Button variant="text" onClick={() => setShown(shown + MORE)}>
             {RESUME.more}
           </Button>
         )}

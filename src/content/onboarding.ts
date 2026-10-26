@@ -5,6 +5,8 @@ export const CONNECT = {
   demoLead: "This is a demo: two players' archives to explore. Nothing here reads an account.",
   fieldLabel: "Account ID",
   fieldPlaceholder: "4b2e9f17c3a85d06e1f74a9c",
+  readsNote:
+    "This device can read 2 profiles from Warframe every 12 hours, and a wrong ID uses one. Check it’s the gid value before you connect.",
   submit: "Connect",
   reading: "Onkko is reading your archive...",
   whereTitle: "Where do I find this?",
@@ -25,9 +27,17 @@ export const CONNECT = {
     "It’s safe: it’s the same public profile the game shows when you look at another player. We only remember your ID on this device, and Disconnect forgets it.",
   demoTitle: "Explore with a demo",
   demo: (name: string, masteryRank: number) => `${name} (Mastery Rank ${masteryRank})`,
+  ownTitle: "Your own account",
+  ownLine:
+    "The app reads your profile from your own computer, through your own connection. For Windows and Linux.",
+  download: "Download the app",
 } as const;
 
-export function connectError(reason: string, retryAt: number | null): string | null {
+export function connectError(
+  reason: string,
+  retryAt: number | null,
+  local: string | null = null,
+): string | null {
   switch (reason) {
     case "invalid-id":
       return BAND.invalidId;
@@ -36,11 +46,11 @@ export function connectError(reason: string, retryAt: number | null): string | n
     case "upstream":
     case "throttled":
     case "circuit-open":
-      return BAND.notAnswering(retryAt);
+      return BAND.notAnswering(retryAt, local);
     case "malformed":
       return BAND.unreadable;
     case "limited":
-      return BAND.limited(retryAt);
+      return BAND.limited(retryAt, local);
     default:
       return null;
   }

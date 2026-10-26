@@ -29,8 +29,11 @@ const text = (parts: readonly { text: string }[]) => parts.map((part) => part.te
 const CHROME = {
   player: PLAYER,
   voice: { met: true, on: true },
+  tour: false,
   disconnect: async () => {},
   setOnkko: async () => {},
+  endTour: async () => {},
+  resetTour: async () => {},
 };
 
 function shell(tab: ShellTab | null, tabs: boolean, bar?: ShellBar): string {
@@ -98,9 +101,9 @@ describe("the shell around a screen (spec 04)", () => {
   it("shows the chip and the tab bar, with the screen's tab lit", () => {
     const html = shell("navigation", true);
     expect(html).toContain('href="/profile?from=navigation"');
-    expect(html.match(/<nav /g)).toHaveLength(2);
+    expect(html.match(/<nav /g)).toHaveLength(1);
     const lit = html.match(/<a [^>]*aria-current="page"[^>]*>/g) ?? [];
-    expect(lit).toHaveLength(2);
+    expect(lit).toHaveLength(1);
     expect(lit.every((link) => link.includes('href="/system"'))).toBe(true);
     expect(html).toContain("<main");
   });
@@ -120,12 +123,13 @@ describe("the shell around a screen (spec 04)", () => {
     );
   });
 
-  it("opens a page under a tab with the top bar, its back link and its title", () => {
+  it("opens a page under a tab with the top bar in place of the header, and no tab bar", () => {
     const html = shell("resume", true, { title: "Warframes", back: "/catch-up" });
     expect(html).toContain('aria-label="Back"');
     expect(html).toContain('href="/catch-up"');
     expect(html).toContain("Warframes");
-    expect(html.match(/<nav /g)).toHaveLength(1);
+    expect(html).not.toContain('href="/profile?from=resume"');
+    expect(html).not.toContain("<nav ");
   });
 
   it("holds Profile with Disconnect and the read cycle", () => {
@@ -137,5 +141,18 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).toContain("Gold Sage");
     expect(html).toContain("Disconnect");
     expect(html).toContain("15:30 hours UTC.");
+  });
+
+  it("asks before Disconnect forgets the account", () => {
+    const html = renderToStaticMarkup(
+      createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals" }),
+    );
+    const dialog = html.slice(html.indexOf("<dialog"), html.indexOf("</dialog>"));
+    expect(dialog).toContain("Disconnect?");
+    expect(dialog).toContain("Your Warframe account isn’t touched.");
+    expect(dialog).toContain('type="submit"');
+    expect(dialog).toContain("Cancel");
+    expect(html.match(/<button type="submit"[^>]*>Disconnect<\/button>/g)).toHaveLength(1);
+    expect(dialog).toMatch(/<button type="submit"[^>]*>Disconnect<\/button>/);
   });
 });

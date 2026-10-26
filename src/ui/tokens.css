@@ -79,5 +79,8 @@
   --blur-band: 4px;
 
   --gutter: 16px;
+
+  --motion-quill: 2400ms;
+  --motion-ease: ease-in-out;
   --link-card-height: calc(60px + 2 * var(--space-5));
 }

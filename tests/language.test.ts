@@ -67,9 +67,9 @@ describe("Onkko speaks on every screen", () => {
 });
 
 describe("Onkko's lines are the specs' own", () => {
-  const specs = readdirSync(path.join(process.cwd(), "specs"))
+  const specs = readdirSync(path.join(process.cwd(), "docs", "specs"))
     .filter((file) => file.endsWith(".md"))
-    .map((file) => readFileSync(path.join(process.cwd(), "specs", file), "utf8"))
+    .map((file) => readFileSync(path.join(process.cwd(), "docs", "specs", file), "utf8"))
     .join("\n")
     .replace(/\s+/g, " ");
 

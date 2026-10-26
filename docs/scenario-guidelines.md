@@ -10,7 +10,7 @@ answer, the owner designs one case and it is added here.
 
 How items are sorted into scenarios is in
 [`acquisition-scenarios.md`](acquisition-scenarios.md). What the view draws
-is in [spec 10](../specs/10-step-by-step.md).
+is in [spec 10](specs/10-step-by-step.md).
 
 ## The question every item view answers
 
@@ -217,4 +217,4 @@ row until a structured source appears. That is a correct render, not a gap.
 
 Only when an item needs a section, row type or prerequisite kind that is not
 listed above. Everything else is placed by this document and verified by
-rendering a real item of the family at 360, 600, 840 and desktop widths.
+rendering a real item of the family at 360, 390 and 600.

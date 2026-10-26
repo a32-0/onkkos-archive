@@ -1,6 +1,6 @@
 appId: onkkos-archive
 productName: Onkko's Archive
-icon: ../public/icon-512.png
+icon: icon.png
 directories:
   output: release
 files:

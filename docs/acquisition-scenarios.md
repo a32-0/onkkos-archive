@@ -11,7 +11,7 @@ The engine is `resolveAcquisition()` in
 the catalog's data as an argument (`CatalogData` in
 `src/domain/catalog/data.ts`), which `src/infra/catalog/data.ts` reads once:
 the wiki's modules, `sources.yaml`, DE's tables, the spine and the item
-catalog. [Spec 10](../specs/10-step-by-step.md) draws the view that renders it.
+catalog. [Spec 10](specs/10-step-by-step.md) draws the view that renders it.
 
 ## Five layouts, two axes
 

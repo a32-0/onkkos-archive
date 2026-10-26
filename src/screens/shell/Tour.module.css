@@ -1,0 +1,91 @@
+.tour {
+  --spread: 100vmax;
+  position: fixed;
+  inset: 0;
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: none;
+  color: var(--ink);
+}
+
+.tour::backdrop {
+  background: none;
+}
+
+.spot {
+  position: fixed;
+  top: var(--spot-top);
+  left: var(--spot-left);
+  width: var(--spot-width);
+  height: var(--spot-height);
+  box-sizing: border-box;
+  border: var(--border-2) solid var(--brand);
+  border-radius: var(--radius-m);
+  box-shadow: 0 0 0 var(--spread) var(--scrim);
+  pointer-events: none;
+}
+
+.card {
+  position: fixed;
+  left: var(--card-left);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  box-sizing: border-box;
+  width: var(--card-width);
+  margin: 0;
+  padding: var(--space-6);
+  border-radius: var(--radius-l);
+  background: var(--surface-raised);
+}
+
+.below {
+  composes: card;
+  top: var(--card-top);
+}
+
+.above {
+  composes: card;
+  bottom: var(--card-bottom);
+}
+
+.step {
+  composes: mono-label from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.title {
+  composes: name from "../../ui/type.module.css";
+  margin: 0;
+}
+
+.body {
+  composes: body-l from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.half {
+  display: flex;
+  flex: 1 0 0;
+}
+
+.done {
+  --done-width: 120px;
+  display: flex;
+  width: var(--done-width);
+  margin-left: auto;
+}

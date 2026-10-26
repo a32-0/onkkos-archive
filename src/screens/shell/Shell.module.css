@@ -24,34 +24,3 @@
   padding-top: var(--space-4);
   background: var(--canvas);
 }
-
-.desktop {
-  display: none;
-}
-
-.clear {
-  composes: main;
-}
-
-.floating {
-  display: none;
-}
-
-@media (min-width: 840px) {
-  .clear {
-    --shell-floating-clearance: 130px;
-    padding-bottom: var(--shell-floating-clearance);
-  }
-
-  .floating {
-    display: contents;
-  }
-
-  .bottom {
-    display: none;
-  }
-
-  .desktop {
-    display: block;
-  }
-}

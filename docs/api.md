@@ -8,9 +8,9 @@ kept in Next's data cache.
 DE's endpoint was verified against the live service. Third-party
 documentation (FrameHub, the `@wfcd/profile-parser` README) describes a
 `content.warframe.com/dynamic/...` host that no longer answers. How the app
-protects the endpoint is [spec 11](../specs/11-profile-proxy.md); how the
+protects the endpoint is [spec 11](specs/11-profile-proxy.md); how the
 store holds each lock is
-[plan part 2](../specs/plan/02-architecture.md#the-store).
+[plan part 2](history/plan/02-architecture.md#the-store).
 
 ## Endpoint
 
@@ -50,7 +50,7 @@ GET https://api.warframe.com/cdn/getProfileViewingData.php?playerId={account_id}
 | No answer in fifteen seconds, or no connection                    | Upstream problem                                                 | `upstream`, never kept, a refusal      |
 | `200` + a body that is not JSON, or has no `Results[0]`           | Upstream HTML error page                                         | `malformed`, never kept, not a refusal |
 
-Every refusal writes one line to Vercel's function log, `DE refused a read:`,
+Every refusal writes one line to the server's log, `DE refused a read:`,
 with the status, the `server`, `cf-mitigated` and `retry-after` headers, the
 content type and the body's length; a read with no answer writes `DE gave no
 answer:` and the error's name, and a store that fails writes `The store
@@ -66,7 +66,7 @@ false "account not found" for ten minutes, the default when no `max-age` comes.
 - A valid response carries `Cache-Control: max-age=600`. The app ignores it
   and keeps the profile for twelve hours (`PROFILE_TTL_MS` in
   `src/infra/profile/cache.ts`): nothing the app reads changes faster, as
-  [`public-release.md`](public-release.md#how-long-a-read-lasts) records.
+  [`public-release.md`](history/public-release.md#how-long-a-read-lasts) records.
 - A not-found keeps DE's own `max-age` (86400 on a missing account), clamped
   by `ttlFromCacheControl()` to between one minute and a day, so retyping the
   same wrong id costs nothing. With no header it keeps ten minutes.
@@ -80,8 +80,9 @@ false "account not found" for ten minutes, the default when no `max-age` comes.
 Misuse of this endpoint gets the calling address refused, and the game client
 uses the same endpoint: a developer building another tracker reported being
 locked out of Warframe itself for up to 24 hours, mostly after players typed
-wrong ids. Behind the app the refused address is the server's, so the cost is
-the app for everyone; in local development it is the developer's own game.
+wrong ids. The app reads from the player's own computer, so the refused address
+is the player's and the cost is their own game; in local development it is
+the developer's.
 
 After a burst of requests the endpoint escalates from `409` (empty body) to
 `403 Forbidden` for the whole address, including ids that answered `200`
@@ -98,8 +99,10 @@ each one holds across a restart (spec 13):
 2. **Fixtures by default.** Only `WF_PROFILE_SOURCE=live` reaches DE; unset,
    `fixture` or anything else reads a fixture. The two demo ids, `…0001` Cy
    and `…0002` Ordis, read theirs even when live, so the demo entrance on
-   `/connect` always works and never spends a lookup.
-3. **Stored first.** One `MGET` reads the profile, the not-found, the read
+   `/connect` always works and never spends a lookup. On the demo
+   (`WF_EDITION=demo`) any other id answers `not-found` before anything is
+   read, so the demo reads no account.
+3. **Stored first.** One read of the store takes the profile, the not-found, the read
    lock and the circuit. A stored profile answers even while the circuit is
    open.
 4. **The circuit.** Three refusals with no profile or not-found between them
@@ -119,6 +122,11 @@ The visitor is the first `x-forwarded-for` address, then `x-real-ip`, then
 `local` (`visitor.ts`). On the app no request carries either, since only its
 own window reaches its server (spec 13), so every lookup is the machine's
 `local` and the budget is the machine's two.
+
+Only the app's own window reaches its server: a guard in front of Next answers
+`403` to any request without the start's secret or with another `Host`, so a
+page in the player's browser cannot spend their reads
+([`desktop.md`](desktop.md#who-may-talk-to-the-server)).
 
 A store that is missing in a production build reading live, or fails, fails
 closed: the read answers `upstream` and DE is never read without the locks.
@@ -186,10 +194,10 @@ that need no live data. Nightwave is not read (BR-35).
 | Varzia | Ten minutes | `REVALIDATE_SECONDS` in `worldstate/client.ts`, as BR-29 says |
 
 Both requests say `cache: "force-cache"` beside `next: { revalidate }`, so
-Next keeps them in its data cache, which Vercel shares across instances and
-the app keeps in its own folder; they never touch the store. A page reads its cookies before it fetches, and Next
+Next keeps them in its data cache, which the app keeps in memory
+(`desktop/next-cache.cjs`) and the demo on Vercel shares across instances; they never touch the store. A page reads its cookies before it fetches, and Next
 caches a `fetch` met after that only when the call opts in
-([plan part 2](../specs/plan/02-architecture.md#where-each-kind-of-state-lives)).
+([plan part 2](history/plan/02-architecture.md#where-each-kind-of-state-lives)).
 Checked on 2026-10-14 with `logging.fetches` in development: on a page that
 reads its cookies first, the first render fetched the icons, a page's prose
 and Varzia's stock from their sources, and the second answered all three as

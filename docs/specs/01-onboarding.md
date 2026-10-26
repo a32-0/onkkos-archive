@@ -1,0 +1,58 @@
+# 01 · Onboarding
+
+The first screen anyone sees: the app's name, one line from Onkko, the
+character the app is named after, and a Begin button. Begin leads to the account form, which already holds the
+player's id when this device remembers them.
+
+## Frames
+
+- [`661:4307` Start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4307),
+  in the pinned section `661:4302`. It is the only frame for this screen.
+
+The frame is the design (BR-33). This spec says what the frame cannot:
+behaviour and where things come from.
+
+## Rules
+
+- [BR-01](../business-rules.md#br-01--remember-the-player-on-this-device):
+  a returning player never types the account id again.
+- [BR-34](../business-rules.md#br-34--figma-is-the-only-source-of-truth-for-the-screens-and-the-flow):
+  the flow goes from here to the account id form.
+- [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
+  how the screen lands wider than the frame.
+
+## What the screen does
+
+- Route `/`, outside the shell: no header, no tab bar, no player chip.
+- It holds what the frame draws, and nothing else: the background art, the
+  thin frame line, the wordmark (quill and "Onkko's Archive"), a **Begin**
+  button, and Onkko's line under it, "You were anticipated. Our interaction
+  begins." The wordmark sits in the middle of the frame line, and Begin and
+  the line at its foot (owner, 2026-10-15).
+- **Begin** opens `/connect`. When the device remembers an account id
+  (`wf_account`), the form opens with it already in the field, so the player
+  only presses Connect (BR-01). The splash itself never reads the profile and
+  never redirects.
+
+## States
+
+One. The screen has no data, so it has no loading, empty or error state.
+
+## Data and sources
+
+- None from the player or the catalog.
+- The background art is the frame's image, exported from Figma into the
+  repository. The wordmark is the existing `Wordmark` component.
+- Copy lives in `src/content/` (`VOICE.onboarding`, `VOICE.onboardingEnter`).
+
+## Acceptance
+
+1. At 390 px the screen matches `661:4307`: layout, type, colour, spacing and
+   copy.
+2. At 360 and 600 nothing overlaps, nothing is cut and the page does not
+   scroll sideways; the frame line keeps 16 px from the column's edges, Begin
+   fills it, and the art covers the whole column. Wider than 600 the page
+   stays a centred 600 px column (BR-39).
+3. Begin opens `/connect`; with `wf_account` set, the field holds that id.
+4. `/` makes no request to DE's endpoint.
+5. `pnpm check` passes.

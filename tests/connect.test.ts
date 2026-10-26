@@ -36,9 +36,30 @@ describe("on the demo (spec 02)", () => {
     expect(html).toContain("Ordis (Mastery Rank 2)");
     expect(html).toContain("Cy (Mastery Rank 27)");
   });
+
+  it("sends a player to the app's latest release, in a new tab", () => {
+    expect(html).toContain("Your own account");
+    const link = html.match(/<a [^>]*>Download the app<\/a>/)?.[0] ?? "";
+    expect(link).toContain('href="https://github.com/a32-0/onkkos-archive/releases/latest"');
+    expect(link).toContain('target="_blank"');
+    expect(link).toContain('rel="noreferrer"');
+  });
+
+  it("offers no download in the app or in development", () => {
+    const own = page({ value: "", reason: null, retryAt: null });
+    expect(own).not.toContain("Your own account");
+    expect(own).not.toContain("Download the app");
+  });
 });
 
 describe("the id form (spec 02)", () => {
+  it("says what a wrong id costs before it is sent, and again under a band", () => {
+    const note = "This device can read 2 profiles from Warframe every 12 hours";
+    expect(page({ value: "", reason: null, retryAt: null })).toContain(note);
+    expect(page({ value: REMEMBERED, reason: "not-found", retryAt: null })).toContain(note);
+    expect(page({ value: "", reason: null, retryAt: null }, true)).not.toContain(note);
+  });
+
   it("holds the remembered id, or nothing, under the frame's placeholder", () => {
     const empty = page({ value: "", reason: null, retryAt: null });
     expect(empty).toContain('placeholder="4b2e9f17c3a85d06e1f74a9c"');

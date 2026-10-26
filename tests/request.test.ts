@@ -234,6 +234,44 @@ describe("Disconnect (spec 04)", () => {
   });
 });
 
+describe("the first tour (T-45)", () => {
+  async function resume(): Promise<string> {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: CatchUpPage } = await import("@/app/catch-up/page");
+    return renderToStaticMarkup(await CatchUpPage({ searchParams: Promise.resolve({}) }));
+  }
+
+  it("shows once, until it ends, and again after Tutorial's Reset", async () => {
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    expect(await resume()).toContain("1 of 4");
+    const { endTour, resetTour } = await import("@/app/actions");
+    await endTour();
+    expect(jar.get("wf_tour")?.value).toBe("seen");
+    expect(await resume()).not.toContain("1 of 4");
+    await expect(resetTour()).rejects.toMatchObject({ url: "/system" });
+    expect(jar.get("wf_tour")).toBeUndefined();
+    expect(await resume()).toContain("1 of 4");
+  });
+
+  it("is not shown on a step of Two ways in, where the tab bar is not", async () => {
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: CatchUpPage } = await import("@/app/catch-up/page");
+    const html = renderToStaticMarkup(
+      await CatchUpPage({ searchParams: Promise.resolve({ step: "resume" }) }),
+    );
+    expect(html).not.toContain("1 of 4");
+  });
+
+  it("outlives Disconnect, since it belongs to the device", async () => {
+    await (await import("@/infra/session")).writeAccountId(ORDIS);
+    const { disconnect, endTour } = await import("@/app/actions");
+    await endTour();
+    await expect(disconnect()).rejects.toMatchObject({ url: "/connect" });
+    expect(jar.get("wf_tour")?.value).toBe("seen");
+  });
+});
+
 describe("the player the shell shows", () => {
   it("carries the name, the rank and the read times", async () => {
     const { playerOf, requireScreen } = await import("@/app/screen");
@@ -521,14 +559,14 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       );
     }
 
-    it("opens a category under the top bar, its things as rows, with the tab bar", async () => {
+    it("opens a category under the top bar, its things as rows, with no tab bar", async () => {
       jar.set("wf_since", { value: "2026-03", options: {} });
       const html = await category("warframes");
       expect(html).toContain("Warframes");
       expect(html).toContain('aria-label="Back"');
       expect(html).toContain("New since you left off. Pick one to see how to get it.");
       expect(html).toMatch(/href="\/item\?name=[^"]+&amp;from=resume"/);
-      expect(html).toMatch(/<nav/);
+      expect(html).not.toMatch(/<nav/);
     });
 
     it("sends a category with nothing new back to the Summary", async () => {
@@ -980,9 +1018,7 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).toContain("/item?name=Dante&amp;from=navigation&amp;view=steps#part-neuroptics");
     expect(html).toContain("Armatus (Deimos) · Disruption");
     expect(html).toContain(">70,000 Credits<");
-    expect(html).toMatch(
-      /<a [^>]*aria-current="page"[^>]*href="\/system"|href="\/system"[^>]*aria-current="page"/,
-    );
+    expect(html).not.toMatch(/<nav/);
   });
 
   it("opens an item beyond reach on Step by step, unless the link says Summary", async () => {

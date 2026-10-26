@@ -26,7 +26,7 @@ const modules = files("src", ".module.css").filter((rel) => rel !== TYPE);
 const declared = [...tokensCss.matchAll(/^\s*(--[a-z0-9-]+):\s*([^;]+);/gm)].map(
   ([, name, value]) => ({ name: name!, value: value! }),
 );
-const SHAPE = /^--(radius|space|border|blur|gutter)/;
+const SHAPE = /^--(radius|space|border|blur|gutter|motion)/;
 const primitives = declared
   .filter(({ name, value }) => !SHAPE.test(name) && !value.includes("var("))
   .map(({ name }) => name);

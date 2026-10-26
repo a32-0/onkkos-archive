@@ -5,7 +5,7 @@ where"; **Step by step** answers "walk me through it". `?view=steps` on
 `/item` opens it, and an item beyond the player's reach opens on it. The
 Summary is this plan in short form (`briefOf()` in
 `src/domain/catalog/summary.ts`), so the two views never disagree. What each
-frame draws is in [spec 10](../specs/10-step-by-step.md); how an item's parts
+frame draws is in [spec 10](specs/10-step-by-step.md); how an item's parts
 are grouped and which sources feed each route is in
 [`acquisition-scenarios.md`](acquisition-scenarios.md).
 

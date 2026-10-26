@@ -12,6 +12,8 @@ const ACCOUNT_COOKIE = "wf_account";
 const SINCE_COOKIE = "wf_since";
 const PLACE_COOKIE = "wf_place";
 const ONKKO_COOKIE = "wf_onkko";
+const TOUR_COOKIE = "wf_tour";
+const TOUR_SEEN = "seen";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 const SYSTEM_ID = /^[a-z0-9-]{1,40}$/;
 const PLACE_NAME = /^[^/]{1,80}$/;
@@ -48,6 +50,18 @@ export async function readOnkko(): Promise<OnkkoChoice | null> {
 
 export async function writeOnkko(choice: OnkkoChoice): Promise<void> {
   (await cookies()).set(ONKKO_COOKIE, choice, KEPT);
+}
+
+export async function readTourSeen(): Promise<boolean> {
+  return (await cookies()).get(TOUR_COOKIE)?.value === TOUR_SEEN;
+}
+
+export async function writeTourSeen(): Promise<void> {
+  (await cookies()).set(TOUR_COOKIE, TOUR_SEEN, KEPT);
+}
+
+export async function forgetTour(): Promise<void> {
+  (await cookies()).delete(TOUR_COOKIE);
 }
 
 export async function readSince(): Promise<string | null> {

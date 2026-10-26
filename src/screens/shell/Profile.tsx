@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useId, useRef, useState, useTransition } from "react";
 
 import { SHELL } from "@/content/nav";
 import type { UpdateState } from "@/domain/types/update-state";
@@ -36,12 +36,14 @@ export function Profile({
   version?: string | null;
   check?: () => Promise<UpdateState>;
 }) {
-  const { player, voice, disconnect, setOnkko } = chrome;
+  const { player, voice, disconnect, setOnkko, resetTour } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
   const local = useLocalTime(player.nextReadAt);
   const [, start] = useTransition();
   const [update, setUpdate] = useState<UpdateState | null>(null);
   const [checking, startCheck] = useTransition();
+  const confirm = useRef<HTMLDialogElement>(null);
+  const ids = useId();
   const ask = () => {
     if (!check) return;
     startCheck(async () => {
@@ -105,9 +107,11 @@ export function Profile({
             )}
             <ListEntry>
               <ControlRow label={SHELL.tutorial} action>
-                <Button variant="secondary" disabled>
-                  {SHELL.reset}
-                </Button>
+                <form action={resetTour} className={styles.reset}>
+                  <Button variant="secondary" type="submit">
+                    {SHELL.reset}
+                  </Button>
+                </form>
               </ControlRow>
             </ListEntry>
           </List>
@@ -140,11 +144,30 @@ export function Profile({
           </section>
         )}
         <div className={styles.foot}>
-          <form action={disconnect}>
-            <Button variant="danger" type="submit">
-              {SHELL.disconnect}
-            </Button>
-          </form>
+          <Button variant="danger" onClick={() => confirm.current?.showModal()}>
+            {SHELL.disconnect}
+          </Button>
+          <dialog
+            ref={confirm}
+            className={styles.confirm}
+            aria-labelledby={`${ids}-title`}
+            aria-describedby={`${ids}-body`}
+          >
+            <h2 id={`${ids}-title`} className={styles.confirmTitle}>
+              {SHELL.disconnectTitle}
+            </h2>
+            <p id={`${ids}-body`} className={styles.confirmBody}>
+              {SHELL.disconnectBody}
+            </p>
+            <form action={disconnect} className={styles.confirmActions}>
+              <Button variant="danger" type="submit">
+                {SHELL.disconnect}
+              </Button>
+              <Button variant="secondary" autoFocus onClick={() => confirm.current?.close()}>
+                {SHELL.cancel}
+              </Button>
+            </form>
+          </dialog>
           <p className={styles.cycle}>
             {readCycle(player, local).map((part, index) => (
               <span key={index} className={part.strong ? styles.strong : undefined}>

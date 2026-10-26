@@ -38,7 +38,7 @@
 .lead {
   composes: body-l from "../../ui/type.module.css";
   margin: 0;
-  color: var(--ink);
+  color: var(--ink-muted);
 }
 
 .cards {
@@ -56,12 +56,4 @@
   width: 100%;
   max-width: var(--features-reading);
   margin-top: auto;
-}
-
-@media (min-width: 840px) {
-  .page {
-    --features-column: none;
-    --features-reading: 358px;
-    --features-cards: repeat(2, 358px);
-  }
 }

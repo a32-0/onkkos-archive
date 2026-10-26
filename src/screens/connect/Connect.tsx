@@ -1,5 +1,6 @@
 import { APP } from "@/content/app";
 import { CONNECT } from "@/content/onboarding";
+import { LATEST_RELEASE } from "@/routes";
 import { VOICE } from "@/content/voice";
 import { Button } from "@/ui/Button/Button";
 import { Header } from "@/ui/Header/Header";
@@ -83,6 +84,16 @@ export function Connect({
             ))}
           </form>
         </section>
+
+        {demoSite && (
+          <section className={styles.card}>
+            <h2 className={styles.label}>{CONNECT.ownTitle}</h2>
+            <p className={styles.lead}>{CONNECT.ownLine}</p>
+            <Button href={LATEST_RELEASE} external>
+              {CONNECT.download}
+            </Button>
+          </section>
+        )}
       </main>
     </>
   );

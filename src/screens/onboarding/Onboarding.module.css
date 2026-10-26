@@ -51,9 +51,3 @@
   width: 100%;
   max-width: var(--onboarding-column);
 }
-
-@media (min-width: 840px) {
-  .page {
-    --onboarding-column: 326px;
-  }
-}
