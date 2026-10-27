@@ -12,12 +12,9 @@ current. Each job lists its steps and links to the page with the details.
   `package.json` (`packageManager`); `corepack enable` installs it for you.
 - Write access to the GitHub repository. GitHub runs the checks, builds the
   installers and hosts the releases.
-- The Microsoft Partner Center account that holds the app's Store listing.
-  Its package identity is kept in the repository's Actions secrets
-  ([`desktop.md`](desktop.md#the-microsoft-store-package)).
-- The two Vercel projects: `onkkos-archive` serves the demo and
-  `onkkos-archive-storybook` serves the design system. Both deploy from
-  `main` on their own.
+- The Vercel project `onkkos-archive`, which serves the demo. It deploys from
+  `main` on its own. The design system's Storybook is not published; run it
+  with `pnpm storybook`.
 - The Figma file, which holds every screen. It stays private.
 
 Set up a machine once:
@@ -40,7 +37,7 @@ Ordis and Cy, from `fixtures/`, and that is what you test against.
 1. Work on the `dev` branch. Every push runs the checks on GitHub
    (`check.yml`).
 2. When a change is ready, open a pull request from `dev` to `main` and merge
-   it. The merge deploys the demo and the Storybook on Vercel, and
+   it. The merge deploys the demo on Vercel, and
    `smoke.yml` checks the demo answers.
 3. Installed apps pick up new game data from `main` at their next start. A
    change to the code reaches them only through a new version (below).
@@ -146,10 +143,6 @@ A few rules hold everywhere, and the tests check most of them:
 4. Open the draft, write what changed in plain words, and publish it.
    Installed apps download it in the background and install it when the
    player closes them.
-5. Download the `microsoft-store` artifact from the same workflow run and
-   upload its `.appx` as a new submission in Partner Center. Players who
-   installed from the Microsoft Store get the version once it passes
-   certification.
 
 Before step 2 you can try the package on your own machine:
 `pnpm --dir desktop stage`, then `pnpm --dir desktop package`. The installer
@@ -183,16 +176,16 @@ Check every month or two, and after each mainline:
 
 ## When something goes wrong
 
-| What you see                                    | What to do                                                                                                                                                                                                                                                                       |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A check fails on GitHub but not on your machine | Run `pnpm install --frozen-lockfile`; the lockfile may be stale                                                                                                                                                                                                                  |
-| `pnpm content:update` stops on a source         | That site is down. Wait and run it again; nothing was changed                                                                                                                                                                                                                    |
-| The manifest test fails                         | Run `pnpm data:manifest` after changing anything in `data/`                                                                                                                                                                                                                      |
-| A function is over the weight limit             | See [`development.md`](development.md#the-weight-of-a-function)                                                                                                                                                                                                                  |
-| Electron starts as plain Node                   | Your shell sets `ELECTRON_RUN_AS_NODE`; clear it ([`desktop.md`](desktop.md#running-it-from-the-tree))                                                                                                                                                                           |
-| The app says DE isn't answering, for a while    | DE refused reads and the app is waiting thirty minutes; it recovers alone ([`api.md`](api.md#the-locks))                                                                                                                                                                         |
-| Windows warns about the installer               | Expected: the installer isn't signed. The README tells players what to click                                                                                                                                                                                                     |
-| A player reports a problem you can't reproduce  | Ask for `app.log`: `%APPDATA%\Onkko's Archive\app.log` on Windows, inside the app's folder under `%LOCALAPPDATA%\Packages` from the Store, `~/.config/Onkko's Archive/app.log` on Linux. DE's refusals and failed updates are there ([`desktop.md`](desktop.md#where-it-writes)) |
+| What you see                                    | What to do                                                                                                                                                                                               |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A check fails on GitHub but not on your machine | Run `pnpm install --frozen-lockfile`; the lockfile may be stale                                                                                                                                          |
+| `pnpm content:update` stops on a source         | That site is down. Wait and run it again; nothing was changed                                                                                                                                            |
+| The manifest test fails                         | Run `pnpm data:manifest` after changing anything in `data/`                                                                                                                                              |
+| A function is over the weight limit             | See [`development.md`](development.md#the-weight-of-a-function)                                                                                                                                          |
+| Electron starts as plain Node                   | Your shell sets `ELECTRON_RUN_AS_NODE`; clear it ([`desktop.md`](desktop.md#running-it-from-the-tree))                                                                                                   |
+| The app says DE isn't answering, for a while    | DE refused reads and the app is waiting thirty minutes; it recovers alone ([`api.md`](api.md#the-locks))                                                                                                 |
+| Windows warns about the installer               | Expected: the installer isn't signed. The README tells players what to click                                                                                                                             |
+| A player reports a problem you can't reproduce  | Ask for `app.log`: `%APPDATA%\Onkko's Archive\app.log` on Windows, `~/.config/Onkko's Archive/app.log` on Linux. DE's refusals and failed updates are there ([`desktop.md`](desktop.md#where-it-writes)) |
 
 ## What could come next
 

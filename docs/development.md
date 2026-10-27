@@ -100,7 +100,7 @@ step is named after the gate it runs, so a failed run shows which gate failed:
 | Dead code | `pnpm knip`                                         | A file, export or dependency nothing reaches does not merge    |
 | Chromium  | `pnpm exec playwright install --with-deps chromium` | The browser the story tests run in                             |
 | Stories   | `pnpm test:stories`                                 | A story fails to render, or axe finds a violation              |
-| Storybook | `pnpm storybook:build`                              | The catalogue builds, the way its Vercel project builds it     |
+| Storybook | `pnpm storybook:build`                              | The catalogue builds                                           |
 | App       | `pnpm build` with `WF_PROFILE_SOURCE=fixture`       | The app builds without DE, as the demo on Vercel does          |
 | Weight    | `pnpm weight`                                       | No route's function carries more than 80 MB                    |
 
@@ -118,16 +118,16 @@ draft release with the Windows installer and the Linux AppImage
 [`desktop.md`](desktop.md#cutting-a-version)). It is the one workflow that
 writes to the repository, with `contents: write` and nothing else.
 
-## The demo and the Storybook on Vercel
+## The demo on Vercel
 
-Two Vercel projects build from this repository: `onkkos-archive` serves the
+One Vercel project builds from this repository: `onkkos-archive` serves the
 demo (`next build`, with `WF_EDITION=demo` and `WF_PROFILE_SOURCE=fixture` set
-in the project), and `onkkos-archive-storybook` serves the design system
-(`storybook build`). `vercel.json` turns deployments off for every branch
-but `main`, so a push to `dev` deploys nothing and a merge to `main` deploys
-both. Vercel's Web Analytics and Speed Insights are switched on for the demo
-alone, in the project's dashboard. No token, project id or URL of either
-project is committed; the owner holds them.
+in the project). `vercel.json` turns deployments off for every branch but
+`main`, so a push to `dev` deploys nothing and a merge to `main` deploys the
+demo. Vercel's Web Analytics and Speed Insights are switched on in the
+project's dashboard. The Storybook is not published (owner, 2026-10-27): CI
+builds it and tests its stories, and `pnpm storybook` serves it locally. No
+token, project id or URL of the project is committed; the owner holds them.
 
 ## After a deployment
 

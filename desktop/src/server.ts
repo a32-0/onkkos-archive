@@ -5,7 +5,6 @@ import path from "node:path";
 
 import { app, utilityProcess, type UtilityProcess } from "electron";
 
-import { channelOf } from "./channel.js";
 import { LAUNCH_HEADER } from "./guard.js";
 import { logFrom } from "./log.js";
 
@@ -80,7 +79,6 @@ export async function startServer(folder: string): Promise<Server> {
         WF_LAUNCH_TOKEN: token,
         WF_LAUNCH_HOST: host,
         WF_APP_VERSION: app.getVersion(),
-        WF_APP_CHANNEL: channelOf(app.isPackaged, process.windowsStore),
       },
     },
   );
