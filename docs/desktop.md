@@ -26,7 +26,8 @@ terminals do. Clear it (`Remove-Item Env:ELECTRON_RUN_AS_NODE`) and run again.
 
 `pnpm --dir desktop package`, after a stage, writes the package for the
 machine it runs on into `desktop/release/`, and publishes nothing: the
-installer on Windows, the AppImage on Linux. `electron-builder --dir` stops at
+installer on Windows, the AppImage on Linux. `pnpm --dir desktop run
+package:store` writes the Microsoft Store's package instead, on Windows. `electron-builder --dir` stops at
 the unpacked folder, which opens without installing.
 
 The app reads a real account: the server inside it runs with
@@ -41,9 +42,13 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                                                                         |
 | `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the wordmark's paths, `LoadingCard.module.css` for the quill's motion, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
 | `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                                                                  |
+| `scripts/store.mjs`       | Builds the Microsoft Store's package with the identity read from three variables, or stops without them                                                                                                                                                                                         |
 | `icon.png`                | The app's icon: the quill alone on no background                                                                                                                                                                                                                                                |
-| `electron-builder.yml`    | The two packages, what each carries, and GitHub Releases as the place updates come from                                                                                                                                                                                                         |
-| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**                                                                                                                                                                                     |
+| `appx/`                   | The Store package's tiles, drawn from `icon.png`: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the quill centred on no background                                                                                                            |
+| `electron-builder.yml`    | The three packages, what each carries, the Store package's tiles and Windows versions, and GitHub Releases as the place updates come from                                                                                                                                                       |
+| `src/channel.ts`          | Where the app runs from: the tree, a GitHub package or the Microsoft Store                                                                                                                                                                                                                      |
+| `tests/channel.test.ts`   | Only a GitHub package updates itself                                                                                                                                                                                                                                                            |
+| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**; none of it from the Store                                                                                                                                                          |
 | `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                                                                            |
 | `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                                                                       |
 | `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                                 |
@@ -208,6 +213,41 @@ installer is not signed (spec 13), so SmartScreen shows "Windows protected
 your PC" on the first run: **More info**, then **Run anyway**. Windows
 remembers the choice for that file.
 
+### The Microsoft Store package
+
+`pnpm --dir desktop run package:store`, after a stage, writes
+`onkkos-archive-{version}.appx`, an MSIX package, into `desktop/release/`.
+It is built on Windows only and publishes nothing. `scripts/store.mjs` reads
+the identity Partner Center reserved from three variables and passes it to
+electron-builder; without all three it stops, so no package goes out under a
+made-up identity:
+
+| Variable               | Partner Center, Product identity          |
+| ---------------------- | ----------------------------------------- |
+| `STORE_IDENTITY_NAME`  | `Package/Identity/Name`                   |
+| `STORE_PUBLISHER`      | `Package/Identity/Publisher` (`CN=…`)     |
+| `STORE_PUBLISHER_NAME` | `Package/Properties/PublisherDisplayName` |
+
+The release workflow takes them from the repository's Actions secrets of the
+same names. To build the package on your own machine, set them in the shell
+first. The package is not signed here; Microsoft signs it when it passes
+certification. electron-builder gives it the version as four numbers,
+`0.1.1.0`, which is what the Store asks for.
+
+Its tiles come from `desktop/appx/`. electron-builder looks for them in the
+`appx` folder of its build resources, set to `desktop/` itself
+(`buildResources: .`), because the repository ignores every `build/` folder.
+Without them it would ship its own sample tiles. The package declares
+`runFullTrust`, as every Electron app does; Partner Center asks why when it is
+first submitted: the app is a desktop program that runs its own server on the
+loopback.
+
+Building it locally, 7-Zip prints two "Cannot create symbolic link" errors
+while it unpacks electron-builder's signing tools. They are macOS files inside
+that archive, which Windows refuses to link without administrator rights; the
+package is built all the same (checked on 2026-10-27: 168 MB, its manifest
+carrying the identity, the four tiles and Windows 10.0.17763 or later).
+
 ## Updates
 
 `src/updates.ts` runs `electron-updater` in a packaged app alone. It asks
@@ -231,6 +271,15 @@ action answers that GitHub could not be reached, and the row never shows.
 Until the first release is published, a packaged app finds no release and its
 row reads that GitHub could not be reached.
 
+Installed from the Store, the app never starts `electron-updater`: Electron
+sets `process.windowsStore`, `src/channel.ts` reads it, and both the check at
+start and Profile's **Check** stand down, since the Store installs every
+version and allows no other. The main process passes the channel to the
+server as `WF_APP_CHANNEL`, and Profile's Updates row reads "Through the
+Microsoft Store" with no button. The app also leaves its `AppUserModelId` to
+the package, which Windows assigns. The data check at each start runs as
+everywhere else.
+
 ## Cutting a version
 
 1. Raise `version` in `desktop/package.json` on `dev` and take it to `main`.
@@ -241,6 +290,11 @@ row reads that GitHub could not be reached.
    `latest-linux.yml`) to the draft.
 4. Read the draft, write its notes, and publish it. Installed apps see it at
    their next check.
+5. The Windows job also builds the Store package and keeps it as the run's
+   artifact, `microsoft-store`. Download it from the run's page, then in
+   Partner Center open the app, start a new submission, upload the `.appx`
+   under Packages and submit it. Store players get the version once it
+   passes certification, usually within a few days.
 
 A tag that disagrees with `desktop/package.json` fails before anything is
 built. The workflow holds `contents: write`, GitHub's own token, and nothing
@@ -265,3 +319,14 @@ The updater keeps the version it downloads in its own cache,
 `%LOCALAPPDATA%\onkkos-archive-desktop-updater` on Windows and
 `~/.cache/onkkos-archive-desktop-updater` on Linux, until it installs. The
 uninstaller leaves that folder.
+
+Installed from the Store, the program sits in Windows' protected
+`WindowsApps` folder, and Windows redirects what the app writes under
+`%APPDATA%` into the package's own storage,
+`%LOCALAPPDATA%\Packages\{package name}_{id}\LocalCache\Roaming\Onkko's Archive`.
+The app sees its usual path, so nothing in it changes for the Store; a player
+looking for `app.log` finds it there. Removing the app removes that folder
+too. There is no updater cache. This is how Windows treats a packaged desktop
+program, and it is still to be checked on the first install from the
+package: that the data set swaps in, and that the port, the cookies and the
+window's size survive a restart.

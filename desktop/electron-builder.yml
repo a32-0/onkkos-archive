@@ -3,12 +3,22 @@ productName: Onkko's Archive
 icon: icon.png
 directories:
   output: release
+  buildResources: .
 files:
   - dist/**
   - package.json
 afterPack: scripts/after-pack.mjs
 win:
   target: nsis
+appx:
+  applicationId: OnkkosArchive
+  displayName: Onkko's Archive
+  backgroundColor: "#16130e"
+  minVersion: 10.0.17763.0
+  maxVersionTested: 10.0.26100.0
+  languages:
+    - en-US
+  artifactName: onkkos-archive-${version}.${ext}
 nsis:
   oneClick: true
   perMachine: false
