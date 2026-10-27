@@ -7,3 +7,7 @@ export function isDemoSite(): boolean {
 export function appVersion(): string | null {
   return process.env.WF_EDITION === "app" ? (process.env.WF_APP_VERSION ?? null) : null;
 }
+
+export function fromStore(): boolean {
+  return appVersion() !== null && process.env.WF_APP_CHANNEL === "store";
+}

@@ -47,18 +47,30 @@ renders the routes of [`docs/ui.md`](../ui.md) exactly as the demo does,
 with the profile source set to `live`. One build serves both targets: the app
 is the same `src/` tree, never a copy.
 
-| Platform | Package                                          | Updates itself |
-| -------- | ------------------------------------------------ | -------------- |
-| Windows  | An installer, for the current user, no admin     | Yes            |
-| Linux    | An AppImage                                      | Yes            |
-| Android  | Phase 7, after the refactor that needs no server | n/a            |
+| Platform                 | Package                                          | Updates itself     |
+| ------------------------ | ------------------------------------------------ | ------------------ |
+| Windows, GitHub          | An installer, for the current user, no admin     | Yes                |
+| Windows, Microsoft Store | An MSIX package                                  | No: the Store does |
+| Linux                    | An AppImage                                      | Yes                |
+| Android                  | Phase 7, after the refactor that needs no server | n/a                |
 
-Neither package is signed (owner, 2026-10-22). A signature would prove who
-published a package and that nobody changed it since; without one, Windows
-shows SmartScreen's warning on the first run, and the README says what to
-press. What stands in its place: each package is built by the release workflow
-from the public source, which anyone can build themselves, and reaches the
-player only from the repository's GitHub Releases, over HTTPS.
+The installer and the AppImage are not signed (owner, 2026-10-22). A
+signature would prove who published a package and that nobody changed it
+since; without one, Windows shows SmartScreen's warning on the first run, and
+the README says what to press. What stands in its place: each package is
+built by the release workflow from the public source, which anyone can build
+themselves, and reaches the player only from the repository's GitHub
+Releases, over HTTPS.
+
+The Microsoft Store package is signed by Microsoft when it passes
+certification, so it shows no warning (owner, 2026-10-27). It is the same
+program: the release workflow builds it from the same tag, and the owner
+uploads it in Partner Center. The app knows it runs from the Store when
+Electron reports `process.windowsStore`, and then leaves updating to the
+Store (Updates, below). Its identity is the one Partner Center reserved: the
+package name, the publisher and the publisher's display name. The owner keeps
+them as the repository's Actions secrets, not in a committed file (owner,
+2026-10-27), and the release workflow hands them to the build.
 
 ## The window
 
@@ -130,7 +142,8 @@ AppImage mounts read-only. The one exception is the updater's cache, which
 | A downloaded version of the app                                                              | The updater's cache           | Until it installs                                           |
 | What went wrong: DE's refusals, a data set or an update that failed, the server's own errors | `app.log`                     | Until it passes 1 MB; the next start begins it again        |
 
-On Windows the uninstaller removes the folder. An AppImage has no
+On Windows the uninstaller removes the folder; from the Store, Windows keeps
+the folder inside the package's own storage and removes it with the app. An AppImage has no
 uninstaller: deleting it leaves the folder, `~/.config/Onkko's Archive`, which
 the README names so a player can remove it. Disconnect clears the account's cookies; the
 stored profile expires on its own.
@@ -200,10 +213,21 @@ usual. Leaving Profile and coming back shows the button again. Drawn on
 [`827:4748` Profile — App — Check states](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=827-4748),
 beside Profile — App, for the owner to confirm.
 
-A version is published by the owner. A tag `v{version}` on `main` builds both
-packages in GitHub Actions and attaches them to a draft release; publishing
-the draft is what reaches players. A tag whose version differs from the
-app's own fails the build.
+From the Microsoft Store the app never checks GitHub and never downloads a
+version of itself: the Store installs each new version, and Store policy
+allows no other way. Profile's Updates row then holds no button; it reads
+"Through the Microsoft Store", in the same value style. Drawn on 2026-10-27
+as the last row of Profile — App — Check states, and approved by the owner
+the same day.
+The data of each Warframe update still arrives as above, because it is data
+and not code.
+
+A version is published by the owner. A tag `v{version}` on `main` builds the
+installer and the AppImage in GitHub Actions and attaches them to a draft
+release; publishing the draft is what reaches players. The same tag builds the
+Store's package as a workflow artifact, which the owner uploads in Partner
+Center; the version reaches Store players once it passes certification. A tag
+whose version differs from the app's own fails the build.
 
 ## Data and sources
 
@@ -229,7 +253,9 @@ app's own fails the build.
    another schema or no connection leaves the current set in use, and the
    app opens normally.
 6. A tagged version builds both packages and a draft release; a published
-   release reaches an installed app, which installs it on close.
+   release reaches an installed app, which installs it on close. The same tag
+   builds the Store's package; installed from it, the app asks GitHub for no
+   update, and Profile's Updates row reads "Through the Microsoft Store".
 7. Development still reads fixtures by default; only the packaged app reads
    live without being told.
 8. `pnpm check` passes, with tests for the store file, the request guard and

@@ -4,6 +4,8 @@ import path from "node:path";
 import { app, Notification, type UtilityProcess } from "electron";
 import electronUpdater from "electron-updater";
 
+import { channelOf } from "./channel.js";
+
 const { autoUpdater } = electronUpdater;
 
 const EVERY_MS = 6 * 60 * 60 * 1000;
@@ -35,8 +37,12 @@ function tell(): void {
   if (body && Notification.isSupported()) new Notification({ title: app.getName(), body }).show();
 }
 
+function updatesItself(): boolean {
+  return channelOf(app.isPackaged, process.windowsStore) === "github";
+}
+
 async function checkNow(): Promise<UpdateState> {
-  if (!app.isPackaged) return { state: "current" };
+  if (!updatesItself()) return { state: "current" };
   try {
     const result = await autoUpdater.checkForUpdates();
     if (!result?.isUpdateAvailable) return { state: "current" };
@@ -48,7 +54,7 @@ async function checkNow(): Promise<UpdateState> {
 }
 
 export function keepUpdated(): void {
-  if (!app.isPackaged) return;
+  if (!updatesItself()) return;
   autoUpdater.autoDownload = true;
   autoUpdater.autoInstallOnAppQuit = true;
   autoUpdater.on("error", (error) => console.warn(`The update check failed: ${error.message}`));
