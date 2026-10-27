@@ -242,6 +242,23 @@ Without them it would ship its own sample tiles. The package declares
 first submitted: the app is a desktop program that runs its own server on the
 loopback.
 
+To try the package before submitting it, turn on Windows' Developer Mode,
+unpack it with `makeappx`, which electron-builder keeps in its cache, and
+register the folder:
+
+```powershell
+$mk = Get-ChildItem "$env:LOCALAPPDATA\electron-builder\Cache" -Recurse -Filter makeappx.exe |
+  Where-Object FullName -match 'x64' | Select-Object -First 1 -ExpandProperty FullName
+& $mk unpack /p desktop\release\onkkos-archive-{version}.appx /d $env:TEMP\oa-store /o
+Add-AppxPackage -Register $env:TEMP\oa-store\AppxManifest.xml
+```
+
+It then opens from the Start menu as the Store would install it, and
+`Get-AppxPackage {package name} | Remove-AppxPackage` removes it. Don't unpack
+it as a zip: a package stores its file names encoded, so `Expand-Archive`
+writes the program as `Onkko%27s%20Archive.exe`, and Windows then starts
+nothing (found on 2026-10-27).
+
 Building it locally, 7-Zip prints two "Cannot create symbolic link" errors
 while it unpacks electron-builder's signing tools. They are macOS files inside
 that archive, which Windows refuses to link without administrator rights; the
@@ -326,7 +343,10 @@ Installed from the Store, the program sits in Windows' protected
 `%LOCALAPPDATA%\Packages\{package name}_{id}\LocalCache\Roaming\Onkko's Archive`.
 The app sees its usual path, so nothing in it changes for the Store; a player
 looking for `app.log` finds it there. Removing the app removes that folder
-too. There is no updater cache. This is how Windows treats a packaged desktop
-program, and it is still to be checked on the first install from the
-package: that the data set swaps in, and that the port, the cookies and the
-window's size survive a restart.
+too. There is no updater cache. Checked on 2026-10-27 with the package
+registered locally: it opened on the splash with a demo, then on the map once
+an account was read; Profile's Updates row read "Through the Microsoft
+Store"; closed and reopened, it kept the account and the window's size; and
+`app.log`, `port`, `window.json` and `store.json`, with the profile and the
+visitor budget, were in the package's folder above. A newer data set was not
+waiting on `main` that day, so the swap itself was not exercised there.
