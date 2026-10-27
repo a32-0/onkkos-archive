@@ -70,7 +70,6 @@ export const SHELL = {
   downloading: (version: string) => `Downloading ${version}`,
   installsOnClose: (version: string) => `${version} installs on close`,
   unreachable: "Couldn’t reach GitHub",
-  throughStore: "Through the Microsoft Store",
   on: "On",
   off: "Off",
   age: (minutes: number, fresh: boolean) => {

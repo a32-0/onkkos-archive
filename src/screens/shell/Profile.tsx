@@ -29,14 +29,12 @@ export function Profile({
   back,
   version = null,
   check,
-  store = false,
 }: {
   chrome: ShellChrome;
   tab: ShellTab | null;
   back: string;
   version?: string | null;
   check?: () => Promise<UpdateState>;
-  store?: boolean;
 }) {
   const { player, voice, disconnect, setOnkko, resetTour } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
@@ -128,11 +126,7 @@ export function Profile({
                 </ControlRow>
               </ListEntry>
               <ListEntry>
-                {store ? (
-                  <ControlRow label={SHELL.updates}>
-                    <span className={styles.version}>{SHELL.throughStore}</span>
-                  </ControlRow>
-                ) : update ? (
+                {update ? (
                   <ControlRow label={SHELL.updates}>
                     <span className={styles.version} role="status">
                       {updateLine(update)}

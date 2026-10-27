@@ -14,8 +14,7 @@
     "start": "pnpm build && electron .",
     "dev": "pnpm stage && pnpm start",
     "package": "electron-builder --publish never",
-    "release": "electron-builder --publish always",
-    "package:store": "node scripts/store.mjs"
+    "release": "electron-builder --publish always"
   },
   "devDependencies": {
     "@types/node": "22.18.12",

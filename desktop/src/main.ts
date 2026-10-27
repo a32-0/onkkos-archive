@@ -103,7 +103,7 @@ async function start(): Promise<void> {
 
 if (app.requestSingleInstanceLock()) {
   keepLog();
-  if (!process.windowsStore) app.setAppUserModelId(APP_ID);
+  app.setAppUserModelId(APP_ID);
   app.whenReady().then(start, () => app.quit());
   app.on("before-quit", () => void session.defaultSession.cookies.flushStore());
   app.on("window-all-closed", () => app.quit());

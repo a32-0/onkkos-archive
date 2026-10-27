@@ -236,8 +236,9 @@ implementation.
 - **Storybook is the catalogue.** Every token and every component, in every
   state its frame draws, is visible on its own in Storybook, so a component is
   checked against its Figma component before any screen uses it. The owner
-  chose it on 2026-10-05; it is free and open source, and is published as a
-  static site from the same host as the demo.
+  chose it on 2026-10-05; it is free and open source. It runs on the
+  maintainer's machine and is built and tested on every push; on 2026-10-27
+  the owner chose to stop publishing it, so the demo is the only site.
 
 ## The code is built to be read
 

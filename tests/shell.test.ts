@@ -143,26 +143,6 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).toContain("15:30 hours UTC.");
   });
 
-  it("offers Check in the app, and leaves updates to the Store when it came from there", () => {
-    const own = renderToStaticMarkup(
-      createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals", version: "0.2.0" }),
-    );
-    expect(own).toContain("0.2.0");
-    expect(own).toContain(">Check<");
-    expect(own).not.toContain("Through the Microsoft Store");
-    const store = renderToStaticMarkup(
-      createElement(Profile, {
-        chrome: CHROME,
-        tab: "goal",
-        back: "/goals",
-        version: "0.2.0",
-        store: true,
-      }),
-    );
-    expect(store).toContain("Through the Microsoft Store");
-    expect(store).not.toContain(">Check<");
-  });
-
   it("asks before Disconnect forgets the account", () => {
     const html = renderToStaticMarkup(
       createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals" }),
