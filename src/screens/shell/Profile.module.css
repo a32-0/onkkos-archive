@@ -70,6 +70,21 @@
   color: var(--ink-muted);
 }
 
+.notes {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.notes:hover {
+  text-decoration: underline;
+}
+
+.notes:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--space-1);
+  border-radius: var(--radius-xs);
+}
+
 .foot {
   display: flex;
   flex-direction: column;

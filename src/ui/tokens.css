@@ -31,6 +31,7 @@
   --surface-band: var(--night-650);
   --surface-card: var(--night-650);
   --scrim: color-mix(in srgb, var(--black) 60%, transparent);
+  --scrim-strong: color-mix(in srgb, var(--black) 80%, transparent);
   --ink: var(--ash-100);
   --ink-muted: var(--ash-300);
   --ink-dim: var(--ash-500);

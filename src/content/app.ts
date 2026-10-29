@@ -10,6 +10,7 @@ export const APP = {
 
 export const PAGE_TITLES = {
   connect: "Connect",
+  findId: "Find your ID",
   features: "Features",
   resume: "Resume",
   updates: "Updates",

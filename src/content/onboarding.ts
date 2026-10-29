@@ -13,24 +13,57 @@ export const CONNECT = {
   steps: [
     { text: "On a computer, log in at the official site:", link: "https://www.warframe.com" },
     {
-      text: "In the same browser, open the developer tools (F12) and go to:",
+      text: "In the same browser, open the developer tools, pressing F12, and in the side or down panel go to:",
       value: [
         { label: "On Firefox:", text: "Storage › Cookies" },
-        { label: "On Chrome:", text: "Application › Cookies" },
+        { label: "On Edge or Chrome:", text: "Application › Cookies" },
       ],
     },
     { text: "Copy the 24-character value of the cookie:", value: [{ label: null, text: "gid" }] },
   ],
   exampleLead: "It will look something like this:",
   example: "gid   4b2e9f17c3a85d06e1f74a9c",
+  moreHelp: "More help",
   publicNote:
     "It’s safe: it’s the same public profile the game shows when you look at another player. We only remember your ID on this device, and Disconnect forgets it.",
   demoTitle: "Explore with a demo",
-  demo: (name: string, masteryRank: number) => `${name} (Mastery Rank ${masteryRank})`,
+  demoLine: (masteryRank: number, about: string) => `Mastery Rank ${masteryRank}. ${about}`,
+  demoAbout: {
+    ordis: "A player starting out, with most of the archive still ahead.",
+    cy: "A player far along, with what's left after years of play.",
+  },
   ownTitle: "Your own account",
   ownLine:
     "The app reads your profile from your own computer, through your own connection. For Windows and Linux.",
   download: "Download the app",
+} as const;
+
+export const FIND_ID = {
+  title: "Find your ID",
+  back: "Back",
+  lead: "Where the gid cookie is, in what each browser shows. Do it on a computer, logged in at warframe.com.",
+  browsers: [
+    {
+      key: "firefox",
+      name: "Firefox",
+      steps: [
+        "Press F12 to open the developer tools.",
+        "Go to Storage › Cookies › https://www.warframe.com.",
+        "Type gid in the filter, and copy its Value.",
+      ],
+      shot: "Firefox's developer tools on Storage › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
+    },
+    {
+      key: "edge-chrome",
+      name: "Edge or Chrome",
+      steps: [
+        "Press F12 to open the developer tools.",
+        "Go to Application › Cookies › https://www.warframe.com.",
+        "Type gid in the filter, and copy its Value.",
+      ],
+      shot: "Edge's developer tools on Application › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
+    },
+  ],
 } as const;
 
 export function connectError(

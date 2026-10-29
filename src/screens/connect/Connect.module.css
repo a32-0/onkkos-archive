@@ -33,11 +33,10 @@
 }
 
 .demo {
-  composes: card;
-}
-
-.page:has(.reading) .demo {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
 }
 
 .field {
@@ -152,10 +151,5 @@
 .demos {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-}
-
-.reading {
-  display: flex;
-  flex-direction: column;
+  gap: var(--space-4);
 }

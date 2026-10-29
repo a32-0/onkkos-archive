@@ -36,7 +36,9 @@ const escape = (text) =>
 const quillSvg = (attributes) =>
   `<svg ${attributes} viewBox="15 0 79 144" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="${quill}" fill="var(--brand)"/></svg>`;
 
-const opening = `<div class="card" role="status"><span class="stage" aria-hidden="true"><span class="pen">${quillSvg('class="quill"')}</span><svg class="stroke" viewBox="0 0 88 8" preserveAspectRatio="none" focusable="false"><path d="${stroke}" pathLength="1"/></svg></span><p class="line">${escape(DESKTOP.opening)}</p></div>`;
+const wordmark = (height) =>
+  `<svg class="wordmark" style="height: ${height}" viewBox="0 0 275.333 80" role="img" aria-label="${escape(APP.name)}">${quillSvg('x="0" y="0" width="53.333" height="80"')}<g class="letters">${LETTERS.map((d) => `<path d="${d}"/>`).join("")}</g></svg>`;
+const opening = `<img class="art" src="art.png" alt=""><div class="scrim"></div><div class="frame">${wordmark("80px")}</div><div class="overlay" role="status"><div class="card"><span class="stage" aria-hidden="true"><span class="pen">${quillSvg('class="quill"')}</span><svg class="stroke" viewBox="0 0 88 8" preserveAspectRatio="none" focusable="false"><path d="${stroke}" pathLength="1"/></svg></span><p class="line">${escape(DESKTOP.opening)}</p></div></div>`;
 const failing = `<div class="failing" role="alert"><p class="band">${escape(DESKTOP.cantStart)}</p><a class="close" href="app:close">${escape(DESKTOP.close)}</a></div>`;
 
 const page = (state) => `<!doctype html>
@@ -52,11 +54,15 @@ ${tokens}
 html, body { height: 100%; margin: 0; }
 body { display: flex; flex-direction: column; background: var(--canvas); color: var(--ink); }
 header { display: flex; justify-content: center; padding: var(--space-6); border-bottom: var(--border-1) solid var(--brand); background: var(--surface-header); }
-header svg { display: block; height: 48px; width: auto; }
+.wordmark { display: block; width: auto; }
 .letters { fill: var(--ink); }
 main { display: flex; flex: 1; flex-direction: column; justify-content: center; gap: var(--space-6); padding: var(--space-6) var(--gutter); }
+.splash { position: relative; display: flex; flex: 1; box-sizing: border-box; padding: var(--gutter); overflow: hidden; isolation: isolate; }
+.art { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% center; }
+.scrim { position: absolute; z-index: -1; inset: 0; background: var(--scrim); }
+.frame { display: flex; flex: 1; align-items: center; justify-content: center; padding: var(--space-6); outline: var(--border-1) solid var(--brand); outline-offset: calc(var(--border-1) * -1); backdrop-filter: blur(calc(var(--blur-band) / 2)); }
 ${motion}
-.band { margin: 0; padding: var(--space-2); border-radius: var(--radius-m); background: var(--danger); color: var(--danger-ink); font: 400 14px var(--font-jetbrains-mono), monospace; }
+.band { margin: 0; padding: var(--space-5); border-radius: var(--radius-m); background: var(--danger); color: var(--danger-ink); font: 400 14px var(--font-jetbrains-mono), monospace; }
 .close { display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 45px; padding: var(--space-5); border: var(--border-1) solid var(--line-strong); border-radius: var(--radius-full); color: var(--ink); font: 700 16px var(--font-inter), sans-serif; text-decoration: none; }
 .close:hover { background-image: linear-gradient(var(--hover), var(--hover)); }
 .close:focus-visible { outline: var(--border-2) solid var(--focus); outline-offset: calc(var(--border-2) * -1); }
@@ -64,15 +70,11 @@ ${motion}
 </style>
 </head>
 <body>
-<header>
-<svg viewBox="0 0 275.333 80" role="img" aria-label="${escape(APP.name)}">${quillSvg('x="0" y="0" width="53.333" height="80"')}<g class="letters">${LETTERS.map((d) => `<path d="${d}"/>`).join("")}</g></svg>
-</header>
-<main>
-${state === "starting" ? opening : failing}
-</main>
+${state === "starting" ? `<main class="splash">${opening}</main>` : `<header>${wordmark("48px")}</header>\n<main>${failing}</main>`}
 </body>
 </html>
 `;
+copyFileSync(path.join(root, "src", "screens", "onboarding", "art.png"), path.join(out, "art.png"));
 writeFileSync(path.join(out, "starting.html"), page("starting"));
 writeFileSync(path.join(out, "failed.html"), page("failed"));
 copyFileSync(path.join(root, "desktop", "icon.png"), path.join(out, "..", "icon.png"));

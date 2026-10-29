@@ -42,6 +42,23 @@ export const Goal: Story = {
   },
 };
 
+export const Demo: Story = {
+  args: {
+    href: undefined,
+    submit: { name: "profile", value: "ordis" },
+    icon: "rocket-launch",
+    title: "Ordis",
+    line: "Mastery Rank 2. A player starting out, with most of the archive still ahead.",
+  },
+  decorators: [
+    (Story) => (
+      <form onSubmit={(event) => event.preventDefault()}>
+        <Story />
+      </form>
+    ),
+  ],
+};
+
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

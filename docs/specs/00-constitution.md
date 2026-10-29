@@ -228,6 +228,12 @@ implementation.
   component draws (an item tile is Rank, Mastered or plain; a badge is Start
   here, New or Mastered) and nothing a screen invents. A screen composes
   components; it never restyles one.
+- **Content is never folded inside other content.** A card may open and close
+  on what it holds, as a step row, a component row or a section header does,
+  as long as what it holds is content with no levels of its own. Nothing opens
+  inside that content: no accordion or disclosure within a card's content, and
+  no card inside a card. What needs another level gets its own page, under a
+  top bar with Back (owner, 2026-10-29).
 - **A component's styles live beside it.** The token layer is global; every
   other rule belongs to the one component it styles. No screen-wide stylesheet
   grows with each screen.

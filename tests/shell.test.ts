@@ -163,6 +163,19 @@ describe("the shell around a screen (spec 04)", () => {
     expect(store).not.toContain(">Check<");
   });
 
+  it("links the version to its release notes on GitHub, in the browser", () => {
+    const html = renderToStaticMarkup(
+      createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals", version: "0.2.0" }),
+    );
+    const link =
+      /<a [^>]*href="https:\/\/github\.com\/a32-0\/onkkos-archive\/releases\/tag\/v0\.2\.0"[^>]*>/.exec(
+        html,
+      )?.[0] ?? "";
+    expect(link).toContain('target="_blank"');
+    expect(link).toContain('aria-label="Version 0.2.0: release notes on GitHub"');
+    expect(html).toContain('0.2.0<span aria-hidden="true"> ↗</span></a>');
+  });
+
   it("asks before Disconnect forgets the account", () => {
     const html = renderToStaticMarkup(
       createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals" }),

@@ -28,6 +28,7 @@ how much a screen shows.
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------- |
 | `/`                                       | The splash, outside the shell                                                                                                                | 01     | `661:4307` Start                                                                |
 | `/connect`                                | The id form; it reads the profile before keeping the id, then goes where BR-03 says; on the demo, the two demos and the card to the download | 02     | `661:4354` Onboarding, `675:5392` Loading, `662:6943` Error, `764:4753` Demo    |
+| `/connect/find-your-id`                   | Where the gid cookie is, per browser, with a screenshot of each; More help on `/connect` opens it                                            | 02     | `895:5723` Find your ID                                                         |
 | `/features`                               | Two ways in: pick up where you left off, or set a goal                                                                                       | 03     | `661:4591` Two Ways In                                                          |
 | `/catch-up`                               | Resume, the update picker, with no month kept; the Summary once `wf_since` holds one                                                         | 05, 06 | `662:4709` Resume, `662:4885` Summary and their states                          |
 | `/catch-up/{category}`                    | What a category brought since the month, under the top bar                                                                                   | 06     | `662:5040` Summary>Warframes                                                    |
@@ -42,7 +43,7 @@ how much a screen shows.
 | `/api/profile/[accountId]`                | The proxy: the profile's display and the raw payload, as JSON                                                                                | 11     |                                                                                 |
 | `/api/search?q=`                          | Goal's eight suggestions                                                                                                                     | 08     |                                                                                 |
 
-`/`, `/connect` and `/features` render outside the shell. Every other screen
+`/`, `/connect`, `/connect/find-your-id` and `/features` render outside the shell. Every other screen
 sits inside it: the header with the player chip on a tab's root, the top bar
 on every page under a tab, and the three tabs (spec 04). A profile that cannot
 be read sends the player to `/connect` with the band for its reason
@@ -51,7 +52,7 @@ The first time the shell opens, the first tour points at the three tabs and
 the player chip, from `844:4776` to `844:5643` (spec 04).
 
 The routes are the same in the app on a player's machine (spec 13), which
-adds only **Desktop — Starting** (`764:5335`) and **Desktop — Can't start**
+adds only **Desktop — Starting** (`886:5808`) and **Desktop — Can't start**
 (`764:5389`), drawn by its main process before the server answers.
 
 ## Which tab, and where Back goes

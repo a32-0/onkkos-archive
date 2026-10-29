@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 import { APP } from "@/content/app";
 import { CONNECT } from "@/content/onboarding";
-import { LATEST_RELEASE } from "@/routes";
+import { LATEST_RELEASE, ROUTES } from "@/routes";
 import { VOICE } from "@/content/voice";
 import { Button } from "@/ui/Button/Button";
+import { ChoiceCard } from "@/ui/ChoiceCard/ChoiceCard";
 import { Header } from "@/ui/Header/Header";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
@@ -63,6 +66,9 @@ export function Connect({
                 </li>
               ))}
             </ol>
+            <Button variant="secondary" href={ROUTES.findId} link={Link}>
+              {CONNECT.moreHelp}
+            </Button>
             <div className={styles.example}>
               <p className={styles.text}>{CONNECT.exampleLead}</p>
               <div className={styles.box}>
@@ -77,10 +83,15 @@ export function Connect({
         <section className={styles.demo}>
           <h2 className={styles.label}>{CONNECT.demoTitle}</h2>
           <form action={demo} className={styles.demos}>
-            {demos.map(({ key, name, masteryRank }) => (
-              <Button key={key} variant="secondary" type="submit" name="profile" value={key}>
-                {CONNECT.demo(name, masteryRank)}
-              </Button>
+            {demos.map(({ key, name, masteryRank, icon }) => (
+              <ChoiceCard
+                key={key}
+                use="two-ways-in"
+                submit={{ name: "profile", value: key }}
+                icon={icon}
+                title={name}
+                line={CONNECT.demoLine(masteryRank, CONNECT.demoAbout[key])}
+              />
             ))}
           </form>
         </section>

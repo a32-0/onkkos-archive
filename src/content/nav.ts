@@ -63,6 +63,7 @@ export const SHELL = {
   reset: "Reset",
   about: "About",
   version: "Version",
+  releaseNotes: (version: string) => `Version ${version}: release notes on GitHub`,
   updates: "Updates",
   check: "Check",
   checking: "Checking…",

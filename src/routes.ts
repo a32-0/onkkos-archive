@@ -1,5 +1,6 @@
 export const ROUTES = {
   connect: "/connect",
+  findId: "/connect/find-your-id",
   features: "/features",
   system: "/system",
   catchUp: "/catch-up",
@@ -11,6 +12,10 @@ export const ROUTES = {
 } as const;
 
 export const LATEST_RELEASE = "https://github.com/a32-0/onkkos-archive/releases/latest";
+
+export function releaseNotes(version: string): string {
+  return `https://github.com/a32-0/onkkos-archive/releases/tag/v${version}`;
+}
 
 export function connectAfter(reason: string, retryAt: number | null): string {
   const query = new URLSearchParams({ reason });

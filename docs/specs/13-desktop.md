@@ -15,10 +15,12 @@ of them shows.
 Drawn on 2026-10-22 in the first row of "App flows", from Onboarding —
 Loading, for the owner to approve before this spec is pinned:
 
-- [`764:5335` Desktop — Starting](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5335): the window while the app
-  opens: the header's wordmark, and the loading quill centred under it, with
-  no card and no visible words; screen readers hear "Onkko is opening the
-  archive...". The quill moves as Connect's does
+- [`886:5808` Desktop — Starting](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=886-5808): the window while the app
+  opens: Start's art, scrim and frame with the splash wordmark and nothing
+  under it, covered by the loading screen every wait shares (owner,
+  2026-10-29): the whole window behind black at 80%, and the loading quill
+  centred on it, with no visible words; screen readers hear "Onkko is
+  opening the archive...". The quill moves as Connect's does
   (`841:536`, T-44).
 - [`764:5389` Desktop — Can't start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5389): the same window when the
   server inside cannot start: the error band, "Onkko's Archive couldn't
@@ -221,6 +223,12 @@ as the last row of Profile — App — Check states, and approved by the owner
 the same day.
 The data of each Warframe update still arrives as above, because it is data
 and not code.
+
+The version in Profile's About is a link, "{version} ↗" in the link colour:
+it opens that version's release notes on GitHub
+(`releases/tag/v{version}`) in the system's browser, from GitHub and from
+the Store alike (owner, 2026-10-29). Drawn in Profile — App, on the Version
+row.
 
 A version is published by the owner. A tag `v{version}` on `main` builds the
 installer and the AppImage in GitHub Actions and attaches them to a draft

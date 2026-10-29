@@ -4,6 +4,7 @@ import { useId, useRef, useState, useTransition } from "react";
 
 import { SHELL } from "@/content/nav";
 import type { UpdateState } from "@/domain/types/update-state";
+import { releaseNotes } from "@/routes";
 import { Button } from "@/ui/Button/Button";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
@@ -124,7 +125,18 @@ export function Profile({
             <List label={SHELL.about}>
               <ListEntry>
                 <ControlRow label={SHELL.version}>
-                  <span className={styles.version}>{version}</span>
+                  <span className={styles.version}>
+                    <a
+                      className={styles.notes}
+                      href={releaseNotes(version)}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={SHELL.releaseNotes(version)}
+                    >
+                      {version}
+                      <span aria-hidden> ↗</span>
+                    </a>
+                  </span>
                 </ControlRow>
               </ListEntry>
               <ListEntry>
