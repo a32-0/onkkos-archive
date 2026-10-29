@@ -19,6 +19,15 @@
   outline-offset: calc(var(--border-2) * -1);
 }
 
+.button {
+  width: 100%;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  text-align: start;
+  cursor: pointer;
+}
+
 .two-ways-in {
   composes: card;
   background-color: var(--surface);

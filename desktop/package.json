@@ -2,7 +2,7 @@
   "name": "onkkos-archive-desktop",
   "productName": "Onkko's Archive",
   "desktopName": "onkkos-archive.desktop",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "type": "module",
   "main": "dist/main.js",
@@ -14,7 +14,8 @@
     "start": "pnpm build && electron .",
     "dev": "pnpm stage && pnpm start",
     "package": "electron-builder --publish never",
-    "release": "electron-builder --publish always"
+    "release": "electron-builder --publish always",
+    "package:store": "node scripts/store.mjs"
   },
   "devDependencies": {
     "@types/node": "22.18.12",

@@ -49,11 +49,7 @@ export function ConnectForm({
           {CONNECT.submit}
         </Button>
       </form>
-      {pending && (
-        <div className={styles.reading}>
-          <LoadingCard line={CONNECT.reading} />
-        </div>
-      )}
+      {pending && <LoadingCard line={CONNECT.reading} />}
     </>
   );
 }

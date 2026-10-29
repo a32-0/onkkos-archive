@@ -69,3 +69,19 @@ jobs:
         run: pnpm --dir desktop run release
         env:
           GH_TOKEN: ${{ github.token }}
+
+      - name: Package for the Microsoft Store
+        if: runner.os == 'Windows'
+        run: pnpm --dir desktop run package:store
+        env:
+          STORE_IDENTITY_NAME: ${{ secrets.STORE_IDENTITY_NAME }}
+          STORE_PUBLISHER: ${{ secrets.STORE_PUBLISHER }}
+          STORE_PUBLISHER_NAME: ${{ secrets.STORE_PUBLISHER_NAME }}
+
+      - name: Keep the Store package
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v7
+        with:
+          name: microsoft-store
+          path: desktop/release/*.appx
+          if-no-files-found: error

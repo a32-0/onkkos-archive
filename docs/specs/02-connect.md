@@ -29,13 +29,19 @@ part of the spec is pinned:
   Onboarding with the note under the field (approved by the owner on
   2026-10-25).
 
+- [`895:5723` Onboarding — Find your ID](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=895-5723):
+  the help page **More help** opens (owner, 2026-10-29; below).
+
+On 2026-10-29 every Connect frame above took **More help** under the steps,
+and **Explore with a demo** as two choice cards (owner).
+
 The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
 answers 404, so the id is read from the `gid` cookie instead (owner).
 
 Drawn on 2026-10-06 under **Documented states**, from the states this spec
 describes and no earlier frame drew. Their texts are sample values:
 
-- [`480:94` Error band](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=480-94): on the Design System page, one variant per BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited). The Error frame shows Invalid ID.
+- [`480:94` Error band](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=480-94): on the Design System page, one variant per BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited), each padded `space/5` (12 px) on every side (owner, 2026-10-29). The Error frame shows Invalid ID.
 
 ## Rules
 
@@ -68,16 +74,40 @@ tabs or player chip. From the top, as `661:4354` draws it:
    the first try rather than after (owner, 2026-10-25).
 3. **Where do I find this?**: three numbered steps. On a computer,
    log in at `https://www.warframe.com`, a link that opens in a new tab; in the
-   same browser, open the developer tools and the cookies (**On Firefox:**
-   Storage › Cookies, **On Chrome:** Application › Cookies, the browsers'
-   names in bold); copy the value of the `gid` cookie. Then an example of that cookie and the
+   same browser, open the developer tools, pressing F12, and in the side or
+   down panel go to the cookies (**On Firefox:** Storage › Cookies, **On Edge
+   or Chrome:** Application › Cookies, the browsers' names in bold; Edge
+   added on 2026-10-29, since Windows ships it); copy the value of the `gid`
+   cookie. Under the steps, **More help**, a secondary button, opens **Find
+   your ID** (below). Then an example of that cookie and the
    note "It's safe: it's the same public profile the game shows when you look at
    another player. We only remember your ID on this device, and Disconnect
    forgets it." The cookie is the app's only record of the
    player and is needed to read their profile, so no consent banner is shown
    (owner, 2026-10-21).
-4. **Explore with a demo**: **Ordis (Mastery Rank 2)**, then **Cy (Mastery
-   Rank 27)**.
+4. **Explore with a demo**: the label, then two choice cards, as Two ways in
+   draws them, with no card around them, since nothing nests a card in a
+   card: **Ordis**, with `rocket-launch`, "Mastery Rank 2. A player starting
+   out, with most of the archive still ahead."; then **Cy**, with
+   `military-tech`, "Mastery Rank 27. A player far along, with what's left
+   after years of play." The rank is the fixture's own. Each card is the
+   form's submit button (owner, 2026-10-29).
+
+### Find your ID
+
+`/connect/find-your-id`, outside the shell like Connect, under a top bar
+titled **Find your ID** whose back goes to `/connect`. Content is never folded
+inside other content (constitution), so the pictures have their own page
+instead of opening inside the steps (owner, 2026-10-29). A lead,
+"Where the gid cookie is, in what each browser shows. Do it on a computer,
+logged in at warframe.com.", then one card per browser, **Firefox** and then
+**Edge or Chrome** (one card, as both use the same developer tools), each with
+three numbered steps (press F12; Storage › Cookies, or Application › Cookies,
+› `https://www.warframe.com`; type `gid` in the filter and copy its Value) and
+a screenshot of that panel with its alt text. The screenshots are the owner's,
+taken in English, filtered to the `gid` row, with the frame's example id in
+place of a real one, so they show nothing of an account. The demo website
+never links to it, since it asks for no id.
 
 ### Connect
 
@@ -85,9 +115,10 @@ tabs or player chip. From the top, as `661:4354` draws it:
    either case) before any call. A bad shape shows the `invalid-id` band
    without reading anything.
 2. Otherwise the form enters **Loading** (`675:5392`): Connect is disabled,
-   and the loading quill takes the place of the demos (T-27b), between the
-   form and the steps: the quill alone, 64 × 96, on the page's own background,
-   with no card and no visible words (owner, 2026-10-24). Screen readers hear
+   and the loading screen every wait shares covers the page (owner,
+   2026-10-29): the whole screen behind black at 80% (`--scrim-strong`), and
+   the quill alone, 64 × 96, centred on it, with no card and no visible
+   words. The page stays as it was underneath. Screen readers hear
    "Onkko is reading your archive...". The quill writes a stroke, lifts, and
    starts again every 2.4 s
    ([`841:536` Loading — Quill motion](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=841-536);
@@ -102,7 +133,7 @@ tabs or player chip. From the top, as `661:4354` draws it:
 
 ### A demo
 
-Each demo button saves that demo's id in `wf_account` and goes on by BR-03,
+Each demo card saves that demo's id in `wf_account` and goes on by BR-03,
 exactly as a real read would. Both demos have reached Venus (Ordis stops at
 Mercury), so both land on `/features` (owner, 2026-10-15). A demo is
 read from its fixture and never calls DE. It spends no lookup from the
@@ -137,7 +168,7 @@ draws a failure.
 | State   | Frame      | What differs from rest                                     |
 | ------- | ---------- | ---------------------------------------------------------- |
 | Rest    | `661:4354` | Empty field, or the remembered id                          |
-| Loading | `675:5392` | Connect disabled, the quill card in place of the demos     |
+| Loading | `675:5392` | Connect disabled, the page behind black at 80%, the quill  |
 | Error   | `662:6943` | The red band under the field with one of the five messages |
 | Demo    | `764:4753` | The demos and the card to the download, no field           |
 

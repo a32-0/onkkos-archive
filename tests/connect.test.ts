@@ -2,13 +2,17 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
 import { Connect } from "@/screens/connect/Connect";
+import { FindId } from "@/screens/connect/FindId";
 import type { ConnectState } from "@/screens/connect/state";
 
 const REMEMBERED = "000000000000000000000001";
 const DEMOS = [
-  { key: "ordis", name: "Ordis", masteryRank: 2 },
-  { key: "cy", name: "Cy", masteryRank: 27 },
-];
+  { key: "ordis", name: "Ordis", masteryRank: 2, icon: "rocket-launch" },
+  { key: "cy", name: "Cy", masteryRank: 27, icon: "military-tech" },
+] as const;
+
+const ORDIS = "Mastery Rank 2. A player starting out, with most of the archive still ahead.";
+const CY = "Mastery Rank 27. A player far along";
 
 function page(initial: ConnectState, demoSite = false): string {
   return renderToStaticMarkup(
@@ -33,8 +37,8 @@ describe("on the demo (spec 02)", () => {
 
   it("says it is a demo and offers both demos", () => {
     expect(html).toContain("This is a demo: two players");
-    expect(html).toContain("Ordis (Mastery Rank 2)");
-    expect(html).toContain("Cy (Mastery Rank 27)");
+    expect(html).toContain(ORDIS);
+    expect(html).toContain(CY);
   });
 
   it("sends a player to the app's latest release, in a new tab", () => {
@@ -81,18 +85,56 @@ describe("the id form (spec 02)", () => {
     const links = page({ value: "", reason: null, retryAt: null }).match(/<a [^>]*>/g) ?? [];
     expect(links.map((link) => /href="([^"]+)"/.exec(link)?.[1])).toEqual([
       "https://www.warframe.com",
+      "/connect/find-your-id",
     ]);
-    expect(links.every((link) => link.includes('target="_blank"'))).toBe(true);
+    expect(links[0]).toContain('target="_blank"');
+    expect(links[1]).not.toContain("target=");
     const html = page({ value: "", reason: null, retryAt: null });
     expect(html).not.toContain("user-data");
     expect(html).toContain(">gid<");
   });
 
-  it("offers Ordis, then Cy, with the rank each fixture holds", () => {
+  it("offers Ordis, then Cy, as cards that send the form, with the rank each fixture holds", () => {
     const html = page({ value: "", reason: null, retryAt: null });
-    expect(html.indexOf("Ordis (Mastery Rank 2)")).toBeLessThan(
-      html.indexOf("Cy (Mastery Rank 27)"),
-    );
+    expect(html.indexOf(ORDIS)).toBeLessThan(html.indexOf(CY));
+    const cards =
+      html
+        .match(/<button type="submit" value="[a-z]+"[^>]*name="profile"/g)
+        ?.map((card) => /value="([a-z]+)"/.exec(card)?.[1]) ?? [];
+    expect(cards).toEqual(["ordis", "cy"]);
     expect(html).toContain("It is time. Utter the name.");
+  });
+});
+
+describe("More help (spec 02)", () => {
+  it("sits under the steps and opens Find your ID", () => {
+    const html = page({ value: "", reason: null, retryAt: null });
+    const button =
+      /<a [^>]*href="\/connect\/find-your-id"[^>]*>[\s\S]*?<\/a>/.exec(html)?.[0] ?? "";
+    expect(button).toContain("More help");
+    expect(html.indexOf("Copy the 24-character value")).toBeLessThan(html.indexOf("More help"));
+    expect(html.indexOf("More help")).toBeLessThan(html.indexOf("It will look something like"));
+  });
+
+  it("is not on the demo, which asks for no id", () => {
+    expect(page({ value: "", reason: null, retryAt: null }, true)).not.toContain("More help");
+  });
+});
+
+describe("Find your ID (spec 02)", () => {
+  const html = renderToStaticMarkup(FindId());
+
+  it("goes back to Connect from its top bar", () => {
+    expect(html).toContain("Find your ID");
+    expect(html).toMatch(/<a [^>]*aria-label="Back" href="\/connect"/);
+  });
+
+  it("shows Firefox, then Edge or Chrome, each with its steps and a described screenshot", () => {
+    expect(html.indexOf(">Firefox<")).toBeLessThan(html.indexOf(">Edge or Chrome<"));
+    expect(html).toContain("Go to Storage › Cookies › https://www.warframe.com.");
+    expect(html).toContain("Go to Application › Cookies › https://www.warframe.com.");
+    const shots = html.match(/<img [^>]*>/g) ?? [];
+    expect(shots).toHaveLength(2);
+    expect(shots.every((shot) => /alt="[^"]{20,}"/.test(shot))).toBe(true);
   });
 });

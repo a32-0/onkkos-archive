@@ -1,3 +1,5 @@
+import type { IconName } from "@/ui/Icon/glyphs";
+
 export interface ConnectState {
   value: string;
   reason: string | null;
@@ -7,7 +9,8 @@ export interface ConnectState {
 export type ConnectAction = (previous: ConnectState, form: FormData) => Promise<ConnectState>;
 
 export interface Demo {
-  key: string;
+  key: "ordis" | "cy";
   name: string;
   masteryRank: number;
+  icon: IconName;
 }
