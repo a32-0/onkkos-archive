@@ -43,8 +43,8 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the quill's path, `LoadingCard.module.css` for its motion, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
 | `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                                                      |
 | `scripts/store.mjs`       | Builds the Microsoft Store's package with the identity read from three variables, or stops without them                                                                                                                                                                             |
-| `icon.png`                | The app's icon: the quill alone on no background                                                                                                                                                                                                                                    |
-| `appx/`                   | The Store package's tiles, drawn from `icon.png`: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the quill centred on no background                                                                                                |
+| `icon.png`                | The app's icon: the quill in `--ink` on a `--brand` tile with rounded corners (Figma: Brand > App icon, 933:5775)                                                                                                                                                                   |
+| `appx/`                   | The Store package's tiles, drawn from the same tile: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the tile centred on no background                                                                                              |
 | `electron-builder.yml`    | The three packages, what each carries, the Store package's tiles and Windows versions, and GitHub Releases as the place updates come from                                                                                                                                           |
 | `src/channel.ts`          | Where the app runs from: the tree, a GitHub package or the Microsoft Store                                                                                                                                                                                                          |
 | `tests/channel.test.ts`   | Only a GitHub package updates itself                                                                                                                                                                                                                                                |
@@ -202,11 +202,17 @@ resolved, and each package under `node_modules/.pnpm` is lifted to the top of
 `node_modules`, where Node finds it from anywhere in the server. The script
 stops the package if two versions of one package are found.
 
-Both carry the app's icon, `desktop/icon.png`: the quill alone, 512 px on
-no background, as most Windows programs draw theirs (the site keeps
-`public/icon-512.png`, the quill on the canvas). electron-builder turns it
-into the installer's and the program's icon, and the window shows it from
-`dist/icon.png`. It was drawn from the wordmark's quill path in `--brand`.
+Both carry the app's icon, `desktop/icon.png`, 512 px: the quill in
+`--ink` at 65% of the height, on a `--brand` tile whose corners round at 64
+on 300, with no background around it. The tile is Figma's Brand > App icon
+(933:5775), exported as SVG and rendered with sharp to each size. The
+Store's tiles in `desktop/appx/` are the same render, and so is the site's:
+`src/app/icon.svg` is the tile itself, `public/icon-192.png` and
+`icon-512.png` render it for the installed web app, and
+`src/app/apple-icon.png` is the tile with square corners, which iOS rounds
+itself. electron-builder turns it into the
+installer's and the program's icon, and the window shows it from
+`dist/icon.png`.
 
 On uninstall, Windows removes the app's folder under `%APPDATA%`. The
 installer is not signed (spec 13), so SmartScreen shows "Windows protected
