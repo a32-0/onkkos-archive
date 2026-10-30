@@ -117,6 +117,7 @@ interface Says {
   bountyTitle: { tier: string; low: string | null; high: string | null };
   bountyTierDetail: { low: string; high: string };
   defeatTitle: { source: string };
+  openTitle: { thing: string };
   openRelicTitle: { relic: string; vaulted: boolean };
   nodeDetail: { place: string; mission: string | null; boss: string | null };
   odds: Odds;
@@ -834,9 +835,10 @@ function routeRow(
       );
     }
     case "enemy":
-      return row(id, say("defeatTitle", { source: route.source }), {
+      return row(id, sourceTitle(data, route.source), {
         ...shared,
         wikiTitle: route.source,
+        imageUrl: sourceArt(data, route.source),
       });
     case "relic":
       return row(
@@ -2155,7 +2157,58 @@ function itemPlan(data: CatalogData, reader: Reader, view: Dossier): StepPlan {
   return { sections: sections.filter((entry) => entry.groups.some((g) => g.rows.length > 0)) };
 }
 
-function dropRows(view: CollectibleView): StepRow[] {
+function isPlanet(data: CatalogData, name: string): boolean {
+  return data.wiki.nodes.some((node) => node.planet === name);
+}
+
+const QUALIFIED = /\s*\([^)]*\)$/;
+const REWARDS = / Rewards$/;
+const RELIC = / Relic$/;
+const RANKED = ", ";
+
+function baseOf(source: string): string {
+  return source.replace(QUALIFIED, "").trim();
+}
+
+function sourceTitle(data: CatalogData, source: string): Phrase {
+  const base = baseOf(source);
+  if (RELIC.test(base)) {
+    return say("openRelicTitle", { relic: base, vaulted: data.relics.get(base)?.vaulted ?? false });
+  }
+  if (base.includes(RANKED)) return say("vendorTitle", { vendor: base.split(RANKED)[0] ?? base });
+  const kind = data.dropSources[base]?.kind ?? "enemy";
+  if (kind === "activity") return say("playTitle", { node: base.replace(REWARDS, "") });
+  if (kind === "object") return say("openTitle", { thing: base });
+  return say("defeatTitle", { source });
+}
+
+function sourceArt(data: CatalogData, source: string): string | null {
+  return data.dropSources[baseOf(source)]?.art ?? null;
+}
+
+function dropTitle(
+  data: CatalogData,
+  route: CollectibleView["routes"][number],
+  name: string,
+): Phrase {
+  if (route.place !== null) {
+    return route.node === null ? say("getTitle", { name }) : say("playTitle", { node: route.node });
+  }
+  if (route.node === null) {
+    return route.mission === null
+      ? say("getTitle", { name })
+      : say("defeatTitle", { source: route.mission });
+  }
+  if (isPlanet(data, route.node)) return say("playTitle", { node: route.node });
+  return sourceTitle(data, route.node);
+}
+
+function enemyArt(data: CatalogData, route: CollectibleView["routes"][number]): string | null {
+  if (route.place !== null || route.node === null || isPlanet(data, route.node)) return null;
+  return sourceArt(data, route.node);
+}
+
+function dropRows(data: CatalogData, view: CollectibleView): StepRow[] {
   const { collectible, routes } = view;
   if (collectible.relic?.vaulted) {
     return [
@@ -2170,16 +2223,7 @@ function dropRows(view: CollectibleView): StepRow[] {
   const flags = bestFlags(placed.map((route) => route.chance));
   const rows = placed.map((route, index) => {
     const value = odds(route.rotation, null, route.chance);
-    const title =
-      route.place === null
-        ? route.mission === null
-          ? route.node === null
-            ? say("getTitle", { name: collectible.name })
-            : say("defeatTitle", { source: route.node })
-          : say("defeatTitle", { source: route.mission })
-        : route.node === null
-          ? say("getTitle", { name: collectible.name })
-          : say("playTitle", { node: route.node });
+    const title = dropTitle(data, route, collectible.name);
     return row(`route:${index}`, title, {
       best: flags[index] === true,
       detail: parts(
@@ -2197,7 +2241,7 @@ function dropRows(view: CollectibleView): StepRow[] {
       ),
       prose: mechanics(route.place ? route.mission : null),
       wikiTitle: route.node ?? collectible.name,
-      imageUrl: index === 0 ? collectible.imageUrl : null,
+      imageUrl: index === 0 ? collectible.imageUrl : enemyArt(data, route),
     });
   });
   if (placed.length === 0 && collectible.regions.length > 0) {
@@ -2464,7 +2508,7 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
   const relic = blueprintRelicRow(data, collectible);
   const how = [
     ...(relic ? [relic] : []),
-    ...dropRows(view),
+    ...dropRows(data, view),
     ...(collectible.incarnon ? incarnonRows(data, reader, collectible.name) : []),
     ...baroRows(data, collectible.name),
     ...curated,

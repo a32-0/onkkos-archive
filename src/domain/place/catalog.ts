@@ -150,6 +150,8 @@ export interface PlaceCatalog {
   index: ReadonlyMap<string, RewardTarget>;
 }
 
+const STORE_ITEM = "/Lotus/StoreItems/";
+
 export function buildPlaceCatalog(raw: readonly RawEntry[]): PlaceCatalog {
   const entries = new Map<string, CatalogEntry>();
   const index = new Map<string, RewardTarget>();
@@ -166,6 +168,7 @@ export function buildPlaceCatalog(raw: readonly RawEntry[]): PlaceCatalog {
       group,
     };
 
+    if (unique.startsWith(STORE_ITEM) && !item.imageName) continue;
     if (!entries.has(name)) {
       entries.set(name, {
         uniqueName: unique,

@@ -13,6 +13,10 @@ export const ROUTES = {
 
 export const LATEST_RELEASE = "https://github.com/a32-0/onkkos-archive/releases/latest";
 
+export const STORE_LISTING = "https://apps.microsoft.com/detail/9NVJBJD22L6D";
+
+export const WARFRAME_SITE = "https://www.warframe.com";
+
 export function releaseNotes(version: string): string {
   return `https://github.com/a32-0/onkkos-archive/releases/tag/v${version}`;
 }

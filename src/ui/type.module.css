@@ -68,6 +68,11 @@
   text-transform: none;
 }
 
+.body-l-strong {
+  composes: body-l;
+  font-weight: 700;
+}
+
 .body {
   font-family: var(--font-inter), sans-serif;
   font-weight: 400;

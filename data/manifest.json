@@ -25,6 +25,10 @@
       "size": 1838,
       "sha256": "b7090b313a7ff29c43fa10596b12039960f89ac30c5023e3a6aa7cf1180c842d"
     },
+    "vendor/drop-sources.json": {
+      "size": 116294,
+      "sha256": "760bad4b536168d2a9d9a76ae972a99b753d49c912dc18803f80bb827c479d43"
+    },
     "vendor/items.json": {
       "size": 20266992,
       "sha256": "5ef2bd4375cb983add7592a274743880797ecdd5fc7d33156967d730b391a34a"

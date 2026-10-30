@@ -18,10 +18,21 @@ describe("the player's rank title (spec 04)", () => {
   });
 });
 
+describe("Profile's update states (spec 13)", () => {
+  it("say what Profile — App — Check states draws", () => {
+    expect(SHELL.downloading("0.2.0")).toBe("Downloading 0.2.0…");
+    expect(SHELL.installsOnRestart("0.2.0")).toBe("0.2.0 installs on restart");
+    expect(SHELL.restartNow).toBe("Restart now");
+  });
+});
+
 describe("the app's two starting frames (spec 13)", () => {
   it("say what Desktop — Starting and Desktop — Can't start draw", () => {
     expect(DESKTOP.opening).toBe("Onkko is opening the archive...");
-    expect(DESKTOP.cantStart).toBe("Onkko's Archive couldn't start. Close it and open it again.");
-    expect(DESKTOP.close).toBe("Close");
+    expect(DESKTOP.cantStart).toEqual([
+      "Onkko's Archive couldn't start.",
+      "Please restart the app.",
+    ]);
+    expect(DESKTOP.restart).toBe("Restart");
   });
 });

@@ -23,17 +23,20 @@ part of the spec is pinned:
   players' archives to explore. Nothing here reads an account."; the card
   under the demos is headed **Your own account** and reads "The app reads
   your profile from your own computer, through your own connection. For
-  Windows and Linux.", over **Download the app**.
+  Windows and Linux.", over Microsoft's **Download from the Microsoft Store**
+  badge, centred, and, under it, the text button **Or from GitHub, for
+  Windows and Linux** (owner, 2026-10-30).
 
 - [`864:5693` Connect — Reads note](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=864-5693):
   Onboarding with the note under the field (approved by the owner on
   2026-10-25).
 
 - [`895:5723` Onboarding — Find your ID](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=895-5723):
-  the help page **More help** opens (owner, 2026-10-29; below).
+  the help page **Help me find my ID** opens (owner, 2026-10-29; below).
 
 On 2026-10-29 every Connect frame above took **More help** under the steps,
-and **Explore with a demo** as two choice cards (owner).
+and **Explore with a demo** as two choice cards (owner). On 2026-10-30 the
+button became **Help me find my ID** in every one of them (owner).
 
 The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
 answers 404, so the id is read from the `gid` cookie instead (owner).
@@ -78,8 +81,8 @@ tabs or player chip. From the top, as `661:4354` draws it:
    down panel go to the cookies (**On Firefox:** Storage › Cookies, **On Edge
    or Chrome:** Application › Cookies, the browsers' names in bold; Edge
    added on 2026-10-29, since Windows ships it); copy the value of the `gid`
-   cookie. Under the steps, **More help**, a secondary button, opens **Find
-   your ID** (below). Then an example of that cookie and the
+   cookie. Under the steps, **Help me find my ID**, a secondary button, opens
+   **Find your ID** (below). Then an example of that cookie and the
    note "It's safe: it's the same public profile the game shows when you look at
    another player. We only remember your ID on this device, and Disconnect
    forgets it." The cookie is the app's only record of the
@@ -99,12 +102,15 @@ tabs or player chip. From the top, as `661:4354` draws it:
 titled **Find your ID** whose back goes to `/connect`. Content is never folded
 inside other content (constitution), so the pictures have their own page
 instead of opening inside the steps (owner, 2026-10-29). A lead,
-"Where the gid cookie is, in what each browser shows. Do it on a computer,
-logged in at warframe.com.", then one card per browser, **Firefox** and then
-**Edge or Chrome** (one card, as both use the same developer tools), each with
-three numbered steps (press F12; Storage › Cookies, or Application › Cookies,
-› `https://www.warframe.com`; type `gid` in the filter and copy its Value) and
-a screenshot of that panel with its alt text. The screenshots are the owner's,
+"Where the “gid” cookie is, in what each browser shows. Do it on a computer,
+logged in at www.warframe.com.", where `www.warframe.com` is an underlined
+link that opens the site in a new tab, then one card per browser, **Firefox**
+and then **Edge or Chrome** (one card, as both use the same developer tools),
+each with three numbered steps ("**Press F12** to open the developer tools.";
+Storage › Cookies, or Application › Cookies, › `https://www.warframe.com`;
+"Type “gid” in the filter, and copy its **Value**.", the words in bold as
+the frame sets them; owner, 2026-10-30) and a screenshot of that panel with
+its alt text. The screenshots are the owner's,
 taken in English, filtered to the `gid` row, with the frame's example id in
 place of a real one, so they show nothing of an account. The demo website
 never links to it, since it asks for no id.
@@ -145,10 +151,16 @@ The website is a demo of the app (constitution; spec 13). It never reads an
 account, so its `/connect` asks for none. In place of the Account ID field,
 Connect and **Where do I find this?**, **Connect — Demo** shows the two demos
 first and, under them, a card that sends the player to the app: one line that
-says their own account is read by the app on their computer, and **Download
-the app**, which opens the repository's latest release in a new tab. The
-release page lists the Windows installer and the Linux AppImage, so the demo
-does not guess the player's system.
+says their own account is read by the app on their computer, then two ways
+to get it, each opened in a new tab (owner, 2026-10-30):
+
+- Microsoft's own badge, **Download from the Microsoft Store**, at its own
+  size and colours (the dark one), centred, which opens the app's Store
+  listing. It comes first: the Store's package is signed, so Windows shows
+  no warning (spec 13).
+- **Or from GitHub, for Windows and Linux**, a text button, which opens the
+  repository's latest release. The release page lists the Windows installer
+  and the Linux AppImage, so the demo does not guess the player's system.
 
 An id remembered from before (`wf_account`) that is no demo's is forgotten on
 the demo: the screens treat the device as connected to nothing, and `/connect`
@@ -170,7 +182,7 @@ draws a failure.
 | Rest    | `661:4354` | Empty field, or the remembered id                          |
 | Loading | `675:5392` | Connect disabled, the page behind black at 80%, the quill  |
 | Error   | `662:6943` | The red band under the field with one of the five messages |
-| Demo    | `764:4753` | The demos and the card to the download, no field           |
+| Demo    | `764:4753` | The demos and the card to the Store and GitHub, no field   |
 
 ## Data and sources
 

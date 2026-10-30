@@ -1,7 +1,7 @@
 import { app, shell, type BrowserWindow } from "electron";
 
 const OUTSIDE = new Set(["wiki.warframe.com", "www.warframe.com", "github.com"]);
-const CLOSE = "app:close";
+const RESTART = "app:restart";
 
 function outward(url: string): void {
   const address = URL.parse(url);
@@ -15,8 +15,9 @@ export function holdLinks(window: BrowserWindow, origin: () => string | null): v
     const own = origin();
     if (own && URL.parse(url)?.origin === own) return;
     event.preventDefault();
-    if (url === CLOSE) app.quit();
-    else outward(url);
+    if (url !== RESTART) return outward(url);
+    app.relaunch(process.env.APPIMAGE ? { execPath: process.env.APPIMAGE } : undefined);
+    app.quit();
   });
   window.webContents.setWindowOpenHandler(({ url }) => {
     outward(url);

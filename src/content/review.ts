@@ -75,7 +75,7 @@ export const REVIEW = {
     snapshot: "the item catalog's snapshot",
     drops: "DE's drop tables and the update art",
     wiki: "the wiki's data",
-    art: "the vendors' art",
+    art: "the vendors' art and the drops' sources",
     notes: "DE's patch notes",
   },
   written: (version: string) => `The report is in the updates folder, as ${version}.`,

@@ -95,7 +95,11 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
      reward or a bought blueprint is how the item is had, so it leads, never
      its first ingredient (owner, 2026-10-23, on Thornbak and Thalys). A
      quest's own page leads with the row that starts it, which wears the
-     quest's art, as a collectible's rows wear the collectible's (T-43).
+     quest's art, as a collectible's rows wear the collectible's (T-43). A
+     How to get row of an arsenal item with no art of its own (a lab, a
+     bounty) wears the item's, so no row is an empty box (constitution).
+     Decided on 2026-10-30 and drawn in
+     [`928:5859` Item>Summary — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859), approved by the owner the same day.
 
 ### What a row does
 

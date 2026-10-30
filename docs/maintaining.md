@@ -62,6 +62,9 @@ fails any of them.
 | `pnpm --dir desktop check` | The desktop app's own code and tests                          |
 
 `pnpm format` fixes formatting; `pnpm lint:fix` fixes what lint can.
+`pnpm check` also checks the formatting of the Markdown in `docs/`, so run it
+after editing a document too, not only after code. A table whose columns no
+longer line up is the usual reason a push fails.
 
 ## After each Warframe update
 
@@ -70,9 +73,10 @@ few weeks; hotfixes don't need anything.
 
 1. Wait a few days after the update, until WFCD publishes a new
    `@wfcd/items` that includes it.
-2. Stop the dev server, then run `pnpm content:update`. It updates every data
-   source, finds what's new, runs the checks and writes a report to
-   `docs/updates/`.
+2. Commit or stash anything you have open, so the update is the only change
+   in the tree. Stop the dev server, then run `pnpm content:update`. It
+   updates every data source, finds what's new, runs the checks and writes a
+   report to `docs/updates/`.
 3. Read the report. It sorts each new thing into one of three levels:
    - What enters on its own needs nothing from you.
    - What needs a source gets one: add where it comes from to the files in
@@ -80,7 +84,19 @@ few weeks; hotfixes don't need anything.
      explains.
    - What is new to the app is a kind of thing no screen was designed for.
      Treat it as a change to the app (below), or leave it out.
-4. Run the checks, commit everything the command changed (including
+
+   If the report shows many items gone or renamed at once, the new
+   `@wfcd/items` is broken, not the game. Throw the update away with
+   `git restore .` and `git clean -fd docs/updates`, and run it again when
+   WFCD publishes a fix.
+
+4. Look at a few new items in `pnpm dev`. A drop from an enemy wears the
+   enemy's art from its wiki page. When a new enemy shows its name with no
+   art, search the wiki for it: if a picture of it (or of its base enemy)
+   exists, add its file or page to `WIKI_ART` in
+   `scripts/refresh-vendor-art.mjs` and run `pnpm data:vendor-art`. If the
+   wiki has none, its name alone is correct.
+5. Run the checks, commit everything the command changed (including
    `data/manifest.json` and the report), push to `dev` and merge to `main`.
 
 Installed apps download the new data at their next start. No new version is
@@ -118,8 +134,9 @@ code never disagree:
 1. Update the [constitution](specs/00-constitution.md) only if the change
    touches what the app is for or one of its rules. Most changes don't.
 2. Draw the change in the Figma file first: the screen and each of its
-   states. If it sets a new rule, pin it as a comment and add it to
-   [`business-rules.md`](business-rules.md).
+   states. Put each frame in its section, at the end of its screen's row;
+   nothing stays loose on the page. If it sets a new rule, pin it as a
+   comment and add it to [`business-rules.md`](business-rules.md).
 3. Update the screen's spec in [`specs/`](specs/README.md): what it shows,
    where the data comes from, and how to check it.
 4. Change the code, with tests for what the spec promises. Words go in
@@ -136,22 +153,52 @@ A few rules hold everywhere, and the tests check most of them:
 - No real account id, name or email in any file. Fixtures stay anonymised.
 - Everything in the repository is written in English.
 
+### The app's icon
+
+The icon is the frame App icon in the Figma file's Brand section. Change it
+there first, then export it as SVG and render each size from it: the
+desktop's `icon.png`, the Store's tiles and the site's icons.
+[`desktop.md`](desktop.md#the-packages) lists every file. Players see a
+new icon on the desktop only after a new version.
+
 ## Releasing a new version of the app
 
-1. Raise `version` in `desktop/package.json` on `dev`, and merge to `main`.
-2. Tag `main` with that version, `v` before it (`git tag v0.1.2`), and push
-   the tag.
-3. GitHub builds the Windows installer and the Linux AppImage into a draft
+The order matters: the version goes in first, the tag last, and the tag
+goes on `main` after the merge, never on `dev`.
+
+1. On `dev`, raise `version` in `desktop/package.json`, usually its last
+   number (`0.1.3` to `0.1.4`). Commit it with the version as the message
+   (`Desktop 0.1.4`) and push `dev`.
+2. Open the pull request from `dev` to `main`, wait for the checks, and
+   merge it.
+3. Bring the merge to your machine and tag it, `v` before the version:
+
+   ```sh
+   git checkout main
+   git pull
+   git tag v0.1.4
+   git push origin v0.1.4
+   git checkout dev
+   ```
+
+   Pushing the tag is what starts the release. A tag made before
+   `git pull` lands on the old `main`, and the version ships without the
+   merge. To undo a wrong tag before its release is published:
+   `git tag -d v0.1.4` and `git push origin :refs/tags/v0.1.4`.
+
+4. GitHub builds the Windows installer and the Linux AppImage into a draft
    release. If the tag and `desktop/package.json` disagree, it stops.
-4. Open the draft, write what changed in plain words, and publish it.
-   Installed apps download it in the background and install it when the
-   player closes them.
-5. Download the `microsoft-store` artifact from the same workflow run and
+5. Open the draft, write what changed in plain words, and publish it.
+   Installed apps download it in the background and install it at the next
+   restart, or at once from Profile's **Restart now**.
+6. Download the `microsoft-store` artifact from the same workflow run and
    upload its `.appx` as a new submission in Partner Center. Players who
    installed from the Microsoft Store get the version once it passes
    certification.
+7. Install the published version over the old one and open it: check the
+   icon, the version in Profile, and that a player's data loads.
 
-Before step 2 you can try the package on your own machine:
+Before step 3 you can try the package on your own machine:
 `pnpm --dir desktop stage`, then `pnpm --dir desktop package`. The installer
 lands in `desktop/release/`. [`desktop.md`](desktop.md#cutting-a-version) has
 the details.
@@ -185,6 +232,7 @@ Check every month or two, and after each mainline:
 
 | What you see                                    | What to do                                                                                                                                                                                                                                                                       |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `format:check` fails on GitHub                  | Run `pnpm format`, commit what it changed and push again                                                                                                                                                                                                                         |
 | A check fails on GitHub but not on your machine | Run `pnpm install --frozen-lockfile`; the lockfile may be stale                                                                                                                                                                                                                  |
 | `pnpm content:update` stops on a source         | That site is down. Wait and run it again; nothing was changed                                                                                                                                                                                                                    |
 | The manifest test fails                         | Run `pnpm data:manifest` after changing anything in `data/`                                                                                                                                                                                                                      |

@@ -72,8 +72,16 @@ function isAsk(message: unknown): message is Ask {
   return ask?.kind === "updates" && typeof ask.id === "string";
 }
 
+function isRestart(message: unknown): boolean {
+  return (message as { kind?: unknown } | null)?.kind === "restart";
+}
+
 export function answerChecks(server: UtilityProcess): void {
   server.on("message", (message: unknown) => {
+    if (isRestart(message) && updatesItself() && downloaded !== null) {
+      autoUpdater.quitAndInstall(true, true);
+      return;
+    }
     if (!isAsk(message)) return;
     void checkNow().then((answer) =>
       server.postMessage({ kind: "updates", id: message.id, answer }),

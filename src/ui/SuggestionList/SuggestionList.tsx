@@ -7,6 +7,7 @@ export type Suggestion = {
   catalogue: string;
   art: string | null;
   round?: boolean;
+  orb?: string | null;
 };
 
 export const optionId = (listId: string, index: number) => `${listId}-${index}`;
@@ -52,6 +53,7 @@ export function SuggestionList({
           catalogue={item.catalogue}
           art={item.art}
           round={item.round}
+          {...(item.orb !== undefined && { orb: item.orb })}
           active={index === active}
           onChoose={() => onChoose(item.value)}
         />

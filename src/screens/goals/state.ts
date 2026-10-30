@@ -27,6 +27,7 @@ export interface SearchInput {
   name: string;
   catalogue: keyof typeof CATALOGUES;
   art: string | null;
+  orb?: string | null;
   system: string | null;
   gap: ReachGap | null;
   score: number;

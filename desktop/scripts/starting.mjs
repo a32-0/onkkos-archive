@@ -3,7 +3,6 @@ import path from "node:path";
 
 import { APP } from "../../src/content/app.ts";
 import { DESKTOP } from "../../src/content/desktop.ts";
-import { LETTERS } from "../../src/ui/Wordmark/letters.ts";
 
 const root = path.resolve(import.meta.dirname, "..", "..");
 const out = path.join(root, "desktop", "dist", "starting");
@@ -36,10 +35,8 @@ const escape = (text) =>
 const quillSvg = (attributes) =>
   `<svg ${attributes} viewBox="15 0 79 144" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="${quill}" fill="var(--brand)"/></svg>`;
 
-const wordmark = (height) =>
-  `<svg class="wordmark" style="height: ${height}" viewBox="0 0 275.333 80" role="img" aria-label="${escape(APP.name)}">${quillSvg('x="0" y="0" width="53.333" height="80"')}<g class="letters">${LETTERS.map((d) => `<path d="${d}"/>`).join("")}</g></svg>`;
-const opening = `<img class="art" src="art.png" alt=""><div class="scrim"></div><div class="frame">${wordmark("80px")}</div><div class="overlay" role="status"><div class="card"><span class="stage" aria-hidden="true"><span class="pen">${quillSvg('class="quill"')}</span><svg class="stroke" viewBox="0 0 88 8" preserveAspectRatio="none" focusable="false"><path d="${stroke}" pathLength="1"/></svg></span><p class="line">${escape(DESKTOP.opening)}</p></div></div>`;
-const failing = `<div class="failing" role="alert"><p class="band">${escape(DESKTOP.cantStart)}</p><a class="close" href="app:close">${escape(DESKTOP.close)}</a></div>`;
+const opening = `<div class="overlay" role="status"><div class="card"><span class="stage" aria-hidden="true"><span class="pen">${quillSvg('class="quill"')}</span><svg class="stroke" viewBox="0 0 88 8" preserveAspectRatio="none" focusable="false"><path d="${stroke}" pathLength="1"/></svg></span><p class="line">${escape(DESKTOP.opening)}</p></div></div>`;
+const failing = `<div class="overlay"><div class="failing" role="alert"><span class="still">${quillSvg('class="mark"')}</span><p class="reason">${DESKTOP.cantStart.map(escape).join("<br>")}</p><a class="restart" href="app:restart">${escape(DESKTOP.restart)}</a></div></div>`;
 
 const page = (state) => `<!doctype html>
 <html lang="en">
@@ -52,29 +49,22 @@ ${fontFaces}
 ${tokens}
 :root { --font-cinzel: "Cinzel", "Cinzel Fallback"; --font-inter: "Inter", "Inter Fallback"; --font-jetbrains-mono: "JetBrains Mono", "JetBrains Mono Fallback"; }
 html, body { height: 100%; margin: 0; }
-body { display: flex; flex-direction: column; background: var(--canvas); color: var(--ink); }
-header { display: flex; justify-content: center; padding: var(--space-6); border-bottom: var(--border-1) solid var(--brand); background: var(--surface-header); }
-.wordmark { display: block; width: auto; }
-.letters { fill: var(--ink); }
-main { display: flex; flex: 1; flex-direction: column; justify-content: center; gap: var(--space-6); padding: var(--space-6) var(--gutter); }
-.splash { position: relative; display: flex; flex: 1; box-sizing: border-box; padding: var(--gutter); overflow: hidden; isolation: isolate; }
-.art { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% center; }
-.scrim { position: absolute; z-index: -1; inset: 0; background: var(--scrim); }
-.frame { display: flex; flex: 1; align-items: center; justify-content: center; padding: var(--space-6); outline: var(--border-1) solid var(--brand); outline-offset: calc(var(--border-1) * -1); backdrop-filter: blur(calc(var(--blur-band) / 2)); }
+body { background: var(--canvas); color: var(--ink); }
 ${motion}
-.band { margin: 0; padding: var(--space-5); border-radius: var(--radius-m); background: var(--danger); color: var(--danger-ink); font: 400 14px var(--font-jetbrains-mono), monospace; }
-.close { display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 45px; padding: var(--space-5); border: var(--border-1) solid var(--line-strong); border-radius: var(--radius-full); color: var(--ink); font: 700 16px var(--font-inter), sans-serif; text-decoration: none; }
-.close:hover { background-image: linear-gradient(var(--hover), var(--hover)); }
-.close:focus-visible { outline: var(--border-2) solid var(--focus); outline-offset: calc(var(--border-2) * -1); }
-.failing { display: flex; flex-direction: column; gap: var(--space-6); }
+.failing { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+.still { display: block; width: calc(var(--space-8) * 2); height: calc(var(--space-8) * 3); }
+.mark { display: block; width: 100%; height: 100%; }
+.reason { margin: 0; color: var(--danger-ink); font: 400 16px var(--font-jetbrains-mono), monospace; text-align: center; }
+.restart { display: flex; align-self: stretch; align-items: center; justify-content: center; box-sizing: border-box; min-height: 45px; padding: var(--space-5); border: var(--border-1) solid var(--line-strong); border-radius: var(--radius-full); color: var(--ink); font: 700 16px var(--font-inter), sans-serif; text-decoration: none; }
+.restart:hover { background-image: linear-gradient(var(--hover), var(--hover)); }
+.restart:focus-visible { outline: var(--border-2) solid var(--focus); outline-offset: calc(var(--border-2) * -1); }
 </style>
 </head>
 <body>
-${state === "starting" ? `<main class="splash">${opening}</main>` : `<header>${wordmark("48px")}</header>\n<main>${failing}</main>`}
+${state === "starting" ? opening : failing}
 </body>
 </html>
 `;
-copyFileSync(path.join(root, "src", "screens", "onboarding", "art.png"), path.join(out, "art.png"));
 writeFileSync(path.join(out, "starting.html"), page("starting"));
 writeFileSync(path.join(out, "failed.html"), page("failed"));
 copyFileSync(path.join(root, "desktop", "icon.png"), path.join(out, "..", "icon.png"));

@@ -16,15 +16,18 @@ Drawn on 2026-10-22 in the first row of "App flows", from Onboarding —
 Loading, for the owner to approve before this spec is pinned:
 
 - [`886:5808` Desktop — Starting](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=886-5808): the window while the app
-  opens: Start's art, scrim and frame with the splash wordmark and nothing
-  under it, covered by the loading screen every wait shares (owner,
-  2026-10-29): the whole window behind black at 80%, and the loading quill
-  centred on it, with no visible words; screen readers hear "Onkko is
+  opens: the loading screen every wait shares and nothing under it (owner,
+  2026-10-30; until then Start's art and the splash wordmark lay
+  underneath): the window's ground behind black at 80%, and the loading
+  quill centred on it, with no visible words; screen readers hear "Onkko is
   opening the archive...". The quill moves as Connect's does
   (`841:536`, T-44).
 - [`764:5389` Desktop — Can't start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5389): the same window when the
-  server inside cannot start: the error band, "Onkko's Archive couldn't
-  start. Close it and open it again.", and **Close**, which quits the app.
+  server inside cannot start (owner, 2026-10-30): the same ground at 80%,
+  the quill standing still, then, centred under it in the error band's
+  words colour and mono face, "Onkko's Archive couldn't start." and
+  "Please restart the app." on two lines, and **Restart**, a secondary
+  button as wide as the column, which closes the app and opens it again.
 
 No other state needs a frame. The update notice is the operating system's own
 notification, and every data failure is silent by design (below).
@@ -74,6 +77,12 @@ package name, the publisher and the publisher's display name. The owner keeps
 them as the repository's Actions secrets, not in a committed file (owner,
 2026-10-27), and the release workflow hands them to the build.
 
+The Store published it on 2026-10-30, as
+[`9NVJBJD22L6D`](https://apps.microsoft.com/detail/9NVJBJD22L6D). The README
+and the demo's card to the download (spec 02) send Windows players there
+first, with GitHub beside it for Linux and for anyone who wants the installer
+(owner, 2026-10-30).
+
 ## The window
 
 - One window the width of a phone (owner, 2026-10-22): its content opens 390
@@ -93,7 +102,8 @@ them as the repository's Actions secrets, not in a committed file (owner,
   answers, and gives way once it does: to `/` for a device that remembers no
   id, and to the map (`/system`) for one that does (owner, 2026-10-23).
 - If the server cannot start, **Desktop — Can't start** replaces it. Nothing
-  else is tried; closing and opening the app tries again.
+  else is tried until the player presses **Restart**, which relaunches the
+  app and so tries again (owner, 2026-10-30).
 
 ## How it reads DE
 
@@ -200,16 +210,21 @@ beside the program.
 ## Updates
 
 The app checks GitHub Releases at each start and every six hours. A newer
-version downloads in the background and installs when the player closes the
-app; the operating system's notification says so once: "A new version is
-ready. It installs when you close Onkko's Archive." Its words live in
-`src/content/`, like every word the player reads.
+version downloads in the background and installs at the next restart; the
+operating system's notification says so once: "A new version is ready. It
+installs when you restart Onkko's Archive." Its words live in
+`src/content/`, like every word the player reads. Closing the app installs
+it quietly and leaves the app closed; **Restart now** (below) installs it and
+opens the app again on the new version (owner, 2026-10-30).
 
 Profile's **Check** (spec 04) asks at once instead of waiting. While it asks,
 the button reads "Checking…" and is disabled; then the answer takes the
 button's place, in the row's value style: "Up to date", "Downloading
-{version}", "{version} installs on close" once it has downloaded, or
-"Couldn’t reach GitHub" without a network. The notification above follows as
+{version}…", "{version} installs on restart" once it has downloaded, or
+"Couldn’t reach GitHub" without a network. Once it has downloaded, a row of
+its own under Updates holds **Restart now**, a secondary button 200 wide,
+centred, which closes the app, installs the version and opens the app again
+(owner, 2026-10-30). The notification above follows as
 usual. Leaving Profile and coming back shows the button again. Drawn on
 2026-10-23 in
 [`827:4748` Profile — App — Check states](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=827-4748),
@@ -261,7 +276,8 @@ whose version differs from the app's own fails the build.
    another schema or no connection leaves the current set in use, and the
    app opens normally.
 6. A tagged version builds both packages and a draft release; a published
-   release reaches an installed app, which installs it on close. The same tag
+   release reaches an installed app, which installs it on restart, and
+   **Restart now** opens the app again on the new version. The same tag
    builds the Store's package; installed from it, the app asks GitHub for no
    update, and Profile's Updates row reads "Through the Microsoft Store".
 7. Development still reads fixtures by default; only the packaged app reads

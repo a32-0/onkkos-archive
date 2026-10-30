@@ -20,7 +20,7 @@ import {
 } from "@/infra/catalog/items";
 import { loadGraph } from "@/infra/graph/load";
 import { patchNotes } from "@/infra/catalog/patch-notes";
-import { updateArt, vendorArt } from "@/infra/catalog/update-art";
+import { dropSources, updateArt, vendorArt } from "@/infra/catalog/update-art";
 import { loadSpine } from "@/infra/narrative/load";
 import { loadAcquisition, loadPlaceRewards, loadRegionResources } from "@/infra/place/load";
 import { wikiModules } from "@/infra/wiki/modules";
@@ -58,6 +58,7 @@ export function catalogData(): CatalogData {
     }),
     gear: buildGearRecipes(gearEntries()),
     vendorArt: vendorArt(),
+    dropSources: dropSources(),
     openings: openings(),
   };
   return cached;

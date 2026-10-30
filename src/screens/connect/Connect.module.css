@@ -51,6 +51,17 @@
   color: var(--ink);
 }
 
+.store {
+  display: flex;
+  align-self: center;
+  border-radius: var(--radius-s);
+}
+
+.store:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--border-2);
+}
+
 .steps {
   display: flex;
   flex-direction: column;

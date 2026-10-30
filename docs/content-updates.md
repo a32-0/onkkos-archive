@@ -64,7 +64,7 @@ What it does, in order (`scripts/content-update.ts`):
 2. **Updates the sources**: `@wfcd/items` to its latest version, then its
    snapshot (`pnpm data:items`), DE's drop tables and the update art
    (`pnpm data:refresh`), the wiki's data modules (`pnpm data:wiki`), the
-   vendors' art (`pnpm data:vendor-art`) and DE's patch notes
+   vendors' art and what each drop's source is, with its art (`pnpm data:vendor-art`) and DE's patch notes
    (`pnpm data:patch-notes`). If one fails, the wiki's API being down for
    example, it puts every source back, says which one failed, and stops.
 3. **Finds what is new**: every update after the one last reviewed; every item

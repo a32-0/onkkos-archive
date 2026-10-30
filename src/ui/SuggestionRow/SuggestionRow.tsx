@@ -1,3 +1,4 @@
+import { Orb } from "../Orb/Orb";
 import styles from "./SuggestionRow.module.css";
 
 export function SuggestionRow({
@@ -6,6 +7,7 @@ export function SuggestionRow({
   catalogue,
   art,
   round,
+  orb,
   active,
   onChoose,
 }: {
@@ -14,6 +16,7 @@ export function SuggestionRow({
   catalogue: string;
   art: string | null;
   round?: boolean;
+  orb?: string | null;
   active: boolean;
   onChoose: () => void;
 }) {
@@ -26,7 +29,9 @@ export function SuggestionRow({
       onMouseDown={(event) => event.preventDefault()}
       onClick={onChoose}
     >
-      {art ? (
+      {orb !== undefined ? (
+        <Orb color={orb} size="s" />
+      ) : art ? (
         <img className={round ? styles.round : styles.art} src={art} alt="" />
       ) : (
         <span className={round ? styles["blank-round"] : styles.blank} />

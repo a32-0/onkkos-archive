@@ -5,6 +5,7 @@ import { collectibleView } from "@/domain/catalog/collectibles";
 import { isCatalogued } from "@/domain/catalog/data";
 import { dossier } from "@/domain/catalog/dossier";
 import { briefOf } from "@/domain/catalog/summary";
+import { loadSystems, placeCatalog } from "@/infra/place/load";
 
 import { testData } from "./helpers";
 
@@ -126,5 +127,70 @@ describe("every item page reads whole", () => {
         ),
       ),
     ).toEqual([]);
+  });
+});
+
+describe("a drop's source is named for what it is (spec 10)", () => {
+  const titles = each((_, plan) =>
+    plan.sections.flatMap((section) =>
+      section.groups.flatMap((group) =>
+        group.rows.flatMap((row) => (row.title.say === "defeatTitle" ? [row.title.source] : [])),
+      ),
+    ),
+  );
+
+  it("never asks to defeat a relic, a container, a reward table or a vendor's rank", () => {
+    expect(
+      titles.filter((source) =>
+        / Relic$|Container$|Crate$|Caches?$|Chests$|Coffer$|Rewards|, |^Nokko:|^The Descendia:/.test(
+          source,
+        ),
+      ),
+    ).toEqual([]);
+  });
+
+  it("gives most enemies their art", () => {
+    const rows = plans.flatMap(({ plan }) =>
+      plan.sections.flatMap((section) =>
+        section.groups.flatMap((group) =>
+          group.rows.filter((row) => row.title.say === "defeatTitle"),
+        ),
+      ),
+    );
+    expect(rows.filter((row) => row.imageUrl).length / rows.length).toBeGreaterThan(0.95);
+  });
+});
+
+describe("no art slot is ever an empty box (constitution)", () => {
+  it("gives every arsenal item and collectible its own art, which Summary rows fall back to", () => {
+    expect([
+      ...data.arsenal.filter((item) => !item.imageUrl).map((item) => item.name),
+      ...[...data.collectibles.values()].filter((one) => !one.imageUrl).map((one) => one.name),
+    ]).toEqual([]);
+  });
+
+  it("gives every part's section its art", () => {
+    expect(
+      each((name, plan) =>
+        plan.sections
+          .filter((section) => section.id.startsWith("part:") && !section.imageUrl)
+          .map((section) => `${name}: ${section.id}`),
+      ),
+    ).toEqual([]);
+  });
+
+  it("gives every catalogue entry its art", () => {
+    expect(
+      [...placeCatalog().entries.values()]
+        .filter((entry) => !entry.imageUrl)
+        .map((entry) => entry.name),
+    ).toEqual([]);
+  });
+
+  it("gives every place the colour its orb is drawn from", () => {
+    const { systems, colors } = loadSystems();
+    expect(systems.flatMap((system) => system.places).filter((place) => !colors[place])).toEqual(
+      [],
+    );
   });
 });

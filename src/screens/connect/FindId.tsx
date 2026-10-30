@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FIND_ID } from "@/content/onboarding";
-import { ROUTES } from "@/routes";
+import { ROUTES, WARFRAME_SITE } from "@/routes";
 import { TopBar } from "@/ui/TopBar/TopBar";
 
 import edgeChrome from "./edge-chrome.png";
@@ -19,13 +19,29 @@ export function FindId() {
     <>
       <TopBar title={FIND_ID.title} back={ROUTES.connect} backLabel={FIND_ID.back} link={Link} />
       <main className={styles.page}>
-        <p className={styles.lead}>{FIND_ID.lead}</p>
+        <p className={styles.lead}>
+          {FIND_ID.lead}
+          <a className={styles.site} href={WARFRAME_SITE} target="_blank" rel="noreferrer">
+            {FIND_ID.site}
+          </a>
+          {FIND_ID.leadEnd}
+        </p>
         {FIND_ID.browsers.map(({ key, name, steps, shot }) => (
           <section key={key} className={styles.card}>
             <h2 className={styles.label}>{name}</h2>
             <ol className={styles.steps}>
-              {steps.map((step) => (
-                <li key={step}>{step}</li>
+              {steps.map((step, index) => (
+                <li key={index}>
+                  {step.map((part, at) =>
+                    typeof part === "string" ? (
+                      part
+                    ) : (
+                      <strong key={at} className={styles.strong}>
+                        {part.strong}
+                      </strong>
+                    ),
+                  )}
+                </li>
               ))}
             </ol>
             <Image className={styles.shot} {...SHOTS[key]} alt={shot} sizes="100vw" />

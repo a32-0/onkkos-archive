@@ -122,6 +122,21 @@ A vertical gold line runs down the section. Each row:
   one ("Blueprint", "Neuroptics" carry their art). "(Optional)" ends an
   optional step. "(Highest chance)" marks the best route in a part section, and
   the title turns gold (BR-26, BR-50). A route is named by its node (BR-27).
+  A drop from an enemy, "Defeat {enemy}", wears the enemy's art, the lead
+  image of its wiki page (`drop-sources.json`). An enemy whose page has no
+  lead image takes a wiki image named in the script, of the enemy or of its
+  base enemy; one with no image anywhere on the wiki shows its name alone. A drop listed as "{enemy} ({mode})" names the enemy,
+  and one listed as "{planet} ({mode})" reads "Play {planet}", with the mode
+  under it. Only an enemy is defeated: a mission, an event or a reward table
+  reads "Play {it}" ("Play Nokko: Critter Liberation", "Play Family
+  Reunion"), a container or a cache "Open {it}", a relic "Open {relic}", and
+  a vendor's rank ("Conclave, Typhoon") "Buy it from {vendor}". A Conclave
+  drop comes after every other route, since few players play Conclave
+  (Balla's blueprint opens with Hok). The enemy's art was drawn in
+  [`928:5860` Item>Step by step — Enemy drop](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5860)
+  and approved by the owner on 2026-10-30; the verbs for what is not an
+  enemy and the place of a Conclave drop were decided the same day, for the
+  owner to confirm.
 - **A chevron**, up while open. Every row starts open, as drawn.
 - **The detail**, one line of data when there is one: "It drops at rotation C,
   7.5% a run, so about 13 runs for an even chance." "Uncommon. 11% intact and

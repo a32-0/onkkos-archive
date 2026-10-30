@@ -64,6 +64,10 @@ From the top:
 6. The results: `ResultList`, the `Suggestion row`s as links in the
    `Suggestion list`'s frame, best first (spec 08), 20 at a time, then
    **Show more** in the text style, which adds twenty and keeps the scroll.
+   A place has no art of its own, so its row wears its orb, the sphere the
+   map draws from its colour in `systems.yaml` (spec 07), never an empty
+   circle. Decided on 2026-10-30 and drawn in
+   [`928:5861` Search — Place](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5861), approved by the owner the same day.
 
 The chevron folds the filters into one row: "Filters", how many are on ("2
 on"), and the ones chosen under it ("Mods, In my reach"), with a chevron that

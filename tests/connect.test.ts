@@ -41,10 +41,21 @@ describe("on the demo (spec 02)", () => {
     expect(html).toContain(CY);
   });
 
-  it("sends a player to the app's latest release, in a new tab", () => {
+  it("sends a player to the Microsoft Store first, with its badge, in a new tab", () => {
     expect(html).toContain("Your own account");
-    const link = html.match(/<a [^>]*>Download the app<\/a>/)?.[0] ?? "";
+    const link =
+      html.match(/<a [^>]*><img [^>]*alt="Download from the Microsoft Store"[^>]*\/><\/a>/)?.[0] ??
+      "";
+    expect(link).toContain('href="https://apps.microsoft.com/detail/9NVJBJD22L6D"');
+    expect(link).toContain('target="_blank"');
+    expect(link).toContain('rel="noreferrer"');
+    expect(html.indexOf("Microsoft Store")).toBeLessThan(html.indexOf("Or from GitHub"));
+  });
+
+  it("offers the latest release on GitHub under the badge, in a new tab", () => {
+    const link = html.match(/<a [^>]*>Or from GitHub, for Windows and Linux<\/a>/)?.[0] ?? "";
     expect(link).toContain('href="https://github.com/a32-0/onkkos-archive/releases/latest"');
+    expect(link).toContain('data-variant="text"');
     expect(link).toContain('target="_blank"');
     expect(link).toContain('rel="noreferrer"');
   });
@@ -52,7 +63,8 @@ describe("on the demo (spec 02)", () => {
   it("offers no download in the app or in development", () => {
     const own = page({ value: "", reason: null, retryAt: null });
     expect(own).not.toContain("Your own account");
-    expect(own).not.toContain("Download the app");
+    expect(own).not.toContain("Microsoft Store");
+    expect(own).not.toContain("Or from GitHub");
   });
 });
 
@@ -106,23 +118,35 @@ describe("the id form (spec 02)", () => {
   });
 });
 
-describe("More help (spec 02)", () => {
+describe("Help me find my ID (spec 02)", () => {
   it("sits under the steps and opens Find your ID", () => {
     const html = page({ value: "", reason: null, retryAt: null });
     const button =
       /<a [^>]*href="\/connect\/find-your-id"[^>]*>[\s\S]*?<\/a>/.exec(html)?.[0] ?? "";
-    expect(button).toContain("More help");
-    expect(html.indexOf("Copy the 24-character value")).toBeLessThan(html.indexOf("More help"));
-    expect(html.indexOf("More help")).toBeLessThan(html.indexOf("It will look something like"));
+    expect(button).toContain("Help me find my ID");
+    expect(html.indexOf("Copy the 24-character value")).toBeLessThan(
+      html.indexOf("Help me find my ID"),
+    );
+    expect(html.indexOf("Help me find my ID")).toBeLessThan(
+      html.indexOf("It will look something like"),
+    );
   });
 
   it("is not on the demo, which asks for no id", () => {
-    expect(page({ value: "", reason: null, retryAt: null }, true)).not.toContain("More help");
+    expect(page({ value: "", reason: null, retryAt: null }, true)).not.toContain(
+      "Help me find my ID",
+    );
   });
 });
 
 describe("Find your ID (spec 02)", () => {
   const html = renderToStaticMarkup(FindId());
+
+  it("links www.warframe.com in its lead, in a new tab", () => {
+    const link = /<a [^>]*>www\.warframe\.com<\/a>/.exec(html)?.[0] ?? "";
+    expect(link).toContain('href="https://www.warframe.com"');
+    expect(link).toContain('target="_blank"');
+  });
 
   it("goes back to Connect from its top bar", () => {
     expect(html).toContain("Find your ID");
@@ -133,6 +157,9 @@ describe("Find your ID (spec 02)", () => {
     expect(html.indexOf(">Firefox<")).toBeLessThan(html.indexOf(">Edge or Chrome<"));
     expect(html).toContain("Go to Storage › Cookies › https://www.warframe.com.");
     expect(html).toContain("Go to Application › Cookies › https://www.warframe.com.");
+    expect(html).toContain("<strong");
+    expect(html).toContain("Press F12</strong> to open the developer tools.");
+    expect(html).toContain("Type “gid” in the filter, and copy its <strong");
     const shots = html.match(/<img [^>]*>/g) ?? [];
     expect(shots).toHaveLength(2);
     expect(shots.every((shot) => /alt="[^"]{20,}"/.test(shot))).toBe(true);
