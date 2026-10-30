@@ -11,6 +11,11 @@ export interface Opening {
   after: string | null;
 }
 
+export interface DropSource {
+  kind: "enemy" | "activity" | "object";
+  art: string | null;
+}
+
 export interface CatalogData {
   wiki: Wiki;
   curated: Curated;
@@ -24,6 +29,7 @@ export interface CatalogData {
   collectibles: ReadonlyMap<string, Collectible>;
   gear: ReadonlyMap<string, CollectibleRecipe>;
   vendorArt: Readonly<Record<string, string>>;
+  dropSources: Readonly<Record<string, DropSource>>;
   openings: ReadonlyMap<string, Opening>;
 }
 

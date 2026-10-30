@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PAGE_TITLES } from "@/content/app";
-import { checkUpdates } from "@/app/actions";
+import { checkUpdates, restartNow } from "@/app/actions";
 import { chromeOf } from "@/app/chrome";
 import { requireScreen } from "@/app/screen";
 import { appVersion, fromStore } from "@/infra/edition";
@@ -20,6 +20,7 @@ export default async function ProfilePage({ searchParams }: { searchParams: Sear
       back={tabHome(tab)}
       version={appVersion()}
       check={checkUpdates}
+      restart={restartNow}
       store={fromStore()}
     />
   );

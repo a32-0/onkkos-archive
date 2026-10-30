@@ -1,0 +1,4060 @@
+{
+ "sources": {
+  "002-Er": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/002-ER.png?b5005"
+  },
+  "Abyssal Beacon": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/AbyssalBeacon.png?71886"
+  },
+  "Aerial Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonVipPilot.png?d4615"
+  },
+  "Aerolyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Aerolyst.png?cd872"
+  },
+  "Alad V": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AladVPortrait_d.png?9ac19"
+  },
+  "Amalgam Alkonost": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamAlkonost.png?24dac"
+  },
+  "Amalgam Arca Heqet": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamArcaHeqet.png?7e7c4"
+  },
+  "Amalgam Arca Kucumatz": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamArcaKucumatz.png?c7964"
+  },
+  "Amalgam Cinder Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamCinderMachinist.png?f7533"
+  },
+  "Amalgam Heqet": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamHeqet.png?20388"
+  },
+  "Amalgam Kucumatz": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamKucumatz.png?e51c8"
+  },
+  "Amalgam Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamMachinist.png?d100f"
+  },
+  "Amalgam Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamMoa.png?dbc0a"
+  },
+  "Amalgam Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamOsprey.png?7d51c"
+  },
+  "Amalgam Phase Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamPhaseMoa.png?02349"
+  },
+  "Amalgam Satyr": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamSatyr.png?1eb21"
+  },
+  "Amalgam Swarm Satyr": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamSwarmSatyr.png?5dcc0"
+  },
+  "Ambulas": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CodexAmbulas.png?39577"
+  },
+  "Anarch Arcus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchArcus.png?2023b"
+  },
+  "Anarch Arcus Lustratus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchArcus.png?2023b"
+  },
+  "Anarch Capsarii": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchCapsarii.png?913cc"
+  },
+  "Anarch Gladius": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchGladius.png?2b659"
+  },
+  "Anarch Grineer Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchGrineerLancer.png?9ff40"
+  },
+  "Anarch Grineer Trapper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchGrineerTrapper.png?425f2"
+  },
+  "Anarch Libritor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchLibritor.png?b387c"
+  },
+  "Anarch Tenebra": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AnarchTenebra.png?7dffb"
+  },
+  "Ancient Disruptor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AncientDisrupter.png?9afa1"
+  },
+  "Ancient Healer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HealerAncientDE.png?56e7c"
+  },
+  "Ancient Infested": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FactionsInfested.png?ee4f6"
+  },
+  "Ancient Maggot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEMaggot.png?9dc42"
+  },
+  "Ancient Molted Cask": {
+   "kind": "object",
+   "art": null
+  },
+  "Ancient Mutalist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FactionsInfested.png?ee4f6"
+  },
+  "Ancient Protector": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AncientProtector.png?5d286"
+  },
+  "Ancient Undying Flyer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/UndyingFlyer.png?5aba4"
+  },
+  "Angst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Angst.png?24e32"
+  },
+  "Another Betrayer": {
+   "kind": "activity",
+   "art": null
+  },
+  "Anti Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEAntiMoa.png?b3656"
+  },
+  "Anu Brachiolyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Brachiolyst.png?d444f"
+  },
+  "Anu Mantalyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientMeleeTrooper.png?4c8f4"
+  },
+  "Anu Pyrolyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientTrooper.png?4c8f4"
+  },
+  "Anu Symbilyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Symbilyst.png?6ea78"
+  },
+  "Apex Membroid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juvenile_Membroid.png?3b13e"
+  },
+  "Arbitration Shield Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArbiterDrone.png?d78c5"
+  },
+  "Arbitrations": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/Arbitrations.png?e33e3"
+  },
+  "Arcane Boiler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PussAncient.png?65282"
+  },
+  "Archimedean Itzam": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Warframe_Itzam.jpg?f782c"
+  },
+  "Archon Amar": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArchonAmar.png?09983"
+  },
+  "Archon Boreal": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArchonBoreal.png?1174b"
+  },
+  "Archon Nira": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArchonNira.png?37ec9"
+  },
+  "Arid Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Arid Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Arid Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Arid Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HellionDE.png?0abd3"
+  },
+  "Arid Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Arid Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Arid Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Armaments Director": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArmamentsDirector.png?6b369"
+  },
+  "Armis Ulta": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArmisUlta.png?b9644"
+  },
+  "Artificer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerArtificer.png?d005d"
+  },
+  "Ashen Kuaka": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuakaCommon.png?7316d"
+  },
+  "Asteroid Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Raknoidsandorbs.jpg?4e806"
+  },
+  "Attack Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FusionDroneDE.png?dc31d"
+  },
+  "Attack Mutalist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Attack_Mutalist.png?6823a"
+  },
+  "Auditor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamBRiotMoaAgent.png?a6284"
+  },
+  "Aurax Actinic": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxActinic.png?70e10"
+  },
+  "Aurax Atloc Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxAtlocRaknoid.png?70e10"
+  },
+  "Aurax Baculus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxBaculus.png?2db9e"
+  },
+  "Aurax Culveri Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxCulveriMOA.png?3012d"
+  },
+  "Aurax Polaris Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxPolarisMOA.png?3012d"
+  },
+  "Aurax Vertec": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxVertec.png?107ce"
+  },
+  "Axio Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasilisk.png?17eda"
+  },
+  "Axio Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Axio Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroCrewship.png?6e4eb"
+  },
+  "Axio Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Axio Disc Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoDiscMOA.png?855ca"
+  },
+  "Axio Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Axio Engineer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroEngineer.png?32a76"
+  },
+  "Axio Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Axio Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpi.png?46652"
+  },
+  "Axio Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Axio Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Axio Numon": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroNumon.png?7d90d"
+  },
+  "Axio Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroPilot.png?ecd01"
+  },
+  "Axio Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Axio Ranger Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroRangerCrewman.png?41593"
+  },
+  "Axio Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Axio Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Axio Stropha Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroStrophaCrewman.png?bf4a2"
+  },
+  "Axio Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Axio Vambac": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroVambac.png?51275"
+  },
+  "Axio Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaver.png?c868c"
+  },
+  "Axio Zerca": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AxioZerca.png?adf2c"
+  },
+  "Azoth": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamBHyenaAgent.png?a6284"
+  },
+  "Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Bailiff Defector": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerDefector.png?993d6"
+  },
+  "Ballista": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeaLabBallista.png?b521d"
+  },
+  "Baro Void-Signal": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/BaroVoid-Signal.png?472a5"
+  },
+  "Basal Diploid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BasalDiploid.png?91894"
+  },
+  "Basal Diploid Rex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BasalDiploid.png?91894"
+  },
+  "Battalyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientTrooper.png?4c8f4"
+  },
+  "Bladeswarm Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Bladeswarm Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasilisk.png?17eda"
+  },
+  "Bladeswarm Cannon Battery": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FortressAutoTurret.png?0939d"
+  },
+  "Bladeswarm Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroCrewship.png?6e4eb"
+  },
+  "Bladeswarm Derivator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DerivatorCrewman.png?d5b82"
+  },
+  "Bladeswarm Dreg": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnDrone.png?1fbe0"
+  },
+  "Bladeswarm Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Bladeswarm Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Bladeswarm Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutrider.png?ae509"
+  },
+  "Bladeswarm Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Bladeswarm Ramsled": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ramsled.png?7f547"
+  },
+  "Bladeswarm Roller Sentry": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollerTurret.png?bda4d"
+  },
+  "Bladeswarm Scrambus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogScrambus.png?e828b"
+  },
+  "Bladeswarm Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Bladeswarm Sniper Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanSniper.png?1938f"
+  },
+  "Bladeswarm Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaver.png?c868c"
+  },
+  "Blite Captain": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BliteCaptain.png?e0624"
+  },
+  "Bloodfrenzy Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Bloodfrenzy Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Bloodfrenzy Dreg": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnDrone.png?1fbe0"
+  },
+  "Bloodfrenzy Elite Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutriderElite.png?ae509"
+  },
+  "Bloodfrenzy Exo Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutter.png?f275d"
+  },
+  "Bloodfrenzy Expired": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulExpired.png?e4c45"
+  },
+  "Bloodfrenzy Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Bloodfrenzy Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpi.png?46652"
+  },
+  "Bloodfrenzy Hyena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEHyenacombine.png?d2ebf"
+  },
+  "Bloodfrenzy Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusMachinist.png?3cad0"
+  },
+  "Bloodfrenzy Optio": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Optio.png?d1106"
+  },
+  "Bloodfrenzy Orm Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Bloodfrenzy Powerclaw": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NightwatchPowerclaw.png?56d32"
+  },
+  "Bloodfrenzy Ramsled": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ramsled.png?7f547"
+  },
+  "Bloodfrenzy Raptor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RaptorTwoMortar.png?49201"
+  },
+  "Bloodfrenzy Sister": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SistersOfParvosTeaser2.jpg?84053"
+  },
+  "Bloodfrenzy Trencher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraTrencher.png?f6291"
+  },
+  "Bloodfrenzy Vertec": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AuraxVertec.png?107ce"
+  },
+  "Boiler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PussAncient.png?65282"
+  },
+  "Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BombardDE.png?1bf39"
+  },
+  "Brachiolyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Brachiolyst.png?d444f"
+  },
+  "Brachiolyst Disperser": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Brachiolyst.png?d444f"
+  },
+  "Breacher Moa": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Brood Mother": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DiseasedAncient.png?6d910"
+  },
+  "Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Cannon Battery": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FortressAutoTurret.png?0939d"
+  },
+  "Captain Vor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CaptainVorFK.png?17445"
+  },
+  "Carabus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Carabus.png?f1312"
+  },
+  "Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Carrier.png?fb038"
+  },
+  "Carrion Charger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Charger.png?b4e20"
+  },
+  "Carrypod": {
+   "kind": "object",
+   "art": null
+  },
+  "Charger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Charger.png?b4e20"
+  },
+  "Chroma": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Chroma_Thumb.png?545f7"
+  },
+  "Cinderthresh Hyena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CinderthreshHyena.png?e491d"
+  },
+  "Coastal Mergoo": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MergooCommon.png?30e53"
+  },
+  "Coildrive": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Coildrive.png?f6854"
+  },
+  "Comet Shard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CometShard.png?ef45b"
+  },
+  "Comet Shredder Captain": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Commandeered Ash Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AshPrime_Thumb.png?373a7"
+  },
+  "Commandeered Caliban Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CalibanPrime_Thumb.png?feeeb"
+  },
+  "Commandeered Ember Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EmberPrime_Thumb.png?f1136"
+  },
+  "Commandeered Mesa Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MesaPrime_Thumb.png?c5a03"
+  },
+  "Commandeered Protea Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ProteaPrime_Thumb.png?56831"
+  },
+  "Commandeered Trinity Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TrinityPrime_Thumb.png?277fd"
+  },
+  "Commandeered Volt Prime": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VoltPrime_Thumb.png?35509"
+  },
+  "Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerMarineLeaderAvatar.png?45f32"
+  },
+  "Common Condroc": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CondrocCommon.png?8289b"
+  },
+  "Common Corpus Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Common Grineer Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Conculyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientMeleeTrooper.png?4c8f4"
+  },
+  "Coolant Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CoolantRaknoid.png?d8184"
+  },
+  "Corpus Cargo Ship": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Corpus Cestra Target": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusCestraTarget.png?017a6"
+  },
+  "Corpus Mining Turret": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Corpus_Mining_Turret.jpg/480px-Corpus_Mining_Turret.jpg?8cd35"
+  },
+  "Corpus Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Corpus Ramsled": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusRamsled.png?810cd"
+  },
+  "Corpus Sniper Target": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusSniperTarget.png?baae2"
+  },
+  "Corpus Supra Target": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusSupraTarget.png?573b1"
+  },
+  "Corpus Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Corpus Trencher Target": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusTrencherTarget.png?3759b"
+  },
+  "Corpus Warden": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEGrineerWarden.png?88589"
+  },
+  "Corrupted Ancient": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinHealingAncientAvatar.png?e90df"
+  },
+  "Corrupted Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorruptedBombardNew.png?3976b"
+  },
+  "Corrupted Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinBladeSawman.png?4e82b"
+  },
+  "Corrupted Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinRifleSpacemanAvatar.png?c53ad"
+  },
+  "Corrupted Drahk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorruptedDrahk.png?d4db7"
+  },
+  "Corrupted Drahk Master": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorruptedDrahkMaster.png?1802f"
+  },
+  "Corrupted Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinHeavyGunner.png?feb9d"
+  },
+  "Corrupted Jackal": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Jackal.png?d26e7"
+  },
+  "Corrupted Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinRifleLancerAvatar.png?6430c"
+  },
+  "Corrupted Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinMoaBipedAvatar.png?4c314"
+  },
+  "Corrupted Nullifier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinNullifySpaceman.png?d83b2"
+  },
+  "Corrupted Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Corrupted Vor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VorTwo.png?f645a"
+  },
+  "Corrupted Warden": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEGrineerWarden.png?88589"
+  },
+  "Corvette": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpShipFlak.png?cd9be"
+  },
+  "Councilor Vay Hek": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VayHekPortrait.png?d29b8"
+  },
+  "Courier": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/Pursuit.png?0fd1d"
+  },
+  "Crawler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrawlerAvatar.png?b3c4e"
+  },
+  "Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Darek Draga": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SquidFrogLancer.png?b3295"
+  },
+  "Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiffMissile.png?2dbd1"
+  },
+  "Dargyn Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonSkiffPilot.png?6574e"
+  },
+  "Datalyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusArtificer.png?b1f43"
+  },
+  "Dax Arcus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DaxArcus.png?35e4f"
+  },
+  "Dax Equitem": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DaxEquitem.png?e54f1"
+  },
+  "Dax Gladius": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DaxGladius.png?267e5"
+  },
+  "Dax Herald": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DaxHerald.png?5c3a7"
+  },
+  "Dax Malleus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DaxMalleus.png?83436"
+  },
+  "Decaying Battalyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientTrooper.png?4c8f4"
+  },
+  "Decaying Conculyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientMeleeTrooper.png?4c8f4"
+  },
+  "Deep Archimedea Gold Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Deep Archimedea Legendary Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Deep Archimedea Silver Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Deimos Ancient Healer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HealerAncientDE.png?56e7c"
+  },
+  "Deimos Brood Mother": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DiseasedAncient.png?6d910"
+  },
+  "Deimos Carnis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosCarnis.png?d2d9d"
+  },
+  "Deimos Carnis Rex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosCarnis.png?d2d9d"
+  },
+  "Deimos Charger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Charger.png?b4e20"
+  },
+  "Deimos Juggernaut": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juggernaut.png?61b81"
+  },
+  "Deimos Jugulus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosJugulus.png?8ed68"
+  },
+  "Deimos Jugulus Rex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosJugulus.png?8ed68"
+  },
+  "Deimos Leaper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LeaperDE.png?c35ab"
+  },
+  "Deimos Leaping Thrasher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LeapingThrasher.png?947f4"
+  },
+  "Deimos Mutalist Osprey Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Deimos Runner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedRunner.png?70f77"
+  },
+  "Deimos Saxum": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosSaxum.png?1e85c"
+  },
+  "Deimos Saxum Rex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosSaxum.png?1e85c"
+  },
+  "Deimos Swarm Mutalist Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NaniteInfestedMoa.png?f6284"
+  },
+  "Deimos Tendril Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedTendrilDroneAvatar.png?3ef6e"
+  },
+  "Deimos Therid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosTherid.png?7d45a"
+  },
+  "Deimos Undying Flyer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/UndyingFlyer.png?5aba4"
+  },
+  "Deimos Venin Mutalist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CodexVeninMutalist.png?f690b"
+  },
+  "Demolisher Anti Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEAntiMoa.png?b3656"
+  },
+  "Demolisher Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Demolisher Boiler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PussAncient.png?65282"
+  },
+  "Demolisher Bonewidow": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Bonewidow.png?bc601"
+  },
+  "Demolisher Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RiotMoaDispersion.png?cbf15"
+  },
+  "Demolisher Charger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Charger.png?b4e20"
+  },
+  "Demolisher Devourer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulDevourer.png?5953d"
+  },
+  "Demolisher Expired": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulExpired.png?e4c45"
+  },
+  "Demolisher Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Demolisher Hyena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEHyenacombine.png?d2ebf"
+  },
+  "Demolisher Juggernaut": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juggernaut.png?61b81"
+  },
+  "Demolisher Kuva Guardian": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RoyalGuard.png?74a82"
+  },
+  "Demolisher Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusMachinist.png?3cad0"
+  },
+  "Demolisher Nox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Nox.png?1a351"
+  },
+  "Demolisher Thrasher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LeapingThrasher.png?947f4"
+  },
+  "Demolisher Voidrig": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Voidrig.png?1b92f"
+  },
+  "Demolyst Heqet": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamHeqet.png?20388"
+  },
+  "Demolyst Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamMachinist.png?d100f"
+  },
+  "Demolyst Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamMoa.png?dbc0a"
+  },
+  "Demolyst Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamOsprey.png?7d51c"
+  },
+  "Demolyst Satyr": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AmalgamSatyr.png?1eb21"
+  },
+  "Denial Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RiotMoaPrevention.png?cbf15"
+  },
+  "Derelict Vault": {
+   "kind": "activity",
+   "art": null
+  },
+  "Derim Zahn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamCHackerAgent.png?10d04"
+  },
+  "Derivator Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DerivatorCrewman.png?d5b82"
+  },
+  "Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Draga": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FrogLancer.png?e5eb7"
+  },
+  "Drahk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnArmoredKubrow.png?5f2e1"
+  },
+  "Drahk Master": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnBeastMaster.png?1fbe0"
+  },
+  "Dreg": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnDrone.png?1fbe0"
+  },
+  "Drekar Ballista": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeaLabBallista.png?b521d"
+  },
+  "Drekar Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Drekar Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Drekar Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Drekar Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Drekar Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HellionDE.png?0abd3"
+  },
+  "Drekar Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Drekar Manic": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerManic.png?b4053"
+  },
+  "Drekar Manic Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerManicBombard.png?05dd1"
+  },
+  "Drekar Scorpion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonPredator.png?986d8"
+  },
+  "Drekar Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Drekar Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Drover Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RiotMoaControl.png?cbf15"
+  },
+  "Dru Pesfor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DruPesfor.png?9e367"
+  },
+  "Dusty Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Dusty Storage Crate": {
+   "kind": "object",
+   "art": null
+  },
+  "Duviri Circuit": {
+   "kind": "activity",
+   "art": null
+  },
+  "Duviri Full Experience": {
+   "kind": "activity",
+   "art": null
+  },
+  "Duviri Murmur Invasion Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Duviri Static Undercroft Portal": {
+   "kind": "activity",
+   "art": null
+  },
+  "Eidolon Gantulyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TeralystBig.png?0e89a"
+  },
+  "Eidolon Hydrolyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TeralystRain.png?0e89a"
+  },
+  "Eidolon Teralyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Teralyst.png?3ae8f"
+  },
+  "Eidolon Vomvalyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Vomvalyst.png?7aa62"
+  },
+  "Electric Crawler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEElectricCrawler.png?e4e3f"
+  },
+  "Elementa Arcocanid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RogueArcocanid.png?e154b"
+  },
+  "Elementa Culverin": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RogueCulverin.png?f2333"
+  },
+  "Elite Arid Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Elite Axio Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasiliskElite.png?59568"
+  },
+  "Elite Axio Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpiElite.png?2bf93"
+  },
+  "Elite Axio Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaverElite.png?f6612"
+  },
+  "Elite Bladeswarm Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasilisk.png?17eda"
+  },
+  "Elite Bladeswarm Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaver.png?c868c"
+  },
+  "Elite Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RiotMoaDispersion.png?cbf15"
+  },
+  "Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Elite Exo Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutterElite.png?fc5cb"
+  },
+  "Elite Exo Flak": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaFlakElite.png?69401"
+  },
+  "Elite Exo Gokstad Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ExoGokstadCrewship.png?ae509"
+  },
+  "Elite Exo Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutriderElite.png?ae509"
+  },
+  "Elite Exo Taktis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaTaktisElite.png?d4d5f"
+  },
+  "Elite Frontier Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Elite Gyre Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutterElite.png?fc5cb"
+  },
+  "Elite Gyre Flak": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaFlakElite.png?69401"
+  },
+  "Elite Gyre Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutriderElite.png?ae509"
+  },
+  "Elite Gyre Taktis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaTaktisElite.png?d4d5f"
+  },
+  "Elite Kosma Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutterElite.png?fc5cb"
+  },
+  "Elite Kosma Flak": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaFlakElite.png?69401"
+  },
+  "Elite Kosma Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutriderElite.png?ae509"
+  },
+  "Elite Kosma Taktis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaTaktisElite.png?d4d5f"
+  },
+  "Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Elite Orm Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasiliskElite.png?59568"
+  },
+  "Elite Orm Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpiElite.png?2bf93"
+  },
+  "Elite Orm Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaverElite.png?f6612"
+  },
+  "Elite Sanctuary Onslaught": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/SanctuaryOnslaught.png?0bc6d"
+  },
+  "Elite Shield Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShieldLancer.png?5a7f2"
+  },
+  "Elite Taro Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasiliskElite.png?59568"
+  },
+  "Elite Taro Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpiElite.png?2bf93"
+  },
+  "Elite Taro Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaverElite.png?f6612"
+  },
+  "Elite Vorac Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasiliskElite.png?59568"
+  },
+  "Elite Vorac Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpiElite.png?2bf93"
+  },
+  "Elite Vorac Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaverElite.png?f6612"
+  },
+  "Ember Specter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Junction.jpg?1c5ae"
+  },
+  "Emperor Condroc": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CondrocCommon.png?8289b"
+  },
+  "Enter Nihil's Oubliette": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/EnterNihil%27sOubliette.png?1c035"
+  },
+  "Entrati Netracell Coffer": {
+   "kind": "object",
+   "art": null
+  },
+  "Equisitus Hoard": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/CodexCommonCorpusStorageContainer.png?706c9"
+  },
+  "Erra": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Erra.png/480px-Erra.png?e2499"
+  },
+  "Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Executioner Dhurnam": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerHeavy.png?e9532"
+  },
+  "Exemplar Granum Crown Cache": {
+   "kind": "object",
+   "art": null
+  },
+  "Eximus Enemy": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteLancerEximus.png?0fca2"
+  },
+  "Exo Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Exo Carabus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Carabus.png?f1312"
+  },
+  "Exo Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutter.png?f275d"
+  },
+  "Exo Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Exo Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Exo Flak": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaFlak.png?69401"
+  },
+  "Exo Gokstad Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadCrewship.png?7ed30"
+  },
+  "Exo Gokstad Officer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadOfficer.png?bc1f7"
+  },
+  "Exo Gokstad Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadPilot.png?144c2"
+  },
+  "Exo Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutrider.png?ae509"
+  },
+  "Exo Raider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaider.png?5dbc2"
+  },
+  "Exo Raider Carver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaiderCarver.png?3729a"
+  },
+  "Exo Raider Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaiderEviscerator.png?ff978"
+  },
+  "Exo Roller Sentry": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollerTurret.png?bda4d"
+  },
+  "Exo Skold Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/UnidentifiedItem%28xBlack%29.png?6eed9"
+  },
+  "Exo Supressor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaSupressor.png?038b8"
+  },
+  "Exo Taktis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaTaktis.png?b4b86"
+  },
+  "Experimental Arc-Relay Reserve": {
+   "kind": "object",
+   "art": null
+  },
+  "Exploiter Orb": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ExploiterOrb.png?71b35"
+  },
+  "Extended Granum Void": {
+   "kind": "activity",
+   "art": null
+  },
+  "Faceoff: Single Squad": {
+   "kind": "activity",
+   "art": null
+  },
+  "Faceoff: Squad VS Squad": {
+   "kind": "activity",
+   "art": null
+  },
+  "Family Reunion": {
+   "kind": "activity",
+   "art": null
+  },
+  "Feral Diploid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FeralDiploid.png?f6268"
+  },
+  "Feral Diploid Rex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FeralDiploid.png?f6268"
+  },
+  "Feyarch Specter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FeyarchOberon.png?ce923"
+  },
+  "Flameblade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Flameblade.png?bea80"
+  },
+  "Fog Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Fog Scrambus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogScrambus.png?e828b"
+  },
+  "Fomorian Sabotage": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/Fomorian_Fleet.png?21c06"
+  },
+  "Forgotten Grineer Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Frigate": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpShipLaser.png?50d60"
+  },
+  "Frontier Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Frontier Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Frontier Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Frontier Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Frontier Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HellionDE.png?0abd3"
+  },
+  "Frontier Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Frontier Regulator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RegulatorDE.png?d6bc6"
+  },
+  "Frontier Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Frontier Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Fusion Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaFusion.png?6a03b"
+  },
+  "Galleon Of Ghouls": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/TacticalAlertHeader.png?71846"
+  },
+  "Garv": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Garv.png?12660"
+  },
+  "General Sargas Ruk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GeneralSargasRukFK.png?1f631"
+  },
+  "Ghost Kuaka": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuakaCommon.png?7316d"
+  },
+  "Ghoul Auger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulDrillSergeant.png?e3b33"
+  },
+  "Ghoul Auger Alpha": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulDrillSergeant.png?e3b33"
+  },
+  "Ghoul Devourer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulDevourer.png?5953d"
+  },
+  "Ghoul Expired": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulExpired.png?e4c45"
+  },
+  "Ghoul Rictus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulSawman.png?1e078"
+  },
+  "Ghoul Rictus Alpha": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulSawman.png?1e078"
+  },
+  "Glacik Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GlacikCommander.png?cd366"
+  },
+  "Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Gox Scavenger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/GOX_SCAVENGER_%28CALL_OF_THE_TEMPESTARII%29.jpg/480px-GOX_SCAVENGER_%28CALL_OF_THE_TEMPESTARII%29.jpg?954e5"
+  },
+  "Granum Crown Cache": {
+   "kind": "object",
+   "art": null
+  },
+  "Granum Void": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/GranumVoidScene.png?80363"
+  },
+  "Grineer Manic": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerManic.png?b4053"
+  },
+  "Grineer Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Grineer Warden": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEGrineerWarden.png?88589"
+  },
+  "Grokdrul Drum": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrokdrulDrum.png?f3dac"
+  },
+  "Guardsman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerProsecutor.png?aced1"
+  },
+  "Gyre Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Gyre Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutter.png?f275d"
+  },
+  "Gyre Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Gyre Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Gyre Flak": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaFlak.png?69401"
+  },
+  "Gyre Gokstad Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadCrewship.png?7ed30"
+  },
+  "Gyre Gokstad Officer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadOfficer.png?bc1f7"
+  },
+  "Gyre Gokstad Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadPilot.png?144c2"
+  },
+  "Gyre Hyena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GyreHyena.png?e3c36"
+  },
+  "Gyre Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutrider.png?ae509"
+  },
+  "Gyre Raider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaider.png?5dbc2"
+  },
+  "Gyre Raider Carver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaiderCarver.png?3729a"
+  },
+  "Gyre Raider Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaiderEviscerator.png?ff978"
+  },
+  "Gyre Roller Sentry": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollerTurret.png?bda4d"
+  },
+  "Gyre Supressor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaSupressor.png?038b8"
+  },
+  "Gyre Taktis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaTaktis.png?b4b86"
+  },
+  "Gyrix": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Gyrix.png?91655"
+  },
+  "H-09 Apex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/H-09ApexTank.png?4d16b"
+  },
+  "H-09 Efervon Tank": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianTank.png?5a1f2"
+  },
+  "Hallowed Flame Endurance Caches": {
+   "kind": "object",
+   "art": null
+  },
+  "Hallowed Flame Mission Caches": {
+   "kind": "object",
+   "art": null
+  },
+  "Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HellionDE.png?0abd3"
+  },
+  "Hellion Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiffMissile.png?2dbd1"
+  },
+  "Hellion Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Help Clem Retrieve The Relic": {
+   "kind": "activity",
+   "art": null
+  },
+  "Hemocyte": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonLephantis.png?db94a"
+  },
+  "Hot Mess": {
+   "kind": "activity",
+   "art": null
+  },
+  "Hunhow": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/WarframeHunhowFullBody.png?2e728"
+  },
+  "Hyekka": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CombatCatbrow.png?6aa1a"
+  },
+  "Hyekka Master": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CatMaster.png?dc014"
+  },
+  "Hyena Ln2": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEHyenaLN2.png?901d2"
+  },
+  "Hyena Ng": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEHyenaLN2.png?901d2"
+  },
+  "Hyena Pb": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEHyenaLN2.png?901d2"
+  },
+  "Hyena Th": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEHyenaLN2.png?901d2"
+  },
+  "Icemire Hyena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/IcemireHyena.png?06eb5"
+  },
+  "Infested Corpus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Infested_Corpus_WB.png/480px-Infested_Corpus_WB.png?aed70"
+  },
+  "Infested Grineer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Infested_Grineer_WB.png/480px-Infested_Grineer_WB.png?52792"
+  },
+  "Infested Mesa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RogueGunslinger.png?65282"
+  },
+  "Infested Oni": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DeimosCarnisRex.png?8be3c"
+  },
+  "Ionyx": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ionyx.png?91655"
+  },
+  "Iradite Formation": {
+   "kind": "object",
+   "art": null
+  },
+  "Isolator Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RiotMoaDispersion.png?cbf15"
+  },
+  "J3 Jordas Golem": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/J3Golem.png?8d772"
+  },
+  "Jack O'Naut": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juggernaut.png?61b81"
+  },
+  "Jackal": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/QuadJackal.png?283bf"
+  },
+  "Jad Teran": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamBDisruptorAgent.png?62fa7"
+  },
+  "Jade Mockery": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Janus Captain Vor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VorPortrait_d.png?3387d"
+  },
+  "Jarka Lar": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JarkaLar.png?9ff10"
+  },
+  "Jen Dro": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamCDeceptionAgent.png?10835"
+  },
+  "Jordas Golem": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/J3Golem.png?8d772"
+  },
+  "Jordas Golem Assassinate": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/J3Golem.png?8d772"
+  },
+  "Juggernaut": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juggernaut.png?61b81"
+  },
+  "Juggernaut Behemoth": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JuggernautBoss.png?42ecd"
+  },
+  "Juno Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Juno Dera Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Juno Disc Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoDiscMOA.png?855ca"
+  },
+  "Juno Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Juno Fog Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Juno Geminex Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoGeminexMOA.png?47279"
+  },
+  "Juno Glaxion Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoGlaxionMOA.png?0a2d8"
+  },
+  "Juno Jactus Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoJactusOsprey.png?c34b1"
+  },
+  "Juno Malleus Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusMachinist.png?3cad0"
+  },
+  "Juno Nul Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Juno Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Juno Oxium Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OspreySuicide.png?04005"
+  },
+  "Juno Sap Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Juno Sapper Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoSapperMOA.png?cd7b1"
+  },
+  "Juno Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Juno Slo Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Juno Sniper Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanSniper.png?1938f"
+  },
+  "Juno Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Juvenile Membroid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juvenile_Membroid.png?3b13e"
+  },
+  "Kavat": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/IconKavat%28xWhite%29.png?e3acf"
+  },
+  "Kela De Thaym": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KelaDeThaym.png?536c8"
+  },
+  "Knave Specter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LokiKnave.png?51713"
+  },
+  "Kosma Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Kosma Cutter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaCutter.png?f275d"
+  },
+  "Kosma Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Kosma Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Kosma Flak": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaFlak.png?69401"
+  },
+  "Kosma Gokstad Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadCrewship.png?7ed30"
+  },
+  "Kosma Gokstad Officer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadOfficer.png?bc1f7"
+  },
+  "Kosma Gokstad Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaGokstadPilot.png?144c2"
+  },
+  "Kosma Outrider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaOutrider.png?ae509"
+  },
+  "Kosma Raider": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaider.png?5dbc2"
+  },
+  "Kosma Raider Carver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaiderCarver.png?3729a"
+  },
+  "Kosma Raider Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaRaiderEviscerator.png?ff978"
+  },
+  "Kosma Ramsled": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ramsled.png?7f547"
+  },
+  "Kosma Roller Sentry": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollerTurret.png?bda4d"
+  },
+  "Kosma Supressor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaSupressor.png?038b8"
+  },
+  "Kosma Taktis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KosmaTaktis.png?b4b86"
+  },
+  "Kubrow": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/IconKubrow%28xWhite%29.png?68bc2"
+  },
+  "Kullervo's Hold": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/DuviriLandscape.png?10a0c"
+  },
+  "Kuva Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Kuva Ballista": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeaLabBallista.png?b521d"
+  },
+  "Kuva Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BombardDE.png?1bf39"
+  },
+  "Kuva Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Kuva Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiff.png?10466"
+  },
+  "Kuva Drahk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnArmoredKubrow.png?5f2e1"
+  },
+  "Kuva Drahk Master": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnBeastMaster.png?1fbe0"
+  },
+  "Kuva Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Kuva Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Kuva Flameblade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Flameblade.png?bea80"
+  },
+  "Kuva Flood": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuvaSiphon.png?aae56"
+  },
+  "Kuva Guardian": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RoyalGuard.png?74a82"
+  },
+  "Kuva Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Kuva Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HellionDE.png?0abd3"
+  },
+  "Kuva Hellion Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Kuva Hyekka": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CombatCatbrow.png?6aa1a"
+  },
+  "Kuva Hyekka Master": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CatMaster.png?dc014"
+  },
+  "Kuva Jester": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Jester.png?e6879"
+  },
+  "Kuva Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Kuva Larvling": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/WolfGangster.png?f2a6a"
+  },
+  "Kuva Lich Agor Rok": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuvaLiches.jpg?e49c0"
+  },
+  "Kuva Napalm": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/IncendiaryBombardAvatar.png?d50e0"
+  },
+  "Kuva Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Kuva Powerclaw": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonPredator.png?986d8"
+  },
+  "Kuva Roller": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollingDroneAvatar.png?012f7"
+  },
+  "Kuva Scorch": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FlameLancerAvatar.png?b9509"
+  },
+  "Kuva Scorpion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonPredator.png?986d8"
+  },
+  "Kuva Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Kuva Shield Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldLancerAvatar.png?00f02"
+  },
+  "Kuva Siphon": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuvaSiphon.png?aae56"
+  },
+  "Kuva Trokarian": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuvaTrokarian.png?fa148"
+  },
+  "Kuva Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Kyta Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KytaRaknoid.png?78503"
+  },
+  "Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Lancer Dreg": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnLaserDrone.png?77fb4"
+  },
+  "Lancer Survivor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Latcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollingDroneAvatar.png?012f7"
+  },
+  "Latrox Une": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LatroxUne.png?9ff10"
+  },
+  "Leaper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LeaperDE.png?c35ab"
+  },
+  "Leaping Thrasher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LeapingThrasher.png?947f4"
+  },
+  "Leech Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LeechOspreyDE.png?de9b0"
+  },
+  "Leekter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DELeekter.png?a4caa"
+  },
+  "Lektro Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LektroCommander.png?cd366"
+  },
+  "Lephantis": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GolemFullAvatar.png?49439"
+  },
+  "Lobber Crawler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrenadeAvatar.png?378eb"
+  },
+  "Lockjaw & Sol": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamAZanukaAgent.png?62fa7"
+  },
+  "Locust Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpSwarmDrone.png?b5905"
+  },
+  "Lt Lech Kril": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LechKril.png?8985a"
+  },
+  "Lumbering Fragment": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LumberingFragment.png?3e732"
+  },
+  "Lynx": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpMiniJackal.png?bce8c"
+  },
+  "Lyon Allard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LyonGeminiSkin.png?fb455"
+  },
+  "M-W.A.M.": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamCMoaAgent.png?6b345"
+  },
+  "Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusMachinist.png?3cad0"
+  },
+  "Malice": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Malice.png?e85c9"
+  },
+  "Mania": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Mania.png?24e32"
+  },
+  "Manic Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerManicBombard.png?05dd1"
+  },
+  "Marie Leroux": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MarieGeminiSkin.png?7ac98"
+  },
+  "Mature Membroid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juvenile_Membroid.png?3b13e"
+  },
+  "Mawbound Director": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Mimic": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MimicSentient.png?d105a"
+  },
+  "Mine Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MineOspreyDE.png?fbb8a"
+  },
+  "Minima Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MinimaMOA.png?0828b"
+  },
+  "Misery": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Misery.png?9b2fa"
+  },
+  "Mite Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MiteRaknoid.png?c6f7b"
+  },
+  "Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Mocking Whisper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DoppelgangerAvatar.png?ec003"
+  },
+  "Molted Cask": {
+   "kind": "object",
+   "art": null
+  },
+  "Mutalist Alad V": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedAladV2.png?98cc0"
+  },
+  "Mutalist Alad V Assassinate": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/InfestedAladV2.png?98cc0"
+  },
+  "Mutalist Cannon Battery": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FortressAutoTurret.png?0939d"
+  },
+  "Mutalist Lightning Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MutalistLightningCarrier.png?6b66f"
+  },
+  "Mutalist Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedOsprey.png?f645a"
+  },
+  "Mutalist Osprey Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Mutalist Toxic Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MutalistToxicCarrier.png?636cf"
+  },
+  "Nako Xol": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamARifleAgent.png?8be49"
+  },
+  "Napalm": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/IncendiaryBombardAvatar.png?d50e0"
+  },
+  "Narmer Ballista": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerGrineerFemale.png?45cd4"
+  },
+  "Narmer Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerBombard.png?54b36"
+  },
+  "Narmer Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Narmer Cache": {
+   "kind": "object",
+   "art": null
+  },
+  "Narmer Coildrive": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCoildrive.png?b5ffc"
+  },
+  "Narmer Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerBossLancer.png?dd91d"
+  },
+  "Narmer Corpus Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusTech.png?ec512"
+  },
+  "Narmer Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusRifle.png?2849f"
+  },
+  "Narmer Crewman Warden": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusRifle.png?2849f"
+  },
+  "Narmer Demolisher Bailiff": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Narmer Demolisher Expired": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GhoulExpired.png?e4c45"
+  },
+  "Narmer Demolisher Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DemolisherHeavyGunner.png?21671"
+  },
+  "Narmer Dera Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusDeraMoa.png?54277"
+  },
+  "Narmer Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusShotgun.png?0421b"
+  },
+  "Narmer Detron Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmanDera.png?ef01c"
+  },
+  "Narmer Disc Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusDiscMoa.png?0a51b"
+  },
+  "Narmer Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Narmer Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Narmer Elite Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmanDera.png?ef01c"
+  },
+  "Narmer Flameblade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerBlowtorchSawman.png?b24d6"
+  },
+  "Narmer Geminex Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusDualCannonDrone.png?3ee95"
+  },
+  "Narmer Glaxion Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusGlaxionMoa.png?3ee95"
+  },
+  "Narmer Gunner Warden": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Narmer_Gunner_Warden.jpg/480px-Narmer_Gunner_Warden.jpg?8bf12"
+  },
+  "Narmer Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerMinigunBombard.png?23977"
+  },
+  "Narmer Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerJetpackMarine.png?5f79a"
+  },
+  "Narmer Jailer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusGuard.png?e915b"
+  },
+  "Narmer Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerRifleLancer.png?eb38b"
+  },
+  "Narmer Leech Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusLeechDrone.png?5c2fd"
+  },
+  "Narmer Machinist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CorpusMachinist.png?3cad0"
+  },
+  "Narmer Mine Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusMineDrone.png?0740a"
+  },
+  "Narmer Mite": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MiteRaknoid.png?c6f7b"
+  },
+  "Narmer Napalm": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerIncendiaryBombard.png?3d3a3"
+  },
+  "Narmer Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusNullifier.png?1cac2"
+  },
+  "Narmer Nullifier Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmanDera.png?ef01c"
+  },
+  "Narmer Observation Drone": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Narmer Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusShieldDrone.png?be2af"
+  },
+  "Narmer Oxium Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OspreySuicide.png?04005"
+  },
+  "Narmer Power Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Narmer Powerfist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerPistonSawman.png?de87b"
+  },
+  "Narmer Prod Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusMelee.png?a87f8"
+  },
+  "Narmer Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerBossArachnoid.png?54b36"
+  },
+  "Narmer Regulator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RegulatorDE.png?d6bc6"
+  },
+  "Narmer Sapping Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusDiscDrone.png?54277"
+  },
+  "Narmer Scavenger Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ScavangerOspreyDE.png?c1779"
+  },
+  "Narmer Scorch": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerFlameLancer.png?d8343"
+  },
+  "Narmer Scorpion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerMacheteWoman.png?ec654"
+  },
+  "Narmer Scyto Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ScytoRaknoid.png?b2742"
+  },
+  "Narmer Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Narmer Sensolyst Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Narmer_Sensolyst_Drone.png?faa92"
+  },
+  "Narmer Shield Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerShieldLancer.png?0df08"
+  },
+  "Narmer Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusShieldDrone.png?be2af"
+  },
+  "Narmer Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Narmer Sniper Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusSniper.png?216d3"
+  },
+  "Narmer Sniper Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposSniperRanger.png?bd15b"
+  },
+  "Narmer Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerCorpusTech.png?ec512"
+  },
+  "Narmer Tech Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerTechRanger.png?17b5b"
+  },
+  "Narmer Thumper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TuskThumperDoma.png?279ec"
+  },
+  "Narmer Thumper Bull": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TuskThumperBull.png?279ec"
+  },
+  "Narmer Thumper Doma": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TuskThumperDoma.png?279ec"
+  },
+  "Narmer Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NarmerShotgunLancer.png?0df08"
+  },
+  "Nascent Membroid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juvenile_Membroid.png?3b13e"
+  },
+  "Nauseous Crawler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NauseousCrawlerDE.png?3103d"
+  },
+  "Nauseous Void Shade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Void_Shade.jpg/480px-Void_Shade.jpg?44646"
+  },
+  "Necramech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Necramech.jpg?37a55"
+  },
+  "Nemes": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Nemes.png?013e9"
+  },
+  "Nightmare Granum Void": {
+   "kind": "activity",
+   "art": null
+  },
+  "Nightmare Mode Rewards": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/Nightmare_Mode_UI.png?87f16"
+  },
+  "Nightwatch Carrier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PowercellLancer.png?e2c81"
+  },
+  "Nightwatch Reaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Nokko: Corporate Restructuring": {
+   "kind": "activity",
+   "art": null
+  },
+  "Nokko: Corporate Restructuring Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Nokko: Critter Liberation Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Nokko: Weed The Gardens Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Nox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Nox.png?1a351"
+  },
+  "Nul Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Nul Scrambus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogScrambus.png?e828b"
+  },
+  "Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Observation Drone": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Ogma": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnCombatPod.png?5f2e1"
+  },
+  "Omnipak": {
+   "kind": "object",
+   "art": null
+  },
+  "Operation: Orphix Venom": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/OrphixVenomKeyart.png?6bf6c"
+  },
+  "Optio": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Optio.png?d1106"
+  },
+  "Orb Vallis - Enrichment Labs Enemies": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Orb_Vallis.png?7f8e7"
+  },
+  "Orb Vallis - Spaceport Enemies": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Orb_Vallis.png?7f8e7"
+  },
+  "Orb Vallis - Temple of Profit Enemies": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Orb_Vallis.png?7f8e7"
+  },
+  "Orm Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasilisk.png?17eda"
+  },
+  "Orm Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Orm Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroCrewship.png?6e4eb"
+  },
+  "Orm Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Orm Disc Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoDiscMOA.png?855ca"
+  },
+  "Orm Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Orm Engineer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroEngineer.png?32a76"
+  },
+  "Orm Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Orm Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpi.png?46652"
+  },
+  "Orm Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Orm Nemes": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Nemes.png?013e9"
+  },
+  "Orm Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Orm Numon": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroNumon.png?7d90d"
+  },
+  "Orm Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroPilot.png?ecd01"
+  },
+  "Orm Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Orm Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmanDera.png?ef01c"
+  },
+  "Orm Ranger Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroRangerCrewman.png?41593"
+  },
+  "Orm Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Orm Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Orm Stropha Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroStrophaCrewman.png?bf4a2"
+  },
+  "Orm Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Orm Vambac": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroVambac.png?51275"
+  },
+  "Orm Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaver.png?c868c"
+  },
+  "Orm Zerca": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AxioZerca.png?adf2c"
+  },
+  "Orokin Derelict Assassinate": {
+   "kind": "activity",
+   "art": null
+  },
+  "Orokin Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinShieldDroneAvatar.png?fdce9"
+  },
+  "Orokin Spectator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrokinShieldDroneAvatar.png?fdce9"
+  },
+  "Orokin Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Orphid Husks": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Orphid Specter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OrphidSaryn.png?ce923"
+  },
+  "Ortholyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ortholyst.png?12a1c"
+  },
+  "Oxium Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OspreySuicide.png?04005"
+  },
+  "Pelna Cade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamASkateAgent.png?62fa7"
+  },
+  "Penta Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmanPenta.png?905d7"
+  },
+  "Phorid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/QuadrupedVIPAvatar.png?231e4"
+  },
+  "Phorid Assassination": {
+   "kind": "activity",
+   "art": null
+  },
+  "Plains Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonVipGrunt.png?1d4d0"
+  },
+  "Plains Kuaka": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/KuakaCommon.png?7316d"
+  },
+  "Polished Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Polished Storage Crate": {
+   "kind": "object",
+   "art": null
+  },
+  "Polyp-Hog Juggernaut": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Juggernaut.png?61b81"
+  },
+  "Powerfist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonPredator.png?986d8"
+  },
+  "Primm": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VERD-IE.png?e3279"
+  },
+  "Prod Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanProd.png?291bd"
+  },
+  "Profit-Taker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ProfitTakerOrb.png?9818d"
+  },
+  "Protector Stalker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ProtectorStalker.png?2e6a9"
+  },
+  "Proto-Infested Clump": {
+   "kind": "object",
+   "art": null
+  },
+  "Pyr Captain": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/PyrCaptain.png?e0624"
+  },
+  "Quanta Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmamQuanta.png?e1ba7"
+  },
+  "Rabbleback Hyena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RabblebackHyena.png?7cfd1"
+  },
+  "Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Rana Del": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RanaDel.png?4bd08"
+  },
+  "Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JetpackCrewmanDera.png?ef01c"
+  },
+  "Raptor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RaptorTwoMortar.png?49201"
+  },
+  "Raptor Mt": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RaptorTwoMortar.png?49201"
+  },
+  "Raptor Ns": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RaptorTwoMortar.png?49201"
+  },
+  "Raptor Rv": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RaptorTwoMortar.png?49201"
+  },
+  "Raptor Rx": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamBRaptorAgent.png?a6284"
+  },
+  "Rare Corpus Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Rare Grineer Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Rare Orokin Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Ratel": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ratel.png?17fb7"
+  },
+  "Rathuum Broadcaster": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Ravenous Golden Maw": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GoldenMaw.jpeg?5fe07"
+  },
+  "Ravenous Void Angel": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VoidAngel.png?ea419"
+  },
+  "Razorback": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArmoredJackal.png?f6b2a"
+  },
+  "Recon Commander": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonVipSniper.png?cdb96"
+  },
+  "Recover The Orokin Archive": {
+   "kind": "activity",
+   "art": null
+  },
+  "Regulator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RegulatorDE.png?d6bc6"
+  },
+  "Reinforced Carrypod": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/CodexCommonCorpusStorageContainer.png?706c9"
+  },
+  "Reinforced Grineer Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Reinforced Orokin Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Remech Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RemechOspreyDE.png?fdfe9"
+  },
+  "Rogg-417": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Rogue Arcocanid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RogueArcocanid.png?e154b"
+  },
+  "Rogue Bonewidow": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Bonewidow.png?bc601"
+  },
+  "Rogue Condroc": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CondrocCommon.png?8289b"
+  },
+  "Rogue Culverin": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RogueCulverin.png?f2333"
+  },
+  "Rogue Voidrig": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Voidrig.png?1b92f"
+  },
+  "Roller": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollingDroneAvatar.png?012f7"
+  },
+  "Roller Sentry": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollerTurret.png?bda4d"
+  },
+  "Ryoku": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RyokuGeminiSkin.png?fa3d1"
+  },
+  "Ryoku Shadow Clone Master": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Ryoku_Shadow_Clone_Master.png?04885"
+  },
+  "Sanctuary Onslaught": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/SanctuaryOnslaught.png?0bc6d"
+  },
+  "Sap Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Sap Scrambus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogScrambus.png?e828b"
+  },
+  "Sapping Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DiscOsprey.png?407be"
+  },
+  "Saturn Six Fugitive": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/WolfGangster.png?f2a6a"
+  },
+  "Scaldra Barbican": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianShieldLancer.png?a2e4a"
+  },
+  "Scaldra Dedicant": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianNox.png?6dbee"
+  },
+  "Scaldra Eradicator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianGoonadier.png?fbfc1"
+  },
+  "Scaldra Flayer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianButcher.png?c06e4"
+  },
+  "Scaldra Jaeger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianLancer.png?bc466"
+  },
+  "Scaldra Screamer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ScaldraScreamer.png?11116"
+  },
+  "Scaldra Ti-92": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LasrianAPC.png?1f790"
+  },
+  "Scathing Whisper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DoppelgangerAvatar.png?ec003"
+  },
+  "Scavenger Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ScavangerOspreyDE.png?c1779"
+  },
+  "Scorch": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FlameLancerAvatar.png?b9509"
+  },
+  "Scorpion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonPredator.png?986d8"
+  },
+  "Scrofa Armaments Director": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ArmamentsDirector.png?6b369"
+  },
+  "Scrofa Attack Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FusionDroneDE.png?dc31d"
+  },
+  "Scrofa Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Scrofa Decoy Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoSuicideBiped.png?c57a4"
+  },
+  "Scrofa Demolition Director": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoColonyVIPAvatarA.png?55019"
+  },
+  "Scrofa Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FusionDroneDE.png?dc31d"
+  },
+  "Scrofa Drover Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RiotMoaControl.png?cbf15"
+  },
+  "Scrofa Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Scrofa Energy Chief": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoTrappedChestVIP.png?51383"
+  },
+  "Scrofa Grenadier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoRangedHeavy.png?9b496"
+  },
+  "Scrofa Heavy Trencher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraTrencher.png?f6291"
+  },
+  "Scrofa Joro Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoBaseRaknoidVIP.png?55019"
+  },
+  "Scrofa Laser Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEAntiMoa.png?b3656"
+  },
+  "Scrofa Latro Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoPlantVIP.png?6c8ab"
+  },
+  "Scrofa Legionary": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoLabMeleeHeavy.png?51383"
+  },
+  "Scrofa Light Trencher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraTrencher.png?f6291"
+  },
+  "Scrofa Lythrum Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ScytoRaknoid.png?b2742"
+  },
+  "Scrofa Mine Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MineOspreyDE.png?fbb8a"
+  },
+  "Scrofa Mite Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MiteRaknoid.png?c6f7b"
+  },
+  "Scrofa Obviator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Scrofa Plasmor Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraPlasmorCrewman.png?fd3f7"
+  },
+  "Scrofa Provisor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraProvisor.png?0b222"
+  },
+  "Scrofa Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Scrofa Research Chief": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoLabVIPAvatar.png?51383"
+  },
+  "Scrofa Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Scrofa Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Scrofa Sniper Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposSniperRanger.png?bd15b"
+  },
+  "Scrofa Strike Director": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoColonyVIPAvatarB.png?a36b4"
+  },
+  "Scyto Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ScytoRaknoid.png?b2742"
+  },
+  "Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Sensor Regulator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RegulatorDE.png?d6bc6"
+  },
+  "Sentient Eidolons": {
+   "kind": "activity",
+   "art": null
+  },
+  "Sentient Research Director": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientResearchDirector.png?d96e5"
+  },
+  "Shadow Stalker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientStalker.png?4c8f4"
+  },
+  "Shield Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiffShield.png?df9bb"
+  },
+  "Shield Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Shield Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldLancerAvatar.png?00f02"
+  },
+  "Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Shield-Hellion Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiffMissileShield.png?8f19d"
+  },
+  "Shik Tal": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEShik.png?01a2e"
+  },
+  "Shock Draga": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EelFrogLancer.png?389f5"
+  },
+  "Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Sikula": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/WaterMineDrone.png?2d375"
+  },
+  "Sister Of Parvos": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SistersOfParvosTeaser2.jpg?84053"
+  },
+  "Slo Comba": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogComba.png?208e0"
+  },
+  "Slo Scrambus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FogScrambus.png?e828b"
+  },
+  "Sniper Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanSniper.png?1938f"
+  },
+  "Sorties": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/Sortie%28xBlack%29.png?57ac4"
+  },
+  "Special Duty Coildrive": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/thumb/Special_Duty_Coildrive_%28Orb_Vallis%29.jpg/480px-Special_Duty_Coildrive_%28Orb_Vallis%29.jpg?778ac"
+  },
+  "Specter Particles": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ErrantSpecter.png?b512d"
+  },
+  "Splendid Mergoo": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MergooCommon.png?30e53"
+  },
+  "Splintrix": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Sprag": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Sprag.png?dcc79"
+  },
+  "Stalker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/StalkerFullPose.png?a842e"
+  },
+  "Storage Container": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/CodexCommonCorpusStorageContainer.png?706c9"
+  },
+  "Striker Moa": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Summulyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Summulyst.png?426bb"
+  },
+  "Sunkiller": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Warframe_soundtrack_2_cover.jpg?175f0"
+  },
+  "Survival Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Swarm Mutalist Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NaniteInfestedMoa.png?f6284"
+  },
+  "Symbilyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Symbilyst.png?6ea78"
+  },
+  "Syzygy Attack Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfFlyingAttack.png?49a52"
+  },
+  "Syzygy Denial Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfRiotBipedControl.png?f538c"
+  },
+  "Syzygy Light Trencher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfMeleeHeavy.png?49a52"
+  },
+  "Syzygy Mite Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfMini.png?f538c"
+  },
+  "Syzygy Prod Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfSpaceman.png?51383"
+  },
+  "Syzygy Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfRangedLight.png?f3e00"
+  },
+  "Syzygy Sniper Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/NokkoInfSniper.png?56042"
+  },
+  "Table For Two": {
+   "kind": "activity",
+   "art": null
+  },
+  "Tamm": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Tar Mutalist Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SlowInfestedMoa.png?47010"
+  },
+  "Tarask Bursa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaraskBursa.png?d1106"
+  },
+  "Taro Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasilisk.png?17eda"
+  },
+  "Taro Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Taro Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroCrewship.png?6e4eb"
+  },
+  "Taro Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Taro Disc Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoDiscMOA.png?855ca"
+  },
+  "Taro Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Taro Engineer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroEngineer.png?32a76"
+  },
+  "Taro Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Taro Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpi.png?46652"
+  },
+  "Taro Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Taro Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Taro Numon": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroNumon.png?7d90d"
+  },
+  "Taro Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroPilot.png?ecd01"
+  },
+  "Taro Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Taro Ranger Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroRangerCrewman.png?41593"
+  },
+  "Taro Secura Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroSecuraOsprey.png?7eafc"
+  },
+  "Taro Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Taro Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Taro Stropha Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroStrophaCrewman.png?bf4a2"
+  },
+  "Taro Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Taro Vambac": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroVambac.png?51275"
+  },
+  "Taro Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaver.png?c868c"
+  },
+  "Taro Zerca": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AxioZerca.png?adf2c"
+  },
+  "Techrot Babau": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedBabau.png?1e144"
+  },
+  "Techrot Galliflex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TechrotRunner.png?1f8e0"
+  },
+  "Techrot Matmas": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedUnadoza.png?1bc01"
+  },
+  "Techrot Motherboard Cluster": {
+   "kind": "object",
+   "art": null
+  },
+  "Techrot Obsolyte": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedAncient.png?c7470"
+  },
+  "Techrot Scaart": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TechrotScaart.png?2b13f"
+  },
+  "Techrot Skuzzi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedMutalist.png?acc51"
+  },
+  "Techrot Volatile Galliflex": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/InfestedVolatileRunner.png?5b5c7"
+  },
+  "Temporal Archimedea Gold Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Temporal Archimedea Legendary Rewards": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/TemporalArchimediaScreen.jpg?118b1"
+  },
+  "Temporal Archimedea Silver Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "Temporal Dreg": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnStasisDrone.png?909b3"
+  },
+  "Tenno Specter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TennoSpecter.png?e2d81"
+  },
+  "Terra Ambulas": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CodexAmbulas.png?39577"
+  },
+  "Terra Anti Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEAntiMoa.png?b3656"
+  },
+  "Terra Attack Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FusionDroneDE.png?dc31d"
+  },
+  "Terra Cestra Manker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraManker.png?08489"
+  },
+  "Terra Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Terra Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Terra Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Terra Elite Embattor Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraEmbattorMOA.png?ab257"
+  },
+  "Terra Elite Overtaker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraOvertaker.png?e7b94"
+  },
+  "Terra Elite Provisor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraProvisor.png?0b222"
+  },
+  "Terra Elite Raptor Sx": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraRaptorSX.png?6164c"
+  },
+  "Terra Elite Trencher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraTrencher.png?f6291"
+  },
+  "Terra Embattor Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraEmbattorMOA.png?ab257"
+  },
+  "Terra Jackal": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/QuadJackal.png?283bf"
+  },
+  "Terra Jailer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraJailer.png?9873a"
+  },
+  "Terra Manker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraManker.png?08489"
+  },
+  "Terra Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Terra Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Terra Overtaker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraOvertaker.png?e7b94"
+  },
+  "Terra Oxium Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OspreySuicide.png?04005"
+  },
+  "Terra Plasmor Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraPlasmorCrewman.png?fd3f7"
+  },
+  "Terra Provisor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraProvisor.png?0b222"
+  },
+  "Terra Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Terra Raptor Sx": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraRaptorSX.png?6164c"
+  },
+  "Terra Research Crewman": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Terra Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Terra Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Terra Sniper Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanSniper.png?1938f"
+  },
+  "Terra Trencher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraTrencher.png?f6291"
+  },
+  "Test Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Popcorn.png?28077"
+  },
+  "The Aftermath": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Anatomizer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TheAnatomizer.png?344dd"
+  },
+  "The Descendia: Common Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Descendia: Infernum 20 Triple Arcane Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Descendia: Infernum 6 and 13 Arcane Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Descendia: Rare Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Descendia: Roathe": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Descendia: Steel Essence Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Descendia: Uncommon Rewards": {
+   "kind": "activity",
+   "art": null
+  },
+  "The Fragmented Suzerain": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TheFragmentedSuzerain.png?3bd0c"
+  },
+  "The Hollow Vein": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TheHollowVein.png?48202"
+  },
+  "The Icebind: Crested Frozen Chests": {
+   "kind": "object",
+   "art": null
+  },
+  "The Icebind: Frozen Chests": {
+   "kind": "object",
+   "art": null
+  },
+  "The Sergeant": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SergeantNefanyoNew.png?07c02"
+  },
+  "The Severed Warden": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TheSeveredWarden.png?4acfc"
+  },
+  "The Unseeing Herald": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TheUnseeingHerald.png?45b48"
+  },
+  "The Xoris": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Xoris.png?5c2e5"
+  },
+  "Thermal Sludge Cannister": {
+   "kind": "object",
+   "art": null
+  },
+  "Thermic Raknoid": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MiteRaknoid.png?c6f7b"
+  },
+  "Thrax Centurion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ThraxCenturion.png?4be38"
+  },
+  "Thrax Legatus": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ThraxLegatus.png?4be38"
+  },
+  "Tia Mayn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamCStealthAgent.png?6b345"
+  },
+  "Time's Up": {
+   "kind": "activity",
+   "art": null
+  },
+  "Torment": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Torment.png?9712a"
+  },
+  "Toxic Ancient": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ToxicAncient2DE.png?657b7"
+  },
+  "Toxic Crawler": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ToxicCrawlerDE.png?46c7f"
+  },
+  "Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Trooper Survivor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Turret": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/FortressAutoTurret.png?0939d"
+  },
+  "Tusk Ballista": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeaLabBallista.png?b521d"
+  },
+  "Tusk Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BombardDE.png?1bf39"
+  },
+  "Tusk Butcher": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertBladeSawmanAvatar.png?9b096"
+  },
+  "Tusk Command Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonVipSkiff.png?e778e"
+  },
+  "Tusk Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiff.png?10466"
+  },
+  "Tusk Elite Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteRifleLancerAvatar.png?ba958"
+  },
+  "Tusk Eviscerator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EliteShotgunLancerAvatar.png?ef92c"
+  },
+  "Tusk Flameblade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Flameblade.png?bea80"
+  },
+  "Tusk Heavy Gunner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DesertHeavyFemaleGrineerAvatarDesert.png?d6b70"
+  },
+  "Tusk Hellion": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/HellionDE.png?0abd3"
+  },
+  "Tusk Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/LancerDE.png?51179"
+  },
+  "Tusk Mortar Bombard": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/BombardDE.png?1bf39"
+  },
+  "Tusk Napalm": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/IncendiaryBombardAvatar.png?d50e0"
+  },
+  "Tusk Predator": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/EidolonPredator.png?986d8"
+  },
+  "Tusk Reaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrineerCrusher.png?03040"
+  },
+  "Tusk Roller": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RollingDroneAvatar.png?012f7"
+  },
+  "Tusk Seeker": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SeekerDE.png?be265"
+  },
+  "Tusk Shield Dargyn": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnSkiffShield.png?df9bb"
+  },
+  "Tusk Shield Lancer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldLancerAvatar.png?00f02"
+  },
+  "Tusk Thumper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TuskThumper.png?d7153"
+  },
+  "Tusk Thumper Bull": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TuskThumperBull.png?279ec"
+  },
+  "Tusk Thumper Doma": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TuskThumperDoma.png?279ec"
+  },
+  "Tusk Trooper": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShotgunLancerAvatar.png?92a54"
+  },
+  "Tyl Regor": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TylRegor.png?0aa39"
+  },
+  "Typholyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Clotholyst.png?f61cf"
+  },
+  "Tyro Conculyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/SentientMeleeTrooper.png?4c8f4"
+  },
+  "Uncommon Corpus Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Uncommon Grineer Storage Container": {
+   "kind": "object",
+   "art": null
+  },
+  "Undying Flyer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/UndyingFlyer.png?5aba4"
+  },
+  "Vallis Surveillance Drone": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VallisSurveillanceDrone.png?eb10d"
+  },
+  "Vapos Anti Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DEAntiMoa.png?b3656"
+  },
+  "Vapos Aquila": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposAquila.png?71ed5"
+  },
+  "Vapos Bioengineer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposBioengineer.png?7002f"
+  },
+  "Vapos Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Vapos Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Vapos Detron Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposDetronRanger.png?59ba9"
+  },
+  "Vapos Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Vapos Elite Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposEliteRanger.png?e46a8"
+  },
+  "Vapos Fusion Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaFusion.png?6a03b"
+  },
+  "Vapos Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Vapos Nullifier": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Vapos Nullifier Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposNullifierRanger.png?cf1ca"
+  },
+  "Vapos Oxium Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/OspreySuicide.png?04005"
+  },
+  "Vapos Prod Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanProd.png?291bd"
+  },
+  "Vapos Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Vapos Sapping Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DiscOsprey.png?407be"
+  },
+  "Vapos Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Vapos Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Vapos Sniper Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanSniper.png?1938f"
+  },
+  "Vapos Sniper Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposSniperRanger.png?bd15b"
+  },
+  "Vapos Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Vapos Tech Ranger": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VaposTechRanger.png?aa018"
+  },
+  "Vay Hek Frequency Triangulator": {
+   "kind": "object",
+   "art": "https://wiki.warframe.com/images/GrineerKeyVayHek.png?c6947"
+  },
+  "Vay Hek Terra Frame": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VayHekPortrait.png?d29b8"
+  },
+  "Ved Xol": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CCTeamAHeavyAgent.png?bc598"
+  },
+  "Vem Tabook": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/DETabook.png?8e31a"
+  },
+  "Ven'Kra Tel": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Venkra.png?0c7b9"
+  },
+  "Vena": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VenaGeminiSkin.png?fa3d1"
+  },
+  "Venin Mutalist": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CodexVeninMutalist.png?f690b"
+  },
+  "Verd-Ie": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VERD-IE.png?e3279"
+  },
+  "Violence": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Violence.png?36f3e"
+  },
+  "Vivisect Director": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VivisectDirector.png?bcbf8"
+  },
+  "Void Angel": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/VoidAngel.png?ea419"
+  },
+  "Void Fissure Corrupted Enemy": {
+   "kind": "enemy",
+   "art": null
+  },
+  "Void Shade": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/UnidentifiedItem%28xBlack%29.png?6eed9"
+  },
+  "Void Storm": {
+   "kind": "activity",
+   "art": "https://wiki.warframe.com/images/Void_Fissure_selection.jpg?5b88b"
+  },
+  "Volatile Runner": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/RunnerDE.png?c35ab"
+  },
+  "Vomvalyst": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/Vomvalyst.png?7aa62"
+  },
+  "Vorac Basilisk": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroBasilisk.png?17eda"
+  },
+  "Vorac Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanNormal.png?85798"
+  },
+  "Vorac Crewship": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroCrewship.png?6e4eb"
+  },
+  "Vorac Detron Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanShotgun.png?ad7ce"
+  },
+  "Vorac Disc Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/JunoDiscMOA.png?855ca"
+  },
+  "Vorac Elite Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanElite.png?f23bd"
+  },
+  "Vorac Engineer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroEngineer.png?32a76"
+  },
+  "Vorac Gox": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpCombatPod.png?a087b"
+  },
+  "Vorac Harpi": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroHarpi.png?46652"
+  },
+  "Vorac Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TerraMOA.png?a5133"
+  },
+  "Vorac Nullifier Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrpNullRanger.png?83aad"
+  },
+  "Vorac Numon": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroNumon.png?7d90d"
+  },
+  "Vorac Pilot": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroPilot.png?ecd01"
+  },
+  "Vorac Railgun Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaRailgun.png?92f2b"
+  },
+  "Vorac Ranger Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroRangerCrewman.png?41593"
+  },
+  "Vorac Shield Osprey": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ShieldOspreyDE.png?8e126"
+  },
+  "Vorac Shockwave Moa": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MoaShockwave.png?f6e9b"
+  },
+  "Vorac Stropha Crewman": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroStrophaCrewman.png?bf4a2"
+  },
+  "Vorac Tech": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/CrewmanTech.png?7da1a"
+  },
+  "Vorac Vambac": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroVambac.png?51275"
+  },
+  "Vorac Weaver": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/TaroWeaver.png?c868c"
+  },
+  "Vorac Zerca": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/AxioZerca.png?adf2c"
+  },
+  "Wolf Of Saturn Six": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/WolfDioramaBust.png?7b92c"
+  },
+  "Woodland Mergoo": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/MergooCommon.png?30e53"
+  },
+  "Zanuka Hunter": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ZanukaHunter.png?1fca0"
+  },
+  "Zealoid Prelate": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ZealoidPrelate.png?17570"
+  },
+  "Zealot Baptizer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ZealotBaptizer.png?3b50f"
+  },
+  "Zealot Herald": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ZealotHerald.png?82255"
+  },
+  "Zealot Proselytizer": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/ZealotProselytizer.png?15adc"
+  },
+  "Zenith Granum Crown Cache": {
+   "kind": "object",
+   "art": null
+  },
+  "Zeplen": {
+   "kind": "enemy",
+   "art": "https://wiki.warframe.com/images/GrnMissilePlatform.png?6628a"
+  }
+ }
+}

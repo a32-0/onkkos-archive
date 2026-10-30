@@ -32,8 +32,7 @@ function rowOf(facts: ItemFacts, line: BriefLine, from: string, blueprint: boole
   const told = own ? tileLines(own.reading, own.where) : tileLines(line.reading, line.where);
   const words =
     told.reading || told.place ? told : { reading: "", place: detailOf(line.detail) ?? "" };
-  const art =
-    line.imageUrl ?? ((facts.collectible || facts.quest) && !blueprint ? facts.art : null);
+  const art = line.imageUrl ?? (blueprint ? null : facts.art);
   return {
     key: line.id,
     name: line.optional ? STEP_WORDS.optional(titled(line.title)) : titled(line.title),

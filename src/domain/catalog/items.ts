@@ -222,7 +222,10 @@ function readDropList(drops: RawDrop[] | undefined): CatalogDrop[] {
 
 function readDrops(item: RawItem): CatalogDrop[] {
   const out = readDropList(item.drops);
-  for (const component of item.components ?? []) out.push(...readDropList(component.drops));
+  for (const component of item.components ?? []) {
+    const count = typeof component.itemCount === "number" ? component.itemCount : 1;
+    if (isPart(component, item.name, count)) out.push(...readDropList(component.drops));
+  }
   return out;
 }
 
@@ -275,6 +278,7 @@ const CRAFTED_PART = "/Lotus/Types/Recipes/";
 
 function isPart(component: RawComponent, itemName: string, count: number): boolean {
   if (component.uniqueName?.startsWith(CRAFTED_PART)) return true;
+  if (component.name === BLUEPRINT && count === 1) return true;
   return count === 1 && component.name?.startsWith(`${itemName} `) === true;
 }
 

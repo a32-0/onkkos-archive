@@ -3,7 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/a32-0/onkkos-archive/releases/latest"><strong>Download for Windows or Linux</strong></a>
+  <a href="https://apps.microsoft.com/detail/9NVJBJD22L6D"><img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Download from the Microsoft Store" width="200"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/a32-0/onkkos-archive/releases/latest"><strong>Or from GitHub, for Windows and Linux</strong></a>
   ·
   <a href="https://onkkos-archive.vercel.app">Try the demo</a>
 </p>
@@ -16,14 +20,19 @@ The [demo](https://onkkos-archive.vercel.app) runs in your browser with two
 sample players and needs nothing installed. To see your own account, download
 the app:
 
-- On Windows 10 or 11, run `onkkos-archive-{version}-setup.exe`. It installs
-  for your user only and needs no admin rights. The installer isn't signed,
-  so the first time Windows shows "Windows protected your PC". Click **More
-  info**, then **Run anyway**.
-- On Linux, make `onkkos-archive-{version}.AppImage` executable
-  (`chmod +x`) and open it.
+- On Windows 10 or 11, get it from the
+  [Microsoft Store](https://apps.microsoft.com/detail/9NVJBJD22L6D). The Store
+  installs it and keeps it up to date, and Windows shows no warning.
+- Or, on Windows, download `onkkos-archive-{version}-setup.exe` from the
+  [latest release](https://github.com/a32-0/onkkos-archive/releases/latest)
+  and run it. It installs for your user only and needs no admin rights. The
+  installer isn't signed, so the first time Windows shows "Windows protected
+  your PC". Click **More info**, then **Run anyway**.
+- On Linux, download `onkkos-archive-{version}.AppImage` from the same
+  release, make it executable (`chmod +x`) and open it.
 
-The app updates itself when you close it, and picks up new game data after
+The Store keeps its copy up to date; a copy from GitHub updates itself when
+you close it. Either way, the app picks up new game data after
 each Warframe update without a new version.
 
 <p align="center">

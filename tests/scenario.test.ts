@@ -8,6 +8,7 @@ import {
   type StepSection,
 } from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
+import { findCollectible } from "@/domain/catalog/data";
 import { dossier } from "@/domain/catalog/dossier";
 import {
   layoutOf,
@@ -211,6 +212,48 @@ describe("an item resolved against the drop tables and the wiki", () => {
     const chassis = found.parts.find((one) => one.name === "Chassis")?.routes[0];
     expect(chassis?.kind).toBe("vendor");
     expect(chassis?.kind === "vendor" ? chassis.unlocks : null).not.toBeNull();
+  });
+
+  it("reads Stubba's blueprint from the Ghoul bounties and Ghoul Rictus Alpha, not Grokdrul's sources", () => {
+    const found = resolveAcquisition(data, itemNamed("Stubba"));
+    const main = found.parts.find((one) => one.main);
+    const routes = main?.routes ?? [];
+    expect(routes.some((one) => one.kind === "bounty" && one.tier.includes("Ghoul"))).toBe(true);
+    expect(routes).toContainEqual(
+      expect.objectContaining({ kind: "enemy", source: "Ghoul Rictus Alpha" }),
+    );
+    const sources = found.parts
+      .flatMap((one) => one.routes)
+      .map((one) => ("source" in one ? one.source : null));
+    expect(sources).not.toContain("Grokdrul Drum");
+    expect(sources).not.toContain("Narmer Thumper Doma");
+  });
+
+  it("puts a Conclave drop after every other route: Balla's blueprint is Hok's first", () => {
+    const main = resolveAcquisition(data, itemNamed("Balla")).parts.find((one) => one.main);
+    expect(main?.routes[0]).toEqual(expect.objectContaining({ kind: "vendor", vendor: "Hok" }));
+    expect(main?.routes.at(-1)).toEqual(
+      expect.objectContaining({ kind: "drop", mission: "Conclave" }),
+    );
+  });
+
+  it("never gives an item a route that only an ingredient's drops hold", () => {
+    const leaks: string[] = [];
+    for (const item of data.arsenal) {
+      const own = (item.recipe?.parts ?? []).flatMap((part) =>
+        part.drops.map((drop) => drop.location),
+      );
+      const theirs = (item.recipe?.ingredients ?? []).flatMap(
+        (one) => findCollectible(data, one.name)?.drops.map((drop) => drop.location) ?? [],
+      );
+      const found = resolveAcquisition(data, item);
+      for (const route of found.parts.flatMap((one) => one.routes)) {
+        if (route.kind !== "enemy") continue;
+        const from = (location: string) => location.startsWith(route.source);
+        if (theirs.some(from) && !own.some(from)) leaks.push(`${item.name}: ${route.source}`);
+      }
+    }
+    expect(leaks).toEqual([]);
   });
 
   it("names Simaris and his quest for Atlas's blueprint", () => {

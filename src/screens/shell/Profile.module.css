@@ -147,3 +147,16 @@
 .strong {
   composes: mono-strong from "../../ui/type.module.css";
 }
+
+.restart {
+  --profile-restart: 200px;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-s);
+  background-color: var(--surface);
+}
+
+.restart > * {
+  width: var(--profile-restart);
+}

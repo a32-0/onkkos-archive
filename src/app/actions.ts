@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { normalizeAccountId } from "@/domain/profile/account-id";
 import { isOnkkoChoice } from "@/domain/profile/onkko";
 import type { UpdateState } from "@/domain/types/update-state";
-import { askUpdates } from "@/infra/app-updates";
+import { askUpdates, restartToUpdate } from "@/infra/app-updates";
 import { appVersion } from "@/infra/edition";
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
 import { readProfile } from "@/infra/profile/read";
@@ -88,4 +88,8 @@ export async function resetTour(): Promise<void> {
 
 export async function checkUpdates(): Promise<UpdateState> {
   return appVersion() ? askUpdates() : { state: "unreachable" };
+}
+
+export async function restartNow(): Promise<void> {
+  if (appVersion()) restartToUpdate();
 }

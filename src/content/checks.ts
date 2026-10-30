@@ -203,6 +203,7 @@ export const TITLES = {
   bountyTitle: ({ tier, low, high }: { tier: string; low: string | null; high: string | null }) =>
     low !== null && high !== null ? `Play a bounty, level ${low}–${high}` : `Play ${tier}`,
   defeatTitle: ({ source }: { source: string }) => `Defeat ${source}`,
+  openTitle: ({ thing }: { thing: string }) => `Open ${thing}`,
   openRelicTitle: ({ relic, vaulted }: { relic: string; vaulted: boolean }) =>
     vaulted ? `Open ${relic} (Vaulted)` : `Open ${relic}`,
   noRouteTitle: ({ item }: { item: string }) => `How ${item} is obtained`,

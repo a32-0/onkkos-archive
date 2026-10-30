@@ -36,30 +36,30 @@ fixtures (`pnpm dev`); the app is for checking the app.
 
 ## What each file does
 
-| File                      | What it does                                                                                                                                                                                                                                                                                    |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `scripts/stage.mjs`       | Builds the app's target (`WF_BUILD_TARGET=app`), copies `public/` and `.next/static` beside `server.js`, writes the starting frames, builds the main process and checks the guard                                                                                                               |
-| `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                                                                         |
-| `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the wordmark's paths, `LoadingCard.module.css` for the quill's motion, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
-| `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                                                                  |
-| `scripts/store.mjs`       | Builds the Microsoft Store's package with the identity read from three variables, or stops without them                                                                                                                                                                                         |
-| `icon.png`                | The app's icon: the quill alone on no background                                                                                                                                                                                                                                                |
-| `appx/`                   | The Store package's tiles, drawn from `icon.png`: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the quill centred on no background                                                                                                            |
-| `electron-builder.yml`    | The three packages, what each carries, the Store package's tiles and Windows versions, and GitHub Releases as the place updates come from                                                                                                                                                       |
-| `src/channel.ts`          | Where the app runs from: the tree, a GitHub package or the Microsoft Store                                                                                                                                                                                                                      |
-| `tests/channel.test.ts`   | Only a GitHub package updates itself                                                                                                                                                                                                                                                            |
-| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**; none of it from the Store                                                                                                                                                          |
-| `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                                                                            |
-| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                                                                       |
-| `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                                 |
-| `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                                 |
-| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                                                                    |
-| `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser                                                                                                                                                                                        |
-| `src/log.ts`              | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                                 |
-| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                                                                              |
-| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                                                                          |
-| `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                                                                           |
-| `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                                                                                                                                         |
+| File                      | What it does                                                                                                                                                                                                                                                                        |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `scripts/stage.mjs`       | Builds the app's target (`WF_BUILD_TARGET=app`), copies `public/` and `.next/static` beside `server.js`, writes the starting frames, builds the main process and checks the guard                                                                                                   |
+| `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                                                             |
+| `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the quill's path, `LoadingCard.module.css` for its motion, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
+| `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                                                      |
+| `scripts/store.mjs`       | Builds the Microsoft Store's package with the identity read from three variables, or stops without them                                                                                                                                                                             |
+| `icon.png`                | The app's icon: the quill alone on no background                                                                                                                                                                                                                                    |
+| `appx/`                   | The Store package's tiles, drawn from `icon.png`: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the quill centred on no background                                                                                                |
+| `electron-builder.yml`    | The three packages, what each carries, the Store package's tiles and Windows versions, and GitHub Releases as the place updates come from                                                                                                                                           |
+| `src/channel.ts`          | Where the app runs from: the tree, a GitHub package or the Microsoft Store                                                                                                                                                                                                          |
+| `tests/channel.test.ts`   | Only a GitHub package updates itself                                                                                                                                                                                                                                                |
+| `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**; none of it from the Store                                                                                                                                              |
+| `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                                                                |
+| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                                                           |
+| `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                     |
+| `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                     |
+| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                                                        |
+| `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser; **Restart** on Can't start relaunches the app                                                                                                                             |
+| `src/log.ts`              | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                     |
+| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                                                                  |
+| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                                                              |
+| `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                                                               |
+| `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                                                                                                                             |
 
 ## The window
 
@@ -85,10 +85,10 @@ pages still scroll by wheel, touch and keys.
 
 **Desktop — Starting** shows from the first frame, as a local file, because
 the server does not exist yet. It uses nothing remote: the tokens, the
-wordmark's paths and the fonts the build already self-hosts are copied into
+quill's path and the fonts the build already self-hosts are copied into
 it when the app is staged. If the server does not answer within thirty
-seconds, **Desktop — Can't start** replaces it. Its Close is a link to
-`app:close`, which the main process turns into quitting. The window has no
+seconds, **Desktop — Can't start** replaces it. Its Restart is a link to
+`app:restart`, which the main process turns into a relaunch. The window has no
 preload and cannot reach the main process any other way.
 
 A player whose `wf_account` cookie the window still holds opens on the map
@@ -215,6 +215,11 @@ remembers the choice for that file.
 
 ### The Microsoft Store package
 
+The app's listing is
+[`apps.microsoft.com/detail/9NVJBJD22L6D`](https://apps.microsoft.com/detail/9NVJBJD22L6D),
+live since 2026-10-30; `STORE_LISTING` in `src/routes.ts` holds the same
+address for the demo's badge.
+
 `pnpm --dir desktop run package:store`, after a stage, writes
 `onkkos-archive-{version}.appx`, an MSIX package, into `desktop/release/`.
 It is built on Windows only and publishes nothing. `scripts/store.mjs` reads
@@ -270,7 +275,7 @@ carrying the identity, the four tiles and Windows 10.0.17763 or later).
 `src/updates.ts` runs `electron-updater` in a packaged app alone. It asks
 GitHub Releases once the window shows its first page and every six hours
 after. A newer version downloads in the background and installs when the app
-quits; when it has downloaded, the system shows one notification with the
+quits, without opening it again; when it has downloaded, the system shows one notification with the
 words of `src/content/desktop.ts`, which the stage writes into
 `dist/words.json` since the main process cannot read `src/`. The app's
 `AppUserModelId` is the `appId`, which Windows needs to show it.
@@ -280,8 +285,12 @@ The server cannot reach the updater, which lives in the main process, so it
 asks over the utility process's `parentPort` (`src/infra/app-updates.ts`) and
 waits a minute at most. The main process answers with one of four states, which
 the row then shows in place of the button: up to date, downloading a version,
-that version installs on close, or GitHub could not be reached. Leaving
-Profile and coming back shows the button again. Started from the tree, the
+that version installs on restart, or GitHub could not be reached. Leaving
+Profile and coming back shows the button again. Once a version has
+downloaded, **Restart now** calls `restartNow`, which posts a `restart`
+message the same way; the main process then calls
+`autoUpdater.quitAndInstall(true, true)`, a silent install that opens the app
+again. It does nothing before a download or from the Store. Started from the tree, the
 main process answers "up to date" without asking GitHub; on the demo site the
 action answers that GitHub could not be reached, and the row never shows.
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { APP } from "@/content/app";
 import { CONNECT } from "@/content/onboarding";
-import { LATEST_RELEASE, ROUTES } from "@/routes";
+import { LATEST_RELEASE, ROUTES, STORE_LISTING } from "@/routes";
 import { VOICE } from "@/content/voice";
 import { Button } from "@/ui/Button/Button";
 import { ChoiceCard } from "@/ui/ChoiceCard/ChoiceCard";
@@ -11,6 +11,7 @@ import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
 import styles from "./Connect.module.css";
 import { ConnectForm } from "./ConnectForm";
+import storeBadge from "./microsoft-store.svg";
 import type { ConnectAction, ConnectState, Demo } from "./state";
 
 export function Connect({
@@ -100,7 +101,15 @@ export function Connect({
           <section className={styles.card}>
             <h2 className={styles.label}>{CONNECT.ownTitle}</h2>
             <p className={styles.lead}>{CONNECT.ownLine}</p>
-            <Button href={LATEST_RELEASE} external>
+            <a className={styles.store} href={STORE_LISTING} target="_blank" rel="noreferrer">
+              <img
+                src={storeBadge.src}
+                width={storeBadge.width}
+                height={storeBadge.height}
+                alt={CONNECT.store}
+              />
+            </a>
+            <Button variant="text" href={LATEST_RELEASE} external>
               {CONNECT.download}
             </Button>
           </section>

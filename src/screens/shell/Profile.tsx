@@ -20,7 +20,7 @@ import type { ShellChrome } from "./voice";
 function updateLine(update: UpdateState): string {
   if (update.state === "current") return SHELL.upToDate;
   if (update.state === "downloading") return SHELL.downloading(update.version);
-  if (update.state === "ready") return SHELL.installsOnClose(update.version);
+  if (update.state === "ready") return SHELL.installsOnRestart(update.version);
   return SHELL.unreachable;
 }
 
@@ -30,6 +30,7 @@ export function Profile({
   back,
   version = null,
   check,
+  restart,
   store = false,
 }: {
   chrome: ShellChrome;
@@ -37,6 +38,7 @@ export function Profile({
   back: string;
   version?: string | null;
   check?: () => Promise<UpdateState>;
+  restart?: () => Promise<void>;
   store?: boolean;
 }) {
   const { player, voice, disconnect, setOnkko, resetTour } = chrome;
@@ -158,6 +160,15 @@ export function Profile({
                   </ControlRow>
                 )}
               </ListEntry>
+              {update?.state === "ready" && restart && (
+                <ListEntry>
+                  <div className={styles.restart}>
+                    <Button variant="secondary" onClick={() => void restart()}>
+                      {SHELL.restartNow}
+                    </Button>
+                  </div>
+                </ListEntry>
+              )}
             </List>
           </section>
         )}

@@ -59,7 +59,7 @@ export function searchRows(hits: readonly SearchInput[]): SearchRow[] {
       name: hit.name,
       catalogue: hit.gap ? GAPS.join(catalogue, gapWords(hit.gap)) : catalogue,
       art: hit.art,
-      ...(hit.kind === "place" && { round: true }),
+      ...(hit.kind === "place" && { round: true, orb: hit.orb ?? null }),
       href: hrefOf(hit),
     };
   });

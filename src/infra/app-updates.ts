@@ -26,6 +26,10 @@ function isState(value: unknown): value is UpdateState {
   );
 }
 
+export function restartToUpdate(): void {
+  parentPort()?.postMessage({ kind: "restart" });
+}
+
 export function askUpdates(): Promise<UpdateState> {
   const port = parentPort();
   if (!port) return Promise.resolve(UNREACHABLE);

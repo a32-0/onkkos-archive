@@ -23,7 +23,7 @@ export const CONNECT = {
   ],
   exampleLead: "It will look something like this:",
   example: "gid   4b2e9f17c3a85d06e1f74a9c",
-  moreHelp: "More help",
+  moreHelp: "Help me find my ID",
   publicNote:
     "It’s safe: it’s the same public profile the game shows when you look at another player. We only remember your ID on this device, and Disconnect forgets it.",
   demoTitle: "Explore with a demo",
@@ -35,21 +35,24 @@ export const CONNECT = {
   ownTitle: "Your own account",
   ownLine:
     "The app reads your profile from your own computer, through your own connection. For Windows and Linux.",
-  download: "Download the app",
+  store: "Download from the Microsoft Store",
+  download: "Or from GitHub, for Windows and Linux",
 } as const;
 
 export const FIND_ID = {
   title: "Find your ID",
   back: "Back",
-  lead: "Where the gid cookie is, in what each browser shows. Do it on a computer, logged in at warframe.com.",
+  lead: "Where the “gid” cookie is, in what each browser shows. Do it on a computer, logged in at ",
+  site: "www.warframe.com",
+  leadEnd: ".",
   browsers: [
     {
       key: "firefox",
       name: "Firefox",
       steps: [
-        "Press F12 to open the developer tools.",
-        "Go to Storage › Cookies › https://www.warframe.com.",
-        "Type gid in the filter, and copy its Value.",
+        [{ strong: "Press F12" }, " to open the developer tools."],
+        ["Go to Storage › Cookies › https://www.warframe.com."],
+        ["Type “gid” in the filter, and copy its ", { strong: "Value" }, "."],
       ],
       shot: "Firefox's developer tools on Storage › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
     },
@@ -57,9 +60,9 @@ export const FIND_ID = {
       key: "edge-chrome",
       name: "Edge or Chrome",
       steps: [
-        "Press F12 to open the developer tools.",
-        "Go to Application › Cookies › https://www.warframe.com.",
-        "Type gid in the filter, and copy its Value.",
+        [{ strong: "Press F12" }, " to open the developer tools."],
+        ["Go to Application › Cookies › https://www.warframe.com."],
+        ["Type “gid” in the filter, and copy its ", { strong: "Value" }, "."],
       ],
       shot: "Edge's developer tools on Application › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
     },

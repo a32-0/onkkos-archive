@@ -40,7 +40,7 @@ export function targetInputs(
   const best = bestPlaces(index);
   const entries = placeCatalog().entries;
   const ranks = itemRanks(profile, entries);
-  const { systems } = loadSystems();
+  const { systems, colors } = loadSystems();
   const quests = data.spine.arcs.flatMap((arc) => arc.quests);
   const masteryReq = new Map(data.arsenal.map((item) => [item.name, item.masteryReq]));
   const hits =
@@ -68,6 +68,7 @@ export function targetInputs(
         name: hit.name,
         catalogue: "place",
         art: null,
+        orb: colors[hit.name] ?? null,
         system: systems.find((system) => system.places.includes(hit.name))?.id ?? null,
         gap: placeGap(reach, hit.name),
         standing: null,

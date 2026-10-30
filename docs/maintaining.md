@@ -144,8 +144,8 @@ A few rules hold everywhere, and the tests check most of them:
 3. GitHub builds the Windows installer and the Linux AppImage into a draft
    release. If the tag and `desktop/package.json` disagree, it stops.
 4. Open the draft, write what changed in plain words, and publish it.
-   Installed apps download it in the background and install it when the
-   player closes them.
+   Installed apps download it in the background and install it at the next
+   restart, or at once from Profile's **Restart now**.
 5. Download the `microsoft-store` artifact from the same workflow run and
    upload its `.appx` as a new submission in Partner Center. Players who
    installed from the Microsoft Store get the version once it passes

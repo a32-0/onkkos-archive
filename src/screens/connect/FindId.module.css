@@ -16,6 +16,24 @@
   color: var(--ink-muted);
 }
 
+.site {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.site:hover {
+  color: var(--ink);
+}
+
+.site:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--border-2);
+}
+
+.strong {
+  composes: body-l-strong from "../../ui/type.module.css";
+}
+
 .card {
   display: flex;
   flex-direction: column;

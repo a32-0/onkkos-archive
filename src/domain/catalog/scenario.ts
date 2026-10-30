@@ -411,8 +411,11 @@ const KIND_ORDER: Record<RouteKind, number> = {
 
 const LATE_CURATED = new Set(["copies", "market", "circuit"]);
 
+const CONCLAVE = "Conclave";
+
 function orderOf(route: Route): number {
   if (route.kind === "curated" && LATE_CURATED.has(route.source.type)) return KIND_ORDER.vendor + 1;
+  if (route.kind === "drop" && route.mission === CONCLAVE) return KIND_ORDER.vendor + 1;
   return KIND_ORDER[route.kind];
 }
 

@@ -1,4 +1,5 @@
 import type { LinkComponent } from "../link";
+import { Orb } from "../Orb/Orb";
 import type { Suggestion } from "../SuggestionList/SuggestionList";
 import styles from "./ResultList.module.css";
 
@@ -19,7 +20,9 @@ export function ResultList({
       {items.map((item) => (
         <li key={item.value}>
           <Link href={item.href} className={styles.row}>
-            {item.art ? (
+            {item.orb !== undefined ? (
+              <Orb color={item.orb} size="s" />
+            ) : item.art ? (
               <img className={item.round ? styles.round : styles.art} src={item.art} alt="" />
             ) : (
               <span className={item.round ? styles["blank-round"] : styles.blank} />
