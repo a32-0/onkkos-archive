@@ -315,7 +315,9 @@ everywhere else.
 ## Cutting a version
 
 1. Raise `version` in `desktop/package.json` on `dev` and take it to `main`.
-2. Tag `main` with the same version, `v` before it, and push the tag.
+2. Pull the merge, tag `main` with the same version, `v` before it, and push
+   the tag. The commands are in
+   [`maintaining.md`](maintaining.md#releasing-a-new-version-of-the-app).
 3. `release.yml` checks that the tag and `desktop/package.json` agree, opens
    a draft release, and builds the installer on Windows and the AppImage on
    Ubuntu, each uploading its package and its update file (`latest.yml`,
