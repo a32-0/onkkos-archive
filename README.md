@@ -11,8 +11,10 @@
 <p align="center">
   <a href="https://github.com/a32-0/onkkos-archive/releases/latest"><strong>Download from GitHub</strong></a>
   ·
-  <a href="https://onkkos-archive.vercel.app">Try the demo in your browser</a>
+  <a href="https://onkkos-archive.vercel.app">Try it in your browser</a>
 </p>
+
+<hr>
 
 <h3>Back in Warframe after a long break? Onkko's Archive reads your public
 profile and tells you two things: what came out while you were away that you
@@ -20,7 +22,7 @@ don't have yet, and how to get the next thing you want, step by step.</h3>
 
 The [demo](https://onkkos-archive.vercel.app) runs in your browser with two
 sample players and needs nothing installed. To see your own account, download
-the app:
+the app.
 
 | Where                    | How                                                                                                                                                                                                                                               |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
