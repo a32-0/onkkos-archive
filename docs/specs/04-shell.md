@@ -13,6 +13,8 @@ profile will be read again, and lets them disconnect.
 - [`662:6837` Map>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
   no tab bar under it (owner, 2026-10-20).
 - [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642): the Profile page.
+- [`943:5889` Profile — Stale read](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-5889): Profile after a later read failed (BR-69).
+- [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079) and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161): the toast after a read that worked (BR-70); [`953:6536` Two Ways In — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536) draws Connected where Connect lands.
 - [`679:4734` Resume — From Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the header with no tab bar,
   during onboarding.
 
@@ -21,6 +23,10 @@ profile will be read again, and lets them disconnect.
 - [BR-06](../business-rules.md#br-06--the-player-menu): the player menu.
 - [BR-07](../business-rules.md#br-07--one-profile-read-per-twelve-hours):
   the read cycle in the menu's footer.
+- [BR-69](../business-rules.md#br-69--a-later-read-that-fails-keeps-the-player-in-place),
+  [BR-70](../business-rules.md#br-70--a-read-that-worked-says-so-once) and
+  [BR-71](../business-rules.md#br-71--every-wait-longer-than-a-moment-shows-the-quill):
+  a failed read, a read that worked, and every wait.
 - [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   the app is never wider than 600 px.
 - [BR-41](../business-rules.md#br-41--resume-has-two-entrances): Resume
@@ -117,10 +123,49 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    the dialog. Its Disconnect forgets `wf_account`, `wf_since` and `wf_onkko`
    and opens `/connect` with an empty field.
 5. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
-   read was **{age}**, and the next one will be at **{h:mm AM} your local
-   time**." The page is drawn with "**{HH:MM} hours UTC**", which the
-   browser turns into the player's own time once it loads, since only the
-   browser knows its time zone (owner, 2026-10-21).
+   read was **{age}**, and the next one will be at **{h:mm AM}**." The time
+   is the player's own, from the system's time zone, which only the browser
+   knows, so the line is written once the page has loaded and never in UTC
+   (owner, 2026-10-21 and 2026-11-01; `useLocalTime()` in `read-cycle.ts`).
+
+After a later read failed, the read cycle gives way to the Warning alert under the
+player's name and rank, with BR-69's words: the age of the data shown and the
+time of the next try (`943:5889`).
+
+### The toast
+
+`Toast` floats 12 px under the header or the top bar, across the column, over
+the screen (`943:6079`, `943:6161`). It is the Success state of
+[`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+the owner's design of 2026-11-01, and says BR-70's words: **Connected** on the first screen after Connect,
+**Updated** on the screen whose render read DE again. It is a polite status
+for screen readers, leaves after six seconds (held while the pointer or the
+focus is on it) or on a tap, and each read shows
+it once: the browser remembers the reads it has shown for the session. Connect
+leaves a one-minute `wf_toast` cookie that the screen reads and the toast
+clears.
+
+### Alert
+
+In Figma there is one component, [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+with a State and a Message; every message the app shows is an example in
+[`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488) (owner, 2026-11-01; until then the
+id form's messages and the toast were components of their own). `Alert` is one message in one of four states, each its own ground, ink and
+Material Symbols icon at 18 px: **Informative** (`info`), **Success**
+(`check-circle`), **Warning** (`warning`) and **Error** (`error`). The text is
+mono bold, `Mono/Strong` (owner, 2026-11-01). Each ink reaches about 7:1 on its ground (WCAG AAA for text, and well
+over the 3:1 an icon needs). Error is a screen-reader alert; the others are a
+polite status. Error carries BR-38's messages on the id form, Warning BR-69's
+in Profile, Success the toast. Nothing uses Informative yet.
+
+### The wait
+
+Every link and every form that sends the player on shows the loading screen
+(`LoadingCard`, spec 02's Loading) once the wait passes 400 ms (BR-71). The
+page stays as it was underneath. Links go through the shell's `Link`, which
+watches Next's `useLinkStatus`; forms hold a `FormWait`, which watches
+`useFormStatus`; Goal's search, which jumps to a result on Enter, wraps the
+jump in a transition and shows the same `Wait` while it is pending.
 
 The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source. A live response read on 2026-10-23 carries no glyph anywhere: its only image-like fields are `LoadOutPreset.PresetIcon`, empty, and `GuildEmblem`, a flag. A live player therefore wears the game's default glyph, Lotus Symbol (`AvatarImageDefault`, the one every account starts with; owner, 2026-10-23), until the player can choose one; the square stays only if the catalog lacks it.
 
@@ -160,7 +205,7 @@ sentences (owner, 2026-10-24):
 
 ## Components
 
-Each is one component with its Storybook stories: `Header`, `PlayerChip`,
+Each is one component with its Storybook stories: `Alert`, `Toast`, `Header`, `PlayerChip`,
 `TopBar`, `TabBar` and `Tab` (active, inactive), `List` holding a
 `ControlRow` per setting, `Segmented`, and `Button` in the red filled variant
 Disconnect uses; Profile is a screen.
@@ -174,9 +219,13 @@ Disconnect uses; Profile is a screen.
 4. At 360 and 600 nothing overlaps or is cut, and wider than 600 the page stays a centred 600 px column (BR-39).
 5. Disconnect clears both cookies and lands on `/connect` with an empty field.
 6. The read cycle shows the real last read and the next read in the player's
-   own time.
-7. Every part has its stories, in every state the frames draw.
-8. `pnpm check` passes.
+   own time; after a failed read, the band of BR-69 in its place.
+7. A read that worked shows its toast once, never on the demo; a refresh or
+   going back does not show it again.
+8. A screen that takes longer than 400 ms shows the loading screen over the
+   page; a quicker one shows nothing.
+9. Every part has its stories, in every state the frames draw.
+10. `pnpm check` passes.
 
 ## Frame corrections
 

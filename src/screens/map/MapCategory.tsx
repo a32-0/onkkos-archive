@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
@@ -16,6 +15,7 @@ import { PlaceCrumb } from "@/ui/PlaceCrumb/PlaceCrumb";
 import { Segmented, type SegmentedOption } from "@/ui/Segmented/Segmented";
 import { SummaryRow } from "@/ui/SummaryRow/SummaryRow";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import { nextLens, shownIn } from "./lens";

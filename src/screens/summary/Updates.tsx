@@ -15,6 +15,7 @@ import { matchesUpdate } from "../resume/state";
 import { Shell } from "../shell/Shell";
 import type { ShellTab } from "../shell/tabs";
 import type { ShellChrome } from "../shell/voice";
+import { FormWait } from "../shell/Wait";
 import type { SummaryAction, SummaryUpdate } from "./state";
 import styles from "./Summary.module.css";
 
@@ -70,6 +71,7 @@ export function Updates({
                 {...(update.newest && { newest: RESUME.newest })}
               />
             ))}
+            <FormWait />
           </form>
         )}
         {found.length > listed.length && (

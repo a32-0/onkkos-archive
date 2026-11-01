@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useOptimistic, useState, useTransition } from "react";
 
 import { ADVANCED } from "@/content/search";
+import { Link } from "@/screens/shell/Link";
 import { Button } from "@/ui/Button/Button";
 import { Checkbox } from "@/ui/Checkbox/Checkbox";
 import { Divider } from "@/ui/Divider/Divider";

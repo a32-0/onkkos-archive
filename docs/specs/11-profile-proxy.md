@@ -5,7 +5,7 @@ Digital Extremes (DE), the game's maker. This spec covers how that read
 happens, how long the result is kept, and how the app avoids calling DE so
 often that DE blocks it. The read leaves from the player's own machine, in the
 app of [spec 13](13-desktop.md), so a block would lock that player out of
-their own game for up to a day. The demo never reads DE. No frame draws it. What a failed read looks like is in spec 02.
+their own game for up to a day. The demo never reads DE. No frame draws it. What a failed first read looks like is in spec 02; a failed later read, in spec 04 (BR-69).
 
 ## Rules
 
@@ -34,8 +34,9 @@ In order, for every read:
    here. So does every id when the source is set to fixtures, which is the
    default in development. On the demo, which never reads live, any other id
    answers `not-found` without reading anything (spec 02).
-3. **Stored.** A stored profile for this id, younger than twelve hours, answers
-   at once. So does a stored not-found, within DE's own `max-age` (clamped to
+3. **Stored.** A stored profile for this id whose last try is younger than
+   twelve hours answers at once. The last try is the read that stored it, or
+   the later read that failed. So does a stored not-found, within DE's own `max-age` (clamped to
    between one minute and a day). The owner set on 2026-10-06 that this comes
    before the circuit: a player whose profile is stored keeps reading it while
    the circuit is open.
@@ -52,7 +53,14 @@ In order, for every read:
    `not-found` (cached), `throttled` or `upstream` (never cached, counted by the
    circuit), `malformed` (never cached).
 9. **Keep** only what the app reads: the profile cut to the fields any spec
-   uses, compressed, for twelve hours. The raw payload is never stored.
+   uses, compressed, until a newer read replaces it. After Disconnect it stays
+   only until its twelve hours end.
+   The raw payload is never stored.
+10. **Keep the last one on a failure.** When a profile is stored and any step
+    from 4 on fails, the read answers that profile, marked stale with the time
+    of the try, and the store records the try, so the next one waits twelve
+    hours (BR-69; owner, 2026-10-31). With no profile stored, the failure is
+    the answer, as before.
 
 A refusal, a read that gets no answer and a store that fails each write one
 line to the server's log: DE's status and the headers that say who
@@ -71,12 +79,12 @@ memory holds them while it runs and the file keeps them when it closes:
 closing and opening the app never reads DE again inside the window, and never
 resets a budget or closes an open circuit.
 
-| Lock      | Key                     | Lives for                     |
-| --------- | ----------------------- | ----------------------------- |
-| Profile   | the account id          | twelve hours                  |
-| Not-found | the account id          | DE's `max-age`, clamped       |
-| Budget    | the machine             | twelve hours from first spend |
-| Circuit   | one key for the machine | thirty minutes once opened    |
+| Lock      | Key                     | Lives for                                             |
+| --------- | ----------------------- | ----------------------------------------------------- |
+| Profile   | the account id          | until replaced; after Disconnect, to the window's end |
+| Not-found | the account id          | DE's `max-age`, clamped                               |
+| Budget    | the machine             | twelve hours from first spend                         |
+| Circuit   | one key for the machine | thirty minutes once opened                            |
 
 Only the app's window can reach its server (spec 13), so every request is the
 player's own and the budget is the machine's. Development uses the memory
@@ -84,11 +92,13 @@ store, which keeps the same locks until the process stops.
 
 ## What is kept, and what is not
 
-- Kept: the trimmed profile, for twelve hours; nothing else about a player.
+- Kept: the trimmed profile last read, with when it was read and when a
+  later read last failed; nothing else about a player.
 - On the device: `wf_account` (one year) and `wf_since` (the month), both
   cookies; `wf_place` (BR-46); the ticks of spec 10 in browser storage.
-- Never: the raw payload, a computed result, anything past the window.
-- Disconnect clears both cookies; the stored profile simply expires.
+- Never: the raw payload, a computed result.
+- Disconnect clears the cookies and keeps the stored profile only until its
+  twelve hours end, so connecting again inside them reads nothing.
 
 ## The fixtures
 
@@ -112,5 +122,9 @@ store, which keeps the same locks until the process stops.
 7. A demo id, the demo and development never call DE; development does when
    the source is set to live on purpose, and the app by default.
 8. A profile stored before the circuit opened still answers while it is open.
-9. `pnpm check` passes, with the client, budget and circuit tests run against
-   the store's interface, and the store file's own tests.
+9. A later read that fails answers the stored profile, marked stale, and
+   calls DE again only twelve hours after that try.
+10. After Disconnect, connecting the same id inside the twelve hours calls DE
+    no more, and the stored profile is gone once they end.
+11. `pnpm check` passes, with the client, budget and circuit tests run against
+    the store's interface, and the store file's own tests.

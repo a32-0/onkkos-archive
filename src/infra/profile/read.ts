@@ -10,7 +10,16 @@ import { store } from "@/infra/store";
 import { storeKeys, type Store } from "@/infra/store/store";
 
 import { spendLookup } from "./budget";
-import { decodeProfile, keepNotFound, keepProfile, releaseLock, takeLock } from "./cache";
+import {
+  decodeProfile,
+  forgetProfile,
+  keepNotFound,
+  keepProfile,
+  nextTryAt,
+  releaseLock,
+  takeLock,
+  type StoredProfile,
+} from "./cache";
 import { circuitState, recordRefusal, recordSuccess } from "./circuit";
 import { requestProfile } from "./client";
 import { isDemoAccountId, liveSource, loadFixtureProfile } from "./fixture-source";
@@ -20,11 +29,19 @@ const WAIT_MS = 15_000;
 const POLL_MS = 500;
 
 export type ProfileResult =
-  | { ok: true; profile: RawProfile; cached: boolean; fetchedAt: number }
+  | {
+      ok: true;
+      profile: RawProfile;
+      cached: boolean;
+      fetchedAt: number;
+      failedAt?: number;
+      fixture?: true;
+    }
   | { ok: false; reason: FailureReason; retryAfterSeconds?: number };
 
 interface Snapshot {
   answer: ProfileResult | null;
+  stored: StoredProfile | null;
   locked: boolean;
   refused: boolean;
   circuit: string | null;
@@ -44,7 +61,7 @@ export async function fetchProfile(rawAccountId: string, visitor: string): Promi
   if (!liveSource() || isDemoAccountId(accountId)) {
     const profile = loadFixtureProfile(accountId);
     if (!profile) return failure("malformed");
-    return { ok: true, profile, cached: false, fetchedAt: Date.now() };
+    return { ok: true, profile, cached: false, fetchedAt: Date.now(), fixture: true };
   }
 
   const key = `${accountId}|${visitor}`;
@@ -62,19 +79,58 @@ export async function fetchProfile(rawAccountId: string, visitor: string): Promi
   return read;
 }
 
+export async function forgetStoredProfile(accountId: string): Promise<void> {
+  if (!liveSource() || isDemoAccountId(accountId)) return;
+  try {
+    await forgetProfile(store(), accountId);
+  } catch (error: unknown) {
+    console.warn(
+      `The store failed to forget a profile: ${error instanceof Error ? error.message : "unknown"}`,
+    );
+  }
+}
+
 async function readLive(accountId: string, visitor: string): Promise<ProfileResult> {
   const shared = store();
-  const deadline = Date.now() + WAIT_MS;
-  let seen = await snapshot(shared, accountId);
-  if (seen.answer) return seen.answer;
+  const seen = await snapshot(shared, accountId);
+  const result = seen.answer ?? (await readDue(shared, accountId, visitor, seen));
+  if (result.ok || !seen.stored) return result;
+  return keepStale(shared, accountId, seen.stored);
+}
 
+async function keepStale(
+  shared: Store,
+  accountId: string,
+  stored: StoredProfile,
+): Promise<ProfileResult> {
+  const triedAt = Date.now();
+  await keepProfile(shared, accountId, { ...stored, triedAt });
+  return {
+    ok: true,
+    profile: stored.profile,
+    cached: true,
+    fetchedAt: stored.readAt,
+    failedAt: triedAt,
+  };
+}
+
+async function readDue(
+  shared: Store,
+  accountId: string,
+  visitor: string,
+  first: Snapshot,
+): Promise<ProfileResult> {
+  const deadline = Date.now() + WAIT_MS;
+  let seen = first;
   for (;;) {
     const circuit = circuitState(seen.circuit);
     if (circuit.open) return failure("circuit-open", circuit.retryAfterSeconds);
 
     if (await takeLock(shared, accountId)) {
       try {
-        return await readUnderLock(shared, accountId, visitor, seen.refused);
+        const read = await readUnderLock(shared, accountId, visitor, seen.refused);
+        if (read.ok || !first.stored) return read;
+        return await keepStale(shared, accountId, first.stored);
       } finally {
         await releaseLock(shared, accountId);
       }
@@ -139,15 +195,25 @@ async function snapshot(shared: Store, accountId: string): Promise<Snapshot> {
   ]);
   const stored = decodeProfile(profile);
   let answer: ProfileResult | null = null;
-  if (stored)
-    answer = { ok: true, profile: stored.profile, cached: true, fetchedAt: stored.readAt };
+  if (stored && Date.now() < nextTryAt(stored)) answer = storedAnswer(stored);
   else if (notFound) answer = failure("not-found");
   return {
     answer,
+    stored,
     locked: Boolean(lock),
     refused: Boolean(refusals ?? circuit),
     circuit: circuit ?? null,
   };
+}
+
+function storedAnswer(stored: StoredProfile): ProfileResult {
+  const answer = {
+    ok: true,
+    profile: stored.profile,
+    cached: true,
+    fetchedAt: stored.readAt,
+  } as const;
+  return stored.triedAt === undefined ? answer : { ...answer, failedAt: stored.triedAt };
 }
 
 function failure(reason: FailureReason, retryAfterSeconds?: number): ProfileResult {

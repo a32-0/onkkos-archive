@@ -1,4 +1,5 @@
 .icon {
+  --icon-18: 18px;
   --icon-20: 20px;
   flex: none;
   display: block;
@@ -8,6 +9,11 @@
 .s16 {
   width: var(--space-6);
   height: var(--space-6);
+}
+
+.s18 {
+  width: var(--icon-18);
+  height: var(--icon-18);
 }
 
 .s20 {

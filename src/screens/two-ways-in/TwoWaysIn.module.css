@@ -57,3 +57,7 @@
   max-width: var(--features-reading);
   margin-top: auto;
 }
+
+.top {
+  position: relative;
+}

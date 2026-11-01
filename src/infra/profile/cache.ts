@@ -6,6 +6,7 @@ import type { RawProfile } from "@/domain/types/profile";
 import { storeKeys, type Store } from "@/infra/store/store";
 
 export const PROFILE_TTL_MS = 12 * 60 * 60 * 1000;
+const PROFILE_KEEP_MS = 365 * 24 * 60 * 60 * 1000;
 
 const MIN_TTL_MS = 60_000;
 const DEFAULT_TTL_MS = 600_000;
@@ -15,6 +16,11 @@ const LOCK_TTL_MS = 20_000;
 export interface StoredProfile {
   profile: RawProfile;
   readAt: number;
+  triedAt?: number;
+}
+
+export function nextTryAt(stored: StoredProfile): number {
+  return Math.max(stored.readAt, stored.triedAt ?? 0) + PROFILE_TTL_MS;
 }
 
 export function ttlFromCacheControl(header: string | null): number {
@@ -37,7 +43,16 @@ export function decodeProfile(value: string | null | undefined): StoredProfile |
 
 export async function keepProfile(store: Store, accountId: string, stored: StoredProfile) {
   const value = gzipSync(JSON.stringify(stored)).toString("base64");
-  await store.set(storeKeys.profile(accountId), value, PROFILE_TTL_MS);
+  await store.set(storeKeys.profile(accountId), value, PROFILE_KEEP_MS);
+}
+
+export async function forgetProfile(store: Store, accountId: string) {
+  const key = storeKeys.profile(accountId);
+  const [value] = await store.getMany([key]);
+  const stored = decodeProfile(value);
+  const left = stored ? nextTryAt(stored) - Date.now() : 0;
+  if (left > 0 && value) await store.set(key, value, left);
+  else await store.remove(key);
 }
 
 export async function keepNotFound(store: Store, accountId: string, ttlMs: number) {

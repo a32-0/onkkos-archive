@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { SUMMARY } from "@/content/catch-up";
 import { VOICE } from "@/content/voice";
 import { catchUpCategoryRoute, updatesRoute } from "@/routes";
@@ -11,6 +9,7 @@ import { List, ListEntry } from "@/ui/List/List";
 import { ListItem } from "@/ui/ListItem/ListItem";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import type { SummaryCardView, SummarySection } from "./state";

@@ -11,6 +11,8 @@ export interface ShellPlayer {
   minutesSinceRead: number;
   nextReadAt: number;
   fresh: boolean;
+  failedAt: number | null;
+  toast: { kind: "connected" | "updated"; key: string } | null;
 }
 
 const LOCAL_TIME: Intl.DateTimeFormatOptions = { hour: "numeric", minute: "2-digit" };
@@ -29,7 +31,10 @@ export function useLocalTime(at: number): string | null {
   );
 }
 
-export function readCycle(player: ShellPlayer, local: string | null = null): ReadCyclePart[] {
-  const next = new Date(player.nextReadAt).toISOString().slice(11, 16);
-  return SHELL.readCycle(SHELL.age(player.minutesSinceRead, player.fresh), next, local);
+export function staleLine(player: ShellPlayer, local: string): string {
+  return SHELL.stale(SHELL.age(player.minutesSinceRead, false), local);
+}
+
+export function readCycle(player: ShellPlayer, local: string): ReadCyclePart[] {
+  return SHELL.readCycle(SHELL.age(player.minutesSinceRead, player.fresh), local);
 }

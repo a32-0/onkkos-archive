@@ -49,11 +49,11 @@ describe("on the demo (spec 02)", () => {
     expect(link).toContain('href="https://apps.microsoft.com/detail/9NVJBJD22L6D"');
     expect(link).toContain('target="_blank"');
     expect(link).toContain('rel="noreferrer"');
-    expect(html.indexOf("Microsoft Store")).toBeLessThan(html.indexOf("Or from GitHub"));
+    expect(html.indexOf("Microsoft Store")).toBeLessThan(html.indexOf("Download from GitHub"));
   });
 
   it("offers the latest release on GitHub under the badge, in a new tab", () => {
-    const link = html.match(/<a [^>]*>Or from GitHub, for Windows and Linux<\/a>/)?.[0] ?? "";
+    const link = html.match(/<a [^>]*>Download from GitHub<\/a>/)?.[0] ?? "";
     expect(link).toContain('href="https://github.com/a32-0/onkkos-archive/releases/latest"');
     expect(link).toContain('data-variant="text"');
     expect(link).toContain('target="_blank"');
@@ -64,7 +64,7 @@ describe("on the demo (spec 02)", () => {
     const own = page({ value: "", reason: null, retryAt: null });
     expect(own).not.toContain("Your own account");
     expect(own).not.toContain("Microsoft Store");
-    expect(own).not.toContain("Or from GitHub");
+    expect(own).not.toContain("Download from GitHub");
   });
 });
 

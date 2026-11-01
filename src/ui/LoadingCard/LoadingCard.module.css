@@ -9,6 +9,16 @@
   background: var(--scrim-strong);
 }
 
+.wait {
+  animation: appear var(--motion-fade) var(--motion-ease) var(--motion-wait) both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
 .card {
   position: relative;
   display: flex;

@@ -203,6 +203,23 @@ Before step 3 you can try the package on your own machine:
 lands in `desktop/release/`. [`desktop.md`](desktop.md#cutting-a-version) has
 the details.
 
+## How many people download it
+
+GitHub doesn't show download counts on the releases page. Its API has them.
+In PowerShell:
+
+```powershell
+(Invoke-RestMethod https://api.github.com/repos/a32-0/onkkos-archive/releases) | ForEach-Object { $t=$_.tag_name; $_.assets | Where-Object name -match '\.(exe|AppImage)$' | ForEach-Object { "{0}`t{1}`t{2}" -f $t,$_.download_count,$_.name } }
+```
+
+Only the installer and the AppImage count. `latest.yml` and the `.blockmap`
+are what installed apps fetch when they check for updates. An installed app
+that updates itself downloads the new installer too, so every version's count
+includes updates as well as new players, your own included.
+
+Store installs are counted separately, in Partner Center under the app's
+**Analytics › Acquisitions**. The numbers show up a day or two late.
+
 ## Keeping the tools current
 
 Check every month or two, and after each mainline:

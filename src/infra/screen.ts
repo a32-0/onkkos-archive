@@ -10,7 +10,7 @@ import { loadGraph } from "@/infra/graph/load";
 import { loadEvidenceRules } from "@/infra/narrative/evidence-load";
 import { PROFILE_TTL_MS } from "@/infra/profile/cache";
 import { readProfile } from "@/infra/profile/read";
-import { readAccountId } from "@/infra/session";
+import { readAccountId, readConnected } from "@/infra/session";
 
 export interface Screen {
   accountId: string;
@@ -20,7 +20,11 @@ export interface Screen {
   confirmedQuests: ConfirmedQuests;
   cached: boolean;
   fetchedAt: number;
+  failedAt: number | null;
+  toast: ReadToastKind | null;
 }
+
+type ReadToastKind = "connected" | "updated";
 
 export type ScreenRead =
   | { state: "no-account" }
@@ -50,10 +54,16 @@ export const readScreen = cache(async (): Promise<ScreenRead> => {
       confirmedQuests: confirmedQuests(loadEvidenceRules(), result.profile),
       cached: result.cached,
       fetchedAt: result.fetchedAt,
+      failedAt: result.failedAt ?? null,
+      toast: (await readConnected())
+        ? "connected"
+        : !result.cached && !result.fixture
+          ? "updated"
+          : null,
     },
   };
 });
 
-export function nextReadAt(fetchedAt: number): number {
-  return fetchedAt + PROFILE_TTL_MS;
+export function nextReadAt(fetchedAt: number, failedAt: number | null = null): number {
+  return Math.max(fetchedAt, failedAt ?? 0) + PROFILE_TTL_MS;
 }

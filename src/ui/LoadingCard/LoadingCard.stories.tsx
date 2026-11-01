@@ -20,3 +20,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const TheQuill: Story = {};
+
+export const AfterAWait: Story = { args: { wait: true } };

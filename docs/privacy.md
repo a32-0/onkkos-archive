@@ -5,7 +5,7 @@ app reads, what it keeps, and what leaves your computer. It covers the app from
 the Microsoft Store, the app from GitHub Releases and the demo at
 `onkkos-archive.vercel.app`.
 
-Last changed on 29 October 2026.
+Last changed on 31 October 2026.
 
 ## What the app asks for
 
@@ -18,14 +18,14 @@ it can't change anything in your account.
 
 Everything stays on your computer. There's no server of ours in between.
 
-| What                                                                                                               | Where on your computer         | For how long                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ----------------------------------- |
-| The fields of your profile it uses, never the whole profile                                                        | The app's folder               | Twelve hours                        |
-| Your ID, the update you last played, the last place you opened, whether Onkko speaks, whether you've seen the tour | The app's cookies              | Up to a year                        |
-| The steps you tick                                                                                                 | The app's storage              | Until you clear them                |
-| The wiki's text and icons, Varzia's stock, the rotations                                                           | Memory, while the app is open  | A day at most; Varzia's ten minutes |
-| The game's data                                                                                                    | The app's folder               | Until a newer set replaces it       |
-| What went wrong, if anything: DE refusing a read, a failed update. Never your ID                                   | `app.log`, in the app's folder | Until it passes 1 MB                |
+| What                                                                                                               | Where on your computer         | For how long                                                   |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------ | -------------------------------------------------------------- |
+| The fields of your profile it uses, never the whole profile                                                        | The app's folder               | Until a newer read; after you disconnect, twelve hours at most |
+| Your ID, the update you last played, the last place you opened, whether Onkko speaks, whether you've seen the tour | The app's cookies              | Up to a year                                                   |
+| The steps you tick                                                                                                 | The app's storage              | Until you clear them                                           |
+| The wiki's text and icons, Varzia's stock, the rotations                                                           | Memory, while the app is open  | A day at most; Varzia's ten minutes                            |
+| The game's data                                                                                                    | The app's folder               | Until a newer set replaces it                                  |
+| What went wrong, if anything: DE refusing a read, a failed update. Never your ID                                   | `app.log`, in the app's folder | Until it passes 1 MB                                           |
 
 The app never keeps anything it works out from your profile.
 
@@ -50,7 +50,8 @@ counts its page views and how fast its pages load, with no cookie and no ID.
 
 ## Removing your data
 
-Disconnect, in Profile, forgets your ID. Uninstalling the app removes its
+Disconnect, in Profile, forgets your ID at once and the profile it read
+within twelve hours. Uninstalling the app removes its
 folder and everything above. On Linux, delete the AppImage and
 `~/.config/Onkko's Archive`.
 

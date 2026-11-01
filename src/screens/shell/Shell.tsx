@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { APP } from "@/content/app";
@@ -11,6 +10,8 @@ import { TabBar } from "@/ui/TabBar/TabBar";
 import { TopBar } from "@/ui/TopBar/TopBar";
 
 import { BackLink, Visit } from "./history";
+import { Link } from "./Link";
+import { ReadToast } from "./ReadToast";
 import styles from "./Shell.module.css";
 import { tabItems, type ShellTab } from "./tabs";
 import { Tour, type TourStep } from "./Tour";
@@ -66,6 +67,7 @@ export function Shell({
           />
         )}
         {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={BackLink} />}
+        <ReadToast player={player} />
       </div>
       <main className={styles.main}>{children}</main>
       {tabs && !bar && (

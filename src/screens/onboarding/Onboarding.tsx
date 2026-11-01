@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { APP } from "@/content/app";
 import { VOICE } from "@/content/voice";
 import { ROUTES } from "@/routes";
+import { Link } from "@/screens/shell/Link";
 import { Button } from "@/ui/Button/Button";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { Wordmark } from "@/ui/Wordmark/Wordmark";

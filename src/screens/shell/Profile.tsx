@@ -5,6 +5,7 @@ import { useId, useRef, useState, useTransition } from "react";
 import { SHELL } from "@/content/nav";
 import type { UpdateState } from "@/domain/types/update-state";
 import { releaseNotes } from "@/routes";
+import { Alert } from "@/ui/Alert/Alert";
 import { Button } from "@/ui/Button/Button";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
@@ -12,10 +13,11 @@ import { List, ListEntry } from "@/ui/List/List";
 import { Segmented } from "@/ui/Segmented/Segmented";
 
 import styles from "./Profile.module.css";
-import { readCycle, useLocalTime } from "./read-cycle";
+import { readCycle, staleLine, useLocalTime } from "./read-cycle";
 import { Shell } from "./Shell";
 import type { ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
+import { FormWait } from "./Wait";
 
 function updateLine(update: UpdateState): string {
   if (update.state === "current") return SHELL.upToDate;
@@ -78,6 +80,9 @@ export function Profile({
             <p className={styles.caption}>{SHELL.rankTitle(player.masteryRank)}</p>
           </div>
         </div>
+        {player.failedAt !== null && local !== null && (
+          <Alert tone="warning" message={staleLine(player, local)} />
+        )}
         <section className={styles.settings}>
           <Divider label={SHELL.settings} />
           <List label={SHELL.settings}>
@@ -116,6 +121,7 @@ export function Profile({
                   <Button variant="secondary" type="submit">
                     {SHELL.reset}
                   </Button>
+                  <FormWait />
                 </form>
               </ControlRow>
             </ListEntry>
@@ -195,15 +201,18 @@ export function Profile({
               <Button variant="secondary" autoFocus onClick={() => confirm.current?.close()}>
                 {SHELL.cancel}
               </Button>
+              <FormWait />
             </form>
           </dialog>
-          <p className={styles.cycle}>
-            {readCycle(player, local).map((part, index) => (
-              <span key={index} className={part.strong ? styles.strong : undefined}>
-                {part.text}
-              </span>
-            ))}
-          </p>
+          {player.failedAt === null && local !== null && (
+            <p className={styles.cycle}>
+              {readCycle(player, local).map((part, index) => (
+                <span key={index} className={part.strong ? styles.strong : undefined}>
+                  {part.text}
+                </span>
+              ))}
+            </p>
+          )}
         </div>
       </div>
     </Shell>

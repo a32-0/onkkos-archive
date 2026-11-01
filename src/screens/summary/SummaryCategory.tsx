@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { SUMMARY } from "@/content/catch-up";
 import { VOICE } from "@/content/voice";
 import { List, ListEntry } from "@/ui/List/List";
@@ -7,6 +5,7 @@ import { MoreLine } from "@/ui/MoreLine/MoreLine";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { SummaryRow } from "@/ui/SummaryRow/SummaryRow";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import type { SummaryGroup } from "./state";

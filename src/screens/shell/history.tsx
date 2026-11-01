@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, type AnchorHTMLAttributes, type MouseEvent } from "react";
+
+import { Link } from "./Link";
 
 const visited: string[] = [];
 

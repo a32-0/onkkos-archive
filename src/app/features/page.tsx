@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { PAGE_TITLES } from "@/content/app";
-import { requireScreen, startHereOf, voiceOf } from "@/app/screen";
+import { playerOf, requireScreen, startHereOf, voiceOf } from "@/app/screen";
 import { asksWhenLastPlayed } from "@/domain/graph/star-chart";
 import { ROUTES } from "@/routes";
 import { TwoWaysIn } from "@/screens/two-ways-in/TwoWaysIn";
@@ -17,6 +17,7 @@ export default async function FeaturesPage() {
       name={screen.display.displayName ?? null}
       voice={(await voiceOf(screen)).on}
       skip={startHereOf(screen)}
+      player={playerOf(screen)}
     />
   );
 }

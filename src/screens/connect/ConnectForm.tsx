@@ -3,8 +3,8 @@
 import { useActionState } from "react";
 
 import { CONNECT, connectError } from "@/content/onboarding";
+import { Alert } from "@/ui/Alert/Alert";
 import { Button } from "@/ui/Button/Button";
-import { ErrorBand } from "@/ui/ErrorBand/ErrorBand";
 import { Field } from "@/ui/Field/Field";
 import { LoadingCard } from "@/ui/LoadingCard/LoadingCard";
 
@@ -42,7 +42,7 @@ export function ConnectForm({
             spellCheck={false}
             invalid={message !== null}
           />
-          {message && <ErrorBand message={message} />}
+          {message && <Alert tone="error" message={message} />}
           <p className={styles.hint}>{CONNECT.readsNote}</p>
         </div>
         <Button type="submit" loading={pending}>

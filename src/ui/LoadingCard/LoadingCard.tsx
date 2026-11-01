@@ -3,9 +3,9 @@ import styles from "./LoadingCard.module.css";
 
 const STROKE = "M0 4 C20 0 40 8 60 4 C70 2 80 6 88 4";
 
-export function LoadingCard({ line }: { line: string }) {
+export function LoadingCard({ line, wait = false }: { line: string; wait?: boolean }) {
   return (
-    <div className={styles.overlay} role="status">
+    <div className={wait ? `${styles.overlay} ${styles.wait}` : styles.overlay} role="status">
       <div className={styles.card}>
         <span className={styles.stage} aria-hidden>
           <span className={styles.pen}>

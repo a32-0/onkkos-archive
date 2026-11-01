@@ -17,59 +17,68 @@ const REASONS: Record<FailureReason, true> = {
 
 describe("the band says one of five things (BR-38)", () => {
   it("gives every reason the proxy knows a message", () => {
-    for (const reason of Object.keys(REASONS)) expect(connectError(reason, AT)).toBeTruthy();
+    for (const reason of Object.keys(REASONS))
+      expect(connectError(reason, AT, "3:30 PM")).toBeTruthy();
   });
 
   it("says what is wrong with the id", () => {
-    expect(connectError("invalid-id", null)).toBe(
+    expect(connectError("invalid-id", null, null)).toBe(
       "An account ID is 24 characters: digits 0–9 and letters a–f.",
     );
-    expect(connectError("not-found", null)).toBe(
+    expect(connectError("not-found", null, null)).toBe(
       "No account answers to this ID. Copy it again from the gid cookie.",
     );
   });
 
   it("shares one message among the three ways Warframe is not answering", () => {
     const said = ["upstream", "throttled", "circuit-open"].map((reason) =>
-      connectError(reason, AT),
+      connectError(reason, AT, "3:30 PM"),
     );
     expect(new Set(said).size).toBe(1);
     expect(said[0]).toBe(
-      "Warframe isn't answering right now. Your ID is fine; try again at 15:30 UTC.",
+      "Warframe isn't answering right now. Your ID is fine; try again at 3:30 PM.",
     );
-    expect(connectError("upstream", null)).toBe(
+    expect(connectError("upstream", null, null)).toBe(
       "Warframe isn't answering right now. Your ID is fine; try again in a few minutes.",
     );
   });
 
   it("keeps an unreadable answer apart, since waiting does not fix it", () => {
-    expect(connectError("malformed", AT)).toBe(
+    expect(connectError("malformed", AT, "3:30 PM")).toBe(
       "Warframe's answer came back in a form we can't read yet. Your ID is fine.",
     );
   });
 
   it("says when the next reading opens", () => {
-    expect(connectError("limited", AT)).toBe(
-      "You've had your two readings for now. The next opens at 15:30 UTC.",
+    expect(connectError("limited", AT, "3:30 PM")).toBe(
+      "You've had your two readings for now. The next opens at 3:30 PM.",
     );
   });
 
   it("says the time in the player's own time once the browser knows it (BR-38)", () => {
     expect(connectError("limited", AT, "9:30 AM")).toBe(
-      "You've had your two readings for now. The next opens at 9:30 AM your local time.",
+      "You've had your two readings for now. The next opens at 9:30 AM.",
     );
     expect(connectError("throttled", AT, "9:30 AM")).toBe(
-      "Warframe isn't answering right now. Your ID is fine; try again at 9:30 AM your local time.",
+      "Warframe isn't answering right now. Your ID is fine; try again at 9:30 AM.",
+    );
+  });
+
+  it("waits for the player's own time before it shows a time at all", () => {
+    expect(connectError("limited", AT, null)).toBeNull();
+    expect(connectError("throttled", AT, null)).toBeNull();
+    expect(connectError("invalid-id", AT, null)).toBe(
+      "An account ID is 24 characters: digits 0–9 and letters a–f.",
     );
   });
 
   it("shows no band for a reason it does not know", () => {
-    expect(connectError("teapot", AT)).toBeNull();
+    expect(connectError("teapot", AT, "3:30 PM")).toBeNull();
   });
 
   it("keeps the machine out of the band", () => {
     for (const reason of Object.keys(REASONS)) {
-      expect(connectError(reason, AT)).not.toMatch(/\b\d{3}\b|circuit|refus/i);
+      expect(connectError(reason, AT, "3:30 PM")).not.toMatch(/\b\d{3}\b|circuit|refus/i);
     }
   });
 });

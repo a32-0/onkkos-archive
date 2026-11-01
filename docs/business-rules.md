@@ -164,33 +164,38 @@ a reading of the earlier build against it was put to them.
 - Type: state.
 - Rule: while the profile is read, the form dims and a card with the quill
   reads "Onkko is reading your archive...". When the read fails, the message sits
-  in a red band under the account id field, and the form stays usable.
+  in an Error alert under the account id field, and the form stays usable.
+  The alert is the light Error state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159)
+  (owner, 2026-11-01; until then a red band on `--danger`).
 - The band's words are not fixed by the frame. The owner drew one as an
   example and on 2026-10-04 left the messages to be written from the failures
   the system can return. The proxy knows seven reasons
   (`FailureReason` in `src/domain/types/profile.ts`); the player can act on
   four, so the band says four things:
 
-  | Reason                                  | The band                                                                     |
-  | --------------------------------------- | ---------------------------------------------------------------------------- |
-  | `invalid-id`                            | An account ID is 24 characters: digits 0–9 and letters a–f.                  |
-  | `not-found`                             | No account answers to this ID. Copy it again from the gid cookie.            |
-  | `upstream`, `throttled`, `circuit-open` | Warframe isn't answering right now. Your ID is fine; try again at 15:30 UTC. |
-  | `malformed`                             | Warframe's answer came back in a form we can't read yet. Your ID is fine.    |
-  | `limited`                               | You've had your two readings for now. The next opens at 15:30 UTC.           |
+  | Reason                                  | The band                                                                  |
+  | --------------------------------------- | ------------------------------------------------------------------------- |
+  | `invalid-id`                            | An account ID is 24 characters: digits 0–9 and letters a–f.               |
+  | `not-found`                             | No account answers to this ID. Copy it again from the gid cookie.         |
+  | `upstream`, `throttled`, `circuit-open` | Warframe isn't answering right now. Your ID is fine; try again at 15:30.  |
+  | `malformed`                             | Warframe's answer came back in a form we can't read yet. Your ID is fine. |
+  | `limited`                               | You've had your two readings for now. The next opens at 15:30.            |
 
 - The time is when a retry can succeed: the circuit's reopening or the end of
   the visitor's window (`retryAfterSeconds`). With no time known, the third row
   ends "try again in a few minutes." Once the page loads, the browser writes
   the time in the player's own time, as the read cycle does: "try again at
-  **3:30 PM your local time**." (owner, 2026-10-25); the server, which cannot
-  know the time zone, draws UTC until then. The machine stays out of the band: no
+  **3:30 PM**." (owner, 2026-10-25; "your local time" dropped on
+  2026-11-01). Every time the app shows is the player's own (owner,
+  2026-11-01): the server cannot know the time zone, so a band that holds a
+  time waits for the browser to write it. The machine stays out of the band: no
   status code, no refusal count, no "circuit". `malformed` is apart from the
   others because waiting does not fix it; the app has to be updated.
-- The profile is read on this form and then kept for twelve hours, so the
-  first read always happens here. When a later read fails on another screen,
-  the player is returned to this form with the band, which is the one place a
-  failure is drawn.
+- The profile is read on this form first, so the first read always happens
+  here. A later read that fails keeps the player where they are, on the
+  profile last read, and Profile says so in the same band (BR-69). The player
+  never has to paste their id again because DE failed (owner, 2026-10-31;
+  until then a failed later read sent the player back to this form).
 
 ### BR-40 · Before the map, Skip goes to the map
 
@@ -395,15 +400,17 @@ a reading of the earlier build against it was put to them.
   reads about an item changes faster than its build, and twelve hours is the
   arsenal's floor ([`public-release.md`](history/public-release.md#how-long-a-read-lasts)).
 - The footer reads as the frame draws it: "Data is read every **12 hours**.
-  The last read was **12 minutes ago,** and the next one will be at **15:30
-  hours UTC.**", the next time being the last read plus `PROFILE_TTL_MS`
+  The last read was **12 minutes ago,** and the next one will be at
+  **9:30 AM.**", the next time being the last read plus `PROFILE_TTL_MS`
   (`nextReadAt()` in `src/infra/screen.ts`). The age is said in whole words:
   "just now" after a fresh read, "less than a minute ago", "1 minute ago",
   "{n} minutes ago", "1 hour ago", "{n} hours ago" (owner, 2026-10-14). The
   frame drew 24 until the owner corrected it to 12 on 2026-10-04.
-- Once the page loads, the browser writes the next read in the player's own
-  time, in place of UTC: "**9:30 AM your local time.**" (owner,
-  2026-10-21). The server cannot know the time zone, so it draws UTC alone.
+- The time is always the player's own (owner, 2026-10-21 and 2026-11-01).
+  The browser writes it from the system's time zone; the server cannot know
+  that zone, so the line shows once the page has loaded and never in UTC.
+- A read that fails waits twelve hours too, counted from the try, and the
+  profile last read stays on screen meanwhile (BR-69; owner, 2026-10-31).
 
 ## Resume: picking the last update played
 
@@ -1132,3 +1139,56 @@ on 2026-10-08.
   state chosen (Not obtained, Ranking, Mastered) keeps only what the profile
   can tell that state of, so it leaves out places, quests and what has no
   rank.
+
+## Feedback on a wait and a read: settled on 2026-10-31
+
+### BR-69 · A later read that fails keeps the player in place
+
+- Frame [`943:5889` Profile — Stale read](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-5889)
+  and the Warning state of `947:159` Alert, its words in
+  [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488). Settled by the owner on
+  2026-10-31.
+- Type: behaviour and content.
+- Rule: when the twelve hours have passed and the next read fails, for any
+  reason, the app keeps showing the profile it read last and tries again
+  twelve hours after the failed try. Nothing sends the player back to
+  `/connect`. Profile shows a Warning alert in place of the read cycle, under
+  the player's name and rank: "Warframe didn't answer. You're seeing your
+  data from 14 hours ago. We'll try again at 9:30 PM." (owner, 2026-11-01).
+  The age and the time follow BR-07: the time is the player's own, and the
+  alert shows once the page has loaded.
+- The failure is DE's, so the band blames no one and asks nothing of the
+  player. It names no reason: whatever failed, the answer is the same wait.
+
+### BR-70 · A read that worked says so, once
+
+- The Success state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+  its words in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488),
+  drawn on [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079)
+  and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161),
+  and on [`953:6536` Two Ways In — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536).
+  Settled by the owner on 2026-10-31.
+- Type: behaviour and content.
+- Rule: a toast floats 12 px under the header or the top bar, across the
+  column, on any screen of the shell. It leaves on its own after six seconds,
+  held while the pointer or the focus is on it, or when tapped (owner,
+  2026-11-01, so there is time to read it, WCAG 2.2.1), and it shows once for each read, never again on a refresh or
+  on going back.
+  - **Connected**, after Connect worked: "Welcome, {name}. Your profile is
+    loaded." Not "Welcome back": the player has just given their id, and the
+    app had nothing of theirs before (owner, 2026-11-01).
+  - **Updated**, after the twelve-hour read worked: "Your profile is up to
+    date. Onkko read it from Warframe just now."
+- A failed read has no toast: BR-69's band in Profile says it. The demo never
+  shows a toast, since it reads no account.
+
+### BR-71 · Every wait longer than a moment shows the quill
+
+- Frame [`675:5392` Onboarding — Loading](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5392),
+  the loading screen every wait shares. Settled by the owner on 2026-10-31.
+- Type: behaviour.
+- Rule: a link or a button that opens another screen, and every form that
+  sends the player on (a demo, a month, Reset, Disconnect), covers the page
+  with the loading screen once the wait passes 400 ms. A shorter wait shows
+  nothing, so a quick screen never flickers. Connect keeps its own: the
+  loading screen at once, since its wait is always DE's.
