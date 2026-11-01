@@ -20,6 +20,15 @@
   backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
+.selected {
+  composes: boxed;
+  composes: badge from "../type.module.css";
+  min-width: 0;
+  background: var(--state-selected-ground);
+  border-color: var(--state-selected-border);
+  color: var(--state-selected);
+}
+
 .start-here {
   composes: boxed;
   composes: badge from "../type.module.css";

@@ -52,7 +52,8 @@ From the top:
    follow a quarter of a second after the player stops typing.
 4. **Filters**, open at rest, its title with a chevron that folds it:
    - **Type**, one or more `Filter chip`s: Warframes, Weapons, Companions,
-     Vehicles, Mods, Arcanes, Relics, Resources, Other, Places, Quests.
+     Vehicles, Mods, Arcanes, Incarnons, Relics, Resources, Other, Places,
+     Quests.
      None chosen means all of them.
    - **State**, one chip at a time: All, Not obtained, Ranking, Mastered. The
      hero's states (BR-17); it narrows to what the profile can tell, so a
@@ -93,7 +94,9 @@ The term may be empty: filters alone list everything they hold, by name.
   `/api/search` makes; the page never ships the whole index, only the rows
   it shows.
 - The type groups map onto `CATALOGUES` in `src/content/goals.ts`: Weapons
-  holds Primary, Secondary, Melee, Archgun, Archmelee, Amp and Incarnon;
+  holds Primary, Secondary, Melee, Archgun, Archmelee and Amp; Incarnons
+  holds the Incarnon weapons and the Incarnon Genesis adapters, as What's
+  new and the Star Chart do (owner, 2026-11-01);
   Vehicles holds Archwing, Necramech and Railjack; Other holds Ephemera,
   Honoria and the rest, Kitgun parts and Misc items among them.
 - The state comes from the profile, as the hero reads it; vaulted from the

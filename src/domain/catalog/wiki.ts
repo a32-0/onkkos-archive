@@ -148,6 +148,7 @@ export const WIKI_FILES = {
   circuit: "wiki-circuit.json",
   incarnons: "wiki-incarnons.json",
   honoriaTags: "wiki-honoria-tags.json",
+  pages: "wiki-pages.json",
 } as const;
 
 type WikiFile = keyof typeof WIKI_FILES;
@@ -168,6 +169,7 @@ export interface Wiki {
   circuit: WikiCircuit;
   incarnons: NameMap<WikiIncarnon>;
   honoriaTags: NameMap<WikiHonoriaTag>;
+  pages: NameMap<string | null>;
 }
 
 function named<V>(record: Record<string, V>): NameMap<V> {
@@ -200,7 +202,22 @@ export function normalizeWiki(raw: Readonly<Record<WikiFile, unknown>>, research
     circuit: circuit.parse(raw.circuit),
     incarnons: keyed("incarnons", incarnon, raw.incarnons),
     honoriaTags: keyed("tags", honoriaTag, raw.honoriaTags),
+    pages: keyed("pages", z.string().nullable(), raw.pages),
   };
+}
+
+export function askedPage(wiki: Wiki, title: string): string {
+  return wiki.titles.get(title) ?? title;
+}
+
+export function pageOf(wiki: Wiki, title: string): string | null | undefined {
+  return wiki.pages.get(askedPage(wiki, title));
+}
+
+export function linkedPage(wiki: Wiki, title: string, owner: string | null): string | null {
+  const page = pageOf(wiki, title);
+  if (page !== null) return page ?? askedPage(wiki, title);
+  return owner === null ? null : (pageOf(wiki, owner) ?? null);
 }
 
 export function researchFor(wiki: Wiki, name: string): ResearchEntry | undefined {

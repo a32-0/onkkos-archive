@@ -970,3 +970,54 @@ items:
     cite: Conquera III Ephemera
     routes:
       - { type: event, event: Conquera 2026 }
+
+  - item: Archon Amar's Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Amar, quest: Veilbreaker }
+      - type: vendor
+        vendor: Bird 3
+        place: Sanctum Anatomica
+        costs: [{ currency: Standing, amount: 30000 }]
+        rank: Illuminate
+        quest: Whispers in the Walls
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Archon Nira's Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Nira, quest: Veilbreaker }
+      - type: vendor
+        vendor: Bird 3
+        place: Sanctum Anatomica
+        costs: [{ currency: Standing, amount: 30000 }]
+        rank: Illuminate
+        quest: Whispers in the Walls
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Archon Boreal's Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Boreal, quest: Veilbreaker }
+      - type: vendor
+        vendor: Bird 3
+        place: Sanctum Anatomica
+        costs: [{ currency: Standing, amount: 30000 }]
+        rank: Illuminate
+        quest: Whispers in the Walls
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls

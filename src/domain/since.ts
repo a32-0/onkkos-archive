@@ -23,7 +23,7 @@ export function shortMonth(yearMonth: string, locale = "en-US"): string {
     month: "short",
     timeZone: "UTC",
   });
-  return `${name}, ${year}`;
+  return `${name} ${year}`;
 }
 
 export function sinceFrom(value: unknown, now: Date): string | null {

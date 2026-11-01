@@ -129,10 +129,11 @@ describe("a collectible's own page", () => {
       collectibleView(data, found("Axi A1 Relic"), known, new Set()),
       { now },
     );
-    const get = plan.sections
+    const trade = plan.sections
       .flatMap((one) => one.groups.flatMap((group) => group.rows))
-      .find((row) => row.id === "get:Axi A1 Relic");
-    expect(get?.detail).toEqual([{ say: "relicVaulted" }]);
+      .find((row) => row.id === "trade");
+    expect(trade?.title).toEqual({ say: "tradePlayerTitle" });
+    expect(trade?.detail).toEqual([{ say: "relicVaulted" }]);
   });
 
   it("names the planets a common resource is found on", () => {

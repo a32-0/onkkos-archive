@@ -37,25 +37,27 @@ export function cardOf(
   };
 }
 
-export function otherUpdates(screen: Screen, since: string | null): SummaryUpdate[] {
-  const sources = updateSources();
-  const updates = gameUpdates(screen.graph, sources);
-  const shown =
-    since === null
-      ? (updates[0] ?? null)
-      : updateStanding(screen.graph, sources, since, screen.profile).update;
-  return updates
-    .filter((one) => one.version !== shown?.version)
-    .map((one) => ({
-      version: one.version,
-      versions: one.versions,
-      dates: datesOf(one),
-      value: one.yearMonth,
-      name: one.name,
-      meta: metaOf(one),
-      art: one.art,
-      newest: one.version === updates[0]?.version,
-    }));
+export function chosenUpdate(screen: Screen, since: string | null): string | null {
+  if (since === null) return null;
+  return (
+    updateStanding(screen.graph, updateSources(), since, screen.profile).update?.version ?? null
+  );
+}
+
+export function everyUpdate(screen: Screen, since: string | null): SummaryUpdate[] {
+  const updates = gameUpdates(screen.graph, updateSources());
+  const chosen = chosenUpdate(screen, since);
+  return updates.map((one) => ({
+    version: one.version,
+    versions: one.versions,
+    dates: datesOf(one),
+    value: one.yearMonth,
+    name: one.name,
+    meta: metaOf(one),
+    art: one.art,
+    newest: one.version === updates[0]?.version,
+    selected: one.version === chosen,
+  }));
 }
 
 export async function summaryOf(

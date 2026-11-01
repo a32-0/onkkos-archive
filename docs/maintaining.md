@@ -96,7 +96,11 @@ few weeks; hotfixes don't need anything.
    exists, add its file or page to `WIKI_ART` in
    `scripts/refresh-vendor-art.mjs` and run `pnpm data:vendor-art`. If the
    wiki has none, its name alone is correct.
-5. Run the checks, commit everything the command changed (including
+5. The update also asks the wiki again whether every page a step links to
+   exists (`pnpm data:wiki-pages`, BR-73). If you change how a step is
+   titled or linked later, run that command yourself: `wiki-links.test.ts`
+   fails until you do.
+6. Run the checks, commit everything the command changed (including
    `data/manifest.json` and the report), push to `dev` and merge to `main`.
 
 Installed apps download the new data at their next start. No new version is
@@ -115,13 +119,14 @@ needed. [`content-updates.md`](content-updates.md) has every detail, including
 
 Where to look:
 
-| The bug is in…                             | Look in                                             |
-| ------------------------------------------ | --------------------------------------------------- |
-| What a screen shows, its words or layout   | `src/screens/`, `src/content/`, `src/ui/`           |
-| What counts as new, missing or next        | `src/domain/`                                       |
-| Reading a profile, the wiki or Varzia      | `src/infra/`, and [`api.md`](api.md)                |
-| An item's source, a quest, a place         | `data/`, and [`curated-files.md`](curated-files.md) |
-| The window, the updates, the data at start | `desktop/`, and [`desktop.md`](desktop.md)          |
+| The bug is in…                             | Look in                                                |
+| ------------------------------------------ | ------------------------------------------------------ |
+| What a screen shows, its words or layout   | `src/screens/`, `src/content/`, `src/ui/`              |
+| What counts as new, missing or next        | `src/domain/`                                          |
+| Reading a profile, the wiki or Varzia      | `src/infra/`, and [`api.md`](api.md)                   |
+| An item's source, a quest, a place         | `data/`, and [`curated-files.md`](curated-files.md)    |
+| A Wiki link that opens nothing             | `pnpm data:wiki-pages`, and `tests/wiki-links.test.ts` |
+| The window, the updates, the data at start | `desktop/`, and [`desktop.md`](desktop.md)             |
 
 The layers and the rule that keeps them apart are in
 [`development.md`](development.md#the-layers).

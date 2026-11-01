@@ -60,7 +60,7 @@ draws it:
 3. **What's new**, and the lead "What came out since your last update. Open a
    category to see how to get each one." (owner, 2026-11-01)
 4. The **last-played card**: the update's art, "You last played", its name and
-   "Update {version} · {Mon}, {year}", and a chevron.
+   "Update {version} · {Mon} {year}", and a chevron.
 5. The **Arsenal** divider and its categories: Warframes, Weapons, Companions,
    Vehicles (BR-16).
 6. The **Collection** divider and its categories: Resources, Relics, Mods,
@@ -111,8 +111,10 @@ More line.
   the lead "Pick the last update you played. What's new counts from
   there.", then Catch up's search field, which filters by name, number or date as
   BR-08 sets and shows Catch up's empty state when nothing matches (owner,
-  2026-10-21, from What's new and from the map alike): the other updates newest first as update cards (spec 05), the newest
-  game update still carrying **Newest** (owner, 2026-10-18), five, then "Show
+  2026-10-21, from What's new and from the map alike): every update newest first as update cards (spec 05), the newest
+  game update still carrying **Newest** (owner, 2026-10-18) and the one
+  What's new counts from carrying **Selected** (BR-75,
+  [`982:6725` What's new>Updates — Selected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=982-6725)), five, then "Show
   more", five more each time, as on Catch up (owner, 2026-10-16). Choosing one sets `wf_since` and returns to What's new from
   that month, keeping the entrance. Back returns without a change.
 - When the player is up to date (BR-11) the eyebrow reads "You're up to date"

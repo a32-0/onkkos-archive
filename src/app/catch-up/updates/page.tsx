@@ -8,7 +8,7 @@ import { catchUpAt, ROUTES } from "@/routes";
 import { Updates } from "@/screens/summary/Updates";
 
 import { PAGE_TITLES } from "@/content/app";
-import { otherUpdates } from "../summary";
+import { everyUpdate } from "../summary";
 
 export const metadata: Metadata = { title: PAGE_TITLES.updates };
 
@@ -23,7 +23,7 @@ export default async function UpdatesPage({ searchParams }: { searchParams: Sear
       chrome={await chromeOf(screen)}
       tab={fromMap ? "navigation" : "resume"}
       onboarding={onboarding}
-      updates={otherUpdates(screen, await readSince())}
+      updates={everyUpdate(screen, await readSince())}
       choose={fromMap ? remeasure : resume}
       back={back}
     />

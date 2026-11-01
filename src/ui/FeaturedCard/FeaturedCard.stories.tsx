@@ -10,7 +10,7 @@ const meta = {
     kind: "last-played",
     eyebrow: "You last played",
     name: "The Shadowgrapher",
-    meta: "Update 42 · Mar, 2026",
+    meta: "Update 42 · Mar 2026",
     art: SAMPLE_ART[2],
     href: "/catch-up/updates?from=resume",
   },
@@ -34,7 +34,7 @@ export const UpToDate: Story = {
     kind: "up-to-date",
     eyebrow: "You're up to date",
     name: "Amir's Shockwave",
-    meta: "Update 43.5 · Aug, 2026",
+    meta: "Update 43.5 · Aug 2026",
     art: SAMPLE_ART[0],
   },
 };

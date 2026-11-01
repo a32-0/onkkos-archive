@@ -11,7 +11,7 @@ or where they should start.
 
 - [`662:5177` Star Chart](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5177): the menu, scrolled whole.
 - [`662:6188` Star Chart — Viewport](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6188): the menu as a phone shows it, the content
-  stopping 8 px above the tab bar.
+  running up to the tab bar, with no gap.
 - [`656:211` Place overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=656-211): the place, In progress and Mastered.
 - [`662:6837` Star Chart>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): a category's page, To get chosen.
 - [`662:6528` Locations](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6528): the place list, a page.

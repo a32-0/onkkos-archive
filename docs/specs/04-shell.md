@@ -9,7 +9,7 @@ profile will be read again, and lets them disconnect.
 
 - [`662:5177` Star Chart](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5177) and [`662:6188` Star Chart — Viewport](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6188): the header
   and the tab bar as they sit on a tab's root; the viewport shows the content
-  stopping 8 px above the tab bar.
+  running up to the tab bar, with no gap.
 - [`662:6837` Star Chart>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
   no tab bar under it (owner, 2026-10-20).
 - [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642): the Profile page.
@@ -74,7 +74,7 @@ root of the tab they were opened from (T-27b, owner 2026-10-18).
 Three tabs, in this order: **Star Chart** (the map), **Catch up** (the update
 picker), **Plan** (`/goals`). Each is an icon over its label. The active tab
 is raised on a lighter surface with a red rule along its top. The content
-above it stops 8 px short of it (owner, 2026-10-18). It shows on a tab's
+above it runs up to it, with no gap (owner, 2026-11-01). It shows on a tab's
 root only: a page with a back button has no tab bar, since Back is its way
 out (owner, 2026-10-20). A tab, its page's title, its window title and its step in the tour carry
 one name: **Star Chart**, **Catch up**, **Plan**. Under Catch up, the update

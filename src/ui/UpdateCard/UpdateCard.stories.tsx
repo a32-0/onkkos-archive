@@ -9,7 +9,7 @@ const meta = {
   args: {
     href: "#",
     name: "Jade Shadows: Constellations",
-    meta: "Update 43 · Jun, 2026",
+    meta: "Update 43 · Jun 2026",
     art: SAMPLE_ART[1],
   },
   decorators: [
@@ -30,9 +30,20 @@ export const Plain: Story = {};
 export const Newest: Story = {
   args: {
     name: "Amir's Shockwave",
-    meta: "Update 43.5 · Aug, 2026",
+    meta: "Update 43.5 · Aug 2026",
     art: SAMPLE_ART[0],
     newest: "Newest",
+  },
+};
+
+export const Selected: Story = {
+  args: {
+    href: undefined,
+    field: "since",
+    value: "2026-03",
+    name: "The Shadowgrapher",
+    meta: "Update 42 · Mar 2026",
+    selected: "Selected",
   },
 };
 

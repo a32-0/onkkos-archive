@@ -58,6 +58,7 @@ export function ResumePicker({
               meta={update.meta}
               art={update.art}
               newest={update.newest ? RESUME.newest : undefined}
+              selected={update.selected ? RESUME.selected : undefined}
             />
           ))}
           <FormWait />

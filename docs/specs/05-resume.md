@@ -48,7 +48,8 @@ top, as `662:4709` draws it:
    out since then." (owner, 2026-11-01).
 4. The search field, "Search an update or a date...", alone (`Search field`, `463:79`).
 5. The update cards, newest first, one per name (BR-09). The newest wears
-   **Newest**. Five show, then "Show more", a `Button` in its text style,
+   **Newest**, and the one the player already chose wears **Selected**
+   (BR-75). Five show, then "Show more", a `Button` in its text style,
    which shows five more (owner, 2026-10-16).
 6. **Skip**, from both entrances; from the Catch up tab, the tab bar under it
    (BR-40, BR-41).
@@ -76,7 +77,10 @@ back (owner, 2026-10-16).
 
 From `463:256`: the update's art across the card, and over its lower part the
 band (BR-10) with the name in the display face and "Update {version} ·
-{Mon}, {year}" (BR-43). **Newest** sits at the top left of the newest card. The card
+{Mon} {year}" (BR-43). Above the band, a mark can tint the art and centre a
+badge (BR-75): **Newest** on the newest card, over the accent at 20%;
+**Selected** on the update already chosen, over slate at 50%, and it wins
+when the newest is the one chosen. The card
 carries no item count. An update with no art shows the band over the card's
 surface colour.
 
@@ -100,7 +104,7 @@ surface colour.
 
 ## Components
 
-`UpdateCard` (plain, newest), `Badge` (Newest), `SearchField`, and the `Button` variants of Skip and "Show more", each
+`UpdateCard` (plain, newest, selected), `Badge` (Newest, Selected), `SearchField`, and the `Button` variants of Skip and "Show more", each
 with its stories.
 
 ## Acceptance

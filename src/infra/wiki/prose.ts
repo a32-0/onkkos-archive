@@ -1,7 +1,7 @@
 import "server-only";
 
 import type { ProseAsk, StepPlan, StepRow, StepSection } from "@/domain/catalog/checks";
-import type { Wiki } from "@/domain/catalog/wiki";
+import { askedPage, linkedPage, pageOf, type Wiki } from "@/domain/catalog/wiki";
 import { wikiPassage } from "@/infra/wiki/client";
 
 interface ReadyRow extends Omit<StepRow, "prose"> {
@@ -12,26 +12,27 @@ export interface ReadySection extends Omit<StepSection, "groups"> {
   groups: { title: StepSection["groups"][number]["title"]; rows: ReadyRow[] }[];
 }
 
-function canonical(wiki: Wiki, title: string): string {
-  return wiki.titles.get(title) ?? title;
-}
-
 function askKey(ask: ProseAsk): string {
   return `${ask.source}:${ask.title}`;
 }
 
-function ready(wiki: Wiki, ask: ProseAsk): ProseAsk {
-  return { ...ask, title: canonical(wiki, ask.title) };
+function ready(wiki: Wiki, ask: ProseAsk | null): ProseAsk | null {
+  if (ask === null) return null;
+  const page = pageOf(wiki, ask.title);
+  return page === null ? null : { ...ask, title: page ?? askedPage(wiki, ask.title) };
 }
 
-export async function withProse(wiki: Wiki, plan: StepPlan): Promise<ReadySection[]> {
+export async function withProse(
+  wiki: Wiki,
+  plan: StepPlan,
+  owner: string,
+): Promise<ReadySection[]> {
   const asks = new Map<string, ProseAsk>();
   for (const section of plan.sections) {
     for (const group of section.groups) {
       for (const row of group.rows) {
-        if (!row.prose) continue;
         const ask = ready(wiki, row.prose);
-        asks.set(askKey(ask), ask);
+        if (ask) asks.set(askKey(ask), ask);
       }
     }
   }
@@ -46,11 +47,14 @@ export async function withProse(wiki: Wiki, plan: StepPlan): Promise<ReadySectio
     ...section,
     groups: section.groups.map((group) => ({
       title: group.title,
-      rows: group.rows.map((row) => ({
-        ...row,
-        prose: row.prose ? (answers.get(askKey(ready(wiki, row.prose))) ?? null) : null,
-        wikiTitle: row.wikiTitle === null ? null : canonical(wiki, row.wikiTitle),
-      })),
+      rows: group.rows.map((row) => {
+        const ask = ready(wiki, row.prose);
+        return {
+          ...row,
+          prose: ask ? (answers.get(askKey(ask)) ?? null) : null,
+          wikiTitle: row.wikiTitle === null ? null : linkedPage(wiki, row.wikiTitle, owner),
+        };
+      }),
     })),
   }));
 }

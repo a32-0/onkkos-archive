@@ -275,7 +275,7 @@ describe("withProse", () => {
         },
       ],
     };
-    const rows = (await withProse(testData().wiki, plan))[0]?.groups[0]?.rows ?? [];
+    const rows = (await withProse(testData().wiki, plan, "Jackal"))[0]?.groups[0]?.rows ?? [];
     expect(rows.map((one) => one.prose)).toEqual([
       ["Jackal is the Corpus boss."],
       ["Jackal is the Corpus boss."],

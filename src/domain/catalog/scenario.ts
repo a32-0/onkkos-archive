@@ -1,5 +1,5 @@
 import { SYNDICATE_RE } from "@/domain/catalog/acquisition";
-import { circuitTier, inCircuit } from "@/domain/catalog/circuit";
+import { circuitTier, inCircuit, type CircuitMode } from "@/domain/catalog/circuit";
 import type { CatalogData } from "@/domain/catalog/data";
 import type { CatalogDrop, CatalogItem } from "@/domain/catalog/items";
 import { relicOffers, rewardOffers, type RelicOffer } from "@/domain/catalog/relics";
@@ -13,6 +13,8 @@ import {
   type WikiResource,
 } from "@/domain/catalog/wiki";
 import type { NarrativeSpine } from "@/domain/narrative/schema";
+import { proximaPlace } from "@/domain/place/proxima";
+import type { PlaceRewards } from "@/domain/place/schema";
 
 type RequirementKind = "quest" | "intrinsics" | "key" | "nemesis" | "clan" | "rank";
 
@@ -29,7 +31,17 @@ interface DropRoute {
   node: string;
   mission: string | null;
   boss: string | null;
+  caches: boolean;
   rotation: string | null;
+  chance: number | null;
+  requirements: Requirement[];
+}
+
+interface EndlessRoute {
+  kind: "endless";
+  place: string;
+  mode: CircuitMode;
+  tiers: number[];
   chance: number | null;
   requirements: Requirement[];
 }
@@ -89,6 +101,7 @@ interface CuratedRoute {
 
 export type Route =
   | DropRoute
+  | EndlessRoute
   | BountyRoute
   | RelicRoute
   | EnemyRoute
@@ -203,6 +216,10 @@ const HUB_TYPES = new Set(["Hub", "Free Roam"]);
 const PLATINUM = "Platinum";
 const BOUNTY_TEXT = /\bBounty\b/;
 const ROTATION_SPLIT = /,\s*Rotation\s+/;
+const NODE_QUALIFIER = / \((Caches|Extra)\)$/;
+const CACHES = "(Caches)";
+const ENDLESS = /^Endless: (?:Tier (\d+)|Repeated Rewards)(?: \(Hard\))?$/;
+const STEEL_PATH_MODE = "Hard";
 
 const vendorNameCache = new WeakMap<Wiki, string[]>();
 
@@ -262,7 +279,7 @@ function nodesNamed(wiki: Wiki, name: string): WikiNode[] {
 }
 
 function wikiNode(wiki: Wiki, name: string, place: string | null): WikiNode | null {
-  const clean = name.replace(/ \((Caches|Extra)\)$/, "");
+  const clean = name.replace(NODE_QUALIFIER, "");
   const found = nodesNamed(wiki, clean);
   return found.find((node) => node.planet === place) ?? found[0] ?? null;
 }
@@ -281,7 +298,18 @@ function hubRequirements(wiki: Wiki, place: string, tier: string): Requirement[]
   return parseRequirements(gated?.requirements ?? null);
 }
 
-function rewardRoute(wiki: Wiki, route: RewardRoute): DropRoute | BountyRoute {
+function rewardRoute(wiki: Wiki, route: RewardRoute): DropRoute | EndlessRoute | BountyRoute {
+  const endless = ENDLESS.exec(route.node);
+  if (endless) {
+    return {
+      kind: "endless",
+      place: route.place,
+      mode: route.mission === STEEL_PATH_MODE ? "steelPath" : "normal",
+      tiers: endless[1] ? [Number(endless[1])] : [],
+      chance: route.chance,
+      requirements: circuitRequirements(wiki),
+    };
+  }
   if (route.mission === BOUNTY_MISSION) {
     return {
       kind: "bounty",
@@ -294,12 +322,14 @@ function rewardRoute(wiki: Wiki, route: RewardRoute): DropRoute | BountyRoute {
     };
   }
   const node = wikiNode(wiki, route.node, route.place);
+  const caches = route.node.endsWith(CACHES);
   return {
     kind: "drop",
     place: route.place,
-    node: route.node,
-    mission: node?.type ?? route.mission,
+    node: route.node.replace(NODE_QUALIFIER, ""),
+    mission: caches ? (node?.type ?? null) : (node?.type ?? route.mission),
     boss: node?.boss ?? null,
+    caches,
     rotation: route.rotation,
     chance: route.chance,
     requirements: parseRequirements(node?.requirements ?? null),
@@ -400,6 +430,7 @@ function researchRoute(
 
 const KIND_ORDER: Record<RouteKind, number> = {
   drop: 0,
+  endless: 0,
   bounty: 0,
   relic: 1,
   enemy: 2,
@@ -421,7 +452,12 @@ function orderOf(route: Route): number {
 
 export function chanceOf(route: Route): number | null {
   if (route.kind === "relic") return route.offer.intact;
-  if (route.kind === "drop" || route.kind === "bounty" || route.kind === "enemy") {
+  if (
+    route.kind === "drop" ||
+    route.kind === "endless" ||
+    route.kind === "bounty" ||
+    route.kind === "enemy"
+  ) {
     return route.chance;
   }
   return null;
@@ -437,6 +473,16 @@ function routeOrder(a: Route, b: Route): number {
     return Number(a.offer.vaulted) - Number(b.offer.vaulted);
   }
   return (chanceOf(b) ?? 0) - (chanceOf(a) ?? 0);
+}
+
+const DROPPED = new Set<RouteKind>(["drop", "endless", "bounty", "enemy"]);
+
+function oddsFirst(a: Route, b: Route): number {
+  const tier = (route: Route) => (DROPPED.has(route.kind) ? -1 : orderOf(route));
+  const byTier = tier(a) - tier(b);
+  if (byTier !== 0 || !DROPPED.has(a.kind)) return byTier || routeOrder(a, b);
+  const conclave = Number(orderOf(a) > KIND_ORDER.vendor) - Number(orderOf(b) > KIND_ORDER.vendor);
+  return conclave || (chanceOf(b) ?? 0) - (chanceOf(a) ?? 0);
 }
 
 function dedupeVendors(routes: Route[]): Route[] {
@@ -490,8 +536,86 @@ function partRoutes(
     (route) => "part" in route.source && route.source.part === name,
   );
   routes.push(...(routes.length === 0 ? curatedHere : scoped));
-  routes.push(...circuitRoutes(wiki, item.name, name));
-  return dedupeVendors(routes).sort(routeOrder);
+  const weekly = circuitRoutes(wiki, item.name, name);
+  routes.push(...weekly);
+  const kept = weekly.length > 0 ? routes.filter((route) => route.kind !== "endless") : routes;
+  return merged(dedupeVendors(kept)).sort(routeOrder);
+}
+
+const ROTATIONS = /[A-Z]/g;
+const LEVELS = /\d+/g;
+
+function rotationsOf(values: readonly (string | null)[]): string | null {
+  const letters = [
+    ...new Set(values.flatMap((value) => (value === null ? [] : (value.match(ROTATIONS) ?? [])))),
+  ].sort();
+  if (letters.length <= 1) return letters[0] ?? null;
+  const first = letters[0] ?? "";
+  const last = letters[letters.length - 1] ?? "";
+  const run = last.charCodeAt(0) - first.charCodeAt(0) === letters.length - 1;
+  return run ? `${first}–${last}` : letters.join(", ");
+}
+
+function higher(a: number | null, b: number | null): number | null {
+  if (a === null) return b;
+  if (b === null) return a;
+  return Math.max(a, b);
+}
+
+function mergeKey(route: Route): string | null {
+  switch (route.kind) {
+    case "drop":
+      return `drop:${route.place}:${route.node}:${route.mission ?? ""}:${route.caches}`;
+    case "endless":
+      return `endless:${route.mode}`;
+    case "bounty":
+      return `bounty:${route.place}:${route.tier.match(LEVELS)?.join("-") ?? route.tier}`;
+    case "enemy":
+      return `enemy:${route.source}`;
+    case "vendor":
+      return `vendor:${route.vendor}:${route.rank ?? ""}`;
+    default:
+      return null;
+  }
+}
+
+function mergedPair(a: Route, b: Route): Route {
+  if (a.kind === "endless" && b.kind === "endless") {
+    return {
+      ...a,
+      tiers: [...new Set([...a.tiers, ...b.tiers])].sort((x, y) => x - y),
+      chance: higher(a.chance, b.chance),
+    };
+  }
+  if (a.kind === "bounty" && b.kind === "bounty") {
+    const top = (b.chance ?? 0) > (a.chance ?? 0) ? b : a;
+    return { ...top, rotation: rotationsOf([a.rotation, b.rotation]) };
+  }
+  if ((a.kind === "drop" && b.kind === "drop") || (a.kind === "enemy" && b.kind === "enemy")) {
+    return {
+      ...a,
+      rotation: rotationsOf([a.rotation, b.rotation]),
+      chance: higher(a.chance, b.chance),
+    };
+  }
+  return a;
+}
+
+function merged(routes: readonly Route[]): Route[] {
+  const out: Route[] = [];
+  const at = new Map<string, number>();
+  for (const route of routes) {
+    const key = mergeKey(route);
+    const index = key === null ? undefined : at.get(key);
+    if (key === null || index === undefined) {
+      if (key !== null) at.set(key, out.length);
+      out.push(route);
+      continue;
+    }
+    const known = out[index];
+    if (known) out[index] = mergedPair(known, route);
+  }
+  return out;
 }
 
 const CIRCUIT_NODE = "The Circuit";
@@ -541,6 +665,8 @@ function routeGroup(route: Route): string {
   switch (route.kind) {
     case "drop":
       return `drop:${route.place}:${route.node}`;
+    case "endless":
+      return `endless:${route.mode}`;
     case "bounty":
       return `bounty:${route.place}:${route.tier}`;
     case "relic":
@@ -558,8 +684,10 @@ function routeGroup(route: Route): string {
   }
 }
 
-function routeArea(route: Route): string | null {
-  return route.kind === "drop" || route.kind === "bounty" ? route.place : null;
+export function routeArea(route: Route): string | null {
+  return route.kind === "drop" || route.kind === "endless" || route.kind === "bounty"
+    ? route.place
+    : null;
 }
 
 export function layoutOf(parts: readonly ResolvedPart[]): Layout {
@@ -695,7 +823,9 @@ function prerequisitesOf(data: CatalogData, parts: readonly ResolvedPart[]): Req
   for (const part of parts) {
     const route = part.routes[0];
     if (!route) continue;
-    if (route.kind === "drop" || route.kind === "bounty") route.requirements.forEach(add);
+    if (route.kind === "drop" || route.kind === "endless" || route.kind === "bounty") {
+      route.requirements.forEach(add);
+    }
     if (route.kind === "research") add({ kind: "clan", name: route.lab, rank: null, label: null });
     if (route.kind === "vendor") {
       for (const quest of vendorGates(data.curated, route.vendor)) {
@@ -878,6 +1008,90 @@ function wholeItemRoutes(data: CatalogData, item: CatalogItem): Route[] {
   if (bpCost !== null && !research?.lab) routes.push({ kind: "market", credits: bpCost });
   if (routes.length === 0) routes.push(...curatedRoutes(data, item.name, null));
   return dedupeVendors(routes).sort(routeOrder);
+}
+
+const STACK = /^\d+X /i;
+
+const rewardIndexCache = new WeakMap<PlaceRewards, Map<string, RewardRoute[]>>();
+
+function rewardIndex(rewards: PlaceRewards): Map<string, RewardRoute[]> {
+  let index = rewardIndexCache.get(rewards);
+  if (!index) {
+    index = new Map();
+    for (const [place, nodes] of Object.entries(rewards)) {
+      for (const node of nodes) {
+        for (const reward of node.rewards) {
+          const key = reward.item.replace(STACK, "").toLowerCase();
+          const list = index.get(key) ?? [];
+          list.push({
+            place: proximaPlace(rewards, place, [node.node], node.mission),
+            node: node.node,
+            mission: node.mission,
+            rotation: reward.rotation,
+            stage: reward.stage ?? null,
+            chance: reward.chance,
+            item: reward.item,
+          });
+          index.set(key, list);
+        }
+      }
+    }
+    rewardIndexCache.set(rewards, index);
+  }
+  return index;
+}
+
+function exactRewards(data: CatalogData, name: string): Route[] {
+  const found = rewardIndex(data.rewards).get(name.toLowerCase()) ?? [];
+  const own = found.filter((route) => !STACK.test(route.item));
+  return (own.length > 0 ? own : found).map((route) => rewardRoute(data.wiki, route));
+}
+
+function rankedVendors(wiki: Wiki, drops: readonly CatalogDrop[]): VendorRoute[] {
+  const out: VendorRoute[] = [];
+  for (const drop of drops) {
+    const location = drop.location.trim();
+    const vendor = vendorNames(wiki).find((name) => location.startsWith(`${name}, `));
+    if (!vendor) continue;
+    out.push({
+      kind: "vendor",
+      vendor,
+      link: vendor,
+      currency: null,
+      cost: null,
+      rank: location.slice(vendor.length + 2).trim() || null,
+      quest: null,
+      key: null,
+      unlocks: null,
+    });
+  }
+  return out;
+}
+
+export function collectibleRoutes(
+  data: CatalogData,
+  name: string,
+  drops: readonly CatalogDrop[],
+): Route[] {
+  const routes: Route[] = exactRewards(data, name);
+  for (const offer of rewardOffers(data.relics, [name])) routes.push({ kind: "relic", offer });
+  routes.push(...catalogRoutes(data.wiki, drops), ...rankedVendors(data.wiki, drops));
+  return merged(dedupeVendors(routes)).sort(oddsFirst);
+}
+
+export function blueprintRoutes(data: CatalogData, name: string): Route[] {
+  const routes: Route[] = exactRewards(data, `${name} Blueprint`);
+  const research = researchFor(data.wiki, name);
+  if (research?.lab) {
+    routes.push({ kind: "research", lab: research.lab, prereq: research.prereq, credits: null });
+  }
+  const bpCost = data.wiki.blueprints.get(name)?.bpCost ?? null;
+  if (bpCost !== null && !research?.lab) routes.push({ kind: "market", credits: bpCost });
+  return merged(routes).sort(routeOrder);
+}
+
+export function routeRequirements(data: CatalogData, route: Route | undefined): Requirement[] {
+  return route ? prerequisitesOf(data, [{ name: "", count: 1, main: false, routes: [route] }]) : [];
 }
 
 interface Junction {

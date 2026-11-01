@@ -172,7 +172,9 @@ MediaWiki API, for two things:
   nothing for a disambiguation page. An Acquisition title that names a
   section, as the Hounds' `Model#Bhaira` does, reads that section instead. Every paragraph is kept. A title goes
   through the vendored `wiki-titles.json` first, so a row asks for the page
-  the wiki files it under.
+  the wiki files it under, then through `wiki-pages.json`, which says whether
+  that page exists (BR-73). A passage from a page that doesn't exist is never
+  asked for, and a link to one opens the page of what the row is for instead.
 - **Icons.** One request for many files (`prop=imageinfo`): the white game
   icons by their role, and each place's art by its name (`icons.ts`). The
   app links to the wiki's own file URLs and never rehosts them.

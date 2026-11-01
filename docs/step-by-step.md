@@ -9,15 +9,16 @@ frame draws is in [spec 10](specs/10-step-by-step.md); how an item's parts
 are grouped and which sources feed each route is in
 [`acquisition-scenarios.md`](acquisition-scenarios.md).
 
-| Layer  | File                                                            |
-| ------ | --------------------------------------------------------------- |
-| Routes | `src/domain/catalog/scenario.ts`                                |
-| Plan   | `src/domain/catalog/checks.ts`: `stepPlan()`, `questStepPlan()` |
-| Lock   | `src/domain/catalog/checks.ts`: `planLock()`                    |
-| Prose  | `src/infra/wiki/prose.ts`: `withProse()`                        |
-| Words  | `src/content/checks.ts`: `TITLES`, `BRIEF`, `DETAILS`, `STEPS`  |
-| View   | `src/screens/item/steps/`: `stepsView()` and `Steps`            |
-| Ticks  | `src/infra/ticks.ts`, wired by `src/app/item/ItemTicks.tsx`     |
+| Layer  | File                                                                  |
+| ------ | --------------------------------------------------------------------- |
+| Routes | `src/domain/catalog/scenario.ts`; Collection's: `collectibleRoutes()` |
+| Plan   | `src/domain/catalog/checks.ts`: `stepPlan()`, `questStepPlan()`       |
+| Lock   | `src/domain/catalog/checks.ts`: `planLock()`                          |
+| Prose  | `src/infra/wiki/prose.ts`: `withProse()`                              |
+| Links  | `src/domain/catalog/wiki.ts`: `linkedPage()`, over `wiki-pages.json`  |
+| Words  | `src/content/checks.ts`: `TITLES`, `BRIEF`, `DETAILS`, `STEPS`        |
+| View   | `src/screens/item/steps/`: `stepsView()` and `Steps`                  |
+| Ticks  | `src/infra/ticks.ts`, wired by `src/app/item/ItemTicks.tsx`           |
 
 ## The sections, in order
 
@@ -77,6 +78,41 @@ with no hand-written text: a line that is not a sentence is dropped (a
 list's lead ending in a colon, an audio caption), a footnote's number is
 taken off, and the passage stops at three sentences. "Wiki ↗" closes the passage; a thing the app has its own page for
 reads "How to get it" and opens that page instead (BR-30).
+
+## Collection takes the same rows (BR-72)
+
+A mod, an arcane, a relic or a resource is planned by `collectiblePlan()`
+from the routes an item's part would get (`collectibleRoutes()`): DE's place
+rewards (a bundle like "5X Fass Residue" only when the thing has no drop of
+its own), relic rewards, enemy drops and a vendor's rank. The plan joins
+them as it does an item's: one row a node, rotations merged, one row a bounty level,
+and the best odds first, a Conclave drop last. A resource that any mission
+on a planet drops (`region-resources.json`) leads with up to three "Play any
+mission on {planet}" rows, and the rest fills the four ways. A recipe adds
+where its blueprint comes from (`blueprintRoutes()`: a drop of the
+blueprint, the dojo's research or the Market) before "Build it in your
+foundry". A vaulted relic's only ways are trading and Baro.
+
+## A table's label never names a place (BR-74)
+
+`rewardRoute()` reads DE's labels before they reach a title: Duviri's
+"Endless: Tier N" becomes an `endless` route ("Play the Circuit", the tiers
+in the detail, the Hard tables as the Steel Path Circuit), a node's
+"(Caches)" becomes "Open the caches on {node}" and its "(Extra)" joins the
+node, and a Profit-Taker phase names its phase. A drop at 100% reads "It
+drops every run." `tests/step-words.test.ts` checks every plan for a label,
+two nodes in a title, a bare name and "100% a run".
+
+## Every link is checked (BR-73)
+
+`pnpm data:wiki-pages` builds every plan (`everyPlan()` in
+`src/domain/catalog/every-plan.ts`), asks the wiki in batches of fifty
+whether each page a row links to or quotes exists, follows its redirects,
+tries a few small fixes of the title, and writes the answer to
+`wiki-pages.json`. `withProse()` then links a missing page to the page of
+what the row is for and never asks for its passage. `tests/wiki-links.test.ts`
+builds the same plans offline and fails on a link the file hasn't checked,
+so a change that adds one says to run the command.
 
 ## Ticks only on Components
 

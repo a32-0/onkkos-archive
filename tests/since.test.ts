@@ -20,7 +20,7 @@ describe("Resume's months (BR-08, BR-43)", () => {
   const NOW = new Date("2026-10-15T12:00:00Z");
 
   it("writes an update's month short, with the year", () => {
-    expect(shortMonth("2026-03")).toBe("Mar, 2026");
+    expect(shortMonth("2026-03")).toBe("Mar 2026");
   });
 
   it("takes a month", () => {

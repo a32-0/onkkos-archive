@@ -58,8 +58,13 @@ function placeOf(place: string | null): ItemPlace | null {
     : null;
 }
 
-async function stepsOf(data: CatalogData, plan: StepPlan, reach: Reach): Promise<StepsFacts> {
-  const ready = await withProse(data.wiki, plan);
+async function stepsOf(
+  data: CatalogData,
+  plan: StepPlan,
+  reach: Reach,
+  owner: string,
+): Promise<StepsFacts> {
+  const ready = await withProse(data.wiki, plan, owner);
   return {
     sections: ready.map((section) => ({
       ...section,
@@ -131,7 +136,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     }
   }
 
-  const steps = await stepsOf(data, plan, reach);
+  const steps = await stepsOf(data, plan, reach, name);
   return {
     name,
     group: entries.get(name)?.group ?? null,

@@ -3,6 +3,7 @@ export const RESUME = {
   lead: "Pick the last update you played. Onkko shows what came out since then.",
   search: "Search an update or a date...",
   newest: "Newest",
+  selected: "Selected",
   meta: (version: string, month: string) => `Update ${version} · ${month}`,
   more: "Show more",
   noMatch: "No update by that name or date.",

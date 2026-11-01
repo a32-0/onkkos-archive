@@ -69,6 +69,7 @@ function drop(place: string, node: string): Route {
     node,
     mission: null,
     boss: null,
+    caches: false,
     rotation: null,
     chance: null,
     requirements: [],

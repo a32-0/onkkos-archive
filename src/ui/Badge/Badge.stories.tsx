@@ -20,6 +20,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Newest: Story = { args: { kind: "newest", label: "Newest" } };
 
+export const Selected: Story = { args: { kind: "selected", label: "Selected" } };
+
 export const StartHere: Story = { args: { kind: "start-here", label: "Start here" } };
 
 export const New: Story = { args: { kind: "new", label: "New" } };

@@ -529,7 +529,7 @@ describe("Catch up and What's new (spec 05, spec 06, BR-41)", () => {
     expect(html).toMatch(/<nav[^>]*>/);
     expect(html.match(/<button [^>]*name="since"/g)).toHaveLength(5);
     expect(html.match(/>Newest</g)).toHaveLength(1);
-    expect(html).toMatch(/Update [\d.]+ · [A-Z][a-z]{2}, \d{4}/);
+    expect(html).toMatch(/Update [\d.]+ · [A-Z][a-z]{2} \d{4}/);
     expect(html).toContain(">Show more<");
     expect(html).toMatch(/<a [^>]*href="\/system\?system=[^"]+"[^>]*>Skip<\/a>/);
     expect(html).not.toContain('name="step"');
@@ -563,7 +563,7 @@ describe("Catch up and What's new (spec 05, spec 06, BR-41)", () => {
       expect(html).toContain("What came out since your last update.");
       expect(html).toContain("You last played");
       expect(html).toContain("The Shadowgrapher");
-      expect(html).toMatch(/Update 42 · Mar, 2026/);
+      expect(html).toMatch(/Update 42 · Mar 2026/);
       expect(html).toContain('href="/catch-up/updates?from=resume"');
       expect(html).toContain(">Arsenal<");
       expect(html).toMatch(/href="\/catch-up\/warframes"/);
@@ -619,14 +619,17 @@ describe("Catch up and What's new (spec 05, spec 06, BR-41)", () => {
       );
       expect(html).toContain("Updates");
       expect(html).toContain('name="step" value="resume"');
-      expect(html).not.toContain(">The Shadowgrapher<");
+      expect(html).toMatch(
+        /aria-current="true"[^>]*>[\s\S]*?>Selected<[\s\S]*?>The Shadowgrapher</,
+      );
+      expect(html.match(/>Selected</g)).toHaveLength(1);
       expect(html).not.toMatch(/<nav/);
     });
 
     it("keeps apart two updates of the same month", async () => {
       const { requireScreen } = await import("@/app/screen");
-      const { otherUpdates } = await import("@/app/catch-up/summary");
-      const updates = otherUpdates(await requireScreen(), "2026-03");
+      const { everyUpdate } = await import("@/app/catch-up/summary");
+      const updates = everyUpdate(await requireScreen(), "2026-03");
       const months = updates.map((one) => one.value);
       const versions = updates.map((one) => one.version);
       expect(new Set(months).size).toBeLessThan(months.length);
@@ -634,6 +637,7 @@ describe("Catch up and What's new (spec 05, spec 06, BR-41)", () => {
       expect(updates.filter((one) => one.newest).map((one) => one.version)).toEqual([
         updates[0]?.version,
       ]);
+      expect(updates.filter((one) => one.selected)).toHaveLength(1);
     });
 
     it("names the update a folded month belongs to", async () => {
@@ -645,7 +649,7 @@ describe("Catch up and What's new (spec 05, spec 06, BR-41)", () => {
       jar.set("wf_since", { value: "2026-10", options: {} });
       const html = await page();
       expect(html).toContain("You&#x27;re up to date");
-      expect(html).toContain("Nothing new since Oct, 2026");
+      expect(html).toContain("Nothing new since Oct 2026");
       expect(html).toContain("The arsenal and the collection are as you left them.");
       expect(html).not.toContain(">Arsenal<");
       expect(html).not.toContain("This is what shipped since you left off.");
@@ -1105,7 +1109,7 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
 
   it("names the place the Summary's first line names (BR-51)", async () => {
     const serration = await page(DEMO_ACCOUNT_IDS.cy, { name: "Serration", from: "navigation" });
-    expect(serration).toMatch(/Origin &gt; Mercury[\s\S]*Bode, Hapke · Spy/);
+    expect(serration).toMatch(/Origin &gt; Mercury[\s\S]*Suisei \(Mercury\)/);
     const spores = await page(DEMO_ACCOUNT_IDS.cy, { name: "Nano Spores", from: "resume" });
     expect(spores).toContain("Origin &gt; Deimos");
   });

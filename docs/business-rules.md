@@ -228,15 +228,17 @@ a reading of the earlier build against it was put to them.
   entrance, the tab bar after the tab's. Its frames draw the first. Settled by
   the owner on 2026-10-05.
 
-### BR-43 · One date format: "Mar, 2026"
+### BR-43 · One date format: "Mar 2026"
 
 - Frames `203:231`, `206:774`, `257:653`, `264:67`, `257:1090`. Settled by the
   owner on 2026-10-05.
 - Type: content.
-- Rule: an update's date reads "Update {version} · {Mon}, {year}" everywhere,
-  with the month in three letters: "Update 42 · Mar, 2026". The frames had
+- Rule: an update's date reads "Update {version} · {Mon} {year}" everywhere,
+  with the month in three letters: "Update 42 · Mar 2026". The frames had
   drawn four forms ("March, 2026", "Mar, 2026", "Feb 11, 2026", "Aug, 2026");
-  the owner chose the short month without a day.
+  the owner chose the short month without a day. English puts no comma
+  between a month and a year, only after a day, so the comma went on
+  2026-11-01 (owner).
 
 ### BR-42 · The placeholder circles are the game's icons
 
@@ -1193,3 +1195,88 @@ on 2026-10-08.
   with the loading screen once the wait passes 400 ms. A shorter wait shows
   nothing, so a quick screen never flickers. Connect keeps its own: the
   loading screen at once, since its wait is always DE's.
+
+### BR-72 · Collection reads like an item
+
+- Frames [`979:6517` Item>Step by step — Resource from any mission](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=979-6517),
+  [`979:6676` Item>Step by step — Built resource](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=979-6676),
+  [`979:6915` Item>Step by step — Relic](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=979-6915)
+  and [`979:7074` Item>Step by step — Vaulted relic](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=979-7074).
+  Asked for by the owner on 2026-11-01, after the resources' steps read thinner
+  than an item's.
+- Type: content and ordering.
+- Rule: a mod, an arcane, a relic, a resource or any other collection item
+  builds its Step by step from the same routes and rows as an item:
+  - One node a row, with its rotations joined ("rotation B–C") and the
+    best odds first, whether a mission, a bounty or an enemy drops it. Four
+    ways at most, the first with a diamond and the rest reading "Or".
+  - A resource that any mission on a planet drops reads "Play any mission on
+    {planet}" first, three planets at most, then its best drop.
+  - Prerequisites come from the first way only: the place to reach, its
+    Junction or quest, and the standing a vendor asks.
+  - Something built in the foundry says where its blueprint comes from (the
+    Market, the dojo's research, a drop, a vendor) before "Build it in your
+    foundry". A recipe whose blueprint no source sells or drops is shown only
+    when building it is the one way to get the thing: Control Module drops on
+    three planets, so its catalog recipe is left out (owner, 2026-11-01).
+  - A weekly mission the wiki names as the source reads "Play the Archon
+    Hunt", "Play a Netracell" or "Play Deep Archimedea", with how often it
+    resets (`weekly` in `sources.yaml`); an Archon's shard comes from its
+    Archon Hunt, like a Sortie, not from "Defeat Archon Amar" (owner,
+    2026-11-01).
+  - A vaulted relic reads "Trade for it with another player", then Baro
+    Ki'Teer when he has sold it.
+  - A title always says what to do; a thing's bare name is never a step.
+
+### BR-73 · Every Wiki link opens a page the wiki has
+
+- Asked for by the owner on 2026-11-01, after the Bronco's "Endless: Tier 6"
+  led nowhere.
+- Type: behaviour.
+- Rule: `pnpm data:wiki-pages` asks the wiki whether every page a step links
+  to or quotes exists, and keeps the answer in `wiki-pages.json`. When the wiki
+  files a title a little differently, the command tries it again with small
+  fixes ("of" in lower case, a roman numeral in capitals, " Relic" or a
+  trailing "(Caches)" left out). A row whose page doesn't exist links to the
+  page of what it is for, and the app never asks for a missing page's
+  passage. The
+  test `wiki-links.test.ts` fails on any link the file hasn't checked;
+  `pnpm content:update` refreshes it with every Warframe update.
+
+### BR-74 · A drop table's label is never a place to go
+
+- Frame [`979:7226` Item>Step by step — Circuit reward](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=979-7226).
+  Settled on 2026-11-01, with BR-73.
+- Type: content.
+- Rule: DE's drop tables name some rewards by their table, not by a place.
+  The app says what the player does instead:
+  - Duviri's "Endless: Tier 6" reads "Play the Circuit" ("Play the Steel
+    Path Circuit" for its Hard tables), with the tier in the detail: "A
+    reward for reaching tier 6 of an Endless run, 1.03% each time, so about
+    97 runs for an even chance." It links to The Circuit.
+  - A node's "(Caches)" table reads "Open the caches on {node}", and its
+    "(Extra)" table joins the node's own row.
+  - A Profit-Taker phase reads "Play the Profit-Taker bounty, phase 1".
+  - A drop that always comes reads "It drops every run.", never "100% a run,
+    so about 1 run for an even chance."
+  - A table's "Rewards" is left out of the title, and its mode stays:
+    "Play Nokko: Critter Liberation (Steel Path)".
+    The test `step-words.test.ts` checks each of these on every plan.
+
+### BR-75 · The update already chosen stays in the list, marked
+
+- Frame [`982:6725` What's new>Updates — Selected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=982-6725),
+  drawn by the owner on 2026-11-01 because a list without the chosen update
+  was confusing.
+- Type: state.
+- Rule: on Catch up and on Updates, the update What's new counts from stays
+  in its place in the list and wears **Selected**: its art tinted slate at
+  50% (`--state-selected-tint`) under a centred badge, slate-200 on slate-600
+  with a slate-900 border (`Badge` Selected). **Newest** takes the same
+  place, centred over the accent at 20% (`--accent-tint`). When the newest
+  update is the one chosen, it reads Selected. Choosing it again keeps the
+  same month. The card tells assistive technology it is the current choice
+  (`aria-current`).
+- The owner drew the badge's text in slate-400, which reads 3.1:1 on its
+  ground; slate-200 reads 5.4:1, the AA minimum for text this small being
+  4.5:1.

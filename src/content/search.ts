@@ -15,6 +15,7 @@ export const ADVANCED = {
     vehicles: "Vehicles",
     mods: "Mods",
     arcanes: "Arcanes",
+    incarnons: "Incarnons",
     relics: "Relics",
     resources: "Resources",
     other: "Other",
