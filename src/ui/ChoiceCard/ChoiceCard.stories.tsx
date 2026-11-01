@@ -9,8 +9,8 @@ const meta = {
     use: "two-ways-in",
     href: "#",
     icon: "hourglass",
-    title: "Pick up where you left off",
-    line: "Name the last update you played and see everything added since.",
+    title: "Catch up",
+    line: "Pick the last update you played and see what came out since.",
   },
   decorators: [
     (Story) => (

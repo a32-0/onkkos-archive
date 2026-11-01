@@ -1,6 +1,6 @@
 # The item catalog, and the number it shows beside its rotation
 
-The item page (spec 09) and its Summary answer one question: **what do I
+The item page (spec 09) and its Overview answer one question: **what do I
 need, and where do I go for it?** They exist so the wiki is a fallback rather
 than the first stop. The catalog under them is `src/domain/catalog/`:
 `items.ts` builds the arsenal from the raw entries `src/infra/catalog/items.ts`
@@ -45,7 +45,7 @@ So the runs restate the chance: `oneIn()` in `odds.ts` rounds `100 / chance`.
 That is division, not modelling: it introduces no denominator the data did
 not already have, and the rotation and mission sit beside it so the reader can
 price an attempt themselves. The step plan carries the number as a value
-(`runs` on its odds), so Step by step's detail and the Summary's gold line
+(`runs` on its odds), so Step by step's detail and the Overview's gold line
 read the same one.
 
 ## Telling a part from a resource

@@ -28,10 +28,8 @@ export function Goals({
         <div className={styles.column}>
           <div className={styles.intro}>
             {chrome.voice.on && <OnkkoLine place="top" line={VOICE.goals} />}
-            <div>
-              <h1 className={styles.title}>{GOALS.title}</h1>
-              <p className={styles.lead}>{GOALS.lead}</p>
-            </div>
+            <h1 className={styles.title}>{GOALS.title}</h1>
+            <p className={styles.lead}>{GOALS.lead}</p>
           </div>
           <SearchCard title={GOALS.search.title} line={GOALS.search.line}>
             <GoalSearch />

@@ -89,7 +89,7 @@ tabs or player chip. From the top, as `661:4354` draws it:
    forgets it." The cookie is the app's only record of the
    player and is needed to read their profile, so no consent banner is shown
    (owner, 2026-10-21).
-4. **Explore with a demo**: the label, then two choice cards, as Two ways in
+4. **Explore with a demo**: the label, then two choice cards, as Where to start
    draws them, with no card around them, since nothing nests a card in a
    card: **Ordis**, with `rocket-launch`, "Mastery Rank 2. A player starting
    out, with most of the archive still ahead."; then **Cy**, with

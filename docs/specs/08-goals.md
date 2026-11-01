@@ -1,4 +1,4 @@
-# 08 · Goal
+# 08 · Plan
 
 Where a player picks one thing to chase. They can take one of the suggested
 goals, or search by name for anything the app knows how to get, and the app
@@ -6,20 +6,20 @@ opens the steps to it.
 
 ## Frames
 
-- [`662:4811` Goal](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4811).
+- [`662:4811` Plan](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4811).
 
 Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
 describes. Their texts are sample values:
 
-- [`675:5962` Goal — Results](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5962): typing, the suggestion list under the field.
-- [`675:5989` Goal — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5989): typing, "Nothing by that name."
-- [`675:6049` Goal — Every goal done](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6049): the search card, then the empty state (flag, "Nothing left to suggest", "Every goal we curate is behind you. Name anything above and chase it.") where the goal cards would be.
-- [`675:6022` Goal — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6022): the last match beyond reach, after those in reach, with its gap.
-- [`675:6088` Goal — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6088): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
+- [`675:5962` Plan — Results](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5962): typing, the suggestion list under the field.
+- [`675:5989` Plan — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5989): typing, "Nothing by that name."
+- [`675:6049` Plan — Every goal done](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6049): the search card, then the empty state (flag, "Nothing left to suggest", "You've done every suggestion. Search above for anything else.") where the goal cards would be.
+- [`675:6022` Plan — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6022): the last match beyond reach, after those in reach, with its gap.
+- [`675:6088` Plan — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6088): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
 
 ## Rules
 
-- [BR-05](../business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
+- [BR-05](../business-rules.md#br-05--plan-runs-on-frontier-and-focus):
   the goals offered follow the frontier and the focus.
 - [BR-37](../business-rules.md#br-37--a-goal-opens-the-steps-of-what-it-names):
   a goal opens the Step by step of what it names; a place opens the map.
@@ -38,14 +38,14 @@ describes. Their texts are sample values:
 
 ## What the screen does
 
-Route `/goals`, inside the shell, the Goal tab lit. A new player lands here
+Route `/goals`, inside the shell, the Plan tab lit. A new player lands here
 from `/connect` (BR-03). From the top, as `662:4811` draws it:
 
 1. Onkko's line, "Every choice closes off an infinite number of possible
    futures."
-2. **Goal**, and "Curated against your profile and the planets you have
-   reached."
-3. **Choose a target**: "Warframes, weapons, companions, mods, arcanes,
+2. **Plan**, and "Search for anything you want, or take a suggestion. Onkko
+   lays out the steps in order." (owner, 2026-11-01)
+3. **Search for anything**: "Warframes, weapons, companions, mods, arcanes,
    relics, resources, quests and places.", which names what the search
    reaches now that the catalog holds every sourced resource (owner,
    2026-10-21); the field, "A warframe, a weapon, or planet";
@@ -75,7 +75,7 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
   Mastery Rank 8, you are 5", "Place · Clear the Venus Junction, on Earth" or
   "Place · Join a clan" (BR-62).
 - Choosing a row opens it: a place opens the map on it (BR-37), anything else
-  its item page with Goal as its origin (spec 04). An item beyond reach opens
+  its item page with Plan as its origin (spec 04). An item beyond reach opens
   with Step by step chosen (BR-62). **Continue** opens the first
   row. With no match, the list shows one line, "Nothing by that name.", and
   Continue does nothing.

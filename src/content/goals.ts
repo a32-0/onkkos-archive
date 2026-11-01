@@ -1,14 +1,14 @@
 import { ENGINE } from "./engine";
 
 export const GOALS = {
-  title: "Goal",
-  lead: "Curated against your profile and the planets you have reached.",
+  title: "Plan",
+  lead: "Search for anything you want, or take a suggestion. Onkko lays out the steps in order.",
   search: {
-    title: "Choose a target",
+    title: "Search for anything",
     line: "Warframes, weapons, companions, mods, arcanes, relics, resources, quests and places.",
     placeholder: "A warframe, a weapon, or planet...",
-    label: "Search a target",
-    list: "Targets",
+    label: "Search for anything",
+    list: "Results",
     noMatch: "Nothing by that name.",
     continue: "Continue",
   },
@@ -29,7 +29,7 @@ export const GOALS = {
   },
   empty: {
     title: "Nothing left to suggest",
-    line: "Every goal we curate is behind you. Name anything above and chase it.",
+    line: "You've done every suggestion. Search above for anything else.",
   },
   skip: "Skip",
 } as const;

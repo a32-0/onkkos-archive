@@ -7,15 +7,15 @@ profile will be read again, and lets them disconnect.
 
 ## Frames
 
-- [`662:5177` Map](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5177) and [`662:6188` Map — Viewport](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6188): the header
+- [`662:5177` Star Chart](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5177) and [`662:6188` Star Chart — Viewport](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6188): the header
   and the tab bar as they sit on a tab's root; the viewport shows the content
   stopping 8 px above the tab bar.
-- [`662:6837` Map>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
+- [`662:6837` Star Chart>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
   no tab bar under it (owner, 2026-10-20).
 - [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642): the Profile page.
 - [`943:5889` Profile — Stale read](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-5889): Profile after a later read failed (BR-69).
-- [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079) and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161): the toast after a read that worked (BR-70); [`953:6536` Two Ways In — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536) draws Connected where Connect lands.
-- [`679:4734` Resume — From Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the header with no tab bar,
+- [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079) and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161): the toast after a read that worked (BR-70); [`953:6536` Where to start — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536) draws Connected where Connect lands.
+- [`679:4734` Catch up — From Where to start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the header with no tab bar,
   during onboarding.
 
 ## Rules
@@ -29,7 +29,7 @@ profile will be read again, and lets them disconnect.
   a failed read, a read that worked, and every wait.
 - [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   the app is never wider than 600 px.
-- [BR-41](../business-rules.md#br-41--resume-has-two-entrances): Resume
+- [BR-41](../business-rules.md#br-41--catch-up-has-two-entrances): Catch up
   shows the tab bar only when reached from its tab.
 - [BR-42](../business-rules.md#br-42--the-placeholder-circles-are-the-games-icons):
   the tab bar's icons.
@@ -37,14 +37,14 @@ profile will be read again, and lets them disconnect.
 
 ## Where the shell shows
 
-| Screen                                              | Header        | Tab bar |
-| --------------------------------------------------- | ------------- | ------- |
-| `/`, `/connect`, `/features`                        | Wordmark only | No      |
-| Resume and its Summary, from Two ways in (`?step=`) | With the chip | No      |
-| Resume and its Summary, from the Resume tab         | With the chip | Yes     |
-| The map, Goal                                       | With the chip | Yes     |
-| A page under a tab: a category, an item, a place    | Top bar       | No      |
-| Profile                                             | Top bar       | No      |
+| Screen                                                      | Header        | Tab bar |
+| ----------------------------------------------------------- | ------------- | ------- |
+| `/`, `/connect`, `/features`                                | Wordmark only | No      |
+| Catch up and its What's new, from Where to start (`?step=`) | With the chip | No      |
+| Catch up and its What's new, from the Catch up tab          | With the chip | Yes     |
+| The map, Plan                                               | With the chip | Yes     |
+| A page under a tab: a category, an item, a place            | Top bar       | No      |
+| Profile                                                     | Top bar       | No      |
 
 ## The parts
 
@@ -71,21 +71,26 @@ root of the tab they were opened from (T-27b, owner 2026-10-18).
 
 ### Tab bar
 
-Three tabs, in this order: **Navigation** (the map), **Resume** (the update
-picker), **Goal** (`/goals`). Each is an icon over its label. The active tab
+Three tabs, in this order: **Star Chart** (the map), **Catch up** (the update
+picker), **Plan** (`/goals`). Each is an icon over its label. The active tab
 is raised on a lighter surface with a red rule along its top. The content
 above it stops 8 px short of it (owner, 2026-10-18). It shows on a tab's
 root only: a page with a back button has no tab bar, since Back is its way
-out (owner, 2026-10-20).
+out (owner, 2026-10-20). A tab, its page's title, its window title and its step in the tour carry
+one name: **Star Chart**, **Catch up**, **Plan**. Under Catch up, the update
+picker is titled Catch up and the list of what came out is titled What's
+new, since they are two pages; the item's view is **Overview** and **Step
+by step** (owner, 2026-11-01). The words of each are in the glossary of the
+constitution.
 
 Which tab is active:
 
-| Screen                       | Active tab                           |
-| ---------------------------- | ------------------------------------ |
-| The map                      | Navigation                           |
-| `/catch-up` and its Summary  | Resume                               |
-| `/goals`                     | Goal                                 |
-| `/item`, a category, Profile | The tab of the screen that opened it |
+| Screen                         | Active tab                           |
+| ------------------------------ | ------------------------------------ |
+| The map                        | Star Chart                           |
+| `/catch-up` and its What's new | Catch up                             |
+| `/goals`                       | Plan                                 |
+| `/item`, a category, Profile   | The tab of the screen that opened it |
 
 A page under a tab learns where it was opened from through its link, so the
 tab the player came from stays lit while they read it.
@@ -93,7 +98,7 @@ tab the player came from stays lit while they read it.
 ### The tab bar's icons
 
 Material Symbols Rounded, the interface's icon set, drawn in the frames on
-2026-10-06: **Navigation** `explore`, **Resume** `hourglass`, **Goal** `flag`.
+2026-10-06: **Star Chart** `explore`, **Catch up** `hourglass`, **Plan** `flag`.
 The Design System page holds them as `Icon` components.
 
 ### Profile
@@ -164,7 +169,7 @@ Every link and every form that sends the player on shows the loading screen
 (`LoadingCard`, spec 02's Loading) once the wait passes 400 ms (BR-71). The
 page stays as it was underneath. Links go through the shell's `Link`, which
 watches Next's `useLinkStatus`; forms hold a `FormWait`, which watches
-`useFormStatus`; Goal's search, which jumps to a result on Enter, wraps the
+`useFormStatus`; Plan's search, which jumps to a result on Enter, wraps the
 jump in a transition and shows the same `Wait` while it is pending.
 
 The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source. A live response read on 2026-10-23 carries no glyph anywhere: its only image-like fields are `LoadOutPreset.PresetIcon`, empty, and `GuildEmblem`, a flag. A live player therefore wears the game's default glyph, Lotus Symbol (`AvatarImageDefault`, the one every account starts with; owner, 2026-10-23), until the player can choose one; the square stays only if the catalog lacks it.
@@ -179,9 +184,9 @@ sentences (owner, 2026-10-24):
 
 | Step | Points at        | Frame                          | Words                                                                                                                                                                                                                                        |
 | ---- | ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | Navigation's tab | `844:4776` Tour — 1 Navigation | "The star chart, one place at a time. Change location to jump to another planet or system. The ring shows how much gear here you've mastered, ranked to the max. Only what you can master or collect is listed, not every item in the game." |
-| 2    | Resume's tab     | `844:5065` Tour — 2 Resume     | "Everything the game added since the update you last played, grouped by category. Name your last update and the app counts from there. Open a category to see each new thing and how to get it."                                             |
-| 3    | Goal's tab       | `844:5354` Tour — 3 Goal       | "Pick one thing to chase: take a suggestion or search for it. You get the steps in order: what it needs, where each part drops and what to unlock first."                                                                                    |
+| 1    | Star Chart's tab | `844:4776` Tour — 1 Star Chart | "The star chart, one place at a time. Change location to jump to another planet or system. The ring shows how much gear here you've mastered, ranked to the max. Only what you can master or collect is listed, not every item in the game." |
+| 2    | Catch up's tab   | `844:5065` Tour — 2 Catch up   | "Everything the game added since the update you last played, grouped by category. Name your last update and the app counts from there. Open a category to see each new thing and how to get it."                                             |
+| 3    | Plan's tab       | `844:5354` Tour — 3 Plan       | "Pick one thing to chase: take a suggestion or search for it. You get the steps in order: what it needs, where each part drops and what to unlock first."                                                                                    |
 | 4    | The player chip  | `844:5643` Tour — 4 Profile    | "Your account, and when it's read again, every 12 hours. Change your settings or disconnect here. Tutorial plays this tour again."                                                                                                           |
 
 - A scrim covers the screen but the hotspot, which a 2 px `--brand` ring

@@ -12,6 +12,13 @@
   text-transform: uppercase;
 }
 
+.screen {
+  font-family: var(--font-cinzel), serif;
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
 .title {
   font-family: var(--font-cinzel), serif;
   font-weight: 700;

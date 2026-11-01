@@ -36,9 +36,9 @@ const LEGENDARY_FROM = RANK_TITLES.length;
 
 export const NAV = {
   label: "Sections",
-  navigation: "Navigation",
-  resume: "Resume",
-  goal: "Goal",
+  navigation: "Star Chart",
+  resume: "Catch up",
+  goal: "Plan",
 } as const;
 
 export const SHELL = {

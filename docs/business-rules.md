@@ -108,29 +108,29 @@ a reading of the earlier build against it was put to them.
 - Rule: what the frames draw is the product, as drawn. Where the code differs,
   the code changes. Where the lo-fi flow and a high-fi frame differ about what
   a screen holds, the high-fi frame wins; the lo-fi section is read for its
-  arrows. Its Summary still lists quests, for instance, and the high-fi one
+  arrows. Its What's new still lists quests, for instance, and the high-fi one
   does not (BR-35).
 - The flow it draws: the account id; then, for a player past the first
-  planet, Two ways in, and for a new one, the goals (BR-03). "When did you
-  last play?" leads to the Summary; "What are you after?" leads to a goal's
-  steps; the Summary's items lead to their steps; and both end on the map,
+  planet, Where to start, and for a new one, the goals (BR-03). "When did you
+  last play?" leads to What's new; "What are you after?" leads to a goal's
+  steps; the items on What's new lead to their steps; and both end on the map,
   at a place.
 
-### BR-35 · Catch me up is what the Summary draws
+### BR-35 · Catch up is what What's new draws
 
-- Frames [`206:774` Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=206-774),
+- Frames [`206:774` What's new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=206-774),
   `257:653`, `264:67`.
 - Type: content.
-- Rule: Catch me up shows what shipped since the chosen update, under
+- Rule: Catch up shows what shipped since the chosen update, under
   Arsenal and Collection, and nothing else. Story quests, the live
   Nightwave ("Running now") and the suggested goal ("Pick up") are not part
   of it.
 
-### BR-36 · From the Summary: an item, or Skip to a place
+### BR-36 · From What's new: an item, or Skip to a place
 
 - Frame `206:774`, the tiles and the Skip button.
 - Type: behaviour.
-- Rule: from the Summary the player either opens an item, which opens that
+- Rule: from What's new the player either opens an item, which opens that
   item's page, or presses Skip, which opens the map on one place: the
   frontier when the player has one, otherwise the focus
   ([`system.md`](system.md#two-lenses-that-cut-every-level-at-once)). The two
@@ -139,7 +139,7 @@ a reading of the earlier build against it was put to them.
 
 ### BR-37 · A goal opens the steps of what it names
 
-- Frame [`208:90` Goal](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-90),
+- Frame [`208:90` Plan](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-90),
   the goal cards ("Build a Necramech", "Play the Hex Quest").
 - Type: behaviour.
 - Rule: choosing a goal opens the Step by step of the item or the quest it
@@ -203,28 +203,28 @@ a reading of the earlier build against it was put to them.
   the Skip button under the two cards. Settled by the owner on 2026-10-05,
   changed on 2026-10-16.
 - Type: behaviour.
-- Rule: every screen between Connect and the map, Two ways in, Resume and the
-  Summary, ends in Skip, in the secondary style. It opens the map on one place
+- Rule: every screen between Connect and the map, Where to start, Catch up and the
+  What's new, ends in Skip, in the secondary style. It opens the map on one place
   (BR-36): the frontier when the player has one, otherwise the focus.
-- Two ways in also keeps **Back**, in the text style, under Skip: it returns
+- Where to start also keeps **Back**, in the text style, under Skip: it returns
   to `/connect` with the player's id in the field. The screen has no player
   menu, so Back is how a player changes account or demo there (owner,
   2026-10-16; the button read "Go back" before).
 - The screen is still onboarding, so it draws no tab bar and no player chip
   (thread `1929710840`, "no navbar during onboarding until it ends").
 
-### BR-41 · Resume has two entrances
+### BR-41 · Catch up has two entrances
 
-- Frame [`203:231` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231).
+- Frame [`203:231` Catch up](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231).
   Settled by the owner on 2026-10-05.
 - Type: behaviour.
-- Rule: reached from "Pick up where you left off" (BR-40's screen), Resume is
-  onboarding and looks as drawn: no tab bar. Reached from the Resume tab, it
+- Rule: reached from "Catch up" (BR-40's screen), Catch up is
+  onboarding and looks as drawn: no tab bar. Reached from the Catch up tab, it
   is a section of the shell: the tab bar shows. Both end in Skip (BR-40, since
   2026-10-16). Everything else is the same screen.
-- Resume has no Go back since 2026-10-16 (owner): the way back is the
+- Catch up has no Go back since 2026-10-16 (owner): the way back is the
   browser's, and Skip is the one way forward without choosing.
-- The Summary that follows keeps the entrance: no tab bar after the onboarding
+- What's new that follows keeps the entrance: no tab bar after the onboarding
   entrance, the tab bar after the tab's. Its frames draw the first. Settled by
   the owner on 2026-10-05.
 
@@ -241,14 +241,14 @@ a reading of the earlier build against it was put to them.
 ### BR-42 · The placeholder circles are the game's icons
 
 - Frames `212:159` and its collapsed state: the light circles in the tab bar
-  (Navigation, Resume, Goal) and before each category row (Warframes,
+  (Star Chart, Catch up, Plan) and before each category row (Warframes,
   Primary…). Settled by the owner on 2026-10-05.
 - Type: content.
 - Rule: a category row carries the game's own icon for that category, from the
   wiki, under the terms in [`cetus.md`](cetus.md#icons-are-the-games-own). The
   interface's own icons are Material Symbols Rounded, drawn in the frames on
   2026-10-06: the tab bar's explore, hourglass and flag; hourglass and flag on
-  Two ways in; precision manufacturing and auto stories on the Goal cards.
+  Where to start; precision manufacturing and auto stories on the Plan cards.
 - Rule: a category the wiki has no white icon for takes a Material Symbol
   (owner, 2026-10-16): Archgun rocket launch, Archmelee swords, Necramech
   smart toy, Incarnons cyclone, Ephemera flare, Honoria military tech.
@@ -297,10 +297,10 @@ a reading of the earlier build against it was put to them.
 
 ### BR-46 · The map reopens where the player left it
 
-- Frame [`212:159` Navigation](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=212-159),
-  the Navigation tab. Settled by the owner on 2026-10-06.
+- Frame [`212:159` Star Chart](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=212-159),
+  the Star Chart tab. Settled by the owner on 2026-10-06.
 - Type: behaviour.
-- Rule: the Navigation tab opens the map on the last place the player viewed
+- Rule: the Star Chart tab opens the map on the last place the player viewed
   on this device. The first time, it opens on Start here (BR-44), and with no
   Start here, on the first place of the Origin System. Skip always opens
   Start here, whatever was viewed last.
@@ -363,21 +363,22 @@ a reading of the earlier build against it was put to them.
   explains what the option does more clearly, in the player's terms.
 - The frame still carried the old words when spec 03 was written on
   2026-10-05, and the line then drafted still promised quests, which
-  BR-35 took out of Catch me up. The owner chose to correct the frame with
+  BR-35 took out of Catch up. The owner chose to correct the frame with
   these two lines, which the build then follows:
-  - "Pick up where you left off": "Name the last update you played and see
-    everything added since."
-  - "Set a goal": "Pick one thing to chase and get the road to it, in order,
-    read from your profile."
+  - "Catch up": "Pick the last update you played and see what came out
+    since."
+  - "Plan": "Pick one thing you want and get the steps to it, in order, read
+    from your profile."
 - The owner shortened the first line on 2026-10-15, dropping "to your arsenal
-  and collection".
+  and collection". On 2026-11-01 the owner renamed both cards after their
+  tabs, Catch up and Plan, and the lines followed.
 
-### BR-05 · "Set a goal" runs on frontier and focus
+### BR-05 · "Plan" runs on frontier and focus
 
 - Frame `203:140` · pin (185, 533) · layer: Profile Description Container
   ("Select or create a goal curated against your profile…") · comment `1933735165`
 - Type: behaviour.
-- Rule: the goal offered behind "Set a goal" follows the frontier / focus
+- Rule: the goal offered behind "Plan" follows the frontier / focus
   logic.
 
 ### BR-06 · The player menu
@@ -412,11 +413,11 @@ a reading of the earlier build against it was put to them.
 - A read that fails waits twelve hours too, counted from the try, and the
   profile last read stays on screen meanwhile (BR-69; owner, 2026-10-31).
 
-## Resume: picking the last update played
+## Catch up: picking the last update played
 
 ### BR-08 · Type a date in the search
 
-- Frame [`203:231` Resume](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231)
+- Frame [`203:231` Catch up](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=203-231)
   · pin (344, 321) · layer: Shipment Section › Date Filter Container (the
   "Date" button) · comment `1931751624`
 - Type: behaviour.
@@ -469,16 +470,16 @@ data:patch-notes` keeps every update it names, 41.1 Vauban Heirloom and 39.1
   month the player chose.
 - Only what the profile can read counts. Mods, resources and other
   collectibles are not in the profile, so they never hold the card back.
-- The card can say "up to date" while Catch me up
+- The card can say "up to date" while Catch up
   still lists what shipped since an older chosen month, because the month the
   player picked is not rewritten. And `XPInfo` holds what was ever ranked, so
   an item bought and never levelled does not count as owned yet.
 
-## Catch me up: Summary
+## Catch up: What's new
 
-Frame [`206:774` Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=206-774)
+Frame [`206:774` What's new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=206-774)
 is the expanded state. Frame
-[`257:653` Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=257-653)
+[`257:653` What's new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=257-653)
 is the same screen with every group closed (comment `1951841233`, pinned on the
 logo as a frame label).
 
@@ -512,7 +513,7 @@ in force: BR-12, BR-13 and BR-14.
 - A closed group's chevron points down and an open one's points up, on every
   screen, the same as the rows in BR-20. `257:653` drew closed groups with an
   up chevron until the owner corrected it on 2026-10-04.
-- Retired by the Material pass (T-27b, owner, 2026-10-18): the Summary and
+- Retired by the Material pass (T-27b, owner, 2026-10-18): What's new and
   the map no longer fold their groups. Each category is a row that opens its
   own page (specs 06 and 07).
 
@@ -521,7 +522,7 @@ in force: BR-12, BR-13 and BR-14.
 - Frame `206:774` · pin (169, 467) · layer: Cards container › Card › Card image
   · comment `1933399323`
 - Type: state.
-- Rule: tiles in Catch me up carry no Mastered or Rank state. The only marker
+- Rule: tiles in Catch up carry no Mastered or Rank state. The only marker
   is NEW, counted in the group header ("3 NEW").
 
 ### BR-16 · What each Arsenal group holds
@@ -743,11 +744,11 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 - [`scenario-guidelines.md`](scenario-guidelines.md#components-gather-every-recipe-the-plan-names)
   says the same since 2026-10-04.
 
-## Goal: settled when its spec was written
+## Plan: settled when its spec was written
 
 ### BR-53 · The search suggests as the player types
 
-- Frame [`208:90` Goal](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-90),
+- Frame [`208:90` Plan](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-90),
   the "Choose a target" card. Settled by the owner on 2026-10-06.
 - Type: behaviour.
 - Rule: from the second character, a list opens under the field with the
@@ -756,7 +757,7 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
   the first. A place opens the map on it; anything else opens its item page.
 - The list is the `Suggestion list` component (Results, No match) on the
   Design System page, approved by the owner on 2026-10-06, and drawn in place
-  on the Goal frames under Documented states.
+  on the Plan frames under Documented states.
 
 ### BR-54 · "Build a Necramech" names the one the player lacks
 
@@ -770,22 +771,22 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
 
 ## The item: settled when its spec was written
 
-### BR-55 · The item's Summary is Blueprints and Components
+### BR-55 · The item's Overview is Blueprints and Components
 
-- Frame [`208:287` Item Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-287).
+- Frame [`208:287` Item Overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-287).
   Settled by the owner on 2026-10-06.
 - Type: content.
-- Rule: the Summary view shows the two sections the frame draws, and nothing
+- Rule: the Overview view shows the two sections the frame draws, and nothing
   else: Blueprints, one row per blueprint with its best route, and
   Components, one row per ingredient. Every row is drawn as the frame
   draws it: the art (a part on its blueprint, BR-19), the name, the reading in
   gold and the place. Prerequisites and How to get stay in Step by step.
 - An item with neither (a Kuva weapon, a Tenet weapon, a bred companion) shows
   its "How to get", or its Acquisition, in the same rows instead, so the
-  Summary is never empty.
+  Overview is never empty.
 - The table in [`scenario-guidelines.md`](scenario-guidelines.md#one-answer-two-densities)
-  that listed Prerequisites and How to get in the Summary is replaced by this
-  rule. Summary is still `briefOf()` over the same plan: a subset, never a
+  that listed Prerequisites and How to get in the Overview is replaced by this
+  rule. Overview is still `briefOf()` over the same plan: a subset, never a
   second engine.
 
 ### BR-56 · The gold line reads in runs
@@ -872,7 +873,7 @@ settled where the frames disagreed with each other or with the docs.
 - Rule: when an item comes from a place, the card above the hero reads "You're
   on {system} > {place}" with the place's art, wherever the item was opened
   from. The place is the one of the item's best route, the same place its
-  Summary's first line names. An item that comes from a game system (a Lich, a
+  Overview's first line names. An item that comes from a game system (a Lich, a
   Sister, Baro, Varzia, breeding) or from relics has no place and shows no
   card. An item researched in a dojo lab has the Dojo as its place (BR-57).
   The card opens the map on that place.
@@ -993,9 +994,9 @@ on 2026-10-08.
 ### BR-61 · A group shows what is in reach, and counts the rest
 
 - Frames `212:159` (a group on the map) and `206:774` (a group in the
-  Summary); `More line` (`526:117`).
+  What's new); `More line` (`526:117`).
 - Type: behaviour.
-- Rule: in a group, on the map and in the Summary, the tiles are what is in
+- Rule: in a group, on the map and in What's new, the tiles are what is in
   reach. What lies beyond is not drawn: the open group ends in a More line
   that says how many, of what, and what stands in the way. {kind} is the
   group's own noun ("primary weapons", "warframes", "mods"), singular for one;
@@ -1013,10 +1014,10 @@ on 2026-10-08.
 - What only the Dojo holds is counted in the words of BR-59's Dojo row: "2
   more weapons come from the Dojo. Join a clan to enter it." A group held
   back by a rank and by a clan reads "need Mastery Rank {r} or a clan's
-  Dojo". `content/reach.ts` holds the words; the Summary (T-25) first speaks
+  Dojo". `content/reach.ts` holds the words; What's new (T-25) first speaks
   them.
 
-- The group's count ("{n} NEW" in the Summary, "{n} New" on the map) counts
+- The group's count ("{n} NEW" in What's new, "{n} New" on the map) counts
   everything new, in reach or not, so it adds up to the tiles and the line.
 - A group with nothing in reach and something beyond renders, its rail
   holding only the More line.
@@ -1025,10 +1026,10 @@ on 2026-10-08.
 
 ### BR-62 · A search shows everything, and says the gap
 
-- Frames `474:920` (Goal, results) and `215:610` (the place list's search);
+- Frames `474:920` (Plan, results) and `215:610` (the place list's search);
   `Suggestion row` Beyond reach (`526:107`).
 - Type: behaviour.
-- Rule: a search is how the player lifts BR-59 for one thing. The Goal search
+- Rule: a search is how the player lifts BR-59 for one thing. The Plan search
   and the place list's search reach everything they reached before (BR-53,
   spec 07), what is in reach first among matches as close to the name. A result beyond reach is the Beyond reach
   row: its catalogue, then the gap, short enough for one line: "Sniper ·
@@ -1166,7 +1167,7 @@ on 2026-10-08.
   its words in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488),
   drawn on [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079)
   and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161),
-  and on [`953:6536` Two Ways In — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536).
+  and on [`953:6536` Where to start — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536).
   Settled by the owner on 2026-10-31.
 - Type: behaviour and content.
 - Rule: a toast floats 12 px under the header or the top bar, across the

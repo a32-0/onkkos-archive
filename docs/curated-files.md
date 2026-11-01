@@ -60,7 +60,7 @@ one arbitrary member of it.
 The three goals of the first version, each naming an item, a quest or a place
 (BR-37); the goals that named none of those are in `deferred.md`. Fields:
 
-- `label`: the goal's name in the file. The card's title is Goal's own copy.
+- `label`: the goal's name in the file. The card's title is Plan's own copy.
 - `audience` (`new` / `mid` / `veteran` / `both`): ordering only.
 - `pathway`: one of the four paths DE's new-player guide sorts the game into
   (`star_chart`, `collect`, `grow`, `explore`).

@@ -32,10 +32,8 @@ export function TwoWaysIn({
       <main className={styles.page}>
         <div className={styles.intro}>
           {voice && <OnkkoLine place="top" line={VOICE.features(name)} accent={name} />}
-          <div>
-            <h1 className={styles.title}>{FEATURES.title}</h1>
-            <p className={styles.lead}>{FEATURES.lead}</p>
-          </div>
+          <h1 className={styles.title}>{FEATURES.title}</h1>
+          <p className={styles.lead}>{FEATURES.lead}</p>
         </div>
 
         <div className={styles.cards}>

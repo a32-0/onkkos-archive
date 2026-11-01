@@ -211,8 +211,9 @@ beside the program.
 
 The app checks GitHub Releases at each start and every six hours. A newer
 version downloads in the background and installs at the next restart; the
-operating system's notification says so once: "A new version is ready. It
-installs when you restart Onkko's Archive." Its words live in
+operating system's notification says so once, in the words Profile uses:
+"{version} installs on restart. Restart now from Profile." (owner,
+2026-11-01). Its words live in
 `src/content/`, like every word the player reads. Closing the app installs
 it quietly and leaves the app closed; **Restart now** (below) installs it and
 opens the app again on the new version (owner, 2026-10-30).
@@ -224,8 +225,12 @@ button's place, in the row's value style: "Up to date", "Downloading
 "Couldn’t reach GitHub" without a network. Once it has downloaded, a row of
 its own under Updates holds **Restart now**, a secondary button 200 wide,
 centred, which closes the app, installs the version and opens the app again
-(owner, 2026-10-30). The notification above follows as
-usual. Leaving Profile and coming back shows the button again. Drawn on
+(owner, 2026-10-30). While the line reads "Downloading {version}…", Profile
+asks again every three seconds, and the main process answers from what it
+already knows without asking GitHub, so the line turns to "{version} installs
+on restart" and **Restart now** appears on their own once the download ends
+(owner, 2026-11-01). The notification above follows as usual. Leaving Profile
+and coming back shows the button again. Drawn on
 2026-10-23 in
 [`827:4748` Profile — App — Check states](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=827-4748),
 beside Profile — App, for the owner to confirm.

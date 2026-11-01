@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TabBar, type TabBarItem } from "./TabBar";
 
 const tabs = (active: string): TabBarItem[] => [
-  { href: "/system", icon: "explore", label: "Navigation", active: active === "/system" },
-  { href: "/catch-up", icon: "hourglass", label: "Resume", active: active === "/catch-up" },
-  { href: "/goals", icon: "flag", label: "Goal", active: active === "/goals" },
+  { href: "/system", icon: "explore", label: "Star Chart", active: active === "/system" },
+  { href: "/catch-up", icon: "hourglass", label: "Catch up", active: active === "/catch-up" },
+  { href: "/goals", icon: "flag", label: "Plan", active: active === "/goals" },
 ];
 
 const meta = {

@@ -71,7 +71,7 @@ The scenarios and the two states below were redrawn in "App flows" on
 
 The same page as spec 09, with **Step by step** chosen: the top bar, Onkko's
 line, You're on, the hero and View stay; the sections below replace the
-Summary's.
+Overview's.
 
 ## The sections
 
@@ -225,7 +225,7 @@ from data Storybook does not load (2026-10-19).
    the lead otherwise.
 4. Relic rows read Open and Or; the best route reads "(Highest chance)" in
    gold.
-5. A quest opened from Goal renders in the grammar above.
+5. A quest opened from Plan renders in the grammar above.
 6. With the Ordis fixture, Kuva Sobek's Mastery Rank row reads its gap at full
    contrast and every row after it is locked; with no `PlayerLevel` nothing is
    locked; a prerequisite quest with no evidence locks nothing (BR-63).

@@ -1,6 +1,6 @@
 export const ITEM = {
   view: "View",
-  summary: "Summary",
+  summary: "Overview",
   steps: "Step by step",
   quest: "Quest",
   quests: "Quests",

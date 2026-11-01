@@ -1,4 +1,4 @@
-# 07 · Map
+# 07 · Star Chart
 
 The game's map, one place at a time, and what each place holds for this
 player. The map is a menu: the place on view, how much of it is mastered, and
@@ -9,32 +9,32 @@ or where they should start.
 
 ## Frames
 
-- [`662:5177` Map](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5177): the menu, scrolled whole.
-- [`662:6188` Map — Viewport](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6188): the menu as a phone shows it, the content
+- [`662:5177` Star Chart](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5177): the menu, scrolled whole.
+- [`662:6188` Star Chart — Viewport](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6188): the menu as a phone shows it, the content
   stopping 8 px above the tab bar.
 - [`656:211` Place overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=656-211): the place, In progress and Mastered.
-- [`662:6837` Map>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): a category's page, To get chosen.
+- [`662:6837` Star Chart>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): a category's page, To get chosen.
 - [`662:6528` Locations](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6528): the place list, a page.
 - [`662:6556` Systems](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6556): the system list, a page.
 
 Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
 describes. Their texts are sample values:
 
-- [`676:5901` Map — No month](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-5901): no date on the card, no New anywhere.
-- [`676:5988` Map — Everything mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-5988): the mastered place, then the
+- [`676:5901` Star Chart — No month](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-5901): no date on the card, no New anywhere.
+- [`676:5988` Star Chart — Everything mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-5988): the mastered place, then the
   empty state (explore, "Nothing left on {place}", "Every item it gives is
   mastered. Choose another place from the card above.").
-- [`676:6098` Map>Warframes — Mastered chosen](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6098): View with Mastered
+- [`676:6098` Star Chart>Warframes — Mastered chosen](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6098): View with Mastered
   chosen.
-- [`676:6158` Map>Warframes — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6158): the page ends in the More
+- [`676:6158` Star Chart>Warframes — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6158): the page ends in the More
   line, by rank.
-- [`676:6220` Map>Warframes — Nothing to get](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6220): To get chosen, the empty
+- [`676:6220` Star Chart>Warframes — Nothing to get](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6220): To get chosen, the empty
   state (explore, "Nothing left to get on {place}", "You have everything it
   gives so far. What it adds later shows up here.").
-- [`676:6285` Map>Warframes — Nothing mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6285): Mastered chosen, the
+- [`676:6285` Star Chart>Warframes — Nothing mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6285): Mastered chosen, the
   empty state ("Nothing mastered on {place} yet", "What you master from this
   place shows up here.").
-- [`676:6350` Map>Warframes — Nothing new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6350): New chosen, the empty state
+- [`676:6350` Star Chart>Warframes — Nothing new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-6350): New chosen, the empty state
   ("Nothing new on {place}", "No item from this place came out after the
   update you chose.").
 - [`677:6385` Locations — New player](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6385): the place list up to the
@@ -47,13 +47,13 @@ describes. Their texts are sample values:
 
 ## Rules
 
-- [BR-05](../business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus)
+- [BR-05](../business-rules.md#br-05--plan-runs-on-frontier-and-focus)
   and [BR-44](../business-rules.md#br-44--start-here-marks-the-frontier-or-the-focus):
   the frontier, the focus and Start here.
 - [BR-11](../business-rules.md#br-11--say-plainly-where-the-game-stands-now)
   and [BR-13](../business-rules.md#br-13--the-last-played-card-opens-the-update-list):
-  the last-played card, shared with the Summary.
-- [BR-36](../business-rules.md#br-36--from-the-summary-an-item-or-skip-to-a-place):
+  the last-played card, shared with What's new.
+- [BR-36](../business-rules.md#br-36--from-whats-new-an-item-or-skip-to-a-place):
   the map is where both features end.
 - [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes),
   [BR-42](../business-rules.md#br-42--the-placeholder-circles-are-the-games-icons),
@@ -87,11 +87,11 @@ describes. Their texts are sample values:
   `star_chart_order`. A player with every readable item mastered everywhere has
   no focus.
 - **Start here** is the frontier, or else the focus (BR-44). Skip and the
-  Navigation tab's first opening all land on it.
+  Star Chart tab's first opening all land on it.
 
 ## What the screen does
 
-Route `/system?system=&place=`, inside the shell, the Navigation tab lit. From
+Route `/system?system=&place=`, inside the shell, the Star Chart tab lit. From
 the top, as `662:5177` draws it:
 
 1. The header with the player chip, and Onkko's line, "We watch, we
@@ -152,13 +152,13 @@ category (spec 04), as `662:6837` draws it:
    has it: what the Collection holds gives no mastery, so a Collection
    category lists everything in reach with no View (owner, 2026-10-18). It is
    the same row as
-   Summary and Step by step on an item (spec 09). When the chosen one leaves
+   Overview and Step by step on an item (spec 09). When the chosen one leaves
    nothing, the empty state that names the place takes the list's place
    (BR-45).
 4. The items, one `Summary row` each in a grouped list: the item's art, its
    name without the word its category already says ("Hunhow" under Honoria,
    "Axi A21" under Relics, "Braton" under Incarnons), the reading in gold and
-   the place under it, as on the Summary, but read **at this place**: "~{n}
+   the place under it, as on What's new, but read **at this place**: "~{n}
    Runs · Rotation {x}" for the drop here (BR-56), and the node and mission
    that give it. The row carries no state badge; the view chosen says which
    state the list holds. A ranked item short of its maximum reads "Rank
@@ -170,14 +170,14 @@ weapons need Mastery Rank 8 or higher. You are Mastery Rank 5." (`676:6158`,
 BR-61). A category with nothing in reach and something beyond holds only the
 line. A place beyond reach opened on purpose shows whole (BR-60).
 
-A row opens the item's page, with Navigation as its origin (spec 04).
+A row opens the item's page, with Star Chart as its origin (spec 04).
 
 ### The place list
 
 Change location opens `662:6528`, a page under the top bar (spec 04):
 
 1. Onkko's line, "Ah, the history you will have.", then **Choose a location**
-   in the screen titles' 36 (`.numeral`; owner, 2026-10-23), and "You can switch at any time."
+   in the screen titles' style (`.screen`, Display/Screen; owner, 2026-10-23), and "You can switch at any time."
 2. The **system card**: the system's sphere, "Change system" and its name,
    and a chevron that opens the system list.
 3. A search field, "Search a planet, location or celestial body...", which
@@ -246,7 +246,7 @@ that system's places.
 - New: `releasesSince()` from the month in `wf_since`.
 - The frontier: `findNextPlanet`; the focus: `findFocus` beside it, as
   defined above, with tests. Start here: `startHere()` in
-  `src/domain/place/start-here.ts`, built with Two ways in (spec 03).
+  `src/domain/place/start-here.ts`, built with Where to start (spec 03).
 - Reach: one predicate in `src/domain/place/reach.ts` over `reachedPlaces`,
   the `after` of `off_chart_places`, `PlayerLevel` and the catalog's
   `masteryReq` (BR-59).
@@ -278,8 +278,8 @@ its stories.
 3. A category's page opens on To get and shows only what is left; Mastered
    and New show only theirs; one option is always chosen.
 4. Start here sits on exactly one place, and on its system; Skip and the
-   first Navigation tab land there.
-5. The Navigation tab reopens the last place viewed.
+   first Star Chart tab land there.
+5. The Star Chart tab reopens the last place viewed.
 6. Tau cannot be opened.
 7. With the Ordis fixture, the place list holds the places up to the frontier
    and the ones off the chart after them, then the More line; the system

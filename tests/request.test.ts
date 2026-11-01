@@ -260,7 +260,7 @@ describe("the first tour (T-45)", () => {
     expect(await resume()).toContain("1 of 4");
   });
 
-  it("is not shown on a step of Two ways in, where the tab bar is not", async () => {
+  it("is not shown on a step of Where to start, where the tab bar is not", async () => {
     jar.set("wf_account", { value: ORDIS, options: {} });
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { default: CatchUpPage } = await import("@/app/catch-up/page");
@@ -431,7 +431,7 @@ describe("Connect and the demos (spec 02, BR-03)", () => {
   });
 });
 
-describe("Two ways in (spec 03, BR-03, BR-40)", () => {
+describe("Where to start (spec 03, BR-03, BR-40)", () => {
   async function page(): Promise<string> {
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { default: FeaturesPage } = await import("@/app/features/page");
@@ -495,7 +495,7 @@ describe("Two ways in (spec 03, BR-03, BR-40)", () => {
   });
 });
 
-describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
+describe("Catch up and What's new (spec 05, spec 06, BR-41)", () => {
   const CY = DEMO_ACCOUNT_IDS.cy;
 
   async function page(step?: string): Promise<string> {
@@ -524,7 +524,7 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
   it("from the tab: the tab bar, five cards newest first, Show more and Skip", async () => {
     jar.set("wf_account", { value: CY, options: {} });
     const html = await page();
-    expect(html).toContain("RESUME");
+    expect(html).toContain("Pick the last update you played.");
     expect(html).toContain("Once, long ago, I would look backwards");
     expect(html).toMatch(/<nav[^>]*>/);
     expect(html.match(/<button [^>]*name="since"/g)).toHaveLength(5);
@@ -535,7 +535,7 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
     expect(html).not.toContain('name="step"');
   });
 
-  it("from Two ways in: Skip to Start here, no Go back and no tab bar", async () => {
+  it("from Where to start: Skip to Start here, no Go back and no tab bar", async () => {
     jar.set("wf_account", { value: CY, options: {} });
     const html = await page("resume");
     expect(html).not.toMatch(/<nav/);
@@ -544,13 +544,13 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
     expect(html).toContain('<input type="hidden" name="step" value="resume"/>');
   });
 
-  it("from Two ways in, shows Resume even when a month is already chosen", async () => {
+  it("from Where to start, shows Catch up even when a month is already chosen", async () => {
     jar.set("wf_account", { value: CY, options: {} });
     jar.set("wf_since", { value: "2026-03", options: {} });
-    expect(await page("resume")).toContain("RESUME");
+    expect(await page("resume")).toContain("Pick the last update you played.");
   });
 
-  describe("the Summary", () => {
+  describe("What's new", () => {
     beforeEach(() => {
       vi.stubGlobal("fetch", async () => Response.json({}));
       jar.set("wf_account", { value: CY, options: {} });
@@ -560,8 +560,7 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
     it("from the tab: the title, the lead, the card, the categories, Skip and the tab bar", async () => {
       jar.set("wf_since", { value: "2026-03", options: {} });
       const html = await page();
-      expect(html).toContain("SUMMARY");
-      expect(html).toContain("This is what shipped since you left off.");
+      expect(html).toContain("What came out since your last update.");
       expect(html).toContain("You last played");
       expect(html).toContain("The Shadowgrapher");
       expect(html).toMatch(/Update 42 · Mar, 2026/);
@@ -576,10 +575,10 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       expect(html).not.toMatch(/Nightwave|Running now|Pick up/);
     });
 
-    it("from Two ways in: the same Summary with no tab bar", async () => {
+    it("from Where to start: the same What's new with no tab bar", async () => {
       jar.set("wf_since", { value: "2026-03", options: {} });
       const html = await page("summary");
-      expect(html).toContain("SUMMARY");
+      expect(html).toContain("What came out since your last update.");
       expect(html).not.toMatch(/<nav/);
       expect(html).toMatch(/href="\/catch-up\/warframes\?step=summary"/);
     });
@@ -601,7 +600,7 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
       const html = await category("warframes");
       expect(html).toContain("Warframes");
       expect(html).toContain('aria-label="Back"');
-      expect(html).toContain("New since you left off. Pick one to see how to get it.");
+      expect(html).toContain("New since your last update. Pick one to see how to get it.");
       expect(html).toMatch(/href="\/item\?name=[^"]+&amp;from=resume"/);
       expect(html).not.toMatch(/<nav/);
     });
@@ -664,7 +663,7 @@ describe("Resume and its Summary (spec 05, spec 06, BR-41)", () => {
     expect(jar.get("wf_since")?.value).toBe("2024-02");
   });
 
-  it("keeps nothing from a month it cannot read, and stays on Resume", async () => {
+  it("keeps nothing from a month it cannot read, and stays on Catch up", async () => {
     const { resume } = await import("@/app/actions");
     expect(await landing(() => resume(choose({ since: "2024-02-29", step: "resume" })))).toBe(
       "/catch-up?step=resume",
@@ -782,7 +781,7 @@ describe("the map (spec 07, BR-46)", () => {
     expect(await landing({ system: "origin", place: "Atlantis" })).toBe(skip);
   });
 
-  it("draws the card, Change location, the place, the categories and the Navigation tab", async () => {
+  it("draws the card, Change location, the place, the categories and the Star Chart tab", async () => {
     jar.set("wf_since", { value: "2025-08", options: {} });
     const html = await page({ system: "origin", place: "Earth" });
     expect(html).toContain("You last played");
@@ -1043,14 +1042,14 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     return renderToStaticMarkup(await ItemPage({ searchParams: Promise.resolve(query) }));
   }
 
-  it("draws the top bar, You're on, the hero, View and the Summary's sections", async () => {
+  it("draws the top bar, You're on, the hero, View and the Overview's sections", async () => {
     const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "navigation" });
     expect(html).toContain('aria-label="Back"');
     expect(html).toContain(">Warframes<");
     expect(html).toContain("Origin &gt; Deimos");
     expect(html).toContain('href="/system?system=origin&amp;place=Deimos"');
     expect(html).toMatch(/>Warframe<[\s\S]*>Dante</);
-    expect(html).toMatch(/aria-pressed="true"[^>]*>Summary</);
+    expect(html).toMatch(/aria-pressed="true"[^>]*>Overview</);
     expect(html).toMatch(/>Blueprints<[\s\S]*>Components</);
     expect(html).toContain("/item?name=Dante&amp;from=navigation&amp;view=steps#part-neuroptics");
     expect(html).toContain("Armatus (Deimos) · Disruption");
@@ -1058,12 +1057,12 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).not.toMatch(/<nav/);
   });
 
-  it("opens an item beyond reach on Step by step, unless the link says Summary", async () => {
+  it("opens an item beyond reach on Step by step, unless the link says Overview", async () => {
     const beyond = await page(ORDIS, { name: "Kuva Bramma", from: "goal" });
     expect(beyond).toMatch(/aria-pressed="true"[^>]*>Step by step</);
     expect(beyond).toContain(">Prerequisites<");
     const asked = await page(ORDIS, { name: "Kuva Bramma", from: "goal", view: "summary" });
-    expect(asked).toMatch(/aria-pressed="true"[^>]*>Summary</);
+    expect(asked).toMatch(/aria-pressed="true"[^>]*>Overview</);
     expect(asked).toContain(">Components<");
     expect(asked).not.toContain(">Prerequisites<");
   });

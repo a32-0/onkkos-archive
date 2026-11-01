@@ -34,31 +34,58 @@ the app.
   <img src="docs/readme/what-it-does.png" alt="What it does" width="100%">
 </p>
 
-### ⏪ Catch up
+Warframe ends when you have everything. That's hundreds of things spread over
+years of updates, and Onkko puts them in order: what's new for you, what to
+chase first, and where to go for it.
 
-Tell it the last update you played. It lists everything released since then,
-sorted by category, and marks the ones you're missing.
+### Catch up
 
-### 🎯 Reach a goal
+Pick the last update you played. **What's new** lists everything that came out
+since then, by category, and marks the ones you're missing.
 
-Pick something you want or search for it. You get its steps in the order
-you'll do them: the quests that unlock it, where each part drops, and what you
+### Plan
+
+Search for anything you want, or take a suggestion. You get its steps in the
+order you'll do them: the quests that unlock it, where each part drops, and what you
 build it from.
 
-Both end on the **star chart**, one place at a time, showing how much of what's
-there you have mastered and where to go next.
+- **Best odds first.** Each part leads with the mission that drops it most
+  often, and the relic to open first.
+- **Vaulted Primes.** If one is back in Prime Resurgence right now, the steps
+  say so and take you to Varzia.
+- **Advanced search.** Type a name and narrow it with filters: the kind of
+  thing, whether you have it, mastered or still ranking, in your reach, and
+  vaulted or not.
+
+### Then the Star Chart
+
+Both end on the **Star Chart**, one place at a time.
+
+- **Start here.** It opens on the first planet you haven't unlocked. With the
+  whole chart open, it opens on the place you're closest to finishing.
+- **What's left on each place**, counted by category, with three views: To
+  get, Mastered and New.
+- **Only what you can reach.** What's beyond your progress becomes a count
+  that says why.
 
 <p align="center">
   <img src="docs/readme/why-onkko.png" alt="Why this app" width="100%">
 </p>
 
-|                      | Knows what you have | Knows what you missed and what to do first |
-| -------------------- | :-----------------: | :----------------------------------------: |
-| The wiki             |          —          |                     —                      |
-| An inventory tracker |         ✔️          |                     —                      |
-| **Onkko's Archive**  |       **✔️**        |                   **✔️**                   |
+Plenty of good tools already know Warframe. Onkko answers a narrower question:
+what's left for you, and in what order.
 
-Onkko reads your profile and answers those two questions, and nothing else.
+|                     | Knows what you have | What came out since you left | One goal, step by step | No login, no overlay |
+| ------------------- | :-----------------: | :--------------------------: | :--------------------: | :------------------: |
+| The wiki            |          —          |              —               |           —            |          ✔️          |
+| Mastery checklists  |   You tick it off   |              —               |           —            |          ✔️          |
+| Overlay trackers    |         ✔️          |              —               |           —            |          —           |
+| Companion apps      |         ✔️          |              —               |           —            |          —           |
+| **Onkko's Archive** |       **✔️**        |            **✔️**            |         **✔️**         |        **✔️**        |
+
+The wiki has every fact, spread over a page per thing. A tracker shows your
+inventory and leaves the plan to you. Onkko reads your profile, joins the two,
+and does nothing else.
 
 - **What it lists:** only what you can master or collect. Your arsenal
   (warframes, weapons, companions, vehicles) and your collection (mods,
@@ -85,6 +112,10 @@ there's **no login, no password and no email**.
 
 ### Is it safe?
 
+- **There's no AI inside.** The app is plain rules over DE's data and the
+  community's item lists. The same profile and the same update always give the
+  same list. Nothing is generated while you use it, and your profile goes to no
+  AI company.
 - **It stays on your computer.** There's no server of ours in between. The app
   keeps a trimmed copy of your profile, read again every 12 hours, and your ID
   in a cookie.
@@ -125,7 +156,7 @@ explains why the work runs in this order.
 
 **Designed by a product designer, built with Claude.** I shaped the
 experience, the design and the decisions; Claude wrote the code, the research
-and the documentation alongside me.
+and the documentation alongside me. The app itself runs no AI.
 
 <p align="center">
   <img src="docs/readme/credits.png" alt="Credits" width="100%">

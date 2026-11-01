@@ -54,14 +54,34 @@ moves, then the frame in Figma, then the spec, then the code, with its tests.
 
 ## Scope: two features, and nothing beside them
 
-- **Catch me up**: what shipped in the arsenal and the collection since the
-  update the player last played, as the Summary frame draws it (BR-35).
-- **Reach a goal**: the Step by step of an item or a quest, reached from a
-  curated goal or from anything with a known source found through the search
-  on Goal (BR-37).
+- **Catch up**: what came out in the arsenal and the collection since the
+  update the player last played, as the What's new frame draws it (BR-35).
+- **Plan**: the Step by step of an item or a quest, reached from a
+  suggestion or from anything with a known source found through the search
+  on Plan (BR-37).
 
-Both end on the map, at one place (BR-36). The flow between screens is the one
-the Figma section `421:614` draws (BR-34).
+Both end on the Star Chart, at one place (BR-36). The flow between screens is
+the one the Figma section `421:614` draws (BR-34).
+
+### Glossary
+
+One name per thing, the same in the app, its tabs and window titles, the
+tour, the README, the Store listing, the specs and Figma (owner, 2026-11-01).
+A title says what the page is for; its lead says what to do there.
+
+| Name                | What it is                                                                    | Was                |
+| ------------------- | ----------------------------------------------------------------------------- | ------------------ |
+| **Where to start**  | The screen after Connect: pick Catch up or Plan                               | Two ways in        |
+| **Star Chart**      | The tab and page that show one place and what is left on it                   | Navigation, Map    |
+| **Catch up**        | The tab, and its first page: pick the last update played                      | Resume             |
+| **What's new**      | Catch up's second page: what came out since that update, by category          | Summary            |
+| **Plan**            | The tab and page: search for anything, or take a suggestion, to get its steps | Goal, Reach a goal |
+| **Overview**        | An item's short view: what it needs and where it comes from                   | the item's Summary |
+| **Step by step**    | An item's long view: every step in the order played                           |                    |
+| **Advanced search** | Plan's search with filters                                                    |                    |
+
+A goal, in lower case, stays the word for the one thing a player chases on
+Plan.
 
 The shell both features live in, and whatever either depends on, are built
 with them. Anything else is filler by definition, however well it works.
@@ -126,7 +146,7 @@ they govern every screen:
 - **Filter and curate; never mirror.** The wiki gathers everything about a
   thing. The app answers one question about it: where it comes from, in what
   order, for this player. For the rest it links to the wiki. A screen that only
-  restates another source does not exist. The search on Goal reaches anything
+  restates another source does not exist. The search on Plan reaches anything
   with a known source, and what it opens is that curated answer: best odds
   first, places the player already reaches ahead of the rest.
 - **Name a thing, show its icon.** Wherever an item, a part, a resource or a

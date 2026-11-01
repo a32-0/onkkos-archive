@@ -28,10 +28,8 @@ export function Resume({
       <div className={styles.page}>
         <div className={styles.intro}>
           {chrome.voice.on && <OnkkoLine place="top" line={VOICE.resume} />}
-          <div>
-            <h1 className={styles.title}>{RESUME.title}</h1>
-            <p className={styles.lead}>{RESUME.lead}</p>
-          </div>
+          <h1 className={styles.title}>{RESUME.title}</h1>
+          <p className={styles.lead}>{RESUME.lead}</p>
         </div>
 
         <section className={styles.panel}>

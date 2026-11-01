@@ -56,7 +56,7 @@ The map draws one group per catalogue (spec 07), and the index files each item
 under the group it is drawn in: `warframes`, `primary`, `secondary`, `melee`,
 `archgun`, `archmelee`, `amp`, `companion`, `necramech`, `archwing` and
 `railjack` in the Arsenal; `resources`, `relics`, `mods`, `arcanes`,
-`incarnons`, `ephemera` and `honoria` in the Collection. The Summary draws
+`incarnons`, `ephemera` and `honoria` in the Collection. What's new draws
 fewer, wider groups (BR-16), and `summaryGroupOf` gathers the map's into them:
 the weapons and the amps into Weapons, the companion into Companions, the
 Necramech, the Archwing and the Railjack into Vehicles.

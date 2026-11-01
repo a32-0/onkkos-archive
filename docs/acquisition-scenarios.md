@@ -242,7 +242,7 @@ the WFCD mirror the app vendors.
 ## Nothing is left to prose alone
 
 On 2026-10-03 every one of the 778 arsenal items and every collectible in the
-Goal search renders from data. `tests/coverage.test.ts` holds it there. The
+Plan search renders from data. `tests/coverage.test.ts` holds it there. The
 last 43 arsenal items, 4 items with an unrouted part and about 120
 collectibles were closed in this order, cheapest first:
 

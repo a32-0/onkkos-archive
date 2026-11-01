@@ -18,7 +18,7 @@
   width: 100%;
   max-width: var(--features-column);
   margin: 0 auto;
-  padding: var(--space-7) var(--gutter) var(--space-6);
+  padding: var(--space-6) var(--gutter);
 }
 
 .intro {
@@ -30,7 +30,7 @@
 }
 
 .title {
-  composes: numeral from "../../ui/type.module.css";
+  composes: screen from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink);
 }

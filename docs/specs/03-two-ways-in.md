@@ -1,4 +1,4 @@
-# 03 · Two ways in
+# 03 · Where to start
 
 Where a returning player chooses what to do first: catch up on what the game
 added while they were away, or pick one thing to chase. Only a player who has
@@ -7,7 +7,7 @@ goal. It is the last screen of onboarding.
 
 ## Frames
 
-- [`661:4591` Two Ways In](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4591).
+- [`661:4591` Where to start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=661-4591).
 
 ## Rules
 
@@ -15,10 +15,10 @@ goal. It is the last screen of onboarding.
   only a player past Venus reaches this screen.
 - [BR-04](../business-rules.md#br-04--explain-each-choice-so-a-player-can-act-on-it):
   the words on each card.
-- [BR-05](../business-rules.md#br-05--set-a-goal-runs-on-frontier-and-focus):
-  Set a goal leads to goals ordered by frontier and focus.
-- [BR-36](../business-rules.md#br-36--from-the-summary-an-item-or-skip-to-a-place):
-  the frontier or the focus, which Skip shares with the Summary's Skip.
+- [BR-05](../business-rules.md#br-05--plan-runs-on-frontier-and-focus):
+  Plan leads to goals ordered by frontier and focus.
+- [BR-36](../business-rules.md#br-36--from-whats-new-an-item-or-skip-to-a-place):
+  the frontier or the focus, which Skip shares with the Skip on What's new.
 - [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes):
   wider than the frame.
 - [BR-40](../business-rules.md#br-40--before-the-map-skip-goes-to-the-map):
@@ -32,11 +32,10 @@ tab bar and no player chip. From the top, as `661:4591` draws it:
 1. Onkko's line, "We have, and shall have a long association, {name}.", with
    the player's display name in the accent colour. A profile with no display
    name ends the line at "association."
-2. **Two ways in**, and "Pick one, you can change at any time."
+2. **Where to start**, and "Pick one. You can switch any time from the tab bar."
 3. Two cards, each a link, each with its icon, title and one line (BR-04):
-   - **Pick up where you left off** opens `/catch-up`, the update picker
-     (spec 05).
-   - **Set a goal** opens `/goals` (spec 08).
+   - **Catch up** opens `/catch-up`, the update picker (spec 05).
+   - **Plan** opens `/goals` (spec 08).
 4. **Skip** opens the map on the frontier, or on the focus when the player has
    no frontier (BR-40).
 5. **Back**, in the text style, opens `/connect` with the player's id in the
@@ -64,7 +63,7 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
   defines it) over each released place's share of readable items mastered;
   with neither, the first place of the Origin System (BR-46).
   `startHereOf()` in `src/app/screen.ts` makes it the map's address, and
-  Skip on Resume and on the Summary uses the same one.
+  Skip on Catch up and on What's new uses the same one.
 - Copy lives in `src/content/` (`VOICE.features`, `FEATURES`).
 
 ## Acceptance

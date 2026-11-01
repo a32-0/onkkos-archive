@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, useTransition } from "react";
+import { useEffect, useId, useRef, useState, useTransition } from "react";
 
 import { SHELL } from "@/content/nav";
 import type { UpdateState } from "@/domain/types/update-state";
@@ -18,6 +18,8 @@ import { Shell } from "./Shell";
 import type { ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
 import { FormWait } from "./Wait";
+
+const FOLLOW_MS = 3_000;
 
 function updateLine(update: UpdateState): string {
   if (update.state === "current") return SHELL.upToDate;
@@ -51,6 +53,18 @@ export function Profile({
   const [checking, startCheck] = useTransition();
   const confirm = useRef<HTMLDialogElement>(null);
   const ids = useId();
+  useEffect(() => {
+    if (update?.state !== "downloading" || !check) return;
+    let live = true;
+    const timer = setTimeout(
+      () => void check().then((answer) => live && setUpdate(answer)),
+      FOLLOW_MS,
+    );
+    return () => {
+      live = false;
+      clearTimeout(timer);
+    };
+  }, [update, check]);
   const ask = () => {
     if (!check) return;
     startCheck(async () => {

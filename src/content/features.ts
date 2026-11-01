@@ -1,13 +1,13 @@
 export const FEATURES = {
-  title: "TWO WAYS IN",
-  lead: "Pick one, you can change at any time.",
+  title: "Where to start",
+  lead: "Pick one. You can switch any time from the tab bar.",
   catchUp: {
-    title: "Pick up where you left off",
-    line: "Name the last update you played and see everything added since.",
+    title: "Catch up",
+    line: "Pick the last update you played and see what came out since.",
   },
   goals: {
-    title: "Set a goal",
-    line: "Pick one thing to chase and get the road to it, in order, read from your profile.",
+    title: "Plan",
+    line: "Pick one thing you want and get the steps to it, in order, read from your profile.",
   },
   skip: "Skip",
   back: "Back",

@@ -7,7 +7,7 @@
   flex: 1 0 auto;
   flex-direction: column;
   gap: var(--space-7);
-  padding-top: var(--space-7);
+  padding-top: var(--space-6);
 }
 
 .intro {
@@ -22,7 +22,7 @@
 }
 
 .title {
-  composes: numeral from "../../ui/type.module.css";
+  composes: screen from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink);
 }

@@ -3,7 +3,7 @@
 `src/domain/graph/` turns a goal from `grafo.yaml` plus a raw profile into a
 `Plan` (`src/domain/types/plan.ts`): the steps, which of them the profile
 proves, and why each of the rest is not done yet, as values. The screens ask
-it two things: whether a goal is done, so Goal does not offer it (spec 08), and
+it two things: whether a goal is done, so Plan does not offer it (spec 08), and
 where the frontier or the focus is, so the map knows where Start here goes
 (spec 07).
 
