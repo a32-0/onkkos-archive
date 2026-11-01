@@ -45,7 +45,7 @@ answers 404, so the id is read from the `gid` cookie instead (owner).
 Drawn on 2026-10-06 under **Documented states**, from the states this spec
 describes and no earlier frame drew. Their texts are sample values:
 
-- [`480:94` Error band](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=480-94): on the Design System page, one variant per BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited), each padded `space/5` (12 px) on every side (owner, 2026-10-29). The Error frame shows Invalid ID. Since 2026-11-01 each variant is the Error state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159): `--alert-error` ground, `--alert-error-ink` text and its `error` icon, 18 px (owner).
+- The Error state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159), on the Design System page: `--alert-error` ground, `--alert-error-ink` text and its `error` icon, 18 px, padded `space/5` (12 px) on every side (owner, 2026-10-29 and 2026-11-01). Each BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited) is an example in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488). The Error frame shows Invalid ID. Until 2026-11-01 the messages were the variants of an Error band component.
 
 ## Rules
 

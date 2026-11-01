@@ -1145,8 +1145,8 @@ on 2026-10-08.
 ### BR-69 · A later read that fails keeps the player in place
 
 - Frame [`943:5889` Profile — Stale read](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-5889)
-  and the Error band's `Reason=Stale` (`943:5880`), the Warning state of
-  `947:159` Alert. Settled by the owner on
+  and the Warning state of `947:159` Alert, its words in
+  [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488). Settled by the owner on
   2026-10-31.
 - Type: behaviour and content.
 - Rule: when the twelve hours have passed and the next read fails, for any
@@ -1162,7 +1162,8 @@ on 2026-10-08.
 
 ### BR-70 · A read that worked says so, once
 
-- Component [`943:5888` Toast](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-5888),
+- The Success state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+  its words in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488),
   drawn on [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079)
   and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161),
   and on [`953:6536` Two Ways In — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536).

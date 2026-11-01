@@ -147,7 +147,10 @@ clears.
 
 ### Alert
 
-`Alert` is one message in one of four states, each its own ground, ink and
+In Figma there is one component, [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+with a State and a Message; every message the app shows is an example in
+[`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488) (owner, 2026-11-01; until then the
+id form's messages and the toast were components of their own). `Alert` is one message in one of four states, each its own ground, ink and
 Material Symbols icon at 18 px: **Informative** (`info`), **Success**
 (`check-circle`), **Warning** (`warning`) and **Error** (`error`). The text is
 mono bold, `Mono/Strong` (owner, 2026-11-01). Each ink reaches about 7:1 on its ground (WCAG AAA for text, and well
