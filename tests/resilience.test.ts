@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
-import { fetchProfile } from "@/infra/profile/read";
+import { fetchProfile, forgetStoredProfile } from "@/infra/profile/read";
 import { flush, memoryStore } from "@/infra/store/memory";
 import { storeKeys } from "@/infra/store/store";
 
@@ -213,5 +213,68 @@ describe("the source", () => {
   it("still checks the id's shape", async () => {
     vi.stubEnv("WF_PROFILE_SOURCE", "fixture");
     expect(await fetchProfile("not-an-id", VISITOR)).toEqual({ ok: false, reason: "invalid-id" });
+  });
+});
+
+describe("a later read that fails (BR-69)", () => {
+  const HOUR = 60 * MINUTE;
+
+  async function readThenAge() {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    network.mockImplementation(() => Promise.resolve(profileResponse()));
+    const first = await fetchProfile(ACCOUNT_ID, VISITOR);
+    vi.setSystemTime(Date.now() + 13 * HOUR);
+    return first;
+  }
+
+  it("answers the profile read last, marked with the try, instead of the failure", async () => {
+    const first = await readThenAge();
+    network.mockImplementation(() => Promise.resolve(refusal()));
+    const later = await fetchProfile(ACCOUNT_ID, VISITOR);
+    expect(later.ok).toBe(true);
+    if (!later.ok || !first.ok) return;
+    expect(later.profile.DisplayName).toBe("Tester");
+    expect(later.fetchedAt).toBe(first.fetchedAt);
+    expect(later.failedAt).toBe(Date.now());
+    expect(network).toHaveBeenCalledTimes(2);
+  });
+
+  it("calls DE again only twelve hours after the failed try", async () => {
+    await readThenAge();
+    network.mockImplementation(() => Promise.resolve(refusal()));
+    await fetchProfile(ACCOUNT_ID, VISITOR);
+    vi.setSystemTime(Date.now() + 11 * HOUR);
+    const waiting = await fetchProfile(ACCOUNT_ID, "a-new-visitor");
+    expect(waiting.ok && waiting.failedAt).toBeTruthy();
+    expect(network).toHaveBeenCalledTimes(2);
+    vi.setSystemTime(Date.now() + 2 * HOUR);
+    network.mockImplementation(() => Promise.resolve(profileResponse()));
+    const after = await fetchProfile(ACCOUNT_ID, "a-third-visitor");
+    expect(after.ok && after.cached).toBe(false);
+    expect(after.ok && after.failedAt).toBeUndefined();
+    expect(network).toHaveBeenCalledTimes(3);
+  });
+
+  it("keeps the profile when the budget or the circuit stops the read", async () => {
+    await readThenAge();
+    await openCircuit();
+    const later = await fetchProfile(ACCOUNT_ID, VISITOR);
+    expect(later.ok && later.failedAt).toBeTruthy();
+  });
+
+  it("still fails a first read, with nothing kept to fall back on", async () => {
+    network.mockImplementation(() => Promise.resolve(refusal()));
+    expect(await fetchProfile(ACCOUNT_ID, VISITOR)).toEqual({ ok: false, reason: "throttled" });
+  });
+
+  it("is kept after Disconnect only until its twelve hours end", async () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    network.mockImplementation(() => Promise.resolve(profileResponse()));
+    await fetchProfile(ACCOUNT_ID, VISITOR);
+    await forgetStoredProfile(ACCOUNT_ID);
+    expect((await fetchProfile(ACCOUNT_ID, VISITOR)).ok).toBe(true);
+    expect(network).toHaveBeenCalledTimes(1);
+    vi.setSystemTime(Date.now() + 12 * HOUR + MINUTE);
+    expect(await memoryStore.getMany([storeKeys.profile(ACCOUNT_ID)])).toEqual([null]);
   });
 });

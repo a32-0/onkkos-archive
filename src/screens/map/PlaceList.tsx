@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
+import { Link } from "@/screens/shell/Link";
 import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { fit } from "@/ui/fit";
 import { Icon } from "@/ui/Icon/Icon";

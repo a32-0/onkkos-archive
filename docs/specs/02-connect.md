@@ -24,8 +24,9 @@ part of the spec is pinned:
   under the demos is headed **Your own account** and reads "The app reads
   your profile from your own computer, through your own connection. For
   Windows and Linux.", over Microsoft's **Download from the Microsoft Store**
-  badge, centred, and, under it, the text button **Or from GitHub, for
-  Windows and Linux** (owner, 2026-10-30).
+  badge, the light one, centred, and, under it, the text button **Download
+  from GitHub** (owner, 2026-10-30; the light badge and the button's words
+  on 2026-11-01).
 
 - [`864:5693` Connect — Reads note](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=864-5693):
   Onboarding with the note under the field (approved by the owner on
@@ -44,7 +45,7 @@ answers 404, so the id is read from the `gid` cookie instead (owner).
 Drawn on 2026-10-06 under **Documented states**, from the states this spec
 describes and no earlier frame drew. Their texts are sample values:
 
-- [`480:94` Error band](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=480-94): on the Design System page, one variant per BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited), each padded `space/5` (12 px) on every side (owner, 2026-10-29). The Error frame shows Invalid ID.
+- [`480:94` Error band](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=480-94): on the Design System page, one variant per BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited), each padded `space/5` (12 px) on every side (owner, 2026-10-29). The Error frame shows Invalid ID. Since 2026-11-01 each variant is the Error state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159): `--alert-error` ground, `--alert-error-ink` text and its `error` icon, 18 px (owner).
 
 ## Rules
 
@@ -133,6 +134,7 @@ never links to it, since it asks for no id.
 3. On success the id is saved in `wf_account` for a year, and the player goes
    on by BR-03: a player who has reached Venus to `/features`, a new player to
    `/goals`. A profile whose `Missions[]` cannot be read counts as reached.
+   The first screen there shows the **Connected** toast (BR-70).
 4. On failure the form returns to rest with the **Error** band (`662:6943`)
    under the field, holding that reason's message from BR-38. The field keeps
    what was typed, and the form can be sent again at once.
@@ -140,7 +142,8 @@ never links to it, since it asks for no id.
 ### A demo
 
 Each demo card saves that demo's id in `wf_account` and goes on by BR-03,
-exactly as a real read would. Both demos have reached Venus (Ordis stops at
+exactly as a real read would, behind the loading screen once the wait passes
+400 ms (BR-71), and with no toast (BR-70). Both demos have reached Venus (Ordis stops at
 Mercury), so both land on `/features` (owner, 2026-10-15). A demo is
 read from its fixture and never calls DE. It spends no lookup from the
 visitor's budget.
@@ -155,10 +158,12 @@ says their own account is read by the app on their computer, then two ways
 to get it, each opened in a new tab (owner, 2026-10-30):
 
 - Microsoft's own badge, **Download from the Microsoft Store**, at its own
-  size and colours (the dark one), centred, which opens the app's Store
+  size and colours (the light one, as the README shows it; owner,
+  2026-11-01), centred, which opens the app's Store
   listing. It comes first: the Store's package is signed, so Windows shows
   no warning (spec 13).
-- **Or from GitHub, for Windows and Linux**, a text button, which opens the
+- **Download from GitHub**, a text button (owner, 2026-11-01; it read "Or
+  from GitHub, for Windows and Linux" before), which opens the
   repository's latest release. The release page lists the Windows installer
   and the Linux AppImage, so the demo does not guess the player's system.
 
@@ -170,26 +175,28 @@ draws it above.
 ### A failure on another screen
 
 Every later read happens on a screen inside the shell, once the twelve hours
-have passed. When it fails, that screen sends the player to `/connect` with
-the reason and, where one is known, the retry time. The form shows the band
-for that reason with the remembered id in the field (BR-38). No other screen
-draws a failure.
+have passed. When it fails, the player stays where they are, on the profile
+read last, and Profile draws the failure (BR-69; owner, 2026-10-31). Only a
+device with no profile kept, after the window that follows Disconnect or on a
+first read, reaches
+this form with a band.
 
 ## States
 
-| State   | Frame      | What differs from rest                                     |
-| ------- | ---------- | ---------------------------------------------------------- |
-| Rest    | `661:4354` | Empty field, or the remembered id                          |
-| Loading | `675:5392` | Connect disabled, the page behind black at 80%, the quill  |
-| Error   | `662:6943` | The red band under the field with one of the five messages |
-| Demo    | `764:4753` | The demos and the card to the Store and GitHub, no field   |
+| State   | Frame      | What differs from rest                                        |
+| ------- | ---------- | ------------------------------------------------------------- |
+| Rest    | `661:4354` | Empty field, or the remembered id                             |
+| Loading | `675:5392` | Connect disabled, the page behind black at 80%, the quill     |
+| Error   | `662:6943` | The Error alert under the field with one of the five messages |
+| Demo    | `764:4753` | The demos and the card to the Store and GitHub, no field      |
 
 ## Data and sources
 
 - The read: `fetchProfile()` in `src/infra/profile/read.ts`, with the shared
   locks the constitution names. Its `FailureReason` picks the band's message;
   its `retryAfterSeconds` gives the time in it, in the player's own time once
-  the page loads, and as `HH:MM UTC` before (BR-38).
+  the page loads; a band that holds a time waits for it and never shows UTC
+  (BR-38).
 - The demos: `fixtures/profile-ordis.json` and `fixtures/profile-cy.json`,
   both output of `pnpm fixture`, matched by the ids `…0002` and `…0001` in
   `src/infra/profile/fixture-source.ts`. The Mastery Rank on each button is

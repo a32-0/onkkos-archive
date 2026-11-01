@@ -180,14 +180,19 @@ the code and no setting turns one off or shortens it. Hence:
 
 - **One read per account every twelve hours, on each machine.** The window
   holds for the app on that machine, across restarts, and is never shorter
-  than DE's own `Cache-Control` allows.
+  than DE's own `Cache-Control` allows. A read that fails waits the same
+  twelve hours before the next try (owner, 2026-10-31).
 - **Every lock is kept the same way, on the machine's disk:** the account-id
   format check before any call, the cached not-found, the machine's budget of
   new lookups, and the circuit breaker after consecutive refusals.
 - **No refresh action**, now or later.
-- **Only what the app reads is kept**, and only for the window. Nothing about a
-  player is persisted beyond it, and nothing leaves their machine but the read
-  itself.
+- **Only what the app reads is kept.** The last profile read stays on the
+  machine until a newer read replaces it, so a read DE fails never takes the
+  player's screens away (owner, 2026-10-31). After the player disconnects it
+  stays only until its twelve hours end, so connecting again inside them
+  never reads DE twice. Nothing
+  else about a player is persisted, and nothing leaves their machine but the
+  read itself.
 - **Only the app reaches DE, and only for the player at its window.** The
   server it runs answers its own window and nothing else on the machine, so
   no web page the player visits can make it call DE.

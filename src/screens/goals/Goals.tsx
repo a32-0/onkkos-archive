@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { GOALS } from "@/content/goals";
 import { VOICE } from "@/content/voice";
 import { Button } from "@/ui/Button/Button";
@@ -8,6 +6,7 @@ import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { SearchCard } from "@/ui/SearchCard/SearchCard";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import styles from "./Goals.module.css";

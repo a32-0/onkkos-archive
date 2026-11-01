@@ -30,8 +30,13 @@ export function playerOf(screen: Screen, now: number = Date.now()): ShellPlayer 
     avatar: avatarOf(screen.profile, glyphImages()),
     masteryRank: screen.display.masteryRank ?? 0,
     minutesSinceRead: Math.max(0, Math.floor((now - screen.fetchedAt) / 60_000)),
-    nextReadAt: nextReadAt(screen.fetchedAt),
+    nextReadAt: nextReadAt(screen.fetchedAt, screen.failedAt),
     fresh: !screen.cached,
+    failedAt: screen.failedAt,
+    toast: screen.toast && {
+      kind: screen.toast,
+      key: `${screen.toast}:${screen.toast === "connected" ? now : screen.fetchedAt}`,
+    },
   };
 }
 

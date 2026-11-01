@@ -64,14 +64,18 @@ false "account not found" for ten minutes, the default when no `max-age` comes.
 ## How long a read is kept
 
 - A valid response carries `Cache-Control: max-age=600`. The app ignores it
-  and keeps the profile for twelve hours (`PROFILE_TTL_MS` in
+  and reads again only twelve hours later (`PROFILE_TTL_MS` in
   `src/infra/profile/cache.ts`): nothing the app reads changes faster, as
   [`public-release.md`](history/public-release.md#how-long-a-read-lasts) records.
 - A not-found keeps DE's own `max-age` (86400 on a missing account), clamped
   by `ttlFromCacheControl()` to between one minute and a day, so retyping the
   same wrong id costs nothing. With no header it keeps ten minutes.
 - What is kept is the trimmed profile, gzipped and base64-encoded, with the
-  time it was read. The raw payload is never stored.
+  time it was read and, after a later read failed, the time of that try. It
+  stays until a newer read replaces it, and after Disconnect only to the end
+  of its twelve hours, so a failed
+  read answers the last profile, marked stale, and the next try waits twelve
+  hours from the failed one (spec 11). The raw payload is never stored.
 - There is no refresh action. It existed and let a player bypass the window
   with repeated clicks; it was removed for that reason.
 

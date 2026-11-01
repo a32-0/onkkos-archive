@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
 import { ITEM } from "@/content/item";
@@ -15,6 +14,7 @@ import { PlaceCrumb } from "@/ui/PlaceCrumb/PlaceCrumb";
 import { Segmented, type SegmentedOption } from "@/ui/Segmented/Segmented";
 import { SummaryRow } from "@/ui/SummaryRow/SummaryRow";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import { Steps, type Ticks } from "./steps/Steps";

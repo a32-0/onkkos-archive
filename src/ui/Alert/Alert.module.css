@@ -1,0 +1,33 @@
+.alert {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin: 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-m);
+}
+
+.message {
+  composes: mono-strong from "../type.module.css";
+  flex: 1;
+}
+
+.info {
+  background: var(--alert-info);
+  color: var(--alert-info-ink);
+}
+
+.success {
+  background: var(--alert-success);
+  color: var(--alert-success-ink);
+}
+
+.warning {
+  background: var(--alert-warning);
+  color: var(--alert-warning-ink);
+}
+
+.error {
+  background: var(--alert-error);
+  color: var(--alert-error-ink);
+}

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { APP } from "@/content/app";
 import { FEATURES } from "@/content/features";
 import { VOICE } from "@/content/voice";
@@ -9,20 +7,28 @@ import { ChoiceCard } from "@/ui/ChoiceCard/ChoiceCard";
 import { Header } from "@/ui/Header/Header";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
+import { Link } from "../shell/Link";
+import { ReadToast } from "../shell/ReadToast";
+import type { ShellPlayer } from "../shell/read-cycle";
 import styles from "./TwoWaysIn.module.css";
 
 export function TwoWaysIn({
   name,
   voice,
   skip,
+  player,
 }: {
   name: string | null;
   voice: boolean;
   skip: string;
+  player: ShellPlayer;
 }) {
   return (
     <div className={styles.screen}>
-      <Header variant="wordmark" wordmark={APP.name} />
+      <div className={styles.top}>
+        <Header variant="wordmark" wordmark={APP.name} />
+        <ReadToast player={player} />
+      </div>
       <main className={styles.page}>
         <div className={styles.intro}>
           {voice && <OnkkoLine place="top" line={VOICE.features(name)} accent={name} />}

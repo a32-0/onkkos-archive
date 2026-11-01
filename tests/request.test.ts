@@ -59,6 +59,13 @@ describe("the cookies (BR-46, spec 02, spec 04)", () => {
     expect(await readAccountId()).toBe(ORDIS);
   });
 
+  it("leaves a one-minute note the toast can clear after Connect (BR-70)", async () => {
+    const { readConnected, writeConnected } = await import("@/infra/session");
+    await writeConnected();
+    expect(jar.get("wf_toast")?.options).toMatchObject({ httpOnly: false, maxAge: 60 });
+    expect(await readConnected()).toBe(true);
+  });
+
   it("forgets on the demo a remembered id that is no demo's", async () => {
     vi.stubEnv("WF_EDITION", "demo");
     const { readAccountId } = await import("@/infra/session");
@@ -282,6 +289,36 @@ describe("the player the shell shows", () => {
     expect(player.masteryRank).toBe(screen.display.masteryRank);
     expect(player.nextReadAt - screen.fetchedAt).toBe(12 * 60 * 60 * 1000);
     expect(player.fresh).toBe(!screen.cached);
+  });
+
+  it("says which read the toast confirms, and none for a demo or a stored read (BR-70)", async () => {
+    const kind = async (result: object, connected = false) => {
+      vi.resetModules();
+      vi.doMock("@/infra/profile/read", () => ({ readProfile: async () => result }));
+      jar.set("wf_account", { value: ORDIS, options: {} });
+      if (connected) jar.set("wf_toast", { value: "connected", options: {} });
+      else jar.delete("wf_toast");
+      const { playerOf, requireScreen } = await import("@/app/screen");
+      return playerOf(await requireScreen()).toast?.kind ?? null;
+    };
+    const read = { ok: true, profile: {}, fetchedAt: 0 };
+    expect(await kind({ ...read, cached: false })).toBe("updated");
+    expect(await kind({ ...read, cached: true })).toBeNull();
+    expect(await kind({ ...read, cached: true, failedAt: 1 })).toBeNull();
+    expect(await kind({ ...read, cached: false, fixture: true })).toBeNull();
+    expect(await kind({ ...read, cached: true }, true)).toBe("connected");
+  });
+
+  it("carries a failed read's time, and the next try twelve hours after it (BR-69)", async () => {
+    const failedAt = Date.UTC(2026, 9, 31, 12);
+    vi.doMock("@/infra/profile/read", () => ({
+      readProfile: async () => ({ ok: true, profile: {}, cached: true, fetchedAt: 0, failedAt }),
+    }));
+    jar.set("wf_account", { value: ORDIS, options: {} });
+    const { playerOf, requireScreen } = await import("@/app/screen");
+    const player = playerOf(await requireScreen());
+    expect(player.failedAt).toBe(failedAt);
+    expect(player.nextReadAt).toBe(failedAt + 12 * 60 * 60 * 1000);
   });
 
   it("wears each demo's glyph", async () => {

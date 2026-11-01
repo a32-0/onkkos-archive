@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
 import { mapCategoryRoute, placesRoute, updatesRoute } from "@/routes";
@@ -12,6 +10,7 @@ import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { PlaceOverview } from "@/ui/PlaceOverview/PlaceOverview";
 import { PlaceSwitcher } from "@/ui/PlaceSwitcher/PlaceSwitcher";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import type { SummaryCardView } from "../summary/state";

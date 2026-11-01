@@ -1,9 +1,9 @@
-import Link from "next/link";
-
 import { APP } from "@/content/app";
 import { CONNECT } from "@/content/onboarding";
 import { LATEST_RELEASE, ROUTES, STORE_LISTING } from "@/routes";
 import { VOICE } from "@/content/voice";
+import { FormWait } from "@/screens/shell/Wait";
+import { Link } from "@/screens/shell/Link";
 import { Button } from "@/ui/Button/Button";
 import { ChoiceCard } from "@/ui/ChoiceCard/ChoiceCard";
 import { Header } from "@/ui/Header/Header";
@@ -94,6 +94,7 @@ export function Connect({
                 line={CONNECT.demoLine(masteryRank, CONNECT.demoAbout[key])}
               />
             ))}
+            <FormWait />
           </form>
         </section>
 

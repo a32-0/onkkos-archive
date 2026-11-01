@@ -4,7 +4,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import { SHELL } from "@/content/nav";
 import { Profile } from "@/screens/shell/Profile";
-import { readCycle, type ShellPlayer } from "@/screens/shell/read-cycle";
+import { readCycle, staleLine, type ShellPlayer } from "@/screens/shell/read-cycle";
 import { Shell, type ShellBar } from "@/screens/shell/Shell";
 import { openedFrom, tabItems, type ShellTab } from "@/screens/shell/tabs";
 
@@ -22,6 +22,8 @@ const PLAYER: ShellPlayer = {
   minutesSinceRead: 12,
   nextReadAt: READ_AT + 12 * 60 * MINUTE,
   fresh: false,
+  failedAt: null,
+  toast: null,
 };
 
 const text = (parts: readonly { text: string }[]) => parts.map((part) => part.text).join("");
@@ -66,25 +68,28 @@ describe("the tab bar (spec 04)", () => {
 });
 
 describe("the read cycle (BR-07)", () => {
-  it("reads as the frame draws it, with the next read in UTC", () => {
-    expect(text(readCycle(PLAYER))).toBe(
-      "Data is read every 12 hours. The last read was 12 minutes ago, and the next one will be at 15:30 hours UTC.",
-    );
-  });
-
-  it("names the next read in the player's own time once the browser knows it", () => {
+  it("reads as the frame draws it, with the next read in the player's own time", () => {
     expect(text(readCycle(PLAYER, "9:30 AM"))).toBe(
-      "Data is read every 12 hours. The last read was 12 minutes ago, and the next one will be at 9:30 AM your local time.",
+      "Data is read every 12 hours. The last read was 12 minutes ago, and the next one will be at 9:30 AM.",
     );
   });
 
   it("bolds the period, the age and the next read", () => {
-    const strong = readCycle({ ...PLAYER, minutesSinceRead: 0 }).filter((part) => part.strong);
+    const strong = readCycle({ ...PLAYER, minutesSinceRead: 0 }, "9:30 AM").filter(
+      (part) => part.strong,
+    );
     expect(strong.map((part) => part.text)).toEqual([
       "12 hours",
       "less than a minute ago,",
-      "15:30 hours UTC.",
+      "9:30 AM.",
     ]);
+  });
+
+  it("gives way, after a failed read, to the band with the data's age and the next try (BR-69)", () => {
+    const stale = { ...PLAYER, minutesSinceRead: 14 * 60, failedAt: READ_AT };
+    expect(staleLine(stale, "9:30 PM")).toBe(
+      "Warframe didn’t answer. You’re seeing your data from 14 hours ago. We’ll try again at 9:30 PM.",
+    );
   });
 
   it("says how long ago in whole words", () => {
@@ -132,7 +137,7 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).not.toContain("<nav ");
   });
 
-  it("holds Profile with Disconnect and the read cycle", () => {
+  it("holds Profile with Disconnect, and no time until the browser can write it locally", () => {
     const html = renderToStaticMarkup(
       createElement(Profile, { chrome: CHROME, tab: "goal", back: "/goals" }),
     );
@@ -140,7 +145,7 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).toContain("Mastery Rank 27");
     expect(html).toContain("Gold Sage");
     expect(html).toContain("Disconnect");
-    expect(html).toContain("15:30 hours UTC.");
+    expect(html).not.toContain("Data is read every");
   });
 
   it("offers Check in the app, and leaves updates to the Store when it came from there", () => {

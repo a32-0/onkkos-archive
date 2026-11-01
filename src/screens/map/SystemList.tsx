@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
 import { placesRoute } from "@/routes";
+import { Link } from "@/screens/shell/Link";
 import { List, ListEntry } from "@/ui/List/List";
 import { MoreLine } from "@/ui/MoreLine/MoreLine";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";

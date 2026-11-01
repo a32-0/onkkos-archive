@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { type KeyboardEvent, useEffect, useRef, useState } from "react";
+import { type KeyboardEvent, useEffect, useRef, useState, useTransition } from "react";
 
 import { GOALS } from "@/content/goals";
 import { ADVANCED } from "@/content/search";
 import { advancedRoute, searchRoute } from "@/routes";
+import { Link } from "@/screens/shell/Link";
+import { Wait } from "@/screens/shell/Wait";
 import { Button } from "@/ui/Button/Button";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { nextActive, optionId, SuggestionList } from "@/ui/SuggestionList/SuggestionList";
@@ -26,6 +27,7 @@ export function GoalSearch() {
   const [found, setFound] = useState<{ term: string; rows: SearchRow[] } | null>(null);
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
+  const [moving, move] = useTransition();
   const term = query.trim();
   const searching = term.length >= MIN_TERM;
 
@@ -39,7 +41,7 @@ export function GoalSearch() {
           setFound({ term, rows: body.results });
           setActive(0);
           const first = body.results[0];
-          if (pending.current === term && first) router.push(first.href);
+          if (pending.current === term && first) move(() => router.push(first.href));
           pending.current = null;
         })
         .catch(() => undefined);
@@ -62,7 +64,7 @@ export function GoalSearch() {
   const current = found?.term === term ? rows : null;
   const shown = open && rows !== null;
   const go = (row: SearchRow | undefined) => {
-    if (row) router.push(row.href);
+    if (row) move(() => router.push(row.href));
     else if (searching && current === null) pending.current = term;
   };
 
@@ -85,6 +87,7 @@ export function GoalSearch() {
 
   return (
     <div ref={box} className={styles.search}>
+      {moving && <Wait />}
       <SearchField
         label={GOALS.search.label}
         placeholder={GOALS.search.placeholder}

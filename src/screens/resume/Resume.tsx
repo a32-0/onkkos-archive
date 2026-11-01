@@ -1,10 +1,9 @@
-import Link from "next/link";
-
 import { RESUME } from "@/content/catch-up";
 import { VOICE } from "@/content/voice";
 import { Button } from "@/ui/Button/Button";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 
+import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import styles from "./Resume.module.css";

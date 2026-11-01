@@ -18,7 +18,14 @@
   --blue-900: #122438;
   --blue-700: #1d3c5c;
   --red-600: #b33419;
-  --red-100: #ffd4cb;
+  --teal-50: #ebf7f9;
+  --teal-800: #0d5b6e;
+  --green-50: #e7f8ec;
+  --green-800: #00601c;
+  --amber-50: #fdf5e6;
+  --amber-800: #724c00;
+  --red-50: #ffe6e6;
+  --red-800: #a10000;
   --abyss-900: #00142c;
 
   --canvas: var(--night-800);
@@ -46,7 +53,14 @@
   --link: var(--cyan-300);
   --brand: var(--red-600);
   --danger: var(--red-600);
-  --danger-ink: var(--red-100);
+  --alert-info: var(--teal-50);
+  --alert-info-ink: var(--teal-800);
+  --alert-success: var(--green-50);
+  --alert-success-ink: var(--green-800);
+  --alert-warning: var(--amber-50);
+  --alert-warning-ink: var(--amber-800);
+  --alert-error: var(--red-50);
+  --alert-error-ink: var(--red-800);
   --state-mastered: var(--green-400);
   --state-mastered-ground: var(--green-900);
   --state-mastered-border: var(--green-700);
@@ -83,5 +97,7 @@
 
   --motion-quill: 2400ms;
   --motion-ease: ease-in-out;
+  --motion-wait: 400ms;
+  --motion-fade: 200ms;
   --link-card-height: calc(60px + 2 * var(--space-5));
 }

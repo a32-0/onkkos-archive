@@ -8,6 +8,7 @@ import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { UpdateCard } from "@/ui/UpdateCard/UpdateCard";
 
+import { FormWait } from "../shell/Wait";
 import { FIRST, MORE } from "./batches";
 import styles from "./Resume.module.css";
 import { matchesUpdate, type ResumeAction, type ResumeUpdate } from "./state";
@@ -59,6 +60,7 @@ export function ResumePicker({
               newest={update.newest ? RESUME.newest : undefined}
             />
           ))}
+          <FormWait />
         </form>
       )}
       {hidden > 0 && (

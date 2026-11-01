@@ -36,7 +36,7 @@ export const CONNECT = {
   ownLine:
     "The app reads your profile from your own computer, through your own connection. For Windows and Linux.",
   store: "Download from the Microsoft Store",
-  download: "Or from GitHub, for Windows and Linux",
+  download: "Download from GitHub",
 } as const;
 
 export const FIND_ID = {
@@ -69,11 +69,14 @@ export const FIND_ID = {
   ],
 } as const;
 
+const TIMED = new Set(["upstream", "throttled", "circuit-open", "limited"]);
+
 export function connectError(
   reason: string,
   retryAt: number | null,
-  local: string | null = null,
+  local: string | null,
 ): string | null {
+  if (retryAt !== null && local === null && TIMED.has(reason)) return null;
   switch (reason) {
     case "invalid-id":
       return BAND.invalidId;
@@ -82,11 +85,11 @@ export function connectError(
     case "upstream":
     case "throttled":
     case "circuit-open":
-      return BAND.notAnswering(retryAt, local);
+      return BAND.notAnswering(retryAt === null ? null : local);
     case "malformed":
       return BAND.unreadable;
     case "limited":
-      return BAND.limited(retryAt, local);
+      return BAND.limited(retryAt === null ? null : local);
     default:
       return null;
   }

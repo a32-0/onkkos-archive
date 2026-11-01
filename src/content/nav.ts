@@ -82,14 +82,17 @@ export const SHELL = {
     const hours = Math.floor(minutes / 60);
     return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
   },
-  readCycle: (age: string, next: string, local: string | null) => [
+  wait: "Onkko is turning the page...",
+  connected: (name: string) => `Welcome, ${name}. Your profile is loaded.`,
+  updated: "Your profile is up to date. Onkko read it from Warframe just now.",
+  stale: (age: string, local: string) =>
+    `Warframe didn’t answer. You’re seeing your data from ${age}. We’ll try again at ${local}.`,
+  readCycle: (age: string, local: string) => [
     { text: "Data is read every " },
     { text: "12 hours", strong: true },
     { text: ". The last read was " },
     { text: `${age},`, strong: true },
     { text: " and the next one will be at " },
-    local === null
-      ? { text: `${next} hours UTC.`, strong: true }
-      : { text: `${local} your local time.`, strong: true },
+    { text: `${local}.`, strong: true },
   ],
 } as const;

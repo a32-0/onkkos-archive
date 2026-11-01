@@ -9,12 +9,14 @@ import type { UpdateState } from "@/domain/types/update-state";
 import { askUpdates, restartToUpdate } from "@/infra/app-updates";
 import { appVersion } from "@/infra/edition";
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
-import { readProfile } from "@/infra/profile/read";
+import { forgetStoredProfile, readProfile } from "@/infra/profile/read";
 import { sinceFrom } from "@/domain/since";
 import {
   forgetAccount,
   forgetTour,
+  readAccountId,
   writeAccountId,
+  writeConnected,
   writeOnkko,
   writeSince,
   writeTourSeen,
@@ -40,6 +42,7 @@ export async function connect(_previous: ConnectState, form: FormData): Promise<
   }
 
   await writeAccountId(accountId);
+  await writeConnected();
   redirect(entranceAfter(read.profile));
 }
 
@@ -66,6 +69,8 @@ export async function remeasure(form: FormData): Promise<void> {
 }
 
 export async function disconnect(): Promise<void> {
+  const accountId = await readAccountId();
+  if (accountId) await forgetStoredProfile(accountId);
   await forgetAccount();
   redirect(ROUTES.connect);
 }

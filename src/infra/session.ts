@@ -14,11 +14,14 @@ const PLACE_COOKIE = "wf_place";
 const ONKKO_COOKIE = "wf_onkko";
 const TOUR_COOKIE = "wf_tour";
 const TOUR_SEEN = "seen";
+const TOAST_COOKIE = "wf_toast";
+const CONNECTED = "connected";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 const SYSTEM_ID = /^[a-z0-9-]{1,40}$/;
 const PLACE_NAME = /^[^/]{1,80}$/;
 
 const KEPT = { httpOnly: true, sameSite: "lax", path: "/", maxAge: ONE_YEAR_SECONDS } as const;
+const ONE_MINUTE = { httpOnly: false, sameSite: "lax", path: "/", maxAge: 60 } as const;
 
 export interface LastPlace {
   system: string;
@@ -36,11 +39,20 @@ export async function writeAccountId(accountId: string): Promise<void> {
   (await cookies()).set(ACCOUNT_COOKIE, accountId, KEPT);
 }
 
+export async function writeConnected(): Promise<void> {
+  (await cookies()).set(TOAST_COOKIE, CONNECTED, ONE_MINUTE);
+}
+
+export async function readConnected(): Promise<boolean> {
+  return (await cookies()).get(TOAST_COOKIE)?.value === CONNECTED;
+}
+
 export async function forgetAccount(): Promise<void> {
   const store = await cookies();
   store.delete(ACCOUNT_COOKIE);
   store.delete(SINCE_COOKIE);
   store.delete(ONKKO_COOKIE);
+  store.delete(TOAST_COOKIE);
 }
 
 export async function readOnkko(): Promise<OnkkoChoice | null> {

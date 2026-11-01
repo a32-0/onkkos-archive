@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { FIND_ID } from "@/content/onboarding";
 import { ROUTES, WARFRAME_SITE } from "@/routes";
+import { Link } from "@/screens/shell/Link";
 import { TopBar } from "@/ui/TopBar/TopBar";
 
 import edgeChrome from "./edge-chrome.png";
