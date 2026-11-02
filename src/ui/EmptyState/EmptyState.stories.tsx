@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { EmptyState } from "./EmptyState";
 
 const meta = {
-  title: "Cards/EmptyState",
+  title: "States/EmptyState",
   component: EmptyState,
   decorators: [
     (Story) => (

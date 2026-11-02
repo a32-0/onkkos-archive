@@ -26,6 +26,12 @@ export interface Screen {
 
 type ReadToastKind = "connected" | "updated";
 
+const JUST_READ_MS = 60_000;
+
+function justRead(fetchedAt: number): boolean {
+  return Date.now() - fetchedAt < JUST_READ_MS;
+}
+
 export type ScreenRead =
   | { state: "no-account" }
   | { state: "failed"; reason: FailureReason; retryAt: number | null }
@@ -57,7 +63,7 @@ export const readScreen = cache(async (): Promise<ScreenRead> => {
       failedAt: result.failedAt ?? null,
       toast: (await readConnected())
         ? "connected"
-        : !result.cached && !result.fixture
+        : !result.fixture && result.failedAt === undefined && justRead(result.fetchedAt)
           ? "updated"
           : null,
     },

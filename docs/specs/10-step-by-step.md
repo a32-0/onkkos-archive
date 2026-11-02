@@ -214,8 +214,41 @@ holds the quests and junctions before it (BR-28) and its Mastery Rank; **How to
 get** names where it starts, with the wiki's passage. It has no Blueprints and
 no Components unless the quest asks for an item to be built.
 
+## The Mastery Rank goal (BR-76)
+
+Frames [`1001:7231` Goal>Step by step — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7231),
+[`1009:7703` — Many to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7703), [`1009:7862` — Nothing to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7862) and
+[`1009:8025` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-8025). The page sits under Plan's tab at
+`/goals/rank`, with Plan's top bar and Back to Plan. It is built in the same
+grammar as an item's Step by step:
+
+1. Onkko's line, then "Mastery Rank" as kicker and the next rank as the name
+   ("Rank 9", "Legendary 1").
+2. The `Rank overview` (BR-77) with the wiki's icon of that rank in the
+   square. Each item chip opens the item's page, with Plan as its origin.
+3. **The shortest way**:
+   - "Rank {items} to {max}", the items the overview names, with "You took
+     them to ranks 12 and 18. That is enough for Rank 9." When they are not
+     enough: "That takes you part of the way. New items do the rest."
+   - "Or rank {n} new weapons", with what one covers of what is left.
+   - With nothing left to rank: "Rank something new" and "Or a new Warframe".
+   - With the bar full the section is gone.
+4. **The test**: "Take the Rank {n} test", "Take it in the game once your bar
+   is full. If you fail, you can try again after 24 hours.", then "What Rank
+   {n} unlocks" when the catalog has items that need exactly that rank and
+   the player never ranked ("14 weapons and 2 companions you cannot build
+   yet.").
+
+Rows are read, never ticked. A profile with no `XPInfo`, or at the highest
+rank, has no goal, and the route returns to Plan.
+
 ## Data and sources
 
+- The Mastery Rank goal: `rankProgress()` in `src/domain/profile/mastery-rank.ts`,
+  over `XPInfo`, `Missions` (with `Tier` for the Steel Path), `PlayerSkills`,
+  every masterable item in `@wfcd/items` and the node mastery the wiki keeps
+  (`tag` and `mastery` in `wiki-nodes.json`, from `MasteryExp` in
+  `Module:Missions/data`). Its words are in `src/content/rank.ts`.
 - The plan: `stepPlan()` and `collectibleStepPlan()` in `src/domain/catalog/`,
   over the vendored wiki modules, DE's drop tables and the curated files. A
   collection item's ways come from `collectibleRoutes()` in `scenario.ts`, the
@@ -260,9 +293,22 @@ from data Storybook does not load (2026-10-19).
 9. Every link a step opens is a page the wiki has (`wiki-links.test.ts`), and
    no title shows a drop table's label, two nodes joined, the bare name of
    the thing, or "100% a run" (`step-words.test.ts`).
+10. With Cy, the Mastery Rank goal shows Rank 28, the shortest way and the
+    test; a full bar leaves only the test (`rank-view.test.ts`,
+    `request.test.ts`).
 
 ## Frame corrections
 
 The owner corrected this screen's frames on 2026-10-06, and the corrections
 were applied in Figma the same day. The frames linked above are the design as
 it stands.
+
+On 2026-11-02, while building the Mastery Rank goal, Claude changed three
+things in its frames for the owner to confirm:
+
+- The View control (Overview, Step by step) is hidden: the goal has one view.
+- "Both are in your arsenal, at ranks 12 and 18" reads "You took them to ranks
+  12 and 18", since `XPInfo` keeps sold items too (BR-76). The Plan card's
+  "Two weapons in your arsenal take you there." reads "Ranking Lex and Boltor
+  takes you there."
+- The highest rank's header reads "Legendary 6", the highest the wiki lists.

@@ -58,7 +58,8 @@ moves, then the frame in Figma, then the spec, then the code, with its tests.
   update the player last played, as the What's new frame draws it (BR-35).
 - **Plan**: the Step by step of an item or a quest, reached from a
   suggestion or from anything with a known source found through the search
-  on Plan (BR-37).
+  on Plan (BR-37), and the way to the player's next Mastery Rank (BR-76;
+  owner, 2026-11-02).
 
 Both end on the Star Chart, at one place (BR-36). The flow between screens is
 the one the Figma section `421:614` draws (BR-34).

@@ -2,6 +2,8 @@ export const ITEM = {
   view: "View",
   summary: "Overview",
   steps: "Step by step",
+  builtInto: "Keep it to build",
+  builtIntoChip: (name: string, count: number) => `${name} ×${count}`,
   quest: "Quest",
   quests: "Quests",
   kicker: {

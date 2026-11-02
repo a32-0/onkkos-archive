@@ -5,6 +5,7 @@ export const ROUTES = {
   system: "/system",
   catchUp: "/catch-up",
   goals: "/goals",
+  rank: "/goals/rank",
   item: "/item",
   profile: "/profile",
   search: "/api/search",

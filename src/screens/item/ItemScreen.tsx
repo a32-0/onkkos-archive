@@ -6,6 +6,7 @@ import { ITEM } from "@/content/item";
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
 import type { ItemView } from "@/routes";
+import { BuiltInto } from "@/ui/BuiltInto/BuiltInto";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
 import { ItemHero } from "@/ui/ItemHero/ItemHero";
@@ -63,6 +64,9 @@ export function ItemScreen({
             />
           )}
           <ItemHero kicker={page.kicker} name={page.name} art={page.art} state={page.hero} />
+          {page.builtInto.length > 0 && (
+            <BuiltInto label={ITEM.builtInto} chips={page.builtInto} link={Link} />
+          )}
         </div>
         <div className={styles.body}>
           <ControlRow label={ITEM.view}>

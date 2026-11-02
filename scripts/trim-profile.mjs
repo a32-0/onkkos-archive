@@ -98,6 +98,7 @@ const kept = {
   Missions: cut ? trimMissions(full.Missions ?? []) : (full.Missions ?? []),
   Affiliations: trimAffiliations(full.Affiliations ?? []),
   LoadOutInventory: Object.fromEntries(INVENTORY_FIELDS.map((field) => [field, inventory[field]])),
+  PlayerSkills: !cut && full.PlayerSkills ? full.PlayerSkills : undefined,
   UnlockedOperator:
     (!cut || options.operator) && typeof full.UnlockedOperator === "boolean"
       ? full.UnlockedOperator

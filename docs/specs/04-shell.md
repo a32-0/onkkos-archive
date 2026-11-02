@@ -13,6 +13,11 @@ profile will be read again, and lets them disconnect.
 - [`662:6837` Star Chart>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
   no tab bar under it (owner, 2026-10-20).
 - [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642): the Profile page.
+- [`1004:7696` Profile — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1004-7696): Profile with the way to the
+  next rank (BR-77, owner, 2026-11-02), and its states
+  [`1009:7351` Profile — Mastery Rank — Many to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7351),
+  [`1009:7440` — Nothing to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7440), [`1009:7526` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7526) and
+  [`1009:7612` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7612).
 - [`943:5889` Profile — Stale read](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-5889): Profile after a later read failed (BR-69).
 - [`943:6079` Toast — Updated](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6079) and [`943:6161` Toast — Connected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=943-6161): the toast after a read that worked (BR-70); [`953:6536` Where to start — Connected for the first time](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=953-6536) draws Connected where Connect lands.
 - [`679:4734` Catch up — From Where to start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the header with no tab bar,
@@ -44,6 +49,7 @@ profile will be read again, and lets them disconnect.
 | Catch up and its What's new, from the Catch up tab          | With the chip | Yes     |
 | The map, Plan                                               | With the chip | Yes     |
 | A page under a tab: a category, an item, a place            | Top bar       | No      |
+| The Mastery Rank goal (`/goals/rank`)                       | Top bar       | No      |
 | Profile                                                     | Top bar       | No      |
 
 ## The parts
@@ -90,6 +96,7 @@ Which tab is active:
 | The map                        | Star Chart                           |
 | `/catch-up` and its What's new | Catch up                             |
 | `/goals`                       | Plan                                 |
+| `/goals/rank`                  | Plan                                 |
 | `/item`, a category, Profile   | The tab of the screen that opened it |
 
 A page under a tab learns where it was opened from through its link, so the
@@ -106,8 +113,13 @@ The Design System page holds them as `Icon` components.
 A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
 2026-10-18). It replaced the player menu, a full-screen sheet:
 
-1. The avatar square, the display name in the display face, "Mastery Rank
-   {n}" and the rank's title under it ("Middle Master").
+1. The display name in the display face, then "Mastery Rank {n}" in
+   `Kicker/Strong` and the rank's title in `Kicker`, side by side, both in
+   `--ink` ("Silver Disciple"; a Legendary rank shows its
+   title alone), then the `Rank overview` (BR-77): the player's glyph in the
+   square, the share of the way to the next rank, and what to rank, or its
+   empty state. A profile with no `XPInfo` keeps the avatar square, the name
+   and the rank as `662:4642` draws them.
 2. **Settings**: a divider, then the settings as a grouped list, one row
    each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
    **Tutorial** (Reset, a button 200 px wide; owner, 2026-10-22). Onkko's Phrases shows once the player has reached
@@ -143,7 +155,10 @@ time of the next try (`943:5889`).
 the screen (`943:6079`, `943:6161`). It is the Success state of
 [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
 the owner's design of 2026-11-01, and says BR-70's words: **Connected** on the first screen after Connect,
-**Updated** on the screen whose render read DE again. It is a polite status
+**Updated** on the first screen shown in the minute after DE was read again.
+The minute matters because the read often happens on a screen that only
+redirects: the desktop app opens `/system`, which reads and sends the player on
+to their place, so the screen they see finds the read already stored. It is a polite status
 for screen readers, leaves after six seconds (held while the pointer or the
 focus is on it) or on a tap, and each read shows
 it once: the browser remembers the reads it has shown for the session. Connect
@@ -205,12 +220,17 @@ sentences (owner, 2026-10-24):
 
 - Display name, Mastery Rank: the profile, through the screen context.
 - Rank title: `SHELL.rankTitle`, the names on the wiki's Mastery Rank page.
+- The way to the next rank: `rankProgress()` in
+  `src/domain/profile/mastery-rank.ts`, over `XPInfo`, `Missions`,
+  `PlayerSkills`, the catalog and the wiki's node mastery (BR-76).
 - Last read and next read: the cache's stored time and `nextReadAt()`.
 - Icons: the wiki, served from its host and never rehosted.
 
 ## Components
 
 Each is one component with its Storybook stories: `Alert`, `Toast`, `Header`, `PlayerChip`,
+`RankOverview` (In progress, Many to rank, Nothing to rank, Test ready,
+Highest rank), `ItemChip` (Default, Done, More, Hover, Focus), `EmptyState`,
 `TopBar`, `TabBar` and `Tab` (active, inactive), `List` holding a
 `ControlRow` per setting, `Segmented`, and `Button` in the red filled variant
 Disconnect uses; Profile is a screen.
@@ -230,7 +250,10 @@ Disconnect uses; Profile is a screen.
 8. A screen that takes longer than 400 ms shows the loading screen over the
    page; a quicker one shows nothing.
 9. Every part has its stories, in every state the frames draw.
-10. `pnpm check` passes.
+10. With Cy, Profile shows "Mastery Rank 27", the square filled to the share
+    of the way to Rank 28, and up to three items to rank then a More chip
+    (`request.test.ts`, `mastery-rank.test.ts`).
+11. `pnpm check` passes.
 
 ## Frame corrections
 

@@ -15,6 +15,9 @@ describes. Their texts are sample values:
 - [`675:5989` Plan — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5989): typing, "Nothing by that name."
 - [`675:6049` Plan — Every goal done](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6049): the search card, then the empty state (flag, "Nothing left to suggest", "You've done every suggestion. Search above for anything else.") where the goal cards would be.
 - [`675:6022` Plan — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6022): the last match beyond reach, after those in reach, with its gap.
+- [`1001:7542` Plan — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7542), [`1009:7199` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7199) and
+  [`1009:7275` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7275): the Mastery Rank card first among the
+  suggestions, and gone at the highest rank (BR-78, owner, 2026-11-02).
 - [`675:6088` Plan — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6088): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
 
 ## Rules
@@ -82,6 +85,22 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
 - The list closes on Escape, on a click outside, and when the field is
   cleared. It is keyboard-navigable and announced as a list box.
 
+### The Mastery Rank card (BR-78)
+
+The cards sit under a `Divider` labelled "Suggestions". Before every goal
+card, the `Rank card`: the next rank's seal ("9", "30", or "L1" for a
+Legendary rank, in `Display/Heading`), "Reach Mastery Rank {n}" in the accent, and the line
+that says what takes the player there:
+
+| The way                            | Line                                                                           |
+| ---------------------------------- | ------------------------------------------------------------------------------ |
+| Items already ranked close the gap | "Ranking Lex and Boltor takes you there."                                      |
+| They do not, or nothing is left    | "Each new weapon you take to rank 30 covers about half of what is left."       |
+| The bar is full                    | Title "Take the Rank {n} test", "Your bar is full. Take the test in the game." |
+
+It opens the Mastery Rank goal (`/goals/rank`, spec 10). At the highest rank,
+or with no `XPInfo`, there is no card.
+
 ### The goal cards
 
 The curated goals in `data/grafo.yaml`, except the deferred ones:
@@ -111,13 +130,13 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 
 ## States
 
-| State            | What shows                            |
-| ---------------- | ------------------------------------- |
-| At rest          | The search card and the goals offered |
-| Typing, matches  | The list under the field              |
-| Typing, no match | "Nothing by that name."               |
-| A match beyond   | `Suggestion row` Beyond reach (BR-62) |
-| Every goal done  | The search card, then the empty state |
+| State            | What shows                                                                                |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| At rest          | The search card and the goals offered                                                     |
+| Typing, matches  | The list under the field                                                                  |
+| Typing, no match | "Nothing by that name."                                                                   |
+| A match beyond   | `Suggestion row` Beyond reach (BR-62)                                                     |
+| Every goal done  | The search card, then the Mastery Rank card, or the empty state when there is none either |
 
 ## Data and sources
 
@@ -135,7 +154,7 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 ## Components
 
 `SearchCard`, `SearchField`, `SuggestionList` and `SuggestionRow` (default,
-active, beyond reach), `ChoiceCard`
+active, beyond reach), `Divider` (label), `RankCard` (In progress, Test ready), `ChoiceCard`
 (goal),
 `EmptyState`, `Button` (primary), each with its stories.
 
@@ -150,7 +169,10 @@ active, beyond reach), `ChoiceCard`
 6. With the Ordis fixture, a match beyond reach comes after those in reach
    and reads its gap; choosing an item beyond reach opens its Step by step;
    no goal beyond reach is offered (BR-62).
-7. `pnpm check` passes, with tests for the goals offered, BR-54 and BR-62.
+7. With Cy, the Mastery Rank card leads the suggestions and reads "Reach
+   Mastery Rank 28"; with the bar full it asks for the test; at the highest
+   rank it is gone (`rank-view.test.ts`, `request.test.ts`).
+8. `pnpm check` passes, with tests for the goals offered, BR-54 and BR-62.
 
 ## Drawn on the Design System page
 

@@ -3877,6 +3877,17 @@
           }
         ]
       },
+      "PlayerSkills": {
+        "LPS_PILOTING": 5,
+        "LPS_GUNNERY": 5,
+        "LPS_TACTICAL": 4,
+        "LPS_ENGINEERING": 5,
+        "LPS_COMMAND": 3,
+        "LPS_DRIFT_COMBAT": 2,
+        "LPS_DRIFT_RIDING": 2,
+        "LPS_DRIFT_OPPORTUNITY": 1,
+        "LPS_DRIFT_ENDURANCE": 1
+      },
       "UnlockedOperator": true,
       "GuildId": true
     }

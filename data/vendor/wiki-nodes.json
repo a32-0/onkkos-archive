@@ -7,7 +7,9 @@
    "boss": null,
    "link": "Sanctuary Onslaught",
    "requirements": "Must have [[The New Strange]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode801",
+   "mastery": 0
   },
   {
    "name": "Elite Sanctuary Onslaught",
@@ -16,7 +18,9 @@
    "boss": null,
    "link": "Elite Sanctuary Onslaught",
    "requirements": "Must have [[The New Strange]] completed to access and a level 30 Warframe",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode802",
+   "mastery": 0
   },
   {
    "name": "Cephalon Capture",
@@ -25,7 +29,9 @@
    "boss": null,
    "link": "Cephalon Capture",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "PvpNode0",
+   "mastery": 0
   },
   {
    "name": "Team Annihilation",
@@ -34,7 +40,9 @@
    "boss": null,
    "link": "Team Annihilation",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "PvpNode9",
+   "mastery": 0
   },
   {
    "name": "Annihilation",
@@ -43,7 +51,9 @@
    "boss": null,
    "link": "Annihilation",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "PvpNode10",
+   "mastery": 0
   },
   {
    "name": "Lunaro Arena",
@@ -52,7 +62,9 @@
    "boss": null,
    "link": "Lunaro",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": null,
+   "mastery": 0
   },
   {
    "name": "Apollodorus",
@@ -61,7 +73,9 @@
    "boss": null,
    "link": "Apollodorus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode94",
+   "mastery": 0
   },
   {
    "name": "Boethius",
@@ -70,7 +84,9 @@
    "boss": null,
    "link": "Boethius",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode223",
+   "mastery": 3
   },
   {
    "name": "Caloris",
@@ -79,7 +95,9 @@
    "boss": null,
    "link": "Caloris",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode119",
+   "mastery": 3
   },
   {
    "name": "Elion",
@@ -88,7 +106,9 @@
    "boss": null,
    "link": "Elion",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode12",
+   "mastery": 3
   },
   {
    "name": "Lares",
@@ -97,7 +117,9 @@
    "boss": null,
    "link": "Lares",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode130",
+   "mastery": 3
   },
   {
    "name": "M Prime",
@@ -106,7 +128,9 @@
    "boss": null,
    "link": "M Prime",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode103",
+   "mastery": 3
   },
   {
    "name": "Odin",
@@ -115,7 +139,9 @@
    "boss": null,
    "link": "Odin",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode224",
+   "mastery": 3
   },
   {
    "name": "Pantheon",
@@ -124,7 +150,9 @@
    "boss": null,
    "link": "Pantheon",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode226",
+   "mastery": 3
   },
   {
    "name": "Suisei",
@@ -133,7 +161,9 @@
    "boss": null,
    "link": "Suisei",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode225",
+   "mastery": 3
   },
   {
    "name": "Terminus",
@@ -142,7 +172,9 @@
    "boss": null,
    "link": "Terminus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode28",
+   "mastery": 0
   },
   {
    "name": "Tolstoj",
@@ -154,7 +186,9 @@
    "drops": [
     "Cronus",
     "Seer"
-   ]
+   ],
+   "tag": "SolNode108",
+   "mastery": 25
   },
   {
    "name": "Larunda Relay",
@@ -163,7 +197,9 @@
    "boss": null,
    "link": "Relay",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "MercuryHUB",
+   "mastery": 0
   },
   {
    "name": "Fortuna",
@@ -172,7 +208,9 @@
    "boss": null,
    "link": "Fortuna",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolarisUnitedHub1",
+   "mastery": 0
   },
   {
    "name": "Orb Vallis",
@@ -181,7 +219,9 @@
    "boss": null,
    "link": "Orb Vallis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode129",
+   "mastery": 24
   },
   {
    "name": "Deepmines",
@@ -190,7 +230,9 @@
    "boss": null,
    "link": "Deepmines",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "NokkoColony",
+   "mastery": 0
   },
   {
    "name": "Aphrodite",
@@ -199,7 +241,9 @@
    "boss": null,
    "link": "Aphrodite",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode2",
+   "mastery": 18
   },
   {
    "name": "Cytherean",
@@ -208,7 +252,9 @@
    "boss": null,
    "link": "Cytherean",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode23",
+   "mastery": 18
   },
   {
    "name": "E Gate",
@@ -217,7 +263,9 @@
    "boss": null,
    "link": "E Gate",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode128",
+   "mastery": 18
   },
   {
    "name": "Ishtar",
@@ -226,7 +274,9 @@
    "boss": null,
    "link": "Ishtar",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode61",
+   "mastery": 24
   },
   {
    "name": "Kiliken",
@@ -235,7 +285,9 @@
    "boss": null,
    "link": "Kiliken",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode101",
+   "mastery": 18
   },
   {
    "name": "Linea",
@@ -244,7 +296,9 @@
    "boss": null,
    "link": "Linea",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode109",
+   "mastery": 18
   },
   {
    "name": "Malva",
@@ -253,7 +307,9 @@
    "boss": null,
    "link": "Malva",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode1",
+   "mastery": 0
   },
   {
    "name": "Montes",
@@ -262,7 +318,9 @@
    "boss": null,
    "link": "Montes",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode902",
+   "mastery": 18
   },
   {
    "name": "Romula",
@@ -271,7 +329,9 @@
    "boss": null,
    "link": "Romula",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode0",
+   "mastery": 0
   },
   {
    "name": "Tessera",
@@ -280,7 +340,9 @@
    "boss": null,
    "link": "Tessera",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode22",
+   "mastery": 18
   },
   {
    "name": "Unda",
@@ -289,7 +351,9 @@
    "boss": null,
    "link": "Unda",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode66",
+   "mastery": 18
   },
   {
    "name": "Venera",
@@ -298,7 +362,9 @@
    "boss": null,
    "link": "Venera",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode107",
+   "mastery": 18
   },
   {
    "name": "V Prime",
@@ -307,7 +373,9 @@
    "boss": null,
    "link": "V Prime",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode123",
+   "mastery": 18
   },
   {
    "name": "Fossa",
@@ -318,7 +386,9 @@
    "requirements": null,
    "drops": [
     "Rhino"
-   ]
+   ],
+   "tag": "SolNode104",
+   "mastery": 41
   },
   {
    "name": "Mercury Junction",
@@ -327,7 +397,9 @@
    "boss": null,
    "link": "Mercury Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "VenusToMercuryJunction",
+   "mastery": 1000
   },
   {
    "name": "Vesper Relay",
@@ -336,7 +408,9 @@
    "boss": null,
    "link": "Follie's Hunt",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode239",
+   "mastery": 50
   },
   {
    "name": "Cetus",
@@ -345,7 +419,9 @@
    "boss": null,
    "link": "Cetus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CetusHub4",
+   "mastery": 0
   },
   {
    "name": "Plains of Eidolon",
@@ -354,7 +430,9 @@
    "boss": null,
    "link": "Plains of Eidolon",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode228",
+   "mastery": 24
   },
   {
    "name": "Cambria",
@@ -363,7 +441,9 @@
    "boss": null,
    "link": "Cambria",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode79",
+   "mastery": 24
   },
   {
    "name": "Cervantes",
@@ -372,7 +452,9 @@
    "boss": null,
    "link": "Cervantes",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode75",
+   "mastery": 24
   },
   {
    "name": "E Prime",
@@ -381,7 +463,9 @@
    "boss": null,
    "link": "E Prime",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode27",
+   "mastery": 24
   },
   {
    "name": "Erpo",
@@ -390,7 +474,9 @@
    "boss": null,
    "link": "Erpo",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode903",
+   "mastery": 24
   },
   {
    "name": "Eurasia",
@@ -399,7 +485,9 @@
    "boss": null,
    "link": "Eurasia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode59",
+   "mastery": 24
   },
   {
    "name": "Everest",
@@ -408,7 +496,9 @@
    "boss": null,
    "link": "Everest",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode39",
+   "mastery": 24
   },
   {
    "name": "Gaia",
@@ -417,7 +507,9 @@
    "boss": null,
    "link": "Gaia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode85",
+   "mastery": 20
   },
   {
    "name": "Lith",
@@ -426,7 +518,9 @@
    "boss": null,
    "link": "Lith",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode26",
+   "mastery": 24
   },
   {
    "name": "Mantle",
@@ -435,7 +529,9 @@
    "boss": null,
    "link": "Mantle",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode63",
+   "mastery": 24
   },
   {
    "name": "Mariana",
@@ -444,7 +540,9 @@
    "boss": null,
    "link": "Mariana",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode89",
+   "mastery": 24
   },
   {
    "name": "Pacific",
@@ -453,7 +551,9 @@
    "boss": null,
    "link": "Pacific",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode15",
+   "mastery": 24
   },
   {
    "name": "Coba",
@@ -462,7 +562,9 @@
    "boss": null,
    "link": "Coba",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode2",
+   "mastery": 0
   },
   {
    "name": "Oro",
@@ -473,7 +575,9 @@
    "requirements": "Must be [[Mastery Rank]] 5 or higher to access",
    "drops": [
     "Hydroid"
-   ]
+   ],
+   "tag": "SolNode24",
+   "mastery": 24
   },
   {
    "name": "Tikal",
@@ -482,7 +586,9 @@
    "boss": null,
    "link": "Tikal",
    "requirements": "Must have [[Saya's Vigil]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode3",
+   "mastery": 0
   },
   {
    "name": "Saya's Visions",
@@ -491,7 +597,9 @@
    "boss": null,
    "link": "Saya's Visions",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode451",
+   "mastery": 0
   },
   {
    "name": "Venus Junction",
@@ -500,7 +608,9 @@
    "boss": null,
    "link": "Venus Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "EarthToVenusJunction",
+   "mastery": 1000
   },
   {
    "name": "Mars Junction",
@@ -509,7 +619,9 @@
    "boss": null,
    "link": "Mars Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "EarthToMarsJunction",
+   "mastery": 1000
   },
   {
    "name": "Drifter's Camp",
@@ -518,7 +630,9 @@
    "boss": null,
    "link": "Drifter's Camp",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ToggleBootLevel",
+   "mastery": 0
   },
   {
    "name": "The Orbiter",
@@ -527,7 +641,9 @@
    "boss": null,
    "link": "Orbiter",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ToggleBootLevel",
+   "mastery": 0
   },
   {
    "name": "Strata Relay",
@@ -536,7 +652,9 @@
    "boss": null,
    "link": "Relay",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "EarthHUB",
+   "mastery": 0
   },
   {
    "name": "Iron Wake",
@@ -545,7 +663,9 @@
    "boss": null,
    "link": "Iron Wake",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "IronwakeHUB3",
+   "mastery": 0
   },
   {
    "name": "Maroo's Bazaar",
@@ -554,7 +674,9 @@
    "boss": null,
    "link": "Maroo's Bazaar",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "TradeHUB1",
+   "mastery": 0
   },
   {
    "name": "Alator",
@@ -563,7 +685,9 @@
    "boss": null,
    "link": "Alator",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode106",
+   "mastery": 51
   },
   {
    "name": "Ara",
@@ -572,7 +696,9 @@
    "boss": null,
    "link": "Ara",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode45",
+   "mastery": 51
   },
   {
    "name": "Ares",
@@ -581,7 +707,9 @@
    "boss": null,
    "link": "Ares",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode113",
+   "mastery": 51
   },
   {
    "name": "Arval",
@@ -590,7 +718,9 @@
    "boss": null,
    "link": "Arval",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode41",
+   "mastery": 51
   },
   {
    "name": "Augustus",
@@ -599,7 +729,9 @@
    "boss": null,
    "link": "Augustus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode16",
+   "mastery": 51
   },
   {
    "name": "Gradivus",
@@ -608,7 +740,9 @@
    "boss": null,
    "link": "Gradivus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode65",
+   "mastery": 45
   },
   {
    "name": "Hellas",
@@ -617,7 +751,9 @@
    "boss": null,
    "link": "Hellas",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode58",
+   "mastery": 51
   },
   {
    "name": "Kadesh",
@@ -626,7 +762,9 @@
    "boss": null,
    "link": "Kadesh",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode8",
+   "mastery": 0
   },
   {
    "name": "Martialis",
@@ -635,7 +773,9 @@
    "boss": null,
    "link": "Martialis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode36",
+   "mastery": 51
   },
   {
    "name": "Olympus",
@@ -644,7 +784,9 @@
    "boss": null,
    "link": "Olympus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode30",
+   "mastery": 51
   },
   {
    "name": "Spear",
@@ -653,7 +795,9 @@
    "boss": null,
    "link": "Spear",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode46",
+   "mastery": 51
   },
   {
    "name": "Syrtis",
@@ -662,7 +806,9 @@
    "boss": null,
    "link": "Syrtis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode904",
+   "mastery": 51
   },
   {
    "name": "Tharsis",
@@ -671,7 +817,9 @@
    "boss": null,
    "link": "Tharsis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode11",
+   "mastery": 51
   },
   {
    "name": "Tyana Pass",
@@ -680,7 +828,9 @@
    "boss": null,
    "link": "Tyana Pass",
    "requirements": "Must have [[Heart of Deimos]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode450",
+   "mastery": 18
   },
   {
    "name": "Ultor",
@@ -689,7 +839,9 @@
    "boss": null,
    "link": "Ultor",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode14",
+   "mastery": 51
   },
   {
    "name": "Vallis",
@@ -698,7 +850,9 @@
    "boss": null,
    "link": "Vallis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode68",
+   "mastery": 51
   },
   {
    "name": "Wahiba",
@@ -707,7 +861,9 @@
    "boss": null,
    "link": "Wahiba",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode9",
+   "mastery": 0
   },
   {
    "name": "War",
@@ -718,7 +874,9 @@
    "requirements": null,
    "drops": [
     "Excalibur"
-   ]
+   ],
+   "tag": "SolNode99",
+   "mastery": 51
   },
   {
    "name": "Ceres Junction",
@@ -727,7 +885,9 @@
    "boss": null,
    "link": "Ceres Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "MarsToCeresJunction",
+   "mastery": 1000
   },
   {
    "name": "Phobos Junction",
@@ -736,7 +896,9 @@
    "boss": null,
    "link": "Phobos Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "MarsToPhobosJunction",
+   "mastery": 1000
   },
   {
    "name": "Roche",
@@ -745,7 +907,9 @@
    "boss": null,
    "link": "Roche",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode1",
+   "mastery": 157
   },
   {
    "name": "Sharpless",
@@ -754,7 +918,9 @@
    "boss": null,
    "link": "Sharpless",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode15",
+   "mastery": 157
   },
   {
    "name": "Gulliver",
@@ -763,7 +929,9 @@
    "boss": null,
    "link": "Gulliver",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode11",
+   "mastery": 157
   },
   {
    "name": "Kepler",
@@ -772,7 +940,9 @@
    "boss": null,
    "link": "Kepler",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode10",
+   "mastery": 157
   },
   {
    "name": "Memphis",
@@ -781,7 +951,9 @@
    "boss": null,
    "link": "Memphis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode10",
+   "mastery": 0
   },
   {
    "name": "Monolith",
@@ -790,7 +962,9 @@
    "boss": null,
    "link": "Monolith",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode12",
+   "mastery": 157
   },
   {
    "name": "Shklovsky",
@@ -799,7 +973,9 @@
    "boss": null,
    "link": "Shklovsky",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode14",
+   "mastery": 157
   },
   {
    "name": "Skyresh",
@@ -808,7 +984,9 @@
    "boss": null,
    "link": "Skyresh",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode2",
+   "mastery": 157
   },
   {
    "name": "Stickney",
@@ -817,7 +995,9 @@
    "boss": null,
    "link": "Stickney",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SettlementNode3",
+   "mastery": 157
   },
   {
    "name": "Zeugma",
@@ -826,7 +1006,9 @@
    "boss": null,
    "link": "Zeugma",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode11",
+   "mastery": 0
   },
   {
    "name": "Iliad",
@@ -837,7 +1019,9 @@
    "requirements": null,
    "drops": [
     "Mag"
-   ]
+   ],
+   "tag": "SettlementNode20",
+   "mastery": 100
   },
   {
    "name": "Necralisk",
@@ -846,7 +1030,9 @@
    "boss": null,
    "link": "Necralisk",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "DeimosHub",
+   "mastery": 0
   },
   {
    "name": "Horend",
@@ -855,7 +1041,9 @@
    "boss": null,
    "link": "Horend",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode706",
+   "mastery": 0
   },
   {
    "name": "Phlegyas",
@@ -864,7 +1052,9 @@
    "boss": null,
    "link": "Phlegyas",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode708",
+   "mastery": 0
   },
   {
    "name": "Cambion Drift",
@@ -873,7 +1063,9 @@
    "boss": null,
    "link": "Cambion Drift",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode229",
+   "mastery": 0
   },
   {
    "name": "Formido",
@@ -882,7 +1074,9 @@
    "boss": null,
    "link": "Formido",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode710",
+   "mastery": 0
   },
   {
    "name": "Hyf",
@@ -891,7 +1085,9 @@
    "boss": null,
    "link": "Hyf",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode707",
+   "mastery": 0
   },
   {
    "name": "Dirus",
@@ -900,7 +1096,9 @@
    "boss": null,
    "link": "Dirus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode709",
+   "mastery": 0
   },
   {
    "name": "Magnacidium",
@@ -911,7 +1109,9 @@
    "requirements": null,
    "drops": [
     "Nekros"
-   ]
+   ],
+   "tag": "SolNode712",
+   "mastery": 0
   },
   {
    "name": "Terrorem",
@@ -920,7 +1120,9 @@
    "boss": null,
    "link": "Terrorem",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode711",
+   "mastery": 0
   },
   {
    "name": "Exequias",
@@ -931,7 +1133,9 @@
    "requirements": null,
    "drops": [
     "Pathocyst"
-   ]
+   ],
+   "tag": "SolNode713",
+   "mastery": 0
   },
   {
    "name": "Sanctum Anatomica",
@@ -940,7 +1144,9 @@
    "boss": null,
    "link": "Sanctum Anatomica",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "EntratiLabHub",
+   "mastery": 0
   },
   {
    "name": "Effervo",
@@ -949,7 +1155,9 @@
    "boss": "The Fragmented",
    "link": "Effervo",
    "requirements": "Must have [[Whispers in the Walls]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode715",
+   "mastery": 0
   },
   {
    "name": "Nex",
@@ -958,7 +1166,9 @@
    "boss": null,
    "link": "Nex",
    "requirements": "Must have [[Whispers in the Walls]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode716",
+   "mastery": 0
   },
   {
    "name": "Persto",
@@ -967,7 +1177,9 @@
    "boss": null,
    "link": "Persto",
    "requirements": "Must have [[Whispers in the Walls]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode717",
+   "mastery": 0
   },
   {
    "name": "Cambire",
@@ -976,7 +1188,9 @@
    "boss": null,
    "link": "Cambire",
    "requirements": "Must have [[Whispers in the Walls]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode718",
+   "mastery": 0
   },
   {
    "name": "Munio",
@@ -985,7 +1199,9 @@
    "boss": null,
    "link": "Munio",
    "requirements": "Must have [[Whispers in the Walls]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode719",
+   "mastery": 0
   },
   {
    "name": "Testudo",
@@ -994,7 +1210,9 @@
    "boss": null,
    "link": "Testudo",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode720",
+   "mastery": 0
   },
   {
    "name": "Armatus",
@@ -1003,7 +1221,9 @@
    "boss": null,
    "link": "Armatus",
    "requirements": "Must have [[The Deadlock Protocol]] and [[Whispers in the Walls]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode721",
+   "mastery": 0
   },
   {
    "name": "Jupiter Junction",
@@ -1012,7 +1232,9 @@
    "boss": null,
    "link": "Jupiter Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CeresToJupiterJunction",
+   "mastery": 1000
   },
   {
    "name": "Abyssal Zone",
@@ -1021,7 +1243,9 @@
    "boss": null,
    "link": "Abyssal Zone",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "/Lotus/Types/Keys/SyndicateCacheHuntBaseKeyItem",
+   "mastery": 0
   },
   {
    "name": "Bode",
@@ -1030,7 +1254,9 @@
    "boss": null,
    "link": "Bode",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode132",
+   "mastery": 163
   },
   {
    "name": "Casta",
@@ -1039,7 +1265,9 @@
    "boss": null,
    "link": "Casta",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode149",
+   "mastery": 163
   },
   {
    "name": "Cinxia",
@@ -1048,7 +1276,9 @@
    "boss": null,
    "link": "Cinxia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode147",
+   "mastery": 163
   },
   {
    "name": "Draco",
@@ -1057,7 +1287,9 @@
    "boss": null,
    "link": "Draco",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode146",
+   "mastery": 163
   },
   {
    "name": "Gabii",
@@ -1066,7 +1298,9 @@
    "boss": null,
    "link": "Gabii",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode23",
+   "mastery": 0
   },
   {
    "name": "Ker",
@@ -1075,7 +1309,9 @@
    "boss": null,
    "link": "Ker",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode141",
+   "mastery": 163
   },
   {
    "name": "Kiste",
@@ -1084,7 +1320,9 @@
    "boss": null,
    "link": "Kiste",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode140",
+   "mastery": 163
   },
   {
    "name": "Lex",
@@ -1093,7 +1331,9 @@
    "boss": null,
    "link": "Lex (Node)",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode139",
+   "mastery": 163
   },
   {
    "name": "Ludi",
@@ -1102,7 +1342,9 @@
    "boss": null,
    "link": "Ludi",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode138",
+   "mastery": 163
   },
   {
    "name": "Nuovo",
@@ -1111,7 +1353,9 @@
    "boss": null,
    "link": "Nuovo",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode137",
+   "mastery": 163
   },
   {
    "name": "Pallas",
@@ -1120,7 +1364,9 @@
    "boss": null,
    "link": "Pallas",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode131",
+   "mastery": 163
   },
   {
    "name": "Seimeni",
@@ -1129,7 +1375,9 @@
    "boss": null,
    "link": "Seimeni",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode22",
+   "mastery": 0
   },
   {
    "name": "Thon",
@@ -1138,7 +1386,9 @@
    "boss": null,
    "link": "Thon",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode135",
+   "mastery": 163
   },
   {
    "name": "Exta",
@@ -1151,7 +1401,9 @@
     "Frost",
     "Miter",
     "Twin Gremlins"
-   ]
+   ],
+   "tag": "SolNode144",
+   "mastery": 163
   },
   {
    "name": "Adrastea",
@@ -1160,7 +1412,9 @@
    "boss": null,
    "link": "Adrastea",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode88",
+   "mastery": 51
   },
   {
    "name": "Amalthea",
@@ -1169,7 +1423,9 @@
    "boss": null,
    "link": "Amalthea",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode97",
+   "mastery": 51
   },
   {
    "name": "Ananke",
@@ -1178,7 +1434,9 @@
    "boss": null,
    "link": "Ananke",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode73",
+   "mastery": 51
   },
   {
    "name": "Callisto",
@@ -1187,7 +1445,9 @@
    "boss": null,
    "link": "Callisto",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode25",
+   "mastery": 51
   },
   {
    "name": "Carme",
@@ -1196,7 +1456,9 @@
    "boss": null,
    "link": "Carme",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode74",
+   "mastery": 51
   },
   {
    "name": "Carpo",
@@ -1205,7 +1467,9 @@
    "boss": null,
    "link": "Carpo",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode121",
+   "mastery": 51
   },
   {
    "name": "Elara",
@@ -1214,7 +1478,9 @@
    "boss": null,
    "link": "Elara",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode100",
+   "mastery": 51
   },
   {
    "name": "Galilea",
@@ -1223,7 +1489,9 @@
    "boss": null,
    "link": "Galilea",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode905",
+   "mastery": 51
   },
   {
    "name": "Ganymede",
@@ -1232,7 +1500,9 @@
    "boss": null,
    "link": "Ganymede",
    "requirements": "Must have [[Natah (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode87",
+   "mastery": 51
   },
   {
    "name": "Io",
@@ -1241,7 +1511,9 @@
    "boss": null,
    "link": "Io",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode125",
+   "mastery": 51
   },
   {
    "name": "Metis",
@@ -1250,7 +1522,9 @@
    "boss": null,
    "link": "Metis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode126",
+   "mastery": 51
   },
   {
    "name": "Thebe",
@@ -1259,7 +1533,9 @@
    "boss": null,
    "link": "Thebe",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode10",
+   "mastery": 51
   },
   {
    "name": "Cameria",
@@ -1268,7 +1544,9 @@
    "boss": null,
    "link": "Cameria",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode5",
+   "mastery": 0
   },
   {
    "name": "Sinai",
@@ -1277,7 +1555,9 @@
    "boss": null,
    "link": "Sinai",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode4",
+   "mastery": 0
   },
   {
    "name": "Themisto",
@@ -1288,7 +1568,9 @@
    "requirements": null,
    "drops": [
     "Valkyr"
-   ]
+   ],
+   "tag": "SolNode53",
+   "mastery": 51
   },
   {
    "name": "The Ropalolyst",
@@ -1299,7 +1581,9 @@
    "requirements": "Must complete [[Chimera Prologue]] to access",
    "drops": [
     "Wisp"
-   ]
+   ],
+   "tag": "SolNode740",
+   "mastery": 55
   },
   {
    "name": "Europa Junction",
@@ -1308,7 +1592,9 @@
    "boss": null,
    "link": "Europa Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "JupiterToEuropaJunction",
+   "mastery": 1000
   },
   {
    "name": "Saturn Junction",
@@ -1317,7 +1603,9 @@
    "boss": null,
    "link": "Saturn Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "JupiterToSaturnJunction",
+   "mastery": 1000
   },
   {
    "name": "Abaddon",
@@ -1326,7 +1614,9 @@
    "boss": null,
    "link": "Abaddon",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode203",
+   "mastery": 138
   },
   {
    "name": "Armaros",
@@ -1335,7 +1625,9 @@
    "boss": null,
    "link": "Armaros",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode204",
+   "mastery": 138
   },
   {
    "name": "Baal",
@@ -1344,7 +1636,9 @@
    "boss": null,
    "link": "Baal",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode205",
+   "mastery": 138
   },
   {
    "name": "Kokabiel",
@@ -1353,7 +1647,9 @@
    "boss": null,
    "link": "Kokabiel",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode220",
+   "mastery": 138
   },
   {
    "name": "Morax",
@@ -1362,7 +1658,9 @@
    "boss": null,
    "link": "Morax",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode209",
+   "mastery": 138
   },
   {
    "name": "Orias",
@@ -1371,7 +1669,9 @@
    "boss": null,
    "link": "Orias",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode217",
+   "mastery": 138
   },
   {
    "name": "Ose",
@@ -1380,7 +1680,9 @@
    "boss": null,
    "link": "Ose",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode211",
+   "mastery": 138
   },
   {
    "name": "Paimon",
@@ -1389,7 +1691,9 @@
    "boss": null,
    "link": "Paimon",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode212",
+   "mastery": 138
   },
   {
    "name": "Sorath",
@@ -1398,7 +1702,9 @@
    "boss": null,
    "link": "Sorath",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode214",
+   "mastery": 138
   },
   {
    "name": "Valac",
@@ -1407,7 +1713,9 @@
    "boss": null,
    "link": "Valac",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode215",
+   "mastery": 138
   },
   {
    "name": "Valefor",
@@ -1416,7 +1724,9 @@
    "boss": null,
    "link": "Valefor",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode216",
+   "mastery": 138
   },
   {
    "name": "Cholistan",
@@ -1425,7 +1735,9 @@
    "boss": null,
    "link": "Cholistan",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode7",
+   "mastery": 0
   },
   {
    "name": "Larzac",
@@ -1434,7 +1746,9 @@
    "boss": null,
    "link": "Larzac",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode6",
+   "mastery": 0
   },
   {
    "name": "Naamah",
@@ -1445,7 +1759,9 @@
    "requirements": null,
    "drops": [
     "Nova"
-   ]
+   ],
+   "tag": "SolNode210",
+   "mastery": 138
   },
   {
    "name": "Archaeo-freighter",
@@ -1454,7 +1770,9 @@
    "boss": null,
    "link": "Archaeo-freighter",
    "requirements": "Must have [[Grendel Neuroptics Locator]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "GrendelKeyBMissionName",
+   "mastery": 0
   },
   {
    "name": "Icefields of Riddah",
@@ -1463,7 +1781,9 @@
    "boss": null,
    "link": "Icefields of Riddah",
    "requirements": "Must have [[Grendel Chassis Locator]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "GrendelKeyAMissionName",
+   "mastery": 0
   },
   {
    "name": "Mines of Karishh",
@@ -1472,7 +1792,9 @@
    "boss": null,
    "link": "Mines of Karishh",
    "requirements": "Must have [[Grendel Systems Locator]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "GrendelKeyCMissionName",
+   "mastery": 0
   },
   {
    "name": "Anthe",
@@ -1481,7 +1803,9 @@
    "boss": null,
    "link": "Anthe",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode31",
+   "mastery": 55
   },
   {
    "name": "Calypso",
@@ -1490,7 +1814,9 @@
    "boss": null,
    "link": "Calypso",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode82",
+   "mastery": 55
   },
   {
    "name": "Caracol",
@@ -1499,7 +1825,9 @@
    "boss": null,
    "link": "Caracol",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode12",
+   "mastery": 0
   },
   {
    "name": "Cassini",
@@ -1508,7 +1836,9 @@
    "boss": null,
    "link": "Cassini",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode70",
+   "mastery": 55
   },
   {
    "name": "Dione",
@@ -1517,7 +1847,9 @@
    "boss": null,
    "link": "Dione",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode67",
+   "mastery": 55
   },
   {
    "name": "Enceladus",
@@ -1526,7 +1858,9 @@
    "boss": null,
    "link": "Enceladus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode19",
+   "mastery": 49
   },
   {
    "name": "Helene",
@@ -1535,7 +1869,9 @@
    "boss": null,
    "link": "Helene",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode42",
+   "mastery": 55
   },
   {
    "name": "Keeler",
@@ -1544,7 +1880,9 @@
    "boss": null,
    "link": "Keeler",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode93",
+   "mastery": 55
   },
   {
    "name": "Numa",
@@ -1553,7 +1891,9 @@
    "boss": null,
    "link": "Numa",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode50",
+   "mastery": 55
   },
   {
    "name": "Pandora",
@@ -1562,7 +1902,9 @@
    "boss": null,
    "link": "Pandora",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode906",
+   "mastery": 55
   },
   {
    "name": "Piscinas",
@@ -1571,7 +1913,9 @@
    "boss": null,
    "link": "Piscinas",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode13",
+   "mastery": 0
   },
   {
    "name": "Rhea",
@@ -1580,7 +1924,9 @@
    "boss": null,
    "link": "Rhea",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode18",
+   "mastery": 55
   },
   {
    "name": "Telesto",
@@ -1589,7 +1935,9 @@
    "boss": null,
    "link": "Telesto",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode20",
+   "mastery": 55
   },
   {
    "name": "Titan",
@@ -1598,7 +1946,9 @@
    "boss": null,
    "link": "Titan",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode96",
+   "mastery": 55
   },
   {
    "name": "Tethys",
@@ -1609,7 +1959,9 @@
    "requirements": null,
    "drops": [
     "Ember"
-   ]
+   ],
+   "tag": "SolNode32",
+   "mastery": 55
   },
   {
    "name": "Uranus Junction",
@@ -1618,7 +1970,9 @@
    "boss": null,
    "link": "Uranus Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SaturnToUranusJunction",
+   "mastery": 1000
   },
   {
    "name": "Kronia Relay",
@@ -1627,7 +1981,9 @@
    "boss": null,
    "link": "Relay",
    "requirements": "Must be [[Mastery Rank]] 4 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "SaturnHUB",
+   "mastery": 0
   },
   {
    "name": "Ariel",
@@ -1636,7 +1992,9 @@
    "boss": null,
    "link": "Ariel",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode33",
+   "mastery": 69
   },
   {
    "name": "Assur",
@@ -1645,7 +2003,9 @@
    "boss": null,
    "link": "Assur",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode17",
+   "mastery": 0
   },
   {
    "name": "Caelus",
@@ -1654,7 +2014,9 @@
    "boss": null,
    "link": "Caelus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode907",
+   "mastery": 69
   },
   {
    "name": "Caliban",
@@ -1663,7 +2025,9 @@
    "boss": null,
    "link": "Caliban (Node)",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode60",
+   "mastery": 69
   },
   {
    "name": "Cressida",
@@ -1672,7 +2036,9 @@
    "boss": null,
    "link": "Cressida",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode83",
+   "mastery": 69
   },
   {
    "name": "Desdemona",
@@ -1681,7 +2047,9 @@
    "boss": null,
    "link": "Desdemona",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode98",
+   "mastery": 69
   },
   {
    "name": "Brutus",
@@ -1690,7 +2058,9 @@
    "boss": null,
    "link": "Brutus",
    "requirements": "Must have [[Jade Shadows]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode723",
+   "mastery": 0
   },
   {
    "name": "Ophelia",
@@ -1699,7 +2069,9 @@
    "boss": null,
    "link": "Ophelia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode69",
+   "mastery": 69
   },
   {
    "name": "Puck",
@@ -1708,7 +2080,9 @@
    "boss": null,
    "link": "Puck",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode114",
+   "mastery": 44
   },
   {
    "name": "Rosalind",
@@ -1717,7 +2091,9 @@
    "boss": null,
    "link": "Rosalind",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode9",
+   "mastery": 69
   },
   {
    "name": "Stephano",
@@ -1726,7 +2102,9 @@
    "boss": null,
    "link": "Stephano",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode122",
+   "mastery": 69
   },
   {
    "name": "Sycorax",
@@ -1735,7 +2113,9 @@
    "boss": null,
    "link": "Sycorax",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode34",
+   "mastery": 69
   },
   {
    "name": "Umbriel",
@@ -1744,7 +2124,9 @@
    "boss": null,
    "link": "Umbriel",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode64",
+   "mastery": 69
   },
   {
    "name": "Ur",
@@ -1753,7 +2135,9 @@
    "boss": null,
    "link": "Ur",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode16",
+   "mastery": 0
   },
   {
    "name": "Titania",
@@ -1764,7 +2148,9 @@
    "requirements": null,
    "drops": [
     "Equinox"
-   ]
+   ],
+   "tag": "SolNode105",
+   "mastery": 69
   },
   {
    "name": "Neptune Junction",
@@ -1773,7 +2159,9 @@
    "boss": null,
    "link": "Neptune Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "UranusToNeptuneJunction",
+   "mastery": 1000
   },
   {
    "name": "Despina",
@@ -1782,7 +2170,9 @@
    "boss": null,
    "link": "Despina",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode6",
+   "mastery": 52
   },
   {
    "name": "Galatea",
@@ -1791,7 +2181,9 @@
    "boss": null,
    "link": "Galatea",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode1",
+   "mastery": 52
   },
   {
    "name": "Kelashin",
@@ -1800,7 +2192,9 @@
    "boss": null,
    "link": "Kelashin",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode21",
+   "mastery": 0
   },
   {
    "name": "Laomedeia",
@@ -1809,7 +2203,9 @@
    "boss": null,
    "link": "Laomedeia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode118",
+   "mastery": 52
   },
   {
    "name": "Larissa",
@@ -1818,7 +2214,9 @@
    "boss": null,
    "link": "Larissa",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode49",
+   "mastery": 52
   },
   {
    "name": "Nereid",
@@ -1827,7 +2225,9 @@
    "boss": null,
    "link": "Nereid",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode84",
+   "mastery": 52
   },
   {
    "name": "Neso",
@@ -1836,7 +2236,9 @@
    "boss": null,
    "link": "Neso",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode62",
+   "mastery": 52
   },
   {
    "name": "Proteus",
@@ -1845,7 +2247,9 @@
    "boss": null,
    "link": "Proteus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode17",
+   "mastery": 52
   },
   {
    "name": "Salacia",
@@ -1854,7 +2258,9 @@
    "boss": null,
    "link": "Salacia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode908",
+   "mastery": 52
   },
   {
    "name": "Sao",
@@ -1863,7 +2269,9 @@
    "boss": null,
    "link": "Sao",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode57",
+   "mastery": 52
   },
   {
    "name": "Triton",
@@ -1872,7 +2280,9 @@
    "boss": null,
    "link": "Triton",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode78",
+   "mastery": 52
   },
   {
    "name": "Yursa",
@@ -1881,7 +2291,9 @@
    "boss": null,
    "link": "Yursa",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode20",
+   "mastery": 0
   },
   {
    "name": "Psamathe",
@@ -1892,7 +2304,9 @@
    "requirements": null,
    "drops": [
     "Loki"
-   ]
+   ],
+   "tag": "SolNode127",
+   "mastery": 52
   },
   {
    "name": "The Index: Endurance",
@@ -1901,7 +2315,9 @@
    "boss": null,
    "link": "The Index",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "EventNode763",
+   "mastery": 0
   },
   {
    "name": "Pluto Junction",
@@ -1910,7 +2326,9 @@
    "boss": null,
    "link": "Pluto Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "NeptuneToPlutoJunction",
+   "mastery": 1000
   },
   {
    "name": "Acheron",
@@ -1919,7 +2337,9 @@
    "boss": null,
    "link": "Acheron",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode4",
+   "mastery": 51
   },
   {
    "name": "Cerberus",
@@ -1928,7 +2348,9 @@
    "boss": null,
    "link": "Cerberus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode43",
+   "mastery": 51
   },
   {
    "name": "Cypress",
@@ -1937,7 +2359,9 @@
    "boss": null,
    "link": "Cypress",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode56",
+   "mastery": 51
   },
   {
    "name": "Hydra",
@@ -1946,7 +2370,9 @@
    "boss": null,
    "link": "Hydra",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode76",
+   "mastery": 51
   },
   {
    "name": "Minthe",
@@ -1955,7 +2381,9 @@
    "boss": null,
    "link": "Minthe",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode38",
+   "mastery": 51
   },
   {
    "name": "Narcissus",
@@ -1964,7 +2392,9 @@
    "boss": null,
    "link": "Narcissus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode21",
+   "mastery": 51
   },
   {
    "name": "Oceanum",
@@ -1973,7 +2403,9 @@
    "boss": null,
    "link": "Oceanum",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode102",
+   "mastery": 51
   },
   {
    "name": "Outer Terminus",
@@ -1982,7 +2414,9 @@
    "boss": null,
    "link": "Outer Terminus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode72",
+   "mastery": 51
   },
   {
    "name": "Palus",
@@ -1991,7 +2425,9 @@
    "boss": null,
    "link": "Palus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode81",
+   "mastery": 51
   },
   {
    "name": "Regna",
@@ -2000,7 +2436,9 @@
    "boss": null,
    "link": "Regna",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode48",
+   "mastery": 51
   },
   {
    "name": "Hieracon",
@@ -2009,7 +2447,9 @@
    "boss": null,
    "link": "Hieracon",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode25",
+   "mastery": 0
   },
   {
    "name": "Sechura",
@@ -2018,7 +2458,9 @@
    "boss": null,
    "link": "Sechura",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode24",
+   "mastery": 0
   },
   {
    "name": "Hades",
@@ -2029,7 +2471,9 @@
    "requirements": "Must have 5 [[Animo Nav Beacon]]s to access",
    "drops": [
     "Trinity"
-   ]
+   ],
+   "tag": "SolNode51",
+   "mastery": 51
   },
   {
    "name": "Eris Junction",
@@ -2038,7 +2482,9 @@
    "boss": null,
    "link": "Eris Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "PlutoToErisJunction",
+   "mastery": 1000
   },
   {
    "name": "Orcus Relay",
@@ -2047,7 +2493,9 @@
    "boss": null,
    "link": "Relay",
    "requirements": "Must be [[Mastery Rank]] 8 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "PlutoHUB",
+   "mastery": 0
   },
   {
    "name": "Naga",
@@ -2056,7 +2504,9 @@
    "boss": null,
    "link": "Naga",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode189",
+   "mastery": 177
   },
   {
    "name": "Berehynia",
@@ -2065,7 +2515,9 @@
    "boss": null,
    "link": "Berehynia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode185",
+   "mastery": 50
   },
   {
    "name": "Hydron",
@@ -2074,7 +2526,9 @@
    "boss": null,
    "link": "Hydron",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode195",
+   "mastery": 177
   },
   {
    "name": "Selkie",
@@ -2083,7 +2537,9 @@
    "boss": null,
    "link": "Selkie",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode187",
+   "mastery": 177
   },
   {
    "name": "Adaro",
@@ -2092,7 +2548,9 @@
    "boss": null,
    "link": "Adaro",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode181",
+   "mastery": 177
   },
   {
    "name": "Rusalka",
@@ -2101,7 +2559,9 @@
    "boss": null,
    "link": "Rusalka",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode184",
+   "mastery": 177
   },
   {
    "name": "Kelpie",
@@ -2110,7 +2570,9 @@
    "boss": null,
    "link": "Kelpie",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode188",
+   "mastery": 177
   },
   {
    "name": "Marid",
@@ -2119,7 +2581,9 @@
    "boss": null,
    "link": "Marid",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode191",
+   "mastery": 177
   },
   {
    "name": "Charybdis",
@@ -2128,7 +2592,9 @@
    "boss": null,
    "link": "Charybdis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode196",
+   "mastery": 177
   },
   {
    "name": "Amarna",
@@ -2137,7 +2603,9 @@
    "boss": null,
    "link": "Amarna",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode14",
+   "mastery": 0
   },
   {
    "name": "Sangeru",
@@ -2146,7 +2614,9 @@
    "boss": null,
    "link": "Sangeru",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode15",
+   "mastery": 0
   },
   {
    "name": "Kappa",
@@ -2155,7 +2625,9 @@
    "boss": null,
    "link": "Kappa",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode177",
+   "mastery": 177
   },
   {
    "name": "Nakki",
@@ -2164,7 +2636,9 @@
    "boss": null,
    "link": "Nakki",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode190",
+   "mastery": 177
   },
   {
    "name": "Yam",
@@ -2173,7 +2647,9 @@
    "boss": null,
    "link": "Yam",
    "requirements": "Must have 10 [[Judgement Points]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode199",
+   "mastery": 177
   },
   {
    "name": "Vodyanoi",
@@ -2182,7 +2658,9 @@
    "boss": null,
    "link": "Vodyanoi",
    "requirements": "Must have 15 [[Judgement Points]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode183",
+   "mastery": 177
   },
   {
    "name": "Merrow",
@@ -2194,7 +2672,9 @@
    "drops": [
     "Saryn",
     "Twin Kohmak"
-   ]
+   ],
+   "tag": "SolNode193",
+   "mastery": 100
   },
   {
    "name": "Brugia",
@@ -2203,7 +2683,9 @@
    "boss": null,
    "link": "Brugia",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode153",
+   "mastery": 279
   },
   {
    "name": "Isos",
@@ -2212,7 +2694,9 @@
    "boss": null,
    "link": "Isos (Node)",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode162",
+   "mastery": 279
   },
   {
    "name": "Kala-azar",
@@ -2221,7 +2705,9 @@
    "boss": null,
    "link": "Kala-azar",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode164",
+   "mastery": 279
   },
   {
    "name": "Naeglar",
@@ -2230,7 +2716,9 @@
    "boss": null,
    "link": "Naeglar",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode175",
+   "mastery": 279
   },
   {
    "name": "Nimus",
@@ -2239,7 +2727,9 @@
    "boss": null,
    "link": "Nimus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode166",
+   "mastery": 279
   },
   {
    "name": "Oestrus",
@@ -2248,7 +2738,9 @@
    "boss": null,
    "link": "Oestrus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode167",
+   "mastery": 279
   },
   {
    "name": "Saxis",
@@ -2257,7 +2749,9 @@
    "boss": null,
    "link": "Saxis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode171",
+   "mastery": 279
   },
   {
    "name": "Solium",
@@ -2266,7 +2760,9 @@
    "boss": null,
    "link": "Solium",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode173",
+   "mastery": 279
   },
   {
    "name": "Xini",
@@ -2275,7 +2771,9 @@
    "boss": null,
    "link": "Xini",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode172",
+   "mastery": 279
   },
   {
    "name": "Akkad",
@@ -2284,7 +2782,9 @@
    "boss": null,
    "link": "Akkad",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode18",
+   "mastery": 0
   },
   {
    "name": "Zabala",
@@ -2293,7 +2793,9 @@
    "boss": null,
    "link": "Zabala",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ClanNode19",
+   "mastery": 0
   },
   {
    "name": "Jordas Golem Assassinate",
@@ -2304,7 +2806,9 @@
    "requirements": "Must complete [[The Jordas Precept]] to access",
    "drops": [
     "Atlas"
-   ]
+   ],
+   "tag": "SolNode701",
+   "mastery": 0
   },
   {
    "name": "Mutalist Alad V Assassinate",
@@ -2315,7 +2819,9 @@
    "requirements": "Must have [[Mutalist Alad V Assassinate Key]] to access",
    "drops": [
     "Mesa"
-   ]
+   ],
+   "tag": "SolNode705",
+   "mastery": 0
   },
   {
    "name": "Sedna Junction",
@@ -2324,7 +2830,9 @@
    "boss": null,
    "link": "Sedna Junction",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "ErisToSednaJunction",
+   "mastery": 1000
   },
   {
    "name": "Apollo",
@@ -2333,7 +2841,9 @@
    "boss": null,
    "link": "Apollo",
    "requirements": "Must have [[The War Within]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode308",
+   "mastery": 0
   },
   {
    "name": "Circulus",
@@ -2342,7 +2852,9 @@
    "boss": null,
    "link": "Circulus",
    "requirements": "Must complete [[The War Within]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode310",
+   "mastery": 0
   },
   {
    "name": "Copernicus",
@@ -2351,7 +2863,9 @@
    "boss": null,
    "link": "Copernicus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode304",
+   "mastery": 0
   },
   {
    "name": "Grimaldi",
@@ -2360,7 +2874,9 @@
    "boss": null,
    "link": "Grimaldi",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode301",
+   "mastery": 0
   },
   {
    "name": "Pavlov",
@@ -2369,7 +2885,9 @@
    "boss": null,
    "link": "Pavlov",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode306",
+   "mastery": 0
   },
   {
    "name": "Plato",
@@ -2378,7 +2896,9 @@
    "boss": null,
    "link": "Plato",
    "requirements": "Must have [[The Second Dream]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode300",
+   "mastery": 0
   },
   {
    "name": "Stöfler",
@@ -2387,7 +2907,9 @@
    "boss": null,
    "link": "Stöfler",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode305",
+   "mastery": 0
   },
   {
    "name": "Tycho",
@@ -2396,7 +2918,9 @@
    "boss": null,
    "link": "Tycho",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode302",
+   "mastery": 0
   },
   {
    "name": "Yuvarium",
@@ -2405,7 +2929,9 @@
    "boss": null,
    "link": "Yuvarium",
    "requirements": "Must complete [[The War Within]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode309",
+   "mastery": 0
   },
   {
    "name": "Zeipel",
@@ -2414,7 +2940,9 @@
    "boss": null,
    "link": "Zeipel",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode307",
+   "mastery": 0
   },
   {
    "name": "Dakata",
@@ -2423,7 +2951,9 @@
    "boss": null,
    "link": "Dakata",
    "requirements": "Must have [[The War Within]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode746",
+   "mastery": 0
   },
   {
    "name": "Garus",
@@ -2432,7 +2962,9 @@
    "boss": null,
    "link": "Garus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode748",
+   "mastery": 0
   },
   {
    "name": "Koro",
@@ -2441,7 +2973,9 @@
    "boss": null,
    "link": "Koro",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode741",
+   "mastery": 0
   },
   {
    "name": "Nabuk",
@@ -2450,7 +2984,9 @@
    "boss": null,
    "link": "Nabuk",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode742",
+   "mastery": 0
   },
   {
    "name": "Pago",
@@ -2459,7 +2995,9 @@
    "boss": null,
    "link": "Pago",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode747",
+   "mastery": 0
   },
   {
    "name": "Rotuma",
@@ -2468,7 +3006,9 @@
    "boss": null,
    "link": "Rotuma",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode743",
+   "mastery": 0
   },
   {
    "name": "Tamu",
@@ -2477,7 +3017,9 @@
    "boss": null,
    "link": "Tamu",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode745",
+   "mastery": 0
   },
   {
    "name": "Taveuni",
@@ -2486,7 +3028,9 @@
    "boss": null,
    "link": "Taveuni",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode744",
+   "mastery": 0
   },
   {
    "name": "Teshub",
@@ -2495,7 +3039,9 @@
    "boss": null,
    "link": "Teshub",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode400",
+   "mastery": 0
   },
   {
    "name": "Hepit",
@@ -2504,7 +3050,9 @@
    "boss": null,
    "link": "Hepit",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode401",
+   "mastery": 0
   },
   {
    "name": "Taranis",
@@ -2513,7 +3061,9 @@
    "boss": null,
    "link": "Taranis",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode402",
+   "mastery": 0
   },
   {
    "name": "Tiwaz",
@@ -2522,7 +3072,9 @@
    "boss": null,
    "link": "Tiwaz",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode403",
+   "mastery": 0
   },
   {
    "name": "Stribog",
@@ -2531,7 +3083,9 @@
    "boss": null,
    "link": "Stribog",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode404",
+   "mastery": 0
   },
   {
    "name": "Ani",
@@ -2540,7 +3094,9 @@
    "boss": null,
    "link": "Ani",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode405",
+   "mastery": 0
   },
   {
    "name": "Ukko",
@@ -2549,7 +3105,9 @@
    "boss": null,
    "link": "Ukko",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode406",
+   "mastery": 0
   },
   {
    "name": "Oxomoco",
@@ -2558,7 +3116,9 @@
    "boss": null,
    "link": "Oxomoco",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode407",
+   "mastery": 0
   },
   {
    "name": "Belenus",
@@ -2567,7 +3127,9 @@
    "boss": null,
    "link": "Belenus",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode408",
+   "mastery": 0
   },
   {
    "name": "Aten",
@@ -2576,7 +3138,9 @@
    "boss": null,
    "link": "Aten",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode410",
+   "mastery": 0
   },
   {
    "name": "Marduk",
@@ -2585,7 +3149,9 @@
    "boss": null,
    "link": "Marduk",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode411",
+   "mastery": 0
   },
   {
    "name": "Mithra",
@@ -2594,7 +3160,9 @@
    "boss": null,
    "link": "Mithra",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode412",
+   "mastery": 0
   },
   {
    "name": "Mot",
@@ -2603,7 +3171,9 @@
    "boss": null,
    "link": "Mot",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode409",
+   "mastery": 0
   },
   {
    "name": "Phorid Alert",
@@ -2614,7 +3184,9 @@
    "requirements": null,
    "drops": [
     "Nyx"
-   ]
+   ],
+   "tag": null,
+   "mastery": 0
   },
   {
    "name": "Tuvul Commons",
@@ -2623,7 +3195,9 @@
    "boss": null,
    "link": "Tuvul Commons",
    "requirements": "Must have [[Angels of the Zariman]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode232",
+   "mastery": 0
   },
   {
    "name": "Everview Arc",
@@ -2632,7 +3206,9 @@
    "boss": null,
    "link": "Everview Arc",
    "requirements": "Must have [[Angels of the Zariman]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode230",
+   "mastery": 0
   },
   {
    "name": "Halako Perimeter",
@@ -2641,7 +3217,9 @@
    "boss": null,
    "link": "Halako Perimeter",
    "requirements": "Must have [[Angels of the Zariman]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode231",
+   "mastery": 0
   },
   {
    "name": "The Greenway",
@@ -2650,7 +3228,9 @@
    "boss": null,
    "link": "The Greenway",
    "requirements": "Must have [[Angels of the Zariman]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode235",
+   "mastery": 0
   },
   {
    "name": "Oro Works",
@@ -2659,7 +3239,9 @@
    "boss": null,
    "link": "Oro Works",
    "requirements": "Must have [[Angels of the Zariman]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode233",
+   "mastery": 0
   },
   {
    "name": "Chrysalith",
@@ -2668,7 +3250,9 @@
    "boss": null,
    "link": "Chrysalith",
    "requirements": "Must have [[Angels of the Zariman]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "ZarimanHub",
+   "mastery": 0
   },
   {
    "name": "Dormizone",
@@ -2677,7 +3261,9 @@
    "boss": null,
    "link": "Dormizone",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "SolNode234",
+   "mastery": 0
   },
   {
    "name": "The Duviri Experience",
@@ -2686,7 +3272,9 @@
    "boss": null,
    "link": "The Duviri Experience",
    "requirements": "Must have [[The Duviri Paradox]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode236",
+   "mastery": 0
   },
   {
    "name": "The Lone Story (Duviri)",
@@ -2695,7 +3283,9 @@
    "boss": null,
    "link": "The Lone Story",
    "requirements": "Must have [[The Duviri Paradox]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode237",
+   "mastery": 0
   },
   {
    "name": "The Circuit",
@@ -2704,7 +3294,9 @@
    "boss": null,
    "link": "The Circuit",
    "requirements": "Must have [[The Duviri Paradox]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode238",
+   "mastery": 0
   },
   {
    "name": "Isleweaver",
@@ -2713,7 +3305,9 @@
    "boss": null,
    "link": "Isleweaver",
    "requirements": "Must have [[The Hex]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode236",
+   "mastery": 0
   },
   {
    "name": "Köbinn West",
@@ -2722,7 +3316,9 @@
    "boss": null,
    "link": "Köbinn West",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode850",
+   "mastery": 0
   },
   {
    "name": "Mischta Ramparts",
@@ -2731,7 +3327,9 @@
    "boss": null,
    "link": "Mischta Ramparts",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode851",
+   "mastery": 0
   },
   {
    "name": "Old Konderuk",
@@ -2740,7 +3338,9 @@
    "boss": null,
    "link": "Old Konderuk",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode852",
+   "mastery": 0
   },
   {
    "name": "Mausoleum East",
@@ -2749,7 +3349,9 @@
    "boss": null,
    "link": "Mausoleum East",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode853",
+   "mastery": 0
   },
   {
    "name": "Rhu Manor",
@@ -2758,7 +3360,9 @@
    "boss": null,
    "link": "Rhu Manor",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode854",
+   "mastery": 0
   },
   {
    "name": "Lower Vehrvod",
@@ -2767,7 +3371,9 @@
    "boss": null,
    "link": "Lower Vehrvod",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode855",
+   "mastery": 0
   },
   {
    "name": "Victory Plaza",
@@ -2776,7 +3382,9 @@
    "boss": "H-09 Efervon Tank",
    "link": "Victory Plaza",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode856",
+   "mastery": 0
   },
   {
    "name": "Vehrvod District",
@@ -2785,7 +3393,9 @@
    "boss": null,
    "link": "Vehrvod District",
    "requirements": "Must have [[The Hex (Quest)]] completed to access\nMust have [[Lower Vehrvod]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode857",
+   "mastery": 0
   },
   {
    "name": "Solstice Square",
@@ -2794,7 +3404,9 @@
    "boss": null,
    "link": "Solstice Square",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode858",
+   "mastery": 0
   },
   {
    "name": "Höllvania Central Mall",
@@ -2803,7 +3415,9 @@
    "boss": null,
    "link": "Höllvania Central Mall",
    "requirements": "Must have [[The Hex (Quest)]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "1999Hub",
+   "mastery": 0
   },
   {
    "name": "The Descendia",
@@ -2812,7 +3426,9 @@
    "boss": "Roathe (Boss)",
    "link": "The Descendia",
    "requirements": "Must have [[The Old Peace]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode253",
+   "mastery": 0
   },
   {
    "name": "Recall: Hunhullus",
@@ -2821,7 +3437,9 @@
    "boss": "Hunhullus",
    "link": "The Perita Rebellion",
    "requirements": "Must have [[The Old Peace]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode250",
+   "mastery": 0
   },
   {
    "name": "Recall: Dactolyst",
@@ -2830,7 +3448,9 @@
    "boss": "Dactolyst",
    "link": "The Perita Rebellion",
    "requirements": "Must have [[The Old Peace]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode251",
+   "mastery": 0
   },
   {
    "name": "Recall: Prime Vanguard",
@@ -2839,7 +3459,9 @@
    "boss": "Prime Vanguard",
    "link": "The Perita Rebellion",
    "requirements": "Must have [[The Old Peace]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode252",
+   "mastery": 0
   },
   {
    "name": "The Guilty",
@@ -2848,7 +3470,9 @@
    "boss": null,
    "link": "The Guilty",
    "requirements": "",
-   "drops": []
+   "drops": [],
+   "tag": "SolNode257",
+   "mastery": 0
   },
   {
    "name": "Technocyte Coda Concert",
@@ -2857,7 +3481,9 @@
    "boss": null,
    "link": "Technocyte Coda",
    "requirements": "Must complete [[The Hex (Quest)|The Hex]] quest to access and active [[Technocyte Coda]].",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode559",
+   "mastery": 0
   },
   {
    "name": "Free Flight",
@@ -2866,7 +3492,9 @@
    "boss": null,
    "link": "Free Flight",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode556",
+   "mastery": 0
   },
   {
    "name": "Sover Strait",
@@ -2875,7 +3503,9 @@
    "boss": null,
    "link": "Sover Strait",
    "requirements": "Must have [[Rising Tide]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode502",
+   "mastery": 0
   },
   {
    "name": "Iota Temple",
@@ -2884,7 +3514,9 @@
    "boss": null,
    "link": "Iota Temple",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode509",
+   "mastery": 0
   },
   {
    "name": "Ogal Cluster",
@@ -2893,7 +3525,9 @@
    "boss": null,
    "link": "Ogal Cluster",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode518",
+   "mastery": 0
   },
   {
    "name": "Korm's Belt",
@@ -2902,7 +3536,9 @@
    "boss": null,
    "link": "Korm's Belt",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode519",
+   "mastery": 0
   },
   {
    "name": "Bendar Cluster",
@@ -2911,7 +3547,9 @@
    "boss": null,
    "link": "Bendar Cluster",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode522",
+   "mastery": 0
   },
   {
    "name": "Beacon Shield Ring",
@@ -2920,7 +3558,9 @@
    "boss": null,
    "link": "Beacon Shield Ring",
    "requirements": "Must have [[Rising Tide]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode511",
+   "mastery": 0
   },
   {
    "name": "Vesper Strait",
@@ -2929,7 +3569,9 @@
    "boss": null,
    "link": "Vesper Strait",
    "requirements": "Must have [[The War Within]] completed to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode513",
+   "mastery": 0
   },
   {
    "name": "Luckless Expanse",
@@ -2938,7 +3580,9 @@
    "boss": null,
    "link": "Luckless Expanse",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode515",
+   "mastery": 0
   },
   {
    "name": "Falling Glory",
@@ -2947,7 +3591,9 @@
    "boss": null,
    "link": "Falling Glory",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode514",
+   "mastery": 0
   },
   {
    "name": "Bifrost Echo",
@@ -2956,7 +3602,9 @@
    "boss": null,
    "link": "Bifrost Echo",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode503",
+   "mastery": 0
   },
   {
    "name": "Orvin-Haarc",
@@ -2965,7 +3613,9 @@
    "boss": null,
    "link": "Orvin-Haarc",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode512",
+   "mastery": 0
   },
   {
    "name": "Kuva Lich Confrontation",
@@ -2974,7 +3624,9 @@
    "boss": null,
    "link": "Kuva Lich",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher and an active [[Kuva Lich]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode557",
+   "mastery": 0
   },
   {
    "name": "Mordo Cluster",
@@ -2983,7 +3635,9 @@
    "boss": null,
    "link": "Mordo Cluster",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode501",
+   "mastery": 0
   },
   {
    "name": "Lupal Pass",
@@ -2992,7 +3646,9 @@
    "boss": null,
    "link": "Lupal Pass",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode534",
+   "mastery": 0
   },
   {
    "name": "Nodo Gap",
@@ -3001,7 +3657,9 @@
    "boss": null,
    "link": "Nodo Gap",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode533",
+   "mastery": 0
   },
   {
    "name": "Vand Cluster",
@@ -3010,7 +3668,9 @@
    "boss": null,
    "link": "Vand Cluster",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode535",
+   "mastery": 0
   },
   {
    "name": "Kasio's Rest",
@@ -3019,7 +3679,9 @@
    "boss": null,
    "link": "Kasio's Rest",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode530",
+   "mastery": 0
   },
   {
    "name": "Sister of Parvos Confrontation",
@@ -3028,7 +3690,9 @@
    "boss": null,
    "link": "Sisters of Parvos",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher and an active [[Sister of Parvos]] to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode558",
+   "mastery": 0
   },
   {
    "name": "Arva Vector",
@@ -3037,7 +3701,9 @@
    "boss": null,
    "link": "Arva Vector",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode504",
+   "mastery": 0
   },
   {
    "name": "Nu-gua Mines",
@@ -3046,7 +3712,9 @@
    "boss": null,
    "link": "Nu-gua Mines",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode516",
+   "mastery": 0
   },
   {
    "name": "Mammon's Prospect",
@@ -3055,7 +3723,9 @@
    "boss": null,
    "link": "Mammon's Prospect",
    "requirements": "Must have [[The War Within]] completed and [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode523",
+   "mastery": 0
   },
   {
    "name": "Brom Cluster",
@@ -3064,7 +3734,9 @@
    "boss": null,
    "link": "Brom Cluster",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode525",
+   "mastery": 0
   },
   {
    "name": "Enkidu Ice Drifts",
@@ -3073,7 +3745,9 @@
    "boss": null,
    "link": "Enkidu Ice Drifts",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode521",
+   "mastery": 0
   },
   {
    "name": "Sovereign Grasp",
@@ -3082,7 +3756,9 @@
    "boss": null,
    "link": "Sovereign Grasp",
    "requirements": "Must have [[Intrinsics]] Rank 3 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode524",
+   "mastery": 0
   },
   {
    "name": "Khufu Envoy",
@@ -3091,7 +3767,9 @@
    "boss": null,
    "link": "Khufu Envoy",
    "requirements": "Must have [[The War Within]] completed and [[Intrinsics]] Rank 5 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode526",
+   "mastery": 0
   },
   {
    "name": "Seven Sirens",
@@ -3100,7 +3778,9 @@
    "boss": null,
    "link": "Seven Sirens",
    "requirements": "Must have [[Intrinsics]] Rank 5 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode527",
+   "mastery": 0
   },
   {
    "name": "Obol Crossing",
@@ -3109,7 +3789,9 @@
    "boss": null,
    "link": "Obol Crossing",
    "requirements": "Must have [[Intrinsics]] Rank 5 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode528",
+   "mastery": 0
   },
   {
    "name": "Fenton's Field",
@@ -3118,7 +3800,9 @@
    "boss": null,
    "link": "Fenton's Field",
    "requirements": "Must have [[Intrinsics]] Rank 5 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode531",
+   "mastery": 0
   },
   {
    "name": "Profit Margin",
@@ -3127,7 +3811,9 @@
    "boss": null,
    "link": "Profit Margin",
    "requirements": "Must have [[Intrinsics]] Rank 5 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode529",
+   "mastery": 0
   },
   {
    "name": "Peregrine Axis",
@@ -3136,7 +3822,9 @@
    "boss": null,
    "link": "Peregrine Axis",
    "requirements": "Must have [[Intrinsics]] Rank 5 or higher to access",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode536",
+   "mastery": 0
   },
   {
    "name": "Nsu Grid",
@@ -3145,7 +3833,9 @@
    "boss": null,
    "link": "Nsu Grid",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode550",
+   "mastery": 0
   },
   {
    "name": "R-9 Cloud",
@@ -3154,7 +3844,9 @@
    "boss": null,
    "link": "R-9 Cloud",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode555",
+   "mastery": 0
   },
   {
    "name": "H-2 Cloud",
@@ -3163,7 +3855,9 @@
    "boss": null,
    "link": "H-2 Cloud",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode554",
+   "mastery": 0
   },
   {
    "name": "Flexa",
@@ -3172,7 +3866,9 @@
    "boss": null,
    "link": "Flexa",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode553",
+   "mastery": 0
   },
   {
    "name": "Calabash",
@@ -3181,7 +3877,9 @@
    "boss": null,
    "link": "Calabash",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode538",
+   "mastery": 0
   },
   {
    "name": "Numina",
@@ -3190,7 +3888,9 @@
    "boss": null,
    "link": "Numina",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode539",
+   "mastery": 0
   },
   {
    "name": "Arc Silver",
@@ -3199,7 +3899,9 @@
    "boss": null,
    "link": "Arc Silver",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode540",
+   "mastery": 0
   },
   {
    "name": "Erato",
@@ -3208,7 +3910,9 @@
    "boss": null,
    "link": "Erato",
    "requirements": "Must have [[The War Within]] completed and [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode541",
+   "mastery": 0
   },
   {
    "name": "Lu-yan",
@@ -3217,7 +3921,9 @@
    "boss": null,
    "link": "Lu-yan",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode542",
+   "mastery": 0
   },
   {
    "name": "Sabmir Cloud",
@@ -3226,7 +3932,9 @@
    "boss": null,
    "link": "Sabmir Cloud",
    "requirements": "Must have [[Intrinsics]] Rank 7 or higher to access and [[Chimera Prologue]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode543",
+   "mastery": 0
   },
   {
    "name": "Pontis Tower",
@@ -3235,7 +3943,9 @@
    "boss": null,
    "link": "Pontis Tower",
    "requirements": null,
-   "drops": []
+   "drops": [],
+   "tag": "JadeShadows2HUB",
+   "mastery": 0
   },
   {
    "name": "Scoria's Angel",
@@ -3244,7 +3954,9 @@
    "boss": null,
    "link": "Scoria's Angel",
    "requirements": "Must have [[Jade Shadows]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode561",
+   "mastery": 0
   },
   {
    "name": "The Kuva Wytch",
@@ -3253,7 +3965,9 @@
    "boss": null,
    "link": "The Kuva Wytch",
    "requirements": "Must have [[Jade Shadows]] completed",
-   "drops": []
+   "drops": [],
+   "tag": "CrewBattleNode560",
+   "mastery": 0
   }
  ]
 }

@@ -53,3 +53,7 @@
   width: 100%;
   padding: 0 var(--gutter);
 }
+
+.divider {
+  grid-column: 1 / -1;
+}

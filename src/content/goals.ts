@@ -27,6 +27,7 @@ export const GOALS = {
       line: "The desperate hunt for Albrecht Entrati has led the Drifter to the city of Höllvania on December 31st, 1999.",
     },
   },
+  suggestions: "Suggestions",
   empty: {
     title: "Nothing left to suggest",
     line: "You've done every suggestion. Search above for anything else.",

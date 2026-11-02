@@ -21,6 +21,8 @@ const node = z.object({
   link: z.string(),
   requirements: z.string().nullable(),
   drops: z.array(z.string()),
+  tag: z.string().nullable(),
+  mastery: z.number(),
 });
 
 const resource = z.object({

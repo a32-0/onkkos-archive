@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-left: var(--border-1) solid var(--accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  background-color: var(--surface-card);
+  color: var(--ink);
+  text-decoration: none;
+  backdrop-filter: blur(calc(var(--blur-band) / 2));
+}
+
+.card:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.card:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
+.seal {
+  composes: heading from "../type.module.css";
+  --rank-seal-size: 40px;
+  --rank-seal-stroke: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--rank-seal-size);
+  height: var(--rank-seal-size);
+  border: var(--rank-seal-stroke) solid var(--accent);
+  border-radius: var(--radius-full);
+  color: var(--accent);
+}
+
+.title {
+  composes: name from "../type.module.css";
+  color: var(--accent);
+}
+
+.line {
+  composes: body-l from "../type.module.css";
+  color: var(--ink-muted);
+}

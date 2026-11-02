@@ -151,10 +151,10 @@ a reading of the earlier build against it was put to them.
   get names where it starts.
 - A place chosen as a target opens the map on that place, as Next does
   (BR-36).
-- Mastery Rank and syndicate rank are not targets in this version: neither is
-  an item, a quest or a place. The owner set them aside for a later version on
-  2026-10-04; [`deferred.md`](deferred.md) keeps what they were and how they
-  worked.
+- The next Mastery Rank is a goal of its own since 2026-11-02 (BR-76): it
+  opens its own steps, not an item's. Syndicate rank is still not a target:
+  the owner set it aside on 2026-10-04, and [`deferred.md`](deferred.md)
+  keeps what it was and how it worked.
 
 ### BR-38 · Loading and errors happen on the id form
 
@@ -1181,7 +1181,10 @@ on 2026-10-08.
     loaded." Not "Welcome back": the player has just given their id, and the
     app had nothing of theirs before (owner, 2026-11-01).
   - **Updated**, after the twelve-hour read worked: "Your profile is up to
-    date. Onkko read it from Warframe just now."
+    date. Onkko read it from Warframe just now." It shows on opening the app
+    as well: any screen within a minute of that read shows it, since the
+    screen that read DE may only have redirected (fixed 2026-11-02, after the
+    owner never saw it).
 - A failed read has no toast: BR-69's band in Profile says it. The demo never
   shows a toast, since it reads no account.
 
@@ -1280,3 +1283,126 @@ on 2026-10-08.
 - The owner drew the badge's text in slate-400, which reads 3.1:1 on its
   ground; slate-200 reads 5.4:1, the AA minimum for text this small being
   4.5:1.
+
+## Mastery Rank and Keep it: settled on 2026-11-02
+
+The owner chose two of the improvements proposed on 2026-11-02 and drew them
+with Claude: the way to the next Mastery Rank, and the notice to keep an item
+that other recipes take. The other proposals went to the Archive page.
+
+### BR-76 · The way to the next Mastery Rank is a goal
+
+- Frames [`1001:7231` Goal>Step by step — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7231),
+  [`1009:7703` — Many to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7703), [`1009:7862` — Nothing to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7862) and
+  [`1009:8025` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-8025).
+- Type: behaviour.
+- Rule: the goal reads the player's mastery from the profile and shows how far
+  they are to the next rank, then the steps to get there. Its page sits under
+  Plan's tab, at `/goals/rank`.
+- Mastery comes from three readable parts, added up with the wiki's
+  [Mastery Rank](https://wiki.warframe.com/w/Mastery_Rank) rules:
+  - each item in `XPInfo`: 100 points a rank for a weapon, 200 for a
+    Warframe, a companion, an Archwing or a Necramech, up to the item's own
+    max rank;
+  - each Star Chart node completed (`Missions`), worth the node's
+    `MasteryExp` on the wiki's `Module:Missions/data`, and the same again
+    when the Steel Path completed it (`Tier`);
+  - each rank of an Intrinsics tree (`PlayerSkills`), 1,500 points.
+- A rank needs 2,500 × rank² points up to 30, and each Legendary rank 147,500
+  more. Legendary 6 is the highest there is (read on 2026-11-02).
+- The sum never falls below what the player's rank already proves. The
+  catalog marks a few masterable items (amps, Venari) as not masterable, so
+  the sum may run short; it is lifted to the rank's own threshold.
+- The shortest way names the items the player already took part of the way,
+  most mastery left first, and only as many as close the gap. Below them come
+  the new weapons that would do it instead. With nothing left to rank, it
+  turns to a new weapon or a new Warframe.
+- The test is a step the game runs: the app never says the player passed.
+  "What Rank {n} unlocks" counts the catalog's items that need exactly that
+  rank and that the player never ranked.
+- `XPInfo` lists every item the player ever ranked, sold ones too, so the copy
+  says "You took them to ranks 12 and 18", never "in your arsenal".
+
+### BR-77 · The rank is drawn as the Star Chart draws a place, in a square
+
+- Component [`1007:390` Rank overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1007-390); frames
+  [`1004:7696` Profile — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1004-7696), [`1009:7351` — Many to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7351),
+  [`1009:7440` — Nothing to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7440), [`1009:7526` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7526) and
+  [`1009:7612` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7612).
+- Type: state.
+- Rule: the place card's ring (BR-65), made square because the wiki's art and
+  the player's glyph are square. The frame is 152 px, its edge 5 px, the art
+  120 px in the middle. The edge fills from the top centre, counter-clockwise
+  as the Star Chart's does, with the share of the way to the next rank in
+  `--state-rank`.
+- Under it, the share in whole percent, never rounded up to 100, and "Of the
+  way to Rank {n}".
+- Many to rank: three `Item chip`s, the most mastery left first, then a
+  More chip that counts the rest below max rank ("+4"), and "Rank these to
+  get there" under the chips (owner, 2026-11-02). Each item chip opens
+  the item's page (owner, 2026-11-02); More opens nothing.
+- Nothing to rank, and a full bar, are empty states (BR-80): "Everything you
+  own is at max rank", or "Ready for the Rank {n} test".
+- The highest rank: the edge closes in `--state-mastered`, as a mastered
+  place does, and reads "The highest rank there is". Under it, an empty state
+  (BR-80): "Every rank reached", "When the game adds a new rank, the way to
+  it shows here."
+- Profile wears the player's glyph in the square; the goal wears the wiki's
+  icon of the rank it chases.
+
+### BR-78 · The Mastery Rank card leads Plan's suggestions
+
+- Component [`1007:407` Rank card](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1007-407); frames [`1001:7542` Plan — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7542),
+  [`1009:7199` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7199) and [`1009:7275` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7275).
+- Type: ordering.
+- Rule: the card comes before every other suggestion, since it is the one
+  that always applies. It is the goal card's grammar with the rank's seal in
+  place of the icon and its title in the accent.
+- "Reach Mastery Rank {n}", with the items that take the player there
+  ("Ranking Lex and Boltor takes you there.") or, when those are not enough,
+  what a new weapon covers.
+- With the bar full: "Take the Rank {n} test".
+- At the highest rank there is no card, and the other suggestions move up.
+- A profile with no `XPInfo` has no card: the app cannot tell the way.
+
+### BR-79 · An item other recipes take says to keep it
+
+- Component [`1007:238` Built into](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1007-238); frames
+  [`1004:7902` Item>Overview — Keep it](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1004-7902), [`1009:7045` — One recipe mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7045)
+  and [`1009:7167` — Three recipes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7167).
+- Type: content.
+- Rule: under the hero, "Keep it to build", then one chip per recipe that
+  takes the item, with how many it takes ("Akbolto ×2"). The game never says
+  this, and selling the item loses it.
+- A recipe the player has already mastered stays, dimmed (`Item chip` Done).
+  When every recipe is mastered, the block is gone. Each chip opens the
+  recipe's page.
+- The profile cannot read copies, so the chip says what the recipe takes,
+  never "you need 1 more".
+- No item in the catalog feeds more than three recipes (Dual Skana, Bolto,
+  Vasto and Viper feed three), so the block has no More chip.
+- It is never an Alert: an Alert is for the app's own states.
+
+### BR-80 · An empty state sits outside the card surface
+
+- Component [`485:122` Empty state](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=485-122), changed by the owner on 2026-11-02.
+- Type: state.
+- Rule: an empty state is not a card. It has no fill and a dashed `--line`
+  border, with its icon, title and line centred, so an absence never reads as
+  one more item. It applies to every empty state in the app.
+
+### BR-81 · Space comes from the gap, never from a component's padding
+
+- Components [`656:188` Place overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=656-188)
+  and [`1007:390` Rank overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1007-390),
+  changed by the owner on 2026-11-02.
+- Type: layout.
+- Rule: a component without a surface has no vertical padding; the space
+  around it is its container's gap. A component with a surface (a card, a
+  row, an alert) keeps the padding inside it.
+- Two gaps separate things on a screen: `--space-6` (16 px) between
+  components, and `--space-7` (24 px) between large blocks, such as the
+  search and the suggestions on Plan, the sections of an item page, or
+  Profile's account and settings.
+- The rows of Step by step keep `--space-7` between them, since each row
+  carries a title and a passage of its own (owner, 2026-11-02).

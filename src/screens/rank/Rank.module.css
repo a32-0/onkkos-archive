@@ -1,0 +1,38 @@
+.page {
+  --rank-column: none;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-6);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--rank-column);
+  margin: 0 auto;
+  padding: var(--space-6) var(--gutter);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: center;
+  color: var(--ink);
+}
+
+.kicker {
+  composes: kicker from "../../ui/type.module.css";
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.name {
+  composes: title from "../../ui/type.module.css";
+  margin: 0;
+}

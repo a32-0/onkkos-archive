@@ -291,7 +291,7 @@ describe("the player the shell shows", () => {
     expect(player.fresh).toBe(!screen.cached);
   });
 
-  it("says which read the toast confirms, and none for a demo or a stored read (BR-70)", async () => {
+  it("says which read the toast confirms, and none for a demo or an older read (BR-70)", async () => {
     const kind = async (result: object, connected = false) => {
       vi.resetModules();
       vi.doMock("@/infra/profile/read", () => ({ readProfile: async () => result }));
@@ -301,12 +301,14 @@ describe("the player the shell shows", () => {
       const { playerOf, requireScreen } = await import("@/app/screen");
       return playerOf(await requireScreen()).toast?.kind ?? null;
     };
-    const read = { ok: true, profile: {}, fetchedAt: 0 };
+    const read = { ok: true, profile: {}, fetchedAt: Date.now() };
+    const old = { ...read, fetchedAt: Date.now() - 2 * 60_000 };
     expect(await kind({ ...read, cached: false })).toBe("updated");
-    expect(await kind({ ...read, cached: true })).toBeNull();
-    expect(await kind({ ...read, cached: true, failedAt: 1 })).toBeNull();
+    expect(await kind({ ...read, cached: true })).toBe("updated");
+    expect(await kind({ ...old, cached: true })).toBeNull();
+    expect(await kind({ ...old, cached: true, failedAt: Date.now() })).toBeNull();
     expect(await kind({ ...read, cached: false, fixture: true })).toBeNull();
-    expect(await kind({ ...read, cached: true }, true)).toBe("connected");
+    expect(await kind({ ...old, cached: true }, true)).toBe("connected");
   });
 
   it("carries a failed read's time, and the next try twelve hours after it (BR-69)", async () => {
@@ -957,7 +959,8 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     expect(html).not.toContain("Unlock the next planet");
     expect(html).not.toContain("Play the Hex Quest");
     expect(html).not.toContain("Build a Necramech");
-    expect(html).toContain("Nothing left to suggest");
+    expect(html).not.toContain("Nothing left to suggest");
+    expect(html).toContain("Reach Mastery Rank 28");
   });
 
   it("puts the closest name first, says its gap, and keeps it private", async () => {
@@ -1128,7 +1131,49 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).not.toMatch(/Rank \d+\/\d+|>Mastered</);
   });
 
+  it("says to keep an item other recipes take, and how many each takes (spec 09)", async () => {
+    const bolto = await page(ORDIS, { name: "Bolto", from: "navigation" });
+    expect(bolto).toMatch(/>Bolto<[\s\S]*>Keep it to build<[\s\S]*>View</);
+    expect(bolto).toContain(">Akbolto ×2<");
+    expect(bolto).toContain(">Hystrix ×1<");
+    const dante = await page(ORDIS, { name: "Dante", from: "navigation" });
+    expect(dante).not.toContain("Keep it to build");
+  });
+
   it("returns to the tab's screen when the item is not in the catalog", async () => {
     await expect(page(ORDIS, { name: "Not a thing", from: "resume" })).rejects.toThrow("/catch-up");
+  });
+});
+
+describe("the Mastery Rank (spec 04, spec 08, spec 10)", () => {
+  beforeEach(() => vi.stubGlobal("fetch", async () => Response.json({})));
+  afterEach(() => vi.unstubAllGlobals());
+
+  async function profile(account: string): Promise<string> {
+    jar.set("wf_account", { value: account, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: ProfilePage } = await import("@/app/profile/page");
+    return renderToStaticMarkup(await ProfilePage({ searchParams: Promise.resolve({}) }));
+  }
+
+  async function goal(account: string): Promise<string> {
+    jar.set("wf_account", { value: account, options: {} });
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: RankPage } = await import("@/app/goals/rank/page");
+    return renderToStaticMarkup(await RankPage());
+  }
+
+  it("draws the player's way to the next rank on Profile", async () => {
+    const html = await profile(DEMO_ACCOUNT_IDS.cy);
+    expect(html).toMatch(/>Cy<[\s\S]*>Mastery Rank 27<[\s\S]*role="progressbar"/);
+    expect(html).toContain("Of the way to Rank 28");
+    expect(html).toContain(">Rank these to get there<");
+  });
+
+  it("lays out the shortest way and the test on the goal", async () => {
+    const html = await goal(DEMO_ACCOUNT_IDS.cy);
+    expect(html).toMatch(/>Mastery Rank<[\s\S]*>Rank 28</);
+    expect(html).toMatch(/>The shortest way<[\s\S]*>The test</);
+    expect(html).toContain(">Take the Rank 28 test<");
   });
 });

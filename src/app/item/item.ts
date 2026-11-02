@@ -11,7 +11,7 @@ import {
 import { collectibleView } from "@/domain/catalog/collectibles";
 import type { CatalogData } from "@/domain/catalog/data";
 import { dossier } from "@/domain/catalog/dossier";
-import { BLUEPRINT_ART } from "@/domain/catalog/items";
+import { BLUEPRINT_ART, type CatalogItem } from "@/domain/catalog/items";
 import { allPlaces } from "@/domain/catalog/places";
 import { briefOf, type BriefBlock } from "@/domain/catalog/summary";
 import { bestPlaces, itemLine, type WhatsNewSources } from "@/domain/catalog/whats-new";
@@ -24,8 +24,10 @@ import { questArt } from "@/infra/catalog/update-art";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
 import type { Screen } from "@/infra/screen";
 import { withProse } from "@/infra/wiki/prose";
+import { gameIcons } from "@/infra/wiki/icons";
 import { fetchVarzia } from "@/infra/worldstate/client";
-import type { ItemFacts, ItemPlace } from "@/screens/item/state";
+import type { BuiltIntoFact, ItemFacts, ItemPlace } from "@/screens/item/state";
+import { groupIcon } from "@/screens/rank/view";
 import type { StepsFacts } from "@/screens/item/steps/state";
 
 const NO_PARTS: Part[] = [];
@@ -78,6 +80,26 @@ async function stepsOf(
     })),
     lock: planLock(plan, reach),
   };
+}
+
+async function builtIntoOf(
+  data: CatalogData,
+  item: CatalogItem,
+  ranks: ReturnType<typeof itemRanks>,
+  entries: ReturnType<typeof placeCatalog>["entries"],
+): Promise<BuiltIntoFact[]> {
+  const used = dossier(item, data.arsenal).usedIn;
+  if (used.length === 0) return [];
+  const icons = await gameIcons();
+  return used.map((recipe) => {
+    const source = data.arsenal.find((one) => one.name === recipe.name);
+    return {
+      name: recipe.name,
+      count: recipe.count,
+      icon: source ? groupIcon(icons, source) : null,
+      done: stateByName(recipe.name, ranks, entries).kind === "done",
+    };
+  });
 }
 
 function questOf(data: CatalogData, name: string) {
@@ -137,6 +159,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
   }
 
   const steps = await stepsOf(data, plan, reach, name);
+  const ranks = itemRanks(screen.profile, entries);
   return {
     name,
     group: entries.get(name)?.group ?? null,
@@ -149,9 +172,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
       (quest ? questArt(quest) : null),
     blueprint: BLUEPRINT_ART,
     prime: item?.isPrime ?? false,
-    state: item
-      ? stateByName(name, itemRanks(screen.profile, entries), entries)
-      : { kind: "unknown" },
+    state: item ? stateByName(name, ranks, entries) : { kind: "unknown" },
     blocks,
     lines,
     place: placeOf(place),
@@ -159,5 +180,6 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
       ? steps.lock !== null
       : itemGaps(reach, { masteryReq: item?.masteryReq ?? 0, place }).length > 0,
     steps,
+    builtInto: item ? await builtIntoOf(data, item, ranks, entries) : [],
   };
 }

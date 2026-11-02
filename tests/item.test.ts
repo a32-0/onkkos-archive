@@ -75,6 +75,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
     place: { system: "origin", systemName: "Origin", place: "Deimos", orb: "#a33" },
     beyond: false,
     steps: { sections: [], lock: null },
+    builtInto: [],
     ...over,
   };
 }
