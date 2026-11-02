@@ -29,19 +29,19 @@ how much a screen shows.
 | `/`                                       | The splash, outside the shell                                                                                                                | 01     | `661:4307` Start                                                                |
 | `/connect`                                | The id form; it reads the profile before keeping the id, then goes where BR-03 says; on the demo, the two demos and the card to the download | 02     | `661:4354` Onboarding, `675:5392` Loading, `662:6943` Error, `764:4753` Demo    |
 | `/connect/find-your-id`                   | Where the gid cookie is, per browser, with a screenshot of each; More help on `/connect` opens it                                            | 02     | `895:5723` Find your ID                                                         |
-| `/features`                               | Two ways in: pick up where you left off, or set a goal                                                                                       | 03     | `661:4591` Two Ways In                                                          |
-| `/catch-up`                               | Resume, the update picker, with no month kept; the Summary once `wf_since` holds one                                                         | 05, 06 | `662:4709` Resume, `662:4885` Summary and their states                          |
-| `/catch-up/{category}`                    | What a category brought since the month, under the top bar                                                                                   | 06     | `662:5040` Summary>Warframes                                                    |
-| `/catch-up/updates`                       | Every update, with Resume's search; opened from the Summary or from the map                                                                  | 06     | `662:6072` Summary>Updates                                                      |
-| `/system?system=&place=`                  | The map: a place, what it holds for this player, its mastery and the update card                                                             | 07     | `662:5177` Map, `662:6188` Map — Viewport                                       |
-| `/system/{category}?system=&place=&view=` | What a category holds at the place, by lens (To get, Mastered, New)                                                                          | 07     | `662:6837` Map>Warframes and its states                                         |
+| `/features`                               | Where to start: Catch up or Plan                                                                                                             | 03     | `661:4591` Where to start                                                       |
+| `/catch-up`                               | Catch up, the update picker, with no month kept; What's new once `wf_since` holds one                                                        | 05, 06 | `662:4709` Catch up, `662:4885` What's new and their states                     |
+| `/catch-up/{category}`                    | What a category brought since the month, under the top bar                                                                                   | 06     | `662:5040` What's new>Warframes                                                 |
+| `/catch-up/updates`                       | Every update, with Catch up's search; opened from What's new or from the map                                                                 | 06     | `662:6072` What's new>Updates                                                   |
+| `/system?system=&place=`                  | The Star Chart: a place, what it holds for this player, its mastery and the update card                                                      | 07     | `662:5177` Star Chart, `662:6188` Star Chart — Viewport                         |
+| `/system/{category}?system=&place=&view=` | What a category holds at the place, by lens (To get, Mastered, New)                                                                          | 07     | `662:6837` Star Chart>Warframes and its states                                  |
 | `/system/places`, `/system/systems`       | The place list and the system list                                                                                                           | 07     | `662:6528` Locations, `662:6556` Systems                                        |
-| `/goals`                                  | Goal: the search and the goals offered                                                                                                       | 08     | `662:4811` Goal and its states                                                  |
+| `/goals`                                  | Plan: the search and the goals offered                                                                                                       | 08     | `662:4811` Plan and its states                                                  |
 | `/search?q=&type=&state=&reach=&vaulted=` | The advanced search: a term and filters over the whole catalog                                                                               | 12     | `753:4593` Search, `753:5217` Filtered, `753:5317` No match, `753:5351` Desktop |
-| `/item?name=&from=&view=`                 | The one item page, Summary or Step by step (`view=steps`), for anything the catalog holds                                                    | 09, 10 | `662:5503` Item>Summary, `662:7143` Item>Step by step and their states          |
+| `/item?name=&from=&view=`                 | The one item page, Overview or Step by step (`view=steps`), for anything the catalog holds                                                   | 09, 10 | `662:5503` Item>Overview, `662:7143` Item>Step by step and their states         |
 | `/profile?from=`                          | Who is connected, the settings, Disconnect and its dialog                                                                                    | 04     | `662:4642` Profile, `838:4762` Profile — Disconnect                             |
 | `/api/profile/[accountId]`                | The proxy: the profile's display and the raw payload, as JSON                                                                                | 11     |                                                                                 |
-| `/api/search?q=`                          | Goal's eight suggestions                                                                                                                     | 08     |                                                                                 |
+| `/api/search?q=`                          | Plan's eight suggestions                                                                                                                     | 08     |                                                                                 |
 
 `/`, `/connect`, `/connect/find-your-id` and `/features` render outside the shell. Every other screen
 sits inside it: the header with the player chip on a tab's root, the top bar
@@ -63,7 +63,7 @@ is the browser's back and returns to the screen the player came from, where
 they were on it. When nothing in the app came before the page, Back goes to
 the screen above it: a category to its menu, Updates to where it was opened,
 the lists to the map, Profile and an item to the root of their tab, the
-advanced search to Goal (spec 04).
+advanced search to Plan (spec 04).
 
 ## Where a link goes
 
@@ -106,15 +106,15 @@ The app asks only what it cannot read.
 
 A tick is the player's own word, never read from the profile, which lists no
 resources. `since` is a cookie because the server needs it while it renders
-Resume, the Summary and the map's update card.
+Catch up, What's new and the map's update card.
 
 ## How much a screen shows
 
 Two things set it, and neither blocks the player.
 
-**When they stopped playing.** `wf_since` sets how much the Summary holds: the
+**When they stopped playing.** `wf_since` sets how much What's new holds: the
 last update brings a handful of items, six years back brings hundreds. With
-no month, Resume asks for one, and the map shows no New lens and no New tag.
+no month, Catch up asks for one, and the map shows no New lens and no New tag.
 A player who has not reached Venus is never asked (BR-03): they have no month
 to measure from.
 
@@ -157,8 +157,8 @@ quest.
 ## One item page
 
 `/item` renders every item and collectible, wherever it is reached from, so
-an item's answer is the same from the map, the Summary, Goal or the advanced
-search. The Summary is Step by step in short form (`briefOf()`), so the two
+an item's answer is the same from the map, What's new, Plan or the advanced
+search. The Overview is Step by step in short form (`briefOf()`), so the two
 never disagree. [`step-by-step.md`](step-by-step.md) and
 [`scenario-guidelines.md`](scenario-guidelines.md) have the detail.
 

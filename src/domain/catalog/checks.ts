@@ -11,10 +11,14 @@ import { BLUEPRINT_ART, type SlotKind } from "@/domain/catalog/items";
 import { oneIn } from "@/domain/catalog/odds";
 import { rewardRoutes } from "@/domain/catalog/rewards";
 import {
+  blueprintRoutes,
   bountyHub,
   chanceOf,
+  collectibleRoutes,
   junctionTo,
   resolveAcquisition,
+  routeArea,
+  routeRequirements,
   type Acquisition,
   type AcquisitionSystem,
   type AdversarySystem,
@@ -113,8 +117,11 @@ interface Says {
   partResearchedDetail: { lab: string };
 
   playTitle: { node: string };
+  cachesTitle: { node: string };
+  endlessDetail: { tiers: number[]; chance: number | null; runs: number | null };
   playBountiesTitle: { place: string };
   bountyTitle: { tier: string; low: string | null; high: string | null };
+  phaseTitle: { name: string; phase: number };
   bountyTierDetail: { low: string; high: string };
   defeatTitle: { source: string };
   openTitle: { thing: string };
@@ -127,7 +134,7 @@ interface Says {
   dropDetail: { place: string; node: string };
   nodeOn: { node: string; place: string };
   partsUnknown: None;
-  noRouteTitle: { item: string };
+  noRouteTitle: None;
 
   resourceTitle: { name: string; count: number };
   resourceDetail: { rarity: string | null; location: string | null };
@@ -140,7 +147,6 @@ interface Says {
   openVoidRelicTitle: None;
   blueprintRelicDetail: { count: number; relics: string[]; vaulted: boolean };
   relicsBrief: { count: number };
-  chanceUnknownDetail: None;
   relicSourceDetail: { relics: string[]; vaulted: boolean };
   creditsTitle: { credits: number };
   creditsDetail: None;
@@ -150,12 +156,14 @@ interface Says {
   invasionDetail: None;
   standingDetail: { vendor: string };
 
-  getTitle: { name: string };
+  anyMissionTitle: { place: string };
+  chanceUnknownDetail: None;
+  regionDetail: { rarity: string | null };
+  tradePlayerTitle: None;
+  blueprintDropsDetail: None;
   foundryTitle: None;
   foundryDetail: None;
   foundryBrief: None;
-  collectibleDetail: { place: string; mission: string | null };
-  foundOnDetail: { regions: string[] };
   relicVaulted: None;
   relicStillDrops: None;
 
@@ -285,6 +293,8 @@ interface Says {
   eventTitle: { event: string };
   eventDetail: { vendor: string | null; costs: Cost[] | null; progress: number | null };
   goalTitle: { focus: number; wearing: string };
+  weeklyTitle: { mission: string };
+  weeklyDetail: { boss: string | null; pulses: number | null; rank: string | null };
   goalDetail: None;
   circuitModeTitle: { mode: CircuitMode };
   circuitWeeksDetail: { mode: CircuitMode; weeksAway: number | null; tier: number | null };
@@ -350,7 +360,7 @@ export interface VarziaStock {
   offers: { uniqueName: string; regalAya: number | null; aya: number | null }[];
 }
 
-interface Reader {
+export interface Reader {
   now: number;
   masteryRank?: number;
   varzia?: VarziaStock | null;
@@ -358,6 +368,7 @@ interface Reader {
 }
 
 const ALTERNATIVES_SHOWN = 4;
+const PHASE = /^Level [\d\s-]+?\s+(.+?) - Phase (\d+)$/i;
 const MAIN_PART = "Blueprint";
 const JUNCTION = / Junction$/;
 const BUY_FIRST = new Set<Route["kind"]>(["market", "vendor", "research"]);
@@ -409,6 +420,7 @@ const VARZIA_WIKI = "Varzia";
 const CIRCUIT_WIKI = "The Circuit";
 const HONORIA_WIKI = "Honoria";
 const MARKET_WIKI = "Market";
+const TRADING_WIKI = "Trading";
 
 function slotWiki(kind: SlotKind): string {
   return kind === "Companion" ? "Companion" : "Slots";
@@ -729,6 +741,16 @@ function curatedFacts(
         detail: say("goalDetail"),
         brief: [],
       };
+    case "weekly":
+      return {
+        title: say("weeklyTitle", { mission: source.mission }),
+        detail: say("weeklyDetail", {
+          boss: source.boss ?? null,
+          pulses: source.pulses ?? null,
+          rank: source.rank ?? null,
+        }),
+        brief: parts(source.boss),
+      };
     case "circuit": {
       const status = circuitStatus(data.wiki.circuit, source.mode, item, reader.now);
       const away = status?.weeksAway ?? null;
@@ -751,10 +773,20 @@ function routeDetail(data: CatalogData, reader: Reader, route: Route, status = t
       return parts(curatedFacts(data, reader, route.source, route.item).detail);
     case "drop":
       return parts(oddsDetail(odds(route.rotation, null, route.chance)));
+    case "endless":
+      return parts(
+        say("endlessDetail", {
+          tiers: route.tiers,
+          chance: route.chance,
+          runs: oneIn(route.chance),
+        }),
+      );
     case "bounty":
       return parts(oddsDetail(odds(route.rotation, route.stage, route.chance)));
     case "enemy":
-      return parts(oddsDetail(odds(route.rotation, null, route.chance)));
+      return parts(
+        oddsDetail(odds(route.rotation, null, route.chance)) ?? say("chanceUnknownDetail"),
+      );
     case "relic":
       return parts(relicOddsDetail(relicFacts(route, status)));
     case "research":
@@ -783,6 +815,8 @@ function routeBrief(data: CatalogData, reader: Reader, route: Route): Part[] {
     case "drop":
     case "enemy":
       return parts(oddsBrief(odds(route.rotation, null, route.chance)));
+    case "endless":
+      return parts(oddsBrief(odds(null, null, route.chance)));
     case "bounty":
       return parts(oddsBrief(odds(route.rotation, route.stage, route.chance)));
     case "relic":
@@ -816,28 +850,38 @@ function routeRow(
   };
   switch (route.kind) {
     case "drop":
-      return row(id, say("playTitle", { node: route.node }), {
+      return row(id, say(route.caches ? "cachesTitle" : "playTitle", { node: route.node }), {
         ...shared,
         where: parts(say("nodeOn", { node: route.node, place: route.place }), route.mission),
         prose: mechanics(route.mission),
         wikiTitle: route.node,
       });
+    case "endless":
+      return row(id, say("circuitModeTitle", { mode: route.mode }), {
+        ...shared,
+        where: parts(say("nodeOn", { node: CIRCUIT_WIKI, place: route.place })),
+        prose: lead(CIRCUIT_WIKI),
+        wikiTitle: CIRCUIT_WIKI,
+      });
     case "bounty": {
       const range = levels(route.tier);
+      const phase = PHASE.exec(route.tier);
       return row(
         id,
-        say("bountyTitle", {
-          tier: route.tier,
-          low: range?.low ?? null,
-          high: range?.high ?? null,
-        }),
+        phase
+          ? say("phaseTitle", { name: phase[1] ?? "", phase: Number(phase[2]) })
+          : say("bountyTitle", {
+              tier: route.tier,
+              low: range?.low ?? null,
+              high: range?.high ?? null,
+            }),
         { ...shared, where: parts(route.place, BOUNTY), wikiTitle: route.place },
       );
     }
     case "enemy":
       return row(id, sourceTitle(data, route.source), {
         ...shared,
-        wikiTitle: route.source,
+        wikiTitle: baseOf(route.source),
         imageUrl: sourceArt(data, route.source),
       });
     case "relic":
@@ -911,7 +955,7 @@ function rarityRank(rarity: string | null): number {
 
 function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisition): StepRow {
   if (route.kind === "drop") {
-    return row("how", say("playTitle", { node: route.node }), {
+    return row("how", say(route.caches ? "cachesTitle" : "playTitle", { node: route.node }), {
       detail: parts(
         say("nodeDetail", { place: route.place, mission: route.mission, boss: route.boss }),
       ),
@@ -2099,7 +2143,7 @@ function itemPlan(data: CatalogData, reader: Reader, view: Dossier): StepPlan {
           ? only.kind === "vendor"
             ? { ...howRow(data, reader, only, found), detail: routeDetail(data, reader, only) }
             : howRow(data, reader, only, found)
-          : row("how", say("noRouteTitle", { item: item.name }), {
+          : row("how", say("noRouteTitle"), {
               prose: acquisition(item.name),
               wikiTitle: item.name,
             }),
@@ -2157,12 +2201,8 @@ function itemPlan(data: CatalogData, reader: Reader, view: Dossier): StepPlan {
   return { sections: sections.filter((entry) => entry.groups.some((g) => g.rows.length > 0)) };
 }
 
-function isPlanet(data: CatalogData, name: string): boolean {
-  return data.wiki.nodes.some((node) => node.planet === name);
-}
-
 const QUALIFIED = /\s*\([^)]*\)$/;
-const REWARDS = / Rewards$/;
+const REWARDS = / Rewards(?= \(|$)/;
 const RELIC = / Relic$/;
 const RANKED = ", ";
 
@@ -2177,7 +2217,7 @@ function sourceTitle(data: CatalogData, source: string): Phrase {
   }
   if (base.includes(RANKED)) return say("vendorTitle", { vendor: base.split(RANKED)[0] ?? base });
   const kind = data.dropSources[base]?.kind ?? "enemy";
-  if (kind === "activity") return say("playTitle", { node: base.replace(REWARDS, "") });
+  if (kind === "activity") return say("playTitle", { node: source.replace(REWARDS, "") });
   if (kind === "object") return say("openTitle", { thing: base });
   return say("defeatTitle", { source });
 }
@@ -2186,84 +2226,85 @@ function sourceArt(data: CatalogData, source: string): string | null {
   return data.dropSources[baseOf(source)]?.art ?? null;
 }
 
-function dropTitle(
+const REGIONS_SHOWN = 3;
+
+function collectibleRouteRows(
   data: CatalogData,
-  route: CollectibleView["routes"][number],
-  name: string,
-): Phrase {
-  if (route.place !== null) {
-    return route.node === null ? say("getTitle", { name }) : say("playTitle", { node: route.node });
-  }
-  if (route.node === null) {
-    return route.mission === null
-      ? say("getTitle", { name })
-      : say("defeatTitle", { source: route.mission });
-  }
-  if (isPlanet(data, route.node)) return say("playTitle", { node: route.node });
-  return sourceTitle(data, route.node);
+  reader: Reader,
+  routes: readonly Route[],
+  room: number,
+) {
+  const shown = routes.slice(0, room);
+  const best = bestFlags(shown.map(chanceOf));
+  return shown.map((route, index) => ({
+    ...routeRow(data, reader, `route:${index}`, route),
+    best: best[index] === true,
+  }));
 }
 
-function enemyArt(data: CatalogData, route: CollectibleView["routes"][number]): string | null {
-  if (route.place !== null || route.node === null || isPlanet(data, route.node)) return null;
-  return sourceArt(data, route.node);
+function regionRows(data: CatalogData, collectible: CollectibleView["collectible"]): StepRow[] {
+  const fact = data.wiki.resources.get(collectible.name);
+  return collectible.regions.slice(0, REGIONS_SHOWN).map((place, index) =>
+    row(`region:${place}`, say("anyMissionTitle", { place }), {
+      detail: parts(say("regionDetail", { rarity: fact?.rarity ?? null })),
+      brief: parts(place),
+      prose: index === 0 ? lead(fact?.link ?? collectible.name) : null,
+      wikiTitle: place,
+    }),
+  );
 }
 
-function dropRows(data: CatalogData, view: CollectibleView): StepRow[] {
-  const { collectible, routes } = view;
+function foundRows(
+  data: CatalogData,
+  reader: Reader,
+  collectible: CollectibleView["collectible"],
+  routes: readonly Route[],
+): StepRow[] {
+  const regions = regionRows(data, collectible);
+  const rows = [
+    ...regions,
+    ...collectibleRouteRows(data, reader, routes, ALTERNATIVES_SHOWN - regions.length),
+  ];
+  return rows.map((one, index) => ({ ...one, alternative: index > 0 }));
+}
+
+function relicRows(collectible: CollectibleView["collectible"]): StepRow[] {
   if (collectible.relic?.vaulted) {
     return [
-      row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
+      row("trade", say("tradePlayerTitle"), {
         detail: parts(say("relicVaulted")),
-        wikiTitle: collectible.name,
-        imageUrl: collectible.imageUrl,
+        prose: lead(TRADING_WIKI),
+        wikiTitle: TRADING_WIKI,
       }),
     ];
   }
-  const placed = routes.slice(0, ALTERNATIVES_SHOWN);
-  const flags = bestFlags(placed.map((route) => route.chance));
-  const rows = placed.map((route, index) => {
-    const value = odds(route.rotation, null, route.chance);
-    const title = dropTitle(data, route, collectible.name);
-    return row(`route:${index}`, title, {
-      best: flags[index] === true,
-      detail: parts(
-        route.place
-          ? say("collectibleDetail", { place: route.place, mission: route.mission })
-          : null,
-        oddsDetail(value) ?? (route.chance === null ? say("chanceUnknownDetail") : null),
-      ),
-      brief: parts(route.place, route.mission, oddsBrief(value)),
-      where: parts(
-        route.node && route.place && !route.node.includes(", ")
-          ? say("nodeOn", { node: route.node, place: route.place })
-          : (route.node ?? route.place),
-        route.mission,
-      ),
-      prose: mechanics(route.place ? route.mission : null),
-      wikiTitle: route.node ?? collectible.name,
-      imageUrl: index === 0 ? collectible.imageUrl : enemyArt(data, route),
-    });
-  });
-  if (placed.length === 0 && collectible.regions.length > 0) {
-    rows.push(
-      row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
-        detail: parts(say("foundOnDetail", { regions: collectible.regions })),
-        brief: parts(...collectible.regions),
-        wikiTitle: collectible.name,
-        imageUrl: collectible.imageUrl,
+  return [
+    row(`get:${collectible.name}`, say("noRouteTitle"), {
+      detail: parts(say("relicStillDrops")),
+      prose: acquisition(collectible.name),
+      wikiTitle: collectible.name,
+    }),
+  ];
+}
+
+function blueprintRows(data: CatalogData, reader: Reader, name: string): StepRow[] {
+  const route = blueprintRoutes(data, name)[0];
+  if (!route) return [];
+  if (route.kind === "market") {
+    return [
+      row("blueprint", say("marketTitle2", { blueprint: true }), {
+        detail: routeDetail(data, reader, route),
+        brief: routeBrief(data, reader, route),
+        wikiTitle: MARKET_WIKI,
       }),
-    );
+    ];
   }
-  if (placed.length === 0 && collectible.relic) {
-    rows.push(
-      row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
-        detail: parts(say("relicStillDrops")),
-        wikiTitle: collectible.name,
-        imageUrl: collectible.imageUrl,
-      }),
-    );
-  }
-  return rows;
+  const base = routeRow(data, reader, "blueprint", route);
+  return [
+    route.kind === "research"
+      ? base
+      : { ...base, detail: parts(say("blueprintDropsDetail"), ...base.detail) },
+  ];
 }
 
 function incarnonRows(data: CatalogData, reader: Reader, name: string): StepRow[] {
@@ -2405,11 +2446,11 @@ function sourceRow(data: CatalogData, collectible: CollectibleView["collectible"
     .filter((one) => one.at >= 0)
     .sort((a, b) => a.at - b.at)
     .map((one) => one.place);
-  return row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
+  return row(`get:${collectible.name}`, say("noRouteTitle"), {
     detail: parts(resourceDetail(fact?.rarity ?? null, source)),
     where: places.slice(0, 2),
+    prose: acquisition(collectible.name),
     wikiTitle: fact?.link ?? collectible.name,
-    imageUrl: collectible.imageUrl,
   });
 }
 
@@ -2499,52 +2540,70 @@ function titleKey(entry: StepRow): string {
 }
 
 function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleView): StepPlan {
-  const { collectible, routes } = view;
-  const place =
-    routes.find((route) => route.place !== null)?.place ?? collectible.regions[0] ?? null;
+  const { collectible } = view;
+  const sold = new Set(collectible.offers.map((offer) => offer.vendor.toLowerCase()));
+  const hunted = new Set(
+    curatedFor(data.curated, collectible.name, null).flatMap((source) =>
+      source.type === "weekly" && source.boss ? [source.boss.toLowerCase()] : [],
+    ),
+  );
+  const routes = collectibleRoutes(data, collectible.name, collectible.drops).filter(
+    (route) =>
+      (route.kind !== "vendor" || !sold.has(route.vendor.toLowerCase())) &&
+      (route.kind !== "enemy" || !hunted.has(baseOf(route.source).toLowerCase())),
+  );
+  const first = collectible.regions.length > 0 ? undefined : routes[0];
+  const place = collectible.regions[0] ?? (first ? routeArea(first) : null);
 
   const honoria = honoriaRows(data, collectible);
   const curated = curatedCollectibleRows(data, reader, collectible.name);
   const relic = blueprintRelicRow(data, collectible);
+  const found = foundRows(data, reader, collectible, routes);
   const how = [
     ...(relic ? [relic] : []),
-    ...dropRows(data, view),
+    ...found,
+    ...(found.length === 0 && collectible.relic ? relicRows(collectible) : []),
     ...(collectible.incarnon ? incarnonRows(data, reader, collectible.name) : []),
     ...baroRows(data, collectible.name),
     ...curated,
     ...honoria.rows,
   ];
   if (how.length === 0 && collectible.source !== null) how.push(sourceRow(data, collectible));
-  const sold = new Set(how.map(titleKey));
+  const listed = new Set(how.map(titleKey));
   const vendors = vendorRows(collectible, Math.max(ALTERNATIVES_SHOWN - how.length, 0)).filter(
-    (entry) => !sold.has(titleKey(entry)),
+    (entry) => !listed.has(titleKey(entry)),
   );
   how.push(...vendors);
-  if ((collectible.recipe?.ingredients.length ?? 0) > 0 && !collectible.incarnon) {
+  const blueprint = blueprintRows(data, reader, collectible.name);
+  const buildable =
+    blueprint.length > 0 || collectible.offers.some((offer) => offer.blueprint) || how.length === 0;
+  if ((collectible.recipe?.ingredients.length ?? 0) > 0 && !collectible.incarnon && buildable) {
     how.push(
+      ...blueprint,
       row(`build:${collectible.name}`, say("foundryTitle"), {
         detail: parts(say("foundryDetail")),
         brief: parts(say("foundryBrief")),
+        prose: blueprint.length === 0 ? acquisition(collectible.name) : null,
         wikiTitle: collectible.name,
-        imageUrl: how.length === 0 ? collectible.imageUrl : null,
       }),
     );
   }
   if (how.length === 0) {
     how.push(
-      row(`get:${collectible.name}`, say("getTitle", { name: collectible.name }), {
+      row(`get:${collectible.name}`, say("noRouteTitle"), {
         prose: acquisition(collectible.name),
         wikiTitle: collectible.name,
-        imageUrl: collectible.imageUrl,
       }),
     );
   }
 
   const incarnon = collectible.incarnon ? data.wiki.incarnons.get(collectible.name) : undefined;
   const curatedQuests = [
-    ...curatedFor(data.curated, collectible.name, null).flatMap((source) =>
-      "quest" in source && source.quest && source.type !== "quest" ? [source.quest] : [],
-    ),
+    ...curatedFor(data.curated, collectible.name, null)
+      .slice(0, 1)
+      .flatMap((source) =>
+        "quest" in source && source.quest && source.type !== "quest" ? [source.quest] : [],
+      ),
     ...(vendors.length > 0 ? collectible.offers.slice(0, 1) : []).flatMap((offer) =>
       vendorGates(data.curated, offer.vendor),
     ),
@@ -2552,6 +2611,7 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
   const requires = incarnon?.requires ?? [];
   const unlocks = requires.filter((name) => sameName(name, STEEL_PATH));
   const prerequisites = [
+    ...requirementRows(data, routeRequirements(data, first), collectible.name),
     ...questRowsFor(data, [
       ...requires.filter((name) => !unlocks.includes(name)),
       ...honoria.quests,
@@ -2573,7 +2633,7 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
     section("prerequisites", say("sectionPrerequisites"), prerequisites),
     section("how", say("sectionHowToGet"), how),
   ];
-  const recipe = recipeSection(data, collectible);
+  const recipe = collectible.incarnon || buildable ? recipeSection(data, collectible) : null;
   if (recipe) sections.push(recipe);
   return { sections: sections.filter((entry) => entry.groups.some((g) => g.rows.length > 0)) };
 }

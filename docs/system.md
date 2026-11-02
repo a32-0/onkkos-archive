@@ -12,10 +12,10 @@ no "you" in it, the game owns what you are right now, and a mastery tracker
 owns you against what exists. The fourth has no owner, and it is two
 questions:
 
-| Job          | The question          | The screen                         |
-| ------------ | --------------------- | ---------------------------------- |
-| Catch me up  | You against **when**  | `/catch-up`, the Summary (spec 06) |
-| Reach a goal | You against **order** | `/goals`, then Step by step        |
+| Job          | The question          | The screen                        |
+| ------------ | --------------------- | --------------------------------- |
+| Catch up     | You against **when**  | `/catch-up`, What's new (spec 06) |
+| Reach a goal | You against **order** | `/goals`, then Step by step       |
 
 They are axes, not audiences. The mapping to "new player" and "returning
 veteran" breaks in three places:
@@ -23,7 +23,7 @@ veteran" breaks in three places:
 - `grafo.yaml` carries audiences per goal (`new`, `mid`, `veteran`, `both`),
   and a goal declares who it is for: `unlock_next_planet` is `new`,
   `build_necramech` is `veteran`.
-- **A new player has no month.** Catch me up is not merely thin for them, it
+- **A new player has no month.** Catch up is not merely thin for them, it
   is unreachable: there is no month to measure from, which is why a player who
   has not reached Venus is never asked (BR-03).
 - **A new player's profile barely reads.** Few `XPInfo` entries, few regions,

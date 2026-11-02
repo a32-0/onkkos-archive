@@ -115,6 +115,9 @@ function commaList(parts: readonly (string | null | undefined)[]): string | null
   return kept.length > 0 ? kept.join(", ") : null;
 }
 
+const EVERY = 100;
+const VOID = "Void";
+
 function runsLine(runs: number | null): string | null {
   return runs === null
     ? null
@@ -126,12 +129,14 @@ export const BRIEF = {
   relicsBrief: ({ count }: { count: number }) =>
     `${number(count)} ${plural(count, "Relic", "Relics")}`,
   oddsBrief: ({ runs, rotation, stage, chance }: Odds) =>
-    runs !== null
-      ? joined([
-          `~${runs} ${plural(runs, "Run", "Runs")}`,
-          rotation ? `Rotation ${rotation}` : stage,
-        ])
-      : joined([chance !== null && chance > 0 ? `${chance}%` : null, rotation, stage]),
+    chance !== null && chance >= EVERY
+      ? joined(["Every run", rotation ? `Rotation ${rotation}` : stage])
+      : runs !== null
+        ? joined([
+            `~${runs} ${plural(runs, "Run", "Runs")}`,
+            rotation ? `Rotation ${rotation}` : stage,
+          ])
+        : joined([chance !== null && chance > 0 ? `${chance}%` : null, rotation, stage]),
   relicBrief: ({ rarity, intact, radiant }: RelicOdds) =>
     joined([
       rarity,
@@ -199,14 +204,17 @@ export const TITLES = {
   researchTitle: ({ lab }: { lab: string }) => `Research it in the ${lab}`,
 
   playTitle: ({ node }: { node: string }) => `Play ${node}`,
+  cachesTitle: ({ node }: { node: string }) => `Open the caches on ${node}`,
   playBountiesTitle: ({ place }: { place: string }) => `Play ${place} bounties`,
+  phaseTitle: ({ name, phase }: { name: string; phase: number }) =>
+    `Play the ${name.toLowerCase().replace(/(^|[\s-])\w/g, (letter) => letter.toUpperCase())} bounty, phase ${phase}`,
   bountyTitle: ({ tier, low, high }: { tier: string; low: string | null; high: string | null }) =>
     low !== null && high !== null ? `Play a bounty, level ${low}–${high}` : `Play ${tier}`,
   defeatTitle: ({ source }: { source: string }) => `Defeat ${source}`,
   openTitle: ({ thing }: { thing: string }) => `Open ${thing}`,
   openRelicTitle: ({ relic, vaulted }: { relic: string; vaulted: boolean }) =>
     vaulted ? `Open ${relic} (Vaulted)` : `Open ${relic}`,
-  noRouteTitle: ({ item }: { item: string }) => `How ${item} is obtained`,
+  noRouteTitle: () => "How it is obtained",
 
   resourceTitle: ({ name, count }: { name: string; count: number }) => `${name} ×${number(count)}`,
   weaponTitle: ({ name, count }: { name: string; count: number }) => `${name} ×${number(count)}`,
@@ -225,7 +233,9 @@ export const TITLES = {
       : `${number(cost)} ${currency}`,
   ducatsTitle: ({ ducats }: { ducats: number }) => `${number(ducats)} Orokin Ducats`,
 
-  getTitle: ({ name }: { name: string }) => name,
+  anyMissionTitle: ({ place }: { place: string }) =>
+    `Play any mission on ${place === VOID ? "the Void" : place}`,
+  tradePlayerTitle: () => "Trade for it with another player",
   foundryTitle: () => "Build it in your foundry",
   openVoidRelicTitle: () => "Open a Void Relic",
 
@@ -287,6 +297,7 @@ export const TITLES = {
   eventTitle: ({ event }: { event: string }) => `Play ${event}`,
   goalTitle: ({ focus, wearing }: { focus: number; wearing: string }) =>
     `Earn ${number(focus)} Focus wearing the ${wearing}`,
+  weeklyTitle: ({ mission }: { mission: string }) => `Play ${mission}`,
   circuitModeTitle: ({ mode }: { mode: string }) =>
     mode === "steelPath" ? "Play the Steel Path Circuit" : "Play the Circuit",
   honoriaEarnTitle: () => "Earn it",
@@ -357,8 +368,32 @@ export const DETAILS = {
     const what = boss ? `${mission ?? "Assassination"} against ${boss}` : mission;
     return what ? `${place}: ${what}.` : `${place}.`;
   },
+  endlessDetail: ({
+    tiers,
+    chance,
+    runs,
+  }: {
+    tiers: readonly number[];
+    chance: number | null;
+    runs: number | null;
+  }) => {
+    const when =
+      tiers.length === 0
+        ? "A reward for every round past the last tier of an Endless run"
+        : `A reward for reaching ${plural(tiers.length, "tier", "tiers")} ${listOf(tiers.map(String))} of an Endless run`;
+    const odds =
+      chance !== null && chance >= EVERY
+        ? "every time"
+        : chance !== null && chance > 0
+          ? commaList([`${chance}% each time`, runsLine(runs)])
+          : null;
+    return odds === null ? `${when}.` : `${when}, ${odds}.`;
+  },
   odds: ({ runs, rotation, stage, chance }: Odds) => {
     const where = commaList([rotation ? `rotation ${rotation}` : null, stage?.toLowerCase()]);
+    if (chance !== null && chance >= EVERY) {
+      return where === null ? "It drops every run." : `It drops at ${where}, every run.`;
+    }
     const odds =
       chance !== null && chance > 0 ? commaList([`${chance}% a run`, runsLine(runs)]) : null;
     if (where !== null) return `It drops at ${commaList([where, odds])}.`;
@@ -416,7 +451,6 @@ export const DETAILS = {
   creditsDetail: () => "Every mission pays them; The Index, on Neptune, pays the most.",
   weaponDetail: () => "Built in your foundry, then used up by this recipe.",
   partConsumedDetail: () => "Built in your foundry, then used up by this recipe.",
-  chanceUnknownDetail: () => "The drop tables list it here without a chance.",
   sonDetail: () => "Son trades in the Necralisk, on Deimos.",
   blueprintRelicDetail: ({
     count,
@@ -435,11 +469,13 @@ export const DETAILS = {
   relicSourceDetail: ({ relics, vaulted }: { relics: string[]; vaulted: boolean }) =>
     `Opens from the ${listOf(relics)} ${plural(relics.length, "Relic", "Relics")}${vaulted ? ", all vaulted" : ""}.`,
 
-  collectibleDetail: ({ place, mission }: { place: string; mission: string | null }) =>
-    mission ? `${place}, ${mission}.` : `${place}.`,
-  foundOnDetail: ({ regions }: { regions: readonly string[] }) =>
-    `Any mission on ${listOf(regions)} drops it.`,
-  relicVaulted: () => "Vaulted: it no longer drops.",
+  regionDetail: ({ rarity }: { rarity: string | null }) =>
+    rarity === null
+      ? "Enemies and containers there drop it in any mission."
+      : `${capital(article(rarity))} ${rarity.toLowerCase()} resource there: enemies and containers drop it in any mission.`,
+  blueprintDropsDetail: () => "Its blueprint drops here.",
+  chanceUnknownDetail: () => "The drop tables list it here without a chance.",
+  relicVaulted: () => "Vaulted: it no longer drops, but players who kept one can trade it to you.",
   relicStillDrops: () => "Not vaulted, but no current drop table lists it.",
 
   confrontationDetail: ({ place }: { place: string }) =>
@@ -658,6 +694,21 @@ export const DETAILS = {
     return `${vendor} sells it for ${costsOf(costs)}${once}.`;
   },
   goalDetail: () => "Focus converted from Eidolon Shards does not count.",
+  weeklyDetail: ({
+    boss,
+    pulses,
+    rank,
+  }: {
+    boss: string | null;
+    pulses: number | null;
+    rank: string | null;
+  }) => {
+    const what = boss
+      ? `A weekly three-stage mission like a Sortie, its last stage against ${boss}.`
+      : `It costs ${pulses ?? 1} of the five Search Pulses you get each week.`;
+    const opens = rank ? ` It opens at ${rank} with the Cavia.` : "";
+    return `${what}${opens} It resets every Monday at 00:00 UTC.`;
+  },
   circuitWeeksDetail: ({
     mode,
     weeksAway,

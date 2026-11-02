@@ -4,14 +4,14 @@
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
-  gap: var(--space-7);
-  padding: var(--space-7) 0;
+  gap: var(--space-6);
+  padding: var(--space-6) 0;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: var(--space-7);
+  gap: var(--space-6);
   box-sizing: border-box;
   width: 100%;
   max-width: var(--goals-column);
@@ -26,7 +26,7 @@
 }
 
 .title {
-  composes: numeral from "../../ui/type.module.css";
+  composes: screen from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink);
 }
@@ -47,8 +47,13 @@
   display: grid;
   grid-template-columns: var(--goals-cards);
   justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
   box-sizing: border-box;
   width: 100%;
   padding: 0 var(--gutter);
+}
+
+.divider {
+  grid-column: 1 / -1;
 }

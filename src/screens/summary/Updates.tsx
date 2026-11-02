@@ -69,6 +69,7 @@ export function Updates({
                 meta={update.meta}
                 art={update.art}
                 {...(update.newest && { newest: RESUME.newest })}
+                {...(update.selected && { selected: RESUME.selected })}
               />
             ))}
             <FormWait />

@@ -8,7 +8,7 @@ const SHOW = [
 ] as const;
 
 const VIEW = [
-  { value: "summary", label: "Summary" },
+  { value: "summary", label: "Overview" },
   { value: "steps", label: "Step by step" },
 ] as const;
 

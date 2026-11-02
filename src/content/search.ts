@@ -1,7 +1,7 @@
 export const ADVANCED = {
   title: "Advanced search",
   open: "Advanced search",
-  label: "Search a target",
+  label: "Search for anything",
   placeholder: "A warframe, a mod, a relic, a place...",
   filters: "Filters",
   clear: "Clear",
@@ -15,6 +15,7 @@ export const ADVANCED = {
     vehicles: "Vehicles",
     mods: "Mods",
     arcanes: "Arcanes",
+    incarnons: "Incarnons",
     relics: "Relics",
     resources: "Resources",
     other: "Other",

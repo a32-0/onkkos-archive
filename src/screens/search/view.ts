@@ -12,20 +12,12 @@ const STANDINGS: readonly Standing[] = ["absent", "ranked", "done"];
 
 export const TYPE_GROUPS: Readonly<Record<TypeGroup, readonly (keyof typeof CATALOGUES)[]>> = {
   warframes: ["warframes"],
-  weapons: [
-    "primary",
-    "secondary",
-    "melee",
-    "archgun",
-    "archmelee",
-    "amp",
-    "incarnon",
-    "incarnons",
-  ],
+  weapons: ["primary", "secondary", "melee", "archgun", "archmelee", "amp"],
   companions: ["companion"],
   vehicles: ["archwing", "necramech", "railjack"],
   mods: ["mods"],
   arcanes: ["arcanes"],
+  incarnons: ["incarnon", "incarnons"],
   relics: ["relics"],
   resources: ["resources"],
   other: ["ephemera", "honoria", "other"],

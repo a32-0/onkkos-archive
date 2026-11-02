@@ -79,6 +79,14 @@ const source = z.discriminatedUnion("type", [
   }),
   z.object({ type: z.literal("goal"), focus: z.number(), wearing: z.string() }),
   z.object({
+    type: z.literal("weekly"),
+    mission: z.string(),
+    boss: z.string().optional(),
+    pulses: z.number().optional(),
+    rank: z.string().optional(),
+    quest: z.string().optional(),
+  }),
+  z.object({
     type: z.literal("circuit"),
     mode: z.enum(["normal", "steelPath"]),
     tier: z.number().optional(),

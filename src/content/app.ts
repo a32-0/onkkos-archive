@@ -11,13 +11,13 @@ export const APP = {
 export const PAGE_TITLES = {
   connect: "Connect",
   findId: "Find your ID",
-  features: "Features",
-  resume: "Resume",
+  features: "Where to start",
+  resume: "Catch up",
   updates: "Updates",
-  map: "Map",
+  map: "Star Chart",
   locations: "Locations",
   systems: "Systems",
-  goal: "Goal",
+  goal: "Plan",
   search: "Advanced search",
   profile: "Profile",
 } as const;

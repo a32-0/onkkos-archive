@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PAGE_TITLES } from "@/content/app";
 import { chromeOf } from "@/app/chrome";
+import { rankOf } from "@/app/rank";
 import { requireScreen, startHereOf } from "@/app/screen";
 import { lackingNecramechs } from "@/domain/catalog/necramechs";
 import { bestPlaces } from "@/domain/catalog/whats-new";
@@ -13,10 +14,11 @@ import { itemRanks } from "@/domain/place/state";
 import { catalogData } from "@/infra/catalog/data";
 import { loadSystems, placeCatalog, placeIndex } from "@/infra/place/load";
 import type { Screen } from "@/infra/screen";
-import { itemRoute, placeRoute } from "@/routes";
+import { itemRoute, placeRoute, ROUTES } from "@/routes";
 import { Goals } from "@/screens/goals/Goals";
 import type { GoalInput } from "@/screens/goals/state";
 import { goalCards } from "@/screens/goals/view";
+import { rankCard } from "@/screens/rank/view";
 
 const NECRAMECH = "build_necramech";
 const FROM = "goal";
@@ -91,6 +93,7 @@ export default async function GoalsPage() {
     <Goals
       chrome={await chromeOf(screen)}
       cards={goalCards(goalsOf(screen))}
+      rank={rankCard(rankOf(screen), ROUTES.rank)}
       skip={startHereOf(screen)}
     />
   );

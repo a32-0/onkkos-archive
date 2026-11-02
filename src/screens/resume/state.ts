@@ -7,6 +7,7 @@ export interface ResumeUpdate {
   meta: string;
   art: string | null;
   newest: boolean;
+  selected: boolean;
 }
 
 export type ResumeAction = (form: FormData) => Promise<void>;

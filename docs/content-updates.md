@@ -40,7 +40,7 @@ None of the sources announces a patch:
   `TBA`); they belong to no update.
 - **DE's patch notes** (`pnpm data:patch-notes`) list every mainline and update
   with its name and date, hotfixes left out. The list of updates is
-  `gameUpdates()`, the same one Resume shows.
+  `gameUpdates()`, the same one Catch up shows.
 
 So the app learns about an update from the patch notes, and about what it
 brought from the catalog, after WFCD publishes a new version of it, usually

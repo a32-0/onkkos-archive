@@ -14,6 +14,7 @@ import {
   type CatalogResource,
   type RawItem,
 } from "@/domain/catalog/items";
+import { masteryWeights, type MasteryWeight } from "@/domain/catalog/mastery";
 import { RELIC_SOURCES, type RawRelic } from "@/domain/catalog/relics";
 import type { Introduced } from "@/domain/catalog/updates";
 
@@ -25,6 +26,7 @@ let snapshot: Map<string, string> | undefined;
 let cached: CatalogItem[] | undefined;
 let cachedResources: CatalogResource[] | undefined;
 let cachedGlyphs: Map<string, string> | undefined;
+let cachedWeights: Map<string, MasteryWeight> | undefined;
 
 function readSnapshot(): Map<string, string> {
   if (!snapshot) {
@@ -55,6 +57,11 @@ export function readItems<T>(category?: readonly string[]): T[] {
 export function arsenalCatalog(): CatalogItem[] {
   cached ??= buildArsenalCatalog(readItems<RawItem>(ARSENAL_SOURCES));
   return cached;
+}
+
+export function masteryCatalog(): ReadonlyMap<string, MasteryWeight> {
+  cachedWeights ??= masteryWeights(readItems<RawItem>());
+  return cachedWeights;
 }
 
 export function resourceCatalog(): CatalogResource[] {

@@ -1,8 +1,9 @@
 export const RESUME = {
-  title: "RESUME",
-  lead: "Tell Onkko which update you last played. He'll show you the items released since then.",
+  title: "Catch up",
+  lead: "Pick the last update you played. Onkko shows what came out since then.",
   search: "Search an update or a date...",
   newest: "Newest",
+  selected: "Selected",
   meta: (version: string, month: string) => `Update ${version} · ${month}`,
   more: "Show more",
   noMatch: "No update by that name or date.",
@@ -11,13 +12,13 @@ export const RESUME = {
 } as const;
 
 export const SUMMARY = {
-  title: "SUMMARY",
-  lead: "This is what shipped since you left off. Pick one and go for it.",
+  title: "What's new",
+  lead: "What came out since your last update. Open a category to see how to get each one.",
   lastPlayed: "You last played",
   upToDate: "You're up to date",
   updates: "Updates",
-  updatesLead: "Pick the update you last played. The Summary starts again from it.",
-  categoryLead: "New since you left off. Pick one to see how to get it.",
+  updatesLead: "Pick the last update you played. What's new counts from there.",
+  categoryLead: "New since your last update. Pick one to see how to get it.",
   arsenal: "Arsenal",
   collection: "Collection",
   count: (count: number) => `${count} New`,

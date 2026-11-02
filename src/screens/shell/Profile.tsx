@@ -1,23 +1,29 @@
 "use client";
 
-import { useId, useRef, useState, useTransition } from "react";
+import { useEffect, useId, useRef, useState, useTransition } from "react";
 
 import { SHELL } from "@/content/nav";
+import { RANK } from "@/content/rank";
 import type { UpdateState } from "@/domain/types/update-state";
+import type { RankOverviewView } from "@/screens/rank/state";
 import { releaseNotes } from "@/routes";
 import { Alert } from "@/ui/Alert/Alert";
 import { Button } from "@/ui/Button/Button";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
 import { List, ListEntry } from "@/ui/List/List";
+import { RankOverview } from "@/ui/RankOverview/RankOverview";
 import { Segmented } from "@/ui/Segmented/Segmented";
 
+import { Link } from "./Link";
 import styles from "./Profile.module.css";
 import { readCycle, staleLine, useLocalTime } from "./read-cycle";
 import { Shell } from "./Shell";
 import type { ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
 import { FormWait } from "./Wait";
+
+const FOLLOW_MS = 3_000;
 
 function updateLine(update: UpdateState): string {
   if (update.state === "current") return SHELL.upToDate;
@@ -34,6 +40,7 @@ export function Profile({
   check,
   restart,
   store = false,
+  rank = null,
 }: {
   chrome: ShellChrome;
   tab: ShellTab | null;
@@ -42,6 +49,7 @@ export function Profile({
   check?: () => Promise<UpdateState>;
   restart?: () => Promise<void>;
   store?: boolean;
+  rank?: RankOverviewView | null;
 }) {
   const { player, voice, disconnect, setOnkko, resetTour } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
@@ -51,6 +59,18 @@ export function Profile({
   const [checking, startCheck] = useTransition();
   const confirm = useRef<HTMLDialogElement>(null);
   const ids = useId();
+  useEffect(() => {
+    if (update?.state !== "downloading" || !check) return;
+    let live = true;
+    const timer = setTimeout(
+      () => void check().then((answer) => live && setUpdate(answer)),
+      FOLLOW_MS,
+    );
+    return () => {
+      live = false;
+      clearTimeout(timer);
+    };
+  }, [update, check]);
   const ask = () => {
     if (!check) return;
     startCheck(async () => {
@@ -68,18 +88,33 @@ export function Profile({
   return (
     <Shell chrome={chrome} tab={tab} tabs bar={{ title: SHELL.profile, back }}>
       <div className={styles.page}>
-        <div className={styles.player}>
-          {player.avatar ? (
-            <img className={styles.glyph} src={player.avatar} alt="" />
-          ) : (
-            <span className={styles.avatar} aria-hidden />
-          )}
-          <p className={styles.name}>{player.name}</p>
-          <div className={styles.rank}>
-            <p className={styles.figure}>{SHELL.masteryRank(player.masteryRank)}</p>
-            <p className={styles.caption}>{SHELL.rankTitle(player.masteryRank)}</p>
+        {rank ? (
+          <div className={styles.ranked}>
+            <div className={styles.heading}>
+              <p className={styles.place}>{player.name}</p>
+              <p className={styles.kickers}>
+                {!RANK.legendary(player.masteryRank) && (
+                  <span className={styles.kicker}>{SHELL.masteryRank(player.masteryRank)}</span>
+                )}
+                <span className={styles.title}>{SHELL.rankTitle(player.masteryRank)}</span>
+              </p>
+            </div>
+            <RankOverview {...rank} link={Link} />
           </div>
-        </div>
+        ) : (
+          <div className={styles.player}>
+            {player.avatar ? (
+              <img className={styles.glyph} src={player.avatar} alt="" />
+            ) : (
+              <span className={styles.avatar} aria-hidden />
+            )}
+            <p className={styles.name}>{player.name}</p>
+            <div className={styles.rank}>
+              <p className={styles.figure}>{SHELL.masteryRank(player.masteryRank)}</p>
+              <p className={styles.caption}>{SHELL.rankTitle(player.masteryRank)}</p>
+            </div>
+          </div>
+        )}
         {player.failedAt !== null && local !== null && (
           <Alert tone="warning" message={staleLine(player, local)} />
         )}

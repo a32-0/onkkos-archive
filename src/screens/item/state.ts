@@ -3,6 +3,7 @@ import type { BriefBlock } from "@/domain/catalog/summary";
 import type { Group } from "@/domain/place/catalog";
 import type { ItemState } from "@/domain/place/state";
 import type { ItemView } from "@/routes";
+import type { BuiltIntoChip } from "@/ui/BuiltInto/BuiltInto";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import type { ShellTab } from "../shell/tabs";
@@ -13,6 +14,13 @@ export interface ItemPlace {
   systemName: string;
   place: string;
   orb: string | null;
+}
+
+export interface BuiltIntoFact {
+  name: string;
+  count: number;
+  icon: string | null;
+  done: boolean;
 }
 
 export interface ItemFacts {
@@ -29,6 +37,7 @@ export interface ItemFacts {
   place: ItemPlace | null;
   beyond: boolean;
   steps: StepsFacts;
+  builtInto: BuiltIntoFact[];
 }
 
 export interface ItemRowView {
@@ -61,4 +70,5 @@ export interface ItemPageView {
   hrefs: Record<ItemView, string>;
   sections: ItemSectionView[];
   steps: StepsView;
+  builtInto: BuiltIntoChip[];
 }

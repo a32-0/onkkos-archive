@@ -74,6 +74,8 @@ function buildNodes(raw) {
       link: typeof node.Link === "string" ? node.Link : node.Name,
       requirements: typeof node.Requirements === "string" ? node.Requirements : null,
       drops: list(node.Drops).map(String),
+      tag: typeof node.InternalName === "string" && node.InternalName ? node.InternalName : null,
+      mastery: typeof node.MasteryExp === "number" ? node.MasteryExp : 0,
     }));
 }
 

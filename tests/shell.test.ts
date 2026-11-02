@@ -45,11 +45,11 @@ function shell(tab: ShellTab | null, tabs: boolean, bar?: ShellBar): string {
 }
 
 describe("the tab bar (spec 04)", () => {
-  it("holds Navigation, Resume and Goal, in that order, on their routes", () => {
+  it("holds Star Chart, Catch up and Plan, in that order, on their routes", () => {
     expect(tabItems(null).map(({ label, icon, href }) => [label, icon, href])).toEqual([
-      ["Navigation", "explore", "/system"],
-      ["Resume", "hourglass", "/catch-up"],
-      ["Goal", "flag", "/goals"],
+      ["Star Chart", "explore", "/system"],
+      ["Catch up", "hourglass", "/catch-up"],
+      ["Plan", "flag", "/goals"],
     ]);
   });
 
@@ -113,7 +113,7 @@ describe("the shell around a screen (spec 04)", () => {
     expect(html).toContain("<main");
   });
 
-  it("shows the chip without the tab bar for Resume's onboarding entrance (BR-41)", () => {
+  it("shows the chip without the tab bar for Catch up's onboarding entrance (BR-41)", () => {
     const html = shell("resume", false);
     expect(html).toContain('href="/profile?from=resume"');
     expect(html).not.toContain("<nav");

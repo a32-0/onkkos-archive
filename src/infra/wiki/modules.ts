@@ -29,6 +29,7 @@ export function wikiModules(): Wiki {
       circuit: readVendor(WIKI_FILES.circuit),
       incarnons: readVendor(WIKI_FILES.incarnons),
       honoriaTags: readVendor(WIKI_FILES.honoriaTags),
+      pages: readVendor(WIKI_FILES.pages),
     },
     loadResearch(),
   );

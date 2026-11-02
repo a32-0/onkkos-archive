@@ -7,7 +7,10 @@
   --ash-100: #eae1d9;
   --ash-300: #b1a595;
   --ash-500: #9f9486;
+  --slate-200: #d0d5dd;
   --slate-400: #98a2b3;
+  --slate-600: #4c5156;
+  --slate-900: #2b3038;
   --gold-400: #fcbb4a;
   --bronze-600: #765824;
   --cyan-300: #4fd8e8;
@@ -70,6 +73,11 @@
   --state-rank-border: var(--blue-700);
   --state-rank-tint: color-mix(in srgb, var(--blue-400) 20%, transparent);
   --state-absent: var(--slate-400);
+  --state-selected: var(--slate-200);
+  --state-selected-ground: var(--slate-600);
+  --state-selected-border: var(--slate-900);
+  --state-selected-tint: color-mix(in srgb, var(--slate-600) 50%, transparent);
+  --accent-tint: color-mix(in srgb, var(--accent) 20%, transparent);
   --state-prime: var(--gold-400);
   --hover: color-mix(in srgb, var(--ash-100) 8%, transparent);
   --focus: var(--gold-400);

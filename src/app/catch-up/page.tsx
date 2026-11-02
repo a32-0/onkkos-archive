@@ -10,7 +10,7 @@ import { Resume } from "@/screens/resume/Resume";
 import { Summary } from "@/screens/summary/Summary";
 
 import { PAGE_TITLES } from "@/content/app";
-import { datesOf, metaOf, summaryOf } from "./summary";
+import { chosenUpdate, datesOf, metaOf, summaryOf } from "./summary";
 
 export const metadata: Metadata = { title: PAGE_TITLES.resume };
 
@@ -30,6 +30,7 @@ export default async function CatchUpPage({ searchParams }: { searchParams: Sear
     );
   }
 
+  const chosen = chosenUpdate(screen, since);
   const updates = gameUpdates(screen.graph, updateSources()).map((update, index) => ({
     since: update.yearMonth,
     name: update.name,
@@ -39,6 +40,7 @@ export default async function CatchUpPage({ searchParams }: { searchParams: Sear
     meta: metaOf(update),
     art: update.art,
     newest: index === 0,
+    selected: update.version === chosen,
   }));
   return (
     <Resume

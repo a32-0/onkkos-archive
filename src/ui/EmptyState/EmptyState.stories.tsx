@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { EmptyState } from "./EmptyState";
 
 const meta = {
-  title: "Cards/EmptyState",
+  title: "States/EmptyState",
   component: EmptyState,
   decorators: [
     (Story) => (
@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const SummaryNothingNew: Story = {
   args: {
     icon: "hourglass",
-    title: "Nothing new since Mar, 2026",
+    title: "Nothing new since Mar 2026",
     line: "The arsenal and the collection are as you left them.",
   },
 };

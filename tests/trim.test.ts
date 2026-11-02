@@ -40,7 +40,7 @@ const PROFILES: [string, RawProfile][] = [
 ];
 
 describe("trimProfile", () => {
-  it("keeps the nine fields and nothing else", () => {
+  it("keeps the ten fields and nothing else", () => {
     const trimmed = trimProfile(SYNTHETIC);
     expect(Object.keys(trimmed).sort()).toEqual([...PROFILE_FIELDS].sort());
   });

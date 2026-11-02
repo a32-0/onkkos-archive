@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { planLock, questStepPlan, stepPlan, type StepPlan } from "@/domain/catalog/checks";
+import {
+  collectibleStepPlan,
+  planLock,
+  questStepPlan,
+  stepPlan,
+  type StepPlan,
+} from "@/domain/catalog/checks";
+import { collectibleView } from "@/domain/catalog/collectibles";
 import { dossier } from "@/domain/catalog/dossier";
 import type { Reach } from "@/domain/place/reach";
 import type { StepsFacts } from "@/screens/item/steps/state";
@@ -277,5 +284,73 @@ describe("places to reach share one row", () => {
     const titles = viewOf("Ash").blocks[0]?.cards[0]?.groups[0]?.rows.map((row) => row.title) ?? [];
     expect(titles).toContain("Reach 3 places");
     expect(titles.filter((title) => title.startsWith("Reach "))).toHaveLength(1);
+  });
+});
+
+function collectiblePlanOf(name: string): StepPlan {
+  const found = data.collectibles.get(name);
+  if (!found) throw new Error(`${name} is not in the collection`);
+  const none = new Set<string>();
+  return collectibleStepPlan(data, collectibleView(data, found, none, none), reader);
+}
+
+function rowsIn(plan: StepPlan, id: string) {
+  return plan.sections.find((one) => one.id === id)?.groups.flatMap((group) => group.rows) ?? [];
+}
+
+describe("a collection item reads like an item (spec 10, BR-72)", () => {
+  it("leads a resource any mission drops with its planets, four ways at most", () => {
+    const how = rowsIn(collectiblePlanOf("Ferrite"), "how");
+    expect(how[0]?.title).toEqual({ say: "anyMissionTitle", place: "Mercury" });
+    expect(how.length).toBeLessThanOrEqual(4);
+    expect(how.slice(1).every((row) => row.alternative)).toBe(true);
+  });
+
+  it("says where a built resource's blueprint comes from before the foundry", () => {
+    const plan = collectiblePlanOf("Fieldron");
+    const says = rowsIn(plan, "how").map((row) => row.title.say);
+    expect(says.indexOf("researchTitle")).toBeLessThan(says.indexOf("foundryTitle"));
+    expect(rowsIn(plan, "components").length).toBeGreaterThan(0);
+  });
+
+  it("gives a relic one node a row, its rotations joined", () => {
+    const how = rowsIn(collectiblePlanOf("Axi A21 Relic"), "how");
+    expect(how[0]?.title).toEqual({ say: "playTitle", node: "Cerberus" });
+    expect(
+      how.every((row) => row.title.say !== "playTitle" || !row.title.node.includes(", ")),
+    ).toBe(true);
+    expect(how[0]?.detail).toEqual([
+      { say: "odds", rotation: "B–C", stage: null, chance: 14.29, runs: 7 },
+    ]);
+  });
+
+  it("lists no recipe for a resource that drops and has no blueprint to buy", () => {
+    const plan = collectiblePlanOf("Control Module");
+    expect(rowsIn(plan, "components")).toEqual([]);
+    expect(rowsIn(plan, "how").map((row) => row.title.say)).not.toContain("foundryTitle");
+  });
+
+  it("sends an Archon's shard to the weekly Archon Hunt, Veilbreaker first", () => {
+    const plan = collectiblePlanOf("Archon Amar's Shard");
+    expect(rowsIn(plan, "how")[0]?.title).toEqual({
+      say: "weeklyTitle",
+      mission: "the Archon Hunt",
+    });
+    const quests = rowsIn(plan, "prerequisites").find((row) => row.id.startsWith("quests:"));
+    expect(quests?.id.split("|").at(-1)).toBe("Veilbreaker");
+  });
+
+  it("trades for a vaulted relic, then visits Baro", () => {
+    const says = rowsIn(collectiblePlanOf("Axi A2 Relic"), "how").map((row) => row.title.say);
+    expect(says).toEqual(["tradePlayerTitle", "baroTitle"]);
+  });
+});
+
+describe("a drop table's label is never a place to go (BR-74)", () => {
+  it("names the Circuit for Duviri's Endless tiers, the tier in the detail", () => {
+    const how = rowsIn(planOf("Bronco"), "how");
+    expect(how[0]?.title).toEqual({ say: "circuitModeTitle", mode: "normal" });
+    expect(how[0]?.detail).toEqual([{ say: "endlessDetail", tiers: [6], chance: 1.03, runs: 97 }]);
+    expect(how[0]?.wikiTitle).toBe("The Circuit");
   });
 });

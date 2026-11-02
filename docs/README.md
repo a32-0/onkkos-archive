@@ -45,7 +45,7 @@ The reference pages:
   item, a place, a quest and a step, and the lenses that cut every level: the
   frontier, the focus and reach.
 - [`items.md`](items.md): the item catalog under the item page and the
-  Summary, why the runs sit beside their rotation, how a part is told from a
+  Overview, why the runs sit beside their rotation, how a part is told from a
   resource, relics as places, and weapons inside a recipe.
 - [`scenario-guidelines.md`](scenario-guidelines.md): the grammar every item
   view shares, the two densities of one answer, and how a family with no frame

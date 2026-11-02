@@ -38,10 +38,18 @@ acceptance test:
 | `677:10748` | Bhaira Hound     | Two systems composed: the Sister plan plus "The Hound"                                    |
 | `677:11964` | Vizier Predasite | Revived by Son: a procedure of steps                                                      |
 | `677:11356` | Vasca Kavat      | A special companion: infection, no Mastery row                                            |
+| `979:7226`  | Bronco           | A Circuit reward: "Play the Circuit", the tier in the detail (BR-74)                      |
+| `979:6517`  | Ferrite          | A resource any mission drops: "Play any mission on {planet}", then its best drop (BR-72)  |
+| `979:6676`  | Fieldron         | A built resource: its drop, where its blueprint comes from, the foundry, Components       |
+| `979:6915`  | Axi A21 Relic    | A relic: one node a row, rotations joined, "Or" for the rest                              |
+| `979:7074`  | Axi A2 Relic     | A vaulted relic: "Trade for it with another player", then Baro Ki'Teer                    |
 
 The scenario frames' texts are sample values; the data decides every title,
 reading and passage (BR-33). Their layout, row types, states and order are the
 design.
+
+The last five were drawn on 2026-11-01 for BR-72 and BR-74; their hero art is
+a sample too.
 
 The scenarios and the two states below were redrawn in "App flows" on
 2026-10-18 (T-27b). Their texts are sample values:
@@ -65,13 +73,17 @@ The scenarios and the two states below were redrawn in "App flows" on
   ("(Highest chance)").
 - [BR-37](../business-rules.md#br-37--a-goal-opens-the-steps-of-what-it-names):
   a quest's Step by step.
+- [BR-72](../business-rules.md#br-72--collection-reads-like-an-item) (a
+  collection item's steps), [BR-73](../business-rules.md#br-73--every-wiki-link-opens-a-page-the-wiki-has)
+  (every link opens a page) and [BR-74](../business-rules.md#br-74--a-drop-tables-label-is-never-a-place-to-go)
+  (no table label as a place).
 - [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes).
 
 ## The page
 
 The same page as spec 09, with **Step by step** chosen: the top bar, Onkko's
 line, You're on, the hero and View stay; the sections below replace the
-Summary's.
+Overview's.
 
 ## The sections
 
@@ -145,7 +157,8 @@ A vertical gold line runs down the section. Each row:
   most (BR-48).
 - **Wiki ↗**, in the link colour, closing the passage. For a thing the app
   answers on its own page it reads "How to get it" and opens that page
-  (BR-30).
+  (BR-30). A page the wiki doesn't have is never linked: the row opens the
+  page of what it is for instead (BR-73).
 
 Relic rows follow BR-49: "Open {relic} Relic (Highest chance)" with the
 diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
@@ -184,6 +197,15 @@ every section, is drawn Locked: `Step row` Locked (`526:96`, `528:97` with art) 
 locked component can still be ticked. A quest with no evidence, or anything
 else the profile cannot read, locks nothing.
 
+## A collection item's Step by step (BR-72)
+
+A mod, an arcane, a relic, a resource or anything else in Collection takes
+the item's grammar with no Blueprints section: Prerequisites from its first
+way, How to get with up to four ways (a resource's planets first, "Play any
+mission on {planet}", then its drops by odds), then the blueprint's source
+and "Build it in your foundry" when it is built, and Components from its
+recipe. A vaulted relic has no way left but trading and Baro Ki'Teer.
+
 ## A quest's Step by step (BR-37)
 
 A quest has no frame of its own and is placed in the grammar: the page's hero
@@ -192,10 +214,46 @@ holds the quests and junctions before it (BR-28) and its Mastery Rank; **How to
 get** names where it starts, with the wiki's passage. It has no Blueprints and
 no Components unless the quest asks for an item to be built.
 
+## The Mastery Rank goal (BR-76)
+
+Frames [`1001:7231` Goal>Step by step — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7231),
+[`1009:7703` — Many to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7703), [`1009:7862` — Nothing to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7862) and
+[`1009:8025` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-8025). The page sits under Plan's tab at
+`/goals/rank`, with Plan's top bar and Back to Plan. It is built in the same
+grammar as an item's Step by step:
+
+1. Onkko's line, then "Mastery Rank" as kicker and the next rank as the name
+   ("Rank 9", "Legendary 1").
+2. The `Rank overview` (BR-77) with the wiki's icon of that rank in the
+   square. Each item chip opens the item's page, with Plan as its origin.
+3. **The shortest way**:
+   - "Rank {items} to {max}", the items the overview names, with "You took
+     them to ranks 12 and 18. That is enough for Rank 9." When they are not
+     enough: "That takes you part of the way. New items do the rest."
+   - "Or rank {n} new weapons", with what one covers of what is left.
+   - With nothing left to rank: "Rank something new" and "Or a new Warframe".
+   - With the bar full the section is gone.
+4. **The test**: "Take the Rank {n} test", "Take it in the game once your bar
+   is full. If you fail, you can try again after 24 hours.", then "What Rank
+   {n} unlocks" when the catalog has items that need exactly that rank and
+   the player never ranked ("14 weapons and 2 companions you cannot build
+   yet.").
+
+Rows are read, never ticked. A profile with no `XPInfo`, or at the highest
+rank, has no goal, and the route returns to Plan.
+
 ## Data and sources
 
+- The Mastery Rank goal: `rankProgress()` in `src/domain/profile/mastery-rank.ts`,
+  over `XPInfo`, `Missions` (with `Tier` for the Steel Path), `PlayerSkills`,
+  every masterable item in `@wfcd/items` and the node mastery the wiki keeps
+  (`tag` and `mastery` in `wiki-nodes.json`, from `MasteryExp` in
+  `Module:Missions/data`). Its words are in `src/content/rank.ts`.
 - The plan: `stepPlan()` and `collectibleStepPlan()` in `src/domain/catalog/`,
-  over the vendored wiki modules, DE's drop tables and the curated files.
+  over the vendored wiki modules, DE's drop tables and the curated files. A
+  collection item's ways come from `collectibleRoutes()` in `scenario.ts`, the
+  same routes an item's parts use.
+- Links: `wiki-pages.json`, from `pnpm data:wiki-pages` (BR-73).
 - Prose: for a mission its type's Mechanics section, or its lead when it has
   none (owner, 2026-10-14); for a prose-only route the item's Acquisition
   section; otherwise the page's lead (BR-48). Cached a day, its paragraphs
@@ -225,16 +283,32 @@ from data Storybook does not load (2026-10-19).
    the lead otherwise.
 4. Relic rows read Open and Or; the best route reads "(Highest chance)" in
    gold.
-5. A quest opened from Goal renders in the grammar above.
+5. A quest opened from Plan renders in the grammar above.
 6. With the Ordis fixture, Kuva Sobek's Mastery Rank row reads its gap at full
    contrast and every row after it is locked; with no `PlayerLevel` nothing is
    locked; a prerequisite quest with no evidence locks nothing (BR-63).
 7. At 360 and 600 nothing overlaps or is cut, and wider than 600 the page stays a centred 600 px column (BR-39).
 8. `pnpm check` passes, with a test per scenario that the plan has the sections
    and row types its frame draws.
+9. Every link a step opens is a page the wiki has (`wiki-links.test.ts`), and
+   no title shows a drop table's label, two nodes joined, the bare name of
+   the thing, or "100% a run" (`step-words.test.ts`).
+10. With Cy, the Mastery Rank goal shows Rank 28, the shortest way and the
+    test; a full bar leaves only the test (`rank-view.test.ts`,
+    `request.test.ts`).
 
 ## Frame corrections
 
 The owner corrected this screen's frames on 2026-10-06, and the corrections
 were applied in Figma the same day. The frames linked above are the design as
 it stands.
+
+On 2026-11-02, while building the Mastery Rank goal, Claude changed three
+things in its frames for the owner to confirm:
+
+- The View control (Overview, Step by step) is hidden: the goal has one view.
+- "Both are in your arsenal, at ranks 12 and 18" reads "You took them to ranks
+  12 and 18", since `XPInfo` keeps sold items too (BR-76). The Plan card's
+  "Two weapons in your arsenal take you there." reads "Ranking Lex and Boltor
+  takes you there."
+- The highest rank's header reads "Legendary 6", the highest the wiki lists.

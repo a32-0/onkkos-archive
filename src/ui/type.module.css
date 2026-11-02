@@ -12,6 +12,13 @@
   text-transform: uppercase;
 }
 
+.screen {
+  font-family: var(--font-cinzel), serif;
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
 .title {
   font-family: var(--font-cinzel), serif;
   font-weight: 700;
@@ -111,6 +118,13 @@
 .kicker {
   font-family: var(--font-inter), sans-serif;
   font-weight: 400;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.kicker-strong {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
 }

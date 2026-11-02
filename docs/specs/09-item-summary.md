@@ -1,4 +1,4 @@
-# 09 · The item: hero and Summary
+# 09 · The item: hero and Overview
 
 Every item in the app opens this page, wherever the player found it. It shows
 what the item is, whether the player has it, is still ranking it or has
@@ -7,15 +7,18 @@ the materials they call for.
 
 ## Frames
 
-- [`662:5503` Item>Summary](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5503):
-  the page in its Summary view, the hero in the Rank state.
-- [`677:6582` Item>Summary — Mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6582),
-  [`677:6640` Item>Summary — Not obtained](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6640),
-  [`677:6694` Item>Summary — Not obtained Prime](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6694):
+- [`662:5503` Item>Overview](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5503):
+  the page in its Overview view, the hero in the Rank state.
+- [`677:6582` Item>Overview — Mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6582),
+  [`677:6640` Item>Overview — Not obtained](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6640),
+  [`677:6694` Item>Overview — Not obtained Prime](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6694):
   the hero Mastered, Not obtained, and Not obtained Prime.
-- [`677:6750` Item>Summary — Collectible](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6750):
+- [`677:6750` Item>Overview — Collectible](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6750):
   a resource's page. The hero is kicker, name and art with no state, and the
-  Summary is How to get in the row style (`Summary row`, Kind=Route).
+  Overview is How to get in the row style (`Summary row`, Kind=Route).
+- [`1004:7902` Item>Overview — Keep it](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1004-7902),
+  [`1009:7045` — One recipe mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7045) and [`1009:7167` — Three recipes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7167):
+  Keep it under the hero (BR-79, owner, 2026-11-02).
 - [`479:3589` Summary row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=479-3589):
   a part's art over the blueprint.
 
@@ -33,8 +36,8 @@ Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
   our page before the wiki.
 - [BR-51](../business-rules.md#br-51--youre-on-names-the-items-place):
   "You're on".
-- [BR-55](../business-rules.md#br-55--the-items-summary-is-blueprints-and-components):
-  what the Summary holds.
+- [BR-55](../business-rules.md#br-55--the-items-overview-is-blueprints-and-components):
+  what the Overview holds.
 - [BR-62](../business-rules.md#br-62--a-search-shows-everything-and-says-the-gap):
   an item beyond the player's reach opens on Step by step.
 - [BR-39](../business-rules.md#br-39--wider-than-the-frames-the-layout-follows-width-classes),
@@ -70,12 +73,18 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
    A collectible (a mod, a resource, a relic…) has no rank and no state; its
    hero is kicker, name and art, as `677:6750` draws a resource.
 
-4. **View**, a row holding a segmented control, **Summary** and **Step by
-   step**. Summary is the default; the choice is kept in `?view=steps` so a
+4. **Keep it** (BR-79), under the hero when other recipes take the item:
+   "Keep it to build", then a `Built into` row of `Item chip`s, one per
+   recipe, "{recipe} ×{count}" with the recipe's category icon. A recipe the
+   player has mastered is dimmed (Done); with every recipe mastered, or none,
+   there is no block. Each chip opens that recipe's page, with the same
+   origin as the page it sits on.
+5. **View**, a row holding a segmented control, **Overview** and **Step by
+   step**. Overview is the default; the choice is kept in `?view=steps` so a
    link can open either. Step by step is spec 10. An item beyond the player's
    reach (BR-59) opens with Step by step chosen, where the prerequisite in the
-   way leads (BR-62); Summary is one tap away and shows as it always does.
-5. The Summary view (BR-55), each section a divider naming it over its rows:
+   way leads (BR-62); Overview is one tap away and shows as it always does.
+6. The Overview view (BR-55), each section a divider naming it over its rows:
    - **Blueprints**: one row per blueprint, the main Blueprint first, then the
      parts in the order Step by step gives them. Each row is the part's art
      over the blueprint (BR-19), its name, its best route's reading, "~{n}
@@ -99,7 +108,7 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
      How to get row of an arsenal item with no art of its own (a lab, a
      bounty) wears the item's, so no row is an empty box (constitution).
      Decided on 2026-10-30 and drawn in
-     [`928:5859` Item>Summary — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859), approved by the owner the same day.
+     [`928:5859` Item>Overview — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859), approved by the owner the same day.
 
 ### What a row does
 
@@ -111,9 +120,11 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
 
 ## Data and sources
 
-- The plan: `stepPlan()` / `collectibleStepPlan()`, and the Summary through
+- The plan: `stepPlan()` / `collectibleStepPlan()`, and the Overview through
   `briefOf()` in `src/domain/catalog/summary.ts`, never a second engine.
 - State: `XPInfo` through `src/domain/place/state.ts`.
+- Keep it: the recipes that take the item, `usedIn` in
+  `src/domain/catalog/dossier.ts`, each one's state from `XPInfo`.
 - Art: `@wfcd/items` on `cdn.warframestat.us`, the blueprint ground from the
   catalog's `blueprint.png`; place art from the wiki.
 - The catalogue kicker: the catalog's category, named as the map names its
@@ -123,7 +134,8 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
 
 `TopBar`, `PlaceCrumb` (You're on), `ItemHero` (Rank, Mastered, Not obtained,
 Not obtained Prime, no state, collectible), `Badge`, `Segmented`, `Divider`,
-`SummaryRow` (blueprint, component, route), `BlueprintArt`,
+`SummaryRow` (blueprint, component, route), `BlueprintArt`, `BuiltInto` and
+`ItemChip` (Default, Done, Hover, Focus),
 `OnkkoLine`, each with its stories.
 
 ## Acceptance
@@ -133,8 +145,10 @@ Not obtained Prime, no state, collectible), `Badge`, `Segmented`, `Divider`,
 2. At 360 and 600 nothing overlaps or is cut, and wider than 600 the page stays a centred 600 px column (BR-39).
 3. The hero shows the player's state from `XPInfo`, and no state without it.
 4. You're on shows only for an item with a place, and opens the map there.
-5. Summary shows Blueprints and Components, or How to get when it has neither;
+5. Overview shows Blueprints and Components, or How to get when it has neither;
    its facts never contradict Step by step.
 6. Every part's art sits on the blueprint ground.
 7. An item beyond reach opens on Step by step unless `?view=` says otherwise.
-8. `pnpm check` passes.
+8. Bolto shows "Keep it to build" with "Akbolto ×2" and "Hystrix ×1"; Dante,
+   which no recipe takes, shows nothing (`request.test.ts`).
+9. `pnpm check` passes.

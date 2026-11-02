@@ -21,8 +21,8 @@ filter and curate, never mirror).
 
 ## One answer, two densities
 
-Summary and Step by step say the same thing. Summary is the short form and
-Step by step is the long form. Summary is derived from the step plan itself:
+Overview and Step by step say the same thing. Overview is the short form and
+Step by step is the long form. Overview is derived from the step plan itself:
 `briefOf()` in `src/domain/catalog/summary.ts` reads the plan and keeps each
 row's title and its `brief`, a one-line reading the plan builder writes next to
 the long detail. There is no second engine to drift.
@@ -32,18 +32,18 @@ title, detail and reading is a typed phrase (a key and its values: a node, a
 chance, a price), and the screens give each phrase its words. The runs, the
 odds and the dates are values, so both densities read the same numbers.
 
-| Step by step section    | Summary shows (BR-55, 2026-10-06)                                         |
+| Step by step section    | Overview shows (BR-55, 2026-10-06)                                        |
 | ----------------------- | ------------------------------------------------------------------------- |
 | Prerequisites           | Nothing                                                                   |
 | How to get, Acquisition | Nothing, unless the item has no blueprint and no component: then its rows |
 | Part sections           | **Blueprints**: one row per blueprint, its best route, reading and place  |
 | Components              | **Components**: one row per ingredient, reading and place                 |
 
-The Summary carries no credits of the recipe's own. They are the last step's
+The Overview carries no credits of the recipe's own. They are the last step's
 cost only, and would contradict the tree total in Components.
 
 A fact that appears in one view and contradicts the other is a bug. A fact
-that appears in only one view is the density difference, as long as Summary
+that appears in only one view is the density difference, as long as Overview
 holds the subset.
 
 ## The four sections

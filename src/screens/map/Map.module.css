@@ -92,13 +92,13 @@
 }
 
 .title {
-  composes: numeral from "../../ui/type.module.css";
+  composes: screen from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink);
 }
 
 .place-title {
-  composes: numeral from "../../ui/type.module.css";
+  composes: screen from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink);
 }

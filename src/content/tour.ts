@@ -6,15 +6,15 @@ export const TOUR = {
   done: "Done",
   steps: {
     navigation: {
-      title: "Navigation",
+      title: "Star Chart",
       body: "The star chart, one place at a time. Change location to jump to another planet or system. The ring shows how much gear here you’ve mastered, ranked to the max. Only what you can master or collect is listed, not every item in the game.",
     },
     resume: {
-      title: "Resume",
+      title: "Catch up",
       body: "Everything the game added since the update you last played, grouped by category. Name your last update and the app counts from there. Open a category to see each new thing and how to get it.",
     },
     goal: {
-      title: "Goal",
+      title: "Plan",
       body: "Pick one thing to chase: take a suggestion or search for it. You get the steps in order: what it needs, where each part drops and what to unlock first.",
     },
     profile: {

@@ -10,6 +10,7 @@ export function UpdateCard({
   meta,
   art,
   newest,
+  selected,
   link,
   field,
   ...rest
@@ -19,26 +20,38 @@ export function UpdateCard({
   meta: string;
   art: string | null;
   newest?: string;
+  selected?: string;
   link?: LinkComponent;
   field?: string;
 }) {
+  const mark = selected
+    ? { kind: "selected" as const, label: selected }
+    : newest
+      ? { kind: "newest" as const, label: newest }
+      : null;
   const body: ReactNode = (
     <>
       {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.blank} />}
-      {newest && (
-        <span className={styles.newest}>
-          <Badge kind="newest" label={newest} />
+      <span className={styles.over}>
+        <span className={mark ? styles[mark.kind] : styles.plain}>
+          {mark && <Badge kind={mark.kind} label={mark.label} />}
         </span>
-      )}
-      <span className={styles.band}>
-        <span className={styles.name}>{name}</span>
-        <span className={styles.meta}>{meta}</span>
+        <span className={styles.band}>
+          <span className={styles.name}>{name}</span>
+          <span className={styles.meta}>{meta}</span>
+        </span>
       </span>
     </>
   );
   if (href === undefined) {
     return (
-      <button {...rest} type="submit" name={field} className={styles.button}>
+      <button
+        {...rest}
+        type="submit"
+        name={field}
+        aria-current={selected ? "true" : undefined}
+        className={styles.button}
+      >
         {body}
       </button>
     );

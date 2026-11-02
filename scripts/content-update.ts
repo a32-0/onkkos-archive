@@ -28,6 +28,7 @@ const STEPS: { source: keyof typeof REVIEW.sources; args: string[] }[] = [
   { source: "drops", args: ["data:refresh"] },
   { source: "wiki", args: ["data:wiki"] },
   { source: "art", args: ["data:vendor-art"] },
+  { source: "pages", args: ["data:wiki-pages"] },
   { source: "notes", args: ["data:patch-notes"] },
 ];
 

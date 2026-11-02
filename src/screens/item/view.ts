@@ -3,6 +3,7 @@ import { ITEM } from "@/content/item";
 import { MAP } from "@/content/system";
 import type { BriefLine } from "@/domain/catalog/summary";
 import { itemRoute, placeRoute, type ItemView } from "@/routes";
+import type { BuiltIntoChip } from "@/ui/BuiltInto/BuiltInto";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import { openedFrom, tabHome } from "../shell/tabs";
@@ -54,6 +55,17 @@ function sectionsOf(facts: ItemFacts, from: string): ItemSectionView[] {
   }));
 }
 
+export function builtIntoChips(facts: ItemFacts, from: string): BuiltIntoChip[] {
+  if (facts.builtInto.every((recipe) => recipe.done)) return [];
+  return facts.builtInto.map((recipe) => ({
+    key: recipe.name,
+    label: ITEM.builtIntoChip(recipe.name, recipe.count),
+    icon: recipe.icon,
+    state: recipe.done ? "done" : "default",
+    href: itemRoute(recipe.name, from),
+  }));
+}
+
 export function itemPage(
   facts: ItemFacts,
   from: string | null,
@@ -84,5 +96,6 @@ export function itemPage(
     },
     sections: sectionsOf(facts, origin),
     steps: stepsView(facts.steps, facts.name, origin),
+    builtInto: builtIntoChips(facts, origin),
   };
 }

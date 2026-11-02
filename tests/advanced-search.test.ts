@@ -95,6 +95,9 @@ describe("the advanced search's filters (spec 12, BR-68)", () => {
     expect(
       matches(input("Braton", { catalogue: "primary" }), { ...none, types: ["weapons"] }),
     ).toBe(true);
+    const genesis = input("Torid Incarnon Genesis", { catalogue: "incarnons" });
+    expect(matches(genesis, { ...none, types: ["incarnons"] })).toBe(true);
+    expect(matches(genesis, { ...none, types: ["weapons"] })).toBe(false);
     expect(matches(input("Ash", { standing: "done" }), { ...none, state: "done" })).toBe(true);
     expect(matches(mod, { ...none, state: "absent" })).toBe(false);
     expect(matches(input("Axi A1 Relic", { vaulted: true }), { ...none, vaulted: true })).toBe(

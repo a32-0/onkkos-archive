@@ -5,6 +5,7 @@ export const PROFILE_FIELDS = [
   "Missions",
   "Affiliations",
   "LoadOutInventory",
+  "PlayerSkills",
   "UnlockedOperator",
   "GuildId",
   "ActiveAvatarImageType",
