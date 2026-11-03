@@ -6,6 +6,25 @@
   color: var(--ink);
 }
 
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  border-radius: var(--radius-m);
+  color: inherit;
+  text-decoration: none;
+}
+
+.link .label {
+  color: var(--link);
+}
+
+.link:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: var(--border-2);
+}
+
 .frame {
   --rank-frame-size: 152px;
   --rank-frame-stroke: 5px;

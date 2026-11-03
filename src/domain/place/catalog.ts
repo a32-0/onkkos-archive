@@ -180,7 +180,7 @@ export function buildPlaceCatalog(raw: readonly RawEntry[]): PlaceCatalog {
         wikiUrl: item.wikiaUrl ?? null,
         masterable,
         releaseDate: item.releaseDate ?? item.introduced?.date ?? null,
-        maxRank: maxRankOf(item.maxLevelCap),
+        maxRank: maxRankOf(item.maxLevelCap, item.productCategory),
         affinityFactor: affinityFactor(item.productCategory),
       });
     }

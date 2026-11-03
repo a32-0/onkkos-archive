@@ -11,7 +11,7 @@ import type {
 } from "@/domain/place/map";
 import type { ReachGap } from "@/domain/place/reach";
 import type { PlaceRef } from "@/domain/place/start-here";
-import { itemRoute, placeRoute } from "@/routes";
+import { itemRoute, mapCategoryRoute, placeRoute } from "@/routes";
 import type { PlaceOverviewKind } from "@/ui/PlaceOverview/PlaceOverview";
 
 import { tileLines } from "../summary/lines";
@@ -197,6 +197,7 @@ function leftByKind(map: PlaceMap, input: MapViewInput): PlaceOverviewKind[] {
           icon: input.icons[group.group] ?? null,
           ...(symbol && { symbol }),
           count,
+          href: mapCategoryRoute(group.group, map.system.id, map.place),
         },
       ];
     });

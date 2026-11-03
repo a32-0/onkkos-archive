@@ -116,9 +116,13 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
 1. The display name in the display face, then "Mastery Rank {n}" in
    `Kicker/Strong` and the rank's title in `Kicker`, side by side, both in
    `--ink` ("Silver Disciple"; a Legendary rank shows its
-   title alone), then the `Rank overview` (BR-77): the player's glyph in the
-   square, the share of the way to the next rank, and what to rank, or its
-   empty state. A profile with no `XPInfo` keeps the avatar square, the name
+   title alone), then the `Rank overview` (BR-77) with `Link=Yes`: the
+   player's glyph in the square and the share of the way to the next rank,
+   which together open the goal (`/goals/rank`). Its line, in `--link`, is
+   the call: "See the way to Rank {n}", or "See the Rank {n} test" with a full
+   bar. No chips and no empty state: what to rank, and the test, are the
+   goal's and Plan's (owner, 2026-11-02). The highest rank reads
+   "The highest rank there is", opens nothing and has no empty state. A profile with no `XPInfo` keeps the avatar square, the name
    and the rank as `662:4642` draws them.
 2. **Settings**: a divider, then the settings as a grouped list, one row
    each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
@@ -250,9 +254,9 @@ Disconnect uses; Profile is a screen.
 8. A screen that takes longer than 400 ms shows the loading screen over the
    page; a quicker one shows nothing.
 9. Every part has its stories, in every state the frames draw.
-10. With Cy, Profile shows "Mastery Rank 27", the square filled to the share
-    of the way to Rank 28, and up to three items to rank then a More chip
-    (`request.test.ts`, `mastery-rank.test.ts`).
+10. With Cy, Profile shows "Mastery Rank 27" and the square filled to the
+    share of the way to Rank 28, as a link to the goal, with no chips
+    (`request.test.ts`, `rank-view.test.ts`).
 11. `pnpm check` passes.
 
 ## Frame corrections

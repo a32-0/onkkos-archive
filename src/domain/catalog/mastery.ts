@@ -1,6 +1,7 @@
 const WEAPON_FACTOR = 500;
 const SUIT_FACTOR = 1000;
 const DEFAULT_MAX_RANK = 30;
+const NECRAMECH_MAX_RANK = 40;
 
 export function affinityFactor(productCategory: string | undefined): number {
   switch (productCategory) {
@@ -15,8 +16,9 @@ export function affinityFactor(productCategory: string | undefined): number {
   }
 }
 
-export function maxRankOf(maxLevelCap: number | undefined): number {
-  return maxLevelCap && maxLevelCap > 0 ? maxLevelCap : DEFAULT_MAX_RANK;
+export function maxRankOf(maxLevelCap: number | undefined, productCategory?: string): number {
+  if (maxLevelCap && maxLevelCap > 0) return maxLevelCap;
+  return productCategory === "MechSuits" ? NECRAMECH_MAX_RANK : DEFAULT_MAX_RANK;
 }
 
 export function rankFromXp(xp: number, factor: number, maxRank: number): number {
@@ -42,7 +44,7 @@ export function masteryWeights(
     if (item.masterable !== true || weights.has(item.uniqueName)) continue;
     weights.set(item.uniqueName, {
       factor: affinityFactor(item.productCategory),
-      maxRank: maxRankOf(item.maxLevelCap),
+      maxRank: maxRankOf(item.maxLevelCap, item.productCategory),
     });
   }
   return weights;

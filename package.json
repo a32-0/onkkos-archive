@@ -28,6 +28,7 @@
     "data:vendor-art": "node scripts/refresh-vendor-art.mjs",
     "data:items": "node scripts/refresh-items.mjs",
     "data:manifest": "node scripts/data-manifest.ts",
+    "data:compat": "node scripts/data-compat.ts",
     "data:wiki-pages": "node --import tsx --conditions=react-server scripts/refresh-wiki-pages.ts",
     "content:update": "node --import tsx --conditions=react-server scripts/content-update.ts",
     "fixture": "node scripts/trim-profile.mjs"
@@ -82,7 +83,8 @@
   },
   "knip": {
     "ignore": [
-      "desktop/**"
+      "desktop/**",
+      "scripts/data-compat-run.ts"
     ]
   }
 }

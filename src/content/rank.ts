@@ -27,6 +27,14 @@ function counted(count: number, one: string, many: string): string {
   return `${count} ${count === 1 ? one : many}`;
 }
 
+function covering(count: number): string {
+  return count === 1 ? "so one covers what is left." : `so ${count} cover what is left.`;
+}
+
+function lowerFirst(text: string): string {
+  return `${text.charAt(0).toLowerCase()}${text.slice(1)}`;
+}
+
 export const RANK = {
   title: "Mastery Rank",
   kicker: "Mastery Rank",
@@ -34,7 +42,9 @@ export const RANK = {
   seal: sealOf,
   legendary: (rank: number) => rank >= LEGENDARY_FROM,
   progress: (rank: number) => `Progress to ${rankName(rank)}`,
-  way: (rank: number) => `Of the way to ${rankName(rank)}`,
+  way: (rank: number) => `Progress to ${rankName(rank)}`,
+  seeWay: (rank: number) => `See the way to ${rankName(rank)}`,
+  seeTest: (rank: number) => `See the ${rankName(rank)} test`,
   percent: (share: number) => `${Math.floor(share * 100)}%`,
   highest: "The highest rank there is",
   toRank: "Rank these to get there",
@@ -43,10 +53,6 @@ export const RANK = {
   nothingToRank: {
     title: "Everything you own is at max rank",
     line: "Build something new or clear more of the Star Chart to keep going.",
-  },
-  everyRank: {
-    title: "Every rank reached",
-    line: "When the game adds a new rank, the way to it shows here.",
   },
   testReady: {
     title: (rank: number) => `Ready for the ${rankName(rank)} test`,
@@ -70,19 +76,52 @@ export const RANK = {
         : `You took them to ranks ${listed(ranks.map(String))}.`,
     enough: (rank: number) => `That is enough for ${rankName(rank)}.`,
     closer: "That takes you part of the way. New items do the rest.",
-    orNewWeapons: (count: number) =>
-      count === 1 ? "Or rank one new weapon" : `Or rank ${count} new weapons`,
-    rankNew: "Rank something new",
-    allMaxed: "Everything you have ranked is at max rank.",
+    most: (title: string) => `${title} (Most mastery)`,
+    or: (title: string) => `Or ${lowerFirst(title)}`,
+    necramechTitle: (count: number) =>
+      count === 1 ? "Rank a new Necramech" : `Rank ${count} new Necramechs`,
+    necramechDetail: (count: number, covers: boolean) =>
+      covers
+        ? `A Necramech goes to rank 40 and gives 8,000 mastery, ${covering(count)}`
+        : `A Necramech goes to rank 40 and gives 8,000 mastery. ${
+            count === 1
+              ? "The one you have not ranked takes you part of the way."
+              : `The ${count} you have not ranked take you part of the way.`
+          }`,
+    warframeTitle: (count: number) =>
+      count === 1
+        ? "Rank a new Warframe, companion or Archwing"
+        : `Rank ${count} new Warframes, companions or Archwings`,
+    warframeDetail: (count: number) => `Each gives 6,000 mastery at rank 30, ${covering(count)}`,
+    fortyTitle: (count: number) =>
+      count === 1
+        ? "Rank a new weapon that goes to rank 40"
+        : `Rank ${count} new weapons that go to rank 40`,
+    fortyDetail: (count: number) =>
+      `Kuva, Tenet and Coda weapons, and a few others, go to rank 40 and give 4,000 mastery, ${covering(count)}`,
+    weaponTitle: (count: number) =>
+      count === 1 ? "Rank a new weapon" : `Rank ${count} new weapons`,
+    weaponDetail: (count: number) => `Each gives 3,000 mastery at rank 30, ${covering(count)}`,
+    intrinsicTitle: (count: number) =>
+      count === 1 ? "Raise an Intrinsic one rank" : `Raise your Intrinsics ${count} ranks`,
+    intrinsicDetail: (count: number, covers: boolean) =>
+      covers
+        ? `Each rank of a Railjack or Drifter Intrinsic gives 1,500 mastery, ${covering(count)}`
+        : `Each rank of a Railjack or Drifter Intrinsic gives 1,500 mastery. The ${counted(count, "rank", "ranks")} you have left take you part of the way.`,
+    nodeTitle: (count: number) =>
+      count === 1 ? "Complete a Star Chart node" : `Complete ${count} Star Chart nodes`,
+    nodeDetail: (count: number, covers: boolean) =>
+      `A node gives its mastery once, and again on the Steel Path. ${
+        covers
+          ? count === 1
+            ? "The one you have left that gives the most covers what is left."
+            : `The ${count} you have left that give the most cover what is left.`
+          : `The ${counted(count, "node", "nodes")} you have left take you part of the way.`
+      }`,
     newWeapon: (parts: number) =>
       parts === 1
         ? "One new weapon at rank 30 covers what is left."
         : `Each new weapon you take to rank 30 covers ${shareOf(parts)} of what is left.`,
-    orWarframe: "Or a new Warframe",
-    warframe: (parts: number) =>
-      parts === 1
-        ? "A Warframe gives twice what a weapon gives, so one at rank 30 covers it all."
-        : `A Warframe gives twice what a weapon gives, so each one at rank 30 covers ${shareOf(parts)} of what is left.`,
     takeTest: (rank: number) => `Take the ${rankName(rank)} test`,
     testLine:
       "Take it in the game once your bar is full. If you fail, you can try again after 24 hours.",

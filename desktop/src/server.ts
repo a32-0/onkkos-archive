@@ -59,10 +59,14 @@ export function bundledServer(): string {
     : path.join(import.meta.dirname, "..", "..", ".next", "standalone");
 }
 
-export async function startServer(folder: string): Promise<Server> {
-  const port = await keptPort();
-  const host = `127.0.0.1:${port}`;
-  const token = randomBytes(32).toString("hex");
+interface Launch {
+  folder: string;
+  port: number;
+  token: string;
+  env: NodeJS.ProcessEnv;
+}
+
+function launch({ folder, port, token, env }: Launch): UtilityProcess {
   const server = utilityProcess.fork(
     path.join(import.meta.dirname, "serve.js"),
     [path.join(folder, "server.js")],
@@ -75,19 +79,74 @@ export async function startServer(folder: string): Promise<Server> {
         PORT: String(port),
         HOSTNAME: "127.0.0.1",
         WF_EDITION: "app",
-        WF_PROFILE_SOURCE: "live",
-        WF_STORE_FILE: path.join(app.getPath("userData"), "store.json"),
         WF_LAUNCH_TOKEN: token,
-        WF_LAUNCH_HOST: host,
+        WF_LAUNCH_HOST: `127.0.0.1:${port}`,
         WF_APP_VERSION: app.getVersion(),
         WF_APP_CHANNEL: channelOf(app.isPackaged, process.windowsStore),
+        ...env,
       },
     },
   );
   logFrom(server.stdout, process.stdout);
   logFrom(server.stderr, process.stderr);
+  return server;
+}
+
+const STOP_MS = 5_000;
+
+function stopped(server: UtilityProcess): Promise<void> {
+  return new Promise((resolve) => {
+    const late = setTimeout(resolve, STOP_MS);
+    server.once("exit", () => {
+      clearTimeout(late);
+      resolve();
+    });
+    server.kill();
+  });
+}
+
+export async function startServer(folder: string): Promise<Server> {
+  const port = await keptPort();
+  const token = randomBytes(32).toString("hex");
+  const server = launch({
+    folder,
+    port,
+    token,
+    env: {
+      WF_PROFILE_SOURCE: "live",
+      WF_STORE_FILE: path.join(app.getPath("userData"), "store.json"),
+    },
+  });
   app.on("will-quit", () => server.kill());
-  const origin = `http://${host}`;
+  const origin = `http://127.0.0.1:${port}`;
   await answers(`${origin}/connect`, token);
   return { origin, token, child: server };
+}
+
+async function dataAnswer(url: string, token: string): Promise<string | null> {
+  const deadline = Date.now() + READY_MS;
+  while (Date.now() < deadline) {
+    const answer = await fetch(url, { headers: { [LAUNCH_HEADER]: token } }).then(
+      async (response) =>
+        response.ok
+          ? null
+          : (((await response.json().catch(() => ({}))) as { reason?: string }).reason ??
+            `the check answered ${response.status}`),
+      () => undefined,
+    );
+    if (answer !== undefined) return answer;
+    await new Promise((resolve) => setTimeout(resolve, 250));
+  }
+  throw new Error("The data check did not answer");
+}
+
+export async function checkData(folder: string): Promise<string | null> {
+  const port = await listenable(0);
+  const token = randomBytes(32).toString("hex");
+  const server = launch({ folder, port, token, env: { WF_PROFILE_SOURCE: "fixture" } });
+  try {
+    return await dataAnswer(`http://127.0.0.1:${port}/api/data-check`, token);
+  } finally {
+    await stopped(server);
+  }
 }

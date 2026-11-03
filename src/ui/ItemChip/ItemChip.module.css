@@ -31,6 +31,10 @@
   text-decoration: none;
 }
 
+.link .label {
+  color: var(--link);
+}
+
 .link:hover {
   background-image: linear-gradient(var(--hover), var(--hover));
 }

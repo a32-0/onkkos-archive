@@ -1163,11 +1163,11 @@ describe("the Mastery Rank (spec 04, spec 08, spec 10)", () => {
     return renderToStaticMarkup(await RankPage());
   }
 
-  it("draws the player's way to the next rank on Profile", async () => {
+  it("draws the player's rank on Profile, opening the goal, with no chips", async () => {
     const html = await profile(DEMO_ACCOUNT_IDS.cy);
     expect(html).toMatch(/>Cy<[\s\S]*>Mastery Rank 27<[\s\S]*role="progressbar"/);
-    expect(html).toContain("Of the way to Rank 28");
-    expect(html).toContain(">Rank these to get there<");
+    expect(html).toMatch(/<a [^>]*href="\/goals\/rank"[\s\S]*See the way to Rank 28/);
+    expect(html).not.toContain(">Rank these to get there<");
   });
 
   it("lays out the shortest way and the test on the goal", async () => {

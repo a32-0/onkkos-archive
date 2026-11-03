@@ -94,6 +94,27 @@
   color: var(--ink-dim);
 }
 
+.item {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link .number {
+  color: var(--link);
+}
+
+.link:hover {
+  background-image: linear-gradient(var(--hover), var(--hover));
+}
+
+.link:focus-visible {
+  outline: var(--border-2) solid var(--focus);
+  outline-offset: calc(var(--border-2) * -1);
+}
+
 .caption {
   composes: eyebrow from "../type.module.css";
   margin: 0;

@@ -5,7 +5,13 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { beforeEach, describe, it } from "node:test";
 
-import { currentServer, refreshData, type DataManifest, type DataPlaces } from "../src/data.ts";
+import {
+  currentServer,
+  refreshData,
+  type DataManifest,
+  type DataPlaces,
+  type Verify,
+} from "../src/data.ts";
 
 const SOURCE = "https://data.example/data";
 
@@ -41,6 +47,8 @@ function served(published: Record<string, string>, manifest = manifestOf(publish
   }) as typeof fetch;
 }
 
+const readable: Verify = async () => null;
+
 const OLD = { "grafo.yaml": "old graph", "vendor/items.json": "[1]" };
 const NEW = { "grafo.yaml": "new graph", "vendor/items.json": "[1]" };
 
@@ -61,7 +69,7 @@ describe("the data at each start (spec 13)", () => {
   const graphIn = (root: string) => readFileSync(path.join(root, "data", "grafo.yaml"), "utf8");
 
   it("swaps in a newer, verified set beside the program, and keeps the program's own", async () => {
-    const root = await refreshData(places, served(NEW));
+    const root = await refreshData(places, readable, served(NEW));
     assert.equal(root, places.ownRoot);
     assert.equal(graphIn(root), "new graph");
     assert.ok(existsSync(path.join(root, "server.js")));
@@ -70,34 +78,73 @@ describe("the data at each start (spec 13)", () => {
   });
 
   it("keeps the set it has when the published one is the same", async () => {
-    assert.equal(await refreshData(places, served(OLD)), places.bundled);
+    assert.equal(await refreshData(places, readable, served(OLD)), places.bundled);
   });
 
   it("keeps the current set on a wrong hash", async () => {
     const lying = { ...manifestOf(NEW) };
     lying.files = { ...lying.files, "grafo.yaml": { size: 9, sha256: "0".repeat(64) } };
-    assert.equal(await refreshData(places, served(NEW, lying)), places.bundled);
+    assert.equal(await refreshData(places, readable, served(NEW, lying)), places.bundled);
     assert.ok(!existsSync(places.ownRoot));
   });
 
   it("ignores a set made for another schema", async () => {
-    assert.equal(await refreshData(places, served(NEW, manifestOf(NEW, 2))), places.bundled);
+    assert.equal(
+      await refreshData(places, readable, served(NEW, manifestOf(NEW, 2))),
+      places.bundled,
+    );
   });
 
   it("keeps the current set with no connection, or when the check runs out of time", async () => {
     const offline = (async () => {
       throw new TypeError("fetch failed");
     }) as typeof fetch;
-    assert.equal(await refreshData(places, offline), places.bundled);
+    assert.equal(await refreshData(places, readable, offline), places.bundled);
     const slow = ((_url: string, init?: RequestInit) =>
       new Promise((_resolve, reject) =>
         init?.signal?.addEventListener("abort", () => reject(init.signal?.reason)),
       )) as typeof fetch;
-    assert.equal(await refreshData(places, slow, 50), places.bundled);
+    assert.equal(await refreshData(places, readable, slow, 50), places.bundled);
+  });
+
+  it("keeps the set in use when this version cannot read the new one, and asks no more", async () => {
+    const checked: string[] = [];
+    const refusing: Verify = async (folder) => {
+      checked.push(graphIn(folder));
+      return "No matching discriminator";
+    };
+    let asked = 0;
+    const counted = (async (url: string | URL | Request) => {
+      asked += 1;
+      return served(NEW)(url);
+    }) as typeof fetch;
+    assert.equal(await refreshData(places, refusing, counted), places.bundled);
+    assert.deepEqual(checked, ["new graph"]);
+    assert.ok(!existsSync(places.ownRoot));
+    assert.ok(!existsSync(`${places.ownRoot}-next`));
+    const first = asked;
+    assert.equal(await refreshData(places, refusing, counted), places.bundled);
+    assert.equal(asked - first, 1);
+    assert.equal(checked.length, 1);
+  });
+
+  it("tries again at the next start when the check could not answer", async () => {
+    const silent: Verify = async () => {
+      throw new Error("The data check did not answer");
+    };
+    assert.equal(await refreshData(places, silent, served(NEW)), places.bundled);
+    assert.equal(await refreshData(places, readable, served(NEW)), places.ownRoot);
+  });
+
+  it("tries a set it refused again once the app changes version", async () => {
+    const refusing: Verify = async () => "unknown route type";
+    await refreshData(places, refusing, served(NEW));
+    const next = { ...places, version: "0.2.0" };
+    assert.equal(await refreshData(next, readable, served(NEW)), places.ownRoot);
   });
 
   it("drops a downloaded set when the app itself changes version", async () => {
-    await refreshData(places, served(NEW));
+    await refreshData(places, readable, served(NEW));
     assert.equal(await currentServer({ ...places, version: "0.2.0" }), places.bundled);
     assert.ok(!existsSync(places.ownRoot));
   });

@@ -55,7 +55,12 @@ fails any of them.
 | `pnpm weight`              | No page of the demo is too heavy for Vercel (after the build) |
 | `pnpm test:stories`        | Every component renders, with accessibility checks            |
 | `pnpm --dir desktop check` | The desktop app's own code and tests                          |
+| `pnpm data:compat`         | Every released app on this schema still reads `data/`         |
 
+- `pnpm data:compat` takes a few minutes: it installs each release in a
+  temporary folder. CI runs it on every pull request to `main`, as the
+  `data` workflow. Run it yourself when you change the shape of anything in
+  `data/` (below).
 - `pnpm format` fixes formatting. `pnpm lint:fix` fixes what lint can.
 - `pnpm check` also checks the Markdown in `docs/`, so run it after editing a
   document too. A table whose columns no longer line up is the usual reason
@@ -95,6 +100,27 @@ weeks. Hotfixes need nothing.
 
 No new version is needed: installed apps download the new data at their
 next start.
+
+### When the data changes shape
+
+Installed apps download `main`'s data at every start, whatever their
+version. Data that only adds items or changes values is fine. Data that the
+released code cannot read breaks those apps: a new route type, a renamed
+field, a value a schema did not allow. That happened on 2026-11-02, when 1.1.0
+downloaded the `weekly` routes of 1.2.0 (BR-82).
+
+1. Run `pnpm data:compat`. It checks every released version on the current
+   schema against your `data/`, and names the ones that refuse it and why
+   (`items.124.routes.0.type: No matching discriminator`).
+2. If one refuses it, raise `schema` in `data/manifest.json` by one, then
+   run `pnpm data:manifest`. Released apps then ignore `main`'s data and
+   keep the set they shipped with, until they update.
+3. Release a new version soon after the merge: until then no installed app
+   gets new data, and only the new version carries the new schema.
+
+Since the version after 1.2.0, the app also checks a new set itself before
+using it, and keeps its own if it cannot read it. The schema still matters:
+without it, those apps never get data again until they update.
 
 The update also checks that every wiki page a step links to exists
 (`pnpm data:wiki-pages`, BR-73). If you later change how a step is titled or
@@ -225,6 +251,12 @@ To try the package on your own machine before step 3, run
 lands in `desktop/release/`. [`desktop.md`](desktop.md#cutting-a-version) has
 the details.
 
+To try an update or a data set without publishing anything, build a trial
+app: it installs beside yours, under another name, and takes its updates
+and its data from your machine.
+[`desktop.md`](desktop.md#trying-a-version-before-releasing-it) has the
+steps.
+
 ## How many people download it
 
 | Where  | How                                                                                            |
@@ -270,6 +302,8 @@ Check every month or two, and after each mainline.
 | A check fails on GitHub but not on your machine | Run `pnpm install --frozen-lockfile`; the lockfile may be stale                                        |
 | `pnpm content:update` stops on a source         | That site is down. Wait and run it again; nothing was changed                                          |
 | The manifest test fails                         | Run `pnpm data:manifest` after changing anything in `data/`                                            |
+| The `data` workflow fails                       | A released app cannot read the new data. Raise the schema ([above](#when-the-data-changes-shape))      |
+| `app.log` says "cannot read the new set"        | The app kept its data. Check that `data/manifest.json`'s schema was raised                             |
 | A function is over the weight limit             | See [`development.md`](development.md#the-weight-of-a-function)                                        |
 | Electron starts as plain Node                   | Your shell sets `ELECTRON_RUN_AS_NODE`; clear it ([`desktop.md`](desktop.md#running-it-from-the-tree)) |
 | The app says DE isn't answering, for a while    | DE refused reads and the app waits thirty minutes. It recovers alone ([`api.md`](api.md#the-locks))    |
