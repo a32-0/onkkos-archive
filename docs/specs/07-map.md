@@ -115,7 +115,9 @@ the top, as `662:5177` draws it:
    (owner, 2026-10-17). While anything is left, one chip per Arsenal category
    with its game icon and the count of its items still to master in reach, in
    the categories' order and with no other word, and "Still to master here"
-   under them (BR-65). When every readable item is mastered the ring closes in
+   under them (BR-65). Each chip opens that category's list for the place, on
+   what is left, as its Arsenal row does, so its count reads in `--link`
+   (owner, 2026-11-02). When every readable item is mastered the ring closes in
    the mastered colour and the chips go (owner, 2026-10-18).
 5. The **Arsenal** divider and its categories, one per catalogue: Warframes,
    Primary, Secondary, Melee, Archgun, Archmelee, Amp, Companion, Necramech,

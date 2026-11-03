@@ -192,11 +192,19 @@ waiting for a new version of itself:
    manifest from `main` on GitHub, for at most thirty seconds in all.
 3. A manifest with the app's own schema whose files differ from the current
    set is fetched file by file into a new folder. Every file is checked
-   against its hash; only a complete, verified set replaces the current one,
-   by renaming the folder. The old set is then deleted.
-4. A manifest with another schema is ignored: that data needs a different
-   version of the app, and the update below brings both.
-5. Offline, slow, a failed hash, a full disk: the app opens with the set it
+   against its hash. Then the app starts a second server from that folder,
+   on a port of its own, and asks it to read every file the way the app will
+   (`/api/data-check`, BR-82). Only a complete set that this version reads
+   replaces the current one, by renaming the folder. The old set is then
+   deleted.
+4. A set this version cannot read is deleted, and the app opens with the one
+   it has. It remembers that set for its version, so it does not download it
+   again; the next version of the app tries it afresh.
+5. A manifest with another schema is ignored: that data needs a different
+   version of the app, and the update below brings both. Raising the schema
+   is how `main` keeps released apps on their own data, and
+   `pnpm data:compat` says when it must be raised (BR-82).
+6. Offline, slow, a failed hash, a full disk: the app opens with the set it
    has and tries again at the next start. Nothing is shown, because the set
    it has is always complete and correct for its version.
 
@@ -278,8 +286,8 @@ whose version differs from the app's own fails the build.
    is read from the store, with no request to DE; the id, the month, the last
    place and the ticks are all still there.
 5. A manifest with a newer set replaces the data in one start; a wrong hash,
-   another schema or no connection leaves the current set in use, and the
-   app opens normally.
+   another schema, a set this version cannot read or no connection leaves the
+   current set in use, and the app opens normally.
 6. A tagged version builds both packages and a draft release; a published
    release reaches an installed app, which installs it on restart, and
    **Restart now** opens the app again on the new version. The same tag

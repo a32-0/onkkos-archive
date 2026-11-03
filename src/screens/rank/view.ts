@@ -1,7 +1,7 @@
 import { RANK } from "@/content/rank";
 import { itemRoute } from "@/routes";
 import type { CatalogItem } from "@/domain/catalog/items";
-import type { RankItem, RankProgress } from "@/domain/profile/mastery-rank";
+import type { RankItem, RankProgress, RankWay } from "@/domain/profile/mastery-rank";
 import type { RankOverviewChip } from "@/ui/RankOverview/RankOverview";
 
 import type { StepRowView, StepsView } from "../item/steps/state";
@@ -60,7 +60,6 @@ export function rankOverview(
       figure: RANK.percent(1),
       label: RANK.highest,
       progressLabel: RANK.highest,
-      empty: { icon: "military-tech", title: RANK.everyRank.title, line: RANK.everyRank.line },
     };
   }
   const base = {
@@ -88,6 +87,24 @@ export function rankOverview(
     };
   }
   return { ...base, left: { caption: RANK.toRank, chips: chipsOf(progress, icons, from) } };
+}
+
+export function profileRank(
+  progress: RankProgress,
+  art: string | null,
+  href: string,
+): RankOverviewView {
+  const overview = rankOverview(progress, {}, art, "");
+  if (progress.state === "highest") return overview;
+  return {
+    art: overview.art,
+    share: overview.share,
+    highest: overview.highest,
+    figure: overview.figure,
+    label: progress.full ? RANK.seeTest(progress.next) : RANK.seeWay(progress.next),
+    progressLabel: overview.progressLabel,
+    href,
+  };
 }
 
 export function rankCard(progress: RankProgress | null, href: string): RankCardView | null {
@@ -127,28 +144,62 @@ function sharedMax(items: readonly RankItem[]): number | null {
   return maxes.size === 1 && max !== undefined ? max : null;
 }
 
-function shortestRows(progress: Progress): StepRowView[] {
-  const weapons = progress.newWeapons;
-  if (progress.shown.length === 0) {
-    return [
-      row(
-        "rank-new",
-        RANK.steps.rankNew,
-        `${RANK.steps.allMaxed} ${RANK.steps.newWeapon(weapons)}`,
-      ),
-      row("rank-warframe", RANK.steps.orWarframe, RANK.steps.warframe(progress.newWarframes)),
-    ];
+function wayTitle(progress: Progress, way: RankWay): string {
+  switch (way.kind) {
+    case "yours":
+      return RANK.steps.rankThese(
+        progress.shown.map((one) => one.item.name),
+        sharedMax(progress.shown),
+      );
+    case "necramech":
+      return RANK.steps.necramechTitle(way.count);
+    case "warframe":
+      return RANK.steps.warframeTitle(way.count);
+    case "forty":
+      return RANK.steps.fortyTitle(way.count);
+    case "weapon":
+      return RANK.steps.weaponTitle(way.count);
+    case "intrinsic":
+      return RANK.steps.intrinsicTitle(way.count);
+    case "node":
+      return RANK.steps.nodeTitle(way.count);
   }
-  const names = progress.shown.map((one) => one.item.name);
-  const took = RANK.steps.took(progress.shown.map((one) => one.rank));
-  return [
-    row(
-      "rank-these",
-      RANK.steps.rankThese(names, sharedMax(progress.shown)),
-      `${took} ${progress.covers ? RANK.steps.enough(progress.next) : RANK.steps.closer}`,
-    ),
-    row("rank-new", RANK.steps.orNewWeapons(weapons), RANK.steps.newWeapon(weapons)),
-  ];
+}
+
+function wayDetail(progress: Progress, way: RankWay): string {
+  switch (way.kind) {
+    case "yours":
+      return `${RANK.steps.took(progress.shown.map((one) => one.rank))} ${
+        way.covers ? RANK.steps.enough(progress.next) : RANK.steps.closer
+      }`;
+    case "necramech":
+      return RANK.steps.necramechDetail(way.count, way.covers);
+    case "warframe":
+      return RANK.steps.warframeDetail(way.count);
+    case "forty":
+      return RANK.steps.fortyDetail(way.count);
+    case "weapon":
+      return RANK.steps.weaponDetail(way.count);
+    case "intrinsic":
+      return RANK.steps.intrinsicDetail(way.count, way.covers);
+    case "node":
+      return RANK.steps.nodeDetail(way.count, way.covers);
+  }
+}
+
+function shortestRows(progress: Progress): StepRowView[] {
+  return progress.ways.map((way, index) => {
+    const title = wayTitle(progress, way);
+    return {
+      ...row(
+        `rank-${way.kind}`,
+        index === 0 ? RANK.steps.most(title) : RANK.steps.or(title),
+        wayDetail(progress, way),
+      ),
+      alternative: index > 0,
+      best: index === 0,
+    };
+  });
 }
 
 function unlockCounts(items: readonly CatalogItem[]) {

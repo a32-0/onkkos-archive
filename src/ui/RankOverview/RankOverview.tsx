@@ -29,6 +29,7 @@ export function RankOverview({
   progressLabel,
   left,
   empty,
+  href,
   link,
 }: {
   art: string | null;
@@ -39,11 +40,13 @@ export function RankOverview({
   progressLabel: string;
   left?: { caption: string; chips: readonly RankOverviewChip[] };
   empty?: { icon: IconName; title: string; line: string };
+  href?: string;
   link?: LinkComponent;
 }) {
   const filled = Math.max(0, Math.min(100, share * 100));
-  return (
-    <div className={styles.overview}>
+  const Link = link ?? "a";
+  const progress = (
+    <>
       <div
         className={styles.frame}
         role="progressbar"
@@ -76,6 +79,17 @@ export function RankOverview({
         <span className={styles.figure}>{figure}</span>
         <span className={styles.label}>{label}</span>
       </p>
+    </>
+  );
+  return (
+    <div className={styles.overview}>
+      {href === undefined ? (
+        progress
+      ) : (
+        <Link href={href} className={styles.link}>
+          {progress}
+        </Link>
+      )}
       {left && left.chips.length > 0 && (
         <div className={styles.left}>
           <ul className={styles.chips}>

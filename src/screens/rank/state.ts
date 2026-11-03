@@ -12,6 +12,7 @@ export interface RankOverviewView {
   progressLabel: string;
   left?: { caption: string; chips: RankOverviewChip[] };
   empty?: { icon: IconName; title: string; line: string };
+  href?: string;
 }
 
 export interface RankCardView {

@@ -21,9 +21,9 @@ const meta = {
     left: {
       caption: "Still to master here",
       kinds: [
-        { name: "Warframes", icon: ICON, count: 2 },
-        { name: "Primary", icon: ICON, count: 2 },
-        { name: "Archgun", icon: null, symbol: "rocket-launch", count: 2 },
+        { name: "Warframes", icon: ICON, count: 2, href: "/system/Warframes" },
+        { name: "Primary", icon: ICON, count: 2, href: "/system/Primary" },
+        { name: "Archgun", icon: null, symbol: "rocket-launch", count: 2, href: "/system/Archgun" },
       ],
     },
   },

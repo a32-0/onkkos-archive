@@ -1,6 +1,7 @@
 import { GameIcon } from "../GameIcon/GameIcon";
 import type { IconName } from "../Icon/glyphs";
 import { Icon } from "../Icon/Icon";
+import type { LinkComponent } from "../link";
 import { Orb } from "../Orb/Orb";
 import styles from "./PlaceOverview.module.css";
 
@@ -9,6 +10,7 @@ export type PlaceOverviewKind = {
   icon: string | null;
   symbol?: IconName;
   count: number;
+  href?: string;
 };
 
 const RING = 152;
@@ -23,6 +25,7 @@ export function PlaceOverview({
   label,
   progressLabel,
   left,
+  link,
 }: {
   orb: string | null;
   done: number;
@@ -31,7 +34,9 @@ export function PlaceOverview({
   label: string;
   progressLabel: string;
   left?: { caption: string; kinds: readonly PlaceOverviewKind[] };
+  link?: LinkComponent;
 }) {
+  const Link = link ?? "a";
   const share = readable > 0 ? Math.min(100, (done / readable) * 100) : 0;
   const mastered = readable > 0 && done >= readable;
   return (
@@ -68,18 +73,35 @@ export function PlaceOverview({
       {left && left.kinds.length > 0 && (
         <div className={styles.left}>
           <ul className={styles.chips}>
-            {left.kinds.map((kind) => (
-              <li key={kind.name} className={styles.chip} title={kind.name}>
-                {kind.icon ? (
-                  <GameIcon url={kind.icon} />
-                ) : (
-                  kind.symbol && <Icon name={kind.symbol} size={20} />
-                )}
-                <span className={styles.number} aria-label={`${kind.name} ${kind.count}`}>
-                  {kind.count}
-                </span>
-              </li>
-            ))}
+            {left.kinds.map((kind) => {
+              const content = (
+                <>
+                  {kind.icon ? (
+                    <GameIcon url={kind.icon} />
+                  ) : (
+                    kind.symbol && <Icon name={kind.symbol} size={20} />
+                  )}
+                  <span className={styles.number} aria-label={`${kind.name} ${kind.count}`}>
+                    {kind.count}
+                  </span>
+                </>
+              );
+              return kind.href === undefined ? (
+                <li key={kind.name} className={styles.chip} title={kind.name}>
+                  {content}
+                </li>
+              ) : (
+                <li key={kind.name} className={styles.item}>
+                  <Link
+                    href={kind.href}
+                    className={`${styles.chip} ${styles.link}`}
+                    title={kind.name}
+                  >
+                    {content}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <p className={styles.caption}>{left.caption}</p>
         </div>

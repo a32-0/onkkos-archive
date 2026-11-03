@@ -4,7 +4,7 @@ import type { CatalogItem } from "@/domain/catalog/items";
 import type { RankProgress } from "@/domain/profile/mastery-rank";
 import { builtIntoChips } from "@/screens/item/view";
 import type { ItemFacts } from "@/screens/item/state";
-import { rankCard, rankOverview, rankSteps } from "@/screens/rank/view";
+import { profileRank, rankCard, rankOverview, rankSteps } from "@/screens/rank/view";
 
 import { testCatalog } from "./helpers";
 
@@ -33,7 +33,12 @@ function progress(over: Partial<Progress> = {}): Progress {
     more: 0,
     covers: true,
     newWeapons: 1,
-    newWarframes: 1,
+    ways: [
+      { kind: "warframe", count: 1, worth: 6_000, covers: true },
+      { kind: "weapon", count: 1, worth: 3_000, covers: true },
+      { kind: "yours", count: 2, worth: 1_500, covers: true },
+      { kind: "node", count: 4, worth: 60, covers: false },
+    ],
     unlocks: [],
     ...over,
   };
@@ -98,20 +103,49 @@ describe("rankOverview", () => {
     const view = rankOverview({ state: "highest", rank: 36 }, {}, null, "goal");
     expect(view.highest).toBe(true);
     expect(view.label).toBe("The highest rank there is");
-    expect(view.empty?.title).toBe("Every rank reached");
+    expect(view.empty).toBeUndefined();
+  });
+});
+
+describe("profileRank", () => {
+  it("shows the way there as a link, with no chips", () => {
+    const view = profileRank(progress(), "glyph.png", HREF);
+    expect(view).toMatchObject({
+      art: "glyph.png",
+      figure: "92%",
+      label: "See the way to Rank 9",
+      href: HREF,
+    });
+    expect(view.left).toBeUndefined();
+    expect(view.empty).toBeUndefined();
+  });
+
+  it("has no empty state: not for the test, nothing to rank or the highest rank", () => {
+    const ready = profileRank(progress({ full: true, share: 1, shown: [] }), null, HREF);
+    expect(ready.label).toBe("See the Rank 9 test");
+    expect(ready.empty).toBeUndefined();
+    expect(profileRank(progress({ shown: [] }), null, HREF).empty).toBeUndefined();
+    const highest = profileRank({ state: "highest", rank: 36 }, null, HREF);
+    expect(highest.href).toBeUndefined();
+    expect(highest.empty).toBeUndefined();
   });
 });
 
 describe("rankSteps", () => {
-  it("lays out the shortest way, then the test", () => {
+  it("lays out every way, the most mastery a piece first and marked, then the test", () => {
     const view = rankSteps(progress());
     expect(view.blocks.map((block) => block.title)).toEqual(["The shortest way", "The test"]);
     const rows = view.blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
-    expect(rows.map((row) => row.title)).toEqual([
-      "Rank Lex and Boltor to 30",
-      "Or rank one new weapon",
+    expect(rows.map((row) => [row.title, row.best, row.alternative])).toEqual([
+      ["Rank a new Warframe, companion or Archwing (Most mastery)", true, false],
+      ["Or rank a new weapon", false, true],
+      ["Or rank Lex and Boltor to 30", false, true],
+      ["Or complete 4 Star Chart nodes", false, true],
     ]);
-    expect(rows[0]?.detail).toBe("You took them to ranks 12 and 18. That is enough for Rank 9.");
+    expect(rows[2]?.detail).toBe("You took them to ranks 12 and 18. That is enough for Rank 9.");
+    expect(rows[3]?.detail).toBe(
+      "A node gives its mastery once, and again on the Steel Path. The 4 nodes you have left take you part of the way.",
+    );
   });
 
   it("leaves only the test when the bar is full", () => {

@@ -41,7 +41,7 @@ export function MapScreen({
               link={Link}
             />
           </div>
-          <PlaceOverview {...view.overview} />
+          <PlaceOverview {...view.overview} link={Link} />
           {view.nothingLeft && (
             <EmptyState
               icon="explore"

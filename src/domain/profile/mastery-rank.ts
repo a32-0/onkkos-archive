@@ -14,7 +14,20 @@ const SHOWN = 3;
 export const HIGHEST_RANK = 36;
 
 const NEW_WEAPON_POINTS = 3_000;
+const NEW_FORTY_POINTS = 4_000;
 const NEW_WARFRAME_POINTS = 6_000;
+const NEW_NECRAMECH_POINTS = 8_000;
+const INTRINSIC_TREES = 9;
+const INTRINSIC_MAX_RANK = 10;
+
+type RankWayKind = "yours" | "necramech" | "warframe" | "forty" | "weapon" | "intrinsic" | "node";
+
+export interface RankWay {
+  kind: RankWayKind;
+  count: number;
+  worth: number;
+  covers: boolean;
+}
 
 export interface RankItem {
   item: CatalogItem;
@@ -35,7 +48,7 @@ export type RankProgress =
       more: number;
       covers: boolean;
       newWeapons: number;
-      newWarframes: number;
+      ways: RankWay[];
       unlocks: CatalogItem[];
     };
 
@@ -63,12 +76,63 @@ function nodePoints(profile: RawProfile, nodes: readonly WikiNode[]): number {
   return total;
 }
 
-function intrinsicPoints(profile: RawProfile): number {
+function nodesLeft(profile: RawProfile, nodes: readonly WikiNode[]): number[] {
+  const played = new Map((profile.Missions ?? []).map((mission) => [mission?.Tag ?? "", mission]));
+  const left: number[] = [];
+  for (const node of nodes) {
+    if (!node.tag || node.mastery <= 0) continue;
+    const mission = played.get(node.tag);
+    if ((mission?.Completes ?? 0) <= 0) left.push(node.mastery);
+    if ((mission?.Tier ?? 0) <= 0) left.push(node.mastery);
+  }
+  return left.sort((a, b) => b - a);
+}
+
+function intrinsicRanks(profile: RawProfile): number {
   let ranks = 0;
   for (const [key, value] of Object.entries(profile.PlayerSkills ?? {})) {
     if (key.startsWith(INTRINSIC_PREFIX) && typeof value === "number" && value > 0) ranks += value;
   }
-  return ranks * POINTS_PER_INTRINSIC;
+  return ranks;
+}
+
+function newItems(kind: RankWayKind, left: number, worth: number): RankWay {
+  return { kind, count: partsOf(left, worth), worth, covers: true };
+}
+
+function fromPieces(kind: RankWayKind, pieces: readonly number[], left: number): RankWay | null {
+  let sum = 0;
+  let count = 0;
+  for (const piece of pieces) {
+    if (sum >= left) break;
+    sum += piece;
+    count += 1;
+  }
+  return count === 0 ? null : { kind, count, worth: sum / count, covers: sum >= left };
+}
+
+function waysOf(
+  profile: RawProfile,
+  nodes: readonly WikiNode[],
+  shown: readonly RankItem[],
+  left: number,
+  necramechs: number,
+): RankWay[] {
+  const intrinsics = Math.max(0, INTRINSIC_TREES * INTRINSIC_MAX_RANK - intrinsicRanks(profile));
+  const ways = [
+    fromPieces("necramech", Array<number>(necramechs).fill(NEW_NECRAMECH_POINTS), left),
+    newItems("warframe", left, NEW_WARFRAME_POINTS),
+    newItems("forty", left, NEW_FORTY_POINTS),
+    newItems("weapon", left, NEW_WEAPON_POINTS),
+    fromPieces(
+      "yours",
+      shown.map((one) => one.left),
+      left,
+    ),
+    fromPieces("intrinsic", Array<number>(intrinsics).fill(POINTS_PER_INTRINSIC), left),
+    fromPieces("node", nodesLeft(profile, nodes), left),
+  ];
+  return ways.filter((way): way is RankWay => way !== null).sort((a, b) => b.worth - a.worth);
 }
 
 interface Ranked {
@@ -134,7 +198,7 @@ export function rankProgress(
 
   const { owned, items } = read;
   const total = Math.max(
-    owned + nodePoints(profile, nodes) + intrinsicPoints(profile),
+    owned + nodePoints(profile, nodes) + intrinsicRanks(profile) * POINTS_PER_INTRINSIC,
     rankThreshold(rank),
   );
   const next = rank + 1;
@@ -157,7 +221,17 @@ export function rankProgress(
     more: shown.length > 0 ? below.length - shown.length : 0,
     covers: shown.reduce((sum, one) => sum + one.left, 0) >= left,
     newWeapons: partsOf(left, NEW_WEAPON_POINTS),
-    newWarframes: partsOf(left, NEW_WARFRAME_POINTS),
+    ways:
+      left > 0
+        ? waysOf(
+            profile,
+            nodes,
+            shown,
+            left,
+            catalog.filter((item) => item.kind === "Necramech" && !known.has(item.uniqueName))
+              .length,
+          )
+        : [],
     unlocks: catalog.filter((item) => item.masteryReq === next && !known.has(item.uniqueName)),
   };
 }

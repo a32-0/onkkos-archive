@@ -245,7 +245,7 @@ function toCatalogItem(item: RawItem, owners: Map<string, string>): CatalogItem 
     kind: productCategory === "MechSuits" ? "Necramech" : group,
     slot: slotOf(group, productCategory),
     masteryReq: typeof item.masteryReq === "number" ? item.masteryReq : 0,
-    maxRank: maxRankOf(item.maxLevelCap),
+    maxRank: maxRankOf(item.maxLevelCap, productCategory),
     affinityFactor: affinityFactor(productCategory),
     imageUrl: iconUrl(item.imageName),
     isPrime: item.isPrime === true,

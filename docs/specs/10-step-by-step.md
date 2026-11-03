@@ -226,13 +226,26 @@ grammar as an item's Step by step:
    ("Rank 9", "Legendary 1").
 2. The `Rank overview` (BR-77) with the wiki's icon of that rank in the
    square. Each item chip opens the item's page, with Plan as its origin.
-3. **The shortest way**:
+3. **The shortest way**: every way to close the gap, the most mastery a
+   piece first (owner, 2026-11-02). That row is the best, in the accent, with
+   "(Most mastery)"; each one after it is an alternative, "Or …", with no
+   diamond. Each says how many it takes and whether that covers what is left.
+   - "Rank a new Necramech": 8,000 each at rank 40, counting only the
+     Necramechs the player never ranked.
+   - "Rank a new Warframe, companion or Archwing": 6,000 each at rank 30.
+   - "Rank a new weapon that goes to rank 40": Kuva, Tenet, Coda and a few
+     others, 4,000 each.
+   - "Rank a new weapon": 3,000 each at rank 30.
    - "Rank {items} to {max}", the items the overview names, with "You took
      them to ranks 12 and 18. That is enough for Rank 9." When they are not
-     enough: "That takes you part of the way. New items do the rest."
-   - "Or rank {n} new weapons", with what one covers of what is left.
-   - With nothing left to rank: "Rank something new" and "Or a new Warframe".
-   - With the bar full the section is gone.
+     enough: "That takes you part of the way. New items do the rest." Its
+     place is the mastery they have left, shared among them.
+   - "Raise your Intrinsics {n} ranks": 1,500 a rank of a Railjack or Drifter
+     tree, while the nine trees have ranks left.
+   - "Complete {n} Star Chart nodes": the nodes, and their Steel Path, not yet
+     completed, the ones worth the most first.
+   - With nothing left to rank, the items row is gone; with the bar full the
+     section is gone.
 4. **The test**: "Take the Rank {n} test", "Take it in the game once your bar
    is full. If you fail, you can try again after 24 hours.", then "What Rank
    {n} unlocks" when the catalog has items that need exactly that rank and

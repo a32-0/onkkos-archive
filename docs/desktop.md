@@ -42,6 +42,7 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `scripts/guard-check.mjs` | Starts the staged server behind the guard under plain Node and fails the stage unless it answers 200 with the secret and 403 without it or with another                                                                                                                             |
 | `scripts/starting.mjs`    | Writes `dist/starting/starting.html` and `failed.html` from `src/ui/tokens.css`, the quill's path, `LoadingCard.module.css` for its motion, the build's own fonts and `src/content/desktop.ts`, `dist/words.json`, the notification's words, and `dist/icon.png`, the window's icon |
 | `scripts/after-pack.mjs`  | Copies the staged server into the package's `resources/server`, every package of its `node_modules` hoisted to the top and every link resolved                                                                                                                                      |
+| `scripts/trial.mjs`       | Builds a trial app beside the real one, and serves its updates and a data set from this machine (Trying a version, below)                                                                                                                                                           |
 | `scripts/store.mjs`       | Builds the Microsoft Store's package with the identity read from three variables, or stops without them                                                                                                                                                                             |
 | `icon.png`                | The app's icon: the quill in `--ink` on a `--brand` tile with rounded corners (Figma: Brand > App icon, 933:5775)                                                                                                                                                                   |
 | `appx/`                   | The Store package's tiles, drawn from the same tile: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the tile centred on no background                                                                                              |
@@ -50,14 +51,14 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `tests/channel.test.ts`   | Only a GitHub package updates itself                                                                                                                                                                                                                                                |
 | `src/updates.ts`          | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**; none of it from the Store                                                                                                                                              |
 | `src/main.ts`             | One app at a time; the window; the starting frame, then the server's first page; the secret on the window's requests                                                                                                                                                                |
-| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, and the wait until it answers                                                                                                                                                                           |
+| `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, the wait until it answers, and the second server that checks a new data set                                                                                                                             |
 | `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                     |
 | `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                     |
 | `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                                                        |
 | `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser; **Restart** on Can't start relaunches the app                                                                                                                             |
 | `src/log.ts`              | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                     |
-| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the swap                                                                                                                                                                                  |
-| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, no connection, a timeout and a new app version each keep or restore the set in use                                                                                                                              |
+| `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the read check, the swap                                                                                                                                                                  |
+| `tests/data.test.ts`      | A newer set swapped in; the same set, a wrong hash, another schema, a set this version cannot read, no connection, a timeout and a new app version each keep or restore the set in use                                                                                              |
 | `next-cache.cjs`          | Next's cache handler for the app: in memory, so nothing is written beside the program                                                                                                                                                                                               |
 | `tests/guard.test.ts`     | The guard's four answers, the right secret on another `Host` among them                                                                                                                                                                                                             |
 
@@ -164,6 +165,24 @@ checked against their size and SHA-256. Only then does `server-next` become
 `server`, by renaming, and the old one is deleted. The server then starts from
 that folder.
 
+Before the rename, the app makes sure this version can read the new set
+(BR-82). `checkData()` in `src/server.ts` starts a second server from
+`server-next` on a port the system picks, never the kept one, asks it for
+`/api/data-check`, and stops it. That route calls `readAllData()`
+(`src/infra/data-check.ts`), which reads every file through the same code
+the screens use, and answers with the first problems it finds. A refusal
+deletes `server-next`, leaves one line in `app.log` (`This version cannot
+read the new set: items.124.routes.0.type: …`), and writes the version and
+the manifest's hash to `server-refused`, so the next start does not download
+that set again. A check that does not answer within thirty seconds is not a
+refusal: the set is dropped for this start and tried again at the next. It
+costs a second start of the server, about two seconds,
+and only on a start that found new data.
+
+On 2026-11-02 an app at 1.1.0 downloaded data with a route type, `weekly`,
+that only 1.2.0 knew, and every screen answered with an error until the
+update installed. This check is what stops that from happening again.
+
 The server's code reads `data/` beside itself, from the folder it runs in, so
 nothing in `src/` changes for this and the demo's build does not see it. A
 data path read from a variable would have made Turbopack trace the whole
@@ -174,6 +193,8 @@ project into the demo's functions.
 | The published set equals the one in use      | The one in use            |
 | A newer set, every file verified             | The new one               |
 | A wrong size or hash, another schema, a 404  | The one in use            |
+| A set this version cannot read               | The one in use            |
+| The same refused set, at a later start       | The one in use, no fetch  |
 | No connection, or thirty seconds run out     | The one in use            |
 | The app updated since the set was downloaded | The installer's own again |
 
@@ -181,6 +202,9 @@ Nothing is shown in any of these cases. A refusal leaves one line,
 `The data stayed as it was: …`, on the main process's output. Started from
 the tree, the app checks only with `WF_DATA_CHECK=1`; otherwise it would
 replace the working tree's data with `main`'s.
+
+`WF_DATA_SOURCE` replaces `main`'s address, for trying a set from this
+machine (below).
 
 ## The packages
 
@@ -333,6 +357,61 @@ everywhere else.
 A tag that disagrees with `desktop/package.json` fails before anything is
 built. The workflow holds `contents: write`, GitHub's own token, and nothing
 else.
+
+## Trying a version before releasing it
+
+`scripts/trial.mjs` builds a trial app: the same program named **Onkko's
+Archive Trial**, with its own `appId`, folder, `userData`, updater cache and
+single-instance lock, so it installs beside the real app and never touches
+its files. Its updates come from this machine,
+`http://127.0.0.1:8789/updates`, instead of GitHub. Nothing is published.
+It still names itself `onkkos-archive` to Windows (`APP_ID` in
+`src/main.ts`), so its "update ready" notification may show as the real
+app's.
+
+1. Build the program once: `pnpm --dir desktop stage`.
+2. Build two versions of the trial. Pick any numbers; they only have to
+   grow. Each lands in `desktop/release-trial/{version}/`.
+
+   ```sh
+   node desktop/scripts/trial.mjs build 0.0.1
+   node desktop/scripts/trial.mjs build 0.0.2
+   ```
+
+3. Serve the newer one, with this tree's data or a copy of it. Each copy
+   changes `sources.yaml` and writes a matching manifest: `changed` adds a
+   comment, which every version reads; `broken` turns the first
+   `type: weekly` into a type no code knows.
+
+   ```sh
+   node desktop/scripts/trial.mjs serve 0.0.2
+   node desktop/scripts/trial.mjs serve 0.0.2 changed
+   node desktop/scripts/trial.mjs serve 0.0.2 broken
+   ```
+
+4. Install `onkkos-archive-trial-0.0.1-setup.exe`, or run
+   `release-trial/0.0.1/win-unpacked/Onkko's Archive Trial.exe`. To take the
+   data from step 3 instead of `main`, start it from a terminal with
+   `WF_DATA_SOURCE=http://127.0.0.1:8789/data`, and with
+   `ELECTRON_RUN_AS_NODE` cleared.
+5. Read `%APPDATA%\Onkko's Archive Trial\app.log`. The serving terminal
+   prints every request.
+
+| To see                           | Do                                    | Expect                                                                                                                                                              |
+| -------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| An update downloads and installs | Install 0.0.1, open it, then close it | `latest.yml` and the installer requested; the next start is 0.0.2                                                                                                   |
+| New data that works              | Serve `changed`, start with the data  | Only `sources.yaml` fetched, two "Ready" lines (the check, then the app), and `serverdatasources.yaml` ends with the comment; no `server-next` or `server-old` left |
+| The same set, at the next start  | Start it again                        | Only `manifest.json` requested, one "Ready"                                                                                                                         |
+| Data this version cannot read    | Serve `broken`, start with the data   | `This version cannot read the new set: …` in the log, and the app opens normally                                                                                    |
+| A refused set is not fetched     | Start it again                        | Only `manifest.json` requested                                                                                                                                      |
+
+Connect a trial only with a demo id: a real one makes it read DE. When you
+finish, uninstall Onkko's Archive Trial from Windows' settings and delete
+`desktop/release-trial/`.
+
+Checked on 2026-11-02, run from `win-unpacked`: the four data rows behaved as
+written, and 0.0.1 downloaded 0.0.2 from this machine. Installing an update
+on quit was not tried that day.
 
 ## Where it writes
 

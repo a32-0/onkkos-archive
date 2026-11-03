@@ -14,6 +14,7 @@ export default defineConfig([
     "storybook-static/**",
     "desktop/dist/**",
     "desktop/release/**",
+    "desktop/release-trial/**",
   ]),
   ...nextVitals,
   ...nextTypescript,

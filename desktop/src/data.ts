@@ -7,6 +7,8 @@ export interface DataManifest {
   files: Record<string, { size: number; sha256: string }>;
 }
 
+export type Verify = (folder: string) => Promise<string | null>;
+
 export interface DataPlaces {
   bundled: string;
   ownRoot: string;
@@ -16,6 +18,7 @@ export interface DataPlaces {
 
 const MANIFEST = "manifest.json";
 const STAMP = "app-version";
+const REFUSED = "-refused";
 const CHECK_MS = 30_000;
 
 async function manifestIn(dataDir: string): Promise<DataManifest | null> {
@@ -89,8 +92,18 @@ async function fillSet(
   await writeFile(path.join(next, MANIFEST), JSON.stringify(want));
 }
 
+function refusalOf(places: DataPlaces, want: DataManifest): string {
+  return `${places.version} ${hashOf(new TextEncoder().encode(JSON.stringify(want)))}`;
+}
+
+async function refusedBefore(places: DataPlaces, want: DataManifest): Promise<boolean> {
+  const kept = await readFile(`${places.ownRoot}${REFUSED}`, "utf8").catch(() => null);
+  return kept === refusalOf(places, want);
+}
+
 export async function refreshData(
   places: DataPlaces,
+  verify: Verify,
   get: typeof fetch = fetch,
   limitMs = CHECK_MS,
 ): Promise<string> {
@@ -103,6 +116,7 @@ export async function refreshData(
     const want = await fetchManifest(places.source, signal, get);
     if (!bundled || want.schema !== bundled.schema) return current;
     if (have && sameFiles(have, want)) return current;
+    if (await refusedBefore(places, want)) return current;
     await rm(next, { recursive: true, force: true });
     await cp(places.bundled, next, {
       recursive: true,
@@ -118,6 +132,11 @@ export async function refreshData(
       get,
     );
     await writeFile(path.join(next, STAMP), places.version);
+    const refusal = await verify(next);
+    if (refusal !== null) {
+      await writeFile(`${places.ownRoot}${REFUSED}`, refusalOf(places, want));
+      throw new Error(`This version cannot read the new set: ${refusal}`);
+    }
     const old = `${places.ownRoot}-old`;
     await rm(old, { recursive: true, force: true });
     if (current === places.ownRoot) await rename(places.ownRoot, old);

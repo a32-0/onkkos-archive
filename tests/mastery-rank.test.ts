@@ -69,6 +69,44 @@ describe("rankProgress", () => {
     expect(progress.more).toBe(1);
   });
 
+  it("lists every way to the next rank, the most mastery a piece first", () => {
+    const progress = rankProgress(profileWith(1, { Lex: 12, Boltor: 18 }), sources);
+    if (progress?.state !== "progress") throw new Error("no progress");
+    const worths = progress.ways.map((way) => way.worth);
+    expect(worths).toEqual([...worths].sort((a, b) => b - a));
+    expect(new Set(progress.ways.map((way) => way.kind))).toEqual(
+      new Set(["necramech", "warframe", "forty", "weapon", "yours", "intrinsic", "node"]),
+    );
+    expect(progress.ways[0]).toMatchObject({ kind: "necramech", worth: 8_000 });
+    const weapons = progress.ways.find((way) => way.kind === "weapon");
+    expect(weapons?.count).toBe(Math.ceil(progress.left / 3_000));
+  });
+
+  it("takes a Necramech to rank 40, and counts only the ones never ranked", () => {
+    const voidrig = weapon("Voidrig");
+    expect(voidrig.maxRank).toBe(40);
+    expect(masteryCatalog().get(voidrig.uniqueName)?.maxRank).toBe(40);
+    const progress = rankProgress(profileWith(15, { Lex: 12, Voidrig: 40 }), sources);
+    if (progress?.state !== "progress") throw new Error("no progress");
+    expect(progress.ways[0]).toMatchObject({ kind: "necramech", count: 1, worth: 8_000 });
+    expect(progress.ways[0]?.covers).toBe(false);
+  });
+
+  it("counts only the Intrinsic ranks a player has left", () => {
+    const maxed = {
+      ...profileWith(15, { Lex: 12 }),
+      PlayerSkills: Object.fromEntries(
+        ["PILOTING", "GUNNERY", "TACTICAL", "ENGINEERING", "COMMAND"]
+          .concat(["DRIFT_COMBAT", "DRIFT_RIDING", "DRIFT_OPPORTUNITY", "DRIFT_ENDURANCE"])
+          .map((tree) => [`LPS_${tree}`, 10]),
+      ),
+    } as RawProfile;
+    const progress = rankProgress(maxed, sources);
+    if (progress?.state !== "progress") throw new Error("no progress");
+    expect(progress.full).toBe(false);
+    expect(progress.ways.some((way) => way.kind === "intrinsic")).toBe(false);
+  });
+
   it("is full once the points reach the next rank", () => {
     const progress = rankProgress(profileWith(0, { Lex: 12, Boltor: 18 }), sources);
     if (progress?.state !== "progress") throw new Error("no progress");

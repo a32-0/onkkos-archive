@@ -1096,6 +1096,8 @@ on 2026-10-08.
 - Since the Material pass (T-27b, owner, 2026-10-18) the place sits on the
   page (`Place overview`, `656:211`): the count is one chip per category,
   under the ring of its mastered share (spec 07).
+- Each chip opens its category's list for the place, on what is left, and
+  its count reads in `--link` (owner, 2026-11-02).
 
 ### BR-66 · Similar prerequisites share one row
 
@@ -1313,10 +1315,20 @@ that other recipes take. The other proposals went to the Archive page.
 - The sum never falls below what the player's rank already proves. The
   catalog marks a few masterable items (amps, Venari) as not masterable, so
   the sum may run short; it is lifted to the rank's own threshold.
-- The shortest way names the items the player already took part of the way,
-  most mastery left first, and only as many as close the gap. Below them come
-  the new weapons that would do it instead. With nothing left to rank, it
-  turns to a new weapon or a new Warframe.
+- The shortest way lists every source of mastery, the most mastery a piece
+  first, in the accent with "(Most mastery)", the rest as "Or" alternatives
+  (owner, 2026-11-02): a new Necramech (8,000 at rank 40, only the ones never
+  ranked), a new Warframe, companion or Archwing (6,000), a new
+  weapon that ranks to 40 (4,000), a new weapon (3,000), the items the
+  player already took part of the way (their mastery left, shared among
+  them), Intrinsic ranks (1,500 each, while any are left) and Star Chart
+  nodes not yet completed, Steel Path included. Each names how many close
+  the gap, or says it only takes the player part of the way.
+- The items named are the ones the player already took part of the way,
+  most mastery left first, and only as many as close the gap.
+- WFCD gives Necramechs no max rank; the catalog sets 40, the game's, from
+  their `MechSuits` category (fixed 2026-11-02; until then they counted
+  to 30).
 - The test is a step the game runs: the app never says the player passed.
   "What Rank {n} unlocks" counts the catalog's items that need exactly that
   rank and that the player never ranked.
@@ -1335,20 +1347,29 @@ that other recipes take. The other proposals went to the Archive page.
   120 px in the middle. The edge fills from the top centre, counter-clockwise
   as the Star Chart's does, with the share of the way to the next rank in
   `--state-rank`.
-- Under it, the share in whole percent, never rounded up to 100, and "Of the
-  way to Rank {n}".
+- Under it, the share in whole percent, never rounded up to 100, and
+  "Progress to Rank {n}" on the goal. On Profile that line is the call to
+  open the goal: "See the way to Rank {n}", or "See the Rank {n} test" with a
+  full bar. It read "Of the way to Rank {n}" until 2026-11-02; the owner
+  found it odd on its own, under the figure.
 - Many to rank: three `Item chip`s, the most mastery left first, then a
   More chip that counts the rest below max rank ("+4"), and "Rank these to
   get there" under the chips (owner, 2026-11-02). Each item chip opens
-  the item's page (owner, 2026-11-02); More opens nothing.
+  the item's page (owner, 2026-11-02), so its name reads in `--link`, as
+  every `Item chip` that opens something does; More opens nothing and keeps
+  its grey.
 - Nothing to rank, and a full bar, are empty states (BR-80): "Everything you
   own is at max rank", or "Ready for the Rank {n} test".
 - The highest rank: the edge closes in `--state-mastered`, as a mastered
-  place does, and reads "The highest rank there is". Under it, an empty state
-  (BR-80): "Every rank reached", "When the game adds a new rank, the way to
-  it shows here."
+  place does, and reads "The highest rank there is", with nothing under it:
+  reaching it is not an absence, so it has no empty state (owner,
+  2026-11-02). Only Profile shows it, since the goal is gone at that rank.
 - Profile wears the player's glyph in the square; the goal wears the wiki's
   icon of the rank it chases.
+- Profile shows no chips and no empty state: the square and its share open
+  the goal, and the share's line reads in `--link` (`Link=Yes`, owner,
+  2026-11-02). What to rank, and that the test is ready, are told on the goal
+  and on Plan's card; "See the Rank {n} test" already says it on Profile.
 
 ### BR-78 · The Mastery Rank card leads Plan's suggestions
 
@@ -1406,3 +1427,20 @@ that other recipes take. The other proposals went to the Archive page.
   Profile's account and settings.
 - The rows of Step by step keep `--space-7` between them, since each row
   carries a title and a passage of its own (owner, 2026-11-02).
+
+### BR-82 · A released app never runs on data it cannot read
+
+- No frame: nothing is shown. Settled by the owner on 2026-11-02, after 1.1.0
+  downloaded data only 1.2.0 could read and every screen answered with an
+  error until the update installed.
+- Type: behaviour.
+- Rule: the desktop app uses a new data set only after a server of its own
+  version has read every file of it (`/api/data-check`). A set it cannot read
+  is dropped, the app opens with the set it has, and it does not download
+  that set again until its version changes.
+- `main` publishes data only when every released version on the manifest's
+  schema reads it. `pnpm data:compat` checks it, and the `data` workflow runs
+  it on every pull request to `main`. When a release refuses the data, the
+  schema is raised, and released apps keep their own set until they update.
+- The route answers only in the app (`WF_EDITION=app`), never reads a
+  profile, and on the demo site answers 404.

@@ -6,7 +6,7 @@ import { LAUNCH_HEADER } from "./guard.js";
 import { holdLinks } from "./links.js";
 import { keepLog } from "./log.js";
 import { currentServer, refreshData, type DataPlaces } from "./data.js";
-import { bundledServer, startServer } from "./server.js";
+import { bundledServer, checkData, startServer } from "./server.js";
 import { answerChecks, keepUpdated } from "./updates.js";
 import { fitSize, readSize, writeSize } from "./window-size.js";
 
@@ -17,7 +17,8 @@ const RETURNING = "/system";
 const STARTING = path.join(import.meta.dirname, "starting");
 const ICON = path.join(import.meta.dirname, "icon.png");
 const NO_SCROLL_BAR = "html { scrollbar-width: none; }";
-const DATA_SOURCE = "https://raw.githubusercontent.com/a32-0/onkkos-archive/main/data";
+const DATA_SOURCE =
+  process.env.WF_DATA_SOURCE ?? "https://raw.githubusercontent.com/a32-0/onkkos-archive/main/data";
 
 function dataPlaces(): DataPlaces {
   return {
@@ -84,7 +85,9 @@ async function start(): Promise<void> {
   await window.loadFile(path.join(STARTING, "starting.html"));
   try {
     const places = dataPlaces();
-    const folder = checksData() ? await refreshData(places) : await currentServer(places);
+    const folder = checksData()
+      ? await refreshData(places, checkData)
+      : await currentServer(places);
     const server = await startServer(folder);
     origin = server.origin;
     answerChecks(server.child);

@@ -16,7 +16,7 @@ const meta = {
     art: SAMPLE_ART[0],
     share: 0.92,
     figure: "92%",
-    label: "Of the way to Rank 9",
+    label: "Progress to Rank 9",
     progressLabel: "Progress to Rank 9",
     left: {
       caption: "Rank these to get there",
@@ -86,10 +86,9 @@ export const HighestRank: Story = {
     figure: "100%",
     label: "The highest rank there is",
     left: undefined,
-    empty: {
-      icon: "military-tech",
-      title: "Every rank reached",
-      line: "When the game adds a new rank, the way to it shows here.",
-    },
   },
+};
+
+export const InProfile: Story = {
+  args: { label: "See the way to Rank 9", left: undefined, href: "/goals/rank" },
 };
