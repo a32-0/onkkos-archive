@@ -15,13 +15,18 @@ const graph = testGraph();
 const NOW = Date.UTC(2026, 9, 16);
 const SINCE = "2025-08";
 
-function newsFor(profile: RawProfile, since = SINCE): WhatsNew {
+function newsFor(
+  profile: RawProfile,
+  since = SINCE,
+  ranks: ReadonlyMap<string, number> | null = null,
+): WhatsNew {
   return whatsNew(
     {
       data,
       places: new Set(allPlaces(graph).map((place) => place.name)),
       bestPlaces: bestPlaces(placeIndex()),
       reach: readReach(graph, profile),
+      ranks,
       now: NOW,
     },
     since,
@@ -110,17 +115,19 @@ describe("what the player can reach (BR-59, BR-61)", () => {
   });
 });
 
-describe("the More line says how many, of what, and what stands in the way", () => {
+describe("the end of a group says how many and what stands in the way (BR-61)", () => {
   const group = (beyond: NewGroup["beyond"]): WhatsNew => ({
-    arsenal: [{ group: "weapons", count: 5, tiles: [], beyond }],
+    arsenal: [{ group: "weapons", count: 5, tiles: [], beyond, lenses: false }],
     collection: [],
   });
   const more = (beyond: NewGroup["beyond"]) => summarySections(group(beyond), {})[0]?.groups[0];
 
   it("names the lowest rank and the player's own", () => {
-    expect(more({ count: 4, kinds: ["rank"], need: 8, have: 5, junction: null })?.more).toBe(
-      "4 more weapons need Mastery Rank 8 or higher. You are Mastery Rank 5.",
-    );
+    expect(more({ count: 4, kinds: ["rank"], need: 8, have: 5, junction: null })?.more).toEqual({
+      title: "4 more out of reach",
+      whole: "4 new weapons out of reach",
+      line: "They need Mastery Rank 8 or higher. You are Mastery Rank 5.",
+    });
   });
 
   it("names the junction for a place", () => {
@@ -131,10 +138,8 @@ describe("the More line says how many, of what, and what stands in the way", () 
         need: null,
         have: null,
         junction: { from: "Earth", to: "Venus" },
-      })?.more,
-    ).toBe(
-      "1 more weapon comes from places past Venus. Clear the Venus Junction, on Earth, to go on.",
-    );
+      })?.more?.line,
+    ).toBe("Clear the Venus Junction, on Earth, to reach it.");
   });
 
   it("names both when both stand in the way", () => {
@@ -145,14 +150,33 @@ describe("the More line says how many, of what, and what stands in the way", () 
         need: 8,
         have: 5,
         junction: { from: "Earth", to: "Venus" },
-      })?.more,
-    ).toBe("6 more weapons need Mastery Rank 8 or a place past Venus.");
+      })?.more?.line,
+    ).toBe("They need Mastery Rank 8 or a place past Venus.");
   });
 
-  it("renders a group whose new things are all beyond reach, with only its line", () => {
+  it("renders a group whose new things are all beyond reach, with only that state", () => {
     const view = more({ count: 5, kinds: ["rank"], need: 8, have: 5, junction: null });
     expect(view?.tiles).toEqual([]);
     expect(view?.count).toBe("5 New");
-    expect(view?.more).toMatch(/^5 more weapons/);
+    expect(view?.more?.whole).toBe("5 new weapons out of reach");
+  });
+});
+
+describe("the view on a category's page (BR-15, BR-68)", () => {
+  const maxed = new Map(data.arsenal.map((item) => [item.uniqueName, item.maxRank]));
+  const news = newsFor(fixture("profile-ordis"), SINCE, maxed);
+
+  it("offers the view only where the profile can tell", () => {
+    expect(news.arsenal.every((group) => group.lenses)).toBe(true);
+    expect(news.collection.every((group) => !group.lenses)).toBe(true);
+    expect(newsFor(fixture("profile-ordis")).arsenal.some((group) => group.lenses)).toBe(false);
+  });
+
+  it("marks what is mastered, in reach or not, and counts it in {n} New", () => {
+    for (const group of news.arsenal) {
+      expect(group.tiles.every((tile) => tile.mastered)).toBe(true);
+      expect(group.tiles).toHaveLength(group.count);
+      expect(group.beyond).toBeNull();
+    }
   });
 });

@@ -75,13 +75,19 @@ const CATEGORIES: Record<string, CollectibleGroup> = {
   Honoria: "other",
 };
 
-export const COLLECTIBLE_SOURCES = Object.keys(CATEGORIES);
+const TYPED_SOURCES = ["Melee", "Pets", "SentinelWeapons"];
+const TYPED = new Set(["Companion Weapon", "Pet Parts", "Pet Resource", "Zaw Component"]);
+
+export const COLLECTIBLE_SOURCES = [...Object.keys(CATEGORIES), ...TYPED_SOURCES];
 
 export const GEAR_SOURCES = ["Misc", "Gear", "Resources"];
 
 const RESOURCE_TYPES = new Set(["Resource", "Gem", "Plant"]);
 const RESOURCE_PATH = /\/Types\/Items\/MiscItems\//;
 const RESOURCE_KIND = "Resource";
+const TAG = /^<[^>]+>\s*/;
+const INNER_NAMES: Readonly<Record<string, string>> = { Legendarymodfuser: "Legendary Core" };
+const INNER_ART: Readonly<Record<string, string>> = { "Legendary Core": "LegendaryCore.png" };
 const INCARNON = / Incarnon Genesis$/;
 const FAMILIES: { pattern: RegExp; family: CollectibleFamily }[] = [
   { pattern: / Honoria$/, family: "honoria" },
@@ -108,7 +114,7 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
   const out = new Map<string, Collectible>();
 
   for (const entry of sources.raw) {
-    const name = entry.name?.trim();
+    const name = displayName(entry.name);
     const category = entry.category;
     if (!name || !category || arsenal.has(name)) continue;
     const family = FAMILIES.find((one) => one.pattern.test(name)) ?? null;
@@ -125,11 +131,17 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
     const recipe = recipeOf(entry);
     const made = (recipe?.ingredients.length ?? 0) > 0;
     const known =
-      drops.length > 0 || found.length > 0 || sold.length > 0 || source !== null || made;
-    const documented = family !== null && (told(honoria) || incarnon || sources.curated.has(name));
+      drops.length > 0 ||
+      found.length > 0 ||
+      sold.length > 0 ||
+      source !== null ||
+      made ||
+      sources.wiki.baro.get(name) !== undefined ||
+      sources.curated.has(name);
+    const documented = family !== null && (told(honoria) || incarnon);
     if (!known && !documented) continue;
 
-    const imageUrl = artOf(entry.imageName, fact?.image ?? null);
+    const imageUrl = artOf(entry.imageName, fact?.image ?? INNER_ART[name] ?? null);
     const existing = out.get(name);
     if (existing && existing.drops.length >= drops.length) {
       if (existing.imageUrl === null && imageUrl !== null) {
@@ -189,11 +201,17 @@ export function buildCollectibleCatalog(sources: CollectibleSources): Map<string
   return out;
 }
 
+function displayName(raw: string | undefined): string | undefined {
+  const name = raw?.replace(TAG, "").trim();
+  return name === undefined ? undefined : (INNER_NAMES[name] ?? name);
+}
+
 function groupOf(
   category: string,
   type: string | undefined,
   uniqueName: string,
 ): CollectibleGroup | null {
+  if (type && TYPED.has(type)) return "other";
   const group = CATEGORIES[category];
   if (!group) return null;
   if (group !== "other") return group;
@@ -202,7 +220,7 @@ function groupOf(
 }
 
 function ownDrops(entry: RawEntry, name: string, bundles: boolean): CatalogDrop[] {
-  const single = dropsNamed(entry, (type) => type === name);
+  const single = dropsNamed(entry, (type) => type === name || type.replace(HOUSE, "") === name);
   if (single.length > 0 || !bundles) return single;
   return dropsNamed(entry, (type) => type.replace(BUNDLE, "") === name);
 }
@@ -225,6 +243,7 @@ function dropsNamed(entry: RawEntry, named: (type: string) => boolean): CatalogD
 const BLUEPRINT_SUFFIX = / Blueprint$/i;
 const QUANTITY = / x\d+$/i;
 const BUNDLE = /^\d+x /i;
+const HOUSE = /^(Lavan|Vidar|Zetki) /;
 
 const RECIPE_SKIP = "Blueprint";
 

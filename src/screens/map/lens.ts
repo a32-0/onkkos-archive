@@ -1,3 +1,5 @@
+import type { BeyondWords } from "@/content/reach";
+
 import type { Lens, MapGroupView, MapTileView } from "./state";
 
 const LENSES: readonly Lens[] = ["left", "mastered", "new"];
@@ -11,7 +13,7 @@ export function shownUnder(tile: MapTileView, lens: Lens): boolean {
 export function shownIn(
   group: MapGroupView,
   lens: Lens,
-): { tiles: MapTileView[]; more: string | null } {
+): { tiles: MapTileView[]; more: BeyondWords | null } {
   return {
     tiles: group.tiles.filter((tile) => shownUnder(tile, lens)),
     more: lens === "mastered" ? null : lens === "new" ? group.more.fresh : group.more.left,

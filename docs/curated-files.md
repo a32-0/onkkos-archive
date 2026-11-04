@@ -216,6 +216,9 @@ Two lists:
   an optional `quest` that gates every offer, and `cite`. Exchange Scuttler
   Husks is Acrithis in the Dormizone, after The Hex; the module links a page
   that does not exist (found on 2026-10-23 on Thalys).
+- `tribute`: the mods only a Daily Tribute milestone gives. Each entry has
+  `item`, `days` and `cite`. It is a list of its own, not a route type, so
+  released apps skip it instead of refusing the file.
 - `items`: one entry per item, spelled as `@wfcd/items` spells it (the match
   ignores case). `cite` is the wiki page the routes were read from; it is also
   the row's Wiki link. `routes` is a list of typed sources.

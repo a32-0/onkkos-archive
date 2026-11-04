@@ -5,9 +5,10 @@ import { allPlaces } from "@/domain/catalog/places";
 import { gameUpdates, updateStanding, type GameUpdate } from "@/domain/catalog/updates";
 import { bestPlaces, whatsNew } from "@/domain/catalog/whats-new";
 import { readReach } from "@/domain/place/reach";
+import { itemRanks } from "@/domain/place/state";
 import { describeMonth, shortMonth } from "@/domain/since";
 import { catalogData, updateSources } from "@/infra/catalog/data";
-import { placeIndex } from "@/infra/place/load";
+import { placeCatalog, placeIndex } from "@/infra/place/load";
 import type { Screen } from "@/infra/screen";
 import { gameIcons } from "@/infra/wiki/icons";
 import type { SummaryCardView, SummarySection, SummaryUpdate } from "@/screens/summary/state";
@@ -71,6 +72,7 @@ export async function summaryOf(
       places: new Set(allPlaces(screen.graph).map((place) => place.name)),
       bestPlaces: bestPlaces(placeIndex()),
       reach: readReach(screen.graph, screen.profile),
+      ranks: itemRanks(screen.profile, placeCatalog().entries),
       now: Date.now(),
     },
     since,

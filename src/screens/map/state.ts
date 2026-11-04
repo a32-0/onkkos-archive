@@ -1,3 +1,4 @@
+import type { BeyondWords } from "@/content/reach";
 import type { IconName } from "@/ui/Icon/glyphs";
 import type { PlaceOverviewKind } from "@/ui/PlaceOverview/PlaceOverview";
 import type { RowCount } from "@/ui/PlaceRow/PlaceRow";
@@ -25,7 +26,7 @@ export interface MapGroupView {
   icon: string | null;
   symbol?: IconName;
   tiles: MapTileView[];
-  more: { left: string | null; fresh: string | null };
+  more: { left: BeyondWords | null; fresh: BeyondWords | null };
 }
 
 interface MapSectionView {
@@ -62,7 +63,7 @@ export interface PlaceListSystem {
   name: string;
   orb: string | null;
   rows: PlaceRowView[];
-  more: string | null;
+  more: { title: string; line: string } | null;
 }
 
 export interface SystemRowView {
@@ -88,5 +89,5 @@ export interface MapView {
   system: string;
   places: PlaceListSystem[];
   systems: SystemRowView[];
-  moreSystems: string | null;
+  moreSystems: { title: string; line: string } | null;
 }

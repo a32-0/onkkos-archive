@@ -62,10 +62,7 @@ export const WithArt: Story = {
     title: "Blueprint",
     art: SAMPLE_PART,
     children: (
-      <RowDetail
-        text="It drops at rotation C, 7.5% a run, so about 13 runs for an even chance."
-        link={wiki}
-      />
+      <RowDetail text="It drops at rotation C, 7.5% a run, so about 1 in 13 runs." link={wiki} />
     ),
   },
 };
@@ -110,10 +107,7 @@ export const LockedWithArt: Story = {
     art: SAMPLE_PART,
     locked: true,
     children: (
-      <RowDetail
-        text="It drops at rotation C, 7.5% a run, so about 13 runs for an even chance."
-        link={wiki}
-      />
+      <RowDetail text="It drops at rotation C, 7.5% a run, so about 1 in 13 runs." link={wiki} />
     ),
   },
 };

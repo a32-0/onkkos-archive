@@ -6,7 +6,7 @@ import { RowDetail } from "./RowDetail";
 const meta = {
   title: "Item/RowDetail",
   component: RowDetail,
-  args: { text: "It drops at rotation C, 7.5% a run, so about 13 runs for an even chance." },
+  args: { text: "It drops at rotation C, 7.5% a run, so about 1 in 13 runs." },
   decorators: [
     (Story) => (
       <div style={{ padding: "var(--space-7) var(--gutter)", background: "var(--surface)" }}>

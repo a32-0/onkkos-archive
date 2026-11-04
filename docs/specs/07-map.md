@@ -38,7 +38,7 @@ describes. Their texts are sample values:
   ("Nothing new on {place}", "No item from this place came out after the
   update you chose.").
 - [`677:6385` Locations — New player](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6385): the place list up to the
-  frontier, then the More line.
+  frontier, then the beyond-reach state.
 - [`677:6457` Locations — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6457): the search with no hit: the empty
   state (explore, "No place by that name", "None of {system}’s places is
   called “{query}”. Try another system.").
@@ -166,11 +166,11 @@ category (spec 04), as `662:6837` draws it:
    state the list holds. A ranked item short of its maximum reads "Rank
    {n}/{max}" before its place (`662:6837`; owner, 2026-10-18).
 
-Under To get and New the list holds what is in reach, and ends in a More line
-that counts the rest by rank alone, the place being on view: "4 more primary
-weapons need Mastery Rank 8 or higher. You are Mastery Rank 5." (`676:6158`,
-BR-61). A category with nothing in reach and something beyond holds only the
-line. A place beyond reach opened on purpose shows whole (BR-60).
+Under To get and New the list holds what is in reach, and ends in the empty
+state that counts the rest by rank alone, the place being on view: "4 more out
+of reach", "They need Mastery Rank 8 or higher. You are Mastery Rank 5."
+(`676:6158`, BR-61). A category with nothing in reach and something beyond holds
+only that state, titled "{n} {kind} out of reach". A place beyond reach opened on purpose shows whole (BR-60).
 
 A row opens the item's page, with Star Chart as its origin (spec 04).
 
@@ -196,9 +196,9 @@ Change location opens `662:6528`, a page under the top bar (spec 04):
    Mastered, else Start here, else New items (owner, 2026-10-18). The place
    on view is highlighted, and stays
    listed while on view even beyond reach. Then, when any place is beyond, one
-   More line, a single paragraph: "3 more places open as you clear the
-   junctions. Next: the Venus Junction, on Earth.", or, with the Dojo among
-   them, "… as you clear the junctions and join a clan. Next: …".
+   empty state: "3 more out of reach", "Clear the Venus Junction, on Earth, to
+   open the next.", or, with the Dojo among them, "Clear the junctions and join
+   a clan. Next: …".
 
 Choosing a place returns to the map, on that place.
 
@@ -228,9 +228,9 @@ that system's places.
 | No month (`wf_since` unset)         | No New option, no New tag on places; the card reads "You're up to date", no date |
 | Everything mastered                 | The ring closed in the mastered colour, no chips, then the empty state           |
 | Search with no match (place list)   | The empty state under the field                                                  |
-| Places or systems beyond reach      | The lists end in `More line` (`526:117`, BR-60)                                  |
+| Places or systems beyond reach      | The lists end in the empty state (`1078:7370`, BR-60)                            |
 | A hit beyond reach (place list)     | `Place row` Beyond reach (`526:112`, BR-62)                                      |
-| Items beyond reach in a category    | The page ends in `More line` (BR-61)                                             |
+| Items beyond reach in a category    | The page ends in the empty state; nothing else, `1078:7306` (BR-61)              |
 | A place beyond reach on view        | The place whole, still listed while on view (BR-60)                              |
 
 ## Data and sources
@@ -269,7 +269,7 @@ that system's places.
 `List`, `ListItem`, `SummaryRow` (compact), `ControlRow` (View),
 `Segmented` (one chosen), `PlaceRow` and
 `SystemRow` (plain, on view, Start here, New, Mastered, Soon; `PlaceRow`
-also beyond reach), `MoreLine`, `SearchField`, `Badge` (Start here, New,
+also beyond reach), `SearchField`, `Badge` (Start here, New,
 Mastered), `Divider`, `FeaturedCard`, `TopBar`, `EmptyState`, each with
 its stories.
 
@@ -284,12 +284,12 @@ its stories.
 5. The Star Chart tab reopens the last place viewed.
 6. Tau cannot be opened.
 7. With the Ordis fixture, the place list holds the places up to the frontier
-   and the ones off the chart after them, then the More line; the system
+   and the ones off the chart after them, then the beyond-reach state; the system
    list holds the systems with a place in reach; a category's page holds only
    what is in reach. A search in the place list finds a place beyond reach and
    shows its gap; opened, it shows whole (BR-59 to BR-62).
 8. With no `Missions[]` and no `PlayerLevel`, every place, system and item
-   shows and no More line renders.
+   shows and no beyond-reach state renders.
 9. `pnpm check` passes, with tests for the focus, the view, reach and
    `wf_place`.
 

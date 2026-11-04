@@ -1,8 +1,11 @@
+type OddsUnit = "run" | "kill";
+
 interface Odds {
   runs: number | null;
   rotation: string | null;
   stage: string | null;
   chance: number | null;
+  unit: OddsUnit;
 }
 
 interface RelicOdds {
@@ -118,22 +121,21 @@ function commaList(parts: readonly (string | null | undefined)[]): string | null
 const EVERY = 100;
 const VOID = "Void";
 
-function runsLine(runs: number | null): string | null {
-  return runs === null
-    ? null
-    : `so about ${runs} ${plural(runs, "run", "runs")} for an even chance`;
+function oftenLine(times: number | null, unit: OddsUnit): string | null {
+  if (times === null) return null;
+  return times <= 1 ? `so nearly every ${unit}` : `so about 1 in ${times} ${unit}s`;
 }
 
 export const BRIEF = {
   foundryBrief: () => "Your foundry",
   relicsBrief: ({ count }: { count: number }) =>
     `${number(count)} ${plural(count, "Relic", "Relics")}`,
-  oddsBrief: ({ runs, rotation, stage, chance }: Odds) =>
+  oddsBrief: ({ runs, rotation, stage, chance, unit }: Odds) =>
     chance !== null && chance >= EVERY
-      ? joined(["Every run", rotation ? `Rotation ${rotation}` : stage])
+      ? joined([`Every ${unit}`, rotation ? `Rotation ${rotation}` : stage])
       : runs !== null
         ? joined([
-            `~${runs} ${plural(runs, "Run", "Runs")}`,
+            `~${runs} ${unit === "kill" ? plural(runs, "Kill", "Kills") : plural(runs, "Run", "Runs")}`,
             rotation ? `Rotation ${rotation}` : stage,
           ])
         : joined([chance !== null && chance > 0 ? `${chance}%` : null, rotation, stage]),
@@ -301,6 +303,7 @@ export const TITLES = {
   circuitModeTitle: ({ mode }: { mode: string }) =>
     mode === "steelPath" ? "Play the Steel Path Circuit" : "Play the Circuit",
   honoriaEarnTitle: () => "Earn it",
+  tributeTitle: () => "Claim it at a Daily Tribute milestone",
 } as const;
 
 export const DETAILS = {
@@ -385,17 +388,19 @@ export const DETAILS = {
       chance !== null && chance >= EVERY
         ? "every time"
         : chance !== null && chance > 0
-          ? commaList([`${chance}% each time`, runsLine(runs)])
+          ? commaList([`${chance}% each time`, oftenLine(runs, "run")])
           : null;
     return odds === null ? `${when}.` : `${when}, ${odds}.`;
   },
-  odds: ({ runs, rotation, stage, chance }: Odds) => {
+  odds: ({ runs, rotation, stage, chance, unit }: Odds) => {
     const where = commaList([rotation ? `rotation ${rotation}` : null, stage?.toLowerCase()]);
     if (chance !== null && chance >= EVERY) {
-      return where === null ? "It drops every run." : `It drops at ${where}, every run.`;
+      return where === null ? `It drops every ${unit}.` : `It drops at ${where}, every ${unit}.`;
     }
     const odds =
-      chance !== null && chance > 0 ? commaList([`${chance}% a run`, runsLine(runs)]) : null;
+      chance !== null && chance > 0
+        ? commaList([`${chance}% a ${unit}`, oftenLine(runs, unit)])
+        : null;
     if (where !== null) return `It drops at ${commaList([where, odds])}.`;
     return odds === null ? null : `${capital(odds)}.`;
   },
@@ -694,6 +699,8 @@ export const DETAILS = {
     return `${vendor} sells it for ${costsOf(costs)}${once}.`;
   },
   goalDetail: () => "Focus converted from Eidolon Shards does not count.",
+  tributeDetail: ({ days }: { days: readonly number[] }) =>
+    `A one-time choice among the milestone rewards on days ${listOf(days.map(String))} of logging in.`,
   weeklyDetail: ({
     boss,
     pulses,
@@ -743,8 +750,8 @@ export const STEPS = {
     title.startsWith("Or ") ? title : `Or ${title.charAt(0).toLowerCase()}${title.slice(1)}`,
   relicAlternative: (relic: string, vaulted: boolean) =>
     vaulted ? `Or ${relic} (Vaulted)` : `Or ${relic}`,
-  wiki: "Wiki",
-  ourPage: "How to get it",
+  wiki: "Read on the wiki ",
+  ourPage: "How to get it →",
 } as const;
 
 export function detailLine(parts: readonly (string | null)[]): string | null {

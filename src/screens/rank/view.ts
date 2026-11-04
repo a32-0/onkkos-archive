@@ -100,8 +100,8 @@ export function profileRank(
     art: overview.art,
     share: overview.share,
     highest: overview.highest,
-    figure: overview.figure,
-    label: progress.full ? RANK.seeTest(progress.next) : RANK.seeWay(progress.next),
+    figure: RANK.percentTo(progress.share, progress.next),
+    label: progress.full ? RANK.seeTest : RANK.seeWay,
     progressLabel: overview.progressLabel,
     href,
   };

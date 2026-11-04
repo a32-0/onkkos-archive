@@ -18,7 +18,12 @@ each thing on it opens its item page. Skip goes to the map.
   opens.
 - [`662:5040` What's new>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-5040): a category's page.
 - [`675:5570` What's new>Warframes — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5570): the page ends in the
-  More line (BR-61).
+  empty state of BR-61, under the list.
+- [`1072:7822` What's new>Warframes — All beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7822): the page holds only that state.
+- [`1072:7647` What's new>Warframes — To get](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7647),
+  [`1072:7703` — Mastered chosen](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7703) and
+  [`1072:7759` — Nothing to get](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7759): the View of an Arsenal
+  category (BR-15).
 
 Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
 
@@ -31,7 +36,7 @@ Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
 - [BR-13](../business-rules.md#br-13--the-last-played-card-opens-the-update-list):
   the card opens the update list.
 - [BR-15](../business-rules.md#br-15--no-mastered-or-rank-here-only-new):
-  no Mastered or Rank here, only NEW.
+  no Mastered or Rank marker, only NEW; an Arsenal category has a View.
 - [BR-59](../business-rules.md#br-59--what-the-player-can-reach) and
   [BR-61](../business-rules.md#br-61--a-group-shows-what-is-in-reach-and-counts-the-rest):
   a category's page lists what the player can reach; the rest is counted.
@@ -100,10 +105,16 @@ when it has none ("Zariman" for Cephalon Melica's wares). No Mastered or Rank
 marker (BR-15). The row opens the item's page, with the Catch up tab as its
 origin (spec 04).
 
-What is new and beyond reach is not drawn: the page ends in a More line that
-says how many, of what, and what stands in the way (`675:5570`, BR-61), and
-opens nothing. A category whose new things are all beyond reach shows only the
-More line.
+An Arsenal category whose state the profile can tell has **View**, To get and
+Mastered, under the lead (BR-15). To get opens first, keeps what is left to
+master and ends in the beyond-reach state; Mastered keeps what is mastered, in
+reach or not, without it. A view with nothing in it shows the empty state. The
+choice stays in the address (`?view=mastered`). "{n} New" still counts it all.
+
+What is new and beyond reach is not drawn: the page ends in the empty state,
+"{n} more out of reach", with what stands in the way (`675:5570`, BR-61). It
+opens nothing. A category whose new things are all beyond reach shows only that
+state, titled "{n} new {kind} out of reach".
 
 ### The last-played card
 
@@ -131,7 +142,8 @@ Opens the map on the frontier, or on the focus when there is no frontier
 | --------------------------- | ----------------------------------------------------------------------------- |
 | The menu                    | `662:4885`; from Where to start, `679:4789`                                   |
 | A category's page           | `662:5040`                                                                    |
-| Something new beyond reach  | The page ends in `More line` (`675:5570`, BR-61)                              |
+| Something new beyond reach  | The page ends in the empty state (`675:5570`, BR-61)                          |
+| An Arsenal category's View  | `1072:7647`, `1072:7703`; nothing in it, `1072:7759`                          |
 | Updates open                | `662:6072`                                                                    |
 | Up to date                  | `675:5489`                                                                    |
 | Nothing new since the month | The card, the empty state, Onkko's line and Skip; no lead, no divider, no row |
@@ -163,7 +175,7 @@ not held to the foot of the window.
 
 `FeaturedCard` (last played, up to date), `Divider`, `List` and `ListItem`
 (with a badge), `SummaryRow` (compact), `UpdateCard`, `TopBar`,
-`MoreLine`, `EmptyState`, `OnkkoLine`, and `Button` (secondary for Skip,
+`EmptyState`, `OnkkoLine`, and `Button` (secondary for Skip,
 text for "Show more"), each with its stories.
 
 ## Acceptance
@@ -177,11 +189,11 @@ text for "Show more"), each with its stories.
 5. Choosing an update in Updates re-measures from its month.
 6. No quests, no Nightwave, no suggested goal anywhere on the screen.
 7. With the Ordis fixture (Mastery Rank 2), a category's page shows only what
-   is in reach and ends in its More line, and "{n} New" counts both. With no
+   is in reach and ends in its beyond-reach state, and "{n} New" counts both. With no
    `PlayerLevel` and no `Missions[]`, nothing is counted away (BR-59,
    BR-61).
 8. `pnpm check` passes, with tests for which categories render, for the
-   row's lines and for what the More line counts.
+   row's lines and for what the beyond-reach state counts.
 
 ## Frame corrections
 

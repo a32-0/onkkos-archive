@@ -119,7 +119,8 @@ In this order; a section with nothing in it does not render.
 
 Each section is a card under a divider that names it (owner's frames,
 2026-10-18). A part's card opens with its header: the part's art and its
-title in the display face.
+title in the display face. Only Blueprints and Components carry art; every
+other row is words alone (BR-85, owner, 2026-11-04).
 
 ## The rows
 
@@ -130,35 +131,34 @@ A vertical gold line runs down the section. Each row:
 - **A diamond** on the line, for a step. An alternative ("Or …") has no
   diamond; it continues the row above (Kuva's "Or trade for a converted Kuva
   Lich", Ivara Prime's "Or Lith Q3 Relic").
-- **The title**, bold: a verb and the thing, with the thing's icon when it has
-  one ("Blueprint", "Neuroptics" carry their art). "(Optional)" ends an
+- **The title**, bold: a verb and the thing. "(Optional)" ends an
   optional step. "(Highest chance)" marks the best route in a part section, and
   the title turns gold (BR-26, BR-50). A route is named by its node (BR-27).
-  A drop from an enemy, "Defeat {enemy}", wears the enemy's art, the lead
-  image of its wiki page (`drop-sources.json`). An enemy whose page has no
-  lead image takes a wiki image named in the script, of the enemy or of its
-  base enemy; one with no image anywhere on the wiki shows its name alone. A drop listed as "{enemy} ({mode})" names the enemy,
+  A drop listed as "{enemy} ({mode})" names the enemy,
   and one listed as "{planet} ({mode})" reads "Play {planet}", with the mode
   under it. Only an enemy is defeated: a mission, an event or a reward table
   reads "Play {it}" ("Play Nokko: Critter Liberation", "Play Family
   Reunion"), a container or a cache "Open {it}", a relic "Open {relic}", and
   a vendor's rank ("Conclave, Typhoon") "Buy it from {vendor}". A Conclave
   drop comes after every other route, since few players play Conclave
-  (Balla's blueprint opens with Hok). The enemy's art was drawn in
+  (Balla's blueprint opens with Hok), as
   [`928:5860` Item>Step by step — Enemy drop](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5860)
-  and approved by the owner on 2026-10-30; the verbs for what is not an
-  enemy and the place of a Conclave drop were decided the same day, for the
-  owner to confirm.
+  draws it.
 - **A chevron**, up while open. Every row starts open, as drawn.
 - **The detail**, one line of data when there is one: "It drops at rotation C,
-  7.5% a run, so about 13 runs for an even chance." "Uncommon. 11% intact and
+  7.5% a run, so about 1 in 13 runs." "Uncommon. 11% intact and
   20% radiant."
 - **The prose**, the wiki's passage in its paragraphs, three sentences at
   most (BR-48).
-- **Wiki ↗**, in the link colour, closing the passage. For a thing the app
-  answers on its own page it reads "How to get it" and opens that page
+- **Read on the wiki ↗**, in the link colour, closing the passage. For a thing
+  the app answers on its own page it reads "How to get it →" and opens that page
   (BR-30). A page the wiki doesn't have is never linked: the row opens the
   page of what it is for instead (BR-73).
+
+When missions fill a collection item's four ways, the fourth is the best enemy
+at 0.5% a kill or more, per kill
+([BR-83](../business-rules.md#br-83--a-drop-from-an-enemy-is-never-left-out-by-missions),
+[`1066:7245` Item>Step by step — Enemy drop after missions](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1066-7245)).
 
 Relic rows follow BR-49: "Open {relic} Relic (Highest chance)" with the
 diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
@@ -166,8 +166,8 @@ diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
 ### Components
 
 No line and no diamond. Each row: a checkbox, the thing's art with no ground
-behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, and under them, starting where the art
-starts so nothing sits under the checkbox, the description with **Wiki ↗**
+behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, and under them,
+starting where the art starts so nothing sits under the checkbox, the description with **Read on the wiki ↗**
 closing its line. A resource's description is where it comes from; one that
 comes from nowhere but the foundry, a cut gem or an alloy, says what it is made
 from ("Made in your foundry from 10 Azurite and 1,000 Credits."), and the
@@ -192,7 +192,7 @@ When Prerequisites holds a step the profile proves unmet, a Mastery Rank above
 the player's or a junction whose tag `Missions[]` lacks, that row keeps full
 contrast with the gap as its detail ("Needs Mastery Rank 8. You are Mastery
 Rank 5."), and every row after it, in
-every section, is drawn Locked: `Step row` Locked (`526:96`, `528:97` with art) and
+every section, is drawn Locked: `Step row` Locked (`526:96`, `1087:7336` with art) and
 `Component row` Locked (`526:102`), at half opacity, open and readable, never hidden. A
 locked component can still be ticked. A quest with no evidence, or anything
 else the profile cannot read, locks nothing.

@@ -69,12 +69,13 @@ export const MAP = {
   clanGap: "Join a clan to enter its Dojo.",
   morePlaces: (count: number, next: { from: string; to: string } | null, clan: boolean) =>
     next === null
-      ? `${count} more ${plural(count, "place opens", "places open")} when you join a clan.`
-      : `${count} more ${plural(count, "place opens", "places open")} as you clear the junctions${clan ? " and join a clan" : ""}. Next: ${ENGINE.junctionAt(next.from, next.to)}.`,
+      ? `Join a clan to open ${plural(count, "it", "them")}.`
+      : clan
+        ? `Clear the junctions and join a clan. Next: ${ENGINE.junctionAt(next.from, next.to)}.`
+        : `Clear ${ENGINE.junctionAt(next.from, next.to)}, to open the next.`,
   systems: "Systems",
   chooseSystem: "Choose a system",
   switchAnyTime: "You can switch at any time.",
   soon: "Soon™",
-  moreSystems: (count: number) =>
-    `${count} more ${plural(count, "system opens", "systems open")} as you go further.`,
+  moreSystems: (count: number) => `${plural(count, "It opens", "They open")} as you go further.`,
 } as const;

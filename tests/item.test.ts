@@ -25,7 +25,9 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             id: "part:Neuroptics",
             title: { say: "partTitle", part: "Neuroptics", count: 1 },
             route: null,
-            reading: [{ say: "oddsBrief", runs: 20, rotation: "C", stage: null, chance: 5 }],
+            reading: [
+              { say: "oddsBrief", runs: 20, rotation: "C", stage: null, chance: 5, unit: "run" },
+            ],
             where: ["Armatus", "Disruption"],
             detail: [],
             imageUrl: "helmet.png",
@@ -68,7 +70,9 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
     ],
     lines: {
       "Nano Spores": {
-        reading: [{ say: "oddsBrief", runs: 4, rotation: null, stage: null, chance: 25 }],
+        reading: [
+          { say: "oddsBrief", runs: 4, rotation: null, stage: null, chance: 25, unit: "run" },
+        ],
         where: ["Deimos", "Exterminate"],
       },
     },

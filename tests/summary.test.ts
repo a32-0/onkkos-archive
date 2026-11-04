@@ -109,7 +109,7 @@ describe("the gold line reads in runs (BR-56)", () => {
     expect(compared).toBeGreaterThan(0);
   });
 
-  it("counts the runs for an even chance from the drop's odds", () => {
+  it("counts how often it drops from the drop's odds", () => {
     const plan = planOf("Athodai");
     const rows = plan.sections.flatMap((section) => section.groups.flatMap((group) => group.rows));
     const odds = rows

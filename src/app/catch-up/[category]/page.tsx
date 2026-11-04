@@ -30,7 +30,8 @@ export default async function CatchUpCategoryPage({
 }) {
   const screen = await requireScreen();
   const { category } = await params;
-  const onboarding = readParam(await searchParams, "step") === "summary";
+  const query = await searchParams;
+  const onboarding = readParam(query, "step") === "summary";
   const home = catchUpAt(onboarding ? "summary" : null);
   const since = await readSince();
   if (!since) redirect(home);
@@ -43,6 +44,7 @@ export default async function CatchUpCategoryPage({
       onboarding={onboarding}
       group={group}
       back={home}
+      initial={readParam(query, "view") === "mastered" ? "mastered" : "left"}
     />
   );
 }

@@ -9,7 +9,6 @@ import { mapCategoryRoute, placeRoute } from "@/routes";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { List, ListEntry } from "@/ui/List/List";
-import { MoreLine } from "@/ui/MoreLine/MoreLine";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { PlaceCrumb } from "@/ui/PlaceCrumb/PlaceCrumb";
 import { Segmented, type SegmentedOption } from "@/ui/Segmented/Segmented";
@@ -101,7 +100,13 @@ export function MapCategory({
             </List>
           )
         )}
-        {more && <MoreLine text={more} />}
+        {more && (
+          <EmptyState
+            icon="auto-stories"
+            title={tiles.length > 0 ? more.title : more.whole}
+            line={more.line}
+          />
+        )}
       </div>
     </Shell>
   );
