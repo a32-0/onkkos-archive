@@ -112,8 +112,8 @@ describe("profileRank", () => {
     const view = profileRank(progress(), "glyph.png", HREF);
     expect(view).toMatchObject({
       art: "glyph.png",
-      figure: "92%",
-      label: "See the way to Rank 9",
+      figure: "92% to Rank 9",
+      label: "See the way",
       href: HREF,
     });
     expect(view.left).toBeUndefined();
@@ -122,7 +122,7 @@ describe("profileRank", () => {
 
   it("has no empty state: not for the test, nothing to rank or the highest rank", () => {
     const ready = profileRank(progress({ full: true, share: 1, shown: [] }), null, HREF);
-    expect(ready.label).toBe("See the Rank 9 test");
+    expect(ready.label).toBe("See the test");
     expect(ready.empty).toBeUndefined();
     expect(profileRank(progress({ shown: [] }), null, HREF).empty).toBeUndefined();
     const highest = profileRank({ state: "highest", rank: 36 }, null, HREF);

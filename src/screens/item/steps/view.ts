@@ -25,6 +25,12 @@ function gapWords(gap: ReachGap): string {
   return MAP.clanGap;
 }
 
+const BLUEPRINTS = "blueprints";
+
+function pictured(section: ProseSection): boolean {
+  return section.checkable || section.id === BLUEPRINTS;
+}
+
 function titleOf(row: ProseRow): string {
   const { title } = row;
   let text =
@@ -53,8 +59,7 @@ export function stepsView(facts: StepsFacts, item: string, from: string): StepsV
       id: row.id,
       anchor: row.id.startsWith(PART) ? stepAnchor(row.id) : null,
       title: titleOf(row),
-      ...(row.imageUrl !== null && { art: row.imageUrl }),
-      ...(section.checkable && { art: row.imageUrl }),
+      ...(pictured(section) && { art: row.imageUrl }),
       alternative: row.alternative || OR_SAYS.has(row.title.say),
       best: row.best,
       locked,

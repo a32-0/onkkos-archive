@@ -79,7 +79,9 @@ describe("the catalog search", () => {
         entry.offers.length +
         (entry.relic ? 1 : 0) +
         (entry.honoria ? 1 : 0) +
-        (entry.incarnon ? 1 : 0);
+        (entry.incarnon ? 1 : 0) +
+        (data.wiki.baro.get(entry.name) ? 1 : 0) +
+        (data.curated.items.has(entry.name) ? 1 : 0);
       expect(sources).toBeGreaterThan(0);
     }
   });

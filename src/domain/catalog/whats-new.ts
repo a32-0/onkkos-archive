@@ -13,6 +13,7 @@ import { releasesSince, type ArsenalShelf, type CollectionShelf } from "@/domain
 import { briefOf } from "@/domain/catalog/summary";
 import type { PlaceView } from "@/domain/place/build";
 import { itemGaps, type Reach, type ReachGap } from "@/domain/place/reach";
+import { stateOf } from "@/domain/place/state";
 
 type NewGroupName = ArsenalShelf | CollectionShelf;
 
@@ -22,6 +23,7 @@ interface NewTile {
   reading: Part[];
   where: Part[];
   route: Phrase | null;
+  mastered: boolean;
 }
 
 export interface Beyond {
@@ -37,6 +39,7 @@ export interface NewGroup {
   count: number;
   tiles: NewTile[];
   beyond: Beyond | null;
+  lenses: boolean;
 }
 
 export interface WhatsNew {
@@ -49,6 +52,7 @@ export interface WhatsNewSources {
   places: ReadonlySet<string>;
   bestPlaces: ReadonlyMap<string, string>;
   reach: Reach;
+  ranks?: ReadonlyMap<string, number> | null;
   now: number;
 }
 
@@ -105,10 +109,11 @@ function arsenalCandidate(
   item: CatalogItem,
   masteryRank: number | undefined,
 ): Candidate {
-  const { data, bestPlaces: places, reach, now } = sources;
+  const { data, bestPlaces: places, reach, ranks, now } = sources;
   const plan = stepPlan(data, dossier(item, data.arsenal), { now, masteryRank });
+  const mastered = stateOf({ ...item, masterable: true }, ranks ?? null).kind === "done";
   return {
-    tile: { name: item.name, art: item.imageUrl, ...tileLine(briefOf(plan)) },
+    tile: { name: item.name, art: item.imageUrl, ...tileLine(briefOf(plan)), mastered },
     gaps: itemGaps(reach, { masteryReq: item.masteryReq, place: places.get(item.name) ?? null }),
   };
 }
@@ -122,14 +127,19 @@ function collectionCandidate(
   const collectible = data.collectibles.get(name);
   if (!collectible) {
     return {
-      tile: { name, art, reading: NO_PARTS, where: NO_PARTS, route: null },
+      tile: { name, art, reading: NO_PARTS, where: NO_PARTS, route: null, mastered: false },
       gaps: itemGaps(reach, { masteryReq: 0, place: best.get(name) ?? null }),
     };
   }
   const view = collectibleView(data, collectible, places, reach.places ?? places);
   const place = view.routes[0]?.place ?? best.get(name) ?? null;
   return {
-    tile: { name, art, ...tileLine(briefOf(collectibleStepPlan(data, view, { now }))) },
+    tile: {
+      name,
+      art,
+      ...tileLine(briefOf(collectibleStepPlan(data, view, { now }))),
+      mastered: false,
+    },
     gaps: itemGaps(reach, { masteryReq: 0, place }),
   };
 }
@@ -148,12 +158,14 @@ function beyondOf(gapped: readonly ReachGap[][]): Beyond | null {
   };
 }
 
-function groupOf(group: NewGroupName, candidates: readonly Candidate[]): NewGroup {
+function groupOf(group: NewGroupName, candidates: readonly Candidate[], lenses: boolean): NewGroup {
+  const inReach = (one: Candidate) => one.tile.mastered || one.gaps.length === 0;
   return {
     group,
     count: candidates.length,
-    tiles: candidates.filter((one) => one.gaps.length === 0).map((one) => one.tile),
-    beyond: beyondOf(candidates.filter((one) => one.gaps.length > 0).map((one) => one.gaps)),
+    tiles: candidates.filter(inReach).map((one) => one.tile),
+    beyond: beyondOf(candidates.filter((one) => !inReach(one)).map((one) => one.gaps)),
+    lenses,
   };
 }
 
@@ -201,12 +213,14 @@ export function whatsNew(sources: WhatsNewSources, since: string): WhatsNew {
       groupOf(
         group,
         items.map(({ item }) => arsenalCandidate(sources, item, masteryRank)),
+        (sources.ranks ?? null) !== null,
       ),
     ),
     collection: releases.collection.map(({ group, items }) =>
       groupOf(
         group,
         items.map((item) => collectionCandidate(sources, item.name, item.imageUrl)),
+        false,
       ),
     ),
   };

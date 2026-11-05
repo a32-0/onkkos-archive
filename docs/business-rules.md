@@ -292,7 +292,7 @@ a reading of the earlier build against it was put to them.
   to the two. The `All` view leaves: the default is what is
   left.
 - Under the default and New, what is left is also what is in reach; the rest
-  is counted in the group's More line (BR-61).
+  is counted at the group's end (BR-61).
 - Since the Material pass (T-27b, owner, 2026-10-18) the control is the
   **View** row on a category's page, and a lens filters that category's
   items; the empty state takes the list's place (spec 07).
@@ -524,8 +524,14 @@ in force: BR-12, BR-13 and BR-14.
 - Frame `206:774` · pin (169, 467) · layer: Cards container › Card › Card image
   · comment `1933399323`
 - Type: state.
-- Rule: tiles in Catch up carry no Mastered or Rank state. The only marker
-  is NEW, counted in the group header ("3 NEW").
+- Rule: tiles in Catch up carry no Mastered or Rank marker. The only marker
+  is NEW, counted in the group header ("3 NEW"), and that count holds what is
+  mastered too.
+- A category of the Arsenal has a **View** on its page, To get and Mastered, as
+  the Star Chart's has (owner, 2026-11-04,
+  [`1072:7647`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7647)). To get opens first. It appears only
+  when the profile can tell the state (BR-68): a Collection category shows
+  everything, as before.
 
 ### BR-16 · What each Arsenal group holds
 
@@ -797,9 +803,11 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
   "~24 Runs · Rotation A". Settled by the owner on 2026-10-06.
 - Type: content.
 - Rule: wherever a tile or a Summary row names a drop, its gold line reads
-  "~~{n} Runs · Rotation {x}", or "~~{n} Runs" with no rotation. {n} is the runs
-  for an even chance at that drop's odds, the same number Step by step's detail
-  gives ("so about 13 runs for an even chance"), so the two views agree. A
+  "~~{n} Runs · Rotation {x}", or "~~{n} Runs" with no rotation, and "~~{n}
+  Kills" for an enemy. {n} is how many runs or kills give one drop on average,
+  the same number Step by step's detail gives ("so about 1 in 13 runs"), so the
+  two views agree (owner, 2026-11-04: "even chance" read as 50%, which it never
+  was). A
   route that is not a drop (a vendor, the Market, research) reads its own
   short line, as `briefOf()` writes it.
 - [`items.md`](items.md#the-number-that-was-asked-for-and-is-not-there)
@@ -834,8 +842,8 @@ settled where the frames disagreed with each other or with the docs.
   whose route only prose names, its Acquisition section; for anything else
   (a boss, a lab, a vendor), the lead of its page. A mission type's page with
   no Mechanics section gives its lead (owner, 2026-10-14). The data detail ("It drops at
-  rotation C, 7.5% a run, so about 13 runs for an even chance.") stays its own
-  first line, and "Wiki ↗" closes the passage.
+  rotation C, 7.5% a run, so about 1 in 13 runs.") stays its own
+  first line, and "Read on the wiki ↗" closes the passage.
 - This replaces the rule "one sentence per row and never more" in
   [`scenario-guidelines.md`](scenario-guidelines.md) and
   [`step-by-step.md`](step-by-step.md), which treated the drawn paragraphs as
@@ -978,13 +986,13 @@ on 2026-10-08.
 ### BR-60 · The map lists the places in reach
 
 - Frames `215:610` (the place list) and `270:786` (the system list);
-  `Place row` Beyond reach (`526:112`) and `More line` (`526:117`) on the Design
-  System page.
+  `Place row` Beyond reach (`526:112`) on the Design System page.
 - Type: behaviour.
 - Rule: the place list shows the system's places in reach, in their order,
-  then a More line: "3 more places open as you clear the junctions. Next: the
-  Venus Junction, on Earth." The system list shows the systems with a place
-  in reach, then "2 more systems open as you go further." Tau keeps "Soon™":
+  then the empty state of BR-61: "3 more out of reach", "Clear the Venus
+  Junction, on Earth, to open the next." The system list shows the systems with
+  a place in reach, then "2 more out of reach", "They open as you go further."
+  Tau keeps "Soon™":
   it is in no one's reach yet.
 - The place list's search filters every place of the system. A place beyond
   reach shows in its hits as the Beyond reach row, the gap in place of the
@@ -996,33 +1004,34 @@ on 2026-10-08.
 ### BR-61 · A group shows what is in reach, and counts the rest
 
 - Frames `212:159` (a group on the map) and `206:774` (a group in the
-  What's new); `More line` (`526:117`).
+  What's new).
 - Type: behaviour.
 - Rule: in a group, on the map and in What's new, the tiles are what is in
-  reach. What lies beyond is not drawn: the open group ends in a More line
-  that says how many, of what, and what stands in the way. {kind} is the
-  group's own noun ("primary weapons", "warframes", "mods"), singular for one;
-  {r} is the lowest rank among them:
+  reach. What lies beyond is not drawn: the open group ends in an empty state,
+  outside the card (BR-80), that says how many and what stands in the way
+  (owner, 2026-11-04). Its title is "{n} more out of reach"; with nothing else
+  on the page, "{n} {kind} out of reach", "{n} new {kind} out of reach" in
+  What's new. {kind} is the group's own noun, singular for one; {r} is the
+  lowest rank among them:
 
-  | Beyond by | Words                                                                                    |
-  | --------- | ---------------------------------------------------------------------------------------- |
-  | Rank      | "4 more primary weapons need Mastery Rank 8 or higher. You are Mastery Rank 5."          |
-  | Place     | "3 more mods come from places past Venus. Clear the Venus Junction, on Earth, to go on." |
-  | Both      | "6 more warframes need Mastery Rank 8 or a place past Venus."                            |
+  | Beyond by | Line                                                          |
+  | --------- | ------------------------------------------------------------- |
+  | Rank      | "They need Mastery Rank 8 or higher. You are Mastery Rank 5." |
+  | Place     | "Clear the Venus Junction, on Earth, to reach them."          |
+  | Both      | "They need Mastery Rank 8 or a place past Venus."             |
 
-  The line informs. It opens nothing; a search is the way to one of them
-  (BR-62).
+  It informs and opens nothing; a search is the way to one of them (BR-62). It
+  is never an Alert, which is for the app's own states.
 
-- What only the Dojo holds is counted in the words of BR-59's Dojo row: "2
-  more weapons come from the Dojo. Join a clan to enter it." A group held
-  back by a rank and by a clan reads "need Mastery Rank {r} or a clan's
-  Dojo". `content/reach.ts` holds the words; What's new (T-25) first speaks
-  them.
+- What only the Dojo holds is counted in the words of BR-59's Dojo row: "They
+  come from the Dojo. Join a clan to enter it." A group held back by a rank and
+  by a clan reads "They need Mastery Rank {r} or a clan's Dojo".
+  `content/reach.ts` holds the words.
 
 - The group's count ("{n} NEW" in What's new, "{n} New" on the map) counts
   everything new, in reach or not, so it adds up to the tiles and the line.
-- A group with nothing in reach and something beyond renders, its rail
-  holding only the More line.
+- A group with nothing in reach and something beyond renders, holding only
+  the empty state.
 - On the map this holds under the default lens and New. Mastered shows what
   the player has mastered, in reach by proof.
 
@@ -1044,7 +1053,7 @@ on 2026-10-08.
 
 ### BR-63 · A plan dims what waits on an unmet prerequisite
 
-- `Step row` Locked (`526:96`, `528:97` with art) and `Component row` Locked (`526:102`), over the
+- `Step row` Locked (`526:96`, `1087:7336` with art) and `Component row` Locked (`526:102`), over the
   scenario frames of spec 10.
 - Type: state.
 - Rule: when a prerequisite the profile proves unmet stands in Prerequisites,
@@ -1088,7 +1097,7 @@ on 2026-10-08.
   group's game icon (BR-42) and how many of its items are still to master. No
   percentage and no other word: the icons say what is counted, and the app
   does the sums.
-- What lies beyond reach is not counted here; the groups' More lines count it
+- What lies beyond reach is not counted here; the groups' ends count it
   (BR-61). A mastered place shows no row.
 - The card counts items alone. It carried the place's nodes until
   2026-10-17; the owner removed them, since a place is mastered by its items
@@ -1258,12 +1267,12 @@ on 2026-10-08.
   - Duviri's "Endless: Tier 6" reads "Play the Circuit" ("Play the Steel
     Path Circuit" for its Hard tables), with the tier in the detail: "A
     reward for reaching tier 6 of an Endless run, 1.03% each time, so about
-    97 runs for an even chance." It links to The Circuit.
+    1 in 97 runs." It links to The Circuit.
   - A node's "(Caches)" table reads "Open the caches on {node}", and its
     "(Extra)" table joins the node's own row.
   - A Profit-Taker phase reads "Play the Profit-Taker bounty, phase 1".
-  - A drop that always comes reads "It drops every run.", never "100% a run,
-    so about 1 run for an even chance."
+  - A drop that always comes reads "It drops every run.", never "100% a run".
+    One that comes at least two times in three reads "so nearly every run".
   - A table's "Rewards" is left out of the title, and its mode stays:
     "Play Nokko: Critter Liberation (Steel Path)".
     The test `step-words.test.ts` checks each of these on every plan.
@@ -1349,7 +1358,8 @@ that other recipes take. The other proposals went to the Archive page.
   `--state-rank`.
 - Under it, the share in whole percent, never rounded up to 100, and
   "Progress to Rank {n}" on the goal. On Profile that line is the call to
-  open the goal: "See the way to Rank {n}", or "See the Rank {n} test" with a
+  open the goal, and the figure says what it measures, "92% to Rank {n}"
+  (owner, 2026-11-04): "See the way", or "See the test" with a
   full bar. It read "Of the way to Rank {n}" until 2026-11-02; the owner
   found it odd on its own, under the figure.
 - Many to rank: three `Item chip`s, the most mastery left first, then a
@@ -1444,3 +1454,41 @@ that other recipes take. The other proposals went to the Archive page.
   schema is raised, and released apps keep their own set until they update.
 - The route answers only in the app (`WF_EDITION=app`), never reads a
   profile, and on the demo site answers 404.
+
+## Enemy drops and what Plan finds: settled on 2026-11-04
+
+### BR-83 · A drop from an enemy is never left out by missions
+
+- Frame [`1066:7245` Item>Step by step — Enemy drop after missions](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1066-7245).
+  Asked for by a player on Steam, settled by the owner on 2026-11-04.
+- Type: ordering and content.
+- Rule: a collection item shows four ways at most, best odds first (BR-72).
+  When those four hold no enemy and an enemy drops it at 0.5% a kill or more, the
+  fourth way is that enemy's. It reads "Or defeat {enemy}", and its odds read
+  per kill: "9.48% a kill, so about 1 in 11 kills."
+- The floor is one number because no source says how often an enemy appears.
+  DE's tables give each enemy's drop chance, not its spawn rate, and common
+  enemies carry low chances, so the floor sits under 1% to keep them (owner,
+  2026-11-04).
+- A table with rotations is a mission, whatever its name: it reads "Play
+  {it}", per run. Sunkiller is one.
+
+### BR-84 · Plan finds what has a known source
+
+- Asked for by the owner on 2026-11-04, after Legendary Core did not appear.
+- Type: content.
+- Rule: an entry of the catalog is searchable when any source says how to get
+  it: a drop, a vendor, Baro, a recipe or `sources.yaml`. That brings in Primed
+  mods, Archon Shards, Legendary Core, companion weapons, companion and Zaw
+  parts, and Railjack weapons, whose drops name their house ("Zetki Apoc Mk I").
+- Captura scenes, Conservation Tags and Ship Segments stay out (owner,
+  2026-11-04).
+
+### BR-85 · In Step by step, only Blueprints and Components carry art
+
+- Settled by the owner on 2026-11-04.
+- Type: content.
+- Rule: below the item's hero, art belongs to Blueprints (a flat list's rows, a
+  part card's header) and Components. Every other row is words alone:
+  Prerequisites, How to get and the steps inside a part's card, an enemy's
+  included. Overview keeps its art.

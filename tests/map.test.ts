@@ -120,8 +120,8 @@ describe("reach on the map (BR-59 to BR-62)", () => {
       .places.flatMap((place) => viewOf(ordis, "origin", place, null).sections)
       .flatMap((section) => section.groups);
     const held = groups.find((group) => group.more.left !== null);
-    expect(held?.more.left).toMatch(
-      /^\d+ more .+ Mastery Rank \d+ or higher\. You are Mastery Rank 2\.$/,
+    expect(held?.more.left?.line).toMatch(
+      /^(It needs|They need) Mastery Rank \d+ or higher\. You are Mastery Rank 2\.$/,
     );
     expect(held?.tiles.some((tile) => tile.beyond)).toBe(true);
     for (const tile of held?.tiles.filter((one) => shownUnder(one, "left")) ?? []) {
@@ -129,14 +129,15 @@ describe("reach on the map (BR-59 to BR-62)", () => {
     }
   });
 
-  it("lists the places up to the frontier, then the More line, and finds the rest by search", () => {
+  it("lists the places up to the frontier, then what is beyond, and finds the rest by search", () => {
     const view = viewOf(ordis, "origin", "Earth", null);
     const origin = view.places.find((one) => one.id === "origin")!;
     const listed = origin.rows.filter((row) => row.listed);
     expect(listed.length).toBeGreaterThan(0);
     expect(listed.length).toBeLessThan(origin.rows.length);
-    expect(origin.more).toMatch(
-      /^\d+ more places open as you clear the junctions and join a clan\. Next: the .+ Junction, on .+\.$/,
+    expect(origin.more?.title).toMatch(/^\d+ more out of reach$/);
+    expect(origin.more?.line).toMatch(
+      /^Clear the junctions and join a clan\. Next: the .+ Junction, on .+\.$/,
     );
     const beyond = origin.rows.find((row) => !row.listed && row.gap?.startsWith("Clear the"));
     expect(beyond?.gap).toMatch(/^Clear the .+ Junction, on .+, to reach it\.$/);
@@ -157,10 +158,10 @@ describe("reach on the map (BR-59 to BR-62)", () => {
     const view = viewOf(ordis, "origin", "Earth", null);
     expect(view.systems.find((one) => one.id === "tau")?.soon).toBe("Soon™");
     expect(view.systems.length).toBeLessThan(systems.length);
-    expect(view.moreSystems).toMatch(/^\d+ more systems? opens? as you go further\.$/);
+    expect(view.moreSystems?.line).toMatch(/^(It opens|They open) as you go further\.$/);
   });
 
-  it("shows every place, system and item, with no More line, to a profile it cannot place", () => {
+  it("shows every place, system and item, with nothing counted away, to a profile it cannot place", () => {
     const view = viewOf({}, "origin", "Earth", null);
     const origin = view.places.find((one) => one.id === "origin")!;
     expect(origin.rows.every((row) => row.listed && row.gap === undefined)).toBe(true);

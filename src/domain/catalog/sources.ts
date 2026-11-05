@@ -86,6 +86,7 @@ const source = z.discriminatedUnion("type", [
     rank: z.string().optional(),
     quest: z.string().optional(),
   }),
+  z.object({ type: z.literal("tribute"), days: z.array(z.number()) }),
   z.object({
     type: z.literal("circuit"),
     mode: z.enum(["normal", "steelPath"]),
@@ -95,6 +96,7 @@ const source = z.discriminatedUnion("type", [
 ]);
 
 const entry = z.object({ item: z.string(), cite: z.string(), routes: z.array(source).min(1) });
+const tribute = z.object({ item: z.string(), days: z.array(z.number()), cite: z.string() });
 const gate = z.object({ vendor: z.string(), quests: z.array(z.string()).min(1), cite: z.string() });
 const store = z.object({
   store: z.string(),
@@ -116,10 +118,20 @@ export interface Curated {
 
 export function normalizeSources(input: unknown): Curated {
   const raw = z
-    .object({ vendors: z.array(gate), stores: z.array(store).default([]), items: z.array(entry) })
+    .object({
+      vendors: z.array(gate),
+      stores: z.array(store).default([]),
+      items: z.array(entry),
+      tribute: z.array(tribute).default([]),
+    })
     .parse(input);
   const items = new NameMap<CuratedEntry>();
-  for (const one of raw.items) {
+  const milestones = raw.tribute.map(({ item, days, cite }) => ({
+    item,
+    cite,
+    routes: [{ type: "tribute" as const, days }],
+  }));
+  for (const one of [...raw.items, ...milestones]) {
     if (items.has(one.item)) throw new Error(`duplicate source: ${one.item}`);
     items.set(one.item, one);
   }

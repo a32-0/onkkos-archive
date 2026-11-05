@@ -61,7 +61,7 @@ interface RelicRoute {
   offer: RelicOffer;
 }
 
-interface EnemyRoute {
+export interface EnemyRoute {
   kind: "enemy";
   source: string;
   rotation: string | null;

@@ -25,6 +25,7 @@ import {
   type CompanionSystem,
   type Requirement,
   type ResolvedPart,
+  type EnemyRoute,
   type Route,
 } from "@/domain/catalog/scenario";
 import { curatedFor, vendorGates, type Cost, type CuratedSource } from "@/domain/catalog/sources";
@@ -36,11 +37,14 @@ import { wikiFileUrl } from "@/domain/wiki-links";
 
 type None = Record<never, never>;
 
+type OddsUnit = "run" | "kill";
+
 interface Odds {
   rotation: string | null;
   stage: string | null;
   chance: number | null;
   runs: number | null;
+  unit: OddsUnit;
 }
 
 interface RelicFacts {
@@ -294,6 +298,8 @@ interface Says {
   eventDetail: { vendor: string | null; costs: Cost[] | null; progress: number | null };
   goalTitle: { focus: number; wearing: string };
   weeklyTitle: { mission: string };
+  tributeTitle: None;
+  tributeDetail: { days: number[] };
   weeklyDetail: { boss: string | null; pulses: number | null; rank: string | null };
   goalDetail: None;
   circuitModeTitle: { mode: CircuitMode };
@@ -368,6 +374,8 @@ export interface Reader {
 }
 
 const ALTERNATIVES_SHOWN = 4;
+const ENEMY_FLOOR = 0.5;
+const ENEMY = "enemy";
 const PHASE = /^Level [\d\s-]+?\s+(.+?) - Phase (\d+)$/i;
 const MAIN_PART = "Blueprint";
 const JUNCTION = / Junction$/;
@@ -479,8 +487,13 @@ function acquisition(title: string): ProseAsk {
   return { title, source: "acquisition" };
 }
 
-function odds(rotation: string | null, stage: string | null, chance: number | null): Odds {
-  return { rotation, stage, chance, runs: oneIn(chance) };
+function odds(
+  rotation: string | null,
+  stage: string | null,
+  chance: number | null,
+  unit: OddsUnit = "run",
+): Odds {
+  return { rotation, stage, chance, runs: oneIn(chance), unit };
 }
 
 function hasOdds(value: Odds): boolean {
@@ -735,6 +748,12 @@ function curatedFacts(
         brief: parts(price),
       };
     }
+    case "tribute":
+      return {
+        title: say("tributeTitle"),
+        detail: say("tributeDetail", { days: source.days }),
+        brief: [],
+      };
     case "goal":
       return {
         title: say("goalTitle", { focus: source.focus, wearing: source.wearing }),
@@ -785,7 +804,8 @@ function routeDetail(data: CatalogData, reader: Reader, route: Route, status = t
       return parts(oddsDetail(odds(route.rotation, route.stage, route.chance)));
     case "enemy":
       return parts(
-        oddsDetail(odds(route.rotation, null, route.chance)) ?? say("chanceUnknownDetail"),
+        oddsDetail(odds(route.rotation, null, route.chance, unitOf(data, route))) ??
+          say("chanceUnknownDetail"),
       );
     case "relic":
       return parts(relicOddsDetail(relicFacts(route, status)));
@@ -813,8 +833,9 @@ function routeBrief(data: CatalogData, reader: Reader, route: Route): Part[] {
     case "curated":
       return curatedFacts(data, reader, route.source, route.item).brief;
     case "drop":
-    case "enemy":
       return parts(oddsBrief(odds(route.rotation, null, route.chance)));
+    case "enemy":
+      return parts(oddsBrief(odds(route.rotation, null, route.chance, unitOf(data, route))));
     case "endless":
       return parts(oddsBrief(odds(null, null, route.chance)));
     case "bounty":
@@ -879,11 +900,17 @@ function routeRow(
       );
     }
     case "enemy":
-      return row(id, sourceTitle(data, route.source), {
-        ...shared,
-        wikiTitle: baseOf(route.source),
-        imageUrl: sourceArt(data, route.source),
-      });
+      return row(
+        id,
+        route.rotation === null
+          ? sourceTitle(data, route.source)
+          : say("playTitle", { node: route.source.replace(REWARDS, "") }),
+        {
+          ...shared,
+          wikiTitle: baseOf(route.source),
+          imageUrl: route.rotation === null ? sourceArt(data, route.source) : null,
+        },
+      );
     case "relic":
       return row(
         id,
@@ -2226,6 +2253,27 @@ function sourceArt(data: CatalogData, source: string): string | null {
   return data.dropSources[baseOf(source)]?.art ?? null;
 }
 
+function defeated(data: CatalogData, route: EnemyRoute): boolean {
+  return (
+    route.rotation === null && (data.dropSources[baseOf(route.source)]?.kind ?? ENEMY) === ENEMY
+  );
+}
+
+function unitOf(data: CatalogData, route: EnemyRoute): OddsUnit {
+  return defeated(data, route) ? "kill" : "run";
+}
+
+function isFoe(data: CatalogData, route: Route): boolean {
+  return route.kind === "enemy" && defeated(data, route);
+}
+
+function waysShown(data: CatalogData, routes: readonly Route[], room: number): Route[] {
+  const shown = routes.slice(0, room);
+  if (room < 2 || shown.some((route) => isFoe(data, route))) return shown;
+  const foe = routes.find((route) => isFoe(data, route) && (chanceOf(route) ?? 0) >= ENEMY_FLOOR);
+  return foe ? [...shown.slice(0, room - 1), foe] : shown;
+}
+
 const REGIONS_SHOWN = 3;
 
 function collectibleRouteRows(
@@ -2234,7 +2282,7 @@ function collectibleRouteRows(
   routes: readonly Route[],
   room: number,
 ) {
-  const shown = routes.slice(0, room);
+  const shown = waysShown(data, routes, room);
   const best = bestFlags(shown.map(chanceOf));
   return shown.map((route, index) => ({
     ...routeRow(data, reader, `route:${index}`, route),

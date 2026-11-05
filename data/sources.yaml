@@ -1021,3 +1021,276 @@ items:
         pulses: 2
         rank: Illuminate
         quest: Whispers in the Walls
+
+  - item: Crimson Archon Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Amar, quest: Veilbreaker }
+      - type: vendor
+        vendor: Bird 3
+        place: Sanctum Anatomica
+        costs: [{ currency: Standing, amount: 30000 }]
+        rank: Illuminate
+        quest: Whispers in the Walls
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Tauforged Crimson Archon Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Amar, quest: Veilbreaker }
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Amber Archon Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Nira, quest: Veilbreaker }
+      - type: vendor
+        vendor: Bird 3
+        place: Sanctum Anatomica
+        costs: [{ currency: Standing, amount: 30000 }]
+        rank: Illuminate
+        quest: Whispers in the Walls
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Tauforged Amber Archon Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Nira, quest: Veilbreaker }
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Azure Archon Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Boreal, quest: Veilbreaker }
+      - type: vendor
+        vendor: Bird 3
+        place: Sanctum Anatomica
+        costs: [{ currency: Standing, amount: 30000 }]
+        rank: Illuminate
+        quest: Whispers in the Walls
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Tauforged Azure Archon Shard
+    cite: Archon Shard
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: Archon Boreal, quest: Veilbreaker }
+      - { type: weekly, mission: a Netracell, pulses: 1, quest: Whispers in the Walls }
+      - type: weekly
+        mission: Deep Archimedea
+        pulses: 2
+        rank: Illuminate
+        quest: Whispers in the Walls
+
+  - item: Emerald Archon Shard
+    cite: Archon Shard
+    routes:
+      - type: weekly
+        mission: Temporal Archimedea
+        pulses: 2
+        rank: Pizza Party
+        quest: The Hex
+
+  - item: Tauforged Emerald Archon Shard
+    cite: Archon Shard
+    routes:
+      - type: weekly
+        mission: Temporal Archimedea
+        pulses: 2
+        rank: Pizza Party
+        quest: The Hex
+
+  - item: Topaz Archon Shard
+    cite: Archon Shard
+    routes:
+      - type: weekly
+        mission: Temporal Archimedea
+        pulses: 2
+        rank: Pizza Party
+        quest: The Hex
+
+  - item: Tauforged Topaz Archon Shard
+    cite: Archon Shard
+    routes:
+      - type: weekly
+        mission: Temporal Archimedea
+        pulses: 2
+        rank: Pizza Party
+        quest: The Hex
+
+  - item: Violet Archon Shard
+    cite: Archon Shard
+    routes:
+      - type: weekly
+        mission: Temporal Archimedea
+        pulses: 2
+        rank: Pizza Party
+        quest: The Hex
+
+  - item: Tauforged Violet Archon Shard
+    cite: Archon Shard
+    routes:
+      - type: weekly
+        mission: Temporal Archimedea
+        pulses: 2
+        rank: Pizza Party
+        quest: The Hex
+
+  - item: Legendary Core
+    cite: Legendary Core
+    routes:
+      - { type: weekly, mission: the Archon Hunt, boss: an Archon, quest: Veilbreaker }
+      - type: event
+        event: "Epoch Operation: Taubound"
+        vendor: Praghasa
+        costs: [{ currency: Moonflesh, amount: 500 }]
+
+  - item: Artax
+    cite: Artax
+    routes:
+      - type: bundled
+        with: [Taxon]
+
+  - item: Burst Laser
+    cite: Burst Laser
+    routes:
+      - type: bundled
+        with: [Shade]
+
+  - item: Burst Laser Prime
+    cite: Burst Laser Prime
+    routes:
+      - type: bundled
+        with: [Shade Prime]
+
+  - item: Deconstructor
+    cite: Deconstructor
+    routes:
+      - type: bundled
+        with: [Helios]
+
+  - item: Deconstructor Prime
+    cite: Deconstructor Prime
+    routes:
+      - type: bundled
+        with: [Helios Prime]
+
+  - item: Deth Machine Rifle
+    cite: Deth Machine Rifle
+    routes:
+      - type: bundled
+        with: [Dethcube]
+
+  - item: Deth Machine Rifle Prime
+    cite: Deth Machine Rifle Prime
+    routes:
+      - type: bundled
+        with: [Dethcube Prime]
+
+  - item: Laser Rifle
+    cite: Laser Rifle
+    routes:
+      - type: bundled
+        with: [Wyrm]
+
+  - item: Multron
+    cite: Multron
+    routes:
+      - type: bundled
+        with: [Oxylus]
+
+  - item: Prime Laser Rifle
+    cite: Prime Laser Rifle
+    routes:
+      - type: bundled
+        with: [Wyrm Prime]
+
+  - item: Prisma Burst Laser
+    cite: Prisma Burst Laser
+    routes:
+      - type: bundled
+        with: [Prisma Shade]
+
+  - item: Stinger
+    cite: Stinger
+    routes:
+      - type: bundled
+        with: [Djinn]
+
+  - item: Sweeper
+    cite: Sweeper
+    routes:
+      - type: bundled
+        with: [Carrier]
+
+  - item: Sweeper Prime
+    cite: Sweeper Prime
+    routes:
+      - type: bundled
+        with: [Carrier Prime]
+
+  - item: Verglas
+    cite: Verglas
+    routes:
+      - type: bundled
+        with: [Nautilus]
+
+  - item: Verglas Prime
+    cite: Verglas Prime
+    routes:
+      - type: bundled
+        with: [Nautilus Prime]
+
+  - item: Vulklok
+    cite: Vulklok
+    routes:
+      - type: bundled
+        with: [Diriga]
+
+  - item: Akaten
+    cite: Akaten
+    routes:
+      - type: bundled
+        with: [Hound with the Hec Model]
+
+  - item: Batoten
+    cite: Batoten
+    routes:
+      - type: bundled
+        with: [Hound with the Dorma Model]
+
+  - item: Lacerten
+    cite: Lacerten
+    routes:
+      - type: bundled
+        with: [Hound with the Bhaira Model]
+
+tribute:
+  - { item: Primed Fury, days: [200, 400, 600, 900], cite: Primed Fury }
+  - { item: Primed Shred, days: [200, 400, 600, 900], cite: Primed Shred }
+  - { item: Primed Sure Footed, days: [400, 600, 900], cite: Primed Sure Footed }
+  - { item: Primed Vigor, days: [200, 400, 600, 900], cite: Primed Vigor }

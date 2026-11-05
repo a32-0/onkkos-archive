@@ -70,14 +70,14 @@ and "Or" on an alternative, which has no diamond. A relic alternative reads
 is named by its node (BR-27).
 
 The detail is one line of data ("It drops at rotation C, 7.5% a run, so about
-13 runs for an even chance."). The prose under it is the wiki's passage in
+1 in 13 runs."). The prose under it is the wiki's passage in
 its paragraphs (BR-48): a mission type's Mechanics section up to its first
 subsection, an item's Acquisition section for a route only prose names, and
 the page's lead otherwise. `brief()` in `src/infra/wiki/client.ts` trims it
 with no hand-written text: a line that is not a sentence is dropped (a
 list's lead ending in a colon, an audio caption), a footnote's number is
-taken off, and the passage stops at three sentences. "Wiki ↗" closes the passage; a thing the app has its own page for
-reads "How to get it" and opens that page instead (BR-30).
+taken off, and the passage stops at three sentences. "Read on the wiki ↗" closes the passage; a thing the app has its own page for
+reads "How to get it →" and opens that page instead (BR-30).
 
 ## Collection takes the same rows (BR-72)
 
@@ -86,7 +86,8 @@ from the routes an item's part would get (`collectibleRoutes()`): DE's place
 rewards (a bundle like "5X Fass Residue" only when the thing has no drop of
 its own), relic rewards, enemy drops and a vendor's rank. The plan joins
 them as it does an item's: one row a node, rotations merged, one row a bounty level,
-and the best odds first, a Conclave drop last. A resource that any mission
+and the best odds first, a Conclave drop last. The art has
+no ground behind it. A resource that any mission
 on a planet drops (`region-resources.json`) leads with up to three "Play any
 mission on {planet}" rows, and the rest fills the four ways. A recipe adds
 where its blueprint comes from (`blueprintRoutes()`: a drop of the

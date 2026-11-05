@@ -42,7 +42,7 @@ function tileWords(tile: MapTile): { reading: string; place: string } {
   if (tile.route) {
     const { runs, rotation, chance, node, mission } = tile.route;
     return {
-      reading: BRIEF.oddsBrief({ runs, rotation, stage: null, chance }) ?? "",
+      reading: BRIEF.oddsBrief({ runs, rotation, stage: null, chance, unit: "run" }) ?? "",
       place: briefLine([node, mission]),
     };
   }
@@ -69,12 +69,21 @@ function tileView(tile: MapTile, group: string): MapTileView {
   };
 }
 
-function moreLine(group: MapGroup, have: number | null, shown: (tile: MapTile) => boolean) {
+function beyondWords(
+  group: MapGroup,
+  have: number | null,
+  shown: (tile: MapTile) => boolean,
+  fresh: boolean,
+) {
   const needs = group.tiles.flatMap((tile) =>
     shown(tile) && tile.need !== null ? [tile.need] : [],
   );
   if (needs.length === 0 || have === null) return null;
-  return REACH.rank(needs.length, MAP.groups[group.group], Math.min(...needs), have);
+  return {
+    title: REACH.title(needs.length),
+    whole: REACH.whole(needs.length, MAP.groups[group.group], fresh),
+    line: REACH.rank(needs.length, Math.min(...needs), have),
+  };
 }
 
 function groupView(
@@ -93,8 +102,8 @@ function groupView(
     ...(GROUP_SYMBOLS[group.group] && { symbol: GROUP_SYMBOLS[group.group] }),
     tiles: group.tiles.map((tile) => tileView(tile, group.group)),
     more: {
-      left: moreLine(group, map.rank, (tile) => tile.left),
-      fresh: moreLine(group, map.rank, (tile) => tile.fresh),
+      left: beyondWords(group, map.rank, (tile) => tile.left, false),
+      fresh: beyondWords(group, map.rank, (tile) => tile.fresh, true),
     },
   };
 }
@@ -136,12 +145,18 @@ function isStartAt(start: PlaceRef | null, system: string, place?: string): bool
   return place === undefined || start.place === place;
 }
 
-function moreFor(standings: readonly PlaceStanding[], onView: string | null): string | null {
+function moreFor(
+  standings: readonly PlaceStanding[],
+  onView: string | null,
+): { title: string; line: string } | null {
   const beyond = standings.filter((one) => one.gap !== null && one.place !== onView);
   if (beyond.length === 0) return null;
   const next = beyond.flatMap((one) => (one.gap?.kind === "junction" ? [one.gap] : []))[0];
   const clan = beyond.some((one) => one.gap?.kind === "clan");
-  return MAP.morePlaces(beyond.length, next ? { from: next.from, to: next.to } : null, clan);
+  return {
+    title: REACH.title(beyond.length),
+    line: MAP.morePlaces(beyond.length, next ? { from: next.from, to: next.to } : null, clan),
+  };
 }
 
 function placeList(input: MapViewInput): PlaceListSystem[] {
@@ -242,6 +257,6 @@ export function mapView(input: MapViewInput): MapView {
     system: map.system.id,
     places: placeList(input),
     systems: listed.map((standing) => systemRow(standing, input)),
-    moreSystems: hidden > 0 ? MAP.moreSystems(hidden) : null,
+    moreSystems: hidden > 0 ? { title: REACH.title(hidden), line: MAP.moreSystems(hidden) } : null,
   };
 }

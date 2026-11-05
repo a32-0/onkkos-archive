@@ -69,8 +69,12 @@ export function profileRoute(from: string | null): string {
   return withQuery(ROUTES.profile, { from });
 }
 
-export function catchUpCategoryRoute(category: string, step: CatchUpStep | null): string {
-  return withQuery(`${ROUTES.catchUp}/${category}`, { step });
+export function catchUpCategoryRoute(
+  category: string,
+  step: CatchUpStep | null,
+  view: string | null = null,
+): string {
+  return withQuery(`${ROUTES.catchUp}/${category}`, { step, view });
 }
 
 export type UpdatesFrom = "resume" | "navigation";

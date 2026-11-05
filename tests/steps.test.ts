@@ -76,9 +76,7 @@ describe("Step by step draws each scenario as its frame does (spec 10)", () => {
     const rows = blueprints?.cards[0]?.groups[0]?.rows ?? [];
     expect(rows.map((row) => row.title)).toEqual(["Blueprint", "Chassis", "Neuroptics", "Systems"]);
     expect(rows.every((row) => typeof row.art === "string")).toBe(true);
-    expect(rows[0]?.detail).toBe(
-      "It drops at rotation C, 7.5% a run, so about 13 runs for an even chance.",
-    );
+    expect(rows[0]?.detail).toBe("It drops at rotation C, 7.5% a run, so about 1 in 13 runs.");
   });
 
   it("gives Ash one card per part, each under its header, best odds first (BR-25)", () => {
@@ -320,7 +318,7 @@ describe("a collection item reads like an item (spec 10, BR-72)", () => {
       how.every((row) => row.title.say !== "playTitle" || !row.title.node.includes(", ")),
     ).toBe(true);
     expect(how[0]?.detail).toEqual([
-      { say: "odds", rotation: "B–C", stage: null, chance: 14.29, runs: 7 },
+      { say: "odds", rotation: "B–C", stage: null, chance: 14.29, runs: 7, unit: "run" },
     ]);
   });
 
@@ -338,6 +336,52 @@ describe("a collection item reads like an item (spec 10, BR-72)", () => {
     });
     const quests = rowsIn(plan, "prerequisites").find((row) => row.id.startsWith("quests:"));
     expect(quests?.id.split("|").at(-1)).toBe("Veilbreaker");
+  });
+
+  it("shows art on Blueprints and Components only (BR-85)", () => {
+    const view = viewOf("Dante");
+    for (const block of view.blocks) {
+      const rows = block.cards.flatMap((card) => card.groups.flatMap((group) => group.rows));
+      const pictured = block.key === "blueprints" || block.key === "components";
+      expect(rows.every((row) => "art" in row === pictured)).toBe(true);
+    }
+  });
+
+  it("keeps a drop from an enemy as the fourth way, read per kill", () => {
+    const how = rowsIn(collectiblePlanOf("Fast Hands"), "how");
+    expect(how).toHaveLength(4);
+    const fourth = how[3];
+    expect(fourth?.title).toEqual({ say: "defeatTitle", source: "Grineer Manic" });
+    expect(fourth?.detail).toEqual([
+      { say: "odds", rotation: null, stage: null, chance: 9.48, runs: 11, unit: "kill" },
+    ]);
+  });
+
+  it("leaves out an enemy under 0.5% when missions fill the list", () => {
+    const how = rowsIn(collectiblePlanOf("Blackout Pulse"), "how");
+    expect(how.map((row) => row.title.say)).not.toContain("defeatTitle");
+  });
+
+  it("reads a table with rotations as something to play, never to defeat", () => {
+    const how = rowsIn(collectiblePlanOf("Point Blank"), "how");
+    const says = how.map((row) => JSON.stringify(row.title));
+    expect(says.some((one) => one.includes("Sunkiller") && one.includes("defeatTitle"))).toBe(
+      false,
+    );
+  });
+
+  it("answers the endgame items no drop table lists", () => {
+    const first = (name: string) => rowsIn(collectiblePlanOf(name), "how")[0]?.title.say;
+    expect(first("Legendary Core")).toBe("weeklyTitle");
+    expect(first("Azure Archon Shard")).toBe("weeklyTitle");
+    expect(first("Tauforged Violet Archon Shard")).toBe("weeklyTitle");
+    expect(first("Primed Flow")).toBe("baroTitle");
+    expect(first("Primed Vigor")).toBe("tributeTitle");
+    expect(first("Deconstructor")).toBe("bundledTitle");
+    expect(first("Apoc Mk I")).toBe("defeatTitle");
+    for (const name of ["Ekwana Jai", "Adlet Core", "Cryotra"]) {
+      expect(data.collectibles.has(name)).toBe(true);
+    }
   });
 
   it("trades for a vaulted relic, then visits Baro", () => {

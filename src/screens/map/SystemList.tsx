@@ -3,7 +3,7 @@ import { VOICE } from "@/content/voice";
 import { placesRoute } from "@/routes";
 import { Link } from "@/screens/shell/Link";
 import { List, ListEntry } from "@/ui/List/List";
-import { MoreLine } from "@/ui/MoreLine/MoreLine";
+import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { SystemRow } from "@/ui/SystemRow/SystemRow";
 
@@ -19,7 +19,7 @@ export function SystemList({
   voice,
 }: {
   systems: readonly SystemRowView[];
-  more: string | null;
+  more: { title: string; line: string } | null;
   chosen: string;
   system: string;
   place: string;
@@ -50,7 +50,7 @@ export function SystemList({
           </ListEntry>
         ))}
       </List>
-      {more && <MoreLine text={more} />}
+      {more && <EmptyState icon="auto-stories" title={more.title} line={more.line} />}
     </div>
   );
 }

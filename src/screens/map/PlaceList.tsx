@@ -9,7 +9,6 @@ import { EmptyState } from "@/ui/EmptyState/EmptyState";
 import { fit } from "@/ui/fit";
 import { Icon } from "@/ui/Icon/Icon";
 import { List, ListEntry } from "@/ui/List/List";
-import { MoreLine } from "@/ui/MoreLine/MoreLine";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { Orb } from "@/ui/Orb/Orb";
 import { PlaceRow } from "@/ui/PlaceRow/PlaceRow";
@@ -84,7 +83,9 @@ export function PlaceList({
           ))}
         </List>
       )}
-      {!typed && system.more && <MoreLine text={system.more} />}
+      {!typed && system.more && (
+        <EmptyState icon="auto-stories" title={system.more.title} line={system.more.line} />
+      )}
     </div>
   );
 }

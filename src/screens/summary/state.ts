@@ -1,3 +1,4 @@
+import type { BeyondWords } from "@/content/reach";
 import type { IconName } from "@/ui/Icon/glyphs";
 import type { FeaturedCardKind } from "@/ui/FeaturedCard/FeaturedCard";
 
@@ -7,7 +8,10 @@ interface SummaryTile {
   art: string | null;
   reading: string;
   place: string;
+  mastered: boolean;
 }
+
+export type SummaryLens = "left" | "mastered";
 
 export interface SummaryGroup {
   id: string;
@@ -17,7 +21,9 @@ export interface SummaryGroup {
   symbol?: IconName;
   count: string;
   tiles: SummaryTile[];
-  more: string | null;
+  more: BeyondWords | null;
+  lenses: boolean;
+  empty: Record<SummaryLens, { title: string; line: string }>;
 }
 
 export interface SummarySection {

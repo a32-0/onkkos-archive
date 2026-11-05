@@ -119,7 +119,7 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    title alone), then the `Rank overview` (BR-77) with `Link=Yes`: the
    player's glyph in the square and the share of the way to the next rank,
    which together open the goal (`/goals/rank`). Its line, in `--link`, is
-   the call: "See the way to Rank {n}", or "See the Rank {n} test" with a full
+   the call: "See the way", or "See the test" with a full
    bar. No chips and no empty state: what to rank, and the test, are the
    goal's and Plan's (owner, 2026-11-02). The highest rank reads
    "The highest rank there is", opens nothing and has no empty state. A profile with no `XPInfo` keeps the avatar square, the name

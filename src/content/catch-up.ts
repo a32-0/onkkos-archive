@@ -35,6 +35,19 @@ export const SUMMARY = {
     ephemera: { name: "Ephemera", one: "Ephemera", many: "Ephemera" },
     honoria: { name: "Honoria", one: "Honoria", many: "Honorias" },
   },
+  view: "View",
+  toGet: "To get",
+  mastered: "Mastered",
+  emptyLens: ({ many }: { many: string }) => ({
+    left: {
+      title: "Nothing left to get",
+      line: `You have mastered every new ${many === many.toLowerCase() ? many.replace(/s$/, "") : many}.`,
+    },
+    mastered: {
+      title: "Nothing mastered yet",
+      line: `The new ${many} you master show up here.`,
+    },
+  }),
   nothingNew: (month: string) => `Nothing new since ${month}`,
   nothingNewLine: "The arsenal and the collection are as you left them.",
   skip: "Skip",
