@@ -8,6 +8,8 @@ files:
   - dist/**
   - package.json
 afterPack: scripts/after-pack.mjs
+electronLanguages:
+  - en-US
 win:
   target: nsis
 appx:
@@ -23,6 +25,7 @@ nsis:
   oneClick: true
   perMachine: false
   deleteAppDataOnUninstall: true
+  include: installer.nsh
   artifactName: onkkos-archive-${version}-setup.${ext}
 linux:
   target: AppImage

@@ -5,6 +5,7 @@ import { app, Notification, type UtilityProcess } from "electron";
 import electronUpdater from "electron-updater";
 
 import { channelOf } from "./channel.js";
+import { cacheBase, dropInstalledUpdate, pendingFolder } from "./update-cache.js";
 
 const { autoUpdater } = electronUpdater;
 
@@ -64,6 +65,8 @@ function checkNow(): Promise<UpdateState> {
 
 export function keepUpdated(): void {
   if (!updatesItself()) return;
+  const pending = pendingFolder(path.join(process.resourcesPath, "app-update.yml"), cacheBase());
+  if (pending) dropInstalledUpdate(pending, app.getVersion());
   autoUpdater.autoDownload = true;
   autoUpdater.autoInstallOnAppQuit = true;
   autoUpdater.on("error", (error) => {
