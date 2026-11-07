@@ -8,7 +8,7 @@ import { keepLog } from "./log.js";
 import { currentServer, refreshData, type DataPlaces } from "./data.js";
 import { bundledServer, checkData, startServer } from "./server.js";
 import { answerChecks, keepUpdated } from "./updates.js";
-import { fitSize, readSize, writeSize } from "./window-size.js";
+import { fitBounds, readBounds, writeBounds, type Bounds } from "./window-bounds.js";
 
 const WINDOW = { width: 390, widest: 600, height: 844, lowest: 640 } as const;
 const APP_ID = "onkkos-archive";
@@ -33,12 +33,25 @@ function checksData(): boolean {
   return app.isPackaged || process.env.WF_DATA_CHECK === "1";
 }
 
+function holdContentSize(window: BrowserWindow, wanted: Bounds): void {
+  const [contentWidth = wanted.width, contentHeight = wanted.height] = window.getContentSize();
+  const [outerWidth = wanted.width, outerHeight = wanted.height] = window.getSize();
+  window.setSize(
+    outerWidth + wanted.width - contentWidth,
+    outerHeight + wanted.height - contentHeight,
+  );
+}
+
 function openWindow(): BrowserWindow {
   const kept = path.join(app.getPath("userData"), "window.json");
-  const size = fitSize(readSize(kept), WINDOW, screen.getPrimaryDisplay().workAreaSize.height);
+  const bounds = fitBounds(
+    readBounds(kept),
+    WINDOW,
+    screen.getAllDisplays().map((display) => display.workArea),
+    screen.getPrimaryDisplay().workArea,
+  );
   const window = new BrowserWindow({
-    width: size.width,
-    height: size.height,
+    ...bounds,
     useContentSize: true,
     minWidth: WINDOW.width,
     maxWidth: WINDOW.widest,
@@ -55,10 +68,17 @@ function openWindow(): BrowserWindow {
     },
   });
   window.removeMenu();
+  holdContentSize(window, bounds);
   window.webContents.on("dom-ready", () => void window.webContents.insertCSS(NO_SCROLL_BAR));
-  window.on("close", () => {
+  let size = { width: bounds.width, height: bounds.height };
+  window.on("resize", () => {
+    if (window.isMinimized()) return;
     const [width = size.width, height = size.height] = window.getContentSize();
-    writeSize(kept, { width, height });
+    size = { width, height };
+  });
+  window.on("close", () => {
+    const { x, y } = window.getNormalBounds();
+    writeBounds(kept, { ...size, x, y });
   });
   return window;
 }

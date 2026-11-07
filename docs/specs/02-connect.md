@@ -29,8 +29,8 @@ part of the spec is pinned:
   on 2026-11-01).
 
 - [`864:5693` Connect — Reads note](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=864-5693):
-  Onboarding with the note under the field (approved by the owner on
-  2026-10-25).
+  Onboarding with the note between the label and the field (approved by the
+  owner on 2026-10-25; moved above the field on 2026-11-06).
 
 - [`895:5723` Onboarding — Find your ID](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=895-5723):
   the help page **Help me find my ID** opens (owner, 2026-10-29; below).
@@ -71,8 +71,7 @@ tabs or player chip. From the top, as `661:4354` draws it:
 2. The **Account ID** field and **Connect**. The field's placeholder is the
    frame's `4b2e9f17c3a85d06e1f74a9c`, an invented id of the real shape. When
    the device remembers an id (`wf_account`), the field holds it (BR-01).
-   Under the field, and under the band when one shows, a note in
-   `--ink-muted` says what a wrong id costs before it is sent: "This device can read 2 profiles from Warframe every 12 hours, and a wrong ID uses one. Check it's the gid value before you connect."
+   Between the label and the field, a note in `--ink-muted` says what to check and how many tries there are before the id is sent: "Check it's the gid value before you connect. You get 2 tries every 12 hours."
    Two ids with the right shape that answer no account spend both reads and
    lock the device out for twelve hours (spec 11), so the note stands before
    the first try rather than after (owner, 2026-10-25).

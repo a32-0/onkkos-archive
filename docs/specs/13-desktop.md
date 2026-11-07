@@ -90,7 +90,10 @@ first, with GitHub beside it for Linux and for anyone who wants the installer
   never past it nor narrower than 390. It opens 844 tall, or as
   tall as the screen allows, and is never shorter than 640. After the first
   start it opens at the size the player left it, kept inside those limits
-  and the screen (owner, 2026-10-23). It cannot be
+  and the screen (owner, 2026-10-23), and in the place the player left it
+  (owner, 2026-11-06). If the middle of its title bar would fall on no
+  screen, as when a second screen is gone, the size stays and the window
+  opens centred, as on a first start. It cannot be
   maximised or made full screen. The scroll bar is hidden, so the content
   keeps its full width (Chromium's overlay bar cannot be switched on from
   inside the app; `docs/desktop.md`). The system's own title bar; its title is
