@@ -5,8 +5,7 @@ export const CONNECT = {
   demoLead: "This is a demo: two players' archives to explore. Nothing here reads an account.",
   fieldLabel: "Account ID",
   fieldPlaceholder: "4b2e9f17c3a85d06e1f74a9c",
-  readsNote:
-    "This device can read 2 profiles from Warframe every 12 hours, and a wrong ID uses one. Check it’s the gid value before you connect.",
+  readsNote: "Check it’s the gid value before you connect. You get 2 tries every 12 hours.",
   submit: "Connect",
   reading: "Onkko is reading your archive...",
   whereTitle: "Where do I find this?",

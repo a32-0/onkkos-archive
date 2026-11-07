@@ -33,6 +33,7 @@ export function ConnectForm({
           <label htmlFor={FIELD} className={styles.label}>
             {CONNECT.fieldLabel}
           </label>
+          <p className={styles.hint}>{CONNECT.readsNote}</p>
           <Field
             id={FIELD}
             name="accountId"
@@ -43,7 +44,6 @@ export function ConnectForm({
             invalid={message !== null}
           />
           {message && <Alert tone="error" message={message} />}
-          <p className={styles.hint}>{CONNECT.readsNote}</p>
         </div>
         <Button type="submit" loading={pending}>
           {CONNECT.submit}

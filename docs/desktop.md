@@ -54,7 +54,7 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `src/server.ts`           | The kept port, the start's secret, the server started in a utility process, the wait until it answers, and the second server that checks a new data set                                                                                                                             |
 | `src/serve.ts`            | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                     |
 | `src/guard.ts`            | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                     |
-| `src/window-size.ts`      | The size the window was left at, read back inside its limits                                                                                                                                                                                                                        |
+| `src/window-bounds.ts`    | The size and place the window was left at, read back inside its limits and the screens                                                                                                                                                                                              |
 | `src/links.ts`            | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser; **Restart** on Can't start relaunches the app                                                                                                                             |
 | `src/log.ts`              | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                     |
 | `src/data.ts`             | The data check at each start: the manifest from `main`, the new server folder, each hash, the read check, the swap                                                                                                                                                                  |
@@ -70,11 +70,31 @@ or made full screen, and it has no menu. These are the `minWidth`, `maxWidth`
 and `minHeight` of `BrowserWindow` with `useContentSize`, so the limits hold for
 the content and not for the system's frame around it.
 
-When the window closes, its content size goes to `window.json` in the app's
-folder, and the next start opens at that size. A saved size is held inside the
-same limits and the screen's height, so a smaller screen or a broken file
-opens at 390 by 844 or the screen's height. Checked on 2026-10-23: widened to
-520 by 760, closed, and reopened at 520 by 760.
+When the window closes, its content size and its position go to `window.json`
+in the app's folder, and the next start opens there. A saved size is held
+inside the same limits and the height of the screen it opens on, so a smaller
+screen or a broken file opens at 390 by 844 or the screen's height. Checked on
+2026-10-23: widened to 520 by 760, closed, and reopened at 520 by 760.
+
+The saved place stands while the middle of the title bar falls inside some
+screen's work area, so a window left partly past a screen's edge opens there.
+If that point is on no screen, or the file comes from a version that kept no
+place, the size stays and Electron centres the window.
+
+Three details keep the size from changing on its own:
+
+| Case                                                 | What was measured                                                                                           | What the app does                                                                          |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Closed while minimised                               | `getContentSize` answers 0 by 0                                                                             | Keeps the size from the last `resize`, and takes the place from `getNormalBounds`          |
+| Opened on a screen at 200% with the main one at 100% | The content opened at 511 by 715 for 520 by 760                                                             | Reads the content size once the window is there, and adds the difference to its outer size |
+| The same correction                                  | The content can open 1 px wider than asked (521 for 520), so saving at each close grew it by 1 px per start | Saves the size only on a `resize`, so that pixel does not add up                           |
+
+Checked on 2026-11-06 on two screens, at 100% and 200%, from the tree with a
+separate `--user-data-dir`: the place and size came back on both screens and
+stayed the same over three reopenings; closing while minimised kept both; a
+place on no screen and a file with no place opened centred at the saved size.
+The Linux build was not tried. Wayland does not let an app place its own
+window, so there the system still decides.
 
 The scroll bar is hidden: the app inserts `html { scrollbar-width: none; }`
 into each page it loads, and the content keeps its full width. Chromium's
