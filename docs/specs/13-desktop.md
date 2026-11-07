@@ -147,17 +147,17 @@ Everything lives in the app's own folder in the player's profile (Electron's
 AppImage mounts read-only. The one exception is the updater's cache, which
 `electron-updater` keeps in the system's cache folder (`docs/desktop.md`):
 
-| What                                                                                         | Where                         | Lives for                                                   |
-| -------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------------------------------------------- |
-| The trimmed profile and every lock of spec 11                                                | One store file                | Each lock's own window, as spec 11                          |
-| `wf_account`, `wf_since`, `wf_place`, `wf_onkko`, `wf_tour`                                  | The window's cookies          | As on the demo                                              |
-| The ticks of spec 10                                                                         | The window's storage          | Until cleared                                               |
-| Wiki prose and icons, Varzia, rotations                                                      | Next's fetch cache, in memory | A day at most, Varzia ten minutes; gone when the app closes |
-| The current `data/`                                                                          | A data folder (below)         | Until a newer set replaces it                               |
-| A downloaded version of the app                                                              | The updater's cache           | Until it installs                                           |
-| What went wrong: DE's refusals, a data set or an update that failed, the server's own errors | `app.log`                     | Until it passes 1 MB; the next start begins it again        |
+| What                                                                                         | Where                         | Lives for                                                                                        |
+| -------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
+| The trimmed profile and every lock of spec 11                                                | One store file                | Each lock's own window, as spec 11                                                               |
+| `wf_account`, `wf_since`, `wf_place`, `wf_onkko`, `wf_tour`                                  | The window's cookies          | As on the demo                                                                                   |
+| The ticks of spec 10                                                                         | The window's storage          | Until cleared                                                                                    |
+| Wiki prose and icons, Varzia, rotations                                                      | Next's fetch cache, in memory | A day at most, Varzia ten minutes; gone when the app closes                                      |
+| The current `data/`                                                                          | A data folder (below)         | Until a newer set replaces it                                                                    |
+| A downloaded version of the app                                                              | The updater's cache           | Until the first start after it installs; the installer itself until the next update or uninstall |
+| What went wrong: DE's refusals, a data set or an update that failed, the server's own errors | `app.log`                     | Until it passes 1 MB; the next start begins it again                                             |
 
-On Windows the uninstaller removes the folder; from the Store, Windows keeps
+On Windows the uninstaller removes the folder and the updater's cache; from the Store, Windows keeps
 the folder inside the package's own storage and removes it with the app. An AppImage has no
 uninstaller: deleting it leaves the folder, `~/.config/Onkko's Archive`, which
 the README names so a player can remove it. Disconnect clears the account's cookies; the
