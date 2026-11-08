@@ -180,3 +180,30 @@ describe("the view on a category's page (BR-15, BR-68)", () => {
     }
   });
 });
+
+describe("where a row's odds come from (spec 06)", () => {
+  const tiles = groupsOf(newsFor(fixture("profile-cy"), "2010-01")).flatMap((group) => group.tiles);
+  const placeOf = (name: string) => {
+    const tile = tiles.find((one) => one.name === name);
+    return tile ? tileLines(tile.reading, tile.where).place : null;
+  };
+
+  it("names the source when the drop has no node", () => {
+    expect(placeOf("Uriel")).toBe("The Descendia: Roathe");
+    expect(placeOf("Nokko")).toMatch(/^Nokko: /);
+    expect(placeOf("Oraxia")).toMatch(/^Duviri Murmur Invasion/);
+    expect(placeOf("Hildryn")).toBe("Exploiter Orb");
+  });
+
+  it("names the relic of a Prime's first part", () => {
+    expect(placeOf("Caliban Prime")).toMatch(/ Relic$/);
+  });
+
+  it("leaves no row with odds or a relic's chances without a place", () => {
+    const bare = tiles.filter((tile) => {
+      const { reading, place } = tileLines(tile.reading, tile.where);
+      return /^~\d|% Intact/.test(reading) && place === "";
+    });
+    expect(bare.map((tile) => tile.name)).toEqual([]);
+  });
+});

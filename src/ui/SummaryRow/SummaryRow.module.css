@@ -1,5 +1,5 @@
 .row {
-  --summary-row-height: 100px;
+  --summary-row-height: 88px;
   display: flex;
   box-sizing: border-box;
   width: 100%;
@@ -25,7 +25,7 @@
 }
 
 .art {
-  --summary-art-size: 100px;
+  --summary-art-size: 88px;
   display: block;
   flex: none;
   width: var(--summary-art-size);
@@ -50,21 +50,11 @@
 }
 
 .reading {
-  composes: reading-l from "../type.module.css";
-  color: var(--accent);
-}
-
-.place {
-  composes: body-l from "../type.module.css";
-  color: var(--ink-muted);
-}
-
-.compact-reading {
   composes: reading from "../type.module.css";
   color: var(--accent);
 }
 
-.compact-place {
+.place {
   composes: body from "../type.module.css";
   color: var(--ink-muted);
 }

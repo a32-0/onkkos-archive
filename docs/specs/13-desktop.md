@@ -22,7 +22,7 @@ Loading, for the owner to approve before this spec is pinned:
 - [`764:5389` Desktop — Can't start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5389): the same window when the
   server inside cannot start (owner, 2026-10-30): the same ground at 80%,
   the quill standing still, then, centred under it in the error band's
-  words colour and mono face, "Onkko's Archive couldn't start." and
+  words colour and `Body/Default`, "Onkko's Archive couldn't start." and
   "Please restart the app." on two lines, and **Restart**, a secondary
   button as wide as the column, which closes the app and opens it again.
 
@@ -49,12 +49,18 @@ renders the routes of [`docs/ui.md`](../ui.md) exactly as the demo does,
 with the profile source set to `live`. One build serves both targets: the app
 is the same `src/` tree, never a copy.
 
-| Platform                 | Package                                          | Updates itself     |
-| ------------------------ | ------------------------------------------------ | ------------------ |
-| Windows, GitHub          | An installer, for the current user, no admin     | Yes                |
-| Windows, Microsoft Store | An MSIX package                                  | No: the Store does |
-| Linux                    | An AppImage                                      | Yes                |
-| Android                  | Phase 7, after the refactor that needs no server | n/a                |
+| Platform                 | Package                                               | Updates itself     |
+| ------------------------ | ----------------------------------------------------- | ------------------ |
+| Windows, GitHub          | An assisted installer, for the current user, no admin | Yes                |
+| Windows, Microsoft Store | An MSIX package                                       | No: the Store does |
+| Linux                    | An AppImage                                           | Yes                |
+| Android                  | Phase 7, after the refactor that needs no server      | n/a                |
+
+The Windows installer is a wizard, so the player sees what it installs and
+where (owner, 2026-11-07). It asks for the folder, offers a desktop shortcut
+left unticked, installs, and ends with the app ticked to open. It never asks
+for an administrator or offers an install for every user, it is in English
+like the app, and an update installs silently, with no window.
 
 The installer and the AppImage are not signed (owner, 2026-10-22). A
 signature would prove who published a package and that nobody changed it

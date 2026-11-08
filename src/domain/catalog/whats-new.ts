@@ -10,7 +10,7 @@ import type { CatalogData } from "@/domain/catalog/data";
 import { dossier } from "@/domain/catalog/dossier";
 import type { CatalogItem } from "@/domain/catalog/items";
 import { releasesSince, type ArsenalShelf, type CollectionShelf } from "@/domain/catalog/releases";
-import { briefOf } from "@/domain/catalog/summary";
+import { briefOf, placed, sharedSource } from "@/domain/catalog/summary";
 import type { PlaceView } from "@/domain/place/build";
 import { itemGaps, type Reach, type ReachGap } from "@/domain/place/reach";
 import { stateOf } from "@/domain/place/state";
@@ -91,15 +91,17 @@ export function bestPlaces(index: ReadonlyMap<string, PlaceView>): ReadonlyMap<s
   return found;
 }
 
-function firstLine(parts: ReturnType<typeof briefOf>): { reading: Part[]; where: Part[] } {
-  const line = parts[0]?.lines[0];
-  return { reading: line?.reading ?? NO_PARTS, where: line?.where ?? NO_PARTS };
+function firstLine(plan: StepPlan): { reading: Part[]; where: Part[] } {
+  const line = briefOf(plan)[0]?.lines[0];
+  return line
+    ? placed(line.reading, line.where, line.route ?? sharedSource(plan) ?? line.title)
+    : { reading: NO_PARTS, where: NO_PARTS };
 }
 
-function tileLine(parts: ReturnType<typeof briefOf>): Pick<NewTile, "reading" | "where" | "route"> {
-  const line = parts[0]?.lines[0];
+function tileLine(plan: StepPlan): Pick<NewTile, "reading" | "where" | "route"> {
+  const line = briefOf(plan)[0]?.lines[0];
   return {
-    ...firstLine(parts),
+    ...firstLine(plan),
     route: line && line.reading.length === 0 ? line.title : null,
   };
 }
@@ -113,7 +115,7 @@ function arsenalCandidate(
   const plan = stepPlan(data, dossier(item, data.arsenal), { now, masteryRank });
   const mastered = stateOf({ ...item, masterable: true }, ranks ?? null).kind === "done";
   return {
-    tile: { name: item.name, art: item.imageUrl, ...tileLine(briefOf(plan)), mastered },
+    tile: { name: item.name, art: item.imageUrl, ...tileLine(plan), mastered },
     gaps: itemGaps(reach, { masteryReq: item.masteryReq, place: places.get(item.name) ?? null }),
   };
 }
@@ -137,7 +139,7 @@ function collectionCandidate(
     tile: {
       name,
       art,
-      ...tileLine(briefOf(collectibleStepPlan(data, view, { now }))),
+      ...tileLine(collectibleStepPlan(data, view, { now })),
       mastered: false,
     },
     gaps: itemGaps(reach, { masteryReq: 0, place }),
@@ -192,13 +194,13 @@ export function itemLine(
 ): { reading: Part[]; where: Part[] } {
   const plan = planFor(sources, name);
   if (!plan) return { reading: NO_PARTS, where: NO_PARTS };
-  const first = firstLine(briefOf(plan));
+  const first = firstLine(plan);
   if (first.reading.length > 0) return first;
   const how = plan.sections
     .find((section) => section.id === HOW)
     ?.groups.flatMap((group) => group.rows)
     .find((row) => row.brief.length > 0);
-  return how ? { reading: how.brief, where: how.where } : first;
+  return how ? placed(how.brief, how.where, how.title) : first;
 }
 
 export function masteryReqOf(data: CatalogData, name: string): number {

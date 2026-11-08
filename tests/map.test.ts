@@ -313,3 +313,19 @@ describe("names inside their group", () => {
     expect(shortName("Excalibur Prime", "warframes")).toBe("Excalibur Prime");
   });
 });
+
+describe("a relic on the Star Chart", () => {
+  it("opens its own page, named as the catalog names it", () => {
+    for (const place of ["Earth", "Mars"]) {
+      const relics = viewOf(fixture("profile-cy"), "origin", place, null)
+        .sections.flatMap((section) => section.groups)
+        .filter((group) => group.key === "relics")
+        .flatMap((group) => group.tiles);
+      expect(relics.length).toBeGreaterThan(0);
+      for (const tile of relics) {
+        const name = new URL(tile.href, "http://app").searchParams.get("name") ?? "";
+        expect(data.relics.has(name), name).toBe(true);
+      }
+    }
+  });
+});

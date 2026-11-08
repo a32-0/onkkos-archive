@@ -55,7 +55,7 @@ function tileView(tile: MapTile, group: string): MapTileView {
   const words = tileWords(tile);
   return {
     name: shortName(tile.name, group),
-    href: itemRoute(tile.name, FROM),
+    href: itemRoute(tile.page, FROM),
     art: tile.art,
     reading: words.reading,
     place:

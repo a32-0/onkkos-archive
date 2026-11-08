@@ -101,7 +101,11 @@ line with no reading reads its title instead ("Complete The Teacher", "Find
 a Kuva Larvling"), so no row shows a bare name (2026-10-23). The gold line
 is the line's phrases in words (a drop's runs, a relic's rarity and chances, a
 vendor's price); the place is its `where`, or the names the reading carries
-when it has none ("Zariman" for Cephalon Melica's wares). No Mastered or Rank
+when it has none ("Zariman" for Cephalon Melica's wares). A drop with no
+node names what its step plays, defeats or opens: "The Descendia: Roathe"
+for Uriel, "Exploiter Orb" for Hildryn, "Zariman" for a bounty; a relic's
+chances name the relic ("Axi P10 Relic" for Caliban Prime). So no row shows
+odds without where they come from (owner, 2026-11-07). No Mastered or Rank
 marker (BR-15). The row opens the item's page, with the Catch up tab as its
 origin (spec 04).
 
@@ -174,7 +178,7 @@ not held to the foot of the window.
 ## Components
 
 `FeaturedCard` (last played, up to date), `Divider`, `List` and `ListItem`
-(with a badge), `SummaryRow` (compact), `UpdateCard`, `TopBar`,
+(with a badge), `SummaryRow`, `UpdateCard`, `TopBar`,
 `EmptyState`, `OnkkoLine`, and `Button` (secondary for Skip,
 text for "Show more"), each with its stories.
 

@@ -86,7 +86,6 @@ export function ItemScreen({
                         reading={row.reading || undefined}
                         place={row.place || undefined}
                         art={row.art}
-                        compact
                         {...(row.blueprint !== undefined && { blueprint: row.blueprint })}
                         link={Link}
                       />

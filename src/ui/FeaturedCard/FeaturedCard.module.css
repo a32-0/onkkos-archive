@@ -12,7 +12,6 @@
   color: var(--ink);
   text-align: start;
   text-decoration: none;
-  backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
 .card:hover {

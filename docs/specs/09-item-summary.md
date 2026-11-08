@@ -20,7 +20,12 @@ the materials they call for.
   [`1009:7045` — One recipe mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7045) and [`1009:7167` — Three recipes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7167):
   Keep it under the hero (BR-79, owner, 2026-11-02).
 - [`479:3589` Summary row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=479-3589):
-  a part's art over the blueprint.
+  a part's art over the blueprint. Every Summary row is a Material
+  three-line list item (owner, 2026-11-07): at least 88 px tall, its art an
+  88 px square at the leading edge, the text padded `space-5` above and below
+  and `space-6` at the sides, the name, then the reading in `Reading/Default`
+  (Inter Semi Bold 14, gold) and the place in `Body/Default` (Inter Regular
+  14, `ink-muted`).
 
 Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
 
@@ -89,6 +94,10 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
      parts in the order Step by step gives them. Each row is the part's art
      over the blueprint (BR-19), its name, its best route's reading, "~{n}
      Runs · Rotation {x}" (BR-56), in gold, and its place.
+   - A blueprint whose drop has no node names what its step plays, defeats
+     or opens, as Catch up's rows do (spec 06): Uriel's parts read "The
+     Descendia: Roathe", a Prime part names its relic ("Axi P10 Relic"). The
+     Overview alone tells the player where to go (owner, 2026-11-07).
    - A row's place names a mission node as the wiki and the players write
      it, "{Node} ({Planet}) · {Mission}": "Armatus (Deimos) · Disruption",
      so it is found at once on the star chart (owner, 2026-10-19). A route

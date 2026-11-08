@@ -2,7 +2,7 @@
   "name": "onkkos-archive-desktop",
   "productName": "Onkko's Archive",
   "desktopName": "onkkos-archive.desktop",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "Catarsis Studio",
   "private": true,
   "type": "module",

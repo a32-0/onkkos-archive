@@ -45,7 +45,9 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `icon.png`                   | The app's icon: the quill in `--ink` on a `--brand` tile with rounded corners (Figma: Brand > App icon, 933:5775)                                                                                                                                                                   |
 | `appx/`                      | The Store package's tiles, drawn from the same tile: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the tile centred on no background                                                                                              |
 | `electron-builder.yml`       | The three packages, what each carries, Chromium's English alone, the Store package's tiles and Windows versions, and GitHub Releases as the place updates come from                                                                                                                 |
-| `installer.nsh`              | The uninstaller's extra step: it removes the updater's cache, except when an update runs it                                                                                                                                                                                         |
+| `installerSidebar.bmp`       | The wizard's side image on its last page: the app's icon on `--night-800`, 164 × 314                                                                                                                                                                                                |
+| `installerHeader.bmp`        | The wizard's header image: the app's icon on white, 150 × 57                                                                                                                                                                                                                        |
+| `installer.nsh`              | The wizard's own steps: no page asking who to install for, the desktop shortcut page, and the uninstaller removing the updater's cache except when an update runs it                                                                                                                |
 | `src/channel.ts`             | Where the app runs from: the tree, a GitHub package or the Microsoft Store                                                                                                                                                                                                          |
 | `tests/channel.test.ts`      | Only a GitHub package updates itself                                                                                                                                                                                                                                                |
 | `src/updates.ts`             | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**; none of it from the Store                                                                                                                                              |
@@ -221,7 +223,7 @@ machine (below).
 
 ## The packages
 
-`electron-builder.yml` builds an NSIS installer for Windows, one click, for
+`electron-builder.yml` builds an NSIS installer for Windows, assisted, for
 the current user, with no administrator, and an AppImage for Linux. Both are
 named `onkkos-archive-{version}`, with no space or apostrophe, because GitHub
 renames such characters on upload and the update files would then name an
@@ -259,6 +261,32 @@ date and number with a locale of its own; the others weighed 48 MB. Checked
 on 2026-11-07 with a trial build: the program reads Catarsis Studio, its
 `locales/` holds `en-US.pak` alone, the program came to 375 MB and the
 installer to 108 MB.
+
+### The installer's pages
+
+`oneClick: false` makes the installer a wizard (spec 13). Its pages, in
+order:
+
+| Page                    | What it shows                                                                                | Where it comes from                                               |
+| ----------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Choose Install Location | The folder, `%LOCALAPPDATA%\Programs\onkkos-archive-desktop` unless the player picks another | `allowToChangeInstallationDirectory`                              |
+| Shortcuts               | "Create a desktop shortcut", unticked. The Start menu entry is always made                   | `customPageAfterChangeDir` and `customInstall` in `installer.nsh` |
+| Installing              | The progress                                                                                 | electron-builder                                                  |
+| Finish                  | "Run Onkko's Archive", ticked                                                                | electron-builder's default `runAfterFinish`                       |
+
+electron-builder adds a page asking whether to install for this user or for
+everyone, which needs an administrator; `customInstallMode` sets the current
+user and skips it. `installerLanguages` keeps the wizard in English whatever
+Windows' language. The header and side images are rendered from
+`icon.png` with sharp, the same tile as the Store's.
+
+An update runs the new installer silently, so none of these pages shows, and
+the shortcuts the player has are kept. An install with `/S` makes no desktop
+shortcut. Checked on 2026-11-07 with a trial: 0.0.1, built one click,
+downloaded 0.0.2, built assisted, and installed it on quit with no window,
+keeping its desktop shortcut; the uninstaller left no program, data, cache,
+registry entry or shortcut; a fresh `/S` install of 0.0.2 went to the current
+user, with the Start menu entry and no desktop shortcut.
 
 On uninstall, Windows removes the app's folder under `%APPDATA%`, and
 `installer.nsh` removes the updater's cache. The

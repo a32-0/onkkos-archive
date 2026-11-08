@@ -22,9 +22,14 @@ appx:
     - en-US
   artifactName: onkkos-archive-${version}.${ext}
 nsis:
-  oneClick: true
+  oneClick: false
   perMachine: false
+  allowToChangeInstallationDirectory: true
   deleteAppDataOnUninstall: true
+  installerLanguages:
+    - en_US
+  installerSidebar: installerSidebar.bmp
+  installerHeader: installerHeader.bmp
   include: installer.nsh
   artifactName: onkkos-archive-${version}-setup.${ext}
 linux:

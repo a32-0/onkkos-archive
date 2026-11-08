@@ -4,7 +4,6 @@
   align-items: stretch;
   height: var(--tab-bar-height);
   background: var(--surface-header);
-  backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
 .floating {
@@ -22,5 +21,4 @@
   border: var(--border-1) solid var(--line-subtle);
   border-radius: var(--radius-l);
   background: var(--surface-header);
-  backdrop-filter: blur(var(--blur-band));
 }

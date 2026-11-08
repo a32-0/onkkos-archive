@@ -239,7 +239,7 @@ change and built to grow. The frames are its source; the code is its one
 implementation.
 
 - **Three layers of tokens.** Primitives hold the raw values the frames draw:
-  every colour, type style, space, radius, border, shadow, blur, duration and
+  every colour, type style, space, radius, border, shadow, duration and
   easing. Semantic tokens name a role (`surface`, `ink-muted`, `accent`,
   `state-mastered`) and point at a primitive. Components use semantic tokens
   only. Changing a value is one line in one place, and every screen follows.

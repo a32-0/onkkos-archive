@@ -56,12 +56,17 @@ const REFINED = /^(.+) (Intact|Exceptional|Flawless|Radiant)$/;
 const DROP = /^(.+ Relic)(?:\s*\((Exceptional|Flawless|Radiant)\))?$/;
 const UNNAMED = /\bundefined\b/;
 
+export function relicName(refined: string): string {
+  const base = REFINED.exec(refined)?.[1];
+  return base ? `${base} Relic` : refined;
+}
+
 export function buildRelicCatalog(raw: RawRelic[], rewards: PlaceRewards): Map<string, Relic> {
   const byRefinement = new Map<string, Partial<Record<Refinement, RawRelic>>>();
   for (const entry of raw) {
     const match = REFINED.exec(entry.name ?? "");
     if (!match?.[1] || !match[2]) continue;
-    const name = `${match[1]} Relic`;
+    const name = relicName(entry.name ?? "");
     const set = byRefinement.get(name) ?? {};
     set[match[2] as Refinement] = entry;
     byRefinement.set(name, set);

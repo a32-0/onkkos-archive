@@ -73,7 +73,7 @@ export function Connect({
             <div className={styles.example}>
               <p className={styles.text}>{CONNECT.exampleLead}</p>
               <div className={styles.box}>
-                <code className={styles.mono}>{CONNECT.example}</code>
+                <code className={styles.code}>{CONNECT.example}</code>
               </div>
             </div>
             <hr className={styles.rule} />

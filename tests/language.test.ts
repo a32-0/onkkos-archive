@@ -26,17 +26,17 @@ describe("the four states keep their vocabulary", () => {
   });
 });
 
-describe("the serif carries names, the mono carries readings", () => {
+describe("the serif carries names, the sans carries readings", () => {
   const NAMES = ["place", "screen", "title", "heading", "name", "name-s"];
-  const READINGS = ["reading", "reading-l"];
+  const READINGS = ["reading"];
 
   it("sets every name in the display face", () => {
     const missing = NAMES.filter((name) => face(name) !== "--font-cinzel");
     expect(missing).toEqual([]);
   });
 
-  it("sets every reading in the mono face", () => {
-    const missing = READINGS.filter((name) => face(name) !== "--font-jetbrains-mono");
+  it("sets every reading in the sans face", () => {
+    const missing = READINGS.filter((name) => face(name) !== "--font-inter");
     expect(missing).toEqual([]);
   });
 });

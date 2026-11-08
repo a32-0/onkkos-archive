@@ -143,7 +143,7 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    **Disconnect** and **Cancel**, which has the focus. Cancel and Escape close
    the dialog. Its Disconnect forgets `wf_account`, `wf_since` and `wf_onkko`
    and opens `/connect` with an empty field.
-5. Under it, the read cycle in mono: "Data is read every **12 hours**. The last
+5. Under it, the read cycle in Inter, `Body/Default`: "Data is read every **12 hours**. The last
    read was **{age}**, and the next one will be at **{h:mm AM}**." The time
    is the player's own, from the system's time zone, which only the browser
    knows, so the line is written once the page has loaded and never in UTC
@@ -177,7 +177,7 @@ with a State and a Message; every message the app shows is an example in
 id form's messages and the toast were components of their own). `Alert` is one message in one of four states, each its own ground, ink and
 Material Symbols icon at 18 px: **Informative** (`info`), **Success**
 (`check-circle`), **Warning** (`warning`) and **Error** (`error`). The text is
-mono bold, `Mono/Strong` (owner, 2026-11-01). Each ink reaches about 7:1 on its ground (WCAG AAA for text, and well
+Inter bold, `Label/Small` (owner, 2026-11-01; Inter since 2026-11-07, when the app dropped its mono face). Each ink reaches about 7:1 on its ground (WCAG AAA for text, and well
 over the 3:1 an icon needs). Error is a screen-reader alert; the others are a
 polite status. Error carries BR-38's messages on the id form, Warning BR-69's
 in Profile, Success the toast. Nothing uses Informative yet.

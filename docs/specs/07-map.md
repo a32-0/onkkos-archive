@@ -266,12 +266,17 @@ that system's places.
 ## Components
 
 `PlaceSwitcher`, `PlaceOverview` (in progress, mastered), `PlaceCrumb`,
-`List`, `ListItem`, `SummaryRow` (compact), `ControlRow` (View),
+`List`, `ListItem`, `SummaryRow`, `ControlRow` (View),
 `Segmented` (one chosen), `PlaceRow` and
 `SystemRow` (plain, on view, Start here, New, Mastered, Soon; `PlaceRow`
 also beyond reach), `SearchField`, `Badge` (Start here, New,
 Mastered), `Divider`, `FeaturedCard`, `TopBar`, `EmptyState`, each with
 its stories.
+
+`PlaceRow` and `SystemRow` are Material two-line list items, as `SummaryRow`
+is a three-line one (spec 09): padded `space-5` above and below and `space-6`
+at the sides, with `space-6` between the orb and the text (owner,
+2026-11-07).
 
 ## Acceptance
 

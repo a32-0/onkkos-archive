@@ -454,8 +454,9 @@ data:patch-notes` keeps every update it names, 41.1 Vauban Heirloom and 39.1
 - Frame [`264:388` Card Container](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=264-388)
   · pin (291, 181) · layer: Card Info · comment `1933353858`
 - Type: state (visual spec).
-- Rule: the band behind the card title is 80% opaque with a background blur.
-- Drawn values: fill `#39342e` at 80%, `BACKGROUND_BLUR` radius 4. The badge
+- Rule: the band behind the card title is 80% opaque, with no blur (owner,
+  2026-11-07).
+- Drawn values: fill `#39342e` at 80%. The badge
   "Newest" is `#fcbb4a` (nearest `--orokin`) on dark text.
 
 ### BR-11 · Say plainly where the game stands now
