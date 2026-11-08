@@ -97,8 +97,7 @@ store, which keeps the same locks until the process stops.
 - On the device: `wf_account` (one year) and `wf_since` (the month), both
   cookies; `wf_place` (BR-46); the ticks of spec 10 in browser storage.
 - Never: the raw payload, a computed result.
-- Disconnect clears the cookies and keeps the stored profile only until its
-  twelve hours end, so connecting again inside them reads nothing.
+- Disconnect clears the cookies; the stored profile follows step 9.
 
 ## The fixtures
 

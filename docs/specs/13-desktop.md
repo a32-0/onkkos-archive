@@ -1,14 +1,11 @@
 # 13 · The app on the player's machine
 
 A player's own account is read by an app they install on Windows or Linux, not
-by the website. DE's CDN refuses a cloud server's address and a web page may
-not read DE's answer, while a player's own machine reads it as their game does
-([`public-release.md`](../history/public-release.md#why-the-app-moved-to-the-players-machine)).
-This spec covers what the app is: the window the screens run in, the server
-inside it and who may talk to it, where it keeps what it keeps, how its data
-stays current after each Warframe update, and how it updates itself. The
-screens are the same screens, specs 01 to 12; nothing here changes what any
-of them shows.
+by the website; why is the constitution's "It runs on the player's machine".
+This spec covers the window the screens run in, the server inside it, what it
+keeps, and how its data and the app itself stay current. The screens are the
+same screens, specs 01 to 12; nothing here changes what any of them shows.
+How each part is built is [`desktop.md`](../desktop.md).
 
 ## Frames
 
@@ -137,8 +134,6 @@ that can reach it can spend the player's reads. Only the app's window may:
   port at each start lost them (measured on 2026-10-23), so the app keeps the
   port the system first gave it in a file under its own folder, and picks
   another only when that one is taken.
-- A returning player, whose `wf_account` cookie the window still holds, opens
-  on the map (`/system`), not on the splash (owner, 2026-10-23).
 
 ## What it keeps, and where
 
@@ -261,12 +256,8 @@ it opens that version's release notes on GitHub
 the Store alike (owner, 2026-10-29). Drawn in Profile — App, on the Version
 row.
 
-A version is published by the owner. A tag `v{version}` on `main` builds the
-installer and the AppImage in GitHub Actions and attaches them to a draft
-release; publishing the draft is what reaches players. The same tag builds the
-Store's package as a workflow artifact, which the owner uploads in Partner
-Center; the version reaches Store players once it passes certification. A tag
-whose version differs from the app's own fails the build.
+A version is published by the owner, from a tag `v{version}` on `main`; the
+steps are in [`desktop.md`](../desktop.md#cutting-a-version).
 
 ## Data and sources
 
