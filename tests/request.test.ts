@@ -932,14 +932,17 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     return { response, results: body.results };
   }
 
-  it("offers Ordis the next planet first, then by band, Deimos being in reach", async () => {
+  it("offers Ordis only the next planet, the walls after it waiting (BR-86)", async () => {
     const html = await page(ORDIS);
     expect(html).toContain("Clear the Mars Junction, on Earth, to open the next planet.");
-    const order = ["Unlock the next planet", "Build a Necramech", "Play the Hex Quest"];
-    const at = order.map((title) => html.indexOf(title));
-    expect(at.every((index) => index >= 0)).toBe(true);
-    expect([...at].sort((a, b) => a - b)).toEqual(at);
-    expect(html).toContain("/item?name=Voidrig&amp;from=goal&amp;view=steps");
+    for (const wall of [
+      "Build a Necramech",
+      "Play the Hex Quest",
+      "Play The New War",
+      "Unlock The Steel Path",
+    ]) {
+      expect(html).not.toContain(wall);
+    }
     expect(html).toContain("Skip");
   });
 

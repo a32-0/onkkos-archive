@@ -3,11 +3,13 @@ import { PAGE_TITLES } from "@/content/app";
 import { chromeOf } from "@/app/chrome";
 import { rankOf } from "@/app/rank";
 import { requireScreen, startHereOf } from "@/app/screen";
+import { lackingNamed } from "@/domain/catalog/lacking";
 import { lackingNecramechs } from "@/domain/catalog/necramechs";
 import { bestPlaces } from "@/domain/catalog/whats-new";
 import type { GraphGoal } from "@/domain/graph/schema";
+import { placeWithNodesLeft } from "@/domain/graph/steel-path";
 import { findNextPlanet, junctionOf } from "@/domain/graph/star-chart";
-import { goalAtPlace, goalsProvenDone, suggestedGoals } from "@/domain/graph/suggest";
+import { goalAtPlace, goalsProvenDone, goalsWaiting, suggestedGoals } from "@/domain/graph/suggest";
 import { itemGaps, readReach } from "@/domain/place/reach";
 import { startHere } from "@/domain/place/start-here";
 import { itemRanks } from "@/domain/place/state";
@@ -31,10 +33,15 @@ function goalsOf(screen: Screen): GoalInput[] {
   const frontier = findNextPlanet(graph, profile).entry;
   const junction = frontier?.junctionTag ? junctionOf(frontier.junctionTag) : null;
   const best = bestPlaces(index);
-  const mech = lackingNecramechs(catalogData().arsenal, profile)[0] ?? null;
+  const data = catalogData();
+  const mechs = lackingNecramechs(data.arsenal, profile);
+  const mech = mechs[0] ?? null;
+  const ownsMech = mechs.length < data.arsenal.filter((item) => item.kind === "Necramech").length;
 
-  const hidden = goalsProvenDone(graph, profile, screen.confirmedQuests);
-  hidden.delete(NECRAMECH);
+  const done = goalsProvenDone(graph, profile, screen.confirmedQuests);
+  done.delete(NECRAMECH);
+  if (ownsMech) done.add(NECRAMECH);
+  const hidden = new Set([...done, ...goalsWaiting(graph, profile, screen.confirmedQuests, done)]);
   const mechGoal = graph.goals[NECRAMECH];
   const mechBeyond =
     mech !== null &&
@@ -43,6 +50,12 @@ function goalsOf(screen: Screen): GoalInput[] {
       place: best.get(mech.name) ?? mechGoal?.place ?? null,
     }).length > 0;
   if (mech === null || mechBeyond) hidden.add(NECRAMECH);
+  const lackingOf = (goal: GraphGoal) => lackingNamed(data.arsenal, profile, goal.lacking ?? "");
+  for (const goal of Object.values(graph.goals)) {
+    if (goal.lacking === undefined) continue;
+    const { owned, lacking } = lackingOf(goal);
+    if (owned > 0 || lacking.length === 0) hidden.add(goal.id);
+  }
 
   const start = startHere(
     graph,
@@ -61,6 +74,34 @@ function goalsOf(screen: Screen): GoalInput[] {
         id: goal.id,
         kind: "necramech",
         href: itemRoute(mech.name, FROM, "steps"),
+        junction: null,
+      };
+    }
+    if (goal.lacking !== undefined) {
+      const weapon = lackingOf(goal).lacking[0];
+      if (!weapon) return null;
+      return {
+        id: goal.id,
+        kind: "lich",
+        href: itemRoute(weapon.name, FROM, "steps"),
+        junction: null,
+      };
+    }
+    if (goal.item !== undefined) {
+      return {
+        id: goal.id,
+        kind: "item",
+        href: itemRoute(goal.item, FROM, "steps"),
+        junction: null,
+      };
+    }
+    if (goal.places.length > 0) {
+      const place = placeWithNodesLeft(goal, data.wiki.nodes, profile);
+      const system = place ? systemOf(place) : null;
+      return {
+        id: goal.id,
+        kind: "steel-path",
+        href: place && system ? placeRoute(system, place) : ROUTES.system,
         junction: null,
       };
     }

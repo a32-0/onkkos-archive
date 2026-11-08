@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
+import { lackingNamed } from "@/domain/catalog/lacking";
 import { lackingNecramechs } from "@/domain/catalog/necramechs";
+import { placeWithNodesLeft } from "@/domain/graph/steel-path";
 import { goalAtPlace, suggestedGoals } from "@/domain/graph/suggest";
 import type { SearchInput } from "@/screens/goals/state";
 import { goalCards, suggestionRows } from "@/screens/goals/view";
@@ -119,5 +121,63 @@ describe("the search rows (BR-53, BR-62)", () => {
   it("keeps eight", () => {
     const many = Array.from({ length: 12 }, (_, index) => hit(`Item ${index}`, null));
     expect(suggestionRows(many)).toHaveLength(8);
+  });
+});
+
+describe("the progression walls (BR-86)", () => {
+  it("gives every suggestion an icon of its own", () => {
+    const ids = Object.keys(graph.goals);
+    const icons = goalCards(
+      ids.map((id) => ({
+        id,
+        kind: "quest" as const,
+        href: "/",
+        junction: { from: "Earth", to: "Mars" },
+      })),
+    ).map((card) => card.icon);
+    expect(icons).toHaveLength(ids.length);
+    expect(new Set(icons).size).toBe(ids.length);
+  });
+
+  it("words and draws each wall's card", () => {
+    const cards = goalCards([
+      { id: "play_new_war", kind: "quest", href: "/item?name=The+New+War", junction: null },
+      { id: "unlock_steel_path", kind: "steel-path", href: "/system", junction: null },
+      { id: "build_helminth", kind: "item", href: "/item?name=Helminth+Segment", junction: null },
+      { id: "hunt_kuva_lich", kind: "lich", href: "/item?name=Kuva+Karak", junction: null },
+    ]);
+    expect(cards.map((card) => [card.title, card.icon])).toEqual([
+      ["Play The New War", "swords"],
+      ["Unlock The Steel Path", "skull"],
+      ["Build the Helminth", "biotech"],
+      ["Hunt a Kuva Lich", "target"],
+    ]);
+  });
+
+  it("sends The Steel Path to the first place with a node left, past the nodes it does not need", () => {
+    const goal = graph.goals["unlock_steel_path"]!;
+    const nodes = data.wiki.nodes;
+    const earth = nodes.filter((node) => node.planet === "Earth" && node.tag && node.mastery > 0);
+    const allEarth = earth.map((node) => ({ Tag: node.tag!, Completes: 1 }));
+    expect(placeWithNodesLeft(goal, nodes, {})).toBe("Earth");
+    expect(placeWithNodesLeft(goal, nodes, { Missions: allEarth })).toBe("Venus");
+    const cleared = nodes
+      .filter((node) => node.tag && node.mastery > 0 && !goal.skipNodes.includes(node.tag))
+      .map((node) => ({ Tag: node.tag!, Completes: 1 }));
+    expect(placeWithNodesLeft(goal, nodes, { Missions: cleared })).toBeNull();
+  });
+
+  it("finds the Kuva weapons a player lacks, and counts the ones they own", () => {
+    const none = lackingNamed(data.arsenal, {}, "Kuva ");
+    expect(none.owned).toBe(0);
+    expect(none.lacking.length).toBeGreaterThan(10);
+    const first = none.lacking[0]!;
+    const one = lackingNamed(
+      data.arsenal,
+      { LoadOutInventory: { XPInfo: [{ ItemType: first.uniqueName, XP: 1 }] } },
+      "Kuva ",
+    );
+    expect(one.owned).toBe(1);
+    expect(one.lacking).not.toContain(first);
   });
 });

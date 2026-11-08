@@ -1,5 +1,5 @@
 version: 1
-last_verified: "2026-09-04"
+last_verified: "2026-11-08"
 
 rules:
   - quest: "The Second Dream"
@@ -83,3 +83,38 @@ rules:
     evidence: { kind: item, type: "/Lotus/Weapons/Orokin/BallasSword/BallasSwordWeapon" }
     source: "https://wiki.warframe.com/w/Chimera_Prologue"
     note: "Chimera Prologue has required a completed Sacrifice since it shipped (2018-10-12), so Paracesis proves both."
+
+  - quest: "The New War"
+    evidence: { kind: mission, tag: ZarimanHub }
+    source: "https://wiki.warframe.com/w/Quests"
+    note: "Angels of the Zariman requires The New War, and the Chrysalith needs Angels of the Zariman."
+
+  - quest: "The New War"
+    evidence: { kind: mission, tag: EntratiLabHub }
+    source: "https://wiki.warframe.com/w/Quests"
+    note: "Whispers in the Walls requires The New War, and the Sanctum Anatomica opens with it."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: mission, tag: SolNode723 }
+    source: "https://wiki.warframe.com/w/Brutus"
+    note: "Brutus, on Uranus, needs Jade Shadows completed."
+
+  - quest: "The New War"
+    evidence: { kind: mission, tag: SolNode723 }
+    source: "https://wiki.warframe.com/w/Jade_Shadows"
+    note: "Brutus needs Jade Shadows, which requires The New War."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: mission, tag: JadeShadows2HUB }
+    source: "https://wiki.warframe.com/w/Jade_Shadows:_Constellations"
+    note: "Pontis Tower opens with Jade Shadows: Constellations, which requires Jade Shadows."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence: { kind: mission, tag: JadeShadows2HUB }
+    source: "https://wiki.warframe.com/w/Jade_Shadows:_Constellations"
+    note: "The hub Pontis Tower is available once the quest is completed."
+
+  - quest: "The Hex"
+    evidence: { kind: mission, tag: SolNode850 }
+    source: "https://wiki.warframe.com/w/K%C3%B6binn_West"
+    note: "Höllvania's nodes need The Hex completed."

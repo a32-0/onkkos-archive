@@ -32,9 +32,20 @@ describe("resolveGoal", () => {
     expect(() => resolveGoal(graph, "does_not_exist", veteran)).toThrow(UnknownGoalError);
   });
 
-  it("keeps only the three goals that name an item, a quest or a place", () => {
+  it("keeps the goals that name an item, a quest or a place, and the progression walls (BR-86)", () => {
     expect(Object.keys(graph.goals).sort()).toEqual(
-      ["build_necramech", "unlock_1999", "unlock_next_planet"].sort(),
+      [
+        "build_helminth",
+        "build_necramech",
+        "hunt_archon",
+        "hunt_kuva_lich",
+        "play_constellations",
+        "play_jade_shadows",
+        "play_new_war",
+        "unlock_1999",
+        "unlock_next_planet",
+        "unlock_steel_path",
+      ].sort(),
     );
   });
 

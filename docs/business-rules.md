@@ -1493,3 +1493,48 @@ that other recipes take. The other proposals went to the Archive page.
   part card's header) and Components. Every other row is words alone:
   Prerequisites, How to get and the steps inside a part's card, an enemy's
   included. Overview keeps its art.
+
+## Progression walls: settled on 2026-11-08
+
+### BR-86 · Plan suggests the progression walls, one step at a time
+
+- Frames [`1142:7324` Plan — Milestones](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7324),
+  [`1142:7408` — After The New War](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7408),
+  [`1142:7500` — After Jade Shadows](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7500)
+  and [`1165:8337` Plan>Milestones reached](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1165-8337).
+  Asked for by the owner on 2026-11-08, after research on where players stall.
+- Type: content and ordering.
+- Rule: the walls the wiki documents are suggestions on Plan. Each waits for
+  what comes before it in the game, so a player sees the next steps and not
+  the whole game at once, and each is gone once the profile proves it done.
+  Several may open together; that is a player further along.
+- Each card says what the player gets, the wiki's fact and not advice, and
+  carries an icon no other card uses.
+
+| Card                              | Waits for                               | Opens                                                   | Gone when                                                                 | Icon                      |
+| --------------------------------- | --------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------- |
+| Unlock the next planet            | Nothing                                 | The frontier                                            | No junction is left                                                       | `flag`                    |
+| Build a Necramech                 | Deimos reached                          | The first Necramech the player lacks                    | The player owns a Necramech                                               | `precision_manufacturing` |
+| Hunt a Kuva Lich                  | The War Within, Mastery Rank 5          | The first Kuva weapon the player lacks                  | The player owns a Kuva weapon                                             | `target`                  |
+| Play The New War                  | The War Within                          | The quest's Step by step                                | Nataruk, Kahl, the Zariman, the Sanctum Anatomica, Brutus or Pontis Tower | `swords`                  |
+| Unlock The Steel Path             | Every junction                          | The first place with a node left before The New War     | A node shows a Steel Path clear                                           | `skull`                   |
+| Build the Helminth                | Mastery Rank 8, Rank 3 with the Entrati | The Helminth Segment's Step by step                     | One of the Helminth's own abilities was used                              | `biotech`                 |
+| Hunt an Archon                    | The New War                             | Veilbreaker's Step by step, the quest the hunts wait on | Kahl's Garrison                                                           | `diamond`                 |
+| Play Jade Shadows                 | The New War                             | The quest's Step by step                                | Brutus or Pontis Tower                                                    | `dark_mode`               |
+| Play Jade Shadows: Constellations | Jade Shadows                            | The quest's Step by step                                | Pontis Tower                                                              | `auto_awesome`            |
+| Play the Hex Quest                | Whispers in the Walls                   | The quest's Step by step                                | The Hex's syndicate or Höllvania                                          | `auto_stories`            |
+
+- The Steel Path asks for every node before The New War, Lua's and the Kuva
+  Fortress's included, except the Mutalist Alad V and Jordas Golem
+  assassinations and Brutus (the wiki's Steel Path page). The Void and Deimos
+  count only if the wiki says so; it does not yet.
+- The Helminth is proven only by its own abilities (`Stats.Abilities`, the
+  `/Lotus/Powersuits/PowersuitAbilities/Helminth` family). A player who only
+  ever gave a Warframe another Warframe's ability still sees the card: the
+  profile cannot tell that use from the original Warframe's.
+- Which Warframe to subsume is left out: the wiki recommends none, and the
+  rankings elsewhere are opinion that every update changes (owner, 2026-11-08).
+- The divider over the cards reads "Milestones" (owner, 2026-11-08).
+- Proposed, not built: under the cards, a `List item` "Milestones reached",
+  "{n} done", opens Plan>Milestones reached, the milestones the profile proves
+  done, each with what it gave.

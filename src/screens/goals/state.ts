@@ -3,7 +3,7 @@ import type { ReachGap } from "@/domain/place/reach";
 import type { IconName } from "@/ui/Icon/glyphs";
 import type { Suggestion } from "@/ui/SuggestionList/SuggestionList";
 
-export type GoalKind = "planet" | "necramech" | "quest";
+export type GoalKind = "planet" | "necramech" | "quest" | "item" | "lich" | "steel-path";
 
 export interface GoalInput {
   id: string;

@@ -26,7 +26,7 @@ acceptance test:
 | `677:8763`  | Ash              | Every part from a different place: one section per part, ordered by odds                  |
 | `677:8135`  | Ember            | Parts share a place, the main blueprint is bought: "Buy … Blueprint" closes Prerequisites |
 | `677:8443`  | Gyre             | One hub, different bounty tiers: one section per part, each its tier                      |
-| `677:9075`  | Nesha            | No drop table: researched in the dojo, "Join or create a clan"                            |
+| `677:9075`  | Nezha            | No drop table: researched in the dojo, "Join or create a clan"                            |
 | `677:10331` | Kuva Sobek       | A Kuva Lich: steps, then an alternative ("Or trade…"), prerequisites to the root          |
 | `677:12268` | Tenet Tetra      | A Sister of Parvos: the same system as Kuva                                               |
 | `677:12568` | Prisma Gorgon    | Baro Ki'Teer: a rotating vendor, paid in Ducats and Credits                               |
@@ -35,7 +35,7 @@ acceptance test:
 | `677:10011` | Ivara Prime      | A vaulted Prime in Resurgence: Acquire Aya, Visit Varzia, then relics                     |
 | `677:11052` | Chesa Kubrow     | Bred: gear, optional steps, the Incubator                                                 |
 | `677:11660` | Adarza Kavat     | Bred from genetic codes                                                                   |
-| `677:10748` | Bhaira Hound     | Two systems composed: the Sister plan plus "The Hound"                                    |
+| `677:10748` | Bhaira Hound     | Two systems composed: the Sister plan plus "Assemble the Hound"                           |
 | `677:11964` | Vizier Predasite | Revived by Son: a procedure of steps                                                      |
 | `677:11356` | Vasca Kavat      | A special companion: infection, no Mastery row                                            |
 | `979:7226`  | Bronco           | A Circuit reward: "Play the Circuit", the tier in the detail (BR-74)                      |
@@ -44,15 +44,15 @@ acceptance test:
 | `979:6915`  | Axi A21 Relic    | A relic: one node a row, rotations joined, "Or" for the rest                              |
 | `979:7074`  | Axi A2 Relic     | A vaulted relic: "Trade for it with another player", then Baro Ki'Teer                    |
 
-The scenario frames' texts are sample values; the data decides every title,
-reading and passage (BR-33). Their layout, row types, states and order are the
-design.
-
-The last five were drawn on 2026-11-01 for BR-72 and BR-74; their hero art is
-a sample too.
+The data decides every title, reading and passage (BR-33); the frames' layout,
+row types, states and order are the design. On 2026-11-08 every scenario
+above, the Quest (The War Within) and Locked were redrawn from what the app
+shows: the texts, the art and the rows are the app's own for the demo player
+Cy (Locked for Ordis), so a frame reads as a real plan. They will drift as the
+game data changes; the layout is what each frame fixes.
 
 The scenarios and the two states below were redrawn in "App flows" on
-2026-10-18 (T-27b). Their texts are sample values:
+2026-10-18 (T-27b), and their texts from the app on 2026-11-08:
 
 - [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it; How to get with where it starts and the wiki's passage.
 - [`677:13172` Item>Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-13172): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.

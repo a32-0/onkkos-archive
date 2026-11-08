@@ -57,8 +57,9 @@ one arbitrary member of it.
 
 ### `goals`
 
-The three goals of the first version, each naming an item, a quest or a place
-(BR-37); the goals that named none of those are in `deferred.md`. Fields:
+The goals Plan suggests, each naming an item, a quest or a place (BR-37): the
+first version's three and the progression walls (BR-86). The goals that named
+none of those are in `deferred.md`. Fields:
 
 - `label`: the goal's name in the file. The card's title is Plan's own copy.
 - `audience` (`new` / `mid` / `veteran` / `both`): ordering only.
@@ -72,6 +73,15 @@ The three goals of the first version, each naming an item, a quest or a place
 - `manual_checklist_if_missing`: quest names, spelled exactly as
   `narrative_spine.yaml` does. The engine marks one done when
   `quest_evidence.yaml` proves it and asks about the rest.
+- What a goal waits for before Plan offers it (BR-86): `after` (another
+  goal, done), `after_quests` (quests the evidence confirms), `after_nodes`
+  (node ids whose checks pass) and `mastery_rank`.
+- `proven_by`: evidence entries, as in `quest_evidence.yaml`, each with its
+  `source`, that prove a goal with no quest done.
+- `item`: the item whose Step by step the card opens. `lacking`: a name
+  prefix; the card opens the first catalog item with it the player lacks, and
+  owning one is done. `places` and `skip_nodes`: the places whose nodes count,
+  and the nodes that do not; the card opens the first place with one left.
 
 ### `off_chart_places`
 
@@ -184,13 +194,14 @@ may carry a `note`.
 
 Evidence kinds:
 
-| Kind           | Field   | Reads                                                                                                                                |
-| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `flag`         | `field` | A boolean at the profile root (`UnlockedOperator`)                                                                                   |
-| `affiliation`  | `tag`   | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                    |
-| `mission`      | `tag`   | A tag in `Missions[]`; a hub that only opens after the quest                                                                         |
-| `mission_type` | `type`  | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                  |
-| `item`         | `type`  | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable |
+| Kind           | Field    | Reads                                                                                                                                   |
+| -------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `flag`         | `field`  | A boolean at the profile root (`UnlockedOperator`)                                                                                      |
+| `affiliation`  | `tag`    | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                       |
+| `mission`      | `tag`    | A tag in `Missions[]`; a hub that only opens after the quest                                                                            |
+| `mission_type` | `type`   | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                     |
+| `item`         | `type`   | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable    |
+| `ability`      | `prefix` | An ability in `Stats.Abilities[]` whose `type` starts with the prefix and was used at least once; used for the Helminth's own abilities |
 
 What is deliberately absent, and why, is in `narrative.md`.
 

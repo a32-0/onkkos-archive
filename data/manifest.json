@@ -6,16 +6,16 @@
       "sha256": "c2800320b3d3463da60847fef4e38fabcf14f02f121c160751ae2bd33f3cac74"
     },
     "grafo.yaml": {
-      "size": 4639,
-      "sha256": "5e7b976b5287b009459c35482b8e40c7a4c7d308a0067bd58b4424216e5a1654"
+      "size": 6747,
+      "sha256": "c76b47ae7776445391b3950b3c50223a9faf377cf10c75d2428dbe3a65613ede"
     },
     "narrative_spine.yaml": {
       "size": 13510,
       "sha256": "819ff36c47dd6309cb6fc1ed745ebd64ff7df7eaa6b75b7d39ac159b2730e7b7"
     },
     "quest_evidence.yaml": {
-      "size": 3565,
-      "sha256": "4cb5e4457b5d3ec2c9492866ab2dfd4d5fe64b85031a9c0fc4a966031a12b59e"
+      "size": 5075,
+      "sha256": "68e2aa0b9bc3ff238e3c5e0cf751f7824f8291d0058ccf3f44622a9d30d4fa09"
     },
     "sources.yaml": {
       "size": 32759,

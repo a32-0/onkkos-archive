@@ -126,6 +126,15 @@ nodes:
       where: "Tag == 'EntratiSyndicate'"
       condition: "Title >= 2"
 
+  entrati_rank_3:
+    label: "Rank 3 with the Entrati (Associate)"
+    type: syndicate_rank
+    requires: [planet_deimos]
+    check:
+      field: "Affiliations[]"
+      where: "Tag == 'EntratiSyndicate'"
+      condition: "Title >= 3"
+
   necramech_components:
     label: "Necramech components in the Foundry"
     type: resource
@@ -142,6 +151,15 @@ nodes:
     check:
       field: "Missions[].Tag"
       equals: "1999Hub"
+
+  steel_path_open:
+    label: "The Steel Path unlocked"
+    type: mode
+    requires: []
+    check:
+      field: "Missions[]"
+      where: "Tier >= 1"
+      condition: "Tier >= 1"
 
 goals:
   unlock_next_planet:
@@ -161,6 +179,7 @@ goals:
     audience: veteran
     pathway: collect
     requires: [planet_deimos, entrati_rank_2, necramech_components]
+    after_nodes: [planet_deimos]
 
   unlock_1999:
     label: "Play the Hex Quest"
@@ -169,8 +188,83 @@ goals:
     audience: veteran
     pathway: star_chart
     requires: [hub_1999]
+    after_quests: ["Whispers in the Walls"]
     manual_checklist_if_missing:
       - "The Duviri Paradox"
       - "The Lotus Eaters"
       - "Whispers in the Walls"
       - "The Hex"
+
+  play_new_war:
+    label: "Play The New War"
+    pathway: star_chart
+    quest: "The New War"
+    audience: mid
+    after_quests: ["The War Within"]
+
+  play_jade_shadows:
+    label: "Play Jade Shadows"
+    pathway: star_chart
+    quest: "Jade Shadows"
+    audience: veteran
+    after: play_new_war
+
+  play_constellations:
+    label: "Play Jade Shadows: Constellations"
+    pathway: star_chart
+    quest: "Jade Shadows: Constellations"
+    audience: veteran
+    after: play_jade_shadows
+
+  hunt_archon:
+    label: "Hunt an Archon"
+    pathway: grow
+    quest: "Veilbreaker"
+    audience: veteran
+    after: play_new_war
+
+  unlock_steel_path:
+    label: "Unlock The Steel Path"
+    audience: mid
+    pathway: star_chart
+    requires: [steel_path_open]
+    after: unlock_next_planet
+    places:
+      [
+        Earth,
+        Venus,
+        Mercury,
+        Mars,
+        Phobos,
+        Ceres,
+        Jupiter,
+        Europa,
+        Saturn,
+        Uranus,
+        Neptune,
+        Pluto,
+        Eris,
+        Sedna,
+        Lua,
+        Kuva Fortress,
+      ]
+    skip_nodes: [SolNode701, SolNode705, SolNode723]
+
+  build_helminth:
+    label: "Build the Helminth"
+    pathway: grow
+    item: "Helminth Segment"
+    audience: mid
+    mastery_rank: 8
+    after_nodes: [entrati_rank_3]
+    proven_by:
+      - evidence: { kind: ability, prefix: "/Lotus/Powersuits/PowersuitAbilities/Helminth" }
+        source: "https://wiki.warframe.com/w/Helminth"
+
+  hunt_kuva_lich:
+    label: "Hunt a Kuva Lich"
+    pathway: collect
+    lacking: "Kuva "
+    audience: mid
+    mastery_rank: 5
+    after_quests: ["The War Within"]

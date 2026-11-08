@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { goalsProvenDone, suggestedGoals } from "@/domain/graph/suggest";
+import { goalsProvenDone, goalsWaiting, suggestedGoals } from "@/domain/graph/suggest";
 import { confirmedQuests } from "@/domain/narrative/evidence";
 import type { RawProfile } from "@/domain/types/profile";
 import { loadEvidenceRules } from "@/infra/narrative/evidence-load";
@@ -27,23 +27,94 @@ describe("goalsProvenDone", () => {
     expect(proven(fixture(CY)).has("build_necramech")).toBe(false);
   });
 
+  it("proves The Steel Path from a node cleared on it, and nothing less", () => {
+    expect(proven({ Missions: [{ Tag: "SolNode1", Completes: 3 }] }).has("unlock_steel_path")).toBe(
+      false,
+    );
+    expect(
+      proven({ Missions: [{ Tag: "SolNode1", Completes: 3, Tier: 1 }] }).has("unlock_steel_path"),
+    ).toBe(true);
+  });
+
+  it("proves the Helminth from an ability only the Helminth gives, used once", () => {
+    const used = (count: number): RawProfile => ({
+      Stats: {
+        Abilities: [
+          { type: "/Lotus/Powersuits/PowersuitAbilities/HelminthShieldsAbility", used: count },
+        ],
+      },
+    });
+    expect(proven(used(0)).has("build_helminth")).toBe(false);
+    expect(proven(used(3)).has("build_helminth")).toBe(true);
+    expect(proven(fixture(CY)).has("build_helminth")).toBe(false);
+  });
+
   it("reads the Hex from the quest, not from Höllvania's hub", () => {
     const hexOnly: RawProfile = { Affiliations: [{ Tag: "HexSyndicate", Title: 1 }] };
     expect(proven(hexOnly).has("unlock_1999")).toBe(true);
   });
 });
 
-describe("suggestedGoals", () => {
-  it("offers every goal to a new player, theirs first", () => {
-    expect(suggestedGoals(graph, 2)).toEqual([
-      "unlock_next_planet",
+describe("goalsWaiting (BR-86)", () => {
+  const offered = (profile: RawProfile) => {
+    const quests = confirmedQuests(rules, profile);
+    const done = goalsProvenDone(graph, profile, quests);
+    const hidden = new Set([...done, ...goalsWaiting(graph, profile, quests, done)]);
+    return suggestedGoals(graph, profile.PlayerLevel, hidden);
+  };
+
+  it("offers a new player only the next planet", () => {
+    expect(offered(fixture(NEW_PLAYER))).toEqual(["unlock_next_planet"]);
+  });
+
+  it("offers Cy only the walls the profile cannot yet prove", () => {
+    expect(offered(fixture(CY))).toEqual([
       "build_necramech",
-      "unlock_1999",
+      "play_constellations",
+      "build_helminth",
+      "hunt_kuva_lich",
     ]);
   });
 
-  it("does not suggest a goal the profile proves done", () => {
-    const cy = fixture(CY);
-    expect(suggestedGoals(graph, cy.PlayerLevel, proven(cy))).toEqual(["build_necramech"]);
+  it("waits for the Mastery Rank a wall asks for", () => {
+    const quills = (rank: number): RawProfile => ({
+      PlayerLevel: rank,
+      Affiliations: [{ Tag: "QuillsSyndicate", Title: 1 }],
+    });
+    expect(offered(quills(4))).not.toContain("hunt_kuva_lich");
+    expect(offered(quills(5))).toContain("hunt_kuva_lich");
+  });
+
+  it("opens The New War and a Kuva Lich after The War Within", () => {
+    const before = offered({ PlayerLevel: 9 });
+    expect(before).not.toContain("play_new_war");
+    expect(before).not.toContain("hunt_kuva_lich");
+    const after = offered({ PlayerLevel: 9, Affiliations: [{ Tag: "QuillsSyndicate", Title: 1 }] });
+    expect(after).toContain("play_new_war");
+    expect(after).toContain("hunt_kuva_lich");
+  });
+
+  it("offers a wall only once the one before it is done", () => {
+    const quests = confirmedQuests(rules, {});
+    const waiting = (done: string[]) => goalsWaiting(graph, {}, quests, new Set(done));
+    expect(waiting([]).has("play_jade_shadows")).toBe(true);
+    expect(waiting([]).has("hunt_archon")).toBe(true);
+    expect(waiting(["play_new_war"]).has("play_jade_shadows")).toBe(false);
+    expect(waiting(["play_new_war"]).has("hunt_archon")).toBe(false);
+    expect(waiting(["play_new_war"]).has("play_constellations")).toBe(true);
+    expect(waiting(["play_jade_shadows"]).has("play_constellations")).toBe(false);
+    expect(waiting([]).has("unlock_steel_path")).toBe(true);
+    expect(waiting(["unlock_next_planet"]).has("unlock_steel_path")).toBe(false);
+  });
+
+  it("offers the Helminth from Mastery Rank 8 and Rank 3 with the Entrati", () => {
+    const entrati = (rank: number, title: number): RawProfile => ({
+      PlayerLevel: rank,
+      Missions: [{ Tag: "DeimosHub", Completes: 1 }],
+      Affiliations: [{ Tag: "EntratiSyndicate", Title: title }],
+    });
+    expect(offered(entrati(8, 2))).not.toContain("build_helminth");
+    expect(offered(entrati(7, 3))).not.toContain("build_helminth");
+    expect(offered(entrati(8, 3))).toContain("build_helminth");
   });
 });

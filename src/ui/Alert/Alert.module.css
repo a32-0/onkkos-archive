@@ -8,7 +8,7 @@
 }
 
 .message {
-  composes: label-s from "../type.module.css";
+  composes: body from "../type.module.css";
   flex: 1;
 }
 

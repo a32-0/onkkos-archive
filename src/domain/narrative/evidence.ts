@@ -4,13 +4,16 @@ import { missionTags } from "@/domain/graph/star-chart";
 import { nodesOfType } from "@/domain/profile/nodes";
 import type { RawProfile } from "@/domain/types/profile";
 
-const rawEvidence = z.discriminatedUnion("kind", [
+export const rawEvidence = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("flag"), field: z.string() }),
   z.object({ kind: z.literal("affiliation"), tag: z.string() }),
   z.object({ kind: z.literal("mission"), tag: z.string() }),
   z.object({ kind: z.literal("mission_type"), type: z.string() }),
   z.object({ kind: z.literal("item"), type: z.string() }),
+  z.object({ kind: z.literal("ability"), prefix: z.string() }),
 ]);
+
+export type Evidence = z.infer<typeof rawEvidence>;
 
 const rawRule = z.object({
   quest: z.string(),
@@ -57,8 +60,8 @@ export function normalizeEvidenceRules(input: unknown): QuestEvidenceRules {
   return rules;
 }
 
-export function confirmedQuests(rules: QuestEvidenceRules, profile: RawProfile): ConfirmedQuests {
-  const facts: ProfileFacts = {
+function profileFacts(profile: RawProfile): ProfileFacts {
+  return {
     missions: missionTags(profile),
     affiliations: new Set(
       (profile.Affiliations ?? [])
@@ -71,10 +74,19 @@ export function confirmedQuests(rules: QuestEvidenceRules, profile: RawProfile):
         .filter((type): type is string => typeof type === "string"),
     ),
   };
+}
 
+export function provenBy(evidence: readonly Evidence[], profile: RawProfile): boolean {
+  if (evidence.length === 0) return false;
+  const facts = profileFacts(profile);
+  return evidence.some((one) => matchEvidence(one, profile, facts));
+}
+
+export function confirmedQuests(rules: QuestEvidenceRules, profile: RawProfile): ConfirmedQuests {
+  const facts = profileFacts(profile);
   const confirmed = new Map<string, QuestProof[]>();
   for (const rule of rules.rules) {
-    if (!matchRule(rule, profile, facts)) continue;
+    if (!matchEvidence(rule.evidence, profile, facts)) continue;
     const proof: QuestProof = { quest: rule.quest, via: rule.evidence.kind, source: rule.source };
     if (rule.note !== undefined) proof.note = rule.note;
     confirmed.set(rule.quest, [...(confirmed.get(rule.quest) ?? []), proof]);
@@ -82,17 +94,33 @@ export function confirmedQuests(rules: QuestEvidenceRules, profile: RawProfile):
   return confirmed;
 }
 
-function matchRule(rule: EvidenceRule, profile: RawProfile, facts: ProfileFacts): boolean {
-  switch (rule.evidence.kind) {
+function usedAbility(profile: RawProfile, prefix: string): boolean {
+  const abilities = profile.Stats?.Abilities;
+  return (
+    Array.isArray(abilities) &&
+    abilities.some(
+      (ability: { type?: unknown; used?: unknown }) =>
+        typeof ability?.type === "string" &&
+        ability.type.startsWith(prefix) &&
+        typeof ability.used === "number" &&
+        ability.used > 0,
+    )
+  );
+}
+
+function matchEvidence(evidence: Evidence, profile: RawProfile, facts: ProfileFacts): boolean {
+  switch (evidence.kind) {
     case "flag":
-      return profile[rule.evidence.field] === true;
+      return profile[evidence.field] === true;
     case "affiliation":
-      return facts.affiliations.has(rule.evidence.tag);
+      return facts.affiliations.has(evidence.tag);
     case "mission":
-      return facts.missions.has(rule.evidence.tag);
+      return facts.missions.has(evidence.tag);
     case "mission_type":
-      return nodesOfType(rule.evidence.type).some((node) => facts.missions.has(node.tag));
+      return nodesOfType(evidence.type).some((node) => facts.missions.has(node.tag));
     case "item":
-      return facts.items.has(rule.evidence.type);
+      return facts.items.has(evidence.type);
+    case "ability":
+      return usedAbility(profile, evidence.prefix);
   }
 }

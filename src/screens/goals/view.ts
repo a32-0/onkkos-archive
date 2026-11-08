@@ -8,10 +8,26 @@ import type { GoalCardView, GoalInput, GoalKind, SearchInput, SearchRow } from "
 const FROM = "goal";
 const SHOWN = 8;
 
-const ICONS: Readonly<Record<GoalKind, IconName>> = {
+const ICONS: Readonly<Record<string, IconName>> = {
+  unlock_next_planet: "flag",
+  build_necramech: "precision-manufacturing",
+  unlock_1999: "auto-stories",
+  play_new_war: "swords",
+  play_jade_shadows: "dark-mode",
+  play_constellations: "auto-awesome",
+  hunt_archon: "diamond",
+  unlock_steel_path: "skull",
+  build_helminth: "biotech",
+  hunt_kuva_lich: "target",
+};
+
+const KIND_ICONS: Readonly<Record<GoalKind, IconName>> = {
   planet: "flag",
   necramech: "precision-manufacturing",
   quest: "auto-stories",
+  item: "precision-manufacturing",
+  lich: "target",
+  "steel-path": "skull",
 };
 
 function cardWords(goal: GoalInput): { title: string; line: string } | null {
@@ -21,14 +37,18 @@ function cardWords(goal: GoalInput): { title: string; line: string } | null {
       ? { title: card.title, line: card.line(goal.junction.from, goal.junction.to) }
       : null;
   }
-  if (goal.id === "build_necramech" || goal.id === "unlock_1999") return GOALS.cards[goal.id];
+  if (goal.id in GOALS.cards && goal.id !== "unlock_next_planet") {
+    return GOALS.cards[goal.id as Exclude<keyof typeof GOALS.cards, "unlock_next_planet">];
+  }
   return null;
 }
 
 export function goalCards(goals: readonly GoalInput[]): GoalCardView[] {
   return goals.flatMap((goal) => {
     const words = cardWords(goal);
-    return words ? [{ id: goal.id, href: goal.href, icon: ICONS[goal.kind], ...words }] : [];
+    return words
+      ? [{ id: goal.id, href: goal.href, icon: ICONS[goal.id] ?? KIND_ICONS[goal.kind], ...words }]
+      : [];
   });
 }
 

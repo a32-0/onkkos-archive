@@ -18,6 +18,10 @@ describes. Their texts are sample values:
 - [`1001:7542` Plan — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7542), [`1009:7199` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7199) and
   [`1009:7275` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7275): the Mastery Rank card first among the
   suggestions, and gone at the highest rank (BR-78, owner, 2026-11-02).
+- [`1142:7324` Plan — Milestones](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7324), [`1142:7408` — After The New War](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7408) and
+  [`1142:7500` — After Jade Shadows](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7500): a Mastery Rank 9 player before The New War, then
+  after it, then after Jade Shadows; each wall waits for the one before it (BR-86, owner, 2026-11-08).
+- [`1165:8337` Plan>Milestones reached](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1165-8337): the milestones the profile proves done, on a page of their own, opened from a `List item` under the cards; proposed and not built yet.
 - [`675:6088` Plan — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6088): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
 
 ## Rules
@@ -87,7 +91,7 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
 
 ### The Mastery Rank card (BR-78)
 
-The cards sit under a `Divider` labelled "Suggestions". Before every goal
+The cards sit under a `Divider` labelled "Milestones" (owner, 2026-11-08). Before every goal
 card, the `Rank card`: the next rank's seal ("9", "30", or "L1" for a
 Legendary rank, in `Display/Heading`), "Reach Mastery Rank {n}" in the accent, and the line
 that says what takes the player there:
@@ -105,11 +109,18 @@ or with no `XPInfo`, there is no card.
 
 The curated goals in `data/grafo.yaml`, except the deferred ones:
 
-| Goal                 | Card title               | Opens                                                      |
-| -------------------- | ------------------------ | ---------------------------------------------------------- |
-| `unlock_next_planet` | "Unlock the next planet" | The map on the frontier                                    |
-| `build_necramech`    | "Build a Necramech"      | The Step by step of the Necramech the player lacks (BR-54) |
-| `unlock_1999`        | "Play the Hex Quest"     | The Step by step of The Hex quest                          |
+| Goal                                                       | Card title                                                                   | Opens                                                      |
+| ---------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `unlock_next_planet`                                       | "Unlock the next planet"                                                     | The map on the frontier                                    |
+| `build_necramech`                                          | "Build a Necramech"                                                          | The Step by step of the Necramech the player lacks (BR-54) |
+| `unlock_1999`                                              | "Play the Hex Quest"                                                         | The Step by step of The Hex quest                          |
+| `play_new_war`, `play_jade_shadows`, `play_constellations` | "Play The New War", "Play Jade Shadows", "Play Jade Shadows: Constellations" | The quest's Step by step                                   |
+| `hunt_archon`                                              | "Hunt an Archon"                                                             | The Step by step of Veilbreaker                            |
+| `unlock_steel_path`                                        | "Unlock The Steel Path"                                                      | The map on the first place with a node left                |
+| `build_helminth`                                           | "Build the Helminth"                                                         | The Step by step of the Helminth Segment                   |
+| `hunt_kuva_lich`                                           | "Hunt a Kuva Lich"                                                           | The Step by step of the first Kuva weapon lacking          |
+
+What each waits for, what proves it done and its icon are BR-86.
 
 - A goal the profile already proves done is not offered: no frontier hides
   the first, every Necramech owned hides the second, and the quest confirmed
@@ -120,11 +131,14 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
   still reaches everything.
 - Order: the goal on the frontier or the focus first (BR-05), then by Mastery
   Rank band (`suggestedGoals`).
-- Each card carries its icon, as the frame draws it: `precision_manufacturing`
-  for the Necramech, `auto_stories` for a quest, `flag` otherwise.
+- A goal waits for what `after`, `after_quests`, `after_nodes` and
+  `mastery_rank` name before it is offered (BR-86). A Necramech or a Kuva
+  Lich is done once the player owns one.
+- Each card carries its own icon, as the frames draw it (BR-86), and its line
+  says what the player gets.
 - The card's line lives in `src/content/goals.ts`, as every string does:
-  "Build a Necramech" and "Play the Hex Quest" carry the lines `662:4811`
-  draws; "Unlock the next planet" names the junction the frontier needs,
+  the lines of the walls are BR-86's frames, the Necramech's and the Hex's
+  included, which said what the player gets from 2026-11-08 on; "Unlock the next planet" names the junction the frontier needs,
   "Clear the Mars Junction, on Earth, to open the next planet." (owner,
   2026-10-17).
 
@@ -146,6 +160,12 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
   focus as in spec 07.
 - Necramechs: the catalog's Necramech category against `XPInfo`
   (`lackingNecramechs()` in `src/domain/catalog/necramechs.ts`).
+- Kuva weapons: the catalog's names that start "Kuva " against `XPInfo`
+  (`lackingNamed()` in `src/domain/catalog/lacking.ts`).
+- The Steel Path: the wiki's nodes (`data/vendor/wiki-nodes.json`) against
+  `Missions[].Completes`, over the goal's `places` less its `skip_nodes`
+  (`placeWithNodesLeft()` in `src/domain/graph/steel-path.ts`); a Steel Path
+  clear is `Missions[].Tier`.
 - Search: the route reads the player's screen, from the profile's cache, to
   order by reach and say each gap; it is private to the player and never
   cached in public.
