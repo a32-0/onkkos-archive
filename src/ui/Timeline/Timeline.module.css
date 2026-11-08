@@ -1,6 +1,6 @@
 .timeline {
   --timeline-marker: 24px;
-  --timeline-diamond: 10px;
+  --timeline-diamond: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8,7 +8,7 @@
 
 .step {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
 .alternative {
@@ -29,6 +29,12 @@
   padding-bottom: var(--space-2);
 }
 
+.locked {
+  composes: rail;
+  --rail-locked-opacity: 0.5;
+  opacity: var(--rail-locked-opacity);
+}
+
 .marker {
   display: flex;
   flex: none;
@@ -46,11 +52,16 @@
   transform: rotate(45deg);
 }
 
+.best {
+  composes: diamond;
+  background: var(--accent);
+}
+
 .line {
   flex: 1 0 0;
   width: var(--border-2);
   border-radius: var(--radius-full);
-  background: var(--timeline);
+  background: var(--fill-strong);
 }
 
 .content {

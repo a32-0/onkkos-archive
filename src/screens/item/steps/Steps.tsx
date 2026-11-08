@@ -102,6 +102,8 @@ export function Steps({ view, ticks }: { view: StepsView; ticks: Ticks }) {
                       steps={group.rows.map((row) => ({
                         id: row.id,
                         alternative: row.alternative,
+                        best: row.best,
+                        locked: row.locked,
                         content: (
                           <div id={row.anchor ?? undefined}>
                             <StepRow

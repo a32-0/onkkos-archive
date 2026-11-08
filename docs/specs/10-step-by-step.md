@@ -126,9 +126,13 @@ other row is words alone (BR-85, owner, 2026-11-04).
 
 ### Prerequisites, How to get and part sections
 
-A vertical gold line runs down the section. Each row:
+A vertical line in `fill-strong` runs down the section (owner, 2026-11-08).
+Each row:
 
-- **A diamond** on the line, for a step. An alternative ("Or …") has no
+- **A diamond** on the line, for a step: 8 px, in `fill-strong`, 12 px
+  (`space-5`) from the row's text; on the best route it is gold, like its
+  title (owner, 2026-11-08). On a locked step the diamond and its line fade
+  with the row. An alternative ("Or …") has no
   diamond; it continues the row above (Kuva's "Or trade for a converted Kuva
   Lich", Ivara Prime's "Or Lith Q3 Relic").
 - **The title**, bold: a verb and the thing. "(Optional)" ends an
