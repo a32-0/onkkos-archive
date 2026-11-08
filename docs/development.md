@@ -1,9 +1,7 @@
 # Development
 
-This page is for anyone who runs the project or changes it: the tools it uses,
-the commands that check a change before it merges, what CI runs on every push,
-how the code is split into layers, the conventions every file follows, the
-two targets one build serves, and the store behind the profile's locks.
+This page is for anyone who runs the project or changes it, from the tools
+to what CI runs on every push.
 
 ## Tooling
 

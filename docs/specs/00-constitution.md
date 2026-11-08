@@ -10,9 +10,7 @@ page, this page wins, and the other is wrong until this page is changed.
 
 Onkko's Archive reads a player's public Warframe profile and compares it with a
 hand-curated model of how the game's things are reached. It is not an inventory
-tracker: it answers what is left, in what order, and where to go looking. Its
-two features are under Scope, below, and what it cannot read is under "What
-cannot be read".
+tracker: it answers what is left, in what order, and where to go looking.
 
 This document records the rules the work follows, and what each one costs. The reasoning behind every decision below, with the
 measurements that settled it, is in [`docs/history/public-release.md`](../history/public-release.md).

@@ -1,11 +1,9 @@
 # The desktop app
 
-The app a player installs on Windows or Linux, so DE's profile is read from
-their own machine ([spec 13](specs/13-desktop.md)). It lives in `desktop/`,
-with its own `package.json` and lockfile, outside the demo's install and
-build. This page covers how it is built and run, what each file does, and why
-each part of the security baseline is there, how a version is packaged and
-published, and how an installed app updates itself.
+How the app a player installs is built, run, packaged and updated. What it
+does is [spec 13](specs/13-desktop.md); this page says how. It lives in
+`desktop/`, with its own `package.json` and lockfile, outside the demo's
+install and build.
 
 ## Running it from the tree
 
@@ -67,11 +65,10 @@ fixtures (`pnpm dev`); the app is for checking the app.
 
 ## The window
 
-The window opens 390 wide and 844 tall, or as tall as the screen allows. It
-can be widened to 600 and never goes below 390 by 640. It cannot be maximised
-or made full screen, and it has no menu. These are the `minWidth`, `maxWidth`
-and `minHeight` of `BrowserWindow` with `useContentSize`, so the limits hold for
-the content and not for the system's frame around it.
+The window's sizes are spec 13's. They are the `minWidth`, `maxWidth` and
+`minHeight` of `BrowserWindow` with `useContentSize`, so the limits hold for
+the content and not for the system's frame around it; `maximizable` and
+`fullscreenable` are off, and `removeMenu()` takes the menu away.
 
 When the window closes, its content size and its position go to `window.json`
 in the app's folder, and the next start opens there. A saved size is held
@@ -115,19 +112,14 @@ seconds, **Desktop — Can't start** replaces it. Its Restart is a link to
 `app:restart`, which the main process turns into a relaunch. The window has no
 preload and cannot reach the main process any other way.
 
-A player whose `wf_account` cookie the window still holds opens on the map
-(`/system`); anyone else opens on the splash.
-
 ## Who may talk to the server
 
-The server listens on `127.0.0.1` only. Each start draws a 32-byte secret,
-which the main process passes to the server's process and adds to every
-request the window makes to the server's origin, and to no other address. The
-guard answers `403` to a request that lacks the secret or carries another,
-and to one whose `Host` is not the server's own address. That last check
-stops a page in the player's browser that renames itself to `127.0.0.1`
-through DNS. No web page can know the secret, so none can make the app spend
-the player's reads.
+Spec 13 says who may reach the server; this is how. Each start draws a
+32-byte secret, which the main process passes to the server's process and
+adds to every request the window makes to the server's origin. The guard
+answers `403` to a request that lacks the secret or carries another, and to
+one whose `Host` is not the server's own address. That last check stops a
+page in the player's browser that renames itself to `127.0.0.1` through DNS.
 
 The guard runs in the server's own process: `serve.js` wraps the request
 listener of every HTTP server created after it loads, then loads `server.js`.
@@ -169,10 +161,8 @@ sent to the browser. Close on **Desktop — Can't start** quit the app.
 
 ## Cookies across starts
 
-The window's cookies are Chromium's, under the app's folder. Chromium keeps
-them per port, so a new port at each start lost the remembered id: measured
-on 2026-10-23, the second start opened on the splash. The app now keeps the
-port the system first gave it, in `port` under its own folder, and takes
+The window's cookies are Chromium's, under the app's folder, kept per port
+(spec 13). The port lives in `port` under the app's folder, and the app takes
 another only when that one is taken. The cookies are flushed to disk before
 the app quits.
 
@@ -346,10 +336,8 @@ words of `src/content/desktop.ts`, which the stage writes into
 Profile's **Check** is a server action, `checkUpdates` in `src/app/actions.ts`.
 The server cannot reach the updater, which lives in the main process, so it
 asks over the utility process's `parentPort` (`src/infra/app-updates.ts`) and
-waits a minute at most. The main process answers with one of four states, which
-the row then shows in place of the button: up to date, downloading a version,
-that version installs on restart, or GitHub could not be reached. Leaving
-Profile and coming back shows the button again. Once a version has
+waits a minute at most. The main process answers with one of the four states
+spec 13 lists. Once a version has
 downloaded, **Restart now** calls `restartNow`, which posts a `restart`
 message the same way; the main process then calls
 `autoUpdater.quitAndInstall(true, true)`, a silent install that opens the app

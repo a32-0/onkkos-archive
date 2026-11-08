@@ -20,12 +20,9 @@
 profile and tells you what came out while you were away that you don't have
 yet, and how to get the next thing you want, step by step.</h3>
 
-The [demo](https://onkkos-archive.vercel.app) runs in your browser with two
-sample players and needs nothing installed. To see your own account, download
-the app.
-
 | Where                    | How                                                                                                                                                                                                                                               |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Your browser**         | Try the [demo](https://onkkos-archive.vercel.app) with two sample players. Nothing to install. To see your own account, use the app.                                                                                                              |
 | **Windows 10 or 11**     | Get it from the [Microsoft Store](https://apps.microsoft.com/detail/9NVJBJD22L6D).                                                                                                                                                                |
 | **Windows, from GitHub** | Download `onkkos-archive-{version}-setup.exe` and run it. It installs for your user only, with no admin rights. The installer isn't signed, so the first time Windows says "Windows protected your PC", click **More info**, then **Run anyway**. |
 | **Linux**                | Download `onkkos-archive-{version}.AppImage`, make it executable (`chmod +x`) and open it.                                                                                                                                                        |
@@ -33,10 +30,6 @@ the app.
 <p align="center">
   <img src="docs/readme/what-it-does.png" alt="What it does" width="100%">
 </p>
-
-Warframe ends when you have everything. That's hundreds of things spread over
-years of updates, and Onkko puts them in order. It shows what's new for you,
-what to chase first and where to go for it.
 
 <table>
 <tr>
@@ -63,16 +56,17 @@ odds first**, and what you build it from.
 ### Then the Star Chart
 
 Both end on the **Star Chart**, one place at a time. It opens on **Start
-here**, the first planet you haven't unlocked, and shows **what's left** on
-each place by category, in three views called To get, Mastered and New. What's beyond your progress
-becomes a count that says why.
+here**, the first planet you haven't unlocked. Each place lists **what's
+left** for you to get there, by category, and you can switch to what you've
+mastered or to what's new. Things you can't reach yet are counted, with the
+step that opens them, like "Clear the Venus Junction, on Earth".
 
 <p align="center">
   <img src="docs/readme/why-onkko.png" alt="Why this app" width="100%">
 </p>
 
-Plenty of good tools already know Warframe. Onkko answers a narrower question,
-which is what's left for you and in what order.
+Plenty of good tools already know Warframe. Onkko answers a narrower question:
+what's left for you, and in what order.
 
 |                     | Knows what you have | What came out since you left | One goal, step by step | No login, no overlay |
 | ------------------- | :-----------------: | :--------------------------: | :--------------------: | :------------------: |
@@ -83,15 +77,12 @@ which is what's left for you and in what order.
 | **Onkko's Archive** |       **✔️**        |            **✔️**            |         **✔️**         |        **✔️**        |
 
 The wiki has every fact, spread over a page per thing. A tracker shows your
-inventory and leaves the plan to you. Onkko reads your profile, joins the two,
-and does nothing else.
+inventory and leaves the plan to you.
 
 - **It lists only what you can master or collect.** That's your arsenal
   (warframes, weapons, companions, vehicles) and your collection (mods,
   arcanes, relics, resources and the like).
 - **It leaves out skins, decorations and the rest of the game**, on purpose.
-- **It never reads your screen or your game files**, and it never changes
-  anything in your account.
 
 <p align="center">
   <img src="docs/readme/your-id.png" alt="Your ID" width="100%">
@@ -115,15 +106,15 @@ there's **no login, no password and no email**.
   same list. Nothing is generated while you use it, and your profile goes to no
   AI company.
 - **It stays on your computer.** There's no server of ours in between. The app
-  keeps a trimmed copy of your profile, read again every 12 hours, and your ID
-  in a cookie.
-  **Disconnect**, in Profile, forgets it.
-- **It only reads.** Your profile from `api.warframe.com`, text and art from
-  the wiki and `warframestat.us`, game data and updates from GitHub. No
-  analytics.
-- **It's gentle with DE's servers.** Two new lookups per computer every 12
-  hours, one at a time, and a 30-minute pause if DE refuses. Asking too often
-  can lock an address out of the game itself, so the app never does.
+  keeps your ID in a cookie and a trimmed copy of your profile.
+  **Disconnect**, in Profile, forgets your ID.
+- **It only reads.** It never reads your screen or your game files, and it
+  never changes anything in your account. It reads the sources under Credits,
+  plus game data and updates from GitHub. No analytics.
+- **It's gentle with DE's servers.** It reads your profile again every 12
+  hours, makes at most two new lookups per computer in that time, one at a
+  time, and pauses 30 minutes if DE refuses. Asking too often can lock an
+  address out of the game itself, so the app never does.
 
 The full list of what it keeps is in the
 [privacy policy](docs/privacy.md), and how it protects DE's endpoint is in
@@ -154,7 +145,7 @@ explains why the work runs in this order.
 
 **Designed by a product designer, built with Claude.** I shaped the
 experience, the design and the decisions, and Claude wrote the code, the research
-and the documentation alongside me. The app itself runs no AI.
+and the documentation alongside me.
 
 <p align="center">
   <img src="docs/readme/credits.png" alt="Credits" width="100%">

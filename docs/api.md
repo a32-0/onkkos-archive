@@ -71,11 +71,9 @@ false "account not found" for ten minutes, the default when no `max-age` comes.
   by `ttlFromCacheControl()` to between one minute and a day, so retyping the
   same wrong id costs nothing. With no header it keeps ten minutes.
 - What is kept is the trimmed profile, gzipped and base64-encoded, with the
-  time it was read and, after a later read failed, the time of that try. It
-  stays until a newer read replaces it, and after Disconnect only to the end
-  of its twelve hours, so a failed
-  read answers the last profile, marked stale, and the next try waits twelve
-  hours from the failed one (spec 11). The raw payload is never stored.
+  time it was read and, after a later read failed, the time of that try. How
+  long it stays, and what a failed read answers, is spec 11 (steps 9 and 10).
+  The raw payload is never stored.
 - There is no refresh action. It existed and let a player bypass the window
   with repeated clicks; it was removed for that reason.
 
