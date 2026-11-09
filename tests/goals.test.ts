@@ -145,12 +145,14 @@ describe("the progression walls (BR-86)", () => {
       { id: "unlock_steel_path", kind: "steel-path", href: "/system", junction: null },
       { id: "play_constellations", kind: "quest", href: "/item?name=Jade+Shadows", junction: null },
       { id: "hunt_kuva_lich", kind: "lich", href: "/item?name=Kuva+Karak", junction: null },
+      { id: "build_helminth", kind: "item", href: "/item?name=Helminth+Segment", junction: null },
     ]);
     expect(cards.map((card) => [card.title, card.icon])).toEqual([
       ["Play The New War", "swords"],
       ["Unlock The Steel Path", "skull"],
       ["Play Jade Shadows: Constellations", "auto-awesome"],
       ["Hunt a Kuva Lich", "target"],
+      ["Build the Helminth", "biotech"],
     ]);
   });
 

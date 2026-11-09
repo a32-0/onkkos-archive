@@ -937,6 +937,7 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     expect(html).toContain("Clear the Mars Junction, on Earth, to open the next planet.");
     for (const wall of [
       "Build a Necramech",
+      "Build the Helminth",
       "Play the Hex Quest",
       "Play The New War",
       "Unlock The Steel Path",

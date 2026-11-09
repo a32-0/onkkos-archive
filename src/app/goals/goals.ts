@@ -87,6 +87,14 @@ export function goalState(screen: Screen): GoalState {
         junction: null,
       };
     }
+    if (goal.item !== undefined) {
+      return {
+        id: goal.id,
+        kind: "item",
+        href: itemRoute(goal.item, FROM, "steps"),
+        junction: null,
+      };
+    }
     if (goal.places.length > 0) {
       const place = placeWithNodesLeft(goal, data.wiki.nodes, profile);
       const system = place ? systemOf(place) : null;
@@ -132,6 +140,9 @@ export function goalState(screen: Screen): GoalState {
     }
     if (goal.quest) {
       return { id: goal.id, kind: "quest", href: itemRoute(goal.quest, FROM), junction: null };
+    }
+    if (goal.item !== undefined) {
+      return { id: goal.id, kind: "item", href: itemRoute(goal.item, FROM), junction: null };
     }
     return {
       id: goal.id,

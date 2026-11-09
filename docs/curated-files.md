@@ -197,14 +197,15 @@ may carry a `note`.
 
 Evidence kinds:
 
-| Kind           | Field   | Reads                                                                                                                                |
-| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `flag`         | `field` | A boolean at the profile root (`UnlockedOperator`)                                                                                   |
-| `affiliation`  | `tag`   | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                    |
-| `mission`      | `tag`   | A tag in `Missions[]`; a hub that only opens after the quest                                                                         |
-| `mission_type` | `type`  | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                  |
-| `item`         | `type`  | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable |
-| `challenge`    | `name`  | A `Name` in `ChallengeProgress[]` with progress above 0: the title challenge behind the Honoria a quest awards                       |
+| Kind           | Field    | Reads                                                                                                                                |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `flag`         | `field`  | A boolean at the profile root (`UnlockedOperator`)                                                                                   |
+| `affiliation`  | `tag`    | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                    |
+| `mission`      | `tag`    | A tag in `Missions[]`; a hub that only opens after the quest                                                                         |
+| `mission_type` | `type`   | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                  |
+| `item`         | `type`   | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable |
+| `challenge`    | `name`   | A `Name` in `ChallengeProgress[]` with progress above 0: the title challenge behind the Honoria a quest awards                       |
+| `ability`      | `prefix` | A `type` in `Stats.Abilities[]` starting with the prefix, used at least once: an ability only one thing gives (the Helminth's own)   |
 
 What is deliberately absent, and why, is in `narrative.md`.
 

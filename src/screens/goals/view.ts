@@ -18,6 +18,7 @@ const SHOWN = 8;
 const ICONS: Readonly<Record<string, IconName>> = {
   unlock_next_planet: "flag",
   build_necramech: "precision-manufacturing",
+  build_helminth: "biotech",
   unlock_1999: "auto-stories",
   play_new_war: "swords",
   play_jade_shadows: "dark-mode",
@@ -31,6 +32,7 @@ const KIND_ICONS: Readonly<Record<GoalKind, IconName>> = {
   planet: "flag",
   necramech: "precision-manufacturing",
   quest: "auto-stories",
+  item: "biotech",
   lich: "target",
   "steel-path": "skull",
 };

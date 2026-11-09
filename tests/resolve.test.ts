@@ -35,6 +35,7 @@ describe("resolveGoal", () => {
   it("keeps the goals that name an item, a quest or a place, and the progression walls (BR-86)", () => {
     expect(Object.keys(graph.goals).sort()).toEqual(
       [
+        "build_helminth",
         "build_necramech",
         "hunt_archon",
         "hunt_kuva_lich",

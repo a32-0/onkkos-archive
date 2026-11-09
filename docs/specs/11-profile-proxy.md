@@ -54,8 +54,9 @@ In order, for every read:
    circuit), `malformed` (never cached).
 9. **Keep** only what the app reads: the profile cut to the fields any spec
    uses, compressed, until a newer read replaces it. Of `ChallengeProgress`,
-   only the title challenges earned stay, name and progress (BR-86). After Disconnect it stays
-   only until its twelve hours end.
+   only the title challenges earned stay, name and progress; of `Stats`, only
+   the Helminth's own abilities used, type and count (BR-86). After Disconnect
+   it stays only until its twelve hours end.
    The raw payload is never stored.
 10. **Keep the last one on a failure.** When a profile is stored and any step
     from 4 on fails, the read answers that profile, marked stale with the time

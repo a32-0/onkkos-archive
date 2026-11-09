@@ -3,7 +3,7 @@ import { gzipSync } from "node:zlib";
 import { describe, expect, it } from "vitest";
 
 import { toDisplayProfile } from "@/domain/profile/display";
-import { PROFILE_FIELDS } from "@/domain/profile/fields";
+import { KEPT_ABILITY_PREFIXES, PROFILE_FIELDS } from "@/domain/profile/fields";
 import { regionsPlayed } from "@/domain/profile/nodes";
 import { accountCreatedAt } from "@/domain/profile/payload";
 import { trimProfile } from "@/domain/profile/trim";
@@ -36,7 +36,14 @@ const SYNTHETIC: RawProfile = {
     { Name: "OldPeaceTitleChallenge", Progress: 0 },
   ],
   UnlockedOperator: true,
-  Stats: { MissionsCompleted: 4 },
+  Stats: {
+    MissionsCompleted: 4,
+    Abilities: [
+      { type: "/Lotus/Powersuits/PowersuitAbilities/RhinoRoar", used: 40 },
+      { type: "/Lotus/Powersuits/PowersuitAbilities/HelminthShieldArmorAbility", used: 2 },
+      { type: "/Lotus/Powersuits/PowersuitAbilities/HelminthEfficiencyAbility", used: 0 },
+    ],
+  },
 };
 
 const PROFILES: [string, RawProfile][] = [
@@ -46,11 +53,28 @@ const PROFILES: [string, RawProfile][] = [
 ];
 
 describe("trimProfile", () => {
-  it("keeps the ten fields, and of the challenges only the titles earned", () => {
+  it("keeps the ten fields, of the challenges only the titles earned, and of the stats only the Helminth's abilities used", () => {
     const trimmed = trimProfile(SYNTHETIC);
-    expect(Object.keys(trimmed).sort()).toEqual([...PROFILE_FIELDS, "ChallengeProgress"].sort());
+    expect(Object.keys(trimmed).sort()).toEqual(
+      [...PROFILE_FIELDS, "ChallengeProgress", "Stats"].sort(),
+    );
     expect(trimmed.ChallengeProgress).toEqual([{ Name: "TheNewWarTitleChallenge", Progress: 1 }]);
-    expect(trimmed.Stats).toBeUndefined();
+    expect(trimmed.Stats).toEqual({
+      Abilities: [
+        { type: "/Lotus/Powersuits/PowersuitAbilities/HelminthShieldArmorAbility", used: 2 },
+      ],
+    });
+    expect(trimProfile({ Stats: { MissionsCompleted: 4 } }).Stats).toBeUndefined();
+  });
+
+  it("keeps every ability prefix a goal reads as proof", () => {
+    const prefixes = Object.values(testGraph().goals)
+      .flatMap((goal) => goal.provenBy)
+      .flatMap((evidence) => (evidence.kind === "ability" ? [evidence.prefix] : []));
+    expect(prefixes.length).toBeGreaterThan(0);
+    for (const prefix of prefixes) {
+      expect(KEPT_ABILITY_PREFIXES.some((kept) => prefix.startsWith(kept))).toBe(true);
+    }
   });
 
   it("keeps every title challenge a rule or a goal reads as proof", () => {

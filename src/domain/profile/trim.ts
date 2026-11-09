@@ -2,10 +2,25 @@ import type { RawProfile } from "@/domain/types/profile";
 
 import {
   INVENTORY_FIELDS,
+  KEPT_ABILITY_PREFIXES,
   PRESENCE_FIELDS,
   PROFILE_FIELDS,
   TITLE_CHALLENGE_SUFFIX,
 } from "./fields";
+
+function keptAbilities(abilities: unknown): { type: string; used: number }[] {
+  if (!Array.isArray(abilities)) return [];
+  return abilities.flatMap((ability: { type?: unknown; used?: unknown }) => {
+    const type = ability?.type;
+    const used = ability?.used;
+    return typeof type === "string" &&
+      KEPT_ABILITY_PREFIXES.some((prefix) => type.startsWith(prefix)) &&
+      typeof used === "number" &&
+      used > 0
+      ? [{ type, used }]
+      : [];
+  });
+}
 
 function titleChallenges(challenges: unknown): { Name: string; Progress: number }[] {
   if (!Array.isArray(challenges)) return [];
@@ -37,5 +52,7 @@ export function trimProfile(profile: RawProfile): RawProfile {
   }
   const titles = titleChallenges(profile.ChallengeProgress);
   if (titles.length > 0) trimmed.ChallengeProgress = titles;
+  const abilities = keptAbilities(profile.Stats?.Abilities);
+  if (abilities.length > 0) trimmed.Stats = { Abilities: abilities };
   return trimmed as RawProfile;
 }

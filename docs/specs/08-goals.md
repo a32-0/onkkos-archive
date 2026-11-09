@@ -113,6 +113,7 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 | ---------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | `unlock_next_planet`                                       | "Unlock the next planet"                                                     | The map on the frontier                                    |
 | `build_necramech`                                          | "Build a Necramech"                                                          | The Step by step of the Necramech the player lacks (BR-54) |
+| `build_helminth`                                           | "Build the Helminth"                                                         | The Step by step of the Helminth Segment                   |
 | `unlock_1999`                                              | "Play the Hex Quest"                                                         | The Step by step of The Hex quest                          |
 | `play_new_war`, `play_jade_shadows`, `play_constellations` | "Play The New War", "Play Jade Shadows", "Play Jade Shadows: Constellations" | The quest's Step by step                                   |
 | `hunt_archon`                                              | "Hunt an Archon"                                                             | The Step by step of Veilbreaker                            |
@@ -132,7 +133,8 @@ What each waits for, what proves it done and its icon are BR-86.
   Rank band (`suggestedGoals`).
 - A goal waits for what `after`, `after_quests`, `after_nodes` and
   `mastery_rank` name before it is offered (BR-86). A Necramech or a Kuva
-  Lich is done once the player owns one.
+  Lich is done once the player owns one; the Helminth once the player has used
+  one of its own abilities.
 - Each card carries its own icon, as the frames draw it (BR-86), and its line
   says what the player gets.
 - The card's line lives in `src/content/goals.ts`, as every string does:

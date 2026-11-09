@@ -22,6 +22,10 @@ export const GOALS = {
       title: "Build a Necramech",
       line: "A war machine of your own to pilot in the open landscapes, Empyrean missions and Albrecht's Laboratories.",
     },
+    build_helminth: {
+      title: "Build the Helminth",
+      line: "Swap one ability of any Warframe for another Warframe's, and Invigorations that boost one for a week.",
+    },
     unlock_1999: {
       title: "Play the Hex Quest",
       line: "Cyte-09's blueprint, the Atomicycle, and Höllvania's missions and bounties.",

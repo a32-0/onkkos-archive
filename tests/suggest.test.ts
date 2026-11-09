@@ -49,6 +49,23 @@ describe("goalsProvenDone", () => {
     ).toBe(false);
   });
 
+  it("proves the Helminth from an ability only the Helminth gives, used once", () => {
+    const used = (count: number): RawProfile => ({
+      Stats: {
+        Abilities: [
+          { type: "/Lotus/Powersuits/PowersuitAbilities/HelminthShieldArmorAbility", used: count },
+        ],
+      },
+    });
+    expect(proven(used(0)).has("build_helminth")).toBe(false);
+    expect(proven(used(3)).has("build_helminth")).toBe(true);
+    expect(
+      proven({
+        Stats: { Abilities: [{ type: "/Lotus/Powersuits/PowersuitAbilities/RhinoRoar", used: 9 }] },
+      }).has("build_helminth"),
+    ).toBe(false);
+  });
+
   it("proves a Kuva Lich from the title for vanquishing one", () => {
     expect(
       proven({ ChallengeProgress: [{ Name: "LichKillerTitleChallenge", Progress: 1 }] }).has(
@@ -79,6 +96,7 @@ describe("goalsWaiting (BR-86)", () => {
     expect(offered(fixture(CY))).toEqual([
       "build_necramech",
       "play_constellations",
+      "build_helminth",
       "hunt_kuva_lich",
     ]);
   });
@@ -90,6 +108,17 @@ describe("goalsWaiting (BR-86)", () => {
     });
     expect(offered(quills(4))).not.toContain("hunt_kuva_lich");
     expect(offered(quills(5))).toContain("hunt_kuva_lich");
+  });
+
+  it("offers the Helminth from Mastery Rank 8 and Rank 3 with the Entrati", () => {
+    const entrati = (rank: number, title: number): RawProfile => ({
+      PlayerLevel: rank,
+      Missions: [{ Tag: "DeimosHub", Completes: 1 }],
+      Affiliations: [{ Tag: "EntratiSyndicate", Title: title }],
+    });
+    expect(offered(entrati(8, 2))).not.toContain("build_helminth");
+    expect(offered(entrati(7, 3))).not.toContain("build_helminth");
+    expect(offered(entrati(8, 3))).toContain("build_helminth");
   });
 
   it("opens The New War and a Kuva Lich after The War Within", () => {

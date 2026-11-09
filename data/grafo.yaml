@@ -126,6 +126,15 @@ nodes:
       where: "Tag == 'EntratiSyndicate'"
       condition: "Title >= 2"
 
+  entrati_rank_3:
+    label: "Rank 3 with the Entrati (Associate)"
+    type: syndicate_rank
+    requires: [planet_deimos]
+    check:
+      field: "Affiliations[]"
+      where: "Tag == 'EntratiSyndicate'"
+      condition: "Title >= 3"
+
   necramech_components:
     label: "Necramech components in the Foundry"
     type: resource
@@ -216,6 +225,17 @@ goals:
     pathway: collect
     requires: [planet_deimos, entrati_rank_2, necramech_components]
     after_nodes: [planet_deimos]
+
+  build_helminth:
+    label: "Build the Helminth"
+    pathway: grow
+    item: "Helminth Segment"
+    audience: mid
+    mastery_rank: 8
+    after_nodes: [entrati_rank_3]
+    proven_by:
+      - evidence: { kind: ability, prefix: "/Lotus/Powersuits/PowersuitAbilities/Helminth" }
+        source: "https://wiki.warframe.com/w/Helminth"
 
   hunt_archon:
     label: "Hunt an Archon"

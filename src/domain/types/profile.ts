@@ -32,10 +32,16 @@ interface RawScan {
   scans?: number;
 }
 
+interface RawAbility {
+  type: string;
+  used?: number;
+}
+
 interface RawStats {
   MissionsCompleted?: number;
   TimePlayedSec?: number;
   Scans?: RawScan[];
+  Abilities?: RawAbility[];
   [key: string]: unknown;
 }
 

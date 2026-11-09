@@ -1456,17 +1456,18 @@ The other proposals went to the Archive page.
 - Each card says what the player gets, the wiki's fact and not advice, and
   carries an icon no other card uses.
 
-| Card                              | Waits for                      | Opens                                                   | Gone when                                                                 | Icon                      |
-| --------------------------------- | ------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------- |
-| Unlock the next planet            | Nothing                        | The frontier                                            | No junction is left                                                       | `flag`                    |
-| Build a Necramech                 | Deimos reached                 | The first Necramech the player lacks                    | The player owns a Necramech                                               | `precision_manufacturing` |
-| Hunt a Kuva Lich                  | The War Within, Mastery Rank 5 | The first Kuva weapon the player lacks                  | The player owns a Kuva weapon or holds the Honoria for vanquishing a Lich | `target`                  |
-| Play The New War                  | The War Within                 | The quest's Step by step                                | Nataruk, Kahl, the Zariman, the Sanctum Anatomica, Brutus or Pontis Tower | `swords`                  |
-| Unlock The Steel Path             | Every junction                 | The first place with a node left before The New War     | A node shows a Steel Path clear                                           | `skull`                   |
-| Hunt an Archon                    | The New War                    | Veilbreaker's Step by step, the quest the hunts wait on | Kahl's Garrison                                                           | `diamond`                 |
-| Play Jade Shadows                 | The New War                    | The quest's Step by step                                | Its Honoria, Brutus or Pontis Tower                                       | `dark_mode`               |
-| Play Jade Shadows: Constellations | Jade Shadows                   | The quest's Step by step                                | Its Honoria, Pontis Tower, Pride, Wrath or War Prime                      | `auto_awesome`            |
-| Play the Hex Quest                | Whispers in the Walls          | The quest's Step by step                                | The Hex's syndicate or Höllvania                                          | `auto_stories`            |
+| Card                              | Waits for                                           | Opens                                                   | Gone when                                                                 | Icon                      |
+| --------------------------------- | --------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------- |
+| Unlock the next planet            | Nothing                                             | The frontier                                            | No junction is left                                                       | `flag`                    |
+| Build a Necramech                 | Deimos reached                                      | The first Necramech the player lacks                    | The player owns a Necramech                                               | `precision_manufacturing` |
+| Build the Helminth                | Rank 3 with the Entrati (Associate), Mastery Rank 8 | The Helminth Segment's Step by step                     | The player has used one of the Helminth's own abilities                   | `biotech`                 |
+| Hunt a Kuva Lich                  | The War Within, Mastery Rank 5                      | The first Kuva weapon the player lacks                  | The player owns a Kuva weapon or holds the Honoria for vanquishing a Lich | `target`                  |
+| Play The New War                  | The War Within                                      | The quest's Step by step                                | Nataruk, Kahl, the Zariman, the Sanctum Anatomica, Brutus or Pontis Tower | `swords`                  |
+| Unlock The Steel Path             | Every junction                                      | The first place with a node left before The New War     | A node shows a Steel Path clear                                           | `skull`                   |
+| Hunt an Archon                    | The New War                                         | Veilbreaker's Step by step, the quest the hunts wait on | Kahl's Garrison                                                           | `diamond`                 |
+| Play Jade Shadows                 | The New War                                         | The quest's Step by step                                | Its Honoria, Brutus or Pontis Tower                                       | `dark_mode`               |
+| Play Jade Shadows: Constellations | Jade Shadows                                        | The quest's Step by step                                | Its Honoria, Pontis Tower, Pride, Wrath or War Prime                      | `auto_awesome`            |
+| Play the Hex Quest                | Whispers in the Walls                               | The quest's Step by step                                | The Hex's syndicate or Höllvania                                          | `auto_stories`            |
 
 - The Steel Path asks for every node before The New War, Lua's and the Kuva
   Fortress's included, except the Mutalist Alad V and Jordas Golem
@@ -1475,14 +1476,18 @@ The other proposals went to the Archive page.
 - A quest that awards an Honoria is proven by it: the profile lists the title
   challenge behind it in `ChallengeProgress` (`quest_evidence.yaml`,
   `title_rules`).
-- The Helminth is not offered: nothing in the profile proves it. Its own
-  abilities show only if the player used one, and the cyst, the Helminth
-  Charger and an infested Warframe can all come from another player.
+- The Helminth is proven by its own abilities (Empower, Rebuild Shields and
+  the rest, under `/Lotus/Powersuits/PowersuitAbilities/Helminth` in
+  `Stats.Abilities`), used once. A player who built it and never used one
+  still sees the card: the segment itself, an infused ability (counted as the
+  Warframe's own), the cyst, the Helminth Charger and an infested Warframe
+  prove nothing, and the public profile carries no Archon Shards. The card
+  stays until the player uses one, which a Helminth owner soon does.
 - Which Warframe to subsume is left out: the wiki recommends none, and the
   rankings elsewhere are opinion that every update changes.
-- A card the profile cannot clear is not offered.
+- A card the profile could never clear is not offered.
 - Of `ChallengeProgress`, the stored profile keeps only the title challenges
-  earned (spec 11).
+  earned, and of `Stats` only the Helminth's abilities used (spec 11).
 - The divider over the cards reads "Milestones".
 - Under the cards, once one is done, a `List item` "Milestones reached",
   "{n} done", opens Plan>Milestones reached: every milestone the profile proves

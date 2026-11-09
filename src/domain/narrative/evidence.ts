@@ -11,6 +11,7 @@ export const rawEvidence = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("mission_type"), type: z.string() }),
   z.object({ kind: z.literal("item"), type: z.string() }),
   z.object({ kind: z.literal("challenge"), name: z.string() }),
+  z.object({ kind: z.literal("ability"), prefix: z.string() }),
 ]);
 
 export type Evidence = z.infer<typeof rawEvidence>;
@@ -53,6 +54,7 @@ interface ProfileFacts {
   affiliations: Set<string>;
   items: Set<string>;
   challenges: Set<string>;
+  abilities: string[];
 }
 
 export function normalizeEvidenceRules(input: unknown): QuestEvidenceRules {
@@ -84,7 +86,18 @@ function profileFacts(profile: RawProfile): ProfileFacts {
         .map((challenge) => challenge?.Name)
         .filter((name): name is string => typeof name === "string"),
     ),
+    abilities: usedAbilities(profile),
   };
+}
+
+function usedAbilities(profile: RawProfile): string[] {
+  const abilities = profile.Stats?.Abilities;
+  if (!Array.isArray(abilities)) return [];
+  return abilities.flatMap((ability) =>
+    typeof ability?.type === "string" && typeof ability.used === "number" && ability.used > 0
+      ? [ability.type]
+      : [],
+  );
 }
 
 export function provenBy(evidence: readonly Evidence[], profile: RawProfile): boolean {
@@ -119,5 +132,7 @@ function matchEvidence(evidence: Evidence, profile: RawProfile, facts: ProfileFa
       return facts.items.has(evidence.type);
     case "challenge":
       return facts.challenges.has(evidence.name);
+    case "ability":
+      return facts.abilities.some((type) => type.startsWith(evidence.prefix));
   }
 }
