@@ -15,37 +15,28 @@ fails.
 - [`662:6943` Onboarding>Error](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6943):
   the form after a failed read.
 
-Drawn on 2026-10-22 from Onboarding, for the owner to approve before this
-part of the spec is pinned:
-
 - [`764:4753` Connect — Demo](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-4753): the screen on the demo website,
-  which reads no account (below). Its lead reads "This is a demo: two
-  players' archives to explore. Nothing here reads an account."; the card
-  under the demos is headed **Your own account** and reads "The app reads
-  your profile from your own computer, through your own connection. For
-  Windows and Linux.", over Microsoft's **Download from the Microsoft Store**
-  badge, the light one, centred, and, under it, the text button **Download
-  from GitHub** (owner, 2026-10-30; the light badge and the button's words
-  on 2026-11-01).
+  which reads no account (below). Its lead reads "This is a demo: two players'
+  archives to explore. Nothing here reads an account."; the card under the demos
+  is headed **Your own account** and reads "The app reads your profile from your
+  own computer, through your own connection. For Windows and Linux.", over
+  Microsoft's **Download from the Microsoft Store** badge, the light one,
+  centred, and, under it, the text button **Download from GitHub**.
 
 - [`864:5693` Connect — Reads note](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=864-5693):
-  Onboarding with the note between the label and the field (approved by the
-  owner on 2026-10-25; moved above the field on 2026-11-06).
+  Onboarding with the note between the label and the field.
 
 - [`895:5723` Onboarding — Find your ID](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=895-5723):
-  the help page **Help me find my ID** opens (owner, 2026-10-29; below).
+  the help page **Help me find my ID** opens (below).
 
 On 2026-10-29 every Connect frame above took **More help** under the steps,
-and **Explore with a demo** as two choice cards (owner). On 2026-10-30 the
-button became **Help me find my ID** in every one of them (owner).
-
-The steps were redrawn in all three on 2026-10-15: `warframe.com/api/user-data`
-answers 404, so the id is read from the `gid` cookie instead (owner).
+and **Explore with a demo** as two choice cards. On 2026-10-30 the
+button became **Help me find my ID** in every one of them.
 
 Drawn on 2026-10-06 under **Documented states**, from the states this spec
 describes and no earlier frame drew. Their texts are sample values:
 
-- The Error state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159), on the Design System page: `--alert-error` ground, `--alert-error-ink` text and its `error` icon, 18 px, padded `space/5` (12 px) on every side (owner, 2026-10-29 and 2026-11-01). Each BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited) is an example in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488). The Error frame shows Invalid ID. Until 2026-11-01 the messages were the variants of an Error band component.
+- The Error state of [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159), on the Design System page: `--alert-error` ground, `--alert-error-ink` text and its `error` icon, 18 px, padded `space/5` (12 px) on every side (2026-10-29 and 2026-11-01). Each BR-38 message (Invalid ID, Not found, Not answering, Unreadable, Limited) is an example in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488). The Error frame shows Invalid ID. Until 2026-11-01 the messages were the variants of an Error band component.
 
 ## Rules
 
@@ -74,46 +65,44 @@ tabs or player chip. From the top, as `661:4354` draws it:
    Between the label and the field, a note in `--ink-muted` says what to check and how many tries there are before the id is sent: "Check it's the gid value before you connect. You get 2 tries every 12 hours."
    Two ids with the right shape that answer no account spend both reads and
    lock the device out for twelve hours (spec 11), so the note stands before
-   the first try rather than after (owner, 2026-10-25).
+   the first try rather than after.
 3. **Where do I find this?**: three numbered steps. On a computer,
    log in at `https://www.warframe.com`, a link that opens in a new tab; in the
-   same browser, open the developer tools, pressing F12, and in the side or
-   down panel go to the cookies (**On Firefox:** Storage › Cookies, **On Edge
-   or Chrome:** Application › Cookies, the browsers' names in bold; Edge
-   added on 2026-10-29, since Windows ships it); copy the value of the `gid`
-   cookie. Under the steps, **Help me find my ID**, a secondary button, opens
-   **Find your ID** (below). Then an example of that cookie and the
-   note "It's safe: it's the same public profile the game shows when you look at
-   another player. We only remember your ID on this device, and Disconnect
-   forgets it." The cookie is the app's only record of the
-   player and is needed to read their profile, so no consent banner is shown
-   (owner, 2026-10-21).
+   same browser, open the developer tools, pressing F12, and in the side or down
+   panel go to the cookies (**On Firefox:** Storage › Cookies, **On Edge or
+   Chrome:** Application › Cookies, the browsers' names in bold; Edge added on
+   2026-10-29, since Windows ships it); copy the value of the `gid` cookie. Under
+   the steps, **Help me find my ID**, a secondary button, opens **Find your ID**
+   (below). Then an example of that cookie and the note "It's safe: it's the same
+   public profile the game shows when you look at another player. We only remember
+   your ID on this device, and Disconnect forgets it." The cookie is the app's
+   only record of the player and is needed to read their profile, so no consent
+   banner is shown.
 4. **Explore with a demo**: the label, then two choice cards, as Where to start
    draws them, with no card around them, since nothing nests a card in a
    card: **Ordis**, with `rocket-launch`, "Mastery Rank 2. A player starting
    out, with most of the archive still ahead."; then **Cy**, with
    `military-tech`, "Mastery Rank 27. A player far along, with what's left
    after years of play." The rank is the fixture's own. Each card is the
-   form's submit button (owner, 2026-10-29).
+   form's submit button.
 
 ### Find your ID
 
-`/connect/find-your-id`, outside the shell like Connect, under a top bar
-titled **Find your ID** whose back goes to `/connect`. Content is never folded
-inside other content (constitution), so the pictures have their own page
-instead of opening inside the steps (owner, 2026-10-29). A lead,
-"Where the “gid” cookie is, in what each browser shows. Do it on a computer,
-logged in at www.warframe.com.", where `www.warframe.com` is an underlined
-link that opens the site in a new tab, then one card per browser, **Firefox**
-and then **Edge or Chrome** (one card, as both use the same developer tools),
-each with three numbered steps ("**Press F12** to open the developer tools.";
-Storage › Cookies, or Application › Cookies, › `https://www.warframe.com`;
-"Type “gid” in the filter, and copy its **Value**.", the words in bold as
-the frame sets them; owner, 2026-10-30) and a screenshot of that panel with
-its alt text. The screenshots are the owner's,
-taken in English, filtered to the `gid` row, with the frame's example id in
-place of a real one, so they show nothing of an account. The demo website
-never links to it, since it asks for no id.
+`/connect/find-your-id`, outside the shell like Connect, under a top bar titled
+**Find your ID** whose back goes to `/connect`. Content is never folded inside
+other content (constitution), so the pictures have their own page instead of
+opening inside the steps. A lead, "Where the “gid” cookie is, in what each
+browser shows. Do it on a computer, logged in at www.warframe.com.", where
+`www.warframe.com` is an underlined link that opens the site in a new tab, then
+one card per browser, **Firefox** and then **Edge or Chrome** (one card, as both
+use the same developer tools), each with three numbered steps ("**Press F12** to
+open the developer tools."; Storage › Cookies, or Application › Cookies, ›
+`https://www.warframe.com`; "Type “gid” in the filter, and copy its **Value**.",
+the words in bold as the frame sets them) and a screenshot of that panel with
+its alt text. The screenshots are the owner's, taken in English, filtered to the
+`gid` row, with the frame's example id in place of a real one, so they show
+nothing of an account. The demo website never links to it, since it asks for no
+id.
 
 ### Connect
 
@@ -121,15 +110,13 @@ never links to it, since it asks for no id.
    either case) before any call. A bad shape shows the `invalid-id` band
    without reading anything.
 2. Otherwise the form enters **Loading** (`675:5392`): Connect is disabled,
-   and the loading screen every wait shares covers the page (owner,
-   2026-10-29): the whole screen behind black at 80% (`--scrim-strong`), and
-   the quill alone, 64 × 96, centred on it, with no card and no visible
-   words. The page stays as it was underneath. Screen readers hear
-   "Onkko is reading your archive...". The quill writes a stroke, lifts, and
-   starts again every 2.4 s
-   ([`841:536` Loading — Quill motion](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=841-536);
-   owner, 2026-10-23); with reduced motion it stands still and draws no
-   stroke (T-44).
+   and the loading screen every wait shares covers the page : the whole screen
+   behind black at 80% (`--scrim-strong`), and the quill alone, 64 × 96, centred
+   on it, with no card and no visible words. The page stays as it was underneath.
+   Screen readers hear "Onkko is reading your archive...". The quill writes a
+   stroke, lifts, and starts again every 2.4 s ([`841:536` Loading — Quill
+   motion](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=841-536));
+   with reduced motion it stands still and draws no stroke (T-44).
 3. On success the id is saved in `wf_account` for a year, and the player goes
    on by BR-03: a player who has reached Venus to `/features`, a new player to
    `/goals`. A profile whose `Missions[]` cannot be read counts as reached.
@@ -143,7 +130,7 @@ never links to it, since it asks for no id.
 Each demo card saves that demo's id in `wf_account` and goes on by BR-03,
 exactly as a real read would, behind the loading screen once the wait passes
 400 ms (BR-71), and with no toast (BR-70). Both demos have reached Venus (Ordis stops at
-Mercury), so both land on `/features` (owner, 2026-10-15). A demo is
+Mercury), so both land on `/features`. A demo is
 read from its fixture and never calls DE. It spends no lookup from the
 visitor's budget.
 
@@ -154,16 +141,14 @@ account, so its `/connect` asks for none. In place of the Account ID field,
 Connect and **Where do I find this?**, **Connect — Demo** shows the two demos
 first and, under them, a card that sends the player to the app: one line that
 says their own account is read by the app on their computer, then two ways
-to get it, each opened in a new tab (owner, 2026-10-30):
+to get it, each opened in a new tab :
 
 - Microsoft's own badge, **Download from the Microsoft Store**, at its own
-  size and colours (the light one, as the README shows it; owner,
-  2026-11-01), centred, which opens the app's Store
-  listing. It comes first: the Store's package is signed, so Windows shows
-  no warning (spec 13).
-- **Download from GitHub**, a text button (owner, 2026-11-01; it read "Or
-  from GitHub, for Windows and Linux" before), which opens the
-  repository's latest release. The release page lists the Windows installer
+  size and colours (the light one, as the README shows it), centred, which opens
+  the app's Store listing. It comes first: the Store's package is signed, so
+  Windows shows no warning (spec 13).
+- **Download from GitHub**, a text button, which opens the repository's latest
+  release. The release page lists the Windows installer
   and the Linux AppImage, so the demo does not guess the player's system.
 
 An id remembered from before (`wf_account`) that is no demo's is forgotten on
@@ -175,7 +160,7 @@ draws it above.
 
 Every later read happens on a screen inside the shell, once the twelve hours
 have passed. When it fails, the player stays where they are, on the profile
-read last, and Profile draws the failure (BR-69; owner, 2026-10-31). Only a
+read last, and Profile draws the failure (BR-69). Only a
 device with no profile kept, after the window that follows Disconnect or on a
 first read, reaches
 this form with a band.
@@ -206,7 +191,7 @@ this form with a band.
   It cannot be anyone's. An account id is a MongoDB ObjectId, whose first 8
   characters are its creation time in seconds; `4b2e9f17` is 20 December
   2009, before Warframe's closed beta in October 2012, so no account was
-  created then (owner, 2026-10-15). A replacement keeps a date before 2012.
+  created then. A replacement keeps a date before 2012.
   Typing it reads it like any other id: under the fixture source it opens Cy,
   the default fixture; live, it spends one read and ends in "not found".
 - Copy lives in `src/content/`, the band's messages included.

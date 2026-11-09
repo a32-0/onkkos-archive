@@ -72,6 +72,7 @@ export function PlaceOverview({
       </p>
       {left && left.kinds.length > 0 && (
         <div className={styles.left}>
+          <p className={styles.caption}>{left.caption}</p>
           <ul className={styles.chips}>
             {left.kinds.map((kind) => {
               const content = (
@@ -103,7 +104,6 @@ export function PlaceOverview({
               );
             })}
           </ul>
-          <p className={styles.caption}>{left.caption}</p>
         </div>
       )}
     </div>

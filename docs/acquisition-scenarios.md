@@ -108,27 +108,27 @@ keep the routes honest:
   blueprint resolved to `market` or `research` was checked against the first
   line of its own Acquisition section:
 
-  | Route      | Items | Prose agrees |
-  | ---------- | ----: | -----------: |
-  | `market`   |   137 |          132 |
-  | `research` |   103 |          101 |
+| Route      | Items | Prose agrees |
+| ---------- | ----: | -----------: |
+| `market`   |   137 |          132 |
+| `research` |   103 |          101 |
 
-  Three `market` rows are wrong:
+Three `market` rows are wrong:
 
-  - Dagath and Dorrclave come from Dagath's Hollow, a dojo room with no
-    research. `Module:Research/data` has their entries commented out, so
-    nothing structured says so.
-  - Prisma Dual Decurions is a Baro Ki'Teer item.
+- Dagath and Dorrclave come from Dagath's Hollow, a dojo room with no
+  research. `Module:Research/data` has their entries commented out, so
+  nothing structured says so.
+- Prisma Dual Decurions is a Baro Ki'Teer item.
 
-  Three more are unconfirmed:
+Three more are unconfirmed:
 
-  - Excalibur and Mag are starter choices in Awakening.
-  - Protea's blueprint is first a quest reward.
+- Excalibur and Mag are starter choices in Awakening.
+- Protea's blueprint is first a quest reward.
 
-  On the `research` side, Ignis Wraith also drops from Derelict caches, and
-  Volt is a starter that the Tenno Lab also researches. No researched item's
-  prose mentions the Market, which is why research suppresses `market`
-  rather than adding it as an alternative.
+On the `research` side, Ignis Wraith also drops from Derelict caches, and
+Volt is a starter that the Tenno Lab also researches. No researched item's
+prose mentions the Market, which is why research suppresses `market`
+rather than adding it as an alternative.
 
 - **A vendor read from a drop string defers to the wiki's own entry**, which
   carries the price. It defers only when both name the same vendor and agree
@@ -258,13 +258,15 @@ collectibles were closed in this order, cheapest first:
    and Wrath's a "Pride Blade". `foreignPart()` looks such a part up by its
    own name in DE's tables.
 3. **Data that was vendored but unread.**
-   - Honoria: the module's price is joined to a vendor through the currency
-     (`Volatile Motes` → Belly of the Beast), and the Honoria page's tag
-     sections give the vendor, place and quest for Roathe, Hunhow, Melica and
-     Marie (`wiki-honoria-tags.json`).
-   - Baro answers collectibles too, not only weapons.
-   - 588 collectibles carry a recipe in `@wfcd/items`; they get Components
-     like any weapon.
+
+- Honoria: the module's price is joined to a vendor through the currency
+  (`Volatile Motes` → Belly of the Beast), and the Honoria page's tag
+  sections give the vendor, place and quest for Roathe, Hunhow, Melica and
+  Marie (`wiki-honoria-tags.json`).
+- Baro answers collectibles too, not only weapons.
+- 588 collectibles carry a recipe in `@wfcd/items`; they get Components
+  like any weapon.
+
 4. **Rotations computed, not fetched.** The Circuit page defines each week
    with a fixed anchor and period (normal: 11 weeks from 2023-04-24; Steel
    Path: 9 weeks from 2026-04-20). `wiki-circuit.json` keeps both tables, and
@@ -444,7 +446,7 @@ drop, a region, a vendor, a `sources.yaml` row, or a Honoria entry in the
 wiki's module with a description or a price. The catalog lists some the wiki
 has never documented (six Honorias and Eskhatos Infinitas Ephemera when
 `@wfcd/items` 1.1276.21 arrived); they stay out until it does, and the next
-refresh brings them in (owner, 2026-10-15). That version also moved the
+refresh brings them in. That version also moved the
 Honorias out of `Misc` into a category of their own, `Honoria`, which
 `COLLECTIBLE_SOURCES` reads.
 

@@ -26,7 +26,11 @@ import type { Screen } from "@/infra/screen";
 import { withProse } from "@/infra/wiki/prose";
 import { gameIcons } from "@/infra/wiki/icons";
 import { fetchVarzia } from "@/infra/worldstate/client";
-import type { BuiltIntoFact, ItemFacts, ItemPlace } from "@/screens/item/state";
+import { effectOf, lines } from "@/domain/catalog/mod-effects";
+import { MOD } from "@/content/mod";
+import { loadModStats, modEntry } from "@/infra/catalog/mod-stats";
+import { fetchWikiFileUrls } from "@/infra/wiki/client";
+import type { BuiltIntoFact, ItemFacts, ItemPlace, ModFactsView } from "@/screens/item/state";
 import { groupIcon } from "@/screens/rank/view";
 import type { StepsFacts } from "@/screens/item/steps/state";
 
@@ -181,5 +185,19 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
       : itemGaps(reach, { masteryReq: item?.masteryReq ?? 0, place }).length > 0,
     steps,
     builtInto: item ? await builtIntoOf(data, item, ranks, entries) : [],
+    mod: collectible?.group === "mods" ? await modOf(name) : null,
+  };
+}
+
+async function modOf(name: string): Promise<ModFactsView | null> {
+  const entry = modEntry(name);
+  if (!entry?.facts) return null;
+  const stats = loadModStats();
+  const file = entry.facts.polarity ? `${entry.facts.polarity} Pol(xBlack).svg` : null;
+  const art = file ? await fetchWikiFileUrls([file]) : new Map<string, string>();
+  return {
+    ...entry.facts,
+    polarityArt: file ? (art.get(file) ?? null) : null,
+    effects: lines(entry.maxStats ?? []).map((line) => effectOf(stats, line, MOD)),
   };
 }

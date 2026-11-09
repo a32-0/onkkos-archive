@@ -22,10 +22,10 @@ Storybook is not published. Run it with `pnpm storybook`.
 git clone https://github.com/a32-0/onkkos-archive.git
 cd onkkos-archive
 pnpm install
-cp .env.example .env.local
-pnpm exec playwright install chromium   # once, for the story tests
-pnpm dev                     # the app on localhost:3000, with the two demo players
-pnpm --dir desktop install   # only if you will build or run the desktop app
+cp.env.example.env.local
+pnpm exec playwright install chromium # once, for the story tests
+pnpm dev # the app on localhost:3000, with the two demo players
+pnpm --dir desktop install # only if you will build or run the desktop app
 ```
 
 Development never reads a real account. You test against two anonymised
@@ -79,22 +79,24 @@ weeks. Hotfixes need nothing.
    new, runs the checks and writes a report to `docs/updates/`.
 4. Read the report. It sorts each new thing into a level:
 
-   | Level             | What to do                                                                                                      |
-   | ----------------- | --------------------------------------------------------------------------------------------------------------- |
-   | Enters on its own | Nothing                                                                                                         |
-   | Needs a source    | Add where it comes from to the files in `data/`, with a `cite` ([`curated-files.md`](curated-files.md))         |
-   | New to the app    | No screen was designed for it. Treat it as a [change to the app](#changing-a-screen-or-a-rule), or leave it out |
+| Level             | What to do                                                                                                      |
+| ----------------- | --------------------------------------------------------------------------------------------------------------- |
+| Enters on its own | Nothing                                                                                                         |
+| Needs a source    | Add where it comes from to the files in `data/`, with a `cite` ([`curated-files.md`](curated-files.md))         |
+| New to the app    | No screen was designed for it. Treat it as a [change to the app](#changing-a-screen-or-a-rule), or leave it out |
 
-   If many items are gone or renamed at once, the new `@wfcd/items` is
-   broken, not the game. Throw the update away with `git restore .` and
-   `git clean -fd docs/updates`, and run it again when WFCD publishes a fix.
+If many items are gone or renamed at once, the new `@wfcd/items` is
+broken, not the game. Throw the update away with `git restore.` and
+`git clean -fd docs/updates`, and run it again when WFCD publishes a fix.
 
 5. Open a few new items in `pnpm dev`. A drop from an enemy shows the
    enemy's art from the wiki. If a new enemy shows its name with no art:
-   - The wiki has a picture of it or of its base enemy: add the file or page
-     to `WIKI_ART` in `scripts/refresh-vendor-art.mjs` and run
-     `pnpm data:vendor-art`.
-   - The wiki has none: the name alone is correct.
+
+- The wiki has a picture of it or of its base enemy: add the file or page
+  to `WIKI_ART` in `scripts/refresh-vendor-art.mjs` and run
+  `pnpm data:vendor-art`.
+- The wiki has none: the name alone is correct.
+
 6. Run the checks. Commit everything the command changed, including
    `data/manifest.json` and the report. Push to `dev` and merge to `main`.
 
@@ -223,17 +225,17 @@ merge, never on `dev`.
 3. Bring the merge to your machine and tag it, `v` before the version.
    Pushing the tag starts the release.
 
-   ```sh
-   git checkout main
-   git pull
-   git tag v1.2.1
-   git push origin v1.2.1
-   git checkout dev
-   ```
+```sh
+git checkout main
+git pull
+git tag v1.2.1
+git push origin v1.2.1
+git checkout dev
+```
 
-   Tag only after `git pull`: a tag on the old `main` ships the version
-   without the merge. To undo a wrong tag before its release is published:
-   `git tag -d v1.2.1` and `git push origin :refs/tags/v1.2.1`.
+Tag only after `git pull`: a tag on the old `main` ships the version
+without the merge. To undo a wrong tag before its release is published:
+`git tag -d v1.2.1` and `git push origin :refs/tags/v1.2.1`.
 
 4. GitHub builds the Windows installer and the Linux AppImage into a draft
    release. If the tag and `desktop/package.json` disagree, it stops.

@@ -14,3 +14,5 @@ export const PROFILE_FIELDS = [
 export const INVENTORY_FIELDS = ["XPInfo"] as const;
 
 export const PRESENCE_FIELDS = ["GuildId"] as const;
+
+export const TITLE_CHALLENGE_SUFFIX = "TitleChallenge";

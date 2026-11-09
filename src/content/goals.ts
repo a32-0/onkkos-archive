@@ -46,16 +46,17 @@ export const GOALS = {
       title: "Unlock The Steel Path",
       line: "Enemies 100 levels higher, twice the mods and resources, and Steel Essence for Teshin's shop.",
     },
-    build_helminth: {
-      title: "Build the Helminth",
-      line: "Lets a Warframe swap one of its abilities for another Warframe's.",
-    },
     hunt_kuva_lich: {
       title: "Hunt a Kuva Lich",
       line: "A Kuva weapon, a stronger version of a Grineer one, with an element of its own.",
     },
   },
   suggestions: "Milestones",
+  milestones: {
+    title: "Milestones reached",
+    done: (count: number) => `${count} done`,
+    planetDone: "Every junction cleared.",
+  },
   empty: {
     title: "Nothing left to suggest",
     line: "You've done every suggestion. Search above for anything else.",

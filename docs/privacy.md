@@ -20,7 +20,7 @@ Everything stays on your computer. There's no server of ours in between.
 
 | What                                                                                                               | Where on your computer         | For how long                                                   |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------ | -------------------------------------------------------------- |
-| The fields of your profile it uses, never the whole profile                                                        | The app's folder               | Until a newer read; after you disconnect, twelve hours at most |
+| The fields of your profile it uses, never the whole profile, and of your titles only those a quest awards          | The app's folder               | Until a newer read; after you disconnect, twelve hours at most |
 | Your ID, the update you last played, the last place you opened, whether Onkko speaks, whether you've seen the tour | The app's cookies              | Up to a year                                                   |
 | The steps you tick                                                                                                 | The app's storage              | Until you clear them                                           |
 | The wiki's text and icons, Varzia's stock, the rotations                                                           | Memory, while the app is open  | A day at most; Varzia's ten minutes                            |

@@ -10,7 +10,7 @@ export const rawEvidence = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("mission"), tag: z.string() }),
   z.object({ kind: z.literal("mission_type"), type: z.string() }),
   z.object({ kind: z.literal("item"), type: z.string() }),
-  z.object({ kind: z.literal("ability"), prefix: z.string() }),
+  z.object({ kind: z.literal("challenge"), name: z.string() }),
 ]);
 
 export type Evidence = z.infer<typeof rawEvidence>;
@@ -26,6 +26,7 @@ const rawEvidenceSchema = z.object({
   version: z.number(),
   last_verified: z.string().optional(),
   rules: z.array(rawRule),
+  title_rules: z.array(rawRule).default([]),
 });
 
 type EvidenceRule = z.infer<typeof rawRule>;
@@ -51,11 +52,15 @@ interface ProfileFacts {
   missions: Set<string>;
   affiliations: Set<string>;
   items: Set<string>;
+  challenges: Set<string>;
 }
 
 export function normalizeEvidenceRules(input: unknown): QuestEvidenceRules {
   const raw = rawEvidenceSchema.parse(input);
-  const rules: QuestEvidenceRules = { version: raw.version, rules: raw.rules };
+  const rules: QuestEvidenceRules = {
+    version: raw.version,
+    rules: [...raw.rules, ...raw.title_rules],
+  };
   if (raw.last_verified !== undefined) rules.lastVerified = raw.last_verified;
   return rules;
 }
@@ -72,6 +77,12 @@ function profileFacts(profile: RawProfile): ProfileFacts {
       (profile.LoadOutInventory?.XPInfo ?? [])
         .map((entry) => entry?.ItemType)
         .filter((type): type is string => typeof type === "string"),
+    ),
+    challenges: new Set(
+      (profile.ChallengeProgress ?? [])
+        .filter((challenge) => (challenge?.Progress ?? 0) > 0)
+        .map((challenge) => challenge?.Name)
+        .filter((name): name is string => typeof name === "string"),
     ),
   };
 }
@@ -94,20 +105,6 @@ export function confirmedQuests(rules: QuestEvidenceRules, profile: RawProfile):
   return confirmed;
 }
 
-function usedAbility(profile: RawProfile, prefix: string): boolean {
-  const abilities = profile.Stats?.Abilities;
-  return (
-    Array.isArray(abilities) &&
-    abilities.some(
-      (ability: { type?: unknown; used?: unknown }) =>
-        typeof ability?.type === "string" &&
-        ability.type.startsWith(prefix) &&
-        typeof ability.used === "number" &&
-        ability.used > 0,
-    )
-  );
-}
-
 function matchEvidence(evidence: Evidence, profile: RawProfile, facts: ProfileFacts): boolean {
   switch (evidence.kind) {
     case "flag":
@@ -120,7 +117,7 @@ function matchEvidence(evidence: Evidence, profile: RawProfile, facts: ProfileFa
       return nodesOfType(evidence.type).some((node) => facts.missions.has(node.tag));
     case "item":
       return facts.items.has(evidence.type);
-    case "ability":
-      return usedAbility(profile, evidence.prefix);
+    case "challenge":
+      return facts.challenges.has(evidence.name);
   }
 }

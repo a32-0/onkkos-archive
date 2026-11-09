@@ -10,6 +10,8 @@ import { BuiltInto } from "@/ui/BuiltInto/BuiltInto";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
 import { ItemHero } from "@/ui/ItemHero/ItemHero";
+import { ModEffect } from "@/ui/ModEffect/ModEffect";
+import { ModOverview } from "@/ui/ModOverview/ModOverview";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { PlaceCrumb } from "@/ui/PlaceCrumb/PlaceCrumb";
 import { Segmented, type SegmentedOption } from "@/ui/Segmented/Segmented";
@@ -63,7 +65,14 @@ export function ItemScreen({
               link={Link}
             />
           )}
-          <ItemHero kicker={page.kicker} name={page.name} art={page.art} state={page.hero} />
+          <ItemHero
+            kicker={page.kicker}
+            name={page.name}
+            art={page.art}
+            state={page.hero}
+            bare={page.mod !== null}
+          />
+          {page.mod && <ModOverview {...page.mod.overview} />}
           {page.builtInto.length > 0 && (
             <BuiltInto label={ITEM.builtInto} chips={page.builtInto} link={Link} />
           )}
@@ -74,6 +83,14 @@ export function ItemScreen({
           </ControlRow>
           {view === "summary" && (
             <div className={styles.sections}>
+              {page.mod && page.mod.effects.length > 0 && (
+                <section className={styles.section}>
+                  <Divider label={page.mod.title} />
+                  {page.mod.effects.map((effect, at) => (
+                    <ModEffect key={at} {...effect} />
+                  ))}
+                </section>
+              )}
               {page.sections.map((section) => (
                 <section key={section.id} className={styles.section}>
                   <Divider label={section.title} />

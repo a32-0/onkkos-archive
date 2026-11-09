@@ -126,15 +126,6 @@ nodes:
       where: "Tag == 'EntratiSyndicate'"
       condition: "Title >= 2"
 
-  entrati_rank_3:
-    label: "Rank 3 with the Entrati (Associate)"
-    type: syndicate_rank
-    requires: [planet_deimos]
-    check:
-      field: "Affiliations[]"
-      where: "Tag == 'EntratiSyndicate'"
-      condition: "Title >= 3"
-
   necramech_components:
     label: "Necramech components in the Foundry"
     type: resource
@@ -173,27 +164,16 @@ goals:
       in the profile's Missions[].Tag. Return the first entry whose
       junction_tag does NOT appear: that's the next step.
 
-  build_necramech:
-    label: "Build a Necramech"
-    place: Deimos
-    audience: veteran
+  hunt_kuva_lich:
+    label: "Hunt a Kuva Lich"
     pathway: collect
-    requires: [planet_deimos, entrati_rank_2, necramech_components]
-    after_nodes: [planet_deimos]
-
-  unlock_1999:
-    label: "Play the Hex Quest"
-    quest: "The Hex"
-    place: Höllvania
-    audience: veteran
-    pathway: star_chart
-    requires: [hub_1999]
-    after_quests: ["Whispers in the Walls"]
-    manual_checklist_if_missing:
-      - "The Duviri Paradox"
-      - "The Lotus Eaters"
-      - "Whispers in the Walls"
-      - "The Hex"
+    lacking: "Kuva "
+    proven_by:
+      - evidence: { kind: challenge, name: LichKillerTitleChallenge }
+        source: "https://wiki.warframe.com/w/Honoria"
+    audience: mid
+    mastery_rank: 5
+    after_quests: ["The War Within"]
 
   play_new_war:
     label: "Play The New War"
@@ -201,27 +181,6 @@ goals:
     quest: "The New War"
     audience: mid
     after_quests: ["The War Within"]
-
-  play_jade_shadows:
-    label: "Play Jade Shadows"
-    pathway: star_chart
-    quest: "Jade Shadows"
-    audience: veteran
-    after: play_new_war
-
-  play_constellations:
-    label: "Play Jade Shadows: Constellations"
-    pathway: star_chart
-    quest: "Jade Shadows: Constellations"
-    audience: veteran
-    after: play_jade_shadows
-
-  hunt_archon:
-    label: "Hunt an Archon"
-    pathway: grow
-    quest: "Veilbreaker"
-    audience: veteran
-    after: play_new_war
 
   unlock_steel_path:
     label: "Unlock The Steel Path"
@@ -250,21 +209,45 @@ goals:
       ]
     skip_nodes: [SolNode701, SolNode705, SolNode723]
 
-  build_helminth:
-    label: "Build the Helminth"
-    pathway: grow
-    item: "Helminth Segment"
-    audience: mid
-    mastery_rank: 8
-    after_nodes: [entrati_rank_3]
-    proven_by:
-      - evidence: { kind: ability, prefix: "/Lotus/Powersuits/PowersuitAbilities/Helminth" }
-        source: "https://wiki.warframe.com/w/Helminth"
-
-  hunt_kuva_lich:
-    label: "Hunt a Kuva Lich"
+  build_necramech:
+    label: "Build a Necramech"
+    place: Deimos
+    audience: veteran
     pathway: collect
-    lacking: "Kuva "
-    audience: mid
-    mastery_rank: 5
-    after_quests: ["The War Within"]
+    requires: [planet_deimos, entrati_rank_2, necramech_components]
+    after_nodes: [planet_deimos]
+
+  hunt_archon:
+    label: "Hunt an Archon"
+    pathway: grow
+    quest: "Veilbreaker"
+    audience: veteran
+    after: play_new_war
+
+  play_jade_shadows:
+    label: "Play Jade Shadows"
+    pathway: star_chart
+    quest: "Jade Shadows"
+    audience: veteran
+    after: play_new_war
+
+  play_constellations:
+    label: "Play Jade Shadows: Constellations"
+    pathway: star_chart
+    quest: "Jade Shadows: Constellations"
+    audience: veteran
+    after: play_jade_shadows
+
+  unlock_1999:
+    label: "Play the Hex Quest"
+    quest: "The Hex"
+    place: Höllvania
+    audience: veteran
+    pathway: star_chart
+    requires: [hub_1999]
+    after_quests: ["Whispers in the Walls"]
+    manual_checklist_if_missing:
+      - "The Duviri Paradox"
+      - "The Lotus Eaters"
+      - "Whispers in the Walls"
+      - "The Hex"

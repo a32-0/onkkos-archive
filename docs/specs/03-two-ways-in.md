@@ -34,12 +34,13 @@ tab bar and no player chip. From the top, as `661:4591` draws it:
    name ends the line at "association."
 2. **Where to start**, and "Pick one. You can switch any time from the tab bar."
 3. Two cards, each a link, each with its icon, title and one line (BR-04):
-   - **Catch up** opens `/catch-up`, the update picker (spec 05).
-   - **Plan** opens `/goals` (spec 08).
+
+- **Catch up** opens `/catch-up`, the update picker (spec 05).
+- **Plan** opens `/goals` (spec 08).
+
 4. **Skip** opens the map on the frontier, or on the focus when the player has
    no frontier (BR-40).
 5. **Back**, in the text style, opens `/connect` with the player's id in the
-   field (BR-40); it read "Go back" until 2026-10-16.
 
 Onkko's line shows only once the player has reached Cetus and has not turned
 the phrases off (BR-64).
@@ -80,6 +81,4 @@ renders. A read that fails here sends the player to `/connect` (BR-38).
 
 ## Frame corrections
 
-The owner corrected this screen's frames on 2026-10-06, and the corrections
-were applied in Figma the same day. The frames linked above are the design as
-it stands.
+The frames linked above are the design as it stands.

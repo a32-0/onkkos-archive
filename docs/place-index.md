@@ -17,8 +17,8 @@ parse of DE's own drop tables, and its shape is already the one the app needs:
 ```
 place → node → gameMode → rotation → rewards[]
 
-Venus / Fossa   Assassination   Rhino Neuroptics, Chassis, Systems
-Earth  / Oro    Assassination   Hydroid Neuroptics, Chassis, Systems
+Venus / Fossa Assassination Rhino Neuroptics, Chassis, Systems
+Earth / Oro Assassination Hydroid Neuroptics, Chassis, Systems
 ```
 
 Sources are treated by their rate of change. Drop tables change with a patch,
@@ -133,7 +133,7 @@ who hands them out: The Circuit gives the Incarnon Genesis, an Honoria's tag
 names the vendor and the hub that sell it, and a vendor's offers list the
 Ephemera it sells. None of those hubs is a place of the map, so
 `data/systems.yaml` maps each one to the place a player goes through to reach
-it (owner, 2026-10-16):
+it :
 
 | Hub           | Place          | Why                                         |
 | ------------- | -------------- | ------------------------------------------- |

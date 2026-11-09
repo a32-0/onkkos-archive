@@ -1,0 +1,420 @@
+version: 1
+last_verified: "2026-11-08"
+
+families:
+  - id: critical
+    icon: crisis-alert
+    match: "critical"
+  - id: status
+    icon: flare
+    match: "status"
+  - id: element
+    icon: science
+    match: "\\b(heat|cold|electricity|toxin|blast|corrosive|gas|magnetic|radiation|viral|impact|puncture|slash|void)\\b"
+  - id: ability
+    icon: bolt
+    match: "abilit|energy|casting|augment"
+  - id: survival
+    icon: shield
+    match: "health|shield|armor|damage reduction|resist|revive|bleedout|overguard"
+  - id: speed
+    icon: speed
+    match: "speed|fire rate|reload|mobility|sprint|parkour|slide|velocity|jump|glide|wall latch|charge rate|holster"
+  - id: damage
+    icon: swords
+    match: "damage|multishot|punch through|heavy attack|combo|finisher"
+  - id: handling
+    icon: tune
+    match: "magazine|ammo|recoil|zoom|accuracy|spread|range|projectile|noise|flight"
+  - id: utility
+    icon: extension
+    match: ""
+
+elements:
+  Heat: { Cold: Blast, Electricity: Radiation, Toxin: Gas }
+  Cold: { Heat: Blast, Electricity: Magnetic, Toxin: Viral }
+  Electricity: { Heat: Radiation, Cold: Magnetic, Toxin: Corrosive }
+  Toxin: { Heat: Gas, Cold: Viral, Electricity: Corrosive }
+
+stats:
+  - stat: Critical Chance
+    outcome: More critical hits
+    down: Fewer critical hits
+    example:
+      {
+        math: grow,
+        base: 20,
+        unit: "%",
+        line: "A weapon with {base} critical chance gets {after}.",
+      }
+    note: It grows the weapon's own chance, so it does little on a weapon with a low one. Adds to other critical chance mods.
+
+  - stat: Critical Damage
+    outcome: Harder critical hits
+    down: Softer critical hits
+    example:
+      {
+        math: grow,
+        base: 2,
+        unit: "×",
+        line: "A critical hit that does {base} the damage does {after}.",
+      }
+    note: It only matters when a hit is critical, so it pays on a weapon with a high critical chance.
+
+  - stat: Damage
+    outcome: Every hit does more damage
+    down: Every hit does less damage
+    example: { math: grow, base: 100, unit: "", line: "A shot of {base} damage does {after}." }
+    note: Adds to other damage mods. Elements and faction mods multiply on top of it.
+
+  - stat: Melee Damage
+    outcome: Every swing does more damage
+    down: Every swing does less damage
+    example: { math: grow, base: 100, unit: "", line: "A swing of {base} damage does {after}." }
+    note: Adds to other melee damage mods. Elements and faction mods multiply on top of it.
+
+  - stat: Multishot
+    outcome: More projectiles per shot
+    down: Fewer projectiles per shot
+    example:
+      {
+        math: grow,
+        base: 1,
+        unit: "",
+        line: "A weapon that fires {base} projectile fires {after} on average.",
+      }
+    note: A part of a projectile is a chance at one more, and each one carries the full damage.
+
+  - stat: Status Chance
+    outcome: More status effects
+    down: Fewer status effects
+    example:
+      { math: grow, base: 20, unit: "%", line: "A weapon with {base} status chance gets {after}." }
+    note: It grows the weapon's own chance, so it does little on a weapon with a low one.
+
+  - stat: Status Duration
+    outcome: Status effects last longer
+    down: Status effects end sooner
+    example:
+      { math: grow, base: 6, unit: "s", line: "A status effect that lasts {base} lasts {after}." }
+
+  - stat: Fire Rate
+    outcome: Shoots faster
+    down: Shoots slower
+    example:
+      {
+        math: grow,
+        base: 10,
+        unit: "",
+        line: "A weapon that fires {base} shots a second fires {after}.",
+      }
+    note: A bow or a charged weapon charges faster instead.
+
+  - stat: Attack Speed
+    outcome: Faster melee attacks
+    down: Slower melee attacks
+    example: { math: grow, base: 1, unit: "×", line: "Attacks come {amount} faster." }
+    note: Adds to other attack speed.
+
+  - stat: Reload Speed
+    outcome: Reloads faster
+    down: Reloads slower
+    example: { math: shrink, base: 2, unit: "s", line: "A reload of {base} takes {after}." }
+
+  - stat: Magazine Capacity
+    outcome: More rounds per magazine
+    down: Fewer rounds per magazine
+    example: { math: grow, base: 30, unit: "", line: "A magazine of {base} holds {after}." }
+
+  - stat: Ammo Maximum
+    outcome: Carries more ammo
+    down: Carries less ammo
+    example:
+      {
+        math: grow,
+        base: 540,
+        unit: "",
+        line: "A weapon that carries {base} rounds carries {after}.",
+      }
+
+  - stat: Punch Through
+    outcome: Shots go through enemies and cover
+    note: The number is how many metres of body or cover a shot passes.
+
+  - stat: Weapon Recoil
+    outcome: Less recoil
+    down: More recoil
+
+  - stat: Projectile Speed
+    outcome: Faster projectiles
+    down: Slower projectiles
+    note: Only weapons that fire projectiles feel it; a hitscan weapon does not.
+
+  - stat: Heat
+    outcome: Adds fire damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Heat.",
+      }
+    note: Its status burns enemies and strips their armor. It pairs with the next element in your mod order.
+
+  - stat: Cold
+    outcome: Adds cold damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Cold.",
+      }
+    note: Its status slows enemies and makes critical hits on them hurt more. It pairs with the next element in your mod order.
+
+  - stat: Electricity
+    outcome: Adds electric damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Electricity.",
+      }
+    note: Its status stuns an enemy and arcs to the ones around it. It pairs with the next element in your mod order.
+
+  - stat: Toxin
+    outcome: Adds poison damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Toxin.",
+      }
+    note: Toxin goes through shields. It pairs with the next element in your mod order.
+
+  - stat: Impact
+    outcome: More impact damage
+    example:
+      {
+        math: grow,
+        base: 30,
+        unit: "",
+        line: "A weapon whose shots do {base} Impact does {after}.",
+      }
+    note: It grows only the part of the weapon's damage that is already Impact.
+
+  - stat: Puncture
+    outcome: More puncture damage
+    example:
+      {
+        math: grow,
+        base: 30,
+        unit: "",
+        line: "A weapon whose shots do {base} Puncture does {after}.",
+      }
+    note: It grows only the part of the weapon's damage that is already Puncture.
+
+  - stat: Slash
+    outcome: More slash damage
+    example:
+      { math: grow, base: 30, unit: "", line: "A weapon whose shots do {base} Slash does {after}." }
+    note: It grows only the part of the weapon's damage that is already Slash.
+
+  - stat: Damage to Grineer
+    outcome: More damage to the Grineer
+    example:
+      {
+        math: times,
+        base: 100,
+        unit: "",
+        line: "A shot of {base} damage does {after} to the Grineer.",
+      }
+    note: It multiplies everything else, base damage and elements included.
+
+  - stat: Damage to Corpus
+    outcome: More damage to the Corpus
+    example:
+      {
+        math: times,
+        base: 100,
+        unit: "",
+        line: "A shot of {base} damage does {after} to the Corpus.",
+      }
+    note: It multiplies everything else, base damage and elements included.
+
+  - stat: Damage to Infested
+    outcome: More damage to the Infested
+    example:
+      {
+        math: times,
+        base: 100,
+        unit: "",
+        line: "A shot of {base} damage does {after} to the Infested.",
+      }
+    note: It multiplies everything else, base damage and elements included.
+
+  - stat: Damage to Corrupted
+    outcome: More damage to the Corrupted
+    example:
+      {
+        math: times,
+        base: 100,
+        unit: "",
+        line: "A shot of {base} damage does {after} to the Corrupted.",
+      }
+    note: It multiplies everything else, base damage and elements included.
+
+  - stat: Health
+    outcome: More health
+    down: Less health
+    example: { math: grow, base: 300, unit: "", line: "A Warframe with {base} health has {after}." }
+    note: It grows the Warframe's own health, so it gives more to one that has more.
+
+  - stat: Shield Capacity
+    outcome: Stronger shields
+    down: Weaker shields
+    example:
+      { math: grow, base: 300, unit: "", line: "A Warframe with {base} shields has {after}." }
+    note: It grows the Warframe's own shields, so it gives more to one that has more.
+
+  - stat: Armor
+    outcome: More armor
+    down: Less armor
+    example: { math: grow, base: 300, unit: "", line: "A Warframe with {base} armor has {after}." }
+    note: Armor lowers the health damage a Warframe takes; shields are not covered by it.
+
+  - stat: Shield Recharge
+    outcome: Shields come back faster
+    down: Shields come back slower
+
+  - stat: Ability Strength
+    outcome: Stronger abilities
+    down: Weaker abilities
+    example:
+      { math: grow, base: 100, unit: "", line: "An ability that heals {base} heals {after}." }
+    note: It does not make them last longer or reach farther. Adds to other Ability Strength.
+
+  - stat: Ability Duration
+    outcome: Abilities last longer
+    down: Abilities end sooner
+    example:
+      { math: grow, base: 10, unit: "s", line: "An ability that lasts {base} lasts {after}." }
+
+  - stat: Ability Range
+    outcome: Abilities reach farther
+    down: Abilities reach less far
+    example:
+      { math: grow, base: 10, unit: " m", line: "An ability that reaches {base} reaches {after}." }
+
+  - stat: Ability Efficiency
+    outcome: Abilities cost less energy
+    down: Abilities cost more energy
+    example:
+      { math: cost, base: 50, unit: "", line: "An ability that costs {base} energy costs {after}." }
+    note: It stops at 75%, so an ability never costs less than a quarter.
+
+  - stat: Sprint Speed
+    outcome: Runs faster
+    down: Runs slower
+    example: { math: grow, base: 1, unit: "×", line: "You run {amount} faster." }
+
+  - stat: Radiation
+    outcome: Adds radiation damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Radiation.",
+      }
+    note: Its status turns enemies against each other.
+
+  - stat: Magnetic
+    outcome: Adds magnetic damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Magnetic.",
+      }
+    note: Its status drains shields and makes them take more damage.
+
+  - stat: Corrosive
+    outcome: Adds corrosive damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Corrosive.",
+      }
+    note: Its status strips armor.
+
+  - stat: Viral
+    outcome: Adds viral damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Viral.",
+      }
+    note: Its status makes enemies take more damage to their health.
+
+  - stat: Gas
+    outcome: Adds gas damage
+    example:
+      { math: add, base: 100, unit: "", line: "A weapon that does {base} damage adds {added} Gas." }
+    note: Its status leaves a cloud that hurts the enemies around.
+
+  - stat: Blast
+    outcome: Adds blast damage
+    example:
+      {
+        math: add,
+        base: 100,
+        unit: "",
+        line: "A weapon that does {base} damage adds {added} Blast.",
+      }
+    note: Its status builds up to a blast that knocks enemies down.
+
+  - stat: Mobility
+    outcome: Moves faster
+    down: Moves slower
+    example: { math: grow, base: 1, unit: "×", line: "You move {amount} faster." }
+
+  - stat: Shield Recharge Delay
+    outcome: Shields wait longer to come back
+    down: Shields start coming back sooner
+
+  - stat: Accuracy
+    outcome: More accurate shots
+    down: Less accurate shots
+
+  - stat: Energy Max
+    outcome: More energy
+    down: Less energy
+    example: { math: grow, base: 150, unit: "", line: "A Warframe with {base} energy has {after}." }
+
+  - stat: Status Damage
+    outcome: Status effects hurt more
+    down: Status effects hurt less
+    example:
+      {
+        math: grow,
+        base: 100,
+        unit: "",
+        line: "A status effect that does {base} damage does {after}.",
+      }
+
+  - stat: Casting Speed
+    outcome: Casts abilities faster
+    down: Casts abilities slower
+
+  - stat: Finisher Damage
+    outcome: Finishers hit harder
+    down: Finishers hit softer
+    example: { math: grow, base: 100, unit: "", line: "A finisher of {base} damage does {after}." }

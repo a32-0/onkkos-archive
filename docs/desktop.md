@@ -194,9 +194,7 @@ refusal: the set is dropped for this start and tried again at the next. It
 costs a second start of the server, about two seconds,
 and only on a start that found new data.
 
-On 2026-11-02 an app at 1.1.0 downloaded data with a route type, `weekly`,
-that only 1.2.0 knew, and every screen answered with an error until the
-update installed. This check is what stops that from happening again.
+This check is what stops that from happening again.
 
 The server's code reads `data/` beside itself, from the folder it runs in, so
 nothing in `src/` changes for this and the demo's build does not see it. A
@@ -322,7 +320,7 @@ certification. electron-builder gives it the version as four numbers,
 
 Its tiles come from `desktop/appx/`. electron-builder looks for them in the
 `appx` folder of its build resources, set to `desktop/` itself
-(`buildResources: .`), because the repository ignores every `build/` folder.
+(`buildResources:.`), because the repository ignores every `build/` folder.
 Without them it would ship its own sample tiles. The package declares
 `runFullTrust`, as every Electron app does; Partner Center asks why when it is
 first submitted: the app is a desktop program that runs its own server on the
@@ -334,7 +332,7 @@ register the folder:
 
 ```powershell
 $mk = Get-ChildItem "$env:LOCALAPPDATA\electron-builder\Cache" -Recurse -Filter makeappx.exe |
-  Where-Object FullName -match 'x64' | Select-Object -First 1 -ExpandProperty FullName
+ Where-Object FullName -match 'x64' | Select-Object -First 1 -ExpandProperty FullName
 & $mk unpack /p desktop\release\onkkos-archive-{version}.appx /d $env:TEMP\oa-store /o
 Add-AppxPackage -Register $env:TEMP\oa-store\AppxManifest.xml
 ```
@@ -422,21 +420,21 @@ app's.
 2. Build two versions of the trial. Pick any numbers; they only have to
    grow. Each lands in `desktop/release-trial/{version}/`.
 
-   ```sh
-   node desktop/scripts/trial.mjs build 0.0.1
-   node desktop/scripts/trial.mjs build 0.0.2
-   ```
+```sh
+node desktop/scripts/trial.mjs build 0.0.1
+node desktop/scripts/trial.mjs build 0.0.2
+```
 
 3. Serve the newer one, with this tree's data or a copy of it. Each copy
    changes `sources.yaml` and writes a matching manifest: `changed` adds a
    comment, which every version reads; `broken` turns the first
    `type: weekly` into a type no code knows.
 
-   ```sh
-   node desktop/scripts/trial.mjs serve 0.0.2
-   node desktop/scripts/trial.mjs serve 0.0.2 changed
-   node desktop/scripts/trial.mjs serve 0.0.2 broken
-   ```
+```sh
+node desktop/scripts/trial.mjs serve 0.0.2
+node desktop/scripts/trial.mjs serve 0.0.2 changed
+node desktop/scripts/trial.mjs serve 0.0.2 broken
+```
 
 4. Install `onkkos-archive-trial-0.0.1-setup.exe`, or run
    `release-trial/0.0.1/win-unpacked/Onkko's Archive Trial.exe`. To take the
@@ -492,16 +490,11 @@ one stayed, `installer.exe` stayed, and the uninstaller left no program,
 data, cache, registry entry or shortcut. Before this, the folder held
 232 MB after an update to 1.3.0: the installer twice.
 
-Installed from the Store, the program sits in Windows' protected
-`WindowsApps` folder, and Windows redirects what the app writes under
-`%APPDATA%` into the package's own storage,
-`%LOCALAPPDATA%\Packages\{package name}_{id}\LocalCache\Roaming\Onkko's Archive`.
-The app sees its usual path, so nothing in it changes for the Store; a player
-looking for `app.log` finds it there. Removing the app removes that folder
-too. There is no updater cache. Checked on 2026-10-27 with the package
-registered locally: it opened on the splash with a demo, then on the map once
-an account was read; Profile's Updates row read "Through the Microsoft
-Store"; closed and reopened, it kept the account and the window's size; and
-`app.log`, `port`, `window.json` and `store.json`, with the profile and the
-visitor budget, were in the package's folder above. A newer data set was not
-waiting on `main` that day, so the swap itself was not exercised there.
+Installed from the Store, the program sits in Windows' protected `WindowsApps`
+folder, and Windows redirects what the app writes under `%APPDATA%` into the
+package's own storage, `%LOCALAPPDATA%\Packages\{package
+name}_{id}\LocalCache\Roaming\Onkko's Archive`. The app sees its usual path, so
+nothing in it changes for the Store; a player looking for `app.log` finds it
+there. Removing the app removes that folder too. There is no updater cache. A
+newer data set was not waiting on `main` that day, so the swap itself was not
+exercised there.

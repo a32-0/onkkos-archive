@@ -1,0 +1,51 @@
+.bars {
+  --compare-label: 72px;
+  --compare-value: 48px;
+  --compare-bar: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--compare-label) 1fr var(--compare-value);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.label {
+  composes: eyebrow-s from "../type.module.css";
+  color: var(--ink-dim);
+}
+
+.track {
+  height: var(--compare-bar);
+  margin: 0;
+  border-radius: calc(var(--compare-bar) / 2);
+  background-color: var(--surface-sunken);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--fill-dim);
+}
+
+.value {
+  composes: label-s from "../type.module.css";
+  margin: 0;
+  text-align: end;
+  color: var(--ink-muted);
+}
+
+.after .label,
+.after .value {
+  color: var(--accent);
+}
+
+.after .fill {
+  background-color: var(--accent);
+}

@@ -36,17 +36,25 @@ describe("goalsProvenDone", () => {
     ).toBe(true);
   });
 
-  it("proves the Helminth from an ability only the Helminth gives, used once", () => {
-    const used = (count: number): RawProfile => ({
-      Stats: {
-        Abilities: [
-          { type: "/Lotus/Powersuits/PowersuitAbilities/HelminthShieldsAbility", used: count },
-        ],
-      },
-    });
-    expect(proven(used(0)).has("build_helminth")).toBe(false);
-    expect(proven(used(3)).has("build_helminth")).toBe(true);
-    expect(proven(fixture(CY)).has("build_helminth")).toBe(false);
+  it("proves Jade Shadows: Constellations from its Honoria, and Jade Shadows with it", () => {
+    const titled: RawProfile = {
+      ChallengeProgress: [{ Name: "JadeShadows2TitleChallenge", Progress: 1 }],
+    };
+    expect(proven(titled).has("play_constellations")).toBe(true);
+    expect(proven(titled).has("play_jade_shadows")).toBe(true);
+    expect(
+      proven({ ChallengeProgress: [{ Name: "JadeShadows2TitleChallenge", Progress: 0 }] }).has(
+        "play_constellations",
+      ),
+    ).toBe(false);
+  });
+
+  it("proves a Kuva Lich from the title for vanquishing one", () => {
+    expect(
+      proven({ ChallengeProgress: [{ Name: "LichKillerTitleChallenge", Progress: 1 }] }).has(
+        "hunt_kuva_lich",
+      ),
+    ).toBe(true);
   });
 
   it("reads the Hex from the quest, not from Höllvania's hub", () => {
@@ -71,7 +79,6 @@ describe("goalsWaiting (BR-86)", () => {
     expect(offered(fixture(CY))).toEqual([
       "build_necramech",
       "play_constellations",
-      "build_helminth",
       "hunt_kuva_lich",
     ]);
   });
@@ -105,16 +112,5 @@ describe("goalsWaiting (BR-86)", () => {
     expect(waiting(["play_jade_shadows"]).has("play_constellations")).toBe(false);
     expect(waiting([]).has("unlock_steel_path")).toBe(true);
     expect(waiting(["unlock_next_planet"]).has("unlock_steel_path")).toBe(false);
-  });
-
-  it("offers the Helminth from Mastery Rank 8 and Rank 3 with the Entrati", () => {
-    const entrati = (rank: number, title: number): RawProfile => ({
-      PlayerLevel: rank,
-      Missions: [{ Tag: "DeimosHub", Completes: 1 }],
-      Affiliations: [{ Tag: "EntratiSyndicate", Title: title }],
-    });
-    expect(offered(entrati(8, 2))).not.toContain("build_helminth");
-    expect(offered(entrati(7, 3))).not.toContain("build_helminth");
-    expect(offered(entrati(8, 3))).toContain("build_helminth");
   });
 });

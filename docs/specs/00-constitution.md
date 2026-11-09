@@ -36,14 +36,14 @@ reads well but governs nothing a player reaches is filler too.
 repository and its Storybook is the owner's. Claude prepares the changes and
 never commits, pushes or signs there, and no file, commit or pull request
 carries an AI attribution line. The owner says openly, in their own words, that
-the work was done with Claude's help. Set by the owner on 2026-10-05, so that the open-source
+the work was done with Claude's help. So the open-source
 history raises no doubt about who controls it.
 
 ## The order
 
 The app was built in a fixed order: constitution, design, spec, plan, tasks,
 code, as [`spec-driven-order.md`](../history/spec-driven-order.md) records.
-That build ended on 2026-10-24 (owner); the plan and the tasks are kept in
+That build ended on 2026-10-24 ; the plan and the tasks are kept in
 [`docs/history/`](../history/README.md) and are no longer written.
 
 A change since then keeps the same direction, shorter: this page if a rule
@@ -55,9 +55,8 @@ moves, then the frame in Figma, then the spec, then the code, with its tests.
 - **Catch up**: what came out in the arsenal and the collection since the
   update the player last played, as the What's new frame draws it (BR-35).
 - **Plan**: the Step by step of an item or a quest, reached from a
-  suggestion or from anything with a known source found through the search
-  on Plan (BR-37), and the way to the player's next Mastery Rank (BR-76;
-  owner, 2026-11-02).
+  suggestion or from anything with a known source found through the search on
+  Plan (BR-37), and the way to the player's next Mastery Rank (BR-76).
 
 Both end on the Star Chart, at one place (BR-36). The flow between screens is
 the one the Figma section `421:614` draws (BR-34).
@@ -65,19 +64,21 @@ the one the Figma section `421:614` draws (BR-34).
 ### Glossary
 
 One name per thing, the same in the app, its tabs and window titles, the
-tour, the README, the Store listing, the specs and Figma (owner, 2026-11-01).
+tour, the README, the Store listing, the specs and Figma.
 A title says what the page is for; its lead says what to do there.
 
-| Name                | What it is                                                                    | Was                |
-| ------------------- | ----------------------------------------------------------------------------- | ------------------ |
-| **Where to start**  | The screen after Connect: pick Catch up or Plan                               | Two ways in        |
-| **Star Chart**      | The tab and page that show one place and what is left on it                   | Navigation, Map    |
-| **Catch up**        | The tab, and its first page: pick the last update played                      | Resume             |
-| **What's new**      | Catch up's second page: what came out since that update, by category          | Summary            |
-| **Plan**            | The tab and page: search for anything, or take a suggestion, to get its steps | Goal, Reach a goal |
-| **Overview**        | An item's short view: what it needs and where it comes from                   | the item's Summary |
-| **Step by step**    | An item's long view: every step in the order played                           |                    |
-| **Advanced search** | Plan's search with filters                                                    |                    |
+| Name                   | What it is                                                                    | Was                |
+| ---------------------- | ----------------------------------------------------------------------------- | ------------------ |
+| **Where to start**     | The screen after Connect: pick Catch up or Plan                               | Two ways in        |
+| **Star Chart**         | The tab and page that show one place and what is left on it                   | Navigation, Map    |
+| **Catch up**           | The tab, and its first page: pick the last update played                      | Resume             |
+| **What's new**         | Catch up's second page: what came out since that update, by category          | Summary            |
+| **Plan**               | The tab and page: search for anything, or take a suggestion, to get its steps | Goal, Reach a goal |
+| **Overview**           | An item's short view: what it needs and where it comes from                   | the item's Summary |
+| **Step by step**       | An item's long view: every step in the order played                           |                    |
+| **Advanced search**    | Plan's search with filters                                                    |                    |
+| **Milestones**         | Plan's cards: the next steps of the game, each when its turn comes            | Suggestions        |
+| **Milestones reached** | The page that lists the milestones the profile proves done                    |                    |
 
 A goal, in lower case, stays the word for the one thing a player chases on
 Plan.
@@ -86,7 +87,7 @@ The shell both features live in, and whatever either depends on, are built
 with them. Anything else is filler by definition, however well it works.
 The app's window, its updates and the data it downloads, and the demo's way
 to the download, are that shell: without them no player reaches either
-feature with their own account (owner, 2026-10-22; spec 13).
+feature with their own account (spec 13).
 
 ## The cut rule
 
@@ -165,8 +166,10 @@ they govern every screen:
 
 ## What cannot be read
 
-The public profile does not expose completed quests, foundry contents, or mods
-by slot. A quest is confirmed by wiki-cited evidence or it is unread; absence of
+The public profile does not expose the quest log, foundry contents, or mods
+by slot. Some quests leave a trace: the Honoria a quest awards shows as a
+title challenge, a hub or a syndicate opens only after it, a reward exists
+nowhere else. A quest is confirmed by such wiki-cited evidence or it is unread; absence of
 evidence is never absence of the deed. What the profile does not prove is asked
 of the player or not claimed at all. The app never infers to fill a gap.
 
@@ -181,7 +184,7 @@ proposal to store a computed value is a change to this document first.
 Source data is written only by a commit to this repository. The app on a
 player's machine replaces its copy of `data/` with the set published from
 `main`, whole and verified, and never with anything it worked out itself
-(owner, 2026-10-22; spec 13).
+(spec 13).
 
 ## It runs on the player's machine, and it protects DE's endpoint
 
@@ -200,14 +203,14 @@ the code and no setting turns one off or shortens it. Hence:
 - **One read per account every twelve hours, on each machine.** The window
   holds for the app on that machine, across restarts, and is never shorter
   than DE's own `Cache-Control` allows. A read that fails waits the same
-  twelve hours before the next try (owner, 2026-10-31).
+  twelve hours before the next try.
 - **Every lock is kept the same way, on the machine's disk:** the account-id
   format check before any call, the cached not-found, the machine's budget of
   new lookups, and the circuit breaker after consecutive refusals.
 - **No refresh action**, now or later.
 - **Only what the app reads is kept.** The last profile read stays on the
   machine until a newer read replaces it, so a read DE fails never takes the
-  player's screens away (owner, 2026-10-31). After the player disconnects it
+  player's screens away. After the player disconnects it
   stays only until its twelve hours end, so connecting again inside them
   never reads DE twice. Nothing
   else about a player is persisted, and nothing leaves their machine but the
@@ -234,9 +237,7 @@ The app, its store and the demo's host are described in [`desktop.md`](../deskto
 
 ## The design system
 
-The owner asked on 2026-10-05 for a design system that is impeccable, easy to
-change and built to grow. The frames are its source; the code is its one
-implementation.
+The frames are its source; the code is its one implementation.
 
 - **Three layers of tokens.** Primitives hold the raw values the frames draw:
   every colour, type style, space, radius, border, shadow, duration and
@@ -257,7 +258,7 @@ implementation.
   as long as what it holds is content with no levels of its own. Nothing opens
   inside that content: no accordion or disclosure within a card's content, and
   no card inside a card. What needs another level gets its own page, under a
-  top bar with Back (owner, 2026-10-29).
+  top bar with Back.
 - **A component's styles live beside it.** The token layer is global; every
   other rule belongs to the one component it styles. No screen-wide stylesheet
   grows with each screen.
@@ -265,16 +266,13 @@ implementation.
   Both are checked by a test, not by review.
 - **Storybook is the catalogue.** Every token and every component, in every
   state its frame draws, is visible on its own in Storybook, so a component is
-  checked against its Figma component before any screen uses it. The owner
-  chose it on 2026-10-05; it is free and open source. It runs on the
-  maintainer's machine and is built and tested on every push; on 2026-10-27
-  the owner chose to stop publishing it, so the demo is the only site.
+  checked against its Figma component before any screen uses it. Storybook is
+  free and open source. It runs on the maintainer's machine and is built and
+  tested on every push, and is not published: the demo is the only site.
 
 ## The code is built to be read
 
-The owner asked on 2026-10-05 that the front and the back both be
-componentised, organised and written to read well. That is a rule of this
-repository, not a wish:
+That is a rule of this repository, not a wish:
 
 - **Layers that point one way.** The domain (profile parsing, the rules engine,
   the catalog, the place index) is plain TypeScript with no React, no Next and
@@ -316,15 +314,12 @@ A change is done when all of these hold:
 
 ## Settled before the spec
 
-Nothing is left open. These were the last questions, closed by the owner on
-2026-10-04:
+Nothing is left open.
 
 - **The pinned design** is the section `661:4302` "App flows" on the page
-  Wireframes of the Figma file `unteOMr3YYUIyBE6XF0AD6`, as the owner approved
-  it on 2026-10-18 (T-27b). It replaced `421:590` "High-fi Wireframes", pinned
-  on 2026-10-04 and since deleted. Every spec is written against it. A frame
-  changed inside it after that date is a design change: the spec is updated
-  before the code follows.
+  It replaced `421:590` "High-fi Wireframes", pinned on 2026-10-04 and since
+  deleted. Every spec is written against it. A frame changed inside it after that
+  date is a design change: the spec is updated before the code follows.
 - **The Figma file is private**, for the owner's design and development use. It
   is never linked from the README. A spec still links its frames by node-id; a reader without access reads the spec's behaviour and
   acceptance criteria, which stand without the picture. Publishing the file to

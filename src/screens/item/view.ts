@@ -1,15 +1,24 @@
 import { STEPS as STEP_WORDS } from "@/content/checks";
 import { ITEM } from "@/content/item";
+import { MOD } from "@/content/mod";
 import { MAP } from "@/content/system";
 import type { BriefLine } from "@/domain/catalog/summary";
 import { itemRoute, placeRoute, type ItemView } from "@/routes";
 import type { BuiltIntoChip } from "@/ui/BuiltInto/BuiltInto";
+import { GLYPHS, type IconName } from "@/ui/Icon/glyphs";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import { openedFrom, tabHome } from "../shell/tabs";
 import { stepsView } from "./steps/view";
 import { detailOf, tileLines, titled } from "../summary/lines";
-import type { ItemFacts, ItemPageView, ItemRowView, ItemSectionView } from "./state";
+import type {
+  ItemFacts,
+  ItemPageView,
+  ItemRowView,
+  ItemSectionView,
+  ModFactsView,
+  ModPageView,
+} from "./state";
 
 const STEPS = "steps";
 const SUMMARY = "summary";
@@ -97,5 +106,42 @@ export function itemPage(
     sections: sectionsOf(facts, origin),
     steps: stepsView(facts.steps, facts.name, origin),
     builtInto: builtIntoChips(facts, origin),
+    mod: facts.mod && modPage(facts.mod, facts),
+  };
+}
+
+function modIcon(icon: string): IconName {
+  return icon in GLYPHS ? (icon as IconName) : "extension";
+}
+
+function modPage(mod: ModFactsView, facts: Pick<ItemFacts, "art" | "name">): ModPageView {
+  return {
+    overview: {
+      art: facts.art,
+      name: facts.name,
+      capacity: mod.capacity,
+      polarity: mod.polarityArt,
+      ranks: mod.ranks,
+      rank: MOD.rank(mod.ranks),
+      cost: MOD.cost(mod.capacity, mod.slot, mod.polarity),
+    },
+    title: MOD.whatItDoes,
+    effects: mod.effects.map((effect) => ({
+      ...effect,
+      icon: modIcon(effect.icon),
+      example: effect.example && {
+        label: MOD.example,
+        before: { label: MOD.without, ...effect.example.before },
+        after: { label: MOD.withIt, ...effect.example.after },
+        line: effect.example.line,
+      },
+      pairs:
+        effect.pairs.length > 0
+          ? {
+              label: MOD.pairsWith,
+              combos: effect.pairs.map((pair) => ({ meets: pair.with, makes: pair.makes })),
+            }
+          : null,
+    })),
   };
 }

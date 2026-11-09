@@ -6,16 +6,20 @@
       "sha256": "c2800320b3d3463da60847fef4e38fabcf14f02f121c160751ae2bd33f3cac74"
     },
     "grafo.yaml": {
-      "size": 6747,
-      "sha256": "c76b47ae7776445391b3950b3c50223a9faf377cf10c75d2428dbe3a65613ede"
+      "size": 6318,
+      "sha256": "75ae1f60e9eb6b6d389444a8be33374935a31bb6c5515c8bc184439b69097a38"
+    },
+    "mod_stats.yaml": {
+      "size": 12815,
+      "sha256": "b369847b8c8aa23282c9c650c7ad30aafdccd97854c55f40ffb41164c1291bf5"
     },
     "narrative_spine.yaml": {
       "size": 13510,
       "sha256": "819ff36c47dd6309cb6fc1ed745ebd64ff7df7eaa6b75b7d39ac159b2730e7b7"
     },
     "quest_evidence.yaml": {
-      "size": 5075,
-      "sha256": "68e2aa0b9bc3ff238e3c5e0cf751f7824f8291d0058ccf3f44622a9d30d4fa09"
+      "size": 8644,
+      "sha256": "2ad9f02e3aac757eaa1cb1227c841ed2aec3e86923d36c8b8c696de93148d37f"
     },
     "sources.yaml": {
       "size": 32759,
@@ -30,8 +34,8 @@
       "sha256": "760bad4b536168d2a9d9a76ae972a99b753d49c912dc18803f80bb827c479d43"
     },
     "vendor/items.json": {
-      "size": 20266992,
-      "sha256": "5ef2bd4375cb983add7592a274743880797ecdd5fc7d33156967d730b391a34a"
+      "size": 20508867,
+      "sha256": "0694b550c34dd4e049dca76905fe3e9f631b1f583b687ee2270adbe5700b22f6"
     },
     "vendor/manifest.json": {
       "size": 554,

@@ -28,7 +28,7 @@ behaviour and where things come from.
   thin frame line, the wordmark (quill and "Onkko's Archive"), a **Begin**
   button, and Onkko's line under it, "You were anticipated. Our interaction
   begins." The wordmark sits in the middle of the frame line, and Begin and
-  the line at its foot (owner, 2026-10-15).
+  the line at its foot.
 - **Begin** opens `/connect`. When the device remembers an account id
   (`wf_account`), the form opens with it already in the field, so the player
   only presses Connect (BR-01). The splash itself never reads the profile and

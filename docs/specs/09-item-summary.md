@@ -18,16 +18,18 @@ the materials they call for.
   Overview is How to get in the row style (`Summary row`, Kind=Route).
 - [`1004:7902` Item>Overview — Keep it](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1004-7902),
   [`1009:7045` — One recipe mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7045) and [`1009:7167` — Three recipes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7167):
-  Keep it under the hero (BR-79, owner, 2026-11-02).
+  Keep it under the hero (BR-79).
 - [`479:3589` Summary row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=479-3589):
   a part's art over the blueprint. Every Summary row is a Material
-  three-line list item (owner, 2026-11-07): at least 88 px tall, its art an
+  three-line list item : at least 88 px tall, its art an
   88 px square at the leading edge, the text padded `space-5` above and below
   and `space-6` at the sides, the name, then the reading in `Reading/Default`
   (Inter Semi Bold 14, gold) and the place in `Body/Default` (Inter Regular
   14, `ink-muted`).
 
-Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
+- [`1156:9487` Item>Overview — Mod — Point Strike](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9487) and its four
+  siblings (Serration, Intensify, Infected Clip, Berserker Fury): a mod's card
+  and what each stat does (BR-87).
 
 ## Rules
 
@@ -54,29 +56,29 @@ Route `/item?name=&from=&view=`, inside the shell, under the top bar titled
 with the item's catalogue (spec 04), with the tab of the screen it was opened
 from lit (`from`, spec 04). Back returns to the screen the player came from,
 where they were on it; an item opened directly, with nothing before it in the
-app, returns to the root of its tab (owner, 2026-10-18). From the top:
+app, returns to the root of its tab. From the top:
 
 1. Onkko's line, chosen by the item's state: "Well chosen." for an item the
    player has, ranked or mastered, and "These will assist." for any other, his
-   line for browsing his wares on the wiki (owner, 2026-10-18).
+   line for browsing his wares on the wiki.
 2. **You're on** (BR-51): "You're on {system} > {place}" with the place's art,
    when the item comes from a place, the Dojo included for anything
    researched (BR-57). An item from relics or from a game system has none. It
    opens the map on that place.
-3. **The hero**, on the page and not on a card (owner, 2026-10-18): the
+3. **The hero**, on the page and not on a card : the
    catalogue as kicker ("Warframe", "Primary"…), the name in the display face,
    and the square image carrying the state:
 
-   | State               | Border and badge                    | Frame      |
-   | ------------------- | ----------------------------------- | ---------- |
-   | Rank                | Blue border, "Rank {n}/{max}" badge | `662:5503` |
-   | Mastered            | Green ground and border, "Mastered" | `677:6582` |
-   | Not obtained        | Grey border, no badge               | `677:6640` |
-   | Not obtained, Prime | Gold border, no badge               | `677:6694` |
-   | Cannot be read      | Grey border, no badge, no state     | —          |
+| State               | Border and badge                    | Frame      |
+| ------------------- | ----------------------------------- | ---------- |
+| Rank                | Blue border, "Rank {n}/{max}" badge | `662:5503` |
+| Mastered            | Green ground and border, "Mastered" | `677:6582` |
+| Not obtained        | Grey border, no badge               | `677:6640` |
+| Not obtained, Prime | Gold border, no badge               | `677:6694` |
+| Cannot be read      | Grey border, no badge, no state     | —          |
 
-   A collectible (a mod, a resource, a relic…) has no rank and no state; its
-   hero is kicker, name and art, as `677:6750` draws a resource.
+A collectible (a mod, a resource, a relic…) has no rank and no state; its
+hero is kicker, name and art, as `677:6750` draws a resource.
 
 4. **Keep it** (BR-79), under the hero when other recipes take the item:
    "Keep it to build", then a `Built into` row of `Item chip`s, one per
@@ -90,34 +92,33 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
    reach (BR-59) opens with Step by step chosen, where the prerequisite in the
    way leads (BR-62); Overview is one tap away and shows as it always does.
 6. The Overview view (BR-55), each section a divider naming it over its rows:
-   - **Blueprints**: one row per blueprint, the main Blueprint first, then the
-     parts in the order Step by step gives them. Each row is the part's art
-     over the blueprint (BR-19), its name, its best route's reading, "~{n}
-     Runs · Rotation {x}" (BR-56), in gold, and its place.
-   - A blueprint whose drop has no node names what its step plays, defeats
-     or opens, as Catch up's rows do (spec 06): Uriel's parts read "The
-     Descendia: Roathe", a Prime part names its relic ("Axi P10 Relic"). The
-     Overview alone tells the player where to go (owner, 2026-11-07).
-   - A row's place names a mission node as the wiki and the players write
-     it, "{Node} ({Planet}) · {Mission}": "Armatus (Deimos) · Disruption",
-     so it is found at once on the star chart (owner, 2026-10-19). A route
-     that groups nodes of several planets names the nodes alone.
-   - **Components**: one row per ingredient, "{name} ×{n}", with its art, its
-     reading and its place when it has a known drop, and "{n} Credits" last.
-     A row with no reading and no place shows its description from Step by
-     step instead, so no row is a bare name; a thing bought from a vendor
-     names the vendor; what only an optional step asks for ends "(Optional)"
-     (owner, 2026-10-21).
-   - Without Blueprints, **How to get** comes first: the item's How to get or
-     Acquisition rows in the same row style, then Components. A quest's
-     reward or a bought blueprint is how the item is had, so it leads, never
-     its first ingredient (owner, 2026-10-23, on Thornbak and Thalys). A
-     quest's own page leads with the row that starts it, which wears the
-     quest's art, as a collectible's rows wear the collectible's (T-43). A
-     How to get row of an arsenal item with no art of its own (a lab, a
-     bounty) wears the item's, so no row is an empty box (constitution).
-     Decided on 2026-10-30 and drawn in
-     [`928:5859` Item>Overview — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859), approved by the owner the same day.
+
+- **Blueprints**: one row per blueprint, the main Blueprint first, then the
+  parts in the order Step by step gives them. Each row is the part's art
+  over the blueprint (BR-19), its name, its best route's reading, "~{n}
+  Runs · Rotation {x}" (BR-56), in gold, and its place.
+- A blueprint whose drop has no node names what its step plays, defeats
+  or opens, as Catch up's rows do (spec 06): Uriel's parts read "The
+  Descendia: Roathe", a Prime part names its relic ("Axi P10 Relic"). The
+  Overview alone tells the player where to go.
+- A row's place names a mission node as the wiki and the players write
+  it, "{Node} ({Planet}) · {Mission}": "Armatus (Deimos) · Disruption",
+  so it is found at once on the star chart. A route
+  that groups nodes of several planets names the nodes alone.
+- **Components**: one row per ingredient, "{name} ×{n}", with its art, its
+  reading and its place when it has a known drop, and "{n} Credits" last. A row
+  with no reading and no place shows its description from Step by step instead,
+  so no row is a bare name; a thing bought from a vendor names the vendor; what
+  only an optional step asks for ends "(Optional)".
+- Without Blueprints, **How to get** comes first: the item's How to get or
+  Acquisition rows in the same row style, then Components. A quest's reward or a
+  bought blueprint is how the item is had, so it leads, never its first
+  ingredient (on Thornbak and Thalys). A quest's own page leads with the row that
+  starts it, which wears the quest's art, as a collectible's rows wear the
+  collectible's (T-43). A How to get row of an arsenal item with no art of its
+  own (a lab, a bounty) wears the item's, so no row is an empty box
+  (constitution). Drawn in
+  [`928:5859` Item>Overview — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859).
 
 ### What a row does
 
@@ -138,13 +139,20 @@ app, returns to the root of its tab (owner, 2026-10-18). From the top:
   catalog's `blueprint.png`; place art from the wiki.
 - The catalogue kicker: the catalog's category, named as the map names its
   groups (spec 07).
+- A mod: its polarity, base drain, max rank and max-rank stats from
+  `@wfcd/items` (vendored by `pnpm data:items`, the entry without
+  `Beginner`, `Intermediate` or `Expert` in its path); what each stat does from
+  `data/mod_stats.yaml` through `effectOf()` in
+  `src/domain/catalog/mod-effects.ts`; the polarity's symbol from the wiki
+  (`{Polarity} Pol(xBlack).svg`), drawn as a mask in the ink's colour.
 
 ## Components
 
 `TopBar`, `PlaceCrumb` (You're on), `ItemHero` (Rank, Mastered, Not obtained,
 Not obtained Prime, no state, collectible), `Badge`, `Segmented`, `Divider`,
 `SummaryRow` (blueprint, component, route), `BlueprintArt`, `BuiltInto` and
-`ItemChip` (Default, Done, Hover, Focus),
+`ItemChip` (Default, Done, Hover, Focus), `ModOverview`, `ModEffect` (stat,
+trigger, element, game words), `CompareBars`, `ElementCombo`,
 `OnkkoLine`, each with its stories.
 
 ## Acceptance

@@ -5,7 +5,7 @@ import { lackingNecramechs } from "@/domain/catalog/necramechs";
 import { placeWithNodesLeft } from "@/domain/graph/steel-path";
 import { goalAtPlace, suggestedGoals } from "@/domain/graph/suggest";
 import type { SearchInput } from "@/screens/goals/state";
-import { goalCards, suggestionRows } from "@/screens/goals/view";
+import { goalCards, milestoneRows, suggestionRows } from "@/screens/goals/view";
 
 import { CY, fixture, testData, testGraph } from "./helpers";
 
@@ -143,13 +143,13 @@ describe("the progression walls (BR-86)", () => {
     const cards = goalCards([
       { id: "play_new_war", kind: "quest", href: "/item?name=The+New+War", junction: null },
       { id: "unlock_steel_path", kind: "steel-path", href: "/system", junction: null },
-      { id: "build_helminth", kind: "item", href: "/item?name=Helminth+Segment", junction: null },
+      { id: "play_constellations", kind: "quest", href: "/item?name=Jade+Shadows", junction: null },
       { id: "hunt_kuva_lich", kind: "lich", href: "/item?name=Kuva+Karak", junction: null },
     ]);
     expect(cards.map((card) => [card.title, card.icon])).toEqual([
       ["Play The New War", "swords"],
       ["Unlock The Steel Path", "skull"],
-      ["Build the Helminth", "biotech"],
+      ["Play Jade Shadows: Constellations", "auto-awesome"],
       ["Hunt a Kuva Lich", "target"],
     ]);
   });
@@ -169,7 +169,7 @@ describe("the progression walls (BR-86)", () => {
 
   it("finds the Kuva weapons a player lacks, and counts the ones they own", () => {
     const none = lackingNamed(data.arsenal, {}, "Kuva ");
-    expect(none.owned).toBe(0);
+    expect(none.owned).toEqual([]);
     expect(none.lacking.length).toBeGreaterThan(10);
     const first = none.lacking[0]!;
     const one = lackingNamed(
@@ -177,7 +177,24 @@ describe("the progression walls (BR-86)", () => {
       { LoadOutInventory: { XPInfo: [{ ItemType: first.uniqueName, XP: 1 }] } },
       "Kuva ",
     );
-    expect(one.owned).toBe(1);
+    expect(one.owned).toEqual([first]);
     expect(one.lacking).not.toContain(first);
+  });
+});
+
+describe("the milestones reached (BR-86)", () => {
+  it("words each done milestone by what it gave, the next planet by its junctions", () => {
+    const rows = milestoneRows([
+      { id: "unlock_next_planet", kind: "planet", href: "/system", junction: null },
+      { id: "play_new_war", kind: "quest", href: "/item?name=The+New+War", junction: null },
+    ]);
+    expect(rows.map((row) => [row.title, row.line, row.icon])).toEqual([
+      ["Unlock the next planet", "Every junction cleared.", "flag"],
+      [
+        "Play The New War",
+        "The Nataruk bow, and the way to Jade Shadows, Veilbreaker and the Zariman.",
+        "swords",
+      ],
+    ]);
   });
 });

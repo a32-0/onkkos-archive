@@ -9,7 +9,9 @@ import { accountCreatedAt } from "@/domain/profile/payload";
 import { trimProfile } from "@/domain/profile/trim";
 import type { RawProfile } from "@/domain/types/profile";
 
-import { CY, fixture, NEW_PLAYER } from "./helpers";
+import { loadEvidenceRules } from "@/infra/narrative/evidence-load";
+
+import { CY, fixture, NEW_PLAYER, testGraph } from "./helpers";
 
 const SYNTHETIC: RawProfile = {
   AccountId: { $oid: "000000000000000000000009" },
@@ -28,7 +30,11 @@ const SYNTHETIC: RawProfile = {
     WeaponSkins: [{ ItemType: "/Lotus/Upgrades/Skins/Example" }],
   },
   PlayerSkills: { LPS_PILOTING: 3 },
-  ChallengeProgress: [{ Name: "Example", Progress: 1 }],
+  ChallengeProgress: [
+    { Name: "Example", Progress: 1 },
+    { Name: "TheNewWarTitleChallenge", Progress: 1 },
+    { Name: "OldPeaceTitleChallenge", Progress: 0 },
+  ],
   UnlockedOperator: true,
   Stats: { MissionsCompleted: 4 },
 };
@@ -40,9 +46,23 @@ const PROFILES: [string, RawProfile][] = [
 ];
 
 describe("trimProfile", () => {
-  it("keeps the ten fields and nothing else", () => {
+  it("keeps the ten fields, and of the challenges only the titles earned", () => {
     const trimmed = trimProfile(SYNTHETIC);
-    expect(Object.keys(trimmed).sort()).toEqual([...PROFILE_FIELDS].sort());
+    expect(Object.keys(trimmed).sort()).toEqual([...PROFILE_FIELDS, "ChallengeProgress"].sort());
+    expect(trimmed.ChallengeProgress).toEqual([{ Name: "TheNewWarTitleChallenge", Progress: 1 }]);
+    expect(trimmed.Stats).toBeUndefined();
+  });
+
+  it("keeps every title challenge a rule or a goal reads as proof", () => {
+    const names = [
+      ...loadEvidenceRules().rules.map((rule) => rule.evidence),
+      ...Object.values(testGraph().goals).flatMap((goal) => goal.provenBy),
+    ].flatMap((evidence) => (evidence.kind === "challenge" ? [evidence.name] : []));
+    expect(names.length).toBeGreaterThan(0);
+    const kept = trimProfile({
+      ChallengeProgress: names.map((Name) => ({ Name, Progress: 1 })),
+    }).ChallengeProgress;
+    expect(kept?.map((challenge) => challenge.Name)).toEqual(names);
   });
 
   it("keeps that the player has a clan, never which", () => {

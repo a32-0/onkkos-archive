@@ -11,7 +11,7 @@ each thing on it opens its item page. Skip goes to the map.
 - [`679:4789` What's new — From Where to start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4789): the onboarding entrance, with
   Skip and no tab bar (BR-41).
 - [`675:5489` What's new — Up to date](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5489): the card when the player is up to
-  date.
+  date, then the empty state: nothing came out after the newest update.
 - [`675:5527` What's new — Nothing new](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5527): the card, then the empty state,
   Onkko's line and Skip.
 - [`662:6072` What's new>Updates](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6072): the update list the last-played card
@@ -24,8 +24,8 @@ each thing on it opens its item page. Skip goes to the map.
   [`1072:7703` — Mastered chosen](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7703) and
   [`1072:7759` — Nothing to get](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1072-7759): the View of an Arsenal
   category (BR-15).
-
-Drawn in "App flows" on 2026-10-18 (T-27b). Their texts are sample values.
+- [`1178:8780` What's new>Warframes — Nothing mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1178-8780): Mastered chosen
+  when no new warframe is mastered yet, the `explore` empty state.
 
 ## Rules
 
@@ -63,7 +63,7 @@ draws it:
 2. Onkko's line, "We are prepared to provide.", once the player has reached
    Cetus and has not turned the phrases off (BR-64).
 3. **What's new**, and the lead "What came out since your last update. Open a
-   category to see how to get each one." (owner, 2026-11-01)
+   category to see how to get each one."
 4. The **last-played card**: the update's art, "You last played", its name and
    "Update {version} · {Mon} {year}", and a chevron.
 5. The **Arsenal** divider and its categories: Warframes, Weapons, Companions,
@@ -92,22 +92,21 @@ left off. Pick one to see how to get it.", and what is new and in the
 player's reach (BR-59), one `Summary row` each in a grouped list.
 
 A row is the item's art, its name in the display face without the word its
-category already says ("Hunhow" under Honoria, "Axi A21" under Relics; owner,
-2026-10-16), and under it the first line of the item's own Overview
-(`briefOf()`, spec 09): the reading in gold, "~{n} Runs · Rotation {x}"
-(BR-56), and the place under it ("Saya's Visions · Shrine Defense"). A line the
-data does not have is left out, never filled with a placeholder. A first
-line with no reading reads its title instead ("Complete The Teacher", "Find
-a Kuva Larvling"), so no row shows a bare name (2026-10-23). The gold line
-is the line's phrases in words (a drop's runs, a relic's rarity and chances, a
-vendor's price); the place is its `where`, or the names the reading carries
-when it has none ("Zariman" for Cephalon Melica's wares). A drop with no
-node names what its step plays, defeats or opens: "The Descendia: Roathe"
-for Uriel, "Exploiter Orb" for Hildryn, "Zariman" for a bounty; a relic's
-chances name the relic ("Axi P10 Relic" for Caliban Prime). So no row shows
-odds without where they come from (owner, 2026-11-07). No Mastered or Rank
-marker (BR-15). The row opens the item's page, with the Catch up tab as its
-origin (spec 04).
+category already says ("Hunhow" under Honoria, "Axi A21" under Relics), and
+under it the first line of the item's own Overview (`briefOf()`, spec 09): the
+reading in gold, "~{n} Runs · Rotation {x}" (BR-56), and the place under it
+("Saya's Visions · Shrine Defense"). A line the data does not have is left out,
+never filled with a placeholder. A first line with no reading reads its title
+instead ("Complete The Teacher", "Find a Kuva Larvling"), so no row shows a bare
+name (2026-10-23). The gold line is the line's phrases in words (a drop's runs,
+a relic's rarity and chances, a vendor's price); the place is its `where`, or
+the names the reading carries when it has none ("Zariman" for Cephalon Melica's
+wares). A drop with no node names what its step plays, defeats or opens: "The
+Descendia: Roathe" for Uriel, "Exploiter Orb" for Hildryn, "Zariman" for a
+bounty; a relic's chances name the relic ("Axi P10 Relic" for Caliban Prime). So
+no row shows odds without where they come from. No Mastered or Rank marker
+(BR-15). The row opens the item's page, with the Catch up tab as its origin
+(spec 04).
 
 An Arsenal category whose state the profile can tell has **View**, To get and
 Mastered, under the lead (BR-15). To get opens first, keeps what is left to
@@ -123,15 +122,16 @@ state, titled "{n} new {kind} out of reach".
 ### The last-played card
 
 - The chevron opens **Updates** (`662:6072`), a page under the top bar, with
-  the lead "Pick the last update you played. What's new counts from
-  there.", then Catch up's search field, which filters by name, number or date as
-  BR-08 sets and shows Catch up's empty state when nothing matches (owner,
-  2026-10-21, from What's new and from the map alike): every update newest first as update cards (spec 05), the newest
-  game update still carrying **Newest** (owner, 2026-10-18) and the one
-  What's new counts from carrying **Selected** (BR-75,
-  [`982:6725` What's new>Updates — Selected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=982-6725)), five, then "Show
-  more", five more each time, as on Catch up (owner, 2026-10-16). Choosing one sets `wf_since` and returns to What's new from
-  that month, keeping the entrance. Back returns without a change.
+  the lead "Pick the last update you played. What's new counts from there.", then
+  Catch up's search field, which filters by name, number or date as BR-08 sets
+  and shows Catch up's empty state when nothing matches : every update newest
+  first as update cards (spec 05), the newest game update still carrying
+  **Newest** and the one What's new counts from carrying **Selected** (BR-75,
+  [`982:6725` What's new>Updates —
+  Selected](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=982-6725)),
+  five, then "Show more", five more each time, as on Catch up. Choosing one sets
+  `wf_since` and returns to What's new from that month, keeping the entrance.
+  Back returns without a change.
 - When the player is up to date (BR-11) the eyebrow reads "You're up to date"
   in the accent colour (`675:5489`), with the newest update's name and date.
 
@@ -201,6 +201,4 @@ text for "Show more"), each with its stories.
 
 ## Frame corrections
 
-The owner corrected this screen's frames on 2026-10-06, and the corrections
-were applied in Figma the same day. The frames linked above are the design as
-it stands.
+The frames linked above are the design as it stands.

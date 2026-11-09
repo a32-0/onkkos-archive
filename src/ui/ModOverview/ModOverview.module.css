@@ -1,0 +1,62 @@
+.overview {
+  --mod-art: 160px;
+  --mod-rank-width: 12px;
+  --mod-rank-height: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.card {
+  position: relative;
+  width: var(--mod-art);
+  height: var(--mod-art);
+}
+
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.capacity {
+  composes: label from "../type.module.css";
+  --game-icon-size: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-m);
+  background-color: var(--surface-sunken);
+  color: var(--ink);
+}
+
+.ranks {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.rank {
+  width: var(--mod-rank-width);
+  height: var(--mod-rank-height);
+  border-radius: calc(var(--mod-rank-height) / 2);
+  background-color: var(--fill-strong);
+}
+
+.caption {
+  composes: eyebrow from "../type.module.css";
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  text-align: center;
+  color: var(--ink-dim);
+}
+
+.max {
+  composes: label-s-upper from "../type.module.css";
+}

@@ -77,7 +77,8 @@ none of those are in `deferred.md`. Fields:
   goal, done), `after_quests` (quests the evidence confirms), `after_nodes`
   (node ids whose checks pass) and `mastery_rank`.
 - `proven_by`: evidence entries, as in `quest_evidence.yaml`, each with its
-  `source`, that prove a goal with no quest done.
+  `source`, that prove a goal with no quest done (a Kuva Lich, by its
+  Honoria).
 - `item`: the item whose Step by step the card opens. `lacking`: a name
   prefix; the card opens the first catalog item with it the player lacks, and
   owning one is done. `places` and `skip_nodes`: the places whose nodes count,
@@ -93,7 +94,7 @@ Each has `after` (the chain planet it is displayed beside) and `unlocked_by`
 (the quest that opens it, or `null`). A place off the chart is in reach when
 its `after` is (BR-59), so nothing else is read of it.
 
-Sanctuary and Dark Refractory came with BR-59, settled on 2026-10-08. Neither
+Sanctuary and Dark Refractory came with BR-59. Neither
 quest can be read, so the planet before it is the measure of reach: Europa for
 Sanctuary (The New Strange), Sedna for Dark Refractory (The Old Peace), as for
 Höllvania.
@@ -113,8 +114,8 @@ over both.
 
 ```
 { name: "Update 31.5", aliases: ["31.5", "Angels of the Zariman"],
-  parent: "31.0", date: "2022-04-27",
-  url: "https://wiki.warframe.com/w/Update_31#Update_31.5" }
+ parent: "31.0", date: "2022-04-27",
+ url: "https://wiki.warframe.com/w/Update_31#Update_31.5" }
 ```
 
 The list of updates keys on the entry whose `name` is exactly `Update N.0`
@@ -189,19 +190,21 @@ where the quest's gate falls on the main path.
 
 Each rule says: if the profile shows THIS, THAT quest is complete. Evidence
 only ever confirms; the app never marks a quest "not done" from this file.
+The `challenge` rules sit under `title_rules`, a key released apps that do not
+know the kind skip, so the data they download still reads.
 Every rule cites the wiki page that states the requirement (`source`) and
 may carry a `note`.
 
 Evidence kinds:
 
-| Kind           | Field    | Reads                                                                                                                                   |
-| -------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `flag`         | `field`  | A boolean at the profile root (`UnlockedOperator`)                                                                                      |
-| `affiliation`  | `tag`    | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                       |
-| `mission`      | `tag`    | A tag in `Missions[]`; a hub that only opens after the quest                                                                            |
-| `mission_type` | `type`   | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                     |
-| `item`         | `type`   | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable    |
-| `ability`      | `prefix` | An ability in `Stats.Abilities[]` whose `type` starts with the prefix and was used at least once; used for the Helminth's own abilities |
+| Kind           | Field   | Reads                                                                                                                                |
+| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `flag`         | `field` | A boolean at the profile root (`UnlockedOperator`)                                                                                   |
+| `affiliation`  | `tag`   | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                    |
+| `mission`      | `tag`   | A tag in `Missions[]`; a hub that only opens after the quest                                                                         |
+| `mission_type` | `type`  | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                  |
+| `item`         | `type`  | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable |
+| `challenge`    | `name`  | A `Name` in `ChallengeProgress[]` with progress above 0: the title challenge behind the Honoria a quest awards                       |
 
 What is deliberately absent, and why, is in `narrative.md`.
 
@@ -290,6 +293,27 @@ the chart after the planet it sits `after` in `grafo.yaml`, and the Dojo
 (BR-57) last. Tau is `released: false` with no places. `aliases` maps a
 source's spelling of a place to the one used here, applied as the drop tables
 and the wiki's region resources are read. `place-index.md` explains why.
+
+## `mod_stats.yaml`: what a mod's stats do
+
+The words a mod's Overview puts on each stat (BR-87).
+
+- `families`: the nine families, in the order they are tried, each with the
+  icon it draws and a `match` (a case-insensitive pattern on the stat's name;
+  the last one, empty, takes the rest).
+- `elements`: for each of the four base elements, what it makes with each of
+  the others.
+- `stats`: one entry per stat, named as `@wfcd/items` writes it (`Critical
+Chance`, `Damage to Grineer`):
+- `outcome`: what it does, in plain words; `down`: the same when the mod
+  lowers it.
+- `example`: `base` (a typical value), `unit`, `math` (`grow` adds to the
+  base, `shrink` divides a time, `add` adds an element on top, `times`
+  multiplies, `cost` lowers a cost) and the `line` it reads, with `{base}`,
+  `{after}`, `{added}` and `{amount}`.
+- `note`: what is good to know. Facts only, never advice.
+
+A stat with no entry shows its family icon and the game's words.
 
 ## Invariants the tests enforce
 

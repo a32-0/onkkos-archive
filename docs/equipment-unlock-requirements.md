@@ -119,11 +119,11 @@ suggests. Component drops name the relic **and its refinement**:
 
 ```
 Ash Prime
-  Blueprint   -> Axi I3 Relic @11% (Uncommon), Lith S3 Relic @11%
-  Chassis     -> Axi B1 Relic (Radiant) @16.67%
-  Neuroptics  -> Axi N2 Relic @11%, Meso N2 Relic @11%
-  Systems     -> Axi A7 Relic (Radiant) @10%, Axi N1 Relic (Radiant) @10%
-  Orokin Cell -> (resource, no drops)
+ Blueprint -> Axi I3 Relic @11% (Uncommon), Lith S3 Relic @11%
+ Chassis -> Axi B1 Relic (Radiant) @16.67%
+ Neuroptics -> Axi N2 Relic @11%, Meso N2 Relic @11%
+ Systems -> Axi A7 Relic (Radiant) @10%, Axi N1 Relic (Radiant) @10%
+ Orokin Cell -> (resource, no drops)
 ```
 
 Where the relic itself drops lives in `Relics.json`: 3,120 rows, of which 167

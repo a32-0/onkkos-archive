@@ -17,9 +17,6 @@ or where they should start.
 - [`662:6528` Locations](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6528): the place list, a page.
 - [`662:6556` Systems](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6556): the system list, a page.
 
-Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
-describes. Their texts are sample values:
-
 - [`676:5901` Star Chart — No month](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-5901): no date on the card, no New anywhere.
 - [`676:5988` Star Chart — Everything mastered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=676-5988): the mastered place, then the
   empty state (explore, "Nothing left on {place}", "Every item it gives is
@@ -99,32 +96,31 @@ the top, as `662:5177` draws it:
 2. The **last-played card** (spec 06, the same component and states), which
    opens Updates and re-measures New from the chosen month. With no month
    kept, the player is taken as up to date: the card reads "You're up to
-   date" and names the newest update (owner, 2026-10-16).
+   date" and names the newest update.
 3. **Change location** (`Place switcher`): "Change location" as kicker, the
    place's name in the display face and a chevron that opens the place list.
    It, the Updates card above it and Change system on the place list are
    84 px tall at every width. A name too long for one line shrinks its type,
    from the display size down to a floor (16 px here, 14 px for Change
    system, 11 px for an update's name); at the floor it takes a second
-   line, and past that ends in an ellipsis; the card never grows (owner, 2026-10-19).
+   line, and past that ends in an ellipsis; the card never grows.
 4. The **place** (`Place overview`, `656:211`), on the page and not on a
-   card: its sphere in its colour inside a ring that fills counter-clockwise from the top with
-   the share of its readable items mastered; under it "{n}/{m}" in the display
-   face and "Items mastered". The place counts items alone: a place is
-   mastered by its items, never by its nodes, which the game already shows
-   (owner, 2026-10-17). While anything is left, one chip per Arsenal category
-   with its game icon and the count of its items still to master in reach, in
-   the categories' order and with no other word, and "Still to master here"
-   under them (BR-65). Each chip opens that category's list for the place, on
-   what is left, as its Arsenal row does, so its count reads in `--link`
-   (owner, 2026-11-02). When every readable item is mastered the ring closes in
-   the mastered colour and the chips go (owner, 2026-10-18).
+   card: its sphere in its colour inside a ring that fills counter-clockwise from
+   the top with the share of its readable items mastered; under it "{n}/{m}" in
+   the display face and "Items mastered". The place counts items alone: a place is
+   mastered by its items, never by its nodes, which the game already shows. While
+   anything is left, one chip per Arsenal category with its game icon and the
+   count of its items still to master in reach, in the categories' order and with
+   no other word, with "Still to master here" over them (BR-65). Each chip opens
+   that category's list for the place, on what is left, as its Arsenal row does,
+   so its count reads in `--link`. When every readable item is mastered the ring
+   closes in the mastered colour and the chips go.
 5. The **Arsenal** divider and its categories, one per catalogue: Warframes,
    Primary, Secondary, Melee, Archgun, Archmelee, Amp, Companion, Necramech,
    Archwing, Railjack.
 6. The **Collection** divider and its categories: Resources, Relics, Mods,
    Arcanes, Incarnons, Ephemera, Honoria. What a hub hands out is filed under
-   the hub's place (owner, 2026-10-16): the Incarnon Genesis of The Circuit at
+   the hub's place : the Incarnon Genesis of The Circuit at
    Duviri, Honoria at Deimos (La Cathédrale) and Uranus Proxima (Pontis
    Tower), Nightcap's Ephemera at Venus. What only events, the Market or a hub
    off the map hand out has no place here.
@@ -135,9 +131,9 @@ Viewing a place writes it to `wf_place` (BR-46).
 
 Each divider holds its categories as one grouped list (`List item`): the
 catalogue's game icon (BR-42), its name and a chevron, and no count, since
-the place above already says what is left (owner, 2026-10-18). An Arsenal
+the place above already says what is left. An Arsenal
 category every item of which is mastered carries the Mastered tag before its
-chevron, so the player sees at a glance which are done (owner, 2026-10-19). A category the
+chevron, so the player sees at a glance which are done. A category the
 place holds nothing of, under any view, does not render, nor a divider left
 empty. The row opens the category's page.
 
@@ -152,7 +148,7 @@ category (spec 04), as `662:6837` draws it:
 3. **View**, a row holding a segmented control: **To get**, **Mastered** and
    **New**, one always chosen, To get first (BR-45). Only an Arsenal category
    has it: what the Collection holds gives no mastery, so a Collection
-   category lists everything in reach with no View (owner, 2026-10-18). It is
+   category lists everything in reach with no View. It is
    the same row as
    Overview and Step by step on an item (spec 09). When the chosen one leaves
    nothing, the empty state that names the place takes the list's place
@@ -164,7 +160,7 @@ category (spec 04), as `662:6837` draws it:
    Runs · Rotation {x}" for the drop here (BR-56), and the node and mission
    that give it. The row carries no state badge; the view chosen says which
    state the list holds. A ranked item short of its maximum reads "Rank
-   {n}/{max}" before its place (`662:6837`; owner, 2026-10-18).
+   {n}/{max}" before its place (`662:6837`).
 
 Under To get and New the list holds what is in reach, and ends in the empty
 state that counts the rest by rank alone, the place being on view: "4 more out
@@ -179,7 +175,7 @@ A row opens the item's page, with Star Chart as its origin (spec 04).
 Change location opens `662:6528`, a page under the top bar (spec 04):
 
 1. Onkko's line, "Ah, the history you will have.", then **Choose a location**
-   in the screen titles' style (`.screen`, Display/Screen; owner, 2026-10-23), and "You can switch at any time."
+   in the screen titles' style (`.screen`, Display/Screen), and "You can switch at any time."
 2. The **system card**: the system's sphere, "Change system" and its name,
    and a chevron that opens the system list.
 3. A search field, "Search a planet, location or celestial body...", which
@@ -192,8 +188,8 @@ Change location opens `662:6528`, a page under the top bar (spec 04):
    grouped list, each with its sphere, its name and "{n}/{m} Mastered", or the
    **Mastered** tag in its place when all are. A place may also carry **Start
    here** (BR-44) and **New items** when it holds something new since the
-   month (owner, 2026-10-17). A row carries one tag at most, at its end:
-   Mastered, else Start here, else New items (owner, 2026-10-18). The place
+   month. A row carries one tag at most, at its end:
+   Mastered, else Start here, else New items. The place
    on view is highlighted, and stays
    listed while on view even beyond reach. Then, when any place is beyond, one
    empty state: "3 more out of reach", "Clear the Venus Junction, on Earth, to
@@ -204,19 +200,18 @@ Choosing a place returns to the map, on that place.
 
 ### The system list
 
-The system card's chevron opens `662:6556`, a page under the top bar whose
-back returns to the place list: Onkko's line, **Choose a system**, "You can
-switch at any time.", and the systems in BR-47's order as one grouped list,
-each with its symbol (a large orb and a small one beside it, its satellite;
-the owner, 2026-10-08): its first place's sphere, and its second place's as
-the satellite, or the neutral sphere when it has no second place, as every
-`System row` draws one (owner, 2026-10-17), its name and how many of its
-places are mastered, "{n}/{m} Mastered", counting the places that hold an
-item (owner, 2026-10-19), or the Mastered tag when all are, **Start here** on the system that holds it, and the system on view
-highlighted. Only the systems with a place in reach are listed, then a More
-line, "2 more systems open as you go further." (BR-60). Tau reads "Soon™",
-cannot be chosen, and shows disabled, dimmed (owner, 2026-10-18). Choosing a system returns to the place list, now listing
-that system's places.
+The system card's chevron opens `662:6556`, a page under the top bar whose back
+returns to the place list: Onkko's line, **Choose a system**, "You can switch at
+any time.", and the systems in BR-47's order as one grouped list, each with its
+symbol (a large orb and a small one beside it, its satellite): its first place's
+sphere, and its second place's as the satellite, or the neutral sphere when it
+has no second place, as every `System row` draws one, its name and how many of
+its places are mastered, "{n}/{m} Mastered", counting the places that hold an
+item, or the Mastered tag when all are, **Start here** on the system that holds
+it, and the system on view highlighted. Only the systems with a place in reach
+are listed, then a More line, "2 more systems open as you go further." (BR-60).
+Tau reads "Soon™", cannot be chosen, and shows disabled, dimmed. Choosing a
+system returns to the place list, now listing that system's places.
 
 ## States
 
@@ -255,7 +250,7 @@ that system's places.
 - Art and icons: items' art from `@wfcd/items` and the categories' icons
   from the wiki, never rehosted; a category with no wiki icon takes a
   Material Symbol (BR-42). A place's sphere is drawn from its colour in
-  `systems.yaml`'s `colors` (owner, 2026-10-17). A place outside Origin
+  `systems.yaml`'s `colors`. A place outside Origin
   takes the lit side of its art on the wiki, made more vivid. Origin's
   places blend that art with the colour a player already has in mind (Earth
   blue, Mars rust, Kuva Fortress Kuva red, Eris Infested green) and stay
@@ -273,10 +268,9 @@ also beyond reach), `SearchField`, `Badge` (Start here, New,
 Mastered), `Divider`, `FeaturedCard`, `TopBar`, `EmptyState`, each with
 its stories.
 
-`PlaceRow` and `SystemRow` are Material two-line list items, as `SummaryRow`
-is a three-line one (spec 09): padded `space-5` above and below and `space-6`
-at the sides, with `space-6` between the orb and the text (owner,
-2026-11-07).
+`PlaceRow` and `SystemRow` are Material two-line list items, as `SummaryRow` is
+a three-line one (spec 09): padded `space-5` above and below and `space-6` at
+the sides, with `space-6` between the orb and the text.
 
 ## Acceptance
 
@@ -300,6 +294,4 @@ at the sides, with `space-6` between the orb and the text (owner,
 
 ## Frame corrections
 
-The owner corrected this screen's frames on 2026-10-06, and the corrections
-were applied in Figma the same day. The frames linked above are the design as
-it stands.
+The frames linked above are the design as it stands.

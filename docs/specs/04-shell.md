@@ -11,10 +11,10 @@ profile will be read again, and lets them disconnect.
   and the tab bar as they sit on a tab's root; the viewport shows the content
   running up to the tab bar, with no gap.
 - [`662:6837` Star Chart>Warframes](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-6837): the top bar on a page under a tab, with
-  no tab bar under it (owner, 2026-10-20).
+  no tab bar under it.
 - [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642): the Profile page.
 - [`1004:7696` Profile — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1004-7696): Profile with the way to the
-  next rank (BR-77, owner, 2026-11-02), and its states
+  next rank (BR-77), and its states
   [`1009:7351` Profile — Mastery Rank — Many to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7351),
   [`1009:7440` — Nothing to rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7440), [`1009:7526` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7526) and
   [`1009:7612` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7612).
@@ -59,7 +59,7 @@ profile will be read again, and lets them disconnect.
 The wordmark at the left, and at the right the **player chip**: the avatar
 square and the display name on a card of `--surface`, `--space-4` inside it,
 with `--radius-m` corners, and a chevron pointing forward after the name
-(owner, 2026-10-22 and 2026-10-23, on `306:1099`). A
+(2026-10-22 and 2026-10-23, on `306:1099`). A
 thin red rule runs under the header.
 The chip opens Profile. The wordmark is not a link. The header shows on a
 tab's root only.
@@ -69,24 +69,24 @@ tab's root only.
 Every page under a tab opens under a top bar as tall as the header (65 px),
 on the same ground and over the same red rule: a round back button and the
 page's title in the display face. Back is the browser's back: it returns to
-the screen the player came from, where they were on it (owner, 2026-10-19).
+the screen the player came from, where they were on it.
 When nothing in the app came before the page, it goes to the screen above
 it instead: a category to its menu, Updates to where it was opened, the place
 and system lists to the map and to the place list, Profile and an item to the
-root of the tab they were opened from (T-27b, owner 2026-10-18).
+root of the tab they were opened from (T-27b).
 
 ### Tab bar
 
 Three tabs, in this order: **Star Chart** (the map), **Catch up** (the update
 picker), **Plan** (`/goals`). Each is an icon over its label. The active tab
 is raised on a lighter surface with a red rule along its top. The content
-above it runs up to it, with no gap (owner, 2026-11-01). It shows on a tab's
+above it runs up to it, with no gap. It shows on a tab's
 root only: a page with a back button has no tab bar, since Back is its way
-out (owner, 2026-10-20). A tab, its page's title, its window title and its step in the tour carry
+out. A tab, its page's title, its window title and its step in the tour carry
 one name: **Star Chart**, **Catch up**, **Plan**. Under Catch up, the update
 picker is titled Catch up and the list of what came out is titled What's
 new, since they are two pages; the item's view is **Overview** and **Step
-by step** (owner, 2026-11-01). The words of each are in the glossary of the
+by step**. The words of each are in the glossary of the
 constitution.
 
 Which tab is active:
@@ -110,8 +110,8 @@ The Design System page holds them as `Icon` components.
 
 ### Profile
 
-A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
-2026-10-18). It replaced the player menu, a full-screen sheet:
+A page of its own under the top bar, titled **Profile** (`662:4642`). It
+replaced the player menu, a full-screen sheet:
 
 1. The display name in the display face, then "Mastery Rank {n}" in
    `Kicker/Strong` and the rank's title in `Kicker`, side by side, both in
@@ -121,33 +121,34 @@ A page of its own under the top bar, titled **Profile** (`662:4642`; owner,
    which together open the goal (`/goals/rank`). Its line, in `--link`, is
    the call: "See the way", or "See the test" with a full
    bar. No chips and no empty state: what to rank, and the test, are the
-   goal's and Plan's (owner, 2026-11-02). The highest rank reads
+   goal's and Plan's. The highest rank reads
    "The highest rank there is", opens nothing and has no empty state. A profile with no `XPInfo` keeps the avatar square, the name
    and the rank as `662:4642` draws them.
 2. **Settings**: a divider, then the settings as a grouped list, one row
    each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
-   **Tutorial** (Reset, a button 200 px wide; owner, 2026-10-22). Onkko's Phrases shows once the player has reached
-   Cetus (BR-64). Language shows disabled; it waits for a later version
-   (owner, 2026-10-16). Tutorial's Reset shows the first tour again: it
-   forgets `wf_tour` and opens the map, where the tour starts (T-45).
-3. **About**, in the app alone (`819:48` Profile — App; approved by the
-   owner on 2026-10-23): a divider, then two rows: **Version**,
-   the app's version in `--ink-muted`, and **Updates**, a **Check** button
-   200 px wide that asks GitHub Releases at once (spec 13, "Updates"). The
-   demo site shows neither. The version comes from the main process
-   (`WF_APP_VERSION`, `appVersion()`). Check's states are spec 13's
+   **Tutorial** (Reset, a button 200 px wide). Onkko's Phrases shows once the
+   player has reached Cetus (BR-64). Language shows disabled; it waits for a later
+   version. Tutorial's Reset shows the first tour again: it forgets `wf_tour` and
+   opens the map, where the tour starts (T-45).
+3. **About**, in the app alone (`819:48` Profile — App): a divider, then two
+   rows: **Version**, the app's version in `--ink-muted`, and **Updates**, a
+   **Check** button 200 px wide that asks GitHub Releases at once (spec 13,
+   "Updates"). The demo site shows neither. The version comes from the main
+   process (`WF_APP_VERSION`, `appVersion()`). Check's states are spec 13's
    "Updates".
 4. **Disconnect**, a red button across the width. It asks first, in a dialog
-   over a scrim ([`838:4762` Profile — Disconnect](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=838-4762);
-   owner, 2026-10-24): "Disconnect?", "This device will forget your ID. Next time you'll need to paste it again. Your Warframe account isn't touched.", a red
-   **Disconnect** and **Cancel**, which has the focus. Cancel and Escape close
-   the dialog. Its Disconnect forgets `wf_account`, `wf_since` and `wf_onkko`
-   and opens `/connect` with an empty field.
+   over a scrim ([`838:4762` Profile —
+   Disconnect](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=838-4762)):
+   "Disconnect?", "This device will forget your ID. Next time you'll need to paste
+   it again. Your Warframe account isn't touched.", a red **Disconnect** and
+   **Cancel**, which has the focus. Cancel and Escape close the dialog. Its
+   Disconnect forgets `wf_account`, `wf_since` and `wf_onkko` and opens `/connect`
+   with an empty field.
 5. Under it, the read cycle in Inter, `Body/Default`: "Data is read every **12 hours**. The last
    read was **{age}**, and the next one will be at **{h:mm AM}**." The time
    is the player's own, from the system's time zone, which only the browser
    knows, so the line is written once the page has loaded and never in UTC
-   (owner, 2026-10-21 and 2026-11-01; `useLocalTime()` in `read-cycle.ts`).
+   (`useLocalTime()` in `read-cycle.ts`).
 
 After a later read failed, the read cycle gives way to the Warning alert under the
 player's name and rank, with BR-69's words: the age of the data shown and the
@@ -158,29 +159,32 @@ time of the next try (`943:5889`).
 `Toast` floats 12 px under the header or the top bar, across the column, over
 the screen (`943:6079`, `943:6161`). It is the Success state of
 [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
-the owner's design of 2026-11-01, and says BR-70's words: **Connected** on the first screen after Connect,
-**Updated** on the first screen shown in the minute after DE was read again.
-The minute matters because the read often happens on a screen that only
-redirects: the desktop app opens `/system`, which reads and sends the player on
-to their place, so the screen they see finds the read already stored. It is a polite status
-for screen readers, leaves after six seconds (held while the pointer or the
-focus is on it) or on a tap, and each read shows
-it once: the browser remembers the reads it has shown for the session. Connect
-leaves a one-minute `wf_toast` cookie that the screen reads and the toast
-clears.
+and says BR-70's words: **Connected** on the first screen after Connect,
+**Updated** on the first screen shown in the minute after DE was read again. The minute matters because the read often
+happens on a screen that only redirects: the desktop app opens `/system`, which
+reads and sends the player on to their place, so the screen they see finds the
+read already stored. It is a polite status for screen readers, leaves after six
+seconds (held while the pointer or the focus is on it) or on a tap, and each
+read shows it once: the browser remembers the reads it has shown for the
+session. Connect leaves a one-minute `wf_toast` cookie that the screen reads and
+the toast clears.
 
 ### Alert
 
-In Figma there is one component, [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+In Figma there is one component, [`947:159`
+Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
 with a State and a Message; every message the app shows is an example in
-[`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488) (owner, 2026-11-01; until then the
-id form's messages and the toast were components of their own). `Alert` is one message in one of four states, each its own ground, ink and
+[`956:6488` Alert —
+Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488)
+(until then the id form's messages and the toast were components of their own).
+`Alert` is one message in one of four states, each its own ground, ink and
 Material Symbols icon at 18 px: **Informative** (`info`), **Success**
 (`check-circle`), **Warning** (`warning`) and **Error** (`error`). The text is
-Inter regular, `Body/Default` (owner, 2026-11-08; bold `Label/Small` from 2026-11-01, Inter since 2026-11-07, when the app dropped its mono face). Each ink reaches about 7:1 on its ground (WCAG AAA for text, and well
-over the 3:1 an icon needs). Error is a screen-reader alert; the others are a
-polite status. Error carries BR-38's messages on the id form, Warning BR-69's
-in Profile, Success the toast. Nothing uses Informative yet.
+Inter regular, `Body/Default`. Each ink reaches about 7:1 on its ground (WCAG
+AAA for text, and well over the 3:1 an icon needs). Error is a screen-reader
+alert; the others are a polite status. Error carries BR-38's messages on the id
+form, Warning BR-69's in Profile, Success the toast. Nothing uses Informative
+yet.
 
 ### The wait
 
@@ -191,15 +195,15 @@ watches Next's `useLinkStatus`; forms hold a `FormWait`, which watches
 `useFormStatus`; Plan's search, which jumps to a result on Enter, wraps the
 jump in a transition and shows the same `Wait` while it is pending.
 
-The avatar is the player's active glyph (owner, 2026-10-16): the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source. A live response read on 2026-10-23 carries no glyph anywhere: its only image-like fields are `LoadOutPreset.PresetIcon`, empty, and `GuildEmblem`, a flag. A live player therefore wears the game's default glyph, Lotus Symbol (`AvatarImageDefault`, the one every account starts with; owner, 2026-10-23), until the player can choose one; the square stays only if the catalog lacks it.
+The avatar is the player's active glyph : the profile's `ActiveAvatarImageType`, drawn with the glyph's art from `@wfcd/items` (`avatarOf()` in `domain/profile/avatar.ts`), as the chip's and Profile's squares. A profile that names no glyph, or one the catalog lacks, keeps the square the frame draws. The demos wear Cephalon Cy's glyph and Conquera Ordis's, set by the fixture source. A live response read on 2026-10-23 carries no glyph anywhere: its only image-like fields are `LoadOutPreset.PresetIcon`, empty, and `GuildEmblem`, a flag. A live player therefore wears the game's default glyph, Lotus Symbol (`AvatarImageDefault`, the one every account starts with), until the player can choose one; the square stays only if the catalog lacks it.
 
 ## The first tour
 
-Built by T-45 (owner, 2026-10-24). The first time a player reaches a screen
+Built by T-45. The first time a player reaches a screen
 with both the header's chip and the tab bar, four hotspots walk them through
 the shell, one at a time, each drawn by its frame. Each says what the
 section holds and what the player can do there, in two to four short
-sentences (owner, 2026-10-24):
+sentences :
 
 | Step | Points at        | Frame                          | Words                                                                                                                                                                                                                                        |
 | ---- | ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -261,6 +265,4 @@ Disconnect uses; Profile is a screen.
 
 ## Frame corrections
 
-The owner corrected this screen's frames on 2026-10-06, and the corrections
-were applied in Figma the same day. The frames linked above are the design as
-it stands.
+The frames linked above are the design as it stands.

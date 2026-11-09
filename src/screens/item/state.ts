@@ -1,10 +1,13 @@
 import type { Part } from "@/domain/catalog/checks";
+import type { ModEffect } from "@/domain/catalog/mod-effects";
 import type { BriefBlock } from "@/domain/catalog/summary";
 import type { Group } from "@/domain/place/catalog";
 import type { ItemState } from "@/domain/place/state";
 import type { ItemView } from "@/routes";
 import type { BuiltIntoChip } from "@/ui/BuiltInto/BuiltInto";
+import type { IconName } from "@/ui/Icon/glyphs";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
+import type { ModEffectExample } from "@/ui/ModEffect/ModEffect";
 
 import type { ShellTab } from "../shell/tabs";
 import type { StepsFacts, StepsView } from "./steps/state";
@@ -23,6 +26,33 @@ export interface BuiltIntoFact {
   done: boolean;
 }
 
+export interface ModFactsView {
+  ranks: number;
+  capacity: number;
+  slot: number;
+  polarity: string | null;
+  polarityArt: string | null;
+  effects: ModEffect[];
+}
+
+export interface ModPageView {
+  overview: {
+    art: string | null;
+    name: string;
+    capacity: number;
+    polarity: string | null;
+    ranks: number;
+    rank: string;
+    cost: string;
+  };
+  title: string;
+  effects: (Omit<ModEffect, "icon" | "example" | "pairs"> & {
+    icon: IconName;
+    example: ModEffectExample | null;
+    pairs: { label: string; combos: { meets: string; makes: string }[] } | null;
+  })[];
+}
+
 export interface ItemFacts {
   name: string;
   group: Group | null;
@@ -38,6 +68,7 @@ export interface ItemFacts {
   beyond: boolean;
   steps: StepsFacts;
   builtInto: BuiltIntoFact[];
+  mod: ModFactsView | null;
 }
 
 export interface ItemRowView {
@@ -71,4 +102,5 @@ export interface ItemPageView {
   sections: ItemSectionView[];
   steps: StepsView;
   builtInto: BuiltIntoChip[];
+  mod: ModPageView | null;
 }

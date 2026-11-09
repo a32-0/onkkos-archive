@@ -8,7 +8,6 @@ answer on the item's page, and it is built exactly as the frames draw it.
 ## Frames
 
 - [`662:7143` Item>Step by step](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-7143):
-  the page as the owner drew it on 2026-10-18; every scenario below follows it.
 
 Row states:
 
@@ -45,14 +44,8 @@ acceptance test:
 | `979:7074`  | Axi A2 Relic     | A vaulted relic: "Trade for it with another player", then Baro Ki'Teer                    |
 
 The data decides every title, reading and passage (BR-33); the frames' layout,
-row types, states and order are the design. On 2026-11-08 every scenario
-above, the Quest (The War Within) and Locked were redrawn from what the app
-shows: the texts, the art and the rows are the app's own for the demo player
-Cy (Locked for Ordis), so a frame reads as a real plan. They will drift as the
-game data changes; the layout is what each frame fixes.
-
-The scenarios and the two states below were redrawn in "App flows" on
-2026-10-18 (T-27b), and their texts from the app on 2026-11-08:
+row types, states and order are the design. They will drift as the game data
+changes; the layout is what each frame fixes.
 
 - [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it; How to get with where it starts and the wiki's passage.
 - [`677:13172` Item>Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-13172): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.
@@ -94,7 +87,7 @@ In this order; a section with nothing in it does not render.
    kind in one row when there is more than one (BR-66), hub unlocks, reaching
    a place, gear owned, standing, clan, a status row ("Prime Vaulted"), and
    last, "Buy … Blueprint" when the main blueprint is bought. Every row says
-   how it is met (owner, 2026-10-21): a standing row, "Earn standing with
+   how it is met : a standing row, "Earn standing with
    Red Veil until you reach Esteemed."; a place beyond a Junction, "Clear
    the Venus Junction on Earth."; a place off the star chart, the quest
    `grafo.yaml` names, "Complete Angels of the Zariman to open it.", or the
@@ -107,31 +100,29 @@ In this order; a section with nothing in it does not render.
    header, "{Part} Blueprint" with the part's art as its icon, ordered by
    best odds (BR-25).
 4. **Components**: what the player collects, in groups split by a plain
-   line inside the card, as `662:7558` draws it: first what only that place
-   gives, then the rest. What a gear's recipe asks for is added in: a resource
-   the plan already needs is summed into its row, and credits into the one
-   credits row. What only an optional step's gear asks for is summed the same
-   way into one last group, each row ending "(Optional)", so no resource
-   appears twice (owner, 2026-10-21; the Chesa Kubrow had shown its credits
-   and Argon Crystal three times). No group carries a title (owner,
-   2026-10-19). Each group ordered by rarity, credits last (BR-24), including every
+   line inside the card, as `662:7558` draws it: first what only that place gives,
+   then the rest. What a gear's recipe asks for is added in: a resource the plan
+   already needs is summed into its row, and credits into the one credits row.
+   What only an optional step's gear asks for is summed the same way into one last
+   group, each row ending "(Optional)", so no resource appears twice (the Chesa
+   Kubrow had shown its credits and Argon Crystal three times). No group carries a
+   title. Each group ordered by rarity, credits last (BR-24), including every
    recipe the plan names (BR-32).
 
-Each section is a card under a divider that names it (owner's frames,
-2026-10-18). A part's card opens with its header: the part's art and its
-title in the display face. Only Blueprints and Components carry art; every
-other row is words alone (BR-85, owner, 2026-11-04).
+Each section is a card under a divider that names it. A part's card opens with
+its header: the part's art and its title in the display face. Only Blueprints
+and Components carry art; every other row is words alone (BR-85).
 
 ## The rows
 
 ### Prerequisites, How to get and part sections
 
-A vertical line in `fill-strong` runs down the section (owner, 2026-11-08).
+A vertical line in `fill-strong` runs down the section.
 Each row:
 
 - **A diamond** on the line, for a step: 8 px, in `fill-strong`, 12 px
   (`space-5`) from the row's text; on the best route it is gold, like its
-  title (owner, 2026-11-08). On a locked step the diamond and its line fade
+  title. On a locked step the diamond and its line fade
   with the row. An alternative ("Or …") has no
   diamond; it continues the row above (Kuva's "Or trade for a converted Kuva
   Lich", Ivara Prime's "Or Lith Q3 Relic").
@@ -170,12 +161,12 @@ diamond, then "Or {relic} Relic" for the others, "(Vaulted)" on a vaulted one.
 ### Components
 
 No line and no diamond. Each row: a checkbox, the thing's art with no ground
-behind it (owner, 2026-10-19), "{name} ×{n}" in bold, a chevron, and under them,
+behind it, "{name} ×{n}" in bold, a chevron, and under them,
 starting where the art starts so nothing sits under the checkbox, the description with **Read on the wiki ↗**
 closing its line. A resource's description is where it comes from; one that
 comes from nowhere but the foundry, a cut gem or an alloy, says what it is made
 from ("Made in your foundry from 10 Azurite and 1,000 Credits."), and the
-credits say where credits come from (owner, 2026-10-21). The row opens the
+credits say where credits come from. The row opens the
 thing's own page (BR-67). Ticking a row (`465:477`):
 
 - fills the box, dims the title and strikes it through, dims the art;
@@ -231,25 +222,27 @@ grammar as an item's Step by step:
 2. The `Rank overview` (BR-77) with the wiki's icon of that rank in the
    square. Each item chip opens the item's page, with Plan as its origin.
 3. **The shortest way**: every way to close the gap, the most mastery a
-   piece first (owner, 2026-11-02). That row is the best, in the accent, with
+   piece first. That row is the best, in the accent, with
    "(Most mastery)"; each one after it is an alternative, "Or …", with no
    diamond. Each says how many it takes and whether that covers what is left.
-   - "Rank a new Necramech": 8,000 each at rank 40, counting only the
-     Necramechs the player never ranked.
-   - "Rank a new Warframe, companion or Archwing": 6,000 each at rank 30.
-   - "Rank a new weapon that goes to rank 40": Kuva, Tenet, Coda and a few
-     others, 4,000 each.
-   - "Rank a new weapon": 3,000 each at rank 30.
-   - "Rank {items} to {max}", the items the overview names, with "You took
-     them to ranks 12 and 18. That is enough for Rank 9." When they are not
-     enough: "That takes you part of the way. New items do the rest." Its
-     place is the mastery they have left, shared among them.
-   - "Raise your Intrinsics {n} ranks": 1,500 a rank of a Railjack or Drifter
-     tree, while the nine trees have ranks left.
-   - "Complete {n} Star Chart nodes": the nodes, and their Steel Path, not yet
-     completed, the ones worth the most first.
-   - With nothing left to rank, the items row is gone; with the bar full the
-     section is gone.
+
+- "Rank a new Necramech": 8,000 each at rank 40, counting only the
+  Necramechs the player never ranked.
+- "Rank a new Warframe, companion or Archwing": 6,000 each at rank 30.
+- "Rank a new weapon that goes to rank 40": Kuva, Tenet, Coda and a few
+  others, 4,000 each.
+- "Rank a new weapon": 3,000 each at rank 30.
+- "Rank {items} to {max}", the items the overview names, with "You took
+  them to ranks 12 and 18. That is enough for Rank 9." When they are not
+  enough: "That takes you part of the way. New items do the rest." Its
+  place is the mastery they have left, shared among them.
+- "Raise your Intrinsics {n} ranks": 1,500 a rank of a Railjack or Drifter
+  tree, while the nine trees have ranks left.
+- "Complete {n} Star Chart nodes": the nodes, and their Steel Path, not yet
+  completed, the ones worth the most first.
+- With nothing left to rank, the items row is gone; with the bar full the
+  section is gone.
+
 4. **The test**: "Take the Rank {n} test", "Take it in the game once your bar
    is full. If you fail, you can try again after 24 hours.", then "What Rank
    {n} unlocks" when the catalog has items that need exactly that rank and
@@ -272,7 +265,7 @@ rank, has no goal, and the route returns to Plan.
   same routes an item's parts use.
 - Links: `wiki-pages.json`, from `pnpm data:wiki-pages` (BR-73).
 - Prose: for a mission its type's Mechanics section, or its lead when it has
-  none (owner, 2026-10-14); for a prose-only route the item's Acquisition
+  none ; for a prose-only route the item's Acquisition
   section; otherwise the page's lead (BR-48). Cached a day, its paragraphs
   kept (BR-48).
 - Varzia's stock, live and cached ten minutes, only for a vaulted Prime on
@@ -316,12 +309,7 @@ from data Storybook does not load (2026-10-19).
 
 ## Frame corrections
 
-The owner corrected this screen's frames on 2026-10-06, and the corrections
-were applied in Figma the same day. The frames linked above are the design as
-it stands.
-
-On 2026-11-02, while building the Mastery Rank goal, Claude changed three
-things in its frames for the owner to confirm:
+The frames linked above are the design as it stands.
 
 - The View control (Overview, Step by step) is hidden: the goal has one view.
 - "Both are in your arsenal, at ranks 12 and 18" reads "You took them to ranks

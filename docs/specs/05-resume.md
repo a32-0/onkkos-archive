@@ -10,9 +10,6 @@ then measures everything from that day.
 - [`463:256` Update card](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=463-256):
   the update card.
 
-Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
-describes. Their texts are sample values:
-
 - [`675:5461` Catch up — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5461): the search with no hit.
 - [`679:4734` Catch up — From Where to start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=679-4734): the onboarding entrance, with Skip and no tab bar (BR-41).
 
@@ -34,7 +31,7 @@ describes. Their texts are sample values:
 ## What the screen does
 
 Route `/catch-up` with no month chosen, or `/catch-up?step=resume` from Two
-ways in, whatever month is kept (owner, 2026-10-15). A `step` marks the
+ways in, whatever month is kept. A `step` marks the
 onboarding entrance: no tab bar. Choosing from it opens
 `/catch-up?step=summary`, What's new of the same entrance; choosing from the
 tab opens `/catch-up`, which shows What's new once a month is kept. From the
@@ -45,12 +42,12 @@ top, as `662:4709` draws it:
    fading tendrils of our might-have-beens.", once the player has reached
    Cetus and has not turned the phrases off (BR-64).
 3. **Catch up**, and "Pick the last update you played. Onkko shows what came
-   out since then." (owner, 2026-11-01).
+   out since then.".
 4. The search field, "Search an update or a date...", alone (`Search field`, `463:79`).
 5. The update cards, newest first, one per name (BR-09). The newest wears
    **Newest**, and the one the player already chose wears **Selected**
    (BR-75). Five show, then "Show more", a `Button` in its text style,
-   which shows five more (owner, 2026-10-16).
+   which shows five more.
 6. **Skip**, from both entrances; from the Catch up tab, the tab bar under it
    (BR-40, BR-41).
 
@@ -59,19 +56,18 @@ top, as `662:4709` draws it:
 - **A card** sets `wf_since` to its update's month and opens What's new
   (spec 06).
 - **The search** filters the cards by name, version or date as the player
-  types: every word is found in the name, at the start of a version, or, for
-  the words left, together in one month of the update ("2024", "2024-03",
-  "Mar 2024", "March 2024"). A typed search starts again at five cards, and
-  "Show more" shows only what still matches. No match shows the
-  `Empty state` card in place of the cards, "No update by that name or
-  date." and "Try its number, like 43, or a month and a year." (`675:5461`;
-  owner, 2026-10-18).
+  types: every word is found in the name, at the start of a version, or, for the
+  words left, together in one month of the update ("2024", "2024-03", "Mar 2024",
+  "March 2024"). A typed search starts again at five cards, and "Show more" shows
+  only what still matches. No match shows the `Empty state` card in place of the
+  cards, "No update by that name or date." and "Try its number, like 43, or a
+  month and a year." (`675:5461`).
 - A month the action cannot read, or one still to come, keeps nothing and
   leaves the player on Catch up.
 - **Skip** opens the map on the frontier or the focus, as on Where to start.
 
 Skip follows BR-40: every screen before the map ends in it. Catch up has no Go
-back (owner, 2026-10-16).
+back.
 
 ## The update card
 
@@ -119,6 +115,4 @@ with its stories.
 
 ## Frame corrections
 
-The owner corrected this screen's frames on 2026-10-06, and the corrections
-were applied in Figma the same day. The frames linked above are the design as
-it stands.
+The frames linked above are the design as it stands.

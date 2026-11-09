@@ -9,18 +9,14 @@ How each part is built is [`desktop.md`](../desktop.md).
 
 ## Frames
 
-Drawn on 2026-10-22 in the first row of "App flows", from Onboarding —
-Loading, for the owner to approve before this spec is pinned:
-
 - [`886:5808` Desktop — Starting](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=886-5808): the window while the app
-  opens: the loading screen every wait shares and nothing under it (owner,
-  2026-10-30; until then Start's art and the splash wordmark lay
-  underneath): the window's ground behind black at 80%, and the loading
-  quill centred on it, with no visible words; screen readers hear "Onkko is
-  opening the archive...". The quill moves as Connect's does
-  (`841:536`, T-44).
+  opens: the loading screen every wait shares and nothing under it (until then
+  Start's art and the splash wordmark lay underneath): the window's ground behind
+  black at 80%, and the loading quill centred on it, with no visible words;
+  screen readers hear "Onkko is opening the archive...". The quill moves as
+  Connect's does (`841:536`, T-44).
 - [`764:5389` Desktop — Can't start](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=764-5389): the same window when the
-  server inside cannot start (owner, 2026-10-30): the same ground at 80%,
+  server inside cannot start : the same ground at 80%,
   the quill standing still, then, centred under it in the error band's
   words colour and `Body/Default`, "Onkko's Archive couldn't start." and
   "Please restart the app." on two lines, and **Restart**, a secondary
@@ -57,12 +53,12 @@ is the same `src/` tree, never a copy.
 | Android                  | Phase 7, after the refactor that needs no server      | n/a                |
 
 The Windows installer is a wizard, so the player sees what it installs and
-where (owner, 2026-11-07). It asks for the folder, offers a desktop shortcut
+where. It asks for the folder, offers a desktop shortcut
 left unticked, installs, and ends with the app ticked to open. It never asks
 for an administrator or offers an install for every user, it is in English
 like the app, and an update installs silently, with no window.
 
-The installer and the AppImage are not signed (owner, 2026-10-22). A
+The installer and the AppImage are not signed. A
 signature would prove who published a package and that nobody changed it
 since; without one, Windows shows SmartScreen's warning on the first run, and
 the README says what to press. What stands in its place: each package is
@@ -70,56 +66,52 @@ built by the release workflow from the public source, which anyone can build
 themselves, and reaches the player only from the repository's GitHub
 Releases, over HTTPS.
 
-The Microsoft Store package is signed by Microsoft when it passes
-certification, so it shows no warning (owner, 2026-10-27). It is the same
-program: the release workflow builds it from the same tag, and the owner
-uploads it in Partner Center. The app knows it runs from the Store when
-Electron reports `process.windowsStore`, and then leaves updating to the
-Store (Updates, below). Its identity is the one Partner Center reserved: the
-package name, the publisher and the publisher's display name. The owner keeps
-them as the repository's Actions secrets, not in a committed file (owner,
-2026-10-27), and the release workflow hands them to the build.
+The Microsoft Store package is signed by Microsoft when it passes certification,
+so it shows no warning. It is the same program: the release workflow builds it
+from the same tag, and the owner uploads it in Partner Center. The app knows it
+runs from the Store when Electron reports `process.windowsStore`, and then
+leaves updating to the Store (Updates, below). Its identity is the one Partner
+Center reserved: the package name, the publisher and the publisher's display
+name. The owner keeps them as the repository's Actions secrets, not in a
+committed file, and the release workflow hands them to the build.
 
 The Store published it on 2026-10-30, as
-[`9NVJBJD22L6D`](https://apps.microsoft.com/detail/9NVJBJD22L6D). The README
-and the demo's card to the download (spec 02) send Windows players there
-first, with GitHub beside it for Linux and for anyone who wants the installer
-(owner, 2026-10-30).
+[`9NVJBJD22L6D`](https://apps.microsoft.com/detail/9NVJBJD22L6D). The README and
+the demo's card to the download (spec 02) send Windows players there first, with
+GitHub beside it for Linux and for anyone who wants the installer.
 
 ## The window
 
-- One window the width of a phone (owner, 2026-10-22): its content opens 390
-  wide, the frames' width, and can be widened to 600, BR-39's limit,
-  never past it nor narrower than 390. It opens 844 tall, or as
-  tall as the screen allows, and is never shorter than 640. After the first
-  start it opens at the size the player left it, kept inside those limits
-  and the screen (owner, 2026-10-23), and in the place the player left it
-  (owner, 2026-11-06). If the middle of its title bar would fall on no
-  screen, as when a second screen is gone, the size stays and the window
-  opens centred, as on a first start. It cannot be
-  maximised or made full screen. The scroll bar is hidden, so the content
-  keeps its full width (Chromium's overlay bar cannot be switched on from
-  inside the app; `docs/desktop.md`). The system's own title bar; its title is
-  the page's. A desktop layout was drawn and set aside the same day: the
-  first version ships at a phone's width.
+- One window the width of a phone : its content opens 390
+  wide, the frames' width, and can be widened to 600, BR-39's limit, never past
+  it nor narrower than 390. It opens 844 tall, or as tall as the screen allows,
+  and is never shorter than 640. After the first start it opens at the size the
+  player left it, kept inside those limits and the screen, and in the place the
+  player left it. If the middle of its title bar would fall on no screen, as when
+  a second screen is gone, the size stays and the window opens centred, as on a
+  first start. It cannot be maximised or made full screen. The scroll bar is
+  hidden, so the content keeps its full width (Chromium's overlay bar cannot be
+  switched on from inside the app; `docs/desktop.md`). The system's own title
+  bar; its title is the page's. A desktop layout was drawn and set aside the same
+  day: the first version ships at a phone's width.
 - No menu bar and no developer tools in a packaged build.
 - One app at a time: opening it again brings the open window forward.
 - **Desktop — Starting** shows from the first frame, before the server
   answers, and gives way once it does: to `/` for a device that remembers no
-  id, and to the map (`/system`) for one that does (owner, 2026-10-23).
+  id, and to the map (`/system`) for one that does.
 - If the server cannot start, **Desktop — Can't start** replaces it. Nothing
   else is tried until the player presses **Restart**, which relaunches the
-  app and so tries again (owner, 2026-10-30).
+  app and so tries again.
 
 ## How it reads DE
 
-The server inside the app reads DE with its own `fetch`, as development
-does, and says what it is: no browser's headers, no browser's network stack
-borrowed to look like one, nothing that hides the app from a refusal
-(constitution). The owner's machine read a profile this way on 2026-10-22,
-with Node, and on 2026-10-23 from inside Electron, whose Node runs on another
-TLS library. If DE ever refuses the app's reads, the refusal's log line is
-the evidence, and the owner decides what follows.
+The server inside the app reads DE with its own `fetch`, as development does,
+and says what it is: no browser's headers, no browser's network stack borrowed
+to look like one, nothing that hides the app from a refusal (constitution). A player's
+machine reads a profile this way, with Node and from inside Electron, whose
+Node runs on another TLS library. If
+DE ever refuses the app's reads, the refusal's log line is the evidence, and the
+owner decides what follows.
 
 ## Who may talk to the server
 
@@ -165,10 +157,9 @@ the README names so a player can remove it. Disconnect clears the account's cook
 stored profile expires on its own.
 
 `app.log` is how a problem on a player's machine reaches the owner: the player
-sends it. It holds what the server and the main process warn of, each line
-with its time; a refusal's line carries DE's status and the headers that say
-who refused, never the account id or the profile (`api.md`) (owner,
-2026-10-25).
+sends it. It holds what the server and the main process warn of, each line with
+its time; a refusal's line carries DE's status and the headers that say who
+refused, never the account id or the profile (`api.md`).
 
 What leaves the machine, and nothing else, each read the demo already makes
 but the first and the last:
@@ -224,42 +215,37 @@ beside the program.
 The app checks GitHub Releases at each start and every six hours. A newer
 version downloads in the background and installs at the next restart; the
 operating system's notification says so once, in the words Profile uses:
-"{version} installs on restart. Restart now from Profile." (owner,
-2026-11-01). Its words live in
-`src/content/`, like every word the player reads. Closing the app installs
-it quietly and leaves the app closed; **Restart now** (below) installs it and
-opens the app again on the new version (owner, 2026-10-30).
+"{version} installs on restart. Restart now from Profile.". Its words live in
+`src/content/`, like every word the player reads. Closing the app installs it
+quietly and leaves the app closed; **Restart now** (below) installs it and opens
+the app again on the new version.
 
 Profile's **Check** (spec 04) asks at once instead of waiting. While it asks,
-the button reads "Checking…" and is disabled; then the answer takes the
-button's place, in the row's value style: "Up to date", "Downloading
-{version}…", "{version} installs on restart" once it has downloaded, or
-"Couldn’t reach GitHub" without a network. Once it has downloaded, a row of
-its own under Updates holds **Restart now**, a secondary button 200 wide,
-centred, which closes the app, installs the version and opens the app again
-(owner, 2026-10-30). While the line reads "Downloading {version}…", Profile
-asks again every three seconds, and the main process answers from what it
-already knows without asking GitHub, so the line turns to "{version} installs
-on restart" and **Restart now** appears on their own once the download ends
-(owner, 2026-11-01). The notification above follows as usual. Leaving Profile
-and coming back shows the button again. Drawn on
-2026-10-23 in
+the button reads "Checking…" and is disabled; then the answer takes the button's
+place, in the row's value style: "Up to date", "Downloading {version}…",
+"{version} installs on restart" once it has downloaded, or "Couldn’t reach
+GitHub" without a network. Once it has downloaded, a row of its own under
+Updates holds **Restart now**, a secondary button 200 wide, centred, which
+closes the app, installs the version and opens the app again. While the line
+reads "Downloading {version}…", Profile asks again every three seconds, and the
+main process answers from what it already knows without asking GitHub, so the
+line turns to "{version} installs on restart" and **Restart now** appears on
+their own once the download ends. The notification above follows as usual.
+Leaving Profile and coming back shows the button again. Drawn in
 [`827:4748` Profile — App — Check states](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=827-4748),
-beside Profile — App, for the owner to confirm.
+beside Profile — App.
 
 From the Microsoft Store the app never checks GitHub and never downloads a
-version of itself: the Store installs each new version, and Store policy
-allows no other way. Profile's Updates row then holds no button; it reads
-"Through the Microsoft Store", in the same value style. Drawn on 2026-10-27
-as the last row of Profile — App — Check states, and approved by the owner
-the same day.
-The data of each Warframe update still arrives as above, because it is data
-and not code.
+version of itself: the Store installs each new version, and Store policy allows
+no other way. Profile's Updates row then holds no button; it reads "Through the
+Microsoft Store", in the same value style. Drawn as the last row of Profile —
+App — Check states. The data of each Warframe update
+still arrives as above, because it is data and not code.
 
 The version in Profile's About is a link, "{version} ↗" in the link colour:
 it opens that version's release notes on GitHub
 (`releases/tag/v{version}`) in the system's browser, from GitHub and from
-the Store alike (owner, 2026-10-29). Drawn in Profile — App, on the Version
+the Store alike. Drawn in Profile — App, on the Version
 row.
 
 A version is published by the owner, from a tag `v{version}` on `main`; the

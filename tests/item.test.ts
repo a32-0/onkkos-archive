@@ -80,6 +80,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
     beyond: false,
     steps: { sections: [], lock: null },
     builtInto: [],
+    mod: null,
     ...over,
   };
 }
@@ -206,5 +207,55 @@ describe("the titles every row may carry", () => {
 
   it("says nothing for a phrase that is not a title", () => {
     expect(titled({ say: "partsUnknown" })).toBe("");
+  });
+});
+
+describe("a mod's Overview (BR-87)", () => {
+  it("draws the mod's numbers on its art and words each stat", () => {
+    const page = itemPage(
+      facts({
+        name: "Point Strike",
+        group: null,
+        collectible: true,
+        art: "point-strike.png",
+        mod: {
+          ranks: 5,
+          capacity: 9,
+          slot: 5,
+          polarity: "Madurai",
+          polarityArt: "madurai.svg",
+          effects: [
+            {
+              icon: "crisis-alert",
+              outcome: "More critical hits",
+              amount: "+150%",
+              stat: "Critical Chance",
+              example: {
+                before: { value: "20%", share: 0.4 },
+                after: { value: "50%", share: 1 },
+                line: "A weapon with 20% critical chance gets 50%.",
+              },
+              note: null,
+              pairs: [],
+            },
+          ],
+        },
+      }),
+      "goal",
+      null,
+    );
+    expect(page.mod?.overview).toEqual({
+      art: "point-strike.png",
+      name: "Point Strike",
+      capacity: 9,
+      polarity: "madurai.svg",
+      ranks: 5,
+      rank: "Max rank 5",
+      cost: "costs 9, or 5 in a Madurai slot",
+    });
+    const [effect] = page.mod?.effects ?? [];
+    expect(effect?.example?.before.label).toBe("Without");
+    expect(effect?.example?.after.label).toBe("With it");
+    expect(effect?.pairs).toBeNull();
   });
 });

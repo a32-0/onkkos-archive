@@ -69,7 +69,6 @@ const rawGoal = z.object({
   source: z.string().optional(),
   place: z.string().optional(),
   quest: z.string().optional(),
-  item: z.string().optional(),
   lacking: z.string().optional(),
   after: z.string().optional(),
   after_quests: z.array(z.string()).default([]),
@@ -143,7 +142,6 @@ export interface GraphGoal {
   source?: string;
   place?: string;
   quest?: string;
-  item?: string;
   lacking?: string;
   after?: string;
   afterQuests: string[];
@@ -210,7 +208,6 @@ export function normalizeGraph(input: unknown): Graph {
     if (goal.source !== undefined) normalized.source = goal.source;
     if (goal.place !== undefined) normalized.place = goal.place;
     if (goal.quest !== undefined) normalized.quest = goal.quest;
-    if (goal.item !== undefined) normalized.item = goal.item;
     if (goal.lacking !== undefined) normalized.lacking = goal.lacking;
     if (goal.after !== undefined) normalized.after = goal.after;
     if (goal.mastery_rank !== undefined) normalized.masteryRank = goal.mastery_rank;

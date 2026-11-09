@@ -1,0 +1,12 @@
+.page {
+  --milestones-column: none;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--milestones-column);
+  margin: 0 auto;
+  padding: var(--space-6) var(--gutter);
+}

@@ -2,7 +2,7 @@ import type { CatalogItem } from "@/domain/catalog/items";
 import type { RawProfile } from "@/domain/types/profile";
 
 export interface Lacking {
-  owned: number;
+  owned: CatalogItem[];
   lacking: CatalogItem[];
 }
 
@@ -15,7 +15,7 @@ export function lackingNamed(
   const owned = new Set(Array.isArray(xpInfo) ? xpInfo.map((entry) => entry.ItemType) : []);
   const named = arsenal.filter((item) => item.name.startsWith(prefix));
   return {
-    owned: named.filter((item) => owned.has(item.uniqueName)).length,
+    owned: named.filter((item) => owned.has(item.uniqueName)),
     lacking: named
       .filter((item) => !owned.has(item.uniqueName))
       .sort(

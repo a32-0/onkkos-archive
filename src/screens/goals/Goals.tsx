@@ -4,6 +4,7 @@ import { Button } from "@/ui/Button/Button";
 import { ChoiceCard } from "@/ui/ChoiceCard/ChoiceCard";
 import { Divider } from "@/ui/Divider/Divider";
 import { EmptyState } from "@/ui/EmptyState/EmptyState";
+import { ListItem } from "@/ui/ListItem/ListItem";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { RankCard } from "@/ui/RankCard/RankCard";
 import { SearchCard } from "@/ui/SearchCard/SearchCard";
@@ -20,14 +21,16 @@ export function Goals({
   chrome,
   cards,
   rank = null,
+  reached = null,
   skip,
 }: {
   chrome: ShellChrome;
   cards: readonly GoalCardView[];
   rank?: RankCardView | null;
+  reached?: { href: string; count: number } | null;
   skip: string;
 }) {
-  const any = cards.length > 0 || rank !== null;
+  const any = cards.length > 0 || rank !== null || reached !== null;
   return (
     <Shell chrome={chrome} tab="goal" tabs>
       <div className={styles.page}>
@@ -60,6 +63,16 @@ export function Goals({
                 link={Link}
               />
             ))}
+            {reached && (
+              <div className={styles.divider}>
+                <ListItem
+                  href={reached.href}
+                  title={GOALS.milestones.title}
+                  supporting={GOALS.milestones.done(reached.count)}
+                  link={Link}
+                />
+              </div>
+            )}
           </div>
         )}
 

@@ -957,6 +957,24 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     expect(html).not.toContain("Build a Necramech");
   });
 
+  it("links Cy to the milestones reached, and lists them in the ladder's order (BR-86)", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy);
+    expect(html).toContain("Milestones reached");
+    expect(html).toContain("/goals/milestones");
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: MilestonesPage } = await import("@/app/goals/milestones/page");
+    const list = renderToStaticMarkup(await MilestonesPage());
+    expect(list).toContain("Every junction cleared.");
+    const order = ["Unlock the next planet", "Play The New War", "Play the Hex Quest"];
+    const at = order.map((title) => list.indexOf(title));
+    expect(at.every((index) => index >= 0)).toBe(true);
+    expect([...at].sort((x, y) => x - y)).toEqual(at);
+  });
+
+  it("offers Ordis no link to milestones while none is reached", async () => {
+    expect(await page(ORDIS)).not.toContain("Milestones reached");
+  });
+
   it("hides from Cy what the profile proves done", async () => {
     const html = await page(DEMO_ACCOUNT_IDS.cy);
     expect(html).not.toContain("Unlock the next planet");

@@ -118,3 +118,72 @@ rules:
     evidence: { kind: mission, tag: SolNode850 }
     source: "https://wiki.warframe.com/w/K%C3%B6binn_West"
     note: "Höllvania's nodes need The Hex completed."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence:
+      {
+        kind: item,
+        type: "/Lotus/Weapons/Tenno/Melee/HeavyScythe/TnOrionSiriusScythe/TnSiriusScytheWeapon",
+      }
+    source: "https://wiki.warframe.com/w/Pride"
+    note: "Pride comes only from Uranus Proxima or Pontis Tower, which the quest opens; untradeable, not in the Market."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence:
+      {
+        kind: item,
+        type: "/Lotus/Weapons/Tenno/Melee/HeavyScythe/TnOrionSiriusScythe/TnOrionScytheWeapon",
+      }
+    source: "https://wiki.warframe.com/w/Wrath"
+    note: "Wrath comes only from Uranus Proxima or Pontis Tower, which the quest opens; untradeable, not in the Market."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence: { kind: item, type: "/Lotus/Weapons/Tenno/Melee/Swords/PrimeWar/PrimeWarWeapon" }
+    source: "https://wiki.warframe.com/w/War_Prime"
+    note: "War Prime comes only from Uranus Proxima or Pontis Tower, which the quest opens; untradeable, not in the Market."
+
+title_rules:
+  - quest: "The Second Dream"
+    evidence: { kind: challenge, name: SecondDreamTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Awoken Tenno Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The New War"
+    evidence: { kind: challenge, name: TheNewWarTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Drifter Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: challenge, name: JadeShadowsTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the The Great & Terrible Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence: { kind: challenge, name: JadeShadows2TitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Like Father, Like Sons Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: challenge, name: JadeShadows2TitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "Jade Shadows: Constellations requires Jade Shadows, so its Honoria proves both."
+
+  - quest: "The Lotus Eaters"
+    evidence: { kind: challenge, name: LotusEatersTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Champion of the Lotus Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The Old Peace"
+    evidence: { kind: challenge, name: OldPeaceTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Chosen of Margulis Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The Duviri Paradox"
+    evidence: { kind: challenge, name: DuviriTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the King of Duviri and Queen of Duviri Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "A Man of Few Words"
+    evidence: { kind: challenge, name: ClemTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Clem Honoria, given for completing the quest; read on a real profile on 2026-11-08."

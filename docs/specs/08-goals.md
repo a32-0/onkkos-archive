@@ -8,8 +8,9 @@ opens the steps to it.
 
 - [`662:4811` Plan](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4811).
 
-Drawn in "App flows" on 2026-10-18 (T-27b), from the states this spec
-describes. Their texts are sample values:
+Their texts are sample values; on 2026-11-08 every frame gained the Milestones
+divider, the Mastery Rank card and Advanced search, with the cards the app shows
+for the demo player Cy (Next planet: Ordis):
 
 - [`675:5962` Plan — Results](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5962): typing, the suggestion list under the field.
 - [`675:5989` Plan — No match](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-5989): typing, "Nothing by that name."
@@ -17,11 +18,11 @@ describes. Their texts are sample values:
 - [`675:6022` Plan — Beyond reach](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6022): the last match beyond reach, after those in reach, with its gap.
 - [`1001:7542` Plan — Mastery Rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1001-7542), [`1009:7199` — Test ready](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7199) and
   [`1009:7275` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7275): the Mastery Rank card first among the
-  suggestions, and gone at the highest rank (BR-78, owner, 2026-11-02).
+  suggestions, and gone at the highest rank (BR-78).
 - [`1142:7324` Plan — Milestones](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7324), [`1142:7408` — After The New War](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7408) and
   [`1142:7500` — After Jade Shadows](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1142-7500): a Mastery Rank 9 player before The New War, then
-  after it, then after Jade Shadows; each wall waits for the one before it (BR-86, owner, 2026-11-08).
-- [`1165:8337` Plan>Milestones reached](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1165-8337): the milestones the profile proves done, on a page of their own, opened from a `List item` under the cards; proposed and not built yet.
+  after it, then after Jade Shadows; each wall waits for the one before it (BR-86).
+- [`1165:8337` Plan>Milestones reached](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1165-8337): the milestones the profile proves done, on a page of their own (`/goals/milestones`), opened from a `List item` under the cards (BR-86).
 - [`675:6088` Plan — Next planet](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=675-6088): a player with a frontier, "Unlock the next planet" first with its flag and the junction it needs.
 
 ## Rules
@@ -51,13 +52,12 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
 1. Onkko's line, "Every choice closes off an infinite number of possible
    futures."
 2. **Plan**, and "Search for anything you want, or take a suggestion. Onkko
-   lays out the steps in order." (owner, 2026-11-01)
+   lays out the steps in order."
 3. **Search for anything**: "Warframes, weapons, companions, mods, arcanes,
-   relics, resources, quests and places.", which names what the search
-   reaches now that the catalog holds every sourced resource (owner,
-   2026-10-21); the field, "A warframe, a weapon, or planet";
-   **Continue**; and **Advanced search**, in the text style, which opens
-   spec 12's page with the term typed (`752:4545`).
+   relics, resources, quests and places.", which names what the search reaches now
+   that the catalog holds every sourced resource ; the field, "A warframe, a
+   weapon, or planet"; **Continue**; and **Advanced search**, in the text style,
+   which opens spec 12's page with the term typed (`752:4545`).
 4. The goal cards, each a link with its icon, title and one line.
 5. **Skip**, in the secondary style, which opens the map on Start here
    (BR-40), as `662:4811` draws it since 2026-10-16.
@@ -72,10 +72,10 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
 - It reaches only what has a known source: an arsenal item, a mod, arcane,
   resource or other entry with a drop, a region or a vendor, every relic,
   every quest of the narrative spine, with its art and "Quest" as its
-  catalogue (owner, 2026-10-20), and every place. About 8,000 cosmetics with no source never appear.
+  catalogue, and every place. About 8,000 cosmetics with no source never appear.
 - Among matches as close to the name, what is in the player's reach comes
   first; a closer name is never pushed down by reach, so "ash" finds Ash
-  first (owner, 2026-10-21). The closeness: the exact name, then a name
+  first. The closeness: the exact name, then a name
   that starts with the term, then a word that starts with it, then the term
   inside a word. A match beyond reach is the
   Beyond reach row (`526:107`): its catalogue, then the gap, "Sniper · Needs
@@ -91,7 +91,7 @@ from `/connect` (BR-03). From the top, as `662:4811` draws it:
 
 ### The Mastery Rank card (BR-78)
 
-The cards sit under a `Divider` labelled "Milestones" (owner, 2026-11-08). Before every goal
+The cards sit under a `Divider` labelled "Milestones". Before every goal
 card, the `Rank card`: the next rank's seal ("9", "30", or "L1" for a
 Legendary rank, in `Display/Heading`), "Reach Mastery Rank {n}" in the accent, and the line
 that says what takes the player there:
@@ -117,7 +117,6 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 | `play_new_war`, `play_jade_shadows`, `play_constellations` | "Play The New War", "Play Jade Shadows", "Play Jade Shadows: Constellations" | The quest's Step by step                                   |
 | `hunt_archon`                                              | "Hunt an Archon"                                                             | The Step by step of Veilbreaker                            |
 | `unlock_steel_path`                                        | "Unlock The Steel Path"                                                      | The map on the first place with a node left                |
-| `build_helminth`                                           | "Build the Helminth"                                                         | The Step by step of the Helminth Segment                   |
 | `hunt_kuva_lich`                                           | "Hunt a Kuva Lich"                                                           | The Step by step of the first Kuva weapon lacking          |
 
 What each waits for, what proves it done and its icon are BR-86.
@@ -138,9 +137,9 @@ What each waits for, what proves it done and its icon are BR-86.
   says what the player gets.
 - The card's line lives in `src/content/goals.ts`, as every string does:
   the lines of the walls are BR-86's frames, the Necramech's and the Hex's
-  included, which said what the player gets from 2026-11-08 on; "Unlock the next planet" names the junction the frontier needs,
-  "Clear the Mars Junction, on Earth, to open the next planet." (owner,
-  2026-10-17).
+  included, which said what the player gets from 2026-11-08 on; "Unlock the next
+  planet" names the junction the frontier needs, "Clear the Mars Junction, on
+  Earth, to open the next planet.".
 
 ## States
 
@@ -157,7 +156,9 @@ What each waits for, what proves it done and its icon are BR-86.
 - Search: `GET /api/search?q=` over `src/domain/catalog/search.ts`, so the page
   never ships the whole index.
 - Goals: `data/grafo.yaml` through `suggestedGoals()`; the frontier and the
-  focus as in spec 07.
+  focus as in spec 07. What is offered and what is done are worked out once,
+  in `goalState()` (`src/app/goals/goals.ts`), for Plan and for
+  `/goals/milestones` alike.
 - Necramechs: the catalog's Necramech category against `XPInfo`
   (`lackingNecramechs()` in `src/domain/catalog/necramechs.ts`).
 - Kuva weapons: the catalog's names that start "Kuva " against `XPInfo`
@@ -176,7 +177,8 @@ What each waits for, what proves it done and its icon are BR-86.
 `SearchCard`, `SearchField`, `SuggestionList` and `SuggestionRow` (default,
 active, beyond reach), `Divider` (label), `RankCard` (In progress, Test ready), `ChoiceCard`
 (goal),
-`EmptyState`, `Button` (primary), each with its stories.
+`EmptyState`, `Button` (primary), `ListItem` (supporting) and, on
+Milestones reached, `MilestoneRow`, each with its stories.
 
 ## Acceptance
 
@@ -195,7 +197,3 @@ active, beyond reach), `Divider` (label), `RankCard` (In progress, Test ready), 
 8. `pnpm check` passes, with tests for the goals offered, BR-54 and BR-62.
 
 ## Drawn on the Design System page
-
-The suggestion list is the `Suggestion list` component (Results, No match),
-approved by the owner on 2026-10-06, and drawn in place on `675:5962` and
-`675:5989`.

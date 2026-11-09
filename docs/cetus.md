@@ -68,18 +68,15 @@ One rule makes the app feel old:
 > The serif carries the names of old things: places, quests, items, lore.
 > The sans carries the machine's readings: counts, percentages, runs.
 
-The display face is Cinzel, drawn from Roman inscriptional capitals, which
-reads as carved stone rather than print. It has no lowercase of its own; its
-lowercase are small capitals. Every Cinzel style is set in capitals, Onkko's
-lines and the player's name included (owner, 2026-10-21): the small capitals
-read as a second, smaller size of the same letters, and a line in capitals
-keeps one.
-Body text and readings are Inter. The app had a mono face for readings,
-JetBrains Mono, until the owner dropped it (owner, 2026-11-07): two families
-are enough, and Inter tells a reading from the text around it by weight and
-colour alone. A reading is Inter Semi Bold in gold with tabular figures, the
-line under it Inter Regular in `ink-muted`, both at 14 px. On the card ground
-the gold reaches 8.9:1 and the muted ink 6.3:1, both over WCAG AA.
+The display face is Cinzel, drawn from Roman inscriptional capitals, which reads
+as carved stone rather than print. It has no lowercase of its own; its lowercase
+are small capitals. Every Cinzel style is set in capitals, Onkko's lines and the
+player's name included : the small capitals read as a second, smaller size of
+the same letters, and a line in capitals keeps one. Body text and readings are
+Inter. Two families are enough: Inter tells a
+reading from the text around it by weight and colour alone. A reading is Inter Semi Bold in gold with tabular figures, the line under
+it Inter Regular in `ink-muted`, both at 14 px. On the card ground the gold
+reaches 8.9:1 and the muted ink 6.3:1, both over WCAG AA.
 `tests/language.test.ts` checks that every name style uses Cinzel and every
 reading style uses Inter.
 

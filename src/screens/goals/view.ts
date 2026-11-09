@@ -3,7 +3,14 @@ import type { ReachGap } from "@/domain/place/reach";
 import { itemRoute, placeRoute, ROUTES } from "@/routes";
 import type { IconName } from "@/ui/Icon/glyphs";
 
-import type { GoalCardView, GoalInput, GoalKind, SearchInput, SearchRow } from "./state";
+import type {
+  GoalCardView,
+  GoalInput,
+  GoalKind,
+  MilestoneRowView,
+  SearchInput,
+  SearchRow,
+} from "./state";
 
 const FROM = "goal";
 const SHOWN = 8;
@@ -14,10 +21,9 @@ const ICONS: Readonly<Record<string, IconName>> = {
   unlock_1999: "auto-stories",
   play_new_war: "swords",
   play_jade_shadows: "dark-mode",
-  play_constellations: "auto-awesome",
   hunt_archon: "diamond",
   unlock_steel_path: "skull",
-  build_helminth: "biotech",
+  play_constellations: "auto-awesome",
   hunt_kuva_lich: "target",
 };
 
@@ -25,7 +31,6 @@ const KIND_ICONS: Readonly<Record<GoalKind, IconName>> = {
   planet: "flag",
   necramech: "precision-manufacturing",
   quest: "auto-stories",
-  item: "precision-manufacturing",
   lich: "target",
   "steel-path": "skull",
 };
@@ -43,12 +48,33 @@ function cardWords(goal: GoalInput): { title: string; line: string } | null {
   return null;
 }
 
+function iconOf(goal: GoalInput): IconName {
+  return ICONS[goal.id] ?? KIND_ICONS[goal.kind];
+}
+
 export function goalCards(goals: readonly GoalInput[]): GoalCardView[] {
   return goals.flatMap((goal) => {
     const words = cardWords(goal);
-    return words
-      ? [{ id: goal.id, href: goal.href, icon: ICONS[goal.id] ?? KIND_ICONS[goal.kind], ...words }]
-      : [];
+    return words ? [{ id: goal.id, href: goal.href, icon: iconOf(goal), ...words }] : [];
+  });
+}
+
+export function milestoneRows(done: readonly GoalInput[]): MilestoneRowView[] {
+  return done.flatMap((goal) => {
+    if (goal.id === "unlock_next_planet") {
+      const card = GOALS.cards.unlock_next_planet;
+      return [
+        {
+          id: goal.id,
+          href: goal.href,
+          icon: iconOf(goal),
+          title: card.title,
+          line: GOALS.milestones.planetDone,
+        },
+      ];
+    }
+    const words = cardWords(goal);
+    return words ? [{ id: goal.id, href: goal.href, icon: iconOf(goal), ...words }] : [];
   });
 }
 
