@@ -58,6 +58,7 @@ export interface ItemFacts {
   group: Group | null;
   collectible: boolean;
   quest: boolean;
+  mode: boolean;
   art: string | null;
   blueprint: string;
   prime: boolean;

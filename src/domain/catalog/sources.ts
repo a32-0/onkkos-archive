@@ -114,6 +114,7 @@ export interface Curated {
   gates: NameMap<string[]>;
   items: NameMap<CuratedEntry>;
   stores: NameMap<z.infer<typeof store>>;
+  art: NameMap<string>;
 }
 
 export function normalizeSources(input: unknown): Curated {
@@ -123,6 +124,7 @@ export function normalizeSources(input: unknown): Curated {
       stores: z.array(store).default([]),
       items: z.array(entry),
       tribute: z.array(tribute).default([]),
+      art: z.record(z.string(), z.url()).default({}),
     })
     .parse(input);
   const items = new NameMap<CuratedEntry>();
@@ -139,6 +141,7 @@ export function normalizeSources(input: unknown): Curated {
     gates: new NameMap(raw.vendors.map((one) => [one.vendor, one.quests])),
     items,
     stores: new NameMap(raw.stores.map((one) => [one.store, one])),
+    art: new NameMap(Object.entries(raw.art)),
   };
 }
 

@@ -32,7 +32,7 @@ function needsByQuest(spine: NarrativeSpine): ReadonlyMap<string, QuestNeeds> {
   const quests = spine.arcs.flatMap((arc) => arc.quests);
   const names = quests.map((quest) => quest.name).sort((a, b) => b.length - a.length);
   const out = new Map<string, QuestNeeds>();
-  for (const quest of quests) {
+  for (const quest of [...quests, ...spine.modes]) {
     let text = quest.requirement ?? "";
     const before: string[] = [];
     for (const name of names) {

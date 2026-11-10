@@ -82,10 +82,22 @@ export function itemPage(
 ): ItemPageView {
   const tab = openedFrom(from);
   const origin = from ?? "";
-  const kicker = facts.quest ? ITEM.quest : facts.group ? ITEM.kicker[facts.group] : "";
+  const kicker = facts.mode
+    ? ITEM.mode
+    : facts.quest
+      ? ITEM.quest
+      : facts.group
+        ? ITEM.kicker[facts.group]
+        : "";
   const state = facts.state.kind;
   return {
-    title: facts.quest ? ITEM.quests : facts.group ? MAP.groups[facts.group].name : facts.name,
+    title: facts.mode
+      ? ITEM.modes
+      : facts.quest
+        ? ITEM.quests
+        : facts.group
+          ? MAP.groups[facts.group].name
+          : facts.name,
     back: tabHome(tab),
     tab,
     kicker,

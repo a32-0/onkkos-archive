@@ -1132,6 +1132,36 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).toContain("Complete Natah");
   });
 
+  it("says where a quest's Railjack and Amp come from, each with its wiki link (BR-37)", async () => {
+    const html = await page(ORDIS, { name: "The New War", from: "goal", view: "steps" });
+    expect(html).toContain(">Have a Railjack<");
+    expect(html).toContain("Rising Tide gives you yours");
+    expect(html).toContain('href="https://wiki.warframe.com/w/Railjack"');
+    expect(html).toContain('href="https://wiki.warframe.com/w/Amp"');
+    expect(html).not.toContain(">Stages<");
+  });
+
+  it("opens a game mode from Goal in the same grammar, reached from Milestones alone (BR-37)", async () => {
+    const html = await page(ORDIS, { name: "The Steel Path", from: "goal", view: "steps" });
+    expect(html).toContain(">Game mode<");
+    expect(html).toContain(">Milestones<");
+    expect(html).toContain(">Clear every node of the Star Chart<");
+    expect(html).toContain("Earth still has nodes left.");
+    expect(html).toContain(">Unlock The Steel Path<");
+    expect(html).not.toContain(">What you get<");
+    expect(html).toContain('href="/system?system=origin&amp;place=Earth"');
+    const { GET } = await import("@/app/api/search/route");
+    const response = await GET(new NextRequest("http://localhost/api/search?q=Steel%20Path"));
+    const body = (await response.json()) as { results: { name: string }[] };
+    expect(body.results.map((hit) => hit.name)).not.toContain("The Steel Path");
+  });
+
+  it("shows the Larvling and the Lich, not the weapon, on a Kuva weapon's Overview", async () => {
+    const html = await page(ORDIS, { name: "Kuva Bramma", from: "goal", view: "summary" });
+    expect(html).toContain("Male_Kuva_Larvling.png");
+    expect(html).toContain("KuvaLiches.jpg");
+  });
+
   it("names the place the Summary's first line names (BR-51)", async () => {
     const serration = await page(DEMO_ACCOUNT_IDS.cy, { name: "Serration", from: "navigation" });
     expect(serration).toMatch(/Origin &gt; Mercury[\s\S]*Suisei \(Mercury\)/);

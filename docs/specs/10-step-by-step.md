@@ -47,7 +47,8 @@ The data decides every title, reading and passage (BR-33); the frames' layout,
 row types, states and order are the design. They will drift as the game data
 changes; the layout is what each frame fixes.
 
-- [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it; How to get with where it starts and the wiki's passage.
+- [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it and what it needs owned; How to get with where it starts and the wiki's passage.
+- A game mode, The Steel Path or the Archon Hunt, takes the same page: "Game mode" as kicker, "Milestones" in the top bar. No frame of its own; it follows the quest's.
 - [`677:13172` Item>Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-13172): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.
 
 ## Rules
@@ -112,6 +113,13 @@ In this order; a section with nothing in it does not render.
 Each section is a card under a divider that names it. A part's card opens with
 its header: the part's art and its title in the display face. Only Blueprints
 and Components carry art; every other row is words alone (BR-85).
+
+A quest or a game mode has two sections: Prerequisites and How to get, the
+row that starts it, with the exact place or message that does. A thing it
+needs owned reads "Have a Railjack", says where the player gets one and links
+to its page. The Steel Path's Prerequisites add "Clear every node of the Star
+Chart", whose detail names the planet with nodes left. Stages, rewards and
+schedules are left out: the game shows them (BR-37).
 
 ## The rows
 

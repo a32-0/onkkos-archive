@@ -257,6 +257,14 @@ arcs:
         requirement: "Prelude to War completed, a Railjack and an Amp"
         start: "Codex → Quests. Expect two to six hours, with checkpoints; the Arsenal stays locked until it ends."
         locations: [Earth, Venus]
+        needs:
+          - need: Railjack
+            how: "Rising Tide gives you yours: the quest has you build it part by part."
+            wiki: Railjack
+            quest: "Rising Tide"
+          - need: Amp
+            how: "Onkko gives you the Mote Amp in Cetus once The War Within is done. The Quills and Vox Solaris sell the parts of better ones."
+            wiki: Amp
       - quest: "The Duviri Paradox"
         wiki: "The Duviri Paradox"
         release: "2023-04-26"
@@ -328,3 +336,17 @@ arcs:
         start: "Codex → Quests, after The New War."
         locations: [Zariman]
         note: "One-off, doesn't block the main path"
+
+modes:
+  - quest: "The Steel Path"
+    kind: mode
+    wiki: "The Steel Path"
+    requirement: "Prelude to War completed, Mastery Rank 5, and every node of the connected Star Chart, Lua and the Kuva Fortress included, except the Mutalist Alad V and Jordas Golem Assassinations on Eris and Brutus on Uranus"
+    star_chart: true
+    start: "Talk to Teshin in any Relay and ask him about the Steel Path. It then shows as a toggle on the right of the Star Chart."
+
+  - quest: "Archon Hunt"
+    kind: mode
+    wiki: "Archon Hunt"
+    requirement: "Veilbreaker completed"
+    start: "It sits beside the Sortie in the World State Window. Each Archon pays its own Archon Shard: Amar a Crimson one, Nira an Amber one, Boreal an Azure one."

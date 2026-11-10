@@ -6,24 +6,24 @@
       "sha256": "c2800320b3d3463da60847fef4e38fabcf14f02f121c160751ae2bd33f3cac74"
     },
     "grafo.yaml": {
-      "size": 6886,
-      "sha256": "e2f43087987b0e1c333b59abe5c535ab456fa46fc8f4a80b18f912aecbabbc7b"
+      "size": 6937,
+      "sha256": "cbfdd91592eb07c23aa54a437359818a2aa56ed1b02d9a031497b0e1c78c11bd"
     },
     "mod_stats.yaml": {
       "size": 12815,
       "sha256": "b369847b8c8aa23282c9c650c7ad30aafdccd97854c55f40ffb41164c1291bf5"
     },
     "narrative_spine.yaml": {
-      "size": 13510,
-      "sha256": "819ff36c47dd6309cb6fc1ed745ebd64ff7df7eaa6b75b7d39ac159b2730e7b7"
+      "size": 14621,
+      "sha256": "2b7d3fd36e27b0f59396a9dbec6e3d8e7dc7d35afea693851d42f731c372d04e"
     },
     "quest_evidence.yaml": {
       "size": 8644,
       "sha256": "2ad9f02e3aac757eaa1cb1227c841ed2aec3e86923d36c8b8c696de93148d37f"
     },
     "sources.yaml": {
-      "size": 32759,
-      "sha256": "2d1c63d45f0ba5fa2803f7100b68a9a059a849696d40ab5737fb25677cfc50ac"
+      "size": 33041,
+      "sha256": "4cf9c16150061fab2e7e41b444fdb9a9f84349c565e9308905f51f1b13bf9280"
     },
     "systems.yaml": {
       "size": 1838,
@@ -98,8 +98,8 @@
       "sha256": "1fdce8cfd1c4667ba43bb198368b4bea0767cbc27a0f15e3c1d3f566002f31cf"
     },
     "vendor/wiki-pages.json": {
-      "size": 245798,
-      "sha256": "cbaa9779ab50c25ab542f8b2d4d7ac6e2795c4655161b1c265164d01f7504558"
+      "size": 245802,
+      "sha256": "d9fe94749bcbd6c15e9c9e95380c871357cbea240dad20ba061764a9160dd24c"
     },
     "vendor/wiki-relics.json": {
       "size": 476618,

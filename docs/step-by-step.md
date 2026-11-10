@@ -55,8 +55,11 @@ card.
    standing and a few drops, needs a source of its own.
 
 A quest takes the same grammar (BR-37): Prerequisites with the quests and
-junctions before it and its Mastery Rank, then How to get with where it
-starts and the lead of its wiki page.
+junctions before it, its Mastery Rank and what it needs owned (`needs` in the
+spine), then How to get with where it starts and the lead of its wiki page. A
+game mode (`modes` in the spine) is a quest of kind `mode`: the same plan, and
+for The Steel Path a Star Chart row whose detail names the planet
+with nodes left (`Reader.placeLeft`, from `placeWithNodesLeft()`).
 
 ## The words
 

@@ -133,13 +133,21 @@ cite one. The Figma comment id is given beside each for traceability.
 - Frame [`208:90` Plan](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=208-90),
   the goal cards ("Build a Necramech", "Play the Hex Quest").
 - Type: behaviour.
-- Rule: choosing a goal opens the Step by step of the item or the quest it
-  refers to. A goal has no plan screen of its own.
+- Rule: choosing a goal opens the Step by step of the item, the quest or the
+  game mode it refers to. A goal has no plan screen of its own.
 - A quest's Step by step has no frame of its own. It is placed in the grammar
   every Step by step shares
-  ([`scenario-guidelines.md`](scenario-guidelines.md)): its prerequisites are
-  the quests and junctions before it (BR-28) and its Mastery Rank, and How to
-  get names where it starts.
+  ([`scenario-guidelines.md`](scenario-guidelines.md)): Prerequisites holds
+  the quests and junctions before it (BR-28), its Mastery Rank and what it
+  needs owned ("Have a Railjack"), each saying where it comes from and
+  linking to its page; How to get names where it starts.
+- A game mode (The Steel Path, the Archon Hunt) takes the same page under the
+  kicker "Game mode". It is reached from Plan's milestones alone: the search
+  does not find it. The Steel Path asks for every node of the Star Chart and
+  names the planet with nodes left, which "You're on" opens on the map.
+- A quest's or a mode's page says what the player cannot read in the game:
+  what stands in the way and where to start. It lists no stages, no rewards
+  and no schedule.
 - A place chosen as a target opens the map on that place, as Next does
   (BR-36).
 - The next Mastery Rank is a goal of its own since 2026-11-02 (BR-76): it
@@ -1456,18 +1464,18 @@ The other proposals went to the Archive page.
 - Each card says what the player gets, the wiki's fact and not advice, and
   carries an icon no other card uses.
 
-| Card                              | Waits for                                           | Opens                                                   | Gone when                                                                 | Icon                      |
-| --------------------------------- | --------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------- |
-| Unlock the next planet            | Nothing                                             | The frontier                                            | No junction is left                                                       | `flag`                    |
-| Build a Necramech                 | Deimos reached                                      | The first Necramech the player lacks                    | The player owns a Necramech                                               | `precision_manufacturing` |
-| Build the Helminth                | Rank 3 with the Entrati (Associate), Mastery Rank 8 | The Helminth Segment's Step by step                     | The player has used one of the Helminth's own abilities                   | `biotech`                 |
-| Hunt a Kuva Lich                  | The War Within, Mastery Rank 5                      | The first Kuva weapon the player lacks                  | The player owns a Kuva weapon or holds the Honoria for vanquishing a Lich | `target`                  |
-| Play The New War                  | The War Within                                      | The quest's Step by step                                | Nataruk, Kahl, the Zariman, the Sanctum Anatomica, Brutus or Pontis Tower | `swords`                  |
-| Unlock The Steel Path             | Every junction                                      | The first place with a node left before The New War     | A node shows a Steel Path clear                                           | `skull`                   |
-| Hunt an Archon                    | The New War                                         | Veilbreaker's Step by step, the quest the hunts wait on | Kahl's Garrison                                                           | `diamond`                 |
-| Play Jade Shadows                 | The New War                                         | The quest's Step by step                                | Its Honoria, Brutus or Pontis Tower                                       | `dark_mode`               |
-| Play Jade Shadows: Constellations | Jade Shadows                                        | The quest's Step by step                                | Its Honoria, Pontis Tower, Pride, Wrath or War Prime                      | `auto_awesome`            |
-| Play the Hex Quest                | Whispers in the Walls                               | The quest's Step by step                                | The Hex's syndicate or Höllvania                                          | `auto_stories`            |
+| Card                              | Waits for                                           | Opens                                                                  | Gone when                                                                 | Icon                      |
+| --------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------- |
+| Unlock the next planet            | Nothing                                             | The frontier                                                           | No junction is left                                                       | `flag`                    |
+| Build a Necramech                 | Deimos reached                                      | The first Necramech the player lacks                                   | The player owns a Necramech                                               | `precision_manufacturing` |
+| Build the Helminth                | Rank 3 with the Entrati (Associate), Mastery Rank 8 | The Helminth Segment's Step by step                                    | The player has used one of the Helminth's own abilities                   | `biotech`                 |
+| Hunt a Kuva Lich                  | The War Within, Mastery Rank 5                      | The first Kuva weapon the player lacks                                 | The player owns a Kuva weapon or holds the Honoria for vanquishing a Lich | `target`                  |
+| Play The New War                  | The War Within                                      | The quest's Step by step                                               | Nataruk, Kahl, the Zariman, the Sanctum Anatomica, Brutus or Pontis Tower | `swords`                  |
+| Unlock The Steel Path             | Every junction                                      | The Steel Path's Step by step, naming the first place with a node left | A node shows a Steel Path clear                                           | `skull`                   |
+| Hunt an Archon                    | The New War                                         | The Archon Hunt's Step by step, Veilbreaker among its prerequisites    | Kahl's Garrison                                                           | `diamond`                 |
+| Play Jade Shadows                 | The New War                                         | The quest's Step by step                                               | Its Honoria, Brutus or Pontis Tower                                       | `dark_mode`               |
+| Play Jade Shadows: Constellations | Jade Shadows                                        | The quest's Step by step                                               | Its Honoria, Pontis Tower, Pride, Wrath or War Prime                      | `auto_awesome`            |
+| Play the Hex Quest                | Whispers in the Walls                               | The quest's Step by step                                               | The Hex's syndicate or Höllvania                                          | `auto_stories`            |
 
 - The Steel Path asks for every node before The New War, Lua's and the Kuva
   Fortress's included, except the Mutalist Alad V and Jordas Golem
@@ -1493,9 +1501,9 @@ The other proposals went to the Archive page.
   "{n} done", opens Plan>Milestones reached: every milestone the profile proves
   done, in the ladder's order (the order of `grafo.yaml`), each a
   `Milestone row` with its icon, its title and what it gave. The next planet
-  reads "Every junction cleared." A quest's row opens the quest, a Necramech's
-  or a Kuva Lich's the one the player owns, the others the Star Chart. Rows sit
-  `--space-4` apart.
+  reads "Every junction cleared." A quest's or a game mode's row opens its
+  Step by step, a Necramech's or a Kuva Lich's the one the player owns, the
+  next planet's the Star Chart. Rows sit `--space-4` apart.
 
 ## Mods
 

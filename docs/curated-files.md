@@ -82,7 +82,10 @@ none of those are in `deferred.md`. Fields:
 - `item`: the item whose Step by step the card opens. `lacking`: a name
   prefix; the card opens the first catalog item with it the player lacks, and
   owning one is done. `places` and `skip_nodes`: the places whose nodes count,
-  and the nodes that do not; the card opens the first place with one left.
+  and the nodes that do not; the first place with one left is named in the
+  mode's Step by step. `mode`: the game mode, spelled as the spine's `modes`
+  spell it, whose Step by step the card opens; it wins over `quest`, which
+  still gates and proves the goal.
 
 ### `off_chart_places`
 
@@ -182,6 +185,16 @@ Per-quest fields:
   gated by another quest, a rank or an Orbiter segment carry no value.
 - `note`: free text. A note containing "doesn't block the main path" marks
   a main-story branch as off-path.
+- `needs`: what the player must own besides quests, junctions and rank, as
+  the wiki's infobox lists it. Each has `need` (the thing, "Railjack"), `how`
+  (one line on where the player gets it), `wiki` (its page) and an optional
+  `quest` that gives it, which joins the quests before.
+
+A top-level `modes` list holds the game modes Plan's milestones open (The
+Steel Path, the Archon Hunt) in the same shape, with `kind: mode`. They sit
+outside the arcs, so the search, Catch up and the timeline never see them.
+`star_chart: true` adds "Clear every node of the Star Chart" to the mode's
+prerequisites. Released apps strip the fields and the list they do not know.
 
 Which arc unlocks a side quest is derived, not stated by the wiki: it is
 where the quest's gate falls on the main path.
@@ -234,6 +247,10 @@ Two lists:
 - `tribute`: the mods only a Daily Tribute milestone gives. Each entry has
   `item`, `days` and `cite`. It is a list of its own, not a route type, so
   released apps skip it instead of refusing the file.
+- `art`: a map from an enemy's name to the wiki image that shows it, for the
+  enemies whose wiki page image is wrong or missing: the Kuva Larvling, the
+  Kuva Lich, the Candidate and the Sister of Parvos. It is read before
+  `drop-sources.json`, and only the Overview draws it (BR-85).
 - `items`: one entry per item, spelled as `@wfcd/items` spells it (the match
   ignores case). `cite` is the wiki page the routes were read from; it is also
   the row's Wiki link. `routes` is a list of typed sources.

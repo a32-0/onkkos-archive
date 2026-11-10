@@ -1,6 +1,13 @@
 import { z } from "zod";
 
-const questKind = z.enum(["main", "side", "warframe"]);
+const questKind = z.enum(["main", "side", "warframe", "mode"]);
+
+const rawNeed = z.object({
+  need: z.string(),
+  how: z.string(),
+  wiki: z.string(),
+  quest: z.string().optional(),
+});
 
 const rawQuest = z.union([
   z.object({
@@ -13,6 +20,8 @@ const rawQuest = z.union([
     release: z.string().nullable().optional(),
     available_at: z.array(z.string()).optional(),
     note: z.string().optional(),
+    needs: z.array(rawNeed).optional(),
+    star_chart: z.boolean().optional(),
   }),
   z.string(),
 ]);
@@ -29,6 +38,7 @@ const rawSpineSchema = z.object({
   last_verified: z.string().optional(),
   source: z.string().optional(),
   arcs: z.array(rawArc),
+  modes: z.array(rawQuest).default([]),
 });
 
 const WIKI_PAGE = "https://wiki.warframe.com/w/";
@@ -49,6 +59,15 @@ export interface Quest {
   wikiUrl: string | null;
   availableAt: string[];
   sideArc: boolean;
+  needs: Need[];
+  starChart: boolean;
+}
+
+interface Need {
+  need: string;
+  how: string;
+  wiki: string;
+  quest: string | null;
 }
 
 export interface Arc {
@@ -63,6 +82,7 @@ export interface NarrativeSpine {
   lastVerified?: string;
   source?: string;
   arcs: Arc[];
+  modes: Quest[];
 }
 
 export function normalizeSpine(input: unknown): NarrativeSpine {
@@ -79,6 +99,7 @@ export function normalizeSpine(input: unknown): NarrativeSpine {
       if (arc.note !== undefined) normalized.note = arc.note;
       return normalized;
     }),
+    modes: raw.modes.map(normalizeQuest),
   };
   if (raw.last_verified !== undefined) spine.lastVerified = raw.last_verified;
   if (raw.source !== undefined) spine.source = raw.source;
@@ -104,6 +125,8 @@ function normalizeQuest(quest: z.infer<typeof rawQuest>): Quest {
       wikiUrl: null,
       availableAt: [],
       sideArc: false,
+      needs: [],
+      starChart: false,
     };
   }
   const kind = quest.kind ?? "main";
@@ -118,6 +141,8 @@ function normalizeQuest(quest: z.infer<typeof rawQuest>): Quest {
     wikiUrl: quest.wiki ? WIKI_PAGE + encodeURIComponent(quest.wiki.replace(/ /g, "_")) : null,
     availableAt: quest.available_at ?? [],
     sideArc: kind !== "main" || (quest.note ? SIDE_ARC_NOTE.test(quest.note) : false),
+    needs: (quest.needs ?? []).map((one) => ({ ...one, quest: one.quest ?? null })),
+    starChart: quest.star_chart ?? false,
   };
   if (quest.note !== undefined) normalized.note = quest.note;
   return normalized;

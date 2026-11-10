@@ -15,6 +15,7 @@ import { BLUEPRINT_ART, type CatalogItem } from "@/domain/catalog/items";
 import { allPlaces } from "@/domain/catalog/places";
 import { briefOf, type BriefBlock } from "@/domain/catalog/summary";
 import { bestPlaces, itemLine, type WhatsNewSources } from "@/domain/catalog/whats-new";
+import { placeWithNodesLeft } from "@/domain/graph/steel-path";
 import { itemGaps, readReach, type Reach } from "@/domain/place/reach";
 import { canonicalPlace } from "@/domain/place/schema";
 import { itemRanks, stateByName } from "@/domain/place/state";
@@ -107,7 +108,16 @@ async function builtIntoOf(
 }
 
 function questOf(data: CatalogData, name: string) {
-  return data.spine.arcs.flatMap((arc) => arc.quests).find((quest) => quest.name === name) ?? null;
+  return (
+    [...data.spine.arcs.flatMap((arc) => arc.quests), ...data.spine.modes].find(
+      (quest) => quest.name === name,
+    ) ?? null
+  );
+}
+
+function placeLeftFor(screen: Screen, data: CatalogData, mode: string): string | null {
+  const goal = Object.values(screen.graph.goals).find((one) => one.mode === mode);
+  return goal ? placeWithNodesLeft(goal, data.wiki.nodes, screen.profile) : null;
 }
 
 export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | null> {
@@ -133,11 +143,14 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     ? collectibleView(data, collectible, known, reach.places ?? known)
     : null;
   const varzia = item?.isPrime && item.vaulted ? await fetchVarzia() : null;
+  const mode = quest?.kind === "mode";
+  const placeLeft = quest && mode && quest.starChart ? placeLeftFor(screen, data, name) : null;
   const reader = {
     now: sources.now,
     masteryRank,
     varzia,
     done: new Set(screen.confirmedQuests.keys()),
+    placeLeft,
   };
   const plan = quest
     ? questStepPlan(data, quest, reader)
@@ -148,7 +161,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
   const blocks = briefOf(plan);
   const how = plan.sections.filter((section) => section.id === "how");
   const place = quest
-    ? (quest.availableAt[0] ?? quest.locations[0] ?? null)
+    ? (placeLeft ?? quest.availableAt[0] ?? quest.locations[0] ?? null)
     : collectible
       ? (namedPlace(briefOf({ sections: how })) ??
         (collectible.recipe === null ? (best.get(name) ?? null) : null))
@@ -169,6 +182,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     group: entries.get(name)?.group ?? null,
     collectible: collectible !== null,
     quest: quest !== null,
+    mode,
     art:
       item?.imageUrl ??
       collectible?.imageUrl ??

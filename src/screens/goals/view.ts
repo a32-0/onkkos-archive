@@ -34,7 +34,7 @@ const KIND_ICONS: Readonly<Record<GoalKind, IconName>> = {
   quest: "auto-stories",
   item: "biotech",
   lich: "target",
-  "steel-path": "skull",
+  mode: "skull",
 };
 
 function cardWords(goal: GoalInput): { title: string; line: string } | null {

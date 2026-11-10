@@ -142,9 +142,20 @@ describe("the progression walls (BR-86)", () => {
   it("words and draws each wall's card", () => {
     const cards = goalCards([
       { id: "play_new_war", kind: "quest", href: "/item?name=The+New+War", junction: null },
-      { id: "unlock_steel_path", kind: "steel-path", href: "/system", junction: null },
+      {
+        id: "unlock_steel_path",
+        kind: "mode",
+        href: "/item?name=The+Steel+Path&from=goal&view=steps",
+        junction: null,
+      },
       { id: "play_constellations", kind: "quest", href: "/item?name=Jade+Shadows", junction: null },
       { id: "hunt_kuva_lich", kind: "lich", href: "/item?name=Kuva+Karak", junction: null },
+      {
+        id: "hunt_archon",
+        kind: "mode",
+        href: "/item?name=Archon+Hunt&from=goal&view=steps",
+        junction: null,
+      },
       { id: "build_helminth", kind: "item", href: "/item?name=Helminth+Segment", junction: null },
     ]);
     expect(cards.map((card) => [card.title, card.icon])).toEqual([
@@ -152,6 +163,7 @@ describe("the progression walls (BR-86)", () => {
       ["Unlock The Steel Path", "skull"],
       ["Play Jade Shadows: Constellations", "auto-awesome"],
       ["Hunt a Kuva Lich", "target"],
+      ["Hunt an Archon", "diamond"],
       ["Build the Helminth", "biotech"],
     ]);
   });

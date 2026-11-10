@@ -78,6 +78,10 @@ interface Says {
   placesTitle: { count: number };
   placesDetail: { places: { place: string; junction: string | null; from: string | null }[] };
   questStartTitle: { quest: string };
+  modeStartTitle: { mode: string };
+  needTitle: { need: string };
+  starChartTitle: None;
+  starChartDetail: { place: string | null };
   intrinsicsTitle: { rank: number | null };
   intrinsicsDetail: None;
   nemesisTitle: { name: string };
@@ -371,6 +375,7 @@ export interface Reader {
   masteryRank?: number;
   varzia?: VarziaStock | null;
   done?: ReadonlySet<string>;
+  placeLeft?: string | null;
 }
 
 const ALTERNATIVES_SHOWN = 4;
@@ -429,6 +434,8 @@ const CIRCUIT_WIKI = "The Circuit";
 const HONORIA_WIKI = "Honoria";
 const MARKET_WIKI = "Market";
 const TRADING_WIKI = "Trading";
+const STAR_CHART_WIKI = "Star Chart";
+const STAR_CHART_ROW = "star-chart";
 
 function slotWiki(kind: SlotKind): string {
   return kind === "Companion" ? "Companion" : "Slots";
@@ -1566,16 +1573,19 @@ function adversaryPrerequisites(data: CatalogData, system: AdversarySystem): Ste
   return rows;
 }
 
-function adversarySteps(system: AdversarySystem, item: string): StepRow[] {
+function adversarySteps(data: CatalogData, system: AdversarySystem, item: string): StepRow[] {
+  const foe = sourceArt(data, system.name);
   const rows = [
     row("find", say("findTitle", { larva: system.larva ?? system.name }), {
       detail: parts(system.encounter),
       wikiTitle: system.larva ?? system.page,
+      imageUrl: sourceArt(data, system.larva ?? system.name),
     }),
     row("vanquish", say("vanquishTitle", { adversary: system.name }), {
       detail: parts(system.create),
       prose: system.hound ? null : acquisition(item),
       wikiTitle: system.page,
+      imageUrl: foe,
     }),
   ];
   if (system.trade) {
@@ -1583,6 +1593,7 @@ function adversarySteps(system: AdversarySystem, item: string): StepRow[] {
       row("trade", say("tradeTitle", { adversary: system.name }), {
         detail: parts(system.trade),
         wikiTitle: system.page,
+        imageUrl: foe,
       }),
     );
   }
@@ -1757,7 +1768,7 @@ function systemSteps(
   system: AcquisitionSystem,
   item: string,
 ): StepRow[] {
-  if (system.kind === "adversary") return adversarySteps(system, item);
+  if (system.kind === "adversary") return adversarySteps(data, system, item);
   if (system.kind === "companion") return companionSteps(data, reader, system, item);
   if (system.kind === "baro") {
     return [
@@ -2250,7 +2261,7 @@ function sourceTitle(data: CatalogData, source: string): Phrase {
 }
 
 function sourceArt(data: CatalogData, source: string): string | null {
-  return data.dropSources[baseOf(source)]?.art ?? null;
+  return data.curated.art.get(source) ?? data.dropSources[baseOf(source)]?.art ?? null;
 }
 
 function defeated(data: CatalogData, route: EnemyRoute): boolean {
@@ -2688,16 +2699,39 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
 
 export function questStepPlan(data: CatalogData, quest: Quest, reader: Reader): StepPlan {
   const needs = questNeeds(data.spine, quest.name);
+  const mode = quest.kind === "mode";
+  const owned = quest.needs.flatMap((need) => (need.quest === null ? [] : [need.quest]));
   const prerequisites = [
-    ...questRowsFor(data, needs.quests),
+    ...questRowsFor(data, [...needs.quests, ...owned]),
     ...needs.junctions.map((junction) => junctionRow(data, junction)),
     ...reachRows(data, quest.availableAt),
+    ...quest.needs.map((need) =>
+      row(`need:${need.need}`, say("needTitle", { need: need.need }), {
+        detail: parts(need.how),
+        wikiTitle: need.wiki,
+        thing: need.need,
+      }),
+    ),
+    ...(quest.starChart
+      ? [
+          row(STAR_CHART_ROW, say("starChartTitle"), {
+            detail: parts(say("starChartDetail", { place: reader.placeLeft ?? null })),
+            wikiTitle: STAR_CHART_WIKI,
+          }),
+        ]
+      : []),
   ];
-  const start = row(`start:${quest.name}`, say("questStartTitle", { quest: quest.name }), {
-    detail: parts(quest.start),
-    prose: lead(quest.wikiTitle),
-    wikiTitle: quest.wikiTitle,
-  });
+  const start = row(
+    `start:${quest.name}`,
+    mode
+      ? say("modeStartTitle", { mode: quest.name })
+      : say("questStartTitle", { quest: quest.name }),
+    {
+      detail: parts(quest.start),
+      prose: lead(quest.wikiTitle),
+      wikiTitle: quest.wikiTitle,
+    },
+  );
   return linked(
     data,
     {

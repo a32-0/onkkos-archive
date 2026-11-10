@@ -30,7 +30,8 @@ for the demo player Cy (Next planet: Ordis):
 - [BR-05](../business-rules.md#br-05--plan-runs-on-frontier-and-focus):
   the goals offered follow the frontier and the focus.
 - [BR-37](../business-rules.md#br-37--a-goal-opens-the-steps-of-what-it-names):
-  a goal opens the Step by step of what it names; a place opens the map.
+  a goal opens the Step by step of what it names, a quest's and a game mode's
+  included; a place opens the map.
 - [BR-53](../business-rules.md#br-53--the-search-suggests-as-the-player-types):
   the search suggests as the player types.
 - [BR-54](../business-rules.md#br-54--build-a-necramech-names-the-one-the-player-lacks):
@@ -116,8 +117,8 @@ The curated goals in `data/grafo.yaml`, except the deferred ones:
 | `build_helminth`                                           | "Build the Helminth"                                                         | The Step by step of the Helminth Segment                   |
 | `unlock_1999`                                              | "Play the Hex Quest"                                                         | The Step by step of The Hex quest                          |
 | `play_new_war`, `play_jade_shadows`, `play_constellations` | "Play The New War", "Play Jade Shadows", "Play Jade Shadows: Constellations" | The quest's Step by step                                   |
-| `hunt_archon`                                              | "Hunt an Archon"                                                             | The Step by step of Veilbreaker                            |
-| `unlock_steel_path`                                        | "Unlock The Steel Path"                                                      | The map on the first place with a node left                |
+| `hunt_archon`                                              | "Hunt an Archon"                                                             | The Step by step of the Archon Hunt                        |
+| `unlock_steel_path`                                        | "Unlock The Steel Path"                                                      | The Step by step of The Steel Path                         |
 | `hunt_kuva_lich`                                           | "Hunt a Kuva Lich"                                                           | The Step by step of the first Kuva weapon lacking          |
 
 What each waits for, what proves it done and its icon are BR-86.

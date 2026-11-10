@@ -1294,3 +1294,9 @@ tribute:
   - { item: Primed Shred, days: [200, 400, 600, 900], cite: Primed Shred }
   - { item: Primed Sure Footed, days: [400, 600, 900], cite: Primed Sure Footed }
   - { item: Primed Vigor, days: [200, 400, 600, 900], cite: Primed Vigor }
+
+art:
+  Kuva Larvling: https://wiki.warframe.com/images/Male_Kuva_Larvling.png
+  Kuva Lich: https://wiki.warframe.com/images/KuvaLiches.jpg
+  Candidate: https://wiki.warframe.com/images/SisterCandidate.png
+  Sister of Parvos: https://wiki.warframe.com/images/U37NewSistersLooks.jpg

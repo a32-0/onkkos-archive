@@ -32,13 +32,11 @@ export function everyPlan(
       kind: "collectible" as const,
       plan: collectibleStepPlan(data, collectibleView(data, collectible, places, places), reader),
     })),
-    ...data.spine.arcs
-      .flatMap((arc) => arc.quests)
-      .map((quest) => ({
-        owner: quest.name,
-        kind: "quest" as const,
-        plan: questStepPlan(data, quest, reader),
-      })),
+    ...[...data.spine.arcs.flatMap((arc) => arc.quests), ...data.spine.modes].map((quest) => ({
+      owner: quest.name,
+      kind: "quest" as const,
+      plan: questStepPlan(data, quest, reader),
+    })),
   ];
 }
 

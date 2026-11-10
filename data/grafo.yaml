@@ -195,6 +195,7 @@ goals:
     label: "Unlock The Steel Path"
     audience: mid
     pathway: star_chart
+    mode: "The Steel Path"
     requires: [steel_path_open]
     after: unlock_next_planet
     places:
@@ -241,6 +242,7 @@ goals:
     label: "Hunt an Archon"
     pathway: grow
     quest: "Veilbreaker"
+    mode: "Archon Hunt"
     audience: veteran
     after: play_new_war
 

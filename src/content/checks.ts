@@ -191,6 +191,10 @@ export const TITLES = {
   junctionsTitle: ({ count }: { count: number }) => `Clear ${count} Junctions`,
   placesTitle: ({ count }: { count: number }) => `Reach ${count} places`,
   questStartTitle: ({ quest }: { quest: string }) => `Start ${quest}`,
+  modeStartTitle: ({ mode }: { mode: string }) =>
+    mode.startsWith("The ") ? `Unlock ${mode}` : `Open the ${mode}`,
+  needTitle: ({ need }: { need: string }) => `Have ${article(need)} ${need}`,
+  starChartTitle: () => "Clear every node of the Star Chart",
   intrinsicsTitle: ({ rank }: { rank: number | null }) =>
     rank === null ? "Railjack Intrinsics" : `Railjack Intrinsics rank ${rank}`,
   nemesisTitle: ({ name }: { name: string }) => `An active ${name}`,
@@ -335,6 +339,10 @@ export const DETAILS = {
   openedAfterDetail: ({ place }: { place: string }) => `It opens once you reach ${place}.`,
   slotDetail: () => "Make sure you have an empty slot for it.",
   onPlanet: ({ planet }: { planet: string }) => `On ${planet}.`,
+  starChartDetail: ({ place }: { place: string | null }) =>
+    place === null
+      ? "Lua and the Kuva Fortress count; the Mutalist Alad V and Jordas Golem Assassinations and Brutus do not."
+      : `${place} still has nodes left. Lua and the Kuva Fortress count; the Mutalist Alad V and Jordas Golem Assassinations and Brutus do not.`,
 
   marketDetail: ({ credits }: { credits: number }) =>
     `Sold in your ship's Market for ${number(credits)} credits.`,

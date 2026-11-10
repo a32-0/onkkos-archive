@@ -238,6 +238,73 @@ describe("a quest's Step by step (BR-37)", () => {
     expect(start?.title).toBe("Start The Second Dream");
     expect(start?.detail).toBe(quest.start);
   });
+
+  it("lists what a quest needs besides quests and junctions", () => {
+    const war = data.spine.arcs
+      .flatMap((arc) => arc.quests)
+      .find((one) => one.name === "The New War");
+    if (!war) throw new Error("The New War is not in the spine");
+    const view = stepsView(factsOf(questStepPlan(data, war, reader)), war.name, "goal");
+    expect(view.blocks.map((block) => block.title)).toEqual(["Prerequisites", "How to get"]);
+    const rows = view.blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
+    const railjack = rows.find((row) => row.title === "Have a Railjack");
+    expect(railjack?.detail).toContain("Rising Tide");
+    const amp = rows.find((row) => row.title === "Have an Amp");
+    expect(amp?.detail).toContain("Mote Amp");
+    const quests = questStepPlan(data, war, reader).sections[0]?.groups[0]?.rows.find((row) =>
+      row.id.startsWith("quests:"),
+    );
+    expect(quests?.id).toContain("Rising Tide");
+    const needs = questStepPlan(data, war, reader).sections[0]?.groups[0]?.rows.filter((row) =>
+      row.id.startsWith("need:"),
+    );
+    expect(needs?.map((row) => row.wikiTitle)).toEqual(["Railjack", "Amp"]);
+  });
+});
+
+describe("a game mode's Step by step (BR-37)", () => {
+  const modeOf = (name: string) => {
+    const mode = data.spine.modes.find((one) => one.name === name);
+    if (!mode) throw new Error(`${name} is not in the spine`);
+    return mode;
+  };
+
+  it("asks The Steel Path for every node, naming the planet with nodes left", () => {
+    const steel = modeOf("The Steel Path");
+    const view = stepsView(
+      factsOf(questStepPlan(data, steel, { ...reader, placeLeft: "Sedna" })),
+      steel.name,
+      "goal",
+    );
+    expect(view.blocks.map((block) => block.title)).toEqual(["Prerequisites", "How to get"]);
+    const prerequisites = view.blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
+    const chart = prerequisites.find((row) => row.id === "star-chart");
+    expect(chart?.title).toBe("Clear every node of the Star Chart");
+    expect(chart?.detail).toContain("Sedna still has nodes left.");
+    expect(prerequisites.some((row) => row.title === "Complete 7 quests")).toBe(true);
+    expect(view.blocks[1]?.cards[0]?.groups[0]?.rows[0]?.title).toBe("Unlock The Steel Path");
+  });
+
+  it("waits for Veilbreaker before the Archon Hunt, and says each Archon's Shard once", () => {
+    const hunt = modeOf("Archon Hunt");
+    const view = stepsView(factsOf(questStepPlan(data, hunt, reader)), hunt.name, "goal");
+    const prerequisites = view.blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
+    expect(prerequisites.some((row) => row.id.endsWith("Veilbreaker"))).toBe(true);
+    const start = view.blocks[1]?.cards[0]?.groups[0]?.rows[0];
+    expect(start?.title).toBe("Open the Archon Hunt");
+    expect(start?.detail).toContain("Crimson");
+    expect(start?.detail).not.toContain("Monday");
+  });
+
+  it("gives a Kuva weapon's Lich steps the enemy's own art, for the Overview", () => {
+    const how = rowsIn(planOf("Kuva Sobek", 30), "how");
+    expect(how.find((row) => row.id === "find")?.imageUrl).toBe(
+      "https://wiki.warframe.com/images/Male_Kuva_Larvling.png",
+    );
+    expect(how.find((row) => row.id === "vanquish")?.imageUrl).toBe(
+      "https://wiki.warframe.com/images/KuvaLiches.jpg",
+    );
+  });
 });
 
 describe("similar prerequisites share one row", () => {

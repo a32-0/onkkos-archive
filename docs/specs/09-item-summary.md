@@ -115,9 +115,10 @@ hero is kicker, name and art, as `677:6750` draws a resource.
   bought blueprint is how the item is had, so it leads, never its first
   ingredient (on Thornbak and Thalys). A quest's own page leads with the row that
   starts it, which wears the quest's art, as a collectible's rows wear the
-  collectible's (T-43). A How to get row of an arsenal item with no art of its
-  own (a lab, a bounty) wears the item's, so no row is an empty box
-  (constitution). Drawn in
+  collectible's (T-43). A Lich's or a Sister's steps wear the enemy's art,
+  curated in `sources.yaml` (`art`), never the weapon's. A How to get row of an
+  arsenal item with no art of its own (a lab, a bounty) wears the item's, so no
+  row is an empty box (constitution). Drawn in
   [`928:5859` Item>Overview — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859).
 
 ### What a row does

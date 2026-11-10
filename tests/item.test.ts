@@ -12,6 +12,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
     group: "warframes",
     collectible: false,
     quest: false,
+    mode: false,
     art: "dante.png",
     blueprint: "blueprint.png",
     prime: false,

@@ -4,7 +4,6 @@ import { lackingNamed } from "@/domain/catalog/lacking";
 import { lackingNecramechs } from "@/domain/catalog/necramechs";
 import { bestPlaces } from "@/domain/catalog/whats-new";
 import type { GraphGoal } from "@/domain/graph/schema";
-import { placeWithNodesLeft } from "@/domain/graph/steel-path";
 import { findNextPlanet, junctionOf } from "@/domain/graph/star-chart";
 import { goalAtPlace, goalsProvenDone, goalsWaiting, suggestedGoals } from "@/domain/graph/suggest";
 import { itemGaps, readReach } from "@/domain/place/reach";
@@ -95,13 +94,11 @@ export function goalState(screen: Screen): GoalState {
         junction: null,
       };
     }
-    if (goal.places.length > 0) {
-      const place = placeWithNodesLeft(goal, data.wiki.nodes, profile);
-      const system = place ? systemOf(place) : null;
+    if (goal.mode !== undefined) {
       return {
         id: goal.id,
-        kind: "steel-path",
-        href: place && system ? placeRoute(system, place) : ROUTES.system,
+        kind: "mode",
+        href: itemRoute(goal.mode, FROM, "steps"),
         junction: null,
       };
     }
@@ -138,18 +135,31 @@ export function goalState(screen: Screen): GoalState {
         junction: null,
       };
     }
+    if (goal.mode !== undefined) {
+      return {
+        id: goal.id,
+        kind: "mode",
+        href: itemRoute(goal.mode, FROM, "steps"),
+        junction: null,
+      };
+    }
     if (goal.quest) {
-      return { id: goal.id, kind: "quest", href: itemRoute(goal.quest, FROM), junction: null };
+      return {
+        id: goal.id,
+        kind: "quest",
+        href: itemRoute(goal.quest, FROM, "steps"),
+        junction: null,
+      };
     }
     if (goal.item !== undefined) {
-      return { id: goal.id, kind: "item", href: itemRoute(goal.item, FROM), junction: null };
+      return {
+        id: goal.id,
+        kind: "item",
+        href: itemRoute(goal.item, FROM, "steps"),
+        junction: null,
+      };
     }
-    return {
-      id: goal.id,
-      kind: goal.places.length > 0 ? "steel-path" : "planet",
-      href: ROUTES.system,
-      junction: null,
-    };
+    return { id: goal.id, kind: "planet", href: ROUTES.system, junction: null };
   };
 
   return {
