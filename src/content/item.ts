@@ -6,6 +6,9 @@ export const ITEM = {
   builtIntoChip: (name: string, count: number) => `${name} ×${count}`,
   quest: "Quest",
   quests: "Quests",
+  mode: "Game mode",
+  modes: "Milestones",
+  modKicker: (category: string) => `Mod ${category}`,
   kicker: {
     warframes: "Warframe",
     primary: "Primary",

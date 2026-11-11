@@ -3,15 +3,38 @@ import type { ReachGap } from "@/domain/place/reach";
 import { itemRoute, placeRoute, ROUTES } from "@/routes";
 import type { IconName } from "@/ui/Icon/glyphs";
 
-import type { GoalCardView, GoalInput, GoalKind, SearchInput, SearchRow } from "./state";
+import type {
+  GoalCardView,
+  GoalInput,
+  GoalKind,
+  MilestoneRowView,
+  SearchInput,
+  SearchRow,
+} from "./state";
 
 const FROM = "goal";
 const SHOWN = 8;
 
-const ICONS: Readonly<Record<GoalKind, IconName>> = {
+const ICONS: Readonly<Record<string, IconName>> = {
+  unlock_next_planet: "flag",
+  build_necramech: "precision-manufacturing",
+  build_helminth: "biotech",
+  unlock_1999: "auto-stories",
+  play_new_war: "swords",
+  play_jade_shadows: "dark-mode",
+  hunt_archon: "diamond",
+  unlock_steel_path: "skull",
+  play_constellations: "auto-awesome",
+  hunt_kuva_lich: "target",
+};
+
+const KIND_ICONS: Readonly<Record<GoalKind, IconName>> = {
   planet: "flag",
   necramech: "precision-manufacturing",
   quest: "auto-stories",
+  item: "biotech",
+  lich: "target",
+  mode: "skull",
 };
 
 function cardWords(goal: GoalInput): { title: string; line: string } | null {
@@ -21,14 +44,39 @@ function cardWords(goal: GoalInput): { title: string; line: string } | null {
       ? { title: card.title, line: card.line(goal.junction.from, goal.junction.to) }
       : null;
   }
-  if (goal.id === "build_necramech" || goal.id === "unlock_1999") return GOALS.cards[goal.id];
+  if (goal.id in GOALS.cards && goal.id !== "unlock_next_planet") {
+    return GOALS.cards[goal.id as Exclude<keyof typeof GOALS.cards, "unlock_next_planet">];
+  }
   return null;
+}
+
+function iconOf(goal: GoalInput): IconName {
+  return ICONS[goal.id] ?? KIND_ICONS[goal.kind];
 }
 
 export function goalCards(goals: readonly GoalInput[]): GoalCardView[] {
   return goals.flatMap((goal) => {
     const words = cardWords(goal);
-    return words ? [{ id: goal.id, href: goal.href, icon: ICONS[goal.kind], ...words }] : [];
+    return words ? [{ id: goal.id, href: goal.href, icon: iconOf(goal), ...words }] : [];
+  });
+}
+
+export function milestoneRows(done: readonly GoalInput[]): MilestoneRowView[] {
+  return done.flatMap((goal) => {
+    if (goal.id === "unlock_next_planet") {
+      const card = GOALS.cards.unlock_next_planet;
+      return [
+        {
+          id: goal.id,
+          href: goal.href,
+          icon: iconOf(goal),
+          title: card.title,
+          line: GOALS.milestones.planetDone,
+        },
+      ];
+    }
+    const words = cardWords(goal);
+    return words ? [{ id: goal.id, href: goal.href, icon: iconOf(goal), ...words }] : [];
   });
 }
 

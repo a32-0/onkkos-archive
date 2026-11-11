@@ -1,0 +1,45 @@
+.overview {
+  --mod-art: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.card {
+  --mod-line: var(--state-absent);
+  position: relative;
+  width: var(--mod-art);
+  height: var(--mod-art);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--border-2) solid var(--mod-line);
+  pointer-events: none;
+}
+
+.common {
+  --mod-line: var(--rarity-common);
+}
+
+.uncommon {
+  --mod-line: var(--rarity-uncommon);
+}
+
+.rare {
+  --mod-line: var(--rarity-rare);
+}
+
+.legendary {
+  --mod-line: var(--rarity-legendary);
+}
+
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

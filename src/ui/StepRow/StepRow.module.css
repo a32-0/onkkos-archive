@@ -49,6 +49,12 @@
   color: var(--accent);
 }
 
+.done {
+  composes: title;
+  composes: label from "../type.module.css";
+  color: var(--ink-dim);
+}
+
 .chevron {
   display: flex;
   flex: none;

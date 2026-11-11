@@ -1,4 +1,5 @@
 import type { Part } from "@/domain/catalog/checks";
+import { relicName } from "@/domain/catalog/relics";
 import type { PlaceItem, PlaceView } from "@/domain/place/build";
 import type { Catalog, Group } from "@/domain/place/catalog";
 import { placeGap, rankGap, systemInReach, type Reach, type ReachGap } from "@/domain/place/reach";
@@ -52,6 +53,7 @@ interface TileRoute {
 
 export interface MapTile {
   name: string;
+  page: string;
   art: string | null;
   state: ItemState;
   left: boolean;
@@ -113,6 +115,7 @@ function tileOf(input: MapInput, item: PlaceItem, whole: boolean): MapTile {
   const gap = whole ? null : rankGap(input.reach, input.masteryReqOf(item.name));
   return {
     name: item.name,
+    page: item.group === "relics" ? relicName(item.name) : item.name,
     art: item.imageUrl,
     state,
     left: state.kind !== "done",

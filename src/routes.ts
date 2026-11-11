@@ -6,6 +6,7 @@ export const ROUTES = {
   catchUp: "/catch-up",
   goals: "/goals",
   rank: "/goals/rank",
+  milestones: "/goals/milestones",
   item: "/item",
   profile: "/profile",
   search: "/api/search",

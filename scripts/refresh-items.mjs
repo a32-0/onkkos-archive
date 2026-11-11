@@ -36,7 +36,16 @@ const FIELDS = {
   drops: DROP,
   components: { uniqueName: true, name: true, itemCount: true, imageName: true, drops: DROP },
   rewards: { chance: true, rarity: true, item: { name: true } },
+  polarity: true,
+  baseDrain: true,
+  fusionLimit: true,
+  rarity: true,
 };
+
+function maxStats(item) {
+  const last = item.levelStats?.at(-1)?.stats;
+  return Array.isArray(last) ? { maxStats: last } : {};
+}
 
 function kept(value, fields) {
   if (Array.isArray(value)) return value.map((entry) => kept(entry, fields));
@@ -63,7 +72,7 @@ function main() {
   for (const category of categories()) {
     const items = new Items({ category: [category], ignoreEnemies: true });
     count += items.length;
-    const lines = items.map((item) => JSON.stringify(kept(item, FIELDS)));
+    const lines = items.map((item) => JSON.stringify({ ...kept(item, FIELDS), ...maxStats(item) }));
     blocks.push(`  ${JSON.stringify(category)}: [\n${lines.join(",\n")}\n  ]`);
   }
   const head = `{\n "version": ${JSON.stringify(version)},\n "categories": {\n`;

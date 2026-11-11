@@ -34,9 +34,11 @@ export function catalogData(): CatalogData {
   const regions = loadRegionResources();
   const arsenal = arsenalCatalog();
   const relics = buildRelicCatalog(relicEntries(), rewards);
+  const raw = collectibleEntries();
   const curated = normalizeSources(
     parseYaml(readFileSync(path.join(process.cwd(), "data", "sources.yaml"), "utf8")),
   );
+
   const wiki = withStores(wikiModules(), curated);
   cached = {
     wiki,
@@ -49,7 +51,7 @@ export function catalogData(): CatalogData {
     resources: resourceCatalog(),
     relics,
     collectibles: buildCollectibleCatalog({
-      raw: collectibleEntries(),
+      raw,
       arsenal,
       relics,
       regions,

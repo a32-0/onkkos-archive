@@ -1,25 +1,29 @@
 {
-  "schema": 2,
+  "schema": 3,
   "files": {
     "acquisition.yaml": {
       "size": 3690,
       "sha256": "c2800320b3d3463da60847fef4e38fabcf14f02f121c160751ae2bd33f3cac74"
     },
     "grafo.yaml": {
-      "size": 4639,
-      "sha256": "5e7b976b5287b009459c35482b8e40c7a4c7d308a0067bd58b4424216e5a1654"
+      "size": 6937,
+      "sha256": "cbfdd91592eb07c23aa54a437359818a2aa56ed1b02d9a031497b0e1c78c11bd"
+    },
+    "mod_stats.yaml": {
+      "size": 346474,
+      "sha256": "06c7e4e661df7705c42c3b084527e31eee2f280f329f7b117330c1a4c2219c1b"
     },
     "narrative_spine.yaml": {
-      "size": 13510,
-      "sha256": "819ff36c47dd6309cb6fc1ed745ebd64ff7df7eaa6b75b7d39ac159b2730e7b7"
+      "size": 15212,
+      "sha256": "1f93945cd6d6d6aa6dd39a5b655bfe37501a4db0e3eedf2696abaf5d67b747d8"
     },
     "quest_evidence.yaml": {
-      "size": 3565,
-      "sha256": "4cb5e4457b5d3ec2c9492866ab2dfd4d5fe64b85031a9c0fc4a966031a12b59e"
+      "size": 15539,
+      "sha256": "7ea66aabba412d84859e8c58a79cb1809d54af214c1fe1d839b064f1810498c1"
     },
     "sources.yaml": {
-      "size": 32759,
-      "sha256": "2d1c63d45f0ba5fa2803f7100b68a9a059a849696d40ab5737fb25677cfc50ac"
+      "size": 53458,
+      "sha256": "57acb0b0540fa249eb63a442906d0335b7400a7b8cad6f82c8089018c575083d"
     },
     "systems.yaml": {
       "size": 1838,
@@ -30,8 +34,8 @@
       "sha256": "760bad4b536168d2a9d9a76ae972a99b753d49c912dc18803f80bb827c479d43"
     },
     "vendor/items.json": {
-      "size": 20266992,
-      "sha256": "5ef2bd4375cb983add7592a274743880797ecdd5fc7d33156967d730b391a34a"
+      "size": 20543633,
+      "sha256": "cb52cd275e93b71b36c35bb3fac8df710cb32733d566d9988b8ff992df0bff01"
     },
     "vendor/manifest.json": {
       "size": 554,
@@ -94,8 +98,8 @@
       "sha256": "1fdce8cfd1c4667ba43bb198368b4bea0767cbc27a0f15e3c1d3f566002f31cf"
     },
     "vendor/wiki-pages.json": {
-      "size": 245798,
-      "sha256": "cbaa9779ab50c25ab542f8b2d4d7ac6e2795c4655161b1c265164d01f7504558"
+      "size": 253722,
+      "sha256": "88391be465cc5dd9ef5f616baa86c117da7bcc6099179af3057a704482632182"
     },
     "vendor/wiki-relics.json": {
       "size": 476618,

@@ -8,6 +8,7 @@ import {
   masteryCatalog,
   resourceCatalog,
 } from "@/infra/catalog/items";
+import { loadModStats } from "@/infra/catalog/mod-stats";
 import { patchNotes } from "@/infra/catalog/patch-notes";
 import { dropSources, updateArt, vendorArt } from "@/infra/catalog/update-art";
 import { loadGraph } from "@/infra/graph/load";
@@ -27,6 +28,7 @@ import { wikiModules } from "@/infra/wiki/modules";
 const READERS = [
   loadGraph,
   loadEvidenceRules,
+  loadModStats,
   loadSpine,
   loadSystems,
   loadAcquisition,

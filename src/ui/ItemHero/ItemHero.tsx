@@ -9,11 +9,13 @@ export function ItemHero({
   name,
   art,
   state,
+  bare = false,
 }: {
   kicker: string;
   name: string;
   art: string | null;
   state: ItemHeroState;
+  bare?: boolean;
 }) {
   return (
     <header className={styles.hero}>
@@ -21,14 +23,16 @@ export function ItemHero({
         <p className={styles.kicker}>{kicker}</p>
         <h1 className={styles.name}>{name}</h1>
       </div>
-      <div className={styles[state.kind]}>
-        {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
-        {"label" in state && (
-          <span className={styles.badge}>
-            <Badge kind={state.kind} label={state.label} />
-          </span>
-        )}
-      </div>
+      {!bare && (
+        <div className={styles[state.kind]}>
+          {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
+          {"label" in state && (
+            <span className={styles.badge}>
+              <Badge kind={state.kind} label={state.label} />
+            </span>
+          )}
+        </div>
+      )}
     </header>
   );
 }

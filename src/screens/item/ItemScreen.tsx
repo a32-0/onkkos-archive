@@ -10,6 +10,8 @@ import { BuiltInto } from "@/ui/BuiltInto/BuiltInto";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
 import { ItemHero } from "@/ui/ItemHero/ItemHero";
+import { ModEffect } from "@/ui/ModEffect/ModEffect";
+import { ModOverview } from "@/ui/ModOverview/ModOverview";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { PlaceCrumb } from "@/ui/PlaceCrumb/PlaceCrumb";
 import { Segmented, type SegmentedOption } from "@/ui/Segmented/Segmented";
@@ -18,7 +20,7 @@ import { SummaryRow } from "@/ui/SummaryRow/SummaryRow";
 import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
-import { Steps, type Ticks } from "./steps/Steps";
+import { Steps } from "./steps/Steps";
 import styles from "./Item.module.css";
 import type { ItemPageView } from "./state";
 
@@ -31,15 +33,7 @@ function isView(value: string): value is ItemView {
   return VIEWS.some((option) => option.value === value);
 }
 
-export function ItemScreen({
-  chrome,
-  page,
-  ticks,
-}: {
-  chrome: ShellChrome;
-  page: ItemPageView;
-  ticks: Ticks;
-}) {
+export function ItemScreen({ chrome, page }: { chrome: ShellChrome; page: ItemPageView }) {
   const [view, setView] = useState<ItemView>(page.view);
   const choose = (value: string) => {
     if (!isView(value)) return;
@@ -63,7 +57,14 @@ export function ItemScreen({
               link={Link}
             />
           )}
-          <ItemHero kicker={page.kicker} name={page.name} art={page.art} state={page.hero} />
+          <ItemHero
+            kicker={page.kicker}
+            name={page.name}
+            art={page.art}
+            state={page.hero}
+            bare={page.mod !== null}
+          />
+          {page.mod && <ModOverview {...page.mod.overview} />}
           {page.builtInto.length > 0 && (
             <BuiltInto label={ITEM.builtInto} chips={page.builtInto} link={Link} />
           )}
@@ -74,6 +75,14 @@ export function ItemScreen({
           </ControlRow>
           {view === "summary" && (
             <div className={styles.sections}>
+              {page.mod && page.mod.effects.length > 0 && (
+                <section className={styles.section}>
+                  <Divider label={page.mod.title} />
+                  {page.mod.effects.map((effect, at) => (
+                    <ModEffect key={at} {...effect} />
+                  ))}
+                </section>
+              )}
               {page.sections.map((section) => (
                 <section key={section.id} className={styles.section}>
                   <Divider label={section.title} />
@@ -86,7 +95,7 @@ export function ItemScreen({
                         reading={row.reading || undefined}
                         place={row.place || undefined}
                         art={row.art}
-                        compact
+                        orb={row.orb}
                         {...(row.blueprint !== undefined && { blueprint: row.blueprint })}
                         link={Link}
                       />
@@ -96,7 +105,7 @@ export function ItemScreen({
               ))}
             </div>
           )}
-          {view === "steps" && <Steps view={page.steps} ticks={ticks} />}
+          {view === "steps" && <Steps view={page.steps} />}
         </div>
       </div>
     </Shell>

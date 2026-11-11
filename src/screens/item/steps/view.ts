@@ -63,6 +63,7 @@ export function stepsView(facts: StepsFacts, item: string, from: string): StepsV
       alternative: row.alternative || OR_SAYS.has(row.title.say),
       best: row.best,
       locked,
+      done: row.done,
       detail: gap ? gapWords(lock.gap) : detailOf(row.detail),
       prose: row.prose,
       link: linkOf(row, from),

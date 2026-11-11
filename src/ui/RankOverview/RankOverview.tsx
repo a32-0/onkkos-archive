@@ -13,7 +13,7 @@ export interface RankOverviewChip {
   href?: string;
 }
 
-const FRAME = 152;
+const FRAME = 200;
 const STROKE = 5;
 const EDGE = STROKE / 2;
 const FAR = FRAME - EDGE;
@@ -92,6 +92,7 @@ export function RankOverview({
       )}
       {left && left.chips.length > 0 && (
         <div className={styles.left}>
+          <p className={styles.caption}>{left.caption}</p>
           <ul className={styles.chips}>
             {left.chips.map((chip) => (
               <ItemChip
@@ -105,7 +106,6 @@ export function RankOverview({
               />
             ))}
           </ul>
-          <p className={styles.caption}>{left.caption}</p>
         </div>
       )}
       {empty && (

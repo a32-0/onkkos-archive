@@ -36,7 +36,6 @@
   padding: var(--space-6);
   outline: var(--border-1) solid var(--brand);
   outline-offset: calc(var(--border-1) * -1);
-  backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
 .spacer {

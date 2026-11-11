@@ -932,14 +932,18 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     return { response, results: body.results };
   }
 
-  it("offers Ordis the next planet first, then by band, Deimos being in reach", async () => {
+  it("offers Ordis only the next planet, the walls after it waiting (BR-86)", async () => {
     const html = await page(ORDIS);
     expect(html).toContain("Clear the Mars Junction, on Earth, to open the next planet.");
-    const order = ["Unlock the next planet", "Build a Necramech", "Play the Hex Quest"];
-    const at = order.map((title) => html.indexOf(title));
-    expect(at.every((index) => index >= 0)).toBe(true);
-    expect([...at].sort((a, b) => a - b)).toEqual(at);
-    expect(html).toContain("/item?name=Voidrig&amp;from=goal&amp;view=steps");
+    for (const wall of [
+      "Build a Necramech",
+      "Build the Helminth",
+      "Play the Hex Quest",
+      "Play The New War",
+      "Unlock The Steel Path",
+    ]) {
+      expect(html).not.toContain(wall);
+    }
     expect(html).toContain("Skip");
   });
 
@@ -952,6 +956,24 @@ describe("the goals (spec 08, BR-54, BR-62)", () => {
     const html = await page(ORDIS);
     expect(html).toContain("Unlock the next planet");
     expect(html).not.toContain("Build a Necramech");
+  });
+
+  it("links Cy to the milestones reached, and lists them in the ladder's order (BR-86)", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy);
+    expect(html).toContain("Milestones reached");
+    expect(html).toContain("/goals/milestones");
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: MilestonesPage } = await import("@/app/goals/milestones/page");
+    const list = renderToStaticMarkup(await MilestonesPage());
+    expect(list).toContain("Every junction cleared.");
+    const order = ["Unlock the next planet", "Play The New War", "Play the Hex Quest"];
+    const at = order.map((title) => list.indexOf(title));
+    expect(at.every((index) => index >= 0)).toBe(true);
+    expect([...at].sort((x, y) => x - y)).toEqual(at);
+  });
+
+  it("offers Ordis no link to milestones while none is reached", async () => {
+    expect(await page(ORDIS)).not.toContain("Milestones reached");
   });
 
   it("hides from Cy what the profile proves done", async () => {
@@ -1085,15 +1107,21 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(absent).toContain("These will assist.");
   });
 
-  it("draws Step by step as cards under dividers, ticks only on Components (spec 10)", async () => {
+  it("draws each planet's orb on a resource's How to get, never the resource's art (BR-90)", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Ferrite", from: "goal" });
+    expect(html).toContain(">Play any mission on Mercury<");
+    expect(html).toContain("--orb-color:#b9a08a");
+    expect(html).not.toMatch(/>Play any mission on Mercury<\/span><span[^>]*>Mercury</);
+  });
+
+  it("draws Step by step as cards under dividers, with no checkbox to tick (spec 10)", async () => {
     const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "goal", view: "steps" });
     for (const title of ["Prerequisites", "How to get", "Blueprints", "Components"]) {
       expect(html).toContain(`>${title}<`);
     }
     expect(html).not.toContain("Deimos specific");
     expect(html).toContain('id="part-neuroptics"');
-    expect(html.match(/type="checkbox"/g)?.length).toBeGreaterThan(5);
-    expect(html).not.toMatch(/type="checkbox"[^>]*checked/);
+    expect(html).not.toContain('type="checkbox"');
   });
 
   it("locks what waits on an unmet Mastery Rank for Ordis (BR-63)", async () => {
@@ -1108,6 +1136,36 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(html).toContain(">Quests<");
     expect(html).toContain(">Start The Second Dream<");
     expect(html).toContain("Complete Natah");
+  });
+
+  it("says where a quest's Railjack and Amp come from, each with its wiki link (BR-37)", async () => {
+    const html = await page(ORDIS, { name: "The New War", from: "goal", view: "steps" });
+    expect(html).toContain(">Have a Railjack<");
+    expect(html).toContain("Rising Tide gives you yours");
+    expect(html).toContain('href="https://wiki.warframe.com/w/Railjack"');
+    expect(html).toContain('href="https://wiki.warframe.com/w/Amp"');
+    expect(html).not.toContain(">Stages<");
+  });
+
+  it("opens a game mode from Goal in the same grammar, reached from Milestones alone (BR-37)", async () => {
+    const html = await page(ORDIS, { name: "The Steel Path", from: "goal", view: "steps" });
+    expect(html).toContain(">Game mode<");
+    expect(html).toContain(">Milestones<");
+    expect(html).toContain(">Clear every node of the Star Chart<");
+    expect(html).toContain("Earth still has nodes left.");
+    expect(html).toContain(">Unlock The Steel Path<");
+    expect(html).not.toContain(">What you get<");
+    expect(html).toContain('href="/system?system=origin&amp;place=Earth"');
+    const { GET } = await import("@/app/api/search/route");
+    const response = await GET(new NextRequest("http://localhost/api/search?q=Steel%20Path"));
+    const body = (await response.json()) as { results: { name: string }[] };
+    expect(body.results.map((hit) => hit.name)).not.toContain("The Steel Path");
+  });
+
+  it("shows the Larvling and the Lich, not the weapon, on a Kuva weapon's Overview", async () => {
+    const html = await page(ORDIS, { name: "Kuva Bramma", from: "goal", view: "summary" });
+    expect(html).toContain("Male_Kuva_Larvling.png");
+    expect(html).toContain("KuvaLiches.jpg");
   });
 
   it("names the place the Summary's first line names (BR-51)", async () => {

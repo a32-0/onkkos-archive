@@ -6,6 +6,8 @@ import {
   questStepPlan,
   stepPlan,
   type Part,
+  type Proof,
+  provenPlan,
   type StepPlan,
 } from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
@@ -15,6 +17,7 @@ import { BLUEPRINT_ART, type CatalogItem } from "@/domain/catalog/items";
 import { allPlaces } from "@/domain/catalog/places";
 import { briefOf, type BriefBlock } from "@/domain/catalog/summary";
 import { bestPlaces, itemLine, type WhatsNewSources } from "@/domain/catalog/whats-new";
+import { placeWithNodesLeft } from "@/domain/graph/steel-path";
 import { itemGaps, readReach, type Reach } from "@/domain/place/reach";
 import { canonicalPlace } from "@/domain/place/schema";
 import { itemRanks, stateByName } from "@/domain/place/state";
@@ -26,7 +29,10 @@ import type { Screen } from "@/infra/screen";
 import { withProse } from "@/infra/wiki/prose";
 import { gameIcons } from "@/infra/wiki/icons";
 import { fetchVarzia } from "@/infra/worldstate/client";
-import type { BuiltIntoFact, ItemFacts, ItemPlace } from "@/screens/item/state";
+import { effectOf, lines } from "@/domain/catalog/mod-effects";
+import { MOD } from "@/content/mod";
+import { loadModStats, modEntry } from "@/infra/catalog/mod-stats";
+import type { BuiltIntoFact, ItemFacts, ItemPlace, ModFactsView } from "@/screens/item/state";
 import { groupIcon } from "@/screens/rank/view";
 import type { StepsFacts } from "@/screens/item/steps/state";
 
@@ -103,7 +109,30 @@ async function builtIntoOf(
 }
 
 function questOf(data: CatalogData, name: string) {
-  return data.spine.arcs.flatMap((arc) => arc.quests).find((quest) => quest.name === name) ?? null;
+  return (
+    [...data.spine.arcs.flatMap((arc) => arc.quests), ...data.spine.modes].find(
+      (quest) => quest.name === name,
+    ) ?? null
+  );
+}
+
+function placeLeftFor(screen: Screen, data: CatalogData, mode: string): string | null {
+  const goal = Object.values(screen.graph.goals).find((one) => one.mode === mode);
+  return goal ? placeWithNodesLeft(goal, data.wiki.nodes, screen.profile) : null;
+}
+
+function proofOf(profile: Screen["profile"], reach: Reach): Proof {
+  const standing = new Map<string, number>();
+  for (const one of profile.Affiliations ?? []) {
+    if (typeof one?.Tag === "string" && typeof one.Title === "number")
+      standing.set(one.Tag, one.Title);
+  }
+  return {
+    places: reach.places,
+    clan: reach.clan,
+    intrinsics: profile.PlayerSkills ?? {},
+    standing,
+  };
 }
 
 export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | null> {
@@ -129,22 +158,26 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     ? collectibleView(data, collectible, known, reach.places ?? known)
     : null;
   const varzia = item?.isPrime && item.vaulted ? await fetchVarzia() : null;
+  const mode = quest?.kind === "mode";
+  const placeLeft = quest && mode && quest.starChart ? placeLeftFor(screen, data, name) : null;
   const reader = {
     now: sources.now,
     masteryRank,
     varzia,
     done: new Set(screen.confirmedQuests.keys()),
+    placeLeft,
   };
-  const plan = quest
+  const drafted = quest
     ? questStepPlan(data, quest, reader)
     : view
       ? collectibleStepPlan(data, view, reader)
       : item && stepPlan(data, dossier(item, data.arsenal), reader);
-  if (!plan) return null;
+  if (!drafted) return null;
+  const plan = provenPlan(data, drafted, proofOf(screen.profile, reach));
   const blocks = briefOf(plan);
   const how = plan.sections.filter((section) => section.id === "how");
   const place = quest
-    ? (quest.availableAt[0] ?? quest.locations[0] ?? null)
+    ? (placeLeft ?? quest.availableAt[0] ?? quest.locations[0] ?? null)
     : collectible
       ? (namedPlace(briefOf({ sections: how })) ??
         (collectible.recipe === null ? (best.get(name) ?? null) : null))
@@ -165,6 +198,7 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     group: entries.get(name)?.group ?? null,
     collectible: collectible !== null,
     quest: quest !== null,
+    mode,
     art:
       item?.imageUrl ??
       collectible?.imageUrl ??
@@ -176,10 +210,22 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     blocks,
     lines,
     place: placeOf(place),
+    orbs: loadSystems().colors,
     beyond: quest
       ? steps.lock !== null
       : itemGaps(reach, { masteryReq: item?.masteryReq ?? 0, place }).length > 0,
     steps,
     builtInto: item ? await builtIntoOf(data, item, ranks, entries) : [],
+    mod: collectible?.group === "mods" ? modOf(name) : null,
+  };
+}
+
+function modOf(name: string): ModFactsView | null {
+  const entry = modEntry(name);
+  if (!entry?.facts) return null;
+  const stats = loadModStats();
+  return {
+    ...entry.facts,
+    effects: lines(entry.maxStats ?? []).map((line) => effectOf(stats, line, MOD, name)),
   };
 }

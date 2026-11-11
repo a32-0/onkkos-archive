@@ -26,9 +26,9 @@
 }
 
 .frame {
-  --rank-frame-size: 152px;
+  --rank-frame-size: 200px;
   --rank-frame-stroke: 5px;
-  --rank-art-size: 120px;
+  --rank-art-size: 168px;
   position: relative;
   width: var(--rank-frame-size);
   height: var(--rank-frame-size);
@@ -60,12 +60,18 @@
 .art {
   position: absolute;
   inset: 0;
-  box-sizing: border-box;
   width: var(--rank-art-size);
   height: var(--rank-art-size);
   margin: auto;
   overflow: hidden;
-  border: var(--border-1) solid var(--state-absent);
+}
+
+.art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--border-2) solid var(--state-absent);
+  pointer-events: none;
 }
 
 .image {

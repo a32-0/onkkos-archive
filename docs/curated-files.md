@@ -57,8 +57,9 @@ one arbitrary member of it.
 
 ### `goals`
 
-The three goals of the first version, each naming an item, a quest or a place
-(BR-37); the goals that named none of those are in `deferred.md`. Fields:
+The goals Plan suggests, each naming an item, a quest or a place (BR-37): the
+first version's three and the progression walls (BR-86). The goals that named
+none of those are in `deferred.md`. Fields:
 
 - `label`: the goal's name in the file. The card's title is Plan's own copy.
 - `audience` (`new` / `mid` / `veteran` / `both`): ordering only.
@@ -72,6 +73,19 @@ The three goals of the first version, each naming an item, a quest or a place
 - `manual_checklist_if_missing`: quest names, spelled exactly as
   `narrative_spine.yaml` does. The engine marks one done when
   `quest_evidence.yaml` proves it and asks about the rest.
+- What a goal waits for before Plan offers it (BR-86): `after` (another
+  goal, done), `after_quests` (quests the evidence confirms), `after_nodes`
+  (node ids whose checks pass) and `mastery_rank`.
+- `proven_by`: evidence entries, as in `quest_evidence.yaml`, each with its
+  `source`, that prove a goal with no quest done (a Kuva Lich, by its
+  Honoria).
+- `item`: the item whose Step by step the card opens. `lacking`: a name
+  prefix; the card opens the first catalog item with it the player lacks, and
+  owning one is done. `places` and `skip_nodes`: the places whose nodes count,
+  and the nodes that do not; the first place with one left is named in the
+  mode's Step by step. `mode`: the game mode, spelled as the spine's `modes`
+  spell it, whose Step by step the card opens; it wins over `quest`, which
+  still gates and proves the goal.
 
 ### `off_chart_places`
 
@@ -83,7 +97,7 @@ Each has `after` (the chain planet it is displayed beside) and `unlocked_by`
 (the quest that opens it, or `null`). A place off the chart is in reach when
 its `after` is (BR-59), so nothing else is read of it.
 
-Sanctuary and Dark Refractory came with BR-59, settled on 2026-10-08. Neither
+Sanctuary and Dark Refractory came with BR-59. Neither
 quest can be read, so the planet before it is the measure of reach: Europa for
 Sanctuary (The New Strange), Sedna for Dark Refractory (The Old Peace), as for
 Höllvania.
@@ -103,8 +117,8 @@ over both.
 
 ```
 { name: "Update 31.5", aliases: ["31.5", "Angels of the Zariman"],
-  parent: "31.0", date: "2022-04-27",
-  url: "https://wiki.warframe.com/w/Update_31#Update_31.5" }
+ parent: "31.0", date: "2022-04-27",
+ url: "https://wiki.warframe.com/w/Update_31#Update_31.5" }
 ```
 
 The list of updates keys on the entry whose `name` is exactly `Update N.0`
@@ -171,6 +185,21 @@ Per-quest fields:
   gated by another quest, a rank or an Orbiter segment carry no value.
 - `note`: free text. A note containing "doesn't block the main path" marks
   a main-story branch as off-path.
+- `parts`: the quests the game plays as parts of this one, as other sources
+  name them ("Chimera Prologue", "Erra", "The Maker" for Prelude to War). A
+  part asked anywhere reads as this quest.
+- `needs`: what the player must own besides quests, junctions and rank, as
+  the wiki's infobox lists it. Each has `need` (the thing, "Railjack"), `how`
+  (one line on where the player gets it), `wiki` (its page) and an optional
+  `quest` that gives it, which joins the quests before.
+- `art`: the image of the quest's or the mode's page, for the ones whose
+  wiki lead image does not show it. It wins over `update-art.json`.
+
+A top-level `modes` list holds the game modes Plan's milestones open (The
+Steel Path, the Archon Hunt) in the same shape, with `kind: mode`. They sit
+outside the arcs, so the search, Catch up and the timeline never see them.
+`star_chart: true` adds "Clear every node of the Star Chart" to the mode's
+prerequisites. Released apps strip the fields and the list they do not know.
 
 Which arc unlocks a side quest is derived, not stated by the wiki: it is
 where the quest's gate falls on the main path.
@@ -179,18 +208,30 @@ where the quest's gate falls on the main path.
 
 Each rule says: if the profile shows THIS, THAT quest is complete. Evidence
 only ever confirms; the app never marks a quest "not done" from this file.
+The `challenge` rules sit under `title_rules`, a key released apps that do not
+know the kind skip, so the data they download still reads.
 Every rule cites the wiki page that states the requirement (`source`) and
 may carry a `note`.
 
 Evidence kinds:
 
-| Kind           | Field   | Reads                                                                                                                                |
-| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `flag`         | `field` | A boolean at the profile root (`UnlockedOperator`)                                                                                   |
-| `affiliation`  | `tag`   | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                    |
-| `mission`      | `tag`   | A tag in `Missions[]`; a hub that only opens after the quest                                                                         |
-| `mission_type` | `type`  | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                  |
-| `item`         | `type`  | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable |
+| Kind           | Field    | Reads                                                                                                                                                                                                                                        |
+| -------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `flag`         | `field`  | A boolean at the profile root (`UnlockedOperator`)                                                                                                                                                                                           |
+| `affiliation`  | `tag`    | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                                                                                                                            |
+| `mission`      | `tag`    | A tag in `Missions[]`; a hub that only opens after the quest                                                                                                                                                                                 |
+| `mission_type` | `type`   | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                                                                                                                          |
+| `item`         | `type`   | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable, or that only what the quest gives can make (a Kubrow or Kavat, born in Howl of the Kubrow's Incubator) |
+| `challenge`    | `name`   | A `Name` in `ChallengeProgress[]` with progress above 0: the title challenge behind the Honoria a quest awards                                                                                                                               |
+| `ability`      | `prefix` | A `type` in `Stats.Abilities[]` starting with the prefix, used at least once: an ability only one thing gives (the Helminth's own)                                                                                                           |
+
+A quest whose only effect the app asks about is its own Warframe is proven by
+owning that Warframe, earned or bought: Saya's Vigil (Gara), Sands of Inaros,
+The Limbo Theorem, Hidden Messages, The Glast Gambit, Octavia's Anthem, Mask
+of the Revenant, The Silver Grove and The Waverider. A quest that opens more
+than its reward is not: Call of the Tempestarii (the Sisters of Parvos), The
+New Strange (Simaris's synthesis), Stolen Dreams (Maroo's Ayatan hunt) and
+Once Awake (Patient Zero), since buying the reward opens none of that.
 
 What is deliberately absent, and why, is in `narrative.md`.
 
@@ -219,6 +260,15 @@ Two lists:
 - `tribute`: the mods only a Daily Tribute milestone gives. Each entry has
   `item`, `days` and `cite`. It is a list of its own, not a route type, so
   released apps skip it instead of refusing the file.
+- `syndicates`: each syndicate's profile tag (`tag`, as `Affiliations` spells
+  it), the names its rank rows use for it (`vendors`: "Red Veil", "Hok",
+  "Bird 3") and its rank titles from rank 1 up (`ranks`), as its wiki page
+  lists them. A syndicate rank in Prerequisites reads met once the profile's
+  title reaches it (BR-88).
+- `art`: a map from an enemy's name to the wiki image that shows it, for the
+  enemies whose wiki page image is wrong or missing: the Kuva Larvling, the
+  Kuva Lich, the Candidate and the Sister of Parvos. It is read before
+  `drop-sources.json`, and only the Overview draws it (BR-85).
 - `items`: one entry per item, spelled as `@wfcd/items` spells it (the match
   ignores case). `cite` is the wiki page the routes were read from; it is also
   the row's Wiki link. `routes` is a list of typed sources.
@@ -239,6 +289,7 @@ route. The types and their fields:
 | `anniversary` | `year`                                               | Claim it from the anniversary alerts            |
 | `unavailable` | `reason`, `event`, `until`                           | No longer obtainable, and why                   |
 | `race`        | `race`, `place`                                      | Win the {race} K-Drive race                     |
+| `challenge`   | `challenge`, `place`                                 | Pass the {challenge}                            |
 | `bundled`     | `with`                                               | Claim a {Necramech}                             |
 | `primeAccess` | `warframe`, `from`, `until`, `resurgence`            | Buy the Prime Access Accessories pack           |
 | `adversary`   | `adversary`, `element`, `chance`                     | Vanquish or convert a {element} {adversary}     |
@@ -280,6 +331,42 @@ the chart after the planet it sits `after` in `grafo.yaml`, and the Dojo
 source's spelling of a place to the one used here, applied as the drop tables
 and the wiki's region resources are read. `place-index.md` explains why.
 
+## `mod_stats.yaml`: what a mod's stats do
+
+The words a mod's Overview puts on each stat (BR-87).
+
+- `families`: the nine families, in the order they are tried, each with the
+  icon it draws and a `match` (a case-insensitive pattern on the stat's name;
+  the last one, empty, takes the rest).
+- `elements`: for each of the four base elements, what it makes with each of
+  the others.
+- `stats`: one entry per stat, named as `@wfcd/items` writes it (`Critical
+Chance`, `Damage to Grineer`):
+- `outcome`: what it does, in plain words; `down`: the same when the mod
+  lowers it.
+- `example`: `base` (a typical value), `unit`, `math` (`grow` adds to the
+  base, `shrink` divides a time, `add` adds an element on top, `times`
+  multiplies, `cost` lowers a cost, `plus` adds a fixed number, `part` takes
+  that share of the base, its bars growing from nothing) and the `line` it
+  reads, with `{base}`, `{after}`, `{added}` and `{amount}`.
+- `note`: what is good to know. Facts only, never advice.
+
+A curated stat fills the whole `Mod effect`: what it does, how much, an
+example and a note, and `down` when some mod lowers it. When a mod gives a
+fixed number on a stat curated in percent ("+40 Magazine Capacity"), the
+example adds that number to the base.
+
+- `mods`: for a mod whose line the game writes in prose, its own entry: the
+  `mod`, and for each line a `match` (words the game's line contains), the
+  `outcome`, `amount`, `stat`, an `example` (`before`, `after`, `unit` and the
+  `line` it reads) and the `note`. A line with no number gives only the
+  `outcome` and the `note`: amount, stat and example come together or not at
+  all. It fills the same `Mod effect`, and it is
+  read before the shared stats.
+
+A stat with no entry, and a mod line with no entry of its own, shows its
+family icon and the game's words.
+
 ## Invariants the tests enforce
 
 - Every `requires` in `grafo.yaml` points at an existing node.
@@ -291,7 +378,15 @@ and the wiki's region resources are read. `place-index.md` explains why.
 - Every main-path quest has a release date.
 - Every quest has `wiki`, `start`, `requirement` and at least one location.
 - Every `quest_evidence.yaml` rule cites the wiki and names a quest spelled
-  as the spine spells it.
+  as the spine spells it. A mission rule names a node tag in
+  `wiki-nodes.json`, and an item rule an item or part in `items.json`.
+- `sources.yaml` gives each syndicate its own tag and vendors, a cite and at
+  least three ranks.
+- Every stat in `mod_stats.yaml` is a stat some mod still has, or an element
+  only a pair makes, and every mod that names it draws the whole `Mod
+effect`. Every mod with numbers has a rarity, and nine in ten or
+  more name a category. Every mod's own entry matches a line the game still
+  writes for that mod.
 - `sources.yaml` parses against its schema, names no item twice, and leaves no
   arsenal item or collectible answered by prose alone.
 - `acquisition.yaml` names no item twice, and only items the catalog has.

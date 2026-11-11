@@ -300,6 +300,581 @@ items:
         vendor: Cephalon Simaris
         costs: [{ currency: Standing, amount: 100000 }]
 
+  - item: Agility Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Agility Test, place: Lua }
+
+  - item: Coaction Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Collaboration Test, place: Lua }
+
+  - item: Cunning Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Cunning Test, place: Lua }
+
+  - item: Endurance Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Endurance Test, place: Lua }
+
+  - item: Power Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Power Test, place: Lua }
+
+  - item: Speed Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Speed Test, place: Lua }
+
+  - item: Stealth Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Stealth Test, place: Lua }
+
+  - item: "Acidic Spittle"
+    cite: "Acidic Spittle"
+    routes:
+      - { type: bundled, with: ["Vizier Predasite"] }
+
+  - item: "Iatric Mycelium"
+    cite: "Iatric Mycelium"
+    routes:
+      - { type: bundled, with: ["Vizier Predasite"] }
+
+  - item: "Anabolic Pollination"
+    cite: "Anabolic Pollination"
+    routes:
+      - { type: bundled, with: ["Pharaoh Predasite"] }
+
+  - item: "Endoparasitic Vector"
+    cite: "Endoparasitic Vector"
+    routes:
+      - { type: bundled, with: ["Pharaoh Predasite"] }
+
+  - item: "Infectious Bite"
+    cite: "Infectious Bite"
+    routes:
+      - { type: bundled, with: ["Medjay Predasite"] }
+
+  - item: "Paralytic Spores"
+    cite: "Paralytic Spores"
+    routes:
+      - { type: bundled, with: ["Medjay Predasite"] }
+
+  - item: "Crescent Charge"
+    cite: "Crescent Charge"
+    routes:
+      - { type: bundled, with: ["Crescent Vulpaphyla"] }
+
+  - item: "Crescent Devolution"
+    cite: "Crescent Devolution"
+    routes:
+      - { type: bundled, with: ["Crescent Vulpaphyla"] }
+
+  - item: "Panzer Devolution"
+    cite: "Panzer Devolution"
+    routes:
+      - { type: bundled, with: ["Panzer Vulpaphyla"] }
+
+  - item: "Viral Quills"
+    cite: "Viral Quills"
+    routes:
+      - { type: bundled, with: ["Panzer Vulpaphyla"] }
+
+  - item: "Sly Devolution"
+    cite: "Sly Devolution"
+    routes:
+      - { type: bundled, with: ["Sly Vulpaphyla"] }
+
+  - item: "Survival Instinct"
+    cite: "Survival Instinct"
+    routes:
+      - { type: bundled, with: ["Sly Vulpaphyla"] }
+
+  - item: "Draining Bite"
+    cite: "Draining Bite"
+    routes:
+      - { type: bundled, with: ["Vasca Kavat"] }
+
+  - item: "Transfusion"
+    cite: "Transfusion"
+    routes:
+      - { type: bundled, with: ["Vasca Kavat"] }
+
+  - item: "Retrieve"
+    cite: "Retrieve"
+    routes:
+      - { type: bundled, with: ["Chesa Kubrow"] }
+
+  - item: "Proboscis"
+    cite: "Proboscis"
+    routes:
+      - { type: bundled, with: ["Helminth Charger"] }
+
+  - item: "Trample"
+    cite: "Trample"
+    routes:
+      - { type: bundled, with: ["Helminth Charger"] }
+
+  - item: "Arc Coil"
+    cite: "Arc Coil"
+    routes:
+      - { type: bundled, with: ["Diriga"] }
+
+  - item: "Calculated Shot"
+    cite: "Calculated Shot"
+    routes:
+      - { type: bundled, with: ["Diriga"] }
+
+  - item: "Electro Pulse"
+    cite: "Electro Pulse"
+    routes:
+      - { type: bundled, with: ["Diriga"] }
+
+  - item: "Auto Omni"
+    cite: "Auto Omni"
+    routes:
+      - { type: bundled, with: ["Nautilus", "Nautilus Prime"] }
+
+  - item: "Cordon"
+    cite: "Cordon"
+    routes:
+      - { type: bundled, with: ["Nautilus", "Nautilus Prime"] }
+
+  - item: "Investigator"
+    cite: "Investigator"
+    routes:
+      - { type: bundled, with: ["Helios", "Helios Prime"] }
+
+  - item: "Targeting Receptor"
+    cite: "Targeting Receptor"
+    routes:
+      - { type: bundled, with: ["Helios", "Helios Prime"] }
+
+  - item: "Molecular Conversion"
+    cite: "Molecular Conversion"
+    routes:
+      - { type: bundled, with: ["Taxon"] }
+
+  - item: "Scan Matter"
+    cite: "Scan Matter"
+    routes:
+      - { type: bundled, with: ["Oxylus"] }
+
+  - item: "Vacuum"
+    cite: "Vacuum"
+    routes:
+      - { type: bundled, with: ["Sentinel"] }
+
+  - item: "Anti-Grav Grenade"
+    cite: "Anti-Grav Grenade"
+    routes:
+      - { type: bundled, with: ["MOA with the Para Model"] }
+
+  - item: "Whiplash Mine"
+    cite: "Whiplash Mine"
+    routes:
+      - { type: bundled, with: ["MOA with the Para Model"] }
+
+  - item: "Blast Shield"
+    cite: "Blast Shield"
+    routes:
+      - { type: bundled, with: ["MOA with the Nychus Model"] }
+
+  - item: "Hard Engage"
+    cite: "Hard Engage"
+    routes:
+      - { type: bundled, with: ["MOA with the Nychus Model"] }
+
+  - item: "Security Override"
+    cite: "Security Override"
+    routes:
+      - { type: bundled, with: ["MOA with the Oloro Model"] }
+
+  - item: "Tractor Beam"
+    cite: "Tractor Beam"
+    routes:
+      - { type: bundled, with: ["MOA with the Oloro Model"] }
+
+  - item: "Shockwave Actuators"
+    cite: "Shockwave Actuators"
+    routes:
+      - { type: bundled, with: ["MOA with the Lambeo Model"] }
+
+  - item: "Stasis Field"
+    cite: "Stasis Field"
+    routes:
+      - { type: bundled, with: ["MOA with the Lambeo Model"] }
+
+  - item: "Aerial Prospectus"
+    cite: "Aerial Prospectus"
+    routes:
+      - { type: bundled, with: ["Hound with the Wanz Stabilizer"] }
+
+  - item: "Focused Prospectus"
+    cite: "Focused Prospectus"
+    routes:
+      - { type: bundled, with: ["Hound with the Frak Stabilizer"] }
+
+  - item: "Synergized Prospectus"
+    cite: "Synergized Prospectus"
+    routes:
+      - { type: bundled, with: ["Hound with the Hinta Stabilizer"] }
+
+  - item: "Diversified Denial"
+    cite: "Diversified Denial"
+    routes:
+      - { type: bundled, with: ["Hound with the Urga Bracket"] }
+
+  - item: "Evasive Denial"
+    cite: "Evasive Denial"
+    routes:
+      - { type: bundled, with: ["Hound with the Zubb Bracket"] }
+
+  - item: "Reflex Denial"
+    cite: "Reflex Denial"
+    routes:
+      - { type: bundled, with: ["Hound with the Cela Bracket"] }
+
+  - item: "Equilibrium Audit"
+    cite: "Equilibrium Audit"
+    routes:
+      - { type: bundled, with: ["Hound with the Hec Model"] }
+
+  - item: "Null Audit"
+    cite: "Null Audit"
+    routes:
+      - { type: bundled, with: ["Hound with the Bhaira Model"] }
+
+  - item: "Repo Audit"
+    cite: "Repo Audit"
+    routes:
+      - { type: bundled, with: ["Hound with the Dorma Model"] }
+
+  - item: "Biotic Rounds"
+    cite: "Biotic Rounds"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 8", rank: 25 }] }
+
+  - item: "Bursting Mass"
+    cite: "Bursting Mass"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 1: The Wolf of Saturn Six", rank: 18 }] }
+
+  - item: "Clip Delegation"
+    cite: "Clip Delegation"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 6", rank: 15 }] }
+
+  - item: "Combat Reload"
+    cite: "Combat Reload"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 1", rank: 23 }] }
+
+  - item: "Critical Precision"
+    cite: "Critical Precision"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 2", rank: 13 }] }
+
+  - item: "Eximus Advantage"
+    cite: "Eximus Advantage"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 3", rank: 13 }] }
+
+  - item: "Exposing Harpoon"
+    cite: "Exposing Harpoon"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 2: The Emissary", rank: 20 }] }
+
+  - item: "Metamorphic Magazine"
+    cite: "Metamorphic Magazine"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 3", rank: 23 }] }
+
+  - item: "Meticulous Aim"
+    cite: "Meticulous Aim"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 2: The Emissary", rank: 23 }] }
+
+  - item: "Napalm Grenades"
+    cite: "Napalm Grenades"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 1: The Wolf of Saturn Six", rank: 22 }] }
+
+  - item: "Photon Overcharge"
+    cite: "Photon Overcharge"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 6", rank: 25 }] }
+
+  - item: "Precision Strike"
+    cite: "Precision Strike"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 3", rank: 23 }] }
+
+  - item: "Range Advantage"
+    cite: "Range Advantage"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 1", rank: 20 }] }
+
+  - item: "Sentient Barrage"
+    cite: "Sentient Barrage"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 4", rank: 23 }] }
+
+  - item: "Vile Discharge"
+    cite: "Vile Discharge"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 2", rank: 23 }] }
+
+  - item: "Volatile Variant"
+    cite: "Volatile Variant"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 5", rank: 25 }] }
+
+  - item: "Wild Frenzy"
+    cite: "Wild Frenzy"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 1: The Wolf of Saturn Six", rank: 14 }] }
+
+  - item: "Critical Mutation"
+    cite: "Critical Mutation"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 5", rank: 13 }] }
+
+  - item: "Deadly Maneuvers"
+    cite: "Deadly Maneuvers"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 3", rank: 7 }] }
+
+  - item: "Dizzying Rounds"
+    cite: "Dizzying Rounds"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 3", rank: 20 }] }
+
+  - item: "Leaded Gas"
+    cite: "Leaded Gas"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 8", rank: 13 }] }
+
+  - item: "Sentient Surge"
+    cite: "Sentient Surge"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 4", rank: 9 }] }
+
+  - item: "Efficient Beams"
+    cite: "Efficient Beams"
+    routes:
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+      - { type: nightwave, ranks: [{ season: "Series 2: The Emissary", rank: 7 }] }
+
+  - item: "Dreadful Killshot"
+    cite: "Dreadful Killshot"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix: Dreams of the Dead", rank: 10 }] }
+
+  - item: "Necrophagic Vigor"
+    cite: "Necrophagic Vigor"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix: Dreams of the Dead", rank: 25 }] }
+
+  - item: "Overpressured Rounds"
+    cite: "Overpressured Rounds"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Amir's Shockwave", rank: 25 }] }
+
+  - item: "Spontaneous Singularity"
+    cite: "Spontaneous Singularity"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 9", rank: 25 }] }
+
+  - item: "Unseen Dread"
+    cite: "Unseen Dread"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 7", rank: 25 }] }
+
+  - item: "Pain Points"
+    cite: "Pain Points"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 9", rank: 13 }] }
+
+  - item: "Prototype Shock Coils"
+    cite: "Prototype Shock Coils"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Amir's Shockwave", rank: 10 }] }
+
+  - item: "Velox Conclusion"
+    cite: "Velox Conclusion"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix: Time Tempests", rank: 25 }] }
+
+  - item: "Burning Hate"
+    cite: "Burning Hate"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix Volume 7", rank: 15 }] }
+
+  - item: "Sentient Incision"
+    cite: "Sentient Incision"
+    routes:
+      - { type: nightwave, ranks: [{ season: "Nora's Mix: Time Tempests", rank: 10 }] }
+
+  - item: "Amalgam Serration"
+    cite: "Amalgam Serration"
+    routes:
+      - { type: event, event: "Thermia Fractures" }
+
+  - item: "Amalgam Barrel Diffusion"
+    cite: "Amalgam Barrel Diffusion"
+    routes:
+      - { type: event, event: "Thermia Fractures" }
+
+  - item: "Amalgam Organ Shatter"
+    cite: "Amalgam Organ Shatter"
+    routes:
+      - { type: event, event: "Thermia Fractures" }
+
+  - item: "Amalgam Shotgun Barrage"
+    cite: "Amalgam Shotgun Barrage"
+    routes:
+      - { type: event, event: "Thermia Fractures" }
+
+  - item: "Brood's Oversurge"
+    cite: "Brood's Oversurge"
+    routes:
+      - {
+          type: vendor,
+          vendor: "Cephalon Suda",
+          rank: "Genius",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+      - {
+          type: vendor,
+          vendor: "New Loka",
+          rank: "Flawless",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+
+  - item: "Cold Front"
+    cite: "Cold Front"
+    routes:
+      - {
+          type: vendor,
+          vendor: "Steel Meridian",
+          rank: "General",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+      - {
+          type: vendor,
+          vendor: "Cephalon Suda",
+          rank: "Genius",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+
+  - item: "Gaseous Quake"
+    cite: "Gaseous Quake"
+    routes:
+      - {
+          type: vendor,
+          vendor: "Cephalon Suda",
+          rank: "Genius",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+      - {
+          type: vendor,
+          vendor: "The Perrin Sequence",
+          rank: "Partner",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+
+  - item: "Gastroparesis"
+    cite: "Gastroparesis"
+    routes:
+      - {
+          type: vendor,
+          vendor: "Steel Meridian",
+          rank: "General",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+      - {
+          type: vendor,
+          vendor: "Red Veil",
+          rank: "Exalted",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+
+  - item: "Infernum"
+    cite: "Infernum"
+    routes:
+      - {
+          type: vendor,
+          vendor: "Steel Meridian",
+          rank: "General",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+      - {
+          type: vendor,
+          vendor: "The Perrin Sequence",
+          rank: "Partner",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+
+  - item: "Sonic Siphon"
+    cite: "Sonic Siphon"
+    routes:
+      - {
+          type: vendor,
+          vendor: "Cephalon Suda",
+          rank: "Genius",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+      - {
+          type: vendor,
+          vendor: "The Perrin Sequence",
+          rank: "Partner",
+          costs: [{ currency: Standing, amount: 25000 }],
+        }
+
+  - item: "Dreamer's Bond"
+    cite: "Dreamer's Bond"
+    routes:
+      - { type: junction, junction: Venus Junction }
+      - { type: vendor, vendor: Nightwave, costs: [{ currency: Nightwave Cred, amount: 20 }] }
+
+  - item: "Truth's Flame"
+    cite: "Truth's Flame"
+    routes:
+      - { type: vendor, vendor: "Aspirant Zorba", costs: [{ currency: Atramentum, amount: 360 }] }
+
+  - item: "Mountain's Edge"
+    cite: "Mountain's Edge"
+    routes:
+      - { type: quest, quest: "The Duviri Paradox" }
+
   - item: Feverspine
     cite: Feverspine
     routes:
@@ -1294,3 +1869,135 @@ tribute:
   - { item: Primed Shred, days: [200, 400, 600, 900], cite: Primed Shred }
   - { item: Primed Sure Footed, days: [400, 600, 900], cite: Primed Sure Footed }
   - { item: Primed Vigor, days: [200, 400, 600, 900], cite: Primed Vigor }
+
+art:
+  Kuva Larvling: https://wiki.warframe.com/images/Male_Kuva_Larvling.png
+  Kuva Lich: https://wiki.warframe.com/images/KuvaLiches.jpg
+  Candidate: https://wiki.warframe.com/images/SisterCandidate.png
+  Sister of Parvos: https://wiki.warframe.com/images/U37NewSistersLooks.jpg
+
+syndicates:
+  - {
+      syndicate: Steel Meridian,
+      tag: SteelMeridianSyndicate,
+      vendors: [Steel Meridian],
+      ranks: [Brave, Valiant, Defender, Protector, General],
+      cite: Steel Meridian,
+    }
+  - {
+      syndicate: Arbiters of Hexis,
+      tag: ArbitersSyndicate,
+      vendors: [Arbiters of Hexis],
+      ranks: [Principled, Authentic, Lawful, Crusader, Maxim],
+      cite: Arbiters of Hexis,
+    }
+  - {
+      syndicate: Cephalon Suda,
+      tag: CephalonSudaSyndicate,
+      vendors: [Cephalon Suda],
+      ranks: [Competent, Intriguing, Intelligent, Wise, Genius],
+      cite: Cephalon Suda,
+    }
+  - {
+      syndicate: The Perrin Sequence,
+      tag: PerrinSyndicate,
+      vendors: [The Perrin Sequence],
+      ranks: [Associate, Senior Associate, Executive, Senior Executive, Partner],
+      cite: The Perrin Sequence,
+    }
+  - {
+      syndicate: Red Veil,
+      tag: RedVeilSyndicate,
+      vendors: [Red Veil],
+      ranks: [Respected, Honored, Esteemed, Revered, Exalted],
+      cite: Red Veil,
+    }
+  - {
+      syndicate: New Loka,
+      tag: NewLokaSyndicate,
+      vendors: [New Loka],
+      ranks: [Humane, Bountiful, Benevolent, Pure, Flawless],
+      cite: New Loka,
+    }
+  - {
+      syndicate: Conclave,
+      tag: ConclaveSyndicate,
+      vendors: [Conclave],
+      ranks: [Mistral, Whirlwind, Tempest, Hurricane, Typhoon],
+      cite: Conclave,
+    }
+  - {
+      syndicate: Ostrons,
+      tag: CetusSyndicate,
+      vendors: [Hok],
+      ranks: [Offworlder, Visitor, Trusted, Surah, Kin],
+      cite: Ostron,
+    }
+  - {
+      syndicate: The Quills,
+      tag: QuillsSyndicate,
+      vendors: [The Quills],
+      ranks: [Mote, Observer, Adherent, Instrument, Architect],
+      cite: The Quills,
+    }
+  - {
+      syndicate: Solaris United,
+      tag: SolarisSyndicate,
+      vendors: [Rude Zuud, Legs, The Business],
+      ranks: [Outworlder, Rapscallion, Doer, Cove, Old Mate],
+      cite: Solaris United,
+    }
+  - {
+      syndicate: Vox Solaris,
+      tag: VoxSyndicate,
+      vendors: [Vox Solaris],
+      ranks: [Operative, Agent, Hand, Instrument, Shadow],
+      cite: Vox Solaris (Syndicate),
+    }
+  - {
+      syndicate: Ventkids,
+      tag: VentKidsSyndicate,
+      vendors: [Ventkids],
+      ranks: [Glinty, Whozit, Proper Felon, Primo, Logical],
+      cite: Ventkids,
+    }
+  - {
+      syndicate: Entrati,
+      tag: EntratiSyndicate,
+      vendors: [Father],
+      ranks: [Stranger, Acquaintance, Associate, Friend, Family],
+      cite: Entrati,
+    }
+  - {
+      syndicate: Necraloid,
+      tag: NecraloidSyndicate,
+      vendors: [Necraloid],
+      ranks: [Clearance Agnesis, Clearance Modus, Clearance Odima],
+      cite: Necraloid,
+    }
+  - {
+      syndicate: The Holdfasts,
+      tag: ZarimanSyndicate,
+      vendors: [Cavalero],
+      ranks: [Fallen, Watcher, Guardian, Seraph, Angel],
+      cite: The Holdfasts,
+    }
+  - {
+      syndicate: Cavia,
+      tag: EntratiLabSyndicate,
+      vendors: [Bird 3],
+      ranks: [Assistant, Researcher, Colleague, Scholar, Illuminate],
+      cite: Cavia,
+    }
+  - syndicate: The Hex
+    tag: HexSyndicate
+    vendors: [Amir, Aoi, Eleanor, Minerva, Quincy, Flare]
+    ranks: [Leftovers, Fresh Slice, 2-For-1, Hot & Fresh, Pizza Party]
+    cite: The Hex (Syndicate)
+  - {
+      syndicate: Kahl's Garrison,
+      tag: KahlSyndicate,
+      vendors: [Kahl's Garrison],
+      ranks: [Shelter, Encampment, Fort, Settlement, Home],
+      cite: Kahl's Garrison,
+    }

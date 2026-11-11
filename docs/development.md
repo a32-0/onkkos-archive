@@ -34,18 +34,18 @@ to what CI runs on every push.
 
 ```bash
 pnpm typecheck
-pnpm lint          # pnpm lint:fix
-pnpm format:check  # pnpm format
-pnpm test          # pnpm test:watch
-pnpm check         # all of the above
+pnpm lint # pnpm lint:fix
+pnpm format:check # pnpm format
+pnpm test # pnpm test:watch
+pnpm check # all of the above
 pnpm knip
 pnpm build
 pnpm palette
-pnpm storybook        # the catalogue at localhost:6006
-pnpm storybook:build  # into storybook-static/
-pnpm test:stories     # every story in Chromium, with the accessibility checks
-pnpm weight           # each route's function after a build
-pnpm content:update   # after a mainline or an update (content-updates.md)
+pnpm storybook # the catalogue at localhost:6006
+pnpm storybook:build # into storybook-static/
+pnpm test:stories # every story in Chromium, with the accessibility checks
+pnpm weight # each route's function after a build
+pnpm content:update # after a mainline or an update (content-updates.md)
 ```
 
 `pnpm content:update` is the one script written in TypeScript, because it
@@ -55,17 +55,15 @@ command's own install rewrites while it runs; and with the `react-server`
 condition so that `server-only` lets the infra modules load
 outside Next.
 
-`pnpm test:stories` needs Chromium once on a machine:
-`pnpm exec playwright install chromium`. Each story is checked by axe, and a
-violation fails the story; a run with no story fails too. A story turns one
-rule off only where the frame itself falls below that rule, and the owner has
-been told: the red label of Disconnect and the Locked rows of Step by step, drawn at
-half opacity by BR-63 (`color-contrast`), and the wiki link,
-which its colour and its arrow set apart from the prose with no underline
-(`link-in-text-block`; the owner kept the frame on 2026-10-08), in its own
-stories and wherever it closes a row's passage on Step by step. The
-hover and focus stories force those states with
-`storybook-addon-pseudo-states`.
+`pnpm test:stories` needs Chromium once on a machine: `pnpm exec playwright
+install chromium`. Each story is checked by axe, and a violation fails the
+story; a run with no story fails too. A story turns one rule off only where the
+frame itself falls below that rule, and the owner has been told: the red label
+of Disconnect and the Locked rows of Step by step, drawn at half opacity by
+BR-63 (`color-contrast`), and the wiki link, which its colour and its arrow set
+apart from the prose with no underline (`link-in-text-block`), in its own
+stories and wherever it closes a row's passage on Step by step. The hover and
+focus stories force those states with `storybook-addon-pseudo-states`.
 
 `pnpm palette` measures every ink in `src/ui/tokens.css` for contrast and
 against the colour blindness matrices. It reports and never fails;
@@ -123,7 +121,7 @@ demo (`next build`, with `WF_EDITION=demo` and `WF_PROFILE_SOURCE=fixture` set
 in the project). `vercel.json` turns deployments off for every branch but
 `main`, so a push to `dev` deploys nothing and a merge to `main` deploys the
 demo. Vercel's Web Analytics and Speed Insights are switched on in the
-project's dashboard. The Storybook is not published (owner, 2026-10-27): CI
+project's dashboard. The Storybook is not published : CI
 builds it and tests its stories, and `pnpm storybook` serves it locally. No
 token, project id or URL of the project is committed; the owner holds them.
 
@@ -170,8 +168,8 @@ Three things keep it there, in `next.config.ts` and `data/vendor/`:
 
 ```
 app ──► screens ──► ui
- │         │
- │         ▼
+ │ │
+ │ ▼
  ├──────► domain ◄── infra
  └──────────────────► infra
 ```

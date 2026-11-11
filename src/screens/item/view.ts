@@ -1,15 +1,24 @@
 import { STEPS as STEP_WORDS } from "@/content/checks";
 import { ITEM } from "@/content/item";
+import { MOD } from "@/content/mod";
 import { MAP } from "@/content/system";
 import type { BriefLine } from "@/domain/catalog/summary";
 import { itemRoute, placeRoute, type ItemView } from "@/routes";
 import type { BuiltIntoChip } from "@/ui/BuiltInto/BuiltInto";
+import { GLYPHS, type IconName } from "@/ui/Icon/glyphs";
 import type { ItemHeroState } from "@/ui/ItemHero/ItemHero";
 
 import { openedFrom, tabHome } from "../shell/tabs";
 import { stepsView } from "./steps/view";
 import { detailOf, tileLines, titled } from "../summary/lines";
-import type { ItemFacts, ItemPageView, ItemRowView, ItemSectionView } from "./state";
+import type {
+  ItemFacts,
+  ItemPageView,
+  ItemRowView,
+  ItemSectionView,
+  ModFactsView,
+  ModPageView,
+} from "./state";
 
 const STEPS = "steps";
 const SUMMARY = "summary";
@@ -33,13 +42,15 @@ function rowOf(facts: ItemFacts, line: BriefLine, from: string, blueprint: boole
   const told = own ? tileLines(own.reading, own.where) : tileLines(line.reading, line.where);
   const words =
     told.reading || told.place ? told : { reading: "", place: detailOf(line.detail) ?? "" };
-  const art = line.imageUrl ?? (blueprint ? null : facts.art);
+  const orb = blueprint || line.place === null ? null : (facts.orbs[line.place] ?? null);
+  const repeats = (text: string) => line.place !== null && text === line.place;
   return {
     key: line.id,
     name: line.optional ? STEP_WORDS.optional(titled(line.title)) : titled(line.title),
-    reading: words.reading,
-    place: words.place,
-    art,
+    reading: repeats(words.reading) ? "" : words.reading,
+    place: repeats(words.place) ? "" : words.place,
+    art: orb === null ? line.imageUrl : null,
+    orb,
     ...(blueprint && { blueprint: facts.blueprint }),
     ...(blueprint
       ? { href: itemRoute(facts.name, from, STEPS, line.id) }
@@ -73,10 +84,24 @@ export function itemPage(
 ): ItemPageView {
   const tab = openedFrom(from);
   const origin = from ?? "";
-  const kicker = facts.quest ? ITEM.quest : facts.group ? ITEM.kicker[facts.group] : "";
+  const kicker = facts.mode
+    ? ITEM.mode
+    : facts.quest
+      ? ITEM.quest
+      : facts.mod?.category
+        ? ITEM.modKicker(facts.mod.category)
+        : facts.group
+          ? ITEM.kicker[facts.group]
+          : "";
   const state = facts.state.kind;
   return {
-    title: facts.quest ? ITEM.quests : facts.group ? MAP.groups[facts.group].name : facts.name,
+    title: facts.mode
+      ? ITEM.modes
+      : facts.quest
+        ? ITEM.quests
+        : facts.group
+          ? MAP.groups[facts.group].name
+          : facts.name,
     back: tabHome(tab),
     tab,
     kicker,
@@ -97,5 +122,38 @@ export function itemPage(
     sections: sectionsOf(facts, origin),
     steps: stepsView(facts.steps, facts.name, origin),
     builtInto: builtIntoChips(facts, origin),
+    mod: facts.mod && modPage(facts.mod, facts),
+  };
+}
+
+function modIcon(icon: string): IconName {
+  return icon in GLYPHS ? (icon as IconName) : "extension";
+}
+
+function modPage(mod: ModFactsView, facts: Pick<ItemFacts, "art" | "name">): ModPageView {
+  return {
+    overview: {
+      art: facts.art,
+      name: facts.name,
+      rarity: mod.rarity,
+    },
+    title: MOD.whatItDoes,
+    effects: mod.effects.map((effect) => ({
+      ...effect,
+      icon: modIcon(effect.icon),
+      example: effect.example && {
+        label: MOD.example,
+        before: { label: MOD.without, ...effect.example.before },
+        after: { label: MOD.withIt, ...effect.example.after },
+        line: effect.example.line,
+      },
+      pairs:
+        effect.pairs.length > 0
+          ? {
+              label: MOD.pairsWith,
+              combos: effect.pairs.map((pair) => ({ meets: pair.with, makes: pair.makes })),
+            }
+          : null,
+    })),
   };
 }

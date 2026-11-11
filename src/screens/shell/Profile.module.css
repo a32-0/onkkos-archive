@@ -138,14 +138,14 @@
 }
 
 .cycle {
-  composes: mono from "../../ui/type.module.css";
+  composes: body from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink-dim);
   text-align: center;
 }
 
 .strong {
-  composes: mono-strong from "../../ui/type.module.css";
+  composes: label-s from "../../ui/type.module.css";
 }
 
 .restart {

@@ -20,14 +20,47 @@ export const GOALS = {
     },
     build_necramech: {
       title: "Build a Necramech",
-      line: "They are found in the Cambion Drift or owned by the player.",
+      line: "A war machine of your own to pilot in the open landscapes, Empyrean missions and Albrecht's Laboratories.",
+    },
+    build_helminth: {
+      title: "Build the Helminth",
+      line: "Swap one ability of any Warframe for another Warframe's, and Invigorations that boost one for a week.",
     },
     unlock_1999: {
       title: "Play the Hex Quest",
-      line: "The desperate hunt for Albrecht Entrati has led the Drifter to the city of Höllvania on December 31st, 1999.",
+      line: "Cyte-09's blueprint, the Atomicycle, and Höllvania's missions and bounties.",
+    },
+    play_new_war: {
+      title: "Play The New War",
+      line: "The Nataruk bow, and the way to Jade Shadows, Veilbreaker and the Zariman.",
+    },
+    play_jade_shadows: {
+      title: "Play Jade Shadows",
+      line: "Jade's blueprint, and Ascension on Uranus, where her parts and Evensong drop.",
+    },
+    play_constellations: {
+      title: "Play Jade Shadows: Constellations",
+      line: "Sirius & Orion's blueprint, and Uranus Proxima, where their parts drop.",
+    },
+    hunt_archon: {
+      title: "Hunt an Archon",
+      line: "Archon Shards, which raise a Warframe's stats for good.",
+    },
+    unlock_steel_path: {
+      title: "Unlock The Steel Path",
+      line: "Enemies 100 levels higher, twice the mods and resources, and Steel Essence for Teshin's shop.",
+    },
+    hunt_kuva_lich: {
+      title: "Hunt a Kuva Lich",
+      line: "A Kuva weapon, a stronger version of a Grineer one, with an element of its own.",
     },
   },
-  suggestions: "Suggestions",
+  suggestions: "Milestones",
+  milestones: {
+    title: "Milestones reached",
+    done: (count: number) => `${count} done`,
+    planetDone: "Every junction cleared.",
+  },
   empty: {
     title: "Nothing left to suggest",
     line: "You've done every suggestion. Search above for anything else.",

@@ -158,37 +158,10 @@
 }
 
 .reading {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-weight: 700;
-  font-size: 12px;
-  text-transform: none;
-}
-
-.reading-l {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-weight: 700;
-  font-size: 16px;
-  text-transform: none;
-}
-
-.mono {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-weight: 400;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
   font-size: 14px;
-  text-transform: none;
-}
-
-.mono-label {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-weight: 400;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.mono-strong {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-weight: 700;
-  font-size: 14px;
+  font-variant-numeric: tabular-nums;
   text-transform: none;
 }
 

@@ -1,7 +1,20 @@
 version: 1
-last_verified: "2026-09-04"
+last_verified: "2026-11-08"
 
 rules:
+  - quest: "Vor's Prize"
+    evidence: { kind: mission, tag: EarthToVenusJunction }
+    source: "https://wiki.warframe.com/w/Vor%27s_Prize"
+    note: "No Junction can be cleared before Vor's Prize ends the opening on Earth and Mercury."
+
+  - quest: "Vor's Prize"
+    evidence: { kind: mission, tag: EarthToMarsJunction }
+    source: "https://wiki.warframe.com/w/Vor%27s_Prize"
+
+  - quest: "Vor's Prize"
+    evidence: { kind: mission, tag: VenusToMercuryJunction }
+    source: "https://wiki.warframe.com/w/Vor%27s_Prize"
+
   - quest: "The Second Dream"
     evidence: { kind: flag, field: UnlockedOperator }
     source: "https://wiki.warframe.com/w/Operator"
@@ -83,3 +96,216 @@ rules:
     evidence: { kind: item, type: "/Lotus/Weapons/Orokin/BallasSword/BallasSwordWeapon" }
     source: "https://wiki.warframe.com/w/Chimera_Prologue"
     note: "Chimera Prologue has required a completed Sacrifice since it shipped (2018-10-12), so Paracesis proves both."
+
+  - quest: "The New War"
+    evidence: { kind: mission, tag: ZarimanHub }
+    source: "https://wiki.warframe.com/w/Quests"
+    note: "Angels of the Zariman requires The New War, and the Chrysalith needs Angels of the Zariman."
+
+  - quest: "The New War"
+    evidence: { kind: mission, tag: EntratiLabHub }
+    source: "https://wiki.warframe.com/w/Quests"
+    note: "Whispers in the Walls requires The New War, and the Sanctum Anatomica opens with it."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: mission, tag: SolNode723 }
+    source: "https://wiki.warframe.com/w/Brutus"
+    note: "Brutus, on Uranus, needs Jade Shadows completed."
+
+  - quest: "The New War"
+    evidence: { kind: mission, tag: SolNode723 }
+    source: "https://wiki.warframe.com/w/Jade_Shadows"
+    note: "Brutus needs Jade Shadows, which requires The New War."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: mission, tag: JadeShadows2HUB }
+    source: "https://wiki.warframe.com/w/Jade_Shadows:_Constellations"
+    note: "Pontis Tower opens with Jade Shadows: Constellations, which requires Jade Shadows."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence: { kind: mission, tag: JadeShadows2HUB }
+    source: "https://wiki.warframe.com/w/Jade_Shadows:_Constellations"
+    note: "The hub Pontis Tower is available once the quest is completed."
+
+  - quest: "The Hex"
+    evidence: { kind: mission, tag: SolNode850 }
+    source: "https://wiki.warframe.com/w/K%C3%B6binn_West"
+    note: "Höllvania's nodes need The Hex completed."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence:
+      {
+        kind: item,
+        type: "/Lotus/Weapons/Tenno/Melee/HeavyScythe/TnOrionSiriusScythe/TnSiriusScytheWeapon",
+      }
+    source: "https://wiki.warframe.com/w/Pride"
+    note: "Pride comes only from Uranus Proxima or Pontis Tower, which the quest opens; untradeable, not in the Market."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence:
+      {
+        kind: item,
+        type: "/Lotus/Weapons/Tenno/Melee/HeavyScythe/TnOrionSiriusScythe/TnOrionScytheWeapon",
+      }
+    source: "https://wiki.warframe.com/w/Wrath"
+    note: "Wrath comes only from Uranus Proxima or Pontis Tower, which the quest opens; untradeable, not in the Market."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence: { kind: item, type: "/Lotus/Weapons/Tenno/Melee/Swords/PrimeWar/PrimeWarWeapon" }
+    source: "https://wiki.warframe.com/w/War_Prime"
+    note: "War Prime comes only from Uranus Proxima or Pontis Tower, which the quest opens; untradeable, not in the Market."
+
+  - quest: "The Deadlock Protocol"
+    evidence:
+      {
+        kind: item,
+        type: "/Lotus/Weapons/Corpus/Melee/Glaive/CrpGhostCatcherGlaive/CrpGhostCatcherGlaive",
+      }
+    source: "https://wiki.warframe.com/w/Xoris"
+    note: "Xoris is given during the quest; Cephalon Simaris sells more copies only once the quest is done; untradeable, not in the Market."
+
+  - quest: "The Jordas Precept"
+    evidence: { kind: mission, tag: SolNode701 }
+    source: "https://wiki.warframe.com/w/Jordas_Golem"
+    note: "The Jordas Golem Assassinate node on Eris opens only after the quest."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/KubrowPet/RetrieverKubrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Chesa_Kubrow"
+    note: "A Chesa Kubrow hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/KubrowPet/FurtiveKubrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Huras_Kubrow"
+    note: "A Huras Kubrow hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/KubrowPet/GuardKubrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Raksa_Kubrow"
+    note: "A Raksa Kubrow hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/KubrowPet/AdventurerKubrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Sahasa_Kubrow"
+    note: "A Sahasa Kubrow hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/KubrowPet/HunterKubrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Sunika_Kubrow"
+    note: "A Sunika Kubrow hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/KubrowPet/ChargerKubrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Helminth_Charger"
+    note: "A Helminth Charger hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/CatbrowPet/MirrorCatbrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Adarza_Kavat"
+    note: "A Adarza Kavat hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/CatbrowPet/CheshireCatbrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Smeeta_Kavat"
+    note: "A Smeeta Kavat hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Howl of the Kubrow"
+    evidence: { kind: item, type: "/Lotus/Types/Game/CatbrowPet/VampireCatbrowPetPowerSuit" }
+    source: "https://wiki.warframe.com/w/Vasca_Kavat"
+    note: "A Vasca Kavat hatches only in the Orbiter's Incubator, which Howl of the Kubrow gives; what the quest stands for is the Incubator."
+
+  - quest: "Saya's Vigil"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Glass/Glass" }
+    source: "https://wiki.warframe.com/w/Saya%27s_Vigil"
+    note: "The quest gives Gara and opens nothing else the app asks for, so owning Gara, earned or bought, stands for it."
+
+  - quest: "Sands of Inaros"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Sandman/Sandman" }
+    source: "https://wiki.warframe.com/w/Sands_of_Inaros"
+    note: "The quest gives Inaros and opens nothing else the app asks for, so owning Inaros, earned or bought, stands for it."
+
+  - quest: "The Limbo Theorem"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Magician/Magician" }
+    source: "https://wiki.warframe.com/w/The_Limbo_Theorem"
+    note: "The quest gives Limbo and opens nothing else the app asks for, so owning Limbo, earned or bought, stands for it."
+
+  - quest: "Hidden Messages"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Harlequin/Harlequin" }
+    source: "https://wiki.warframe.com/w/Hidden_Messages"
+    note: "The quest gives Mirage and opens nothing else the app asks for, so owning Mirage, earned or bought, stands for it."
+
+  - quest: "The Glast Gambit"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Infestation/Infestation" }
+    source: "https://wiki.warframe.com/w/The_Glast_Gambit"
+    note: "The quest gives Nidus and opens nothing else the app asks for, so owning Nidus, earned or bought, stands for it."
+
+  - quest: "Octavia's Anthem"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Bard/Bard" }
+    source: "https://wiki.warframe.com/w/Octavia%27s_Anthem"
+    note: "The quest gives Octavia and opens nothing else the app asks for, so owning Octavia, earned or bought, stands for it."
+
+  - quest: "Mask of the Revenant"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Revenant/Revenant" }
+    source: "https://wiki.warframe.com/w/Mask_of_the_Revenant"
+    note: "The quest gives Revenant and opens nothing else the app asks for, so owning Revenant, earned or bought, stands for it."
+
+  - quest: "The Silver Grove"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Fairy/Fairy" }
+    source: "https://wiki.warframe.com/w/The_Silver_Grove"
+    note: "The quest gives Titania and opens nothing else the app asks for, so owning Titania, earned or bought, stands for it."
+
+  - quest: "The Waverider"
+    evidence: { kind: item, type: "/Lotus/Powersuits/Yareli/Yareli" }
+    source: "https://wiki.warframe.com/w/The_Waverider"
+    note: "The quest gives Yareli and opens nothing else the app asks for, so owning Yareli, earned or bought, stands for it."
+
+title_rules:
+  - quest: "The Second Dream"
+    evidence: { kind: challenge, name: SecondDreamTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Awoken Tenno Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The New War"
+    evidence: { kind: challenge, name: TheNewWarTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Drifter Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: challenge, name: JadeShadowsTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the The Great & Terrible Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "Jade Shadows: Constellations"
+    evidence: { kind: challenge, name: JadeShadows2TitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Like Father, Like Sons Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "Jade Shadows"
+    evidence: { kind: challenge, name: JadeShadows2TitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "Jade Shadows: Constellations requires Jade Shadows, so its Honoria proves both."
+
+  - quest: "The Lotus Eaters"
+    evidence: { kind: challenge, name: LotusEatersTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Champion of the Lotus Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The Old Peace"
+    evidence: { kind: challenge, name: OldPeaceTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Chosen of Margulis Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The Duviri Paradox"
+    evidence: { kind: challenge, name: DuviriTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the King of Duviri and Queen of Duviri Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "A Man of Few Words"
+    evidence: { kind: challenge, name: ClemTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge that awards the Clem Honoria, given for completing the quest; read on a real profile on 2026-11-08."
+
+  - quest: "The Hex"
+    evidence: { kind: challenge, name: TheHexCompleteTitleChallenge }
+    source: "https://wiki.warframe.com/w/Honoria"
+    note: "The challenge behind a Honoria The Hex awards on completion; read on a real profile on 2026-11-10."

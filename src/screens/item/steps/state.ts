@@ -29,6 +29,7 @@ export interface StepRowView {
   alternative: boolean;
   best: boolean;
   locked: boolean;
+  done: boolean;
   detail: string | null;
   prose: string[] | null;
   link: StepLinkView | null;

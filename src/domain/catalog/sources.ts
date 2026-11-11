@@ -43,6 +43,7 @@ const source = z.discriminatedUnion("type", [
     until: z.string().optional(),
   }),
   z.object({ type: z.literal("race"), race: z.string(), place: z.string() }),
+  z.object({ type: z.literal("challenge"), challenge: z.string(), place: z.string() }),
   z.object({ type: z.literal("bundled"), with: z.array(z.string()) }),
   z.object({
     type: z.literal("primeAccess"),
@@ -97,6 +98,13 @@ const source = z.discriminatedUnion("type", [
 
 const entry = z.object({ item: z.string(), cite: z.string(), routes: z.array(source).min(1) });
 const tribute = z.object({ item: z.string(), days: z.array(z.number()), cite: z.string() });
+const syndicate = z.object({
+  syndicate: z.string(),
+  tag: z.string(),
+  vendors: z.array(z.string()).min(1),
+  ranks: z.array(z.string()).min(1),
+  cite: z.string(),
+});
 const gate = z.object({ vendor: z.string(), quests: z.array(z.string()).min(1), cite: z.string() });
 const store = z.object({
   store: z.string(),
@@ -114,6 +122,8 @@ export interface Curated {
   gates: NameMap<string[]>;
   items: NameMap<CuratedEntry>;
   stores: NameMap<z.infer<typeof store>>;
+  art: NameMap<string>;
+  standing: NameMap<{ tag: string; ranks: string[] }>;
 }
 
 export function normalizeSources(input: unknown): Curated {
@@ -123,6 +133,8 @@ export function normalizeSources(input: unknown): Curated {
       stores: z.array(store).default([]),
       items: z.array(entry),
       tribute: z.array(tribute).default([]),
+      art: z.record(z.string(), z.url()).default({}),
+      syndicates: z.array(syndicate).default([]),
     })
     .parse(input);
   const items = new NameMap<CuratedEntry>();
@@ -139,6 +151,12 @@ export function normalizeSources(input: unknown): Curated {
     gates: new NameMap(raw.vendors.map((one) => [one.vendor, one.quests])),
     items,
     stores: new NameMap(raw.stores.map((one) => [one.store, one])),
+    art: new NameMap(Object.entries(raw.art)),
+    standing: new NameMap(
+      raw.syndicates.flatMap(({ tag, vendors, ranks }) =>
+        vendors.map((vendor) => [vendor, { tag, ranks }] as const),
+      ),
+    ),
   };
 }
 

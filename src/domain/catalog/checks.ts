@@ -78,6 +78,10 @@ interface Says {
   placesTitle: { count: number };
   placesDetail: { places: { place: string; junction: string | null; from: string | null }[] };
   questStartTitle: { quest: string };
+  modeStartTitle: { mode: string };
+  needTitle: { need: string };
+  starChartTitle: None;
+  starChartDetail: { place: string | null };
   intrinsicsTitle: { rank: number | null };
   intrinsicsDetail: None;
   nemesisTitle: { name: string };
@@ -272,6 +276,8 @@ interface Says {
   unavailableDetail: { reason: string; event: string | null; until: string | null };
   raceTitle: { race: string };
   raceDetail: { place: string };
+  challengeTitle: { challenge: string };
+  challengeDetail: { place: string };
   bundledTitle: { things: string[] };
   bundledDetail: { things: string[] };
   primeAccessTitle: { warframe: string };
@@ -336,9 +342,11 @@ export interface StepRow {
   prose: ProseAsk | null;
   wikiTitle: string | null;
   imageUrl: string | null;
+  place: string | null;
   best: boolean;
   alternative: boolean;
   optional: boolean;
+  done: boolean;
   thing: string | null;
   gear: { name: string; count: number } | null;
 }
@@ -371,6 +379,7 @@ export interface Reader {
   masteryRank?: number;
   varzia?: VarziaStock | null;
   done?: ReadonlySet<string>;
+  placeLeft?: string | null;
 }
 
 const ALTERNATIVES_SHOWN = 4;
@@ -429,6 +438,9 @@ const CIRCUIT_WIKI = "The Circuit";
 const HONORIA_WIKI = "Honoria";
 const MARKET_WIKI = "Market";
 const TRADING_WIKI = "Trading";
+const STAR_CHART_WIKI = "Star Chart";
+const STAR_CHART_ROW = "star-chart";
+const RELAY_NEED = /\bRelay\b/;
 
 function slotWiki(kind: SlotKind): string {
   return kind === "Companion" ? "Companion" : "Slots";
@@ -452,9 +464,11 @@ function row(
     prose: rest.prose ?? null,
     wikiTitle: rest.wikiTitle ?? null,
     imageUrl: rest.imageUrl ?? null,
+    place: rest.place ?? null,
     best: rest.best ?? false,
     alternative: rest.alternative ?? false,
     optional: rest.optional ?? false,
+    done: rest.done ?? false,
     thing: rest.thing ?? null,
     gear: rest.gear ?? null,
   };
@@ -677,6 +691,12 @@ function curatedFacts(
         detail: say("raceDetail", { place: source.place }),
         brief: parts(source.place),
       };
+    case "challenge":
+      return {
+        title: say("challengeTitle", { challenge: source.challenge }),
+        detail: say("challengeDetail", { place: source.place }),
+        brief: parts(source.place),
+      };
     case "bundled":
       return {
         title: say("bundledTitle", { things: source.with }),
@@ -876,6 +896,7 @@ function routeRow(
         where: parts(say("nodeOn", { node: route.node, place: route.place }), route.mission),
         prose: mechanics(route.mission),
         wikiTitle: route.node,
+        place: route.place,
       });
     case "endless":
       return row(id, say("circuitModeTitle", { mode: route.mode }), {
@@ -883,6 +904,7 @@ function routeRow(
         where: parts(say("nodeOn", { node: CIRCUIT_WIKI, place: route.place })),
         prose: lead(CIRCUIT_WIKI),
         wikiTitle: CIRCUIT_WIKI,
+        place: route.place,
       });
     case "bounty": {
       const range = levels(route.tier);
@@ -896,7 +918,12 @@ function routeRow(
               low: range?.low ?? null,
               high: range?.high ?? null,
             }),
-        { ...shared, where: parts(route.place, BOUNTY), wikiTitle: route.place },
+        {
+          ...shared,
+          where: parts(route.place, BOUNTY),
+          wikiTitle: route.place,
+          place: route.place,
+        },
       );
     }
     case "enemy":
@@ -931,6 +958,7 @@ function routeRow(
       return row(id, say("vendorTitle", { vendor: route.vendor }), {
         ...shared,
         wikiTitle: route.link,
+        imageUrl: data.vendorArt[route.vendor] ?? null,
       });
     case "market":
       return row(id, say("marketTitle"), { ...shared, wikiTitle: MARKET_WIKI });
@@ -989,6 +1017,7 @@ function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisit
       brief: parts(route.place, route.boss ?? route.mission),
       prose: route.boss ? lead(route.boss) : mechanics(route.mission),
       wikiTitle: route.node,
+      place: route.place,
     });
   }
   if (route.kind === "bounty") {
@@ -1001,6 +1030,7 @@ function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisit
       brief: routeBrief(data, reader, route),
       prose: mechanics(BOUNTY),
       wikiTitle: found.places[0] ?? route.place,
+      place: route.place,
     });
   }
   if (route.kind === "vendor") {
@@ -1008,6 +1038,7 @@ function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisit
       brief: parts(priceBrief(route.cost, route.currency, route.rank)),
       prose: lead(route.link),
       wikiTitle: route.link,
+      imageUrl: data.vendorArt[route.vendor] ?? null,
     });
   }
   if (route.kind === "research") {
@@ -1031,6 +1062,7 @@ function masteryRows(required: number, masteryRank: number | undefined): StepRow
           : say("masteryDetail", { now: masteryRank, required }),
       ),
       wikiTitle: MASTERY_WIKI,
+      done: masteryRank !== undefined && masteryRank >= required,
     }),
   ];
 }
@@ -1055,8 +1087,29 @@ function junctionRow(data: CatalogData, junction: string): StepRow {
   });
 }
 
+const spineQuests = new WeakMap<CatalogData, ReadonlyMap<string, string>>();
+
+function questNames(data: CatalogData): ReadonlyMap<string, string> {
+  let names = spineQuests.get(data);
+  if (!names) {
+    const map = new Map<string, string>();
+    for (const quest of [...data.spine.arcs.flatMap((arc) => arc.quests), ...data.spine.modes]) {
+      map.set(quest.name, quest.name);
+      for (const part of quest.parts) map.set(part, quest.name);
+    }
+    names = map;
+    spineQuests.set(data, names);
+  }
+  return names;
+}
+
+function knownQuests(data: CatalogData, quests: readonly string[]): string[] {
+  const names = questNames(data);
+  return [...new Set(quests.flatMap((quest) => names.get(quest) ?? []))];
+}
+
 function questRowsFor(data: CatalogData, quests: readonly string[]): StepRow[] {
-  return questsBefore(data.spine, quests).flatMap((quest) => [
+  return questsBefore(data.spine, knownQuests(data, quests)).flatMap((quest) => [
     ...questNeeds(data.spine, quest).junctions.map((junction) => junctionRow(data, junction)),
     row(`quest:${quest}`, say("questTitle", { quest }), {
       detail: parts(say("questDetail")),
@@ -1074,9 +1127,26 @@ function requirementRows(
   const named = requirements.filter((one) => one.kind === "quest").map((one) => one.name);
   const junctions = named.filter((name) => JUNCTION.test(name));
   const quests = named.filter((name) => !JUNCTION.test(name));
+  const known = questNames(data);
   out.push(...questRowsFor(data, quests));
   out.push(...junctions.map((junction) => junctionRow(data, junction)));
+  for (const node of quests.filter((name) => !known.has(name))) {
+    if (!data.wiki.nodes.some((one) => one.name === node)) continue;
+    out.push(row(`node:${node}`, say("playTitle", { node }), { wikiTitle: node }));
+  }
   for (const one of requirements) {
+    if (one.kind === "mastery" && one.rank !== null) {
+      out.push(...masteryRows(one.rank, undefined));
+    }
+    if (one.kind === "resource") {
+      out.push(
+        row(`acquire:${one.name}`, say("acquireTitle", { name: one.name, count: one.rank ?? 1 }), {
+          prose: lead(one.name),
+          wikiTitle: one.name,
+          thing: one.name,
+        }),
+      );
+    }
     if (one.kind === "intrinsics") {
       out.push(
         row(`intrinsics:${one.rank ?? 0}`, say("intrinsicsTitle", { rank: one.rank }), {
@@ -1566,16 +1636,19 @@ function adversaryPrerequisites(data: CatalogData, system: AdversarySystem): Ste
   return rows;
 }
 
-function adversarySteps(system: AdversarySystem, item: string): StepRow[] {
+function adversarySteps(data: CatalogData, system: AdversarySystem, item: string): StepRow[] {
+  const foe = sourceArt(data, system.name);
   const rows = [
     row("find", say("findTitle", { larva: system.larva ?? system.name }), {
       detail: parts(system.encounter),
       wikiTitle: system.larva ?? system.page,
+      imageUrl: sourceArt(data, system.larva ?? system.name),
     }),
     row("vanquish", say("vanquishTitle", { adversary: system.name }), {
       detail: parts(system.create),
       prose: system.hound ? null : acquisition(item),
       wikiTitle: system.page,
+      imageUrl: foe,
     }),
   ];
   if (system.trade) {
@@ -1583,6 +1656,7 @@ function adversarySteps(system: AdversarySystem, item: string): StepRow[] {
       row("trade", say("tradeTitle", { adversary: system.name }), {
         detail: parts(system.trade),
         wikiTitle: system.page,
+        imageUrl: foe,
       }),
     );
   }
@@ -1757,7 +1831,7 @@ function systemSteps(
   system: AcquisitionSystem,
   item: string,
 ): StepRow[] {
-  if (system.kind === "adversary") return adversarySteps(system, item);
+  if (system.kind === "adversary") return adversarySteps(data, system, item);
   if (system.kind === "companion") return companionSteps(data, reader, system, item);
   if (system.kind === "baro") {
     return [
@@ -2070,17 +2144,20 @@ function placesRow(data: CatalogData, names: readonly string[]): StepRow {
 
 function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking): StepRow[] {
   const past = settled(data, linking.done);
-  const kept = withoutRepeats(rows.filter((one) => pending(one, past)));
-  const questMastery = kept
+  const asked = rows.flatMap((one) =>
+    one.id === MASTERY_ROW && one.title.say === "masteryTitle" ? [one.title.rank] : [],
+  );
+  const kept = withoutRepeats(rows).filter((one) => one.id !== MASTERY_ROW);
+  const left = kept.filter((one) => pending(one, past));
+  const met = kept.filter((one) => !pending(one, past));
+  const questMastery = left
     .filter((one) => one.id.startsWith(QUEST_ROW))
     .map((one) => questNeeds(data.spine, one.id.slice(QUEST_ROW.length)).mastery);
-  const needed = Math.max(linking.masteryReq, ...questMastery);
+  const needed = Math.max(linking.masteryReq, ...questMastery, ...asked);
   return [
     ...masteryRows(needed, linking.masteryRank),
-    ...gathered(
-      data,
-      kept.filter((one) => one.id !== MASTERY_ROW),
-    ),
+    ...gathered(data, met).map((one) => ({ ...one, done: true })),
+    ...gathered(data, left),
   ];
 }
 
@@ -2250,7 +2327,7 @@ function sourceTitle(data: CatalogData, source: string): Phrase {
 }
 
 function sourceArt(data: CatalogData, source: string): string | null {
-  return data.dropSources[baseOf(source)]?.art ?? null;
+  return data.curated.art.get(source) ?? data.dropSources[baseOf(source)]?.art ?? null;
 }
 
 function defeated(data: CatalogData, route: EnemyRoute): boolean {
@@ -2298,6 +2375,7 @@ function regionRows(data: CatalogData, collectible: CollectibleView["collectible
       brief: parts(place),
       prose: index === 0 ? lead(fact?.link ?? collectible.name) : null,
       wikiTitle: place,
+      place,
     }),
   );
 }
@@ -2688,16 +2766,42 @@ function collectiblePlan(data: CatalogData, reader: Reader, view: CollectibleVie
 
 export function questStepPlan(data: CatalogData, quest: Quest, reader: Reader): StepPlan {
   const needs = questNeeds(data.spine, quest.name);
+  const mode = quest.kind === "mode";
+  const owned = quest.needs.flatMap((need) => (need.quest === null ? [] : [need.quest]));
   const prerequisites = [
-    ...questRowsFor(data, needs.quests),
+    ...questRowsFor(data, [...needs.quests, ...owned]),
     ...needs.junctions.map((junction) => junctionRow(data, junction)),
     ...reachRows(data, quest.availableAt),
+    ...(RELAY_NEED.test(quest.requirement ?? "")
+      ? [row("relay", say("relayTitle"), { prose: lead(RELAY_WIKI), wikiTitle: RELAY_WIKI })]
+      : []),
+    ...quest.needs.map((need) =>
+      row(`need:${need.need}`, say("needTitle", { need: need.need }), {
+        detail: parts(need.how),
+        wikiTitle: need.wiki,
+        thing: need.need,
+      }),
+    ),
+    ...(quest.starChart
+      ? [
+          row(STAR_CHART_ROW, say("starChartTitle"), {
+            detail: parts(say("starChartDetail", { place: reader.placeLeft ?? null })),
+            wikiTitle: STAR_CHART_WIKI,
+          }),
+        ]
+      : []),
   ];
-  const start = row(`start:${quest.name}`, say("questStartTitle", { quest: quest.name }), {
-    detail: parts(quest.start),
-    prose: lead(quest.wikiTitle),
-    wikiTitle: quest.wikiTitle,
-  });
+  const start = row(
+    `start:${quest.name}`,
+    mode
+      ? say("modeStartTitle", { mode: quest.name })
+      : say("questStartTitle", { quest: quest.name }),
+    {
+      detail: parts(quest.start),
+      prose: lead(quest.wikiTitle),
+      wikiTitle: quest.wikiTitle,
+    },
+  );
   return linked(
     data,
     {
@@ -2757,4 +2861,88 @@ export function planLock(plan: StepPlan, reach: Reach): PlanLock | null {
     if (gap) return { row: entry.id, gap };
   }
   return null;
+}
+
+export interface Proof {
+  places: ReadonlySet<string> | null;
+  clan: boolean;
+  intrinsics: Readonly<Record<string, number>>;
+  standing: ReadonlyMap<string, number>;
+}
+
+const RAILJACK_DISCIPLINES = [
+  "LPS_PILOTING",
+  "LPS_GUNNERY",
+  "LPS_TACTICAL",
+  "LPS_ENGINEERING",
+  "LPS_COMMAND",
+];
+const RANK_ROW = "rank:";
+const INTRINSICS_ROW = "intrinsics:";
+const CLAN_ROW = "clan:";
+const SPACES = /[^a-z0-9]/g;
+
+function reached(proof: Proof, place: string): boolean {
+  return proof.places?.has(place) ?? false;
+}
+
+function rankLevel(ranks: readonly string[], label: string): number | null {
+  if (/^\d+$/.test(label)) return Number(label);
+  const key = label.toLowerCase().replace(SPACES, "");
+  const index = ranks.findIndex((one) => one.toLowerCase().replace(SPACES, "") === key);
+  return index === -1 ? null : index + 1;
+}
+
+function proven(data: CatalogData, entry: StepRow, proof: Proof): boolean {
+  const { id } = entry;
+  if (id.startsWith(PLACE_ROW)) return reached(proof, id.slice(PLACE_ROW.length));
+  if (id.startsWith(PLACES_ROW)) {
+    return id
+      .slice(PLACES_ROW.length)
+      .split(LIST_SEPARATOR)
+      .every((place) => reached(proof, place));
+  }
+  if (id.startsWith(JUNCTION_ROW)) {
+    return reached(proof, id.slice(JUNCTION_ROW.length).replace(JUNCTION, ""));
+  }
+  if (id.startsWith(JUNCTIONS_ROW)) {
+    return id
+      .slice(JUNCTIONS_ROW.length)
+      .split(LIST_SEPARATOR)
+      .every((junction) => reached(proof, junction.replace(JUNCTION, "")));
+  }
+  if (id.startsWith(CLAN_ROW)) return proof.clan;
+  if (id.startsWith(INTRINSICS_ROW)) {
+    const rank = Number(id.slice(INTRINSICS_ROW.length));
+    return RAILJACK_DISCIPLINES.every((skill) => (proof.intrinsics[skill] ?? 0) >= rank);
+  }
+  if (id.startsWith(RANK_ROW) && entry.title.say === "rankTitle") {
+    const syndicate = data.curated.standing.get(id.slice(RANK_ROW.length));
+    if (!syndicate) return false;
+    const level = rankLevel(syndicate.ranks, entry.title.rank);
+    const have = proof.standing.get(syndicate.tag);
+    return level !== null && have !== undefined && have >= level;
+  }
+  return false;
+}
+
+export function provenPlan(data: CatalogData, plan: StepPlan, proof: Proof): StepPlan {
+  return {
+    sections: plan.sections.map((entry) =>
+      entry.id !== PREREQUISITES
+        ? entry
+        : {
+            ...entry,
+            groups: entry.groups.map((group) => {
+              const rows = group.rows.map((one) =>
+                one.done || !proven(data, one, proof) ? one : { ...one, done: true },
+              );
+              return {
+                ...group,
+                rows: [...rows.filter((one) => one.done), ...rows.filter((one) => !one.done)],
+              };
+            }),
+          },
+    ),
+  };
 }

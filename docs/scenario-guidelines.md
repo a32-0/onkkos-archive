@@ -49,29 +49,32 @@ holds the subset.
 ## The four sections
 
 Every item view, arsenal or collectible, is these sections in this order. A
-section with nothing in it does not render.
+section with nothing in it does not render, and Prerequisites is never empty
+outside a collectible (BR-89).
 
-1. **Prerequisites.** Facts the player reads, never ticks.
+1. **Prerequisites.** Facts the player reads.
 2. **How to get** (a shared source), or **Acquisition** (a procedure).
 3. **One section per part**, or one flat **Blueprints** list when all parts
    share a source.
-4. **Components.** What the player collects. The only section with ticks.
+4. **Components.** What the player collects, read and never ticked (BR-21).
 
 ### Prerequisite kinds
 
-| Kind              | Title pattern                              | Example                      |
-| ----------------- | ------------------------------------------ | ---------------------------- |
-| Mastery           | Mastery Rank {n}                           | only when n is above 0       |
-| Slot              | {Kind} Slot                                | Warframe, weapon, companion  |
-| Quests            | Complete {quest}, one row per quest        | The War Within               |
-| Hub unlock        | Unlock {hub}                               | Fortuna, Deimos              |
-| Reach             | Reach {place}, naming the junction         | Clear the Saturn Junction    |
-| Gear owned        | Acquire {thing}                            | Kubrow Egg, Tranq Rifle      |
-| Standing          | {Syndicate} rank {name}                    | Son, Stranger                |
-| Intrinsics        | Railjack Intrinsics rank {n}               | Kuva Lich confrontation      |
-| Clan              | Join a clan with the lab                   | anything researched          |
-| Status            | One line on why the normal route is closed | Prime Vaulted                |
-| Purchase (closes) | Buy the {item} Blueprint                   | when the blueprint is bought |
+| Kind               | Title pattern                              | Example                      |
+| ------------------ | ------------------------------------------ | ---------------------------- |
+| Mastery            | Mastery Rank {n}                           | only when n is above 0       |
+| Slot               | {Kind} Slot                                | Warframe, weapon, companion  |
+| Quests             | Complete {quest}, one row per quest        | The War Within               |
+| Hub unlock         | Unlock {hub}                               | Fortuna, Deimos              |
+| Reach              | Reach {place}, naming the junction         | Clear the Saturn Junction    |
+| Gear owned         | Acquire {thing}                            | Kubrow Egg, Tranq Rifle      |
+| Owned, for a quest | Have {thing}                               | a Railjack, an Amp           |
+| Star Chart         | Clear every node of the Star Chart         | The Steel Path               |
+| Standing           | {Syndicate} rank {name}                    | Son, Stranger                |
+| Intrinsics         | Railjack Intrinsics rank {n}               | Kuva Lich confrontation      |
+| Clan               | Join a clan with the lab                   | anything researched          |
+| Status             | One line on why the normal route is closed | Prime Vaulted                |
+| Purchase (closes)  | Buy the {item} Blueprint                   | when the blueprint is bought |
 
 "Unlock" is a hub that a quest opens. "Reach" is a node that the star chart
 opens. They are different rows.
@@ -84,8 +87,8 @@ Slot row for its kind. The owner's comments behind both are in
 A prerequisite brings its own. "Acquire a Railjack" puts Rising Tide and The
 War Within above it as rows, not only in its sentence (BR-28). Quests are one
 row each, root first, read off the spine by `questsBefore()`, each preceded by
-the junctions its requirement names. A quest the profile confirms drops out,
-with everything before it.
+the junctions its requirement names. A quest the profile confirms stays,
+marked met, with everything before it (BR-88).
 
 ### Row grammar inside How to get and Acquisition
 

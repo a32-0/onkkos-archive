@@ -1,4 +1,4 @@
-import { Cinzel, Inter, JetBrains_Mono } from "next/font/google";
+import { Cinzel, Inter } from "next/font/google";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -12,10 +12,4 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-});
-
-export const fontVariables = `${cinzel.variable} ${inter.variable} ${jetbrainsMono.variable}`;
+export const fontVariables = `${cinzel.variable} ${inter.variable}`;

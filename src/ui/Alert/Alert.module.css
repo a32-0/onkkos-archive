@@ -8,7 +8,7 @@
 }
 
 .message {
-  composes: mono-strong from "../type.module.css";
+  composes: body from "../type.module.css";
   flex: 1;
 }
 

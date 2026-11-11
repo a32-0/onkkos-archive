@@ -45,7 +45,9 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `icon.png`                   | The app's icon: the quill in `--ink` on a `--brand` tile with rounded corners (Figma: Brand > App icon, 933:5775)                                                                                                                                                                   |
 | `appx/`                      | The Store package's tiles, drawn from the same tile: `StoreLogo.png` (50), `Square44x44Logo.png`, `Square150x150Logo.png` and `Wide310x150Logo.png`, the tile centred on no background                                                                                              |
 | `electron-builder.yml`       | The three packages, what each carries, Chromium's English alone, the Store package's tiles and Windows versions, and GitHub Releases as the place updates come from                                                                                                                 |
-| `installer.nsh`              | The uninstaller's extra step: it removes the updater's cache, except when an update runs it                                                                                                                                                                                         |
+| `installerSidebar.bmp`       | The wizard's side image on its last page: the app's icon on `--night-800`, 164 × 314                                                                                                                                                                                                |
+| `installerHeader.bmp`        | The wizard's header image: the app's icon on white, 150 × 57                                                                                                                                                                                                                        |
+| `installer.nsh`              | The wizard's own steps: no page asking who to install for, the desktop shortcut page, and the uninstaller removing the updater's cache except when an update runs it                                                                                                                |
 | `src/channel.ts`             | Where the app runs from: the tree, a GitHub package or the Microsoft Store                                                                                                                                                                                                          |
 | `tests/channel.test.ts`      | Only a GitHub package updates itself                                                                                                                                                                                                                                                |
 | `src/updates.ts`             | The update check at each start and every six hours, the notification, and the answer to Profile's **Check**; none of it from the Store                                                                                                                                              |
@@ -192,9 +194,7 @@ refusal: the set is dropped for this start and tried again at the next. It
 costs a second start of the server, about two seconds,
 and only on a start that found new data.
 
-On 2026-11-02 an app at 1.1.0 downloaded data with a route type, `weekly`,
-that only 1.2.0 knew, and every screen answered with an error until the
-update installed. This check is what stops that from happening again.
+This check is what stops that from happening again.
 
 The server's code reads `data/` beside itself, from the folder it runs in, so
 nothing in `src/` changes for this and the demo's build does not see it. A
@@ -221,7 +221,7 @@ machine (below).
 
 ## The packages
 
-`electron-builder.yml` builds an NSIS installer for Windows, one click, for
+`electron-builder.yml` builds an NSIS installer for Windows, assisted, for
 the current user, with no administrator, and an AppImage for Linux. Both are
 named `onkkos-archive-{version}`, with no space or apostrophe, because GitHub
 renames such characters on upload and the update files would then name an
@@ -260,6 +260,32 @@ on 2026-11-07 with a trial build: the program reads Catarsis Studio, its
 `locales/` holds `en-US.pak` alone, the program came to 375 MB and the
 installer to 108 MB.
 
+### The installer's pages
+
+`oneClick: false` makes the installer a wizard (spec 13). Its pages, in
+order:
+
+| Page                    | What it shows                                                                                | Where it comes from                                               |
+| ----------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Choose Install Location | The folder, `%LOCALAPPDATA%\Programs\onkkos-archive-desktop` unless the player picks another | `allowToChangeInstallationDirectory`                              |
+| Shortcuts               | "Create a desktop shortcut", unticked. The Start menu entry is always made                   | `customPageAfterChangeDir` and `customInstall` in `installer.nsh` |
+| Installing              | The progress                                                                                 | electron-builder                                                  |
+| Finish                  | "Run Onkko's Archive", ticked                                                                | electron-builder's default `runAfterFinish`                       |
+
+electron-builder adds a page asking whether to install for this user or for
+everyone, which needs an administrator; `customInstallMode` sets the current
+user and skips it. `installerLanguages` keeps the wizard in English whatever
+Windows' language. The header and side images are rendered from
+`icon.png` with sharp, the same tile as the Store's.
+
+An update runs the new installer silently, so none of these pages shows, and
+the shortcuts the player has are kept. An install with `/S` makes no desktop
+shortcut. Checked on 2026-11-07 with a trial: 0.0.1, built one click,
+downloaded 0.0.2, built assisted, and installed it on quit with no window,
+keeping its desktop shortcut; the uninstaller left no program, data, cache,
+registry entry or shortcut; a fresh `/S` install of 0.0.2 went to the current
+user, with the Start menu entry and no desktop shortcut.
+
 On uninstall, Windows removes the app's folder under `%APPDATA%`, and
 `installer.nsh` removes the updater's cache. The
 installer is not signed (spec 13), so SmartScreen shows "Windows protected
@@ -294,7 +320,7 @@ certification. electron-builder gives it the version as four numbers,
 
 Its tiles come from `desktop/appx/`. electron-builder looks for them in the
 `appx` folder of its build resources, set to `desktop/` itself
-(`buildResources: .`), because the repository ignores every `build/` folder.
+(`buildResources:.`), because the repository ignores every `build/` folder.
 Without them it would ship its own sample tiles. The package declares
 `runFullTrust`, as every Electron app does; Partner Center asks why when it is
 first submitted: the app is a desktop program that runs its own server on the
@@ -306,7 +332,7 @@ register the folder:
 
 ```powershell
 $mk = Get-ChildItem "$env:LOCALAPPDATA\electron-builder\Cache" -Recurse -Filter makeappx.exe |
-  Where-Object FullName -match 'x64' | Select-Object -First 1 -ExpandProperty FullName
+ Where-Object FullName -match 'x64' | Select-Object -First 1 -ExpandProperty FullName
 & $mk unpack /p desktop\release\onkkos-archive-{version}.appx /d $env:TEMP\oa-store /o
 Add-AppxPackage -Register $env:TEMP\oa-store\AppxManifest.xml
 ```
@@ -394,21 +420,21 @@ app's.
 2. Build two versions of the trial. Pick any numbers; they only have to
    grow. Each lands in `desktop/release-trial/{version}/`.
 
-   ```sh
-   node desktop/scripts/trial.mjs build 0.0.1
-   node desktop/scripts/trial.mjs build 0.0.2
-   ```
+```sh
+node desktop/scripts/trial.mjs build 0.0.1
+node desktop/scripts/trial.mjs build 0.0.2
+```
 
 3. Serve the newer one, with this tree's data or a copy of it. Each copy
    changes `sources.yaml` and writes a matching manifest: `changed` adds a
    comment, which every version reads; `broken` turns the first
    `type: weekly` into a type no code knows.
 
-   ```sh
-   node desktop/scripts/trial.mjs serve 0.0.2
-   node desktop/scripts/trial.mjs serve 0.0.2 changed
-   node desktop/scripts/trial.mjs serve 0.0.2 broken
-   ```
+```sh
+node desktop/scripts/trial.mjs serve 0.0.2
+node desktop/scripts/trial.mjs serve 0.0.2 changed
+node desktop/scripts/trial.mjs serve 0.0.2 broken
+```
 
 4. Install `onkkos-archive-trial-0.0.1-setup.exe`, or run
    `release-trial/0.0.1/win-unpacked/Onkko's Archive Trial.exe`. To take the
@@ -464,16 +490,11 @@ one stayed, `installer.exe` stayed, and the uninstaller left no program,
 data, cache, registry entry or shortcut. Before this, the folder held
 232 MB after an update to 1.3.0: the installer twice.
 
-Installed from the Store, the program sits in Windows' protected
-`WindowsApps` folder, and Windows redirects what the app writes under
-`%APPDATA%` into the package's own storage,
-`%LOCALAPPDATA%\Packages\{package name}_{id}\LocalCache\Roaming\Onkko's Archive`.
-The app sees its usual path, so nothing in it changes for the Store; a player
-looking for `app.log` finds it there. Removing the app removes that folder
-too. There is no updater cache. Checked on 2026-10-27 with the package
-registered locally: it opened on the splash with a demo, then on the map once
-an account was read; Profile's Updates row read "Through the Microsoft
-Store"; closed and reopened, it kept the account and the window's size; and
-`app.log`, `port`, `window.json` and `store.json`, with the profile and the
-visitor budget, were in the package's folder above. A newer data set was not
-waiting on `main` that day, so the swap itself was not exercised there.
+Installed from the Store, the program sits in Windows' protected `WindowsApps`
+folder, and Windows redirects what the app writes under `%APPDATA%` into the
+package's own storage, `%LOCALAPPDATA%\Packages\{package
+name}_{id}\LocalCache\Roaming\Onkko's Archive`. The app sees its usual path, so
+nothing in it changes for the Store; a player looking for `app.log` finds it
+there. Removing the app removes that folder too. There is no updater cache. A
+newer data set was not waiting on `main` that day, so the swap itself was not
+exercised there.

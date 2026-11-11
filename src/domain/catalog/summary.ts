@@ -11,6 +11,7 @@ export interface BriefLine {
   where: Part[];
   detail: Part[];
   imageUrl: string | null;
+  place: string | null;
   thing: string | null;
   optional: boolean;
   more: number;
@@ -27,6 +28,42 @@ const BLUEPRINTS = "blueprints";
 const PART = "part:";
 const WEAPON = "weapon:";
 
+const NO_PARTS: Part[] = [];
+
+function sourceOf(title: Phrase | null): Part[] {
+  switch (title?.say) {
+    case "playTitle":
+    case "cachesTitle":
+      return [title.node];
+    case "playBountiesTitle":
+      return [title.place];
+    case "defeatTitle":
+      return [title.source];
+    case "openTitle":
+      return [title.thing];
+    case "openRelicTitle":
+      return [title.relic];
+    case "enigmaTitle":
+      return [title];
+    default:
+      return NO_PARTS;
+  }
+}
+
+export function placed(
+  reading: Part[],
+  where: Part[],
+  ...titles: (Phrase | null)[]
+): { reading: Part[]; where: Part[] } {
+  if (where.length > 0 || reading.length === 0) return { reading, where };
+  const source = titles.map(sourceOf).find((parts) => parts.length > 0);
+  return { reading, where: source ?? where };
+}
+
+export function sharedSource(plan: StepPlan): Phrase | null {
+  return plan.sections.find((section) => section.id === HOW)?.groups[0]?.rows[0]?.title ?? null;
+}
+
 function rowsOf(section: Section): Row[] {
   return section.groups.flatMap((group) => group.rows);
 }
@@ -40,6 +77,7 @@ function line(row: Row): BriefLine {
     where: row.where,
     detail: row.detail,
     imageUrl: row.imageUrl,
+    place: row.place,
     thing: row.thing,
     optional: row.optional,
     more: 0,
@@ -50,13 +88,19 @@ export function briefOf(plan: StepPlan): BriefBlock[] {
   const blueprints: BriefLine[] = [];
   const components: BriefBlock[] = [];
   let how: BriefBlock | null = null;
+  const shared = sharedSource(plan);
 
   for (const section of plan.sections) {
     const rows = rowsOf(section);
     if (section.id === HOW) {
       how = { id: "how", title: section.title, lines: rows.map(line) };
     } else if (section.id === BLUEPRINTS) {
-      blueprints.push(...rows.map(line));
+      blueprints.push(
+        ...rows.map((row) => ({
+          ...line(row),
+          ...placed(row.brief, row.where, row.title, shared),
+        })),
+      );
     } else if (section.id.startsWith(PART)) {
       const [first] = rows;
       if (!first) continue;
@@ -64,10 +108,10 @@ export function briefOf(plan: StepPlan): BriefBlock[] {
         id: section.id,
         title: section.title,
         route: first.title,
-        reading: first.brief,
-        where: first.where,
+        ...placed(first.brief, first.where, first.title, shared),
         detail: first.detail,
         imageUrl: section.imageUrl,
+        place: null,
         thing: null,
         optional: false,
         more: rows.length - 1,

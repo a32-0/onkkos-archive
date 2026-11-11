@@ -3,13 +3,21 @@ import type { ReachGap } from "@/domain/place/reach";
 import type { IconName } from "@/ui/Icon/glyphs";
 import type { Suggestion } from "@/ui/SuggestionList/SuggestionList";
 
-export type GoalKind = "planet" | "necramech" | "quest";
+export type GoalKind = "planet" | "necramech" | "quest" | "item" | "lich" | "mode";
 
 export interface GoalInput {
   id: string;
   kind: GoalKind;
   href: string;
   junction: { from: string; to: string } | null;
+}
+
+export interface MilestoneRowView {
+  id: string;
+  href: string;
+  icon: IconName;
+  title: string;
+  line: string;
 }
 
 export interface GoalCardView {

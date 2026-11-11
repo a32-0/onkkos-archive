@@ -1,5 +1,6 @@
 import { BlueprintArt } from "../BlueprintArt/BlueprintArt";
 import type { LinkComponent } from "../link";
+import { Orb } from "../Orb/Orb";
 import styles from "./SummaryRow.module.css";
 
 export function SummaryRow({
@@ -8,8 +9,8 @@ export function SummaryRow({
   reading,
   place,
   art,
+  orb,
   blueprint,
-  compact = false,
   link,
 }: {
   href?: string;
@@ -17,25 +18,27 @@ export function SummaryRow({
   reading?: string;
   place?: string;
   art: string | null;
+  orb?: string | null;
   blueprint?: string | null;
-  compact?: boolean;
   link?: LinkComponent;
 }) {
   const body = (
     <>
       {blueprint !== undefined ? (
         <BlueprintArt part={art} blueprint={blueprint} />
+      ) : orb ? (
+        <span className={styles.ground}>
+          <Orb color={orb} size="m" />
+        </span>
       ) : art ? (
         <img className={styles.art} src={art} alt="" />
       ) : (
-        <span className={styles.art} />
+        <span className={styles.slot} />
       )}
       <span className={styles.band}>
         <span className={styles.name}>{name}</span>
-        {reading && (
-          <span className={compact ? styles["compact-reading"] : styles.reading}>{reading}</span>
-        )}
-        {place && <span className={compact ? styles["compact-place"] : styles.place}>{place}</span>}
+        {reading && <span className={styles.reading}>{reading}</span>}
+        {place && <span className={styles.place}>{place}</span>}
       </span>
     </>
   );

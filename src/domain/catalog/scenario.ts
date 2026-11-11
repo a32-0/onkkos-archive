@@ -16,7 +16,8 @@ import type { NarrativeSpine } from "@/domain/narrative/schema";
 import { proximaPlace } from "@/domain/place/proxima";
 import type { PlaceRewards } from "@/domain/place/schema";
 
-type RequirementKind = "quest" | "intrinsics" | "key" | "nemesis" | "clan" | "rank";
+type RequirementKind =
+  "quest" | "intrinsics" | "key" | "nemesis" | "clan" | "rank" | "mastery" | "resource";
 
 export interface Requirement {
   kind: RequirementKind;
@@ -209,7 +210,10 @@ const PRIME = / Prime$/;
 const LINK = /\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/g;
 const RANK_AFTER = /^\]\]\s*Rank\s*(\d+)/;
 const KEY_LIKE = /(Locator|Key)$/;
-const NEMESIS = /^(Kuva Lich|Sister of Parvos)$/;
+const NEMESIS = /^(Kuva Lich|Sister of Parvos|Technocyte Coda)$/;
+const MASTERY_LINK = "Mastery Rank";
+const RANK_NUMBER_AFTER = /^\]\]\s*(\d+)/;
+const COUNT_BEFORE = /(\d+)\s*$/;
 const BOUNTY_MISSION = "Bounty";
 const BOUNTY_HUB = /^Level\s+[\d\s-]+\s+(.+?)\s+Bounty$/;
 const HUB_TYPES = new Set(["Hub", "Free Roam"]);
@@ -246,6 +250,12 @@ export function parseRequirements(text: string | null): Requirement[] {
         rank: rank ? Number(rank[1]) : null,
         label: null,
       });
+    } else if (target === MASTERY_LINK) {
+      const rank = RANK_NUMBER_AFTER.exec(after);
+      if (rank) out.push({ kind: "mastery", name: target, rank: Number(rank[1]), label: null });
+    } else if (COUNT_BEFORE.test(text.slice(0, match.index ?? 0))) {
+      const count = Number(COUNT_BEFORE.exec(text.slice(0, match.index ?? 0))?.[1] ?? 1);
+      out.push({ kind: "resource", name: target, rank: count, label: null });
     } else if (KEY_LIKE.test(target)) {
       out.push({ kind: "key", name: target, rank: null, label: null });
     } else if (NEMESIS.test(target)) {

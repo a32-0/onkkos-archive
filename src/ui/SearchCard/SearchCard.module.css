@@ -6,7 +6,6 @@
   border-radius: var(--radius-m);
   background: var(--surface-card);
   color: var(--ink);
-  backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
 .title {

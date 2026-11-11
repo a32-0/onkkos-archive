@@ -1,10 +1,10 @@
 .row {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-6);
   box-sizing: border-box;
   width: 100%;
-  padding: var(--space-6);
+  padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-s);
   background-color: var(--surface);
   color: var(--ink);

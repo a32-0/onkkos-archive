@@ -92,7 +92,6 @@ export function MapCategory({
                     reading={tile.reading || undefined}
                     place={tile.place || undefined}
                     art={tile.art}
-                    compact
                     link={Link}
                   />
                 </ListEntry>

@@ -4,6 +4,8 @@ import { stepPlan, type Part } from "@/domain/catalog/checks";
 import { dossier } from "@/domain/catalog/dossier";
 import { briefOf } from "@/domain/catalog/summary";
 
+import { tileLines } from "@/screens/summary/lines";
+
 import { testData } from "./helpers";
 
 const data = testData();
@@ -184,5 +186,34 @@ describe("what a Summary row names and opens (spec 09)", () => {
         expect(new Set(lines).size, `${item.name} ${block.id}`).toBe(lines.length);
       }
     }
+  });
+});
+
+describe("a blueprint names where to get it (spec 09)", () => {
+  const where = (name: string) =>
+    (briefOf(planOf(name))[0]?.lines ?? []).map(
+      (line) => tileLines(line.reading, line.where).place,
+    );
+
+  it("names the source when the drop has no node", () => {
+    expect(where("Uriel")).toEqual(Array(3).fill("The Descendia: Roathe"));
+    expect(where("Cinta").every((place) => place === "Solve Enigma puzzles in Duviri")).toBe(true);
+  });
+
+  it("names the relic of each Prime part", () => {
+    expect(where("Caliban Prime").every((place) => / Relic$/.test(place))).toBe(true);
+  });
+
+  it("leaves no blueprint with odds or a relic's chances without a place", () => {
+    const bare = data.arsenal.flatMap((item) => {
+      const blueprints = briefOf(stepPlan(data, dossier(item, data.arsenal), reader)).find(
+        (block) => block.id === "blueprints",
+      );
+      return (blueprints?.lines ?? []).flatMap((line) => {
+        const { reading, place } = tileLines(line.reading, line.where);
+        return /^~\d|%/.test(reading) && place === "" ? [`${item.name}: ${reading}`] : [];
+      });
+    });
+    expect(bare).toEqual([]);
   });
 });

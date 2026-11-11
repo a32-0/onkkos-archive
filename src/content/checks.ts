@@ -191,6 +191,10 @@ export const TITLES = {
   junctionsTitle: ({ count }: { count: number }) => `Clear ${count} Junctions`,
   placesTitle: ({ count }: { count: number }) => `Reach ${count} places`,
   questStartTitle: ({ quest }: { quest: string }) => `Start ${quest}`,
+  modeStartTitle: ({ mode }: { mode: string }) =>
+    mode.startsWith("The ") ? `Unlock ${mode}` : `Open the ${mode}`,
+  needTitle: ({ need }: { need: string }) => `Have ${article(need)} ${need}`,
+  starChartTitle: () => "Clear every node of the Star Chart",
   intrinsicsTitle: ({ rank }: { rank: number | null }) =>
     rank === null ? "Railjack Intrinsics" : `Railjack Intrinsics rank ${rank}`,
   nemesisTitle: ({ name }: { name: string }) => `An active ${name}`,
@@ -251,7 +255,9 @@ export const TITLES = {
   invasionTitle: () => "Play Invasions",
 
   acquireTitle: ({ name, count }: { name: string; count: number }) =>
-    count > 1 ? `Acquire ${count} ${name}s` : `Acquire ${article(name)} ${name}`,
+    count > 1
+      ? `Acquire ${count} ${name.endsWith("s") ? name : `${name}s`}`
+      : `Acquire ${article(name)} ${name}`,
   addTitle: ({ name }: { name: string }) => `Add ${article(name)} ${name}`,
   useIncubatorTitle: () => "Use the Incubator",
   existingKavatTitle: () => "An existing Kavat",
@@ -285,6 +291,7 @@ export const TITLES = {
   anniversaryTitle: () => "Claim it from the anniversary alerts",
   unavailableTitle: () => "No longer obtainable",
   raceTitle: ({ race }: { race: string }) => `Win the ${race} K-Drive race`,
+  challengeTitle: ({ challenge }: { challenge: string }) => `Pass the ${challenge}`,
   bundledTitle: ({ things }: { things: readonly string[] }) => `Claim a ${things.join(" or ")}`,
   primeAccessTitle: ({ warframe }: { warframe: string }) =>
     `Buy the ${warframe} Access Accessories pack`,
@@ -335,6 +342,10 @@ export const DETAILS = {
   openedAfterDetail: ({ place }: { place: string }) => `It opens once you reach ${place}.`,
   slotDetail: () => "Make sure you have an empty slot for it.",
   onPlanet: ({ planet }: { planet: string }) => `On ${planet}.`,
+  starChartDetail: ({ place }: { place: string | null }) =>
+    place === null
+      ? "Lua and the Kuva Fortress count; the Mutalist Alad V and Jordas Golem Assassinations and Brutus do not."
+      : `${place} still has nodes left. Lua and the Kuva Fortress count; the Mutalist Alad V and Jordas Golem Assassinations and Brutus do not.`,
 
   marketDetail: ({ credits }: { credits: number }) =>
     `Sold in your ship's Market for ${number(credits)} credits.`,
@@ -651,8 +662,10 @@ export const DETAILS = {
   },
   raceDetail: ({ place }: { place: string }) =>
     `It runs on the ${place}; the active races change every day.`,
+  challengeDetail: ({ place }: { place: string }) =>
+    `A hall of ascension hidden in some ${place} missions; passing it gives the mod.`,
   bundledDetail: ({ things }: { things: readonly string[] }) =>
-    `It comes with ${listOf(things)}, already fitted.`,
+    `It comes with ${things.map((thing) => `a ${thing}`).join(" or ")}, already fitted.`,
   primeAccessDetail: ({
     from,
     until,

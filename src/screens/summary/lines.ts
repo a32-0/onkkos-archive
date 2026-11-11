@@ -55,7 +55,7 @@ export function tileLines(
   where: readonly Part[],
 ): { reading: string; place: string } {
   const named = (where.length > 0 ? where : reading).map((part) =>
-    typeof part === "string" ? part : part.say === "nodeOn" ? said(part) : null,
+    typeof part === "string" ? part : part.say === "nodeOn" ? said(part) : titled(part) || null,
   );
   return { reading: readingOf(reading), place: briefLine(named) };
 }

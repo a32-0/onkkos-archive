@@ -35,11 +35,11 @@ In order, for every read:
    default in development. On the demo, which never reads live, any other id
    answers `not-found` without reading anything (spec 02).
 3. **Stored.** A stored profile for this id whose last try is younger than
-   twelve hours answers at once. The last try is the read that stored it, or
-   the later read that failed. So does a stored not-found, within DE's own `max-age` (clamped to
-   between one minute and a day). The owner set on 2026-10-06 that this comes
-   before the circuit: a player whose profile is stored keeps reading it while
-   the circuit is open.
+   twelve hours answers at once. The last try is the read that stored it, or the
+   later read that failed. So does a stored not-found, within DE's own `max-age`
+   (clamped to between one minute and a day). This comes before the
+   circuit: a player whose profile is stored keeps reading it while the
+   circuit is open.
 4. **Circuit.** If the circuit is open, answer `circuit-open` with the time it
    closes.
 5. **Lock.** One read at a time per id: a second screen asking for the same id
@@ -53,13 +53,15 @@ In order, for every read:
    `not-found` (cached), `throttled` or `upstream` (never cached, counted by the
    circuit), `malformed` (never cached).
 9. **Keep** only what the app reads: the profile cut to the fields any spec
-   uses, compressed, until a newer read replaces it. After Disconnect it stays
-   only until its twelve hours end.
+   uses, compressed, until a newer read replaces it. Of `ChallengeProgress`,
+   only the title challenges earned stay, name and progress; of `Stats`, only
+   the Helminth's own abilities used, type and count (BR-86). After Disconnect
+   it stays only until its twelve hours end.
    The raw payload is never stored.
 10. **Keep the last one on a failure.** When a profile is stored and any step
     from 4 on fails, the read answers that profile, marked stale with the time
     of the try, and the store records the try, so the next one waits twelve
-    hours (BR-69; owner, 2026-10-31). With no profile stored, the failure is
+    hours (BR-69). With no profile stored, the failure is
     the answer, as before.
 
 A refusal, a read that gets no answer and a store that fails each write one
@@ -95,7 +97,7 @@ store, which keeps the same locks until the process stops.
 - Kept: the trimmed profile last read, with when it was read and when a
   later read last failed; nothing else about a player.
 - On the device: `wf_account` (one year) and `wf_since` (the month), both
-  cookies; `wf_place` (BR-46); the ticks of spec 10 in browser storage.
+  cookies; `wf_place` (BR-46).
 - Never: the raw payload, a computed result.
 - Disconnect clears the cookies; the stored profile follows step 9.
 

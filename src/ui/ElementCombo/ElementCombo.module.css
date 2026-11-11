@@ -1,0 +1,26 @@
+.combo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.meets,
+.makes {
+  composes: label-s-upper from "../type.module.css";
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-s);
+  background-color: var(--surface-sunken);
+}
+
+.meets {
+  color: var(--ink-muted);
+}
+
+.makes {
+  color: var(--ink);
+}
+
+.arrow {
+  composes: body from "../type.module.css";
+  color: var(--ink-dim);
+}

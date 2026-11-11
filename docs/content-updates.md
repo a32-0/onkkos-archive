@@ -4,8 +4,7 @@ When DE ships an update, the app has to learn what arrived: new items, places
 and quests. Most of it enters on its own, because the catalog carries every
 item's source. Some of it needs a source curated by hand. Rarely, something
 arrives that no screen was designed for. This document is the process for all
-three, and the command that runs it. The owner set it on 2026-10-06, and on
-2026-10-15 made the command wire new content in as well as report it.
+three, and the command that runs it.
 
 ## What counts as an update
 

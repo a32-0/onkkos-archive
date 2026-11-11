@@ -46,7 +46,7 @@
 }
 
 .label {
-  composes: mono-label from "../../ui/type.module.css";
+  composes: eyebrow from "../../ui/type.module.css";
   margin: 0;
   color: var(--ink);
 }
@@ -108,26 +108,26 @@
   background: var(--surface-sunken);
 }
 
-.mono {
-  composes: mono from "../../ui/type.module.css";
+.code {
+  composes: body from "../../ui/type.module.css";
   color: var(--ink);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
 .line {
-  composes: mono;
-  composes: mono from "../../ui/type.module.css";
+  composes: code;
+  composes: body from "../../ui/type.module.css";
   display: block;
 }
 
 .strong {
-  composes: mono-strong from "../../ui/type.module.css";
+  composes: label-s from "../../ui/type.module.css";
 }
 
 .url {
-  composes: mono;
-  composes: mono from "../../ui/type.module.css";
+  composes: code;
+  composes: body from "../../ui/type.module.css";
   text-decoration: underline;
 }
 

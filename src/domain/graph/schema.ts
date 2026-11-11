@@ -6,6 +6,7 @@ import {
   type ComparisonOp,
   type Predicate,
 } from "@/domain/graph/predicates";
+import { rawEvidence, type Evidence } from "@/domain/narrative/evidence";
 
 const rawArrayContainsCheck = z.object({
   field: z.string(),
@@ -68,6 +69,16 @@ const rawGoal = z.object({
   source: z.string().optional(),
   place: z.string().optional(),
   quest: z.string().optional(),
+  item: z.string().optional(),
+  mode: z.string().optional(),
+  lacking: z.string().optional(),
+  after: z.string().optional(),
+  after_quests: z.array(z.string()).default([]),
+  after_nodes: z.array(z.string()).default([]),
+  proven_by: z.array(z.object({ evidence: rawEvidence, source: z.url() })).default([]),
+  mastery_rank: z.number().int().nonnegative().optional(),
+  places: z.array(z.string()).default([]),
+  skip_nodes: z.array(z.string()).default([]),
   logic: z.string().optional(),
   requires: z.array(z.string()).default([]),
   check: rawCheck.optional(),
@@ -133,6 +144,16 @@ export interface GraphGoal {
   source?: string;
   place?: string;
   quest?: string;
+  item?: string;
+  mode?: string;
+  lacking?: string;
+  after?: string;
+  afterQuests: string[];
+  afterNodes: string[];
+  provenBy: Evidence[];
+  masteryRank?: number;
+  places: string[];
+  skipNodes: string[];
   requires: string[];
   check?: Check;
   manualChecklistIfMissing: string[];
@@ -178,6 +199,11 @@ export function normalizeGraph(input: unknown): Graph {
       id,
       label: goal.label,
       requires: goal.requires,
+      afterQuests: goal.after_quests,
+      afterNodes: goal.after_nodes,
+      provenBy: goal.proven_by.map((proof) => proof.evidence),
+      places: goal.places,
+      skipNodes: goal.skip_nodes,
       manualChecklistIfMissing: goal.manual_checklist_if_missing,
     };
     if (goal.audience !== undefined) normalized.audience = goal.audience;
@@ -186,6 +212,11 @@ export function normalizeGraph(input: unknown): Graph {
     if (goal.source !== undefined) normalized.source = goal.source;
     if (goal.place !== undefined) normalized.place = goal.place;
     if (goal.quest !== undefined) normalized.quest = goal.quest;
+    if (goal.item !== undefined) normalized.item = goal.item;
+    if (goal.mode !== undefined) normalized.mode = goal.mode;
+    if (goal.lacking !== undefined) normalized.lacking = goal.lacking;
+    if (goal.after !== undefined) normalized.after = goal.after;
+    if (goal.mastery_rank !== undefined) normalized.masteryRank = goal.mastery_rank;
     if (goal.check !== undefined) normalized.check = normalizeCheck(goal.check);
     goals[id] = normalized;
   }
@@ -249,6 +280,11 @@ function assertReferencesResolve(graph: Graph): void {
     for (const req of goal.requires) {
       if (!known.has(req)) problems.push(`goals.${goal.id}.requires -> ${req}`);
     }
+    for (const node of goal.afterNodes) {
+      if (!known.has(node)) problems.push(`goals.${goal.id}.after_nodes -> ${node}`);
+    }
+    if (goal.after !== undefined && !graph.goals[goal.after])
+      problems.push(`goals.${goal.id}.after -> ${goal.after}`);
   }
   if (problems.length > 0) {
     throw new Error(`grafo.yaml references nodes that do not exist:\n  ${problems.join("\n  ")}`);

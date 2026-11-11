@@ -17,7 +17,6 @@
   background: var(--accent);
   border-color: var(--accent);
   color: var(--ink-inverse);
-  backdrop-filter: blur(calc(var(--blur-band) / 2));
 }
 
 .selected {

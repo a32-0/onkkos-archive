@@ -132,6 +132,7 @@ function row(id: string, title: string, detail: string): StepRowView {
     alternative: false,
     best: false,
     locked: false,
+    done: false,
     detail,
     prose: null,
     link: null,

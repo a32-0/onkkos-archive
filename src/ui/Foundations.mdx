@@ -46,7 +46,7 @@ export const grid = {
   margin: "var(--space-6) 0 var(--space-8)",
 };
 
-export const caption = { fontFamily: "var(--font-jetbrains-mono)", color: "var(--ink-muted)" };
+export const caption = { fontFamily: "var(--font-inter)", color: "var(--ink-muted)" };
 
 export const Swatch = ({ name, value }) => (
   <div style={{ display: "flex", gap: "var(--space-5)", alignItems: "center" }}>
@@ -60,7 +60,7 @@ export const Swatch = ({ name, value }) => (
         background: `var(${name})`,
       }}
     />
-    <div className={type.mono}>
+    <div className={type.body}>
       <div style={{ color: "var(--ink)" }}>{name}</div>
       <div style={caption}>{value}</div>
     </div>
@@ -84,7 +84,7 @@ export const Measure = ({ name, value, draw }) => (
       margin: "var(--space-5) 0",
     }}
   >
-    <div className={type.mono} style={{ flex: "none", width: "calc(var(--space-8) * 5)" }}>
+    <div className={type.body} style={{ flex: "none", width: "calc(var(--space-8) * 5)" }}>
       <span style={{ color: "var(--ink)" }}>{name}</span> <span style={caption}>{value}</span>
     </div>
     {draw(`var(${name})`)}
@@ -135,7 +135,7 @@ export const Measures = ({ family, draw }) =>
         borderBottom: "var(--border-1) solid var(--line-subtle)",
       }}
     >
-      <div className={type.mono} style={{ flex: "none", width: "calc(var(--space-8) * 5)" }}>
+      <div className={type.body} style={{ flex: "none", width: "calc(var(--space-8) * 5)" }}>
         <div style={{ color: "var(--ink)" }}>.{name}</div>
         <div style={caption}>{body}</div>
       </div>

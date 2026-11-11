@@ -47,14 +47,14 @@ const page = (state) => `<!doctype html>
 <style>
 ${fontFaces}
 ${tokens}
-:root { --font-cinzel: "Cinzel", "Cinzel Fallback"; --font-inter: "Inter", "Inter Fallback"; --font-jetbrains-mono: "JetBrains Mono", "JetBrains Mono Fallback"; }
+:root { --font-cinzel: "Cinzel", "Cinzel Fallback"; --font-inter: "Inter", "Inter Fallback"; }
 html, body { height: 100%; margin: 0; }
 body { background: var(--canvas); color: var(--ink); }
 ${motion}
 .failing { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
 .still { display: block; width: calc(var(--space-8) * 2); height: calc(var(--space-8) * 3); }
 .mark { display: block; width: 100%; height: 100%; }
-.reason { margin: 0; color: var(--danger-ink); font: 400 16px var(--font-jetbrains-mono), monospace; text-align: center; }
+.reason { margin: 0; color: var(--danger-ink); font: 400 14px var(--font-inter), sans-serif; text-align: center; }
 .restart { display: flex; align-self: stretch; align-items: center; justify-content: center; box-sizing: border-box; min-height: 45px; padding: var(--space-5); border: var(--border-1) solid var(--line-strong); border-radius: var(--radius-full); color: var(--ink); font: 700 16px var(--font-inter), sans-serif; text-decoration: none; }
 .restart:hover { background-image: linear-gradient(var(--hover), var(--hover)); }
 .restart:focus-visible { outline: var(--border-2) solid var(--focus); outline-offset: calc(var(--border-2) * -1); }
