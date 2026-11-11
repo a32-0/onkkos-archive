@@ -82,3 +82,32 @@ export const StepAndAlternative: Story = {
     ],
   },
 };
+
+export const MetStep: Story = {
+  args: {
+    steps: [
+      {
+        id: "quests",
+        done: true,
+        content: (
+          <StepRow
+            title="Complete 2 quests"
+            done
+            status="Done"
+            open={false}
+            bodyId="quests-body"
+            onToggle={() => {}}
+          />
+        ),
+      },
+      {
+        id: "rank",
+        content: row(
+          "rank-body",
+          "Have a Warframe at rank 30",
+          "The hunt will not start with a Warframe below rank 30 equipped.",
+        ),
+      },
+    ],
+  },
+};

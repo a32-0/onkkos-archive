@@ -6,6 +6,8 @@ import {
   questStepPlan,
   stepPlan,
   type Part,
+  type Proof,
+  provenPlan,
   type StepPlan,
 } from "@/domain/catalog/checks";
 import { collectibleView } from "@/domain/catalog/collectibles";
@@ -120,6 +122,20 @@ function placeLeftFor(screen: Screen, data: CatalogData, mode: string): string |
   return goal ? placeWithNodesLeft(goal, data.wiki.nodes, screen.profile) : null;
 }
 
+function proofOf(profile: Screen["profile"], reach: Reach): Proof {
+  const standing = new Map<string, number>();
+  for (const one of profile.Affiliations ?? []) {
+    if (typeof one?.Tag === "string" && typeof one.Title === "number")
+      standing.set(one.Tag, one.Title);
+  }
+  return {
+    places: reach.places,
+    clan: reach.clan,
+    intrinsics: profile.PlayerSkills ?? {},
+    standing,
+  };
+}
+
 export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | null> {
   const data = catalogData();
   const entries = placeCatalog().entries;
@@ -152,12 +168,13 @@ export async function itemOf(screen: Screen, name: string): Promise<ItemFacts | 
     done: new Set(screen.confirmedQuests.keys()),
     placeLeft,
   };
-  const plan = quest
+  const drafted = quest
     ? questStepPlan(data, quest, reader)
     : view
       ? collectibleStepPlan(data, view, reader)
       : item && stepPlan(data, dossier(item, data.arsenal), reader);
-  if (!plan) return null;
+  if (!drafted) return null;
+  const plan = provenPlan(data, drafted, proofOf(screen.profile, reach));
   const blocks = briefOf(plan);
   const how = plan.sections.filter((section) => section.id === "how");
   const place = quest

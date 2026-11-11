@@ -22,6 +22,8 @@ const rawQuest = z.union([
     note: z.string().optional(),
     needs: z.array(rawNeed).optional(),
     star_chart: z.boolean().optional(),
+    parts: z.array(z.string()).optional(),
+    art: z.url().optional(),
   }),
   z.string(),
 ]);
@@ -61,6 +63,8 @@ export interface Quest {
   sideArc: boolean;
   needs: Need[];
   starChart: boolean;
+  art: string | null;
+  parts: string[];
 }
 
 interface Need {
@@ -127,6 +131,8 @@ function normalizeQuest(quest: z.infer<typeof rawQuest>): Quest {
       sideArc: false,
       needs: [],
       starChart: false,
+      art: null,
+      parts: [],
     };
   }
   const kind = quest.kind ?? "main";
@@ -143,6 +149,8 @@ function normalizeQuest(quest: z.infer<typeof rawQuest>): Quest {
     sideArc: kind !== "main" || (quest.note ? SIDE_ARC_NOTE.test(quest.note) : false),
     needs: (quest.needs ?? []).map((one) => ({ ...one, quest: one.quest ?? null })),
     starChart: quest.star_chart ?? false,
+    art: quest.art ?? null,
+    parts: quest.parts ?? [],
   };
   if (quest.note !== undefined) normalized.note = quest.note;
   return normalized;

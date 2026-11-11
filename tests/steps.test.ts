@@ -285,15 +285,59 @@ describe("a game mode's Step by step (BR-37)", () => {
     expect(view.blocks[1]?.cards[0]?.groups[0]?.rows[0]?.title).toBe("Unlock The Steel Path");
   });
 
-  it("waits for Veilbreaker before the Archon Hunt, and says each Archon's Shard once", () => {
+  it("asks the Archon Hunt for The New War, Veilbreaker and a Warframe at rank 30", () => {
     const hunt = modeOf("Archon Hunt");
     const view = stepsView(factsOf(questStepPlan(data, hunt, reader)), hunt.name, "goal");
     const prerequisites = view.blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
-    expect(prerequisites.some((row) => row.id.endsWith("Veilbreaker"))).toBe(true);
+    const quests = prerequisites.find((row) => row.id.startsWith("quests:"));
+    expect(quests?.id).toContain("The New War");
+    expect(quests?.id.endsWith("Veilbreaker")).toBe(true);
+    const rank = prerequisites.find((row) => row.title === "Have a Warframe at rank 30");
+    expect(rank?.detail).toContain("below rank 30");
+    expect(hunt.art).toContain("Archons");
+    expect(modeOf("The Steel Path").art).toContain("SteelPath");
     const start = view.blocks[1]?.cards[0]?.groups[0]?.rows[0];
     expect(start?.title).toBe("Open the Archon Hunt");
     expect(start?.detail).toContain("Crimson");
     expect(start?.detail).not.toContain("Monday");
+  });
+
+  it("keeps what the profile confirms in Prerequisites, marked done, before what is left", () => {
+    const hunt = modeOf("Archon Hunt");
+    const plan = questStepPlan(data, hunt, { ...reader, done: new Set(["Veilbreaker"]) });
+    const view = stepsView(factsOf(plan), hunt.name, "goal");
+    expect(view.blocks[0]?.title).toBe("Prerequisites");
+    const rows = view.blocks[0]?.cards[0]?.groups[0]?.rows ?? [];
+    const quests = rows.findIndex((row) => row.id.startsWith("quests:"));
+    const rank = rows.findIndex((row) => row.title === "Have a Warframe at rank 30");
+    expect(rows[quests]?.done).toBe(true);
+    expect(rows[quests]?.id).toContain("The New War");
+    expect(quests).toBeLessThan(rank);
+    expect(rows.find((row) => row.title === "Have a Warframe at rank 30")?.done).toBe(false);
+  });
+
+  it("opens every quest and game mode on Prerequisites, but Awakening", () => {
+    const quests = [...data.spine.arcs.flatMap((arc) => arc.quests), ...data.spine.modes];
+    const everything = new Set(quests.map((one) => one.name));
+    for (const quest of quests.filter((one) => one.name !== "Awakening")) {
+      for (const done of [new Set<string>(), everything]) {
+        const [first] = questStepPlan(data, quest, { ...reader, done }).sections;
+        expect([quest.name, first?.id]).toEqual([quest.name, "prerequisites"]);
+      }
+    }
+    const darvo = data.spine.arcs
+      .flatMap((arc) => arc.quests)
+      .find((one) => one.name === "A Man of Few Words");
+    if (!darvo) throw new Error("A Man of Few Words is not in the spine");
+    const rows = questStepPlan(data, darvo, reader).sections[0]?.groups[0]?.rows ?? [];
+    expect(rows.map((row) => row.title)).toContainEqual({ say: "relayTitle" });
+  });
+
+  it("opens every item of the Arsenal on Prerequisites (BR-89)", () => {
+    for (const item of data.arsenal) {
+      const [first] = stepPlan(data, dossier(item, data.arsenal), reader).sections;
+      expect([item.name, first?.id]).toEqual([item.name, "prerequisites"]);
+    }
   });
 
   it("gives a Kuva weapon's Lich steps the enemy's own art, for the Overview", () => {
@@ -320,7 +364,7 @@ describe("similar prerequisites share one row", () => {
     expect(rows.some((row) => row.id.startsWith("quest:") || row.id.startsWith("junction:"))).toBe(
       false,
     );
-    expect(quests[0]?.title).toEqual({ say: "questsTitle", count: 12 });
+    expect(quests[0]?.title).toEqual({ say: "questsTitle", count: 13 });
     expect(quests[0]?.id.split("|").at(-1)).toBe("The Lotus Eaters");
   });
 

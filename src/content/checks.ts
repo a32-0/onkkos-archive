@@ -255,7 +255,9 @@ export const TITLES = {
   invasionTitle: () => "Play Invasions",
 
   acquireTitle: ({ name, count }: { name: string; count: number }) =>
-    count > 1 ? `Acquire ${count} ${name}s` : `Acquire ${article(name)} ${name}`,
+    count > 1
+      ? `Acquire ${count} ${name.endsWith("s") ? name : `${name}s`}`
+      : `Acquire ${article(name)} ${name}`,
   addTitle: ({ name }: { name: string }) => `Add ${article(name)} ${name}`,
   useIncubatorTitle: () => "Use the Incubator",
   existingKavatTitle: () => "An existing Kavat",

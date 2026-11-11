@@ -7,6 +7,7 @@ export type TimelineStep = {
   alternative?: boolean;
   best?: boolean;
   locked?: boolean;
+  done?: boolean;
   content: ReactNode;
 };
 
@@ -18,10 +19,12 @@ export function Timeline({ steps }: { steps: readonly TimelineStep[] }) {
           <span className={step.locked ? styles.locked : styles.rail} aria-hidden>
             {!step.alternative && (
               <span className={styles.marker}>
-                <span className={step.best ? styles.best : styles.diamond} />
+                <span
+                  className={step.done ? styles.met : step.best ? styles.best : styles.diamond}
+                />
               </span>
             )}
-            <span className={styles.line} />
+            {!step.done && <span className={styles.line} />}
           </span>
           <div className={styles.content}>{step.content}</div>
         </li>

@@ -12,7 +12,8 @@ answer on the item's page, and it is built exactly as the frames draw it.
 Row states:
 
 - [`479:3620` Step row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=479-3620):
-  a collapsed row.
+  a collapsed row; State=Done (`1220:7391`) is a met prerequisite, closed, its
+  title in `ink/dim`.
 - [`465:477` Component row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=465-477):
   a ticked component.
 
@@ -48,7 +49,8 @@ row types, states and order are the design. They will drift as the game data
 changes; the layout is what each frame fixes.
 
 - [`677:12872` Item>Step by step — Quest](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-12872): a quest placed in the grammar: "Quest" as kicker and no state; Prerequisites with the quests and junctions before it and what it needs owned; How to get with where it starts and the wiki's passage.
-- A game mode, The Steel Path or the Archon Hunt, takes the same page: "Game mode" as kicker, "Milestones" in the top bar. No frame of its own; it follows the quest's.
+- [`1218:7495` Item>Step by step — Prerequisites met](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1218-7495): the Archon Hunt once The New War and Veilbreaker are done: "Complete 2 quests" met (`Step row` State=Done, a round `fill/dim` marker, no line), then "Have a Warframe at rank 30" left.
+- [`1218:7661` Item>Step by step — Game mode](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1218-7661): The Steel Path: "Game mode" as kicker, "Milestones" in the top bar, and "Clear every node of the Star Chart" among its Prerequisites.
 - [`677:13172` Item>Step by step — Locked](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-13172): Kuva Sobek for a player below its Mastery Rank: the rank row at full contrast with its gap, everything after it locked.
 
 ## Rules
@@ -118,8 +120,12 @@ A quest or a game mode has two sections: Prerequisites and How to get, the
 row that starts it, with the exact place or message that does. A thing it
 needs owned reads "Have a Railjack", says where the player gets one and links
 to its page. The Steel Path's Prerequisites add "Clear every node of the Star
-Chart", whose detail names the planet with nodes left. Stages, rewards and
-schedules are left out: the game shows them (BR-37).
+Chart", whose detail names the planet with nodes left; the Archon Hunt's add
+"Have a Warframe at rank 30"; a quest that starts in a Relay adds "Reach a Tenno
+Relay", the row Baro's items use. Stages, rewards and schedules are left out: the
+game shows them (BR-37). Awakening, the game's first mission, has no Prerequisites: nothing
+stands before it. A prerequisite the profile proves met stays, read as met
+(BR-88).
 
 ## The rows
 

@@ -57,6 +57,40 @@ describe("confirmedQuests", () => {
     expect(confirmed.get("The Hex")?.[0]?.via).toBe("mission");
   });
 
+  it("reads Vor's Prize from a cleared Junction, Xoris and the Jordas Golem node", () => {
+    expect(confirmedQuests(rules, cy).has("Vor's Prize")).toBe(true);
+    const xoris = {
+      LoadOutInventory: {
+        XPInfo: [
+          {
+            ItemType:
+              "/Lotus/Weapons/Corpus/Melee/Glaive/CrpGhostCatcherGlaive/CrpGhostCatcherGlaive",
+            XP: 1,
+          },
+        ],
+      },
+    };
+    expect(confirmedQuests(rules, xoris).has("The Deadlock Protocol")).toBe(true);
+    const golem = { Missions: [{ Tag: "SolNode701", Completes: 1 }] };
+    expect(confirmedQuests(rules, golem).has("The Jordas Precept")).toBe(true);
+    const hex = { ChallengeProgress: [{ Name: "TheHexCompleteTitleChallenge", Progress: 1 }] };
+    expect(confirmedQuests(rules, hex).has("The Hex")).toBe(true);
+    const kavat = {
+      LoadOutInventory: {
+        XPInfo: [{ ItemType: "/Lotus/Types/Game/CatbrowPet/CheshireCatbrowPetPowerSuit", XP: 1 }],
+      },
+    };
+    expect(confirmedQuests(rules, kavat).has("Howl of the Kubrow")).toBe(true);
+    const gara = {
+      LoadOutInventory: { XPInfo: [{ ItemType: "/Lotus/Powersuits/Glass/Glass", XP: 1 }] },
+    };
+    expect(confirmedQuests(rules, gara).has("Saya's Vigil")).toBe(true);
+    const sevagoth = {
+      LoadOutInventory: { XPInfo: [{ ItemType: "/Lotus/Powersuits/Devourer/Devourer", XP: 1 }] },
+    };
+    expect(confirmedQuests(rules, sevagoth).has("Call of the Tempestarii")).toBe(false);
+  });
+
   it("accepts any one proof of a quest, it does not require all of them", () => {
     const angels = confirmedQuests(rules, cy).get("Angels of the Zariman");
     expect(angels?.map((p) => p.via)).toEqual(["affiliation"]);

@@ -221,6 +221,11 @@ arcs:
         wiki: "Mask of the Revenant"
         release: "2018-08-24"
         requirement: "Observer rank with The Quills (needs an Operator)"
+        needs:
+          - need: Operator
+            how: "The Quills speak only to the Operator. Their door in Cetus, behind Konzu's notice board, opens once The War Within is done."
+            wiki: Operator
+            quest: "The War Within"
         start: "Ask Nakak in Cetus about the mask, once you hold Observer rank with The Quills."
         locations: [Earth]
       - quest: "The Glast Gambit"
@@ -246,6 +251,7 @@ arcs:
         release: "2020-03-24"
         requirement: "The Sacrifice completed"
         start: "Codex → Quests → Prelude to War; its three parts play in order."
+        parts: ["Chimera Prologue", "Erra", "The Maker"]
         locations: [Lua, Earth, Venus]
         note: >
           Includes Chimera Prologue (2018-10-12), Erra (2019-12-13) and The
@@ -341,6 +347,7 @@ modes:
   - quest: "The Steel Path"
     kind: mode
     wiki: "The Steel Path"
+    art: "https://wiki.warframe.com/images/SteelPathKeyart.png"
     requirement: "Prelude to War completed, Mastery Rank 5, and every node of the connected Star Chart, Lua and the Kuva Fortress included, except the Mutalist Alad V and Jordas Golem Assassinations on Eris and Brutus on Uranus"
     star_chart: true
     start: "Talk to Teshin in any Relay and ask him about the Steel Path. It then shows as a toggle on the right of the Star Chart."
@@ -348,5 +355,10 @@ modes:
   - quest: "Archon Hunt"
     kind: mode
     wiki: "Archon Hunt"
-    requirement: "Veilbreaker completed"
+    art: "https://wiki.warframe.com/images/Archons.jpg"
+    requirement: "The New War and Veilbreaker completed"
+    needs:
+      - need: Warframe at rank 30
+        how: "The hunt will not start with a Warframe below rank 30 equipped."
+        wiki: Archon Hunt
     start: "It sits beside the Sortie in the World State Window. Each Archon pays its own Archon Shard: Amar a Crimson one, Nira an Amber one, Boreal an Azure one."

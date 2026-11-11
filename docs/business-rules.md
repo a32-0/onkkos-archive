@@ -107,6 +107,13 @@ cite one. The Figma comment id is given beside each for traceability.
   last play?" leads to What's new; "What are you after?" leads to a goal's
   steps; the items on What's new lead to their steps; and both end on the map,
   at a place.
+- Nothing reaches the code before its frame: a visual state, a marker, a row
+  shape or a screen behaviour that no frame draws waits for one. The order is
+  frame, spec, code.
+- A proposal is drawn in a Section of its own, apart from the approved rows,
+  from plain frames and the components that exist. Once approved, it becomes
+  components on the Design System page and its frames join their screen's
+  row.
 
 ### BR-35 · Catch up is what What's new draws
 
@@ -147,7 +154,11 @@ cite one. The Figma comment id is given beside each for traceability.
   names the planet with nodes left, which "You're on" opens on the map.
 - A quest's or a mode's page says what the player cannot read in the game:
   what stands in the way and where to start. It lists no stages, no rewards
-  and no schedule.
+  and no schedule. A prerequisite is never trimmed as obvious: the Archon
+  Hunt asks for The New War, Veilbreaker and a Warframe at rank 30, and says
+  all three.
+- A quest's or a mode's page always has art: the lead image of its wiki page,
+  or the one the spine names (`art`) when that image does not show it.
 - A place chosen as a target opens the map on that place, as Next does
   (BR-36).
 - The next Mastery Rank is a goal of its own since 2026-11-02 (BR-76): it
@@ -679,13 +690,30 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
   and a Mastery Rank, which raises the Mastery row to the highest rank still
   pending. Dante needs Mastery Rank 0, but The Deadlock Protocol needs 4, so
   its plan opens on "Mastery Rank 4".
-- What the profile confirms is not asked. `stepPlan()` and
-  `collectibleStepPlan()` take the quests `quest_evidence.yaml` proves; a
-  final pass over Prerequisites drops each of them, every quest before it, and
-  the junctions those quests needed. With the full demo profile, Dante goes
-  from eleven quests to one, The Deadlock Protocol, which no evidence rule
-  covers. Absence of evidence still shows the row: it is never read as "not
-  done".
+- A quest's chain also follows what it needs owned: The New War needs a
+  Railjack, which Rising Tide gives, so Rising Tide comes before it and a
+  confirmed New War proves it. A part of a quest (`parts` in the spine: Erra
+  is part of Prelude to War) reads as the quest. A name that is neither a
+  quest nor a Junction is never a quest row.
+- What the profile confirms stays in Prerequisites, marked met (BR-88).
+  `stepPlan()`, `collectibleStepPlan()` and `questStepPlan()` take the quests
+  `quest_evidence.yaml` proves; a final pass over Prerequisites marks each of
+  them, every quest before it, and the junctions those quests needed. With
+  the full demo profile, Dante's eleven quests read as ten met and one left,
+  The Deadlock Protocol, which no evidence rule covers. Absence of evidence
+  leaves the row pending: it is never read as "not done".
+
+### BR-89 · Every Step by step but a collectible's opens on Prerequisites
+
+- Type: content.
+- Rule: the Step by step of an item of the Arsenal, a quest or a game mode
+  always opens on Prerequisites: the steps to reach the point where the thing
+  unlocks. Every item of the Arsenal has at least its Slot row (BR-23), and
+  every quest the quests and places before it (BR-28).
+- Awakening is the one exception: it is the game's first quest, and nothing
+  comes before it.
+- a collectible (a mod, an arcane, a relic, a resource) shows Prerequisites only when a
+  source names one, such as the place a drop needs reached (BR-72).
 
 ### BR-29 · A vaulted Prime in Resurgence says how to get it
 
@@ -1093,8 +1121,9 @@ is never an Alert, which is for the app's own states.
   opens it when there is one (Ash's three Proxima). The Hex
   goes from seventeen rows to two.
 - The row sits where the first of its kind stood. What the profile confirms is
-  dropped before the rows are gathered (BR-28), and the lock (BR-63) reads the
-  first Junction in the row the profile proves unmet.
+  gathered apart from what is left (BR-88), so a plan can read "Complete 10
+  quests", met, above "Complete The Deadlock Protocol". The lock (BR-63)
+  reads the first Junction in the row the profile proves unmet.
 
 ### BR-67 · Every component opens its own page
 
@@ -1115,7 +1144,8 @@ opened the wiki while Nano Spores opened its own page.
 
 ### BR-68 · A filter narrows and never hides why
 
--
+- Frames [`752:4545` Plan — Advanced search](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=752-4545)
+  and [`753:5217` Search — Filtered](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=753-5217) (spec 12).
 - Type: behaviour.
 - Rule: a filter on the advanced search takes results out of the list; it
   never takes out the reason one is there. A result beyond the player's reach
@@ -1125,6 +1155,17 @@ opened the wiki while Nano Spores opened its own page.
   rank.
 
 ## Feedback on a wait and a read
+
+### BR-88 · An Alert is only for the app's own states
+
+- Component [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
+  its words in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488).
+- Type: content.
+- Rule: an Alert (Error, Warning, Success, Informative) says what happened to
+  the app or to a read: a read that failed, an id refused, a read that worked.
+  It never carries a game fact or advice, such as "keep this weapon"; that
+  goes in the screen's own parts, a hero, a chip or a heading (BR-61, BR-79).
+- Its text is regular, `Body/Default`, never bold.
 
 ### BR-69 · A later read that fails keeps the player in place
 
@@ -1398,9 +1439,7 @@ The other proposals went to the Archive page.
 
 ### BR-82 · A released app never runs on data it cannot read
 
-- No frame: nothing is shown.1.0
-  downloaded data only 1.2.0 could read and every screen answered with an
-  error until the update installed.
+- No frame: nothing is shown.
 - Type: behaviour.
 - Rule: the desktop app uses a new data set only after a server of its own
   version has read every file of it (`/api/data-check`). A set it cannot read
@@ -1431,7 +1470,8 @@ The other proposals went to the Archive page.
 
 ### BR-84 · Plan finds what has a known source
 
--
+- No frame of its own: it changes what the search finds, not how a result
+  looks.
 - Type: content.
 - Rule: an entry of the catalog is searchable when any source says how to get
   it: a drop, a vendor, Baro, a recipe or `sources.yaml`. That brings in Primed
@@ -1441,7 +1481,8 @@ The other proposals went to the Archive page.
 
 ### BR-85 · In Step by step, only Blueprints and Components carry art
 
--
+- Frame [`662:7143` Item>Step by step](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-7143)
+  and the `Step row` variants with art (`1087:7320`, `1087:7328`, `1087:7336`).
 - Type: content.
 - Rule: below the item's hero, art belongs to Blueprints (a flat list's rows, a
   part card's header) and Components. Every other row is words alone:
@@ -1535,3 +1576,33 @@ The other proposals went to the Archive page.
   element adds to the damage, a faction mod multiplies all of it.
 - A stat with no curated copy shows its family icon and the game's own words,
   with no amount, example or note. Curated copy is facts, never advice.
+
+### BR-88 · A met prerequisite stays, marked
+
+- Frame [`1218:7495` Item>Step by step — Prerequisites met](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1218-7495).
+- Type: behaviour.
+- Rule: a Step by step is the steps that unlock the thing on screen, so it
+  opens on Prerequisites whatever the thing is: an item, a quest, a game
+  mode. Awakening, the game's first mission, is the one page without them.
+- A prerequisite the profile proves met is not removed. It stays in the list
+  and reads met: `Step row` State=Done (closed, its title in `--ink-dim`), a
+  round `--fill-dim` marker in place of the diamond, and no line under it.
+  It opens like any row. A screen reader hears "Done".
+- Every prerequisite the profile can prove is read, on every Step by step:
+  - the quests `quest_evidence.yaml` confirms, every quest before them and the
+    Junctions they needed;
+  - Mastery Rank, once the player's rank reaches it;
+  - "Reach …" and "Clear the … Junction", once the profile has reached the
+    place (the planet past the Junction);
+  - "Join or create a clan", once the profile has a clan;
+  - Railjack Intrinsics, once every Railjack discipline (Piloting, Gunnery,
+    Tactical, Engineering, Command) reaches the rank;
+  - a syndicate rank, once the profile's title with that syndicate reaches it
+    (`syndicates` in `sources.yaml`).
+- What the profile cannot prove stays open: a free slot, buying the
+  blueprint, reaching a Relay, a syndicate the table does not name
+  (Operational Supply), a quest no rule in `quest_evidence.yaml` proves.
+- The met rows come first, then the ones left. `provenPlan()` marks them on
+  the item page, after the plan is drafted.
+- `tests/steps.test.ts` holds the rule for every quest and mode of the spine,
+  with nothing confirmed and with every quest confirmed.

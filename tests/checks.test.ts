@@ -246,6 +246,7 @@ describe("withProse", () => {
     best: false,
     alternative: false,
     optional: false,
+    done: false,
     thing: null,
     gear: null,
   });

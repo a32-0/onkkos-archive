@@ -343,6 +343,7 @@ export interface StepRow {
   best: boolean;
   alternative: boolean;
   optional: boolean;
+  done: boolean;
   thing: string | null;
   gear: { name: string; count: number } | null;
 }
@@ -436,6 +437,7 @@ const MARKET_WIKI = "Market";
 const TRADING_WIKI = "Trading";
 const STAR_CHART_WIKI = "Star Chart";
 const STAR_CHART_ROW = "star-chart";
+const RELAY_NEED = /\bRelay\b/;
 
 function slotWiki(kind: SlotKind): string {
   return kind === "Companion" ? "Companion" : "Slots";
@@ -462,6 +464,7 @@ function row(
     best: rest.best ?? false,
     alternative: rest.alternative ?? false,
     optional: rest.optional ?? false,
+    done: rest.done ?? false,
     thing: rest.thing ?? null,
     gear: rest.gear ?? null,
   };
@@ -1038,6 +1041,7 @@ function masteryRows(required: number, masteryRank: number | undefined): StepRow
           : say("masteryDetail", { now: masteryRank, required }),
       ),
       wikiTitle: MASTERY_WIKI,
+      done: masteryRank !== undefined && masteryRank >= required,
     }),
   ];
 }
@@ -1062,8 +1066,29 @@ function junctionRow(data: CatalogData, junction: string): StepRow {
   });
 }
 
+const spineQuests = new WeakMap<CatalogData, ReadonlyMap<string, string>>();
+
+function questNames(data: CatalogData): ReadonlyMap<string, string> {
+  let names = spineQuests.get(data);
+  if (!names) {
+    const map = new Map<string, string>();
+    for (const quest of [...data.spine.arcs.flatMap((arc) => arc.quests), ...data.spine.modes]) {
+      map.set(quest.name, quest.name);
+      for (const part of quest.parts) map.set(part, quest.name);
+    }
+    names = map;
+    spineQuests.set(data, names);
+  }
+  return names;
+}
+
+function knownQuests(data: CatalogData, quests: readonly string[]): string[] {
+  const names = questNames(data);
+  return [...new Set(quests.flatMap((quest) => names.get(quest) ?? []))];
+}
+
 function questRowsFor(data: CatalogData, quests: readonly string[]): StepRow[] {
-  return questsBefore(data.spine, quests).flatMap((quest) => [
+  return questsBefore(data.spine, knownQuests(data, quests)).flatMap((quest) => [
     ...questNeeds(data.spine, quest).junctions.map((junction) => junctionRow(data, junction)),
     row(`quest:${quest}`, say("questTitle", { quest }), {
       detail: parts(say("questDetail")),
@@ -1081,9 +1106,26 @@ function requirementRows(
   const named = requirements.filter((one) => one.kind === "quest").map((one) => one.name);
   const junctions = named.filter((name) => JUNCTION.test(name));
   const quests = named.filter((name) => !JUNCTION.test(name));
+  const known = questNames(data);
   out.push(...questRowsFor(data, quests));
   out.push(...junctions.map((junction) => junctionRow(data, junction)));
+  for (const node of quests.filter((name) => !known.has(name))) {
+    if (!data.wiki.nodes.some((one) => one.name === node)) continue;
+    out.push(row(`node:${node}`, say("playTitle", { node }), { wikiTitle: node }));
+  }
   for (const one of requirements) {
+    if (one.kind === "mastery" && one.rank !== null) {
+      out.push(...masteryRows(one.rank, undefined));
+    }
+    if (one.kind === "resource") {
+      out.push(
+        row(`acquire:${one.name}`, say("acquireTitle", { name: one.name, count: one.rank ?? 1 }), {
+          prose: lead(one.name),
+          wikiTitle: one.name,
+          thing: one.name,
+        }),
+      );
+    }
     if (one.kind === "intrinsics") {
       out.push(
         row(`intrinsics:${one.rank ?? 0}`, say("intrinsicsTitle", { rank: one.rank }), {
@@ -2081,17 +2123,20 @@ function placesRow(data: CatalogData, names: readonly string[]): StepRow {
 
 function prerequisitesRead(data: CatalogData, rows: StepRow[], linking: Linking): StepRow[] {
   const past = settled(data, linking.done);
-  const kept = withoutRepeats(rows.filter((one) => pending(one, past)));
-  const questMastery = kept
+  const asked = rows.flatMap((one) =>
+    one.id === MASTERY_ROW && one.title.say === "masteryTitle" ? [one.title.rank] : [],
+  );
+  const kept = withoutRepeats(rows).filter((one) => one.id !== MASTERY_ROW);
+  const left = kept.filter((one) => pending(one, past));
+  const met = kept.filter((one) => !pending(one, past));
+  const questMastery = left
     .filter((one) => one.id.startsWith(QUEST_ROW))
     .map((one) => questNeeds(data.spine, one.id.slice(QUEST_ROW.length)).mastery);
-  const needed = Math.max(linking.masteryReq, ...questMastery);
+  const needed = Math.max(linking.masteryReq, ...questMastery, ...asked);
   return [
     ...masteryRows(needed, linking.masteryRank),
-    ...gathered(
-      data,
-      kept.filter((one) => one.id !== MASTERY_ROW),
-    ),
+    ...gathered(data, met).map((one) => ({ ...one, done: true })),
+    ...gathered(data, left),
   ];
 }
 
@@ -2705,6 +2750,9 @@ export function questStepPlan(data: CatalogData, quest: Quest, reader: Reader): 
     ...questRowsFor(data, [...needs.quests, ...owned]),
     ...needs.junctions.map((junction) => junctionRow(data, junction)),
     ...reachRows(data, quest.availableAt),
+    ...(RELAY_NEED.test(quest.requirement ?? "")
+      ? [row("relay", say("relayTitle"), { prose: lead(RELAY_WIKI), wikiTitle: RELAY_WIKI })]
+      : []),
     ...quest.needs.map((need) =>
       row(`need:${need.need}`, say("needTitle", { need: need.need }), {
         detail: parts(need.how),
@@ -2791,4 +2839,88 @@ export function planLock(plan: StepPlan, reach: Reach): PlanLock | null {
     if (gap) return { row: entry.id, gap };
   }
   return null;
+}
+
+export interface Proof {
+  places: ReadonlySet<string> | null;
+  clan: boolean;
+  intrinsics: Readonly<Record<string, number>>;
+  standing: ReadonlyMap<string, number>;
+}
+
+const RAILJACK_DISCIPLINES = [
+  "LPS_PILOTING",
+  "LPS_GUNNERY",
+  "LPS_TACTICAL",
+  "LPS_ENGINEERING",
+  "LPS_COMMAND",
+];
+const RANK_ROW = "rank:";
+const INTRINSICS_ROW = "intrinsics:";
+const CLAN_ROW = "clan:";
+const SPACES = /[^a-z0-9]/g;
+
+function reached(proof: Proof, place: string): boolean {
+  return proof.places?.has(place) ?? false;
+}
+
+function rankLevel(ranks: readonly string[], label: string): number | null {
+  if (/^\d+$/.test(label)) return Number(label);
+  const key = label.toLowerCase().replace(SPACES, "");
+  const index = ranks.findIndex((one) => one.toLowerCase().replace(SPACES, "") === key);
+  return index === -1 ? null : index + 1;
+}
+
+function proven(data: CatalogData, entry: StepRow, proof: Proof): boolean {
+  const { id } = entry;
+  if (id.startsWith(PLACE_ROW)) return reached(proof, id.slice(PLACE_ROW.length));
+  if (id.startsWith(PLACES_ROW)) {
+    return id
+      .slice(PLACES_ROW.length)
+      .split(LIST_SEPARATOR)
+      .every((place) => reached(proof, place));
+  }
+  if (id.startsWith(JUNCTION_ROW)) {
+    return reached(proof, id.slice(JUNCTION_ROW.length).replace(JUNCTION, ""));
+  }
+  if (id.startsWith(JUNCTIONS_ROW)) {
+    return id
+      .slice(JUNCTIONS_ROW.length)
+      .split(LIST_SEPARATOR)
+      .every((junction) => reached(proof, junction.replace(JUNCTION, "")));
+  }
+  if (id.startsWith(CLAN_ROW)) return proof.clan;
+  if (id.startsWith(INTRINSICS_ROW)) {
+    const rank = Number(id.slice(INTRINSICS_ROW.length));
+    return RAILJACK_DISCIPLINES.every((skill) => (proof.intrinsics[skill] ?? 0) >= rank);
+  }
+  if (id.startsWith(RANK_ROW) && entry.title.say === "rankTitle") {
+    const syndicate = data.curated.standing.get(id.slice(RANK_ROW.length));
+    if (!syndicate) return false;
+    const level = rankLevel(syndicate.ranks, entry.title.rank);
+    const have = proof.standing.get(syndicate.tag);
+    return level !== null && have !== undefined && have >= level;
+  }
+  return false;
+}
+
+export function provenPlan(data: CatalogData, plan: StepPlan, proof: Proof): StepPlan {
+  return {
+    sections: plan.sections.map((entry) =>
+      entry.id !== PREREQUISITES
+        ? entry
+        : {
+            ...entry,
+            groups: entry.groups.map((group) => {
+              const rows = group.rows.map((one) =>
+                one.done || !proven(data, one, proof) ? one : { ...one, done: true },
+              );
+              return {
+                ...group,
+                rows: [...rows.filter((one) => one.done), ...rows.filter((one) => !one.done)],
+              };
+            }),
+          },
+    ),
+  };
 }

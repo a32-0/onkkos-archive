@@ -185,10 +185,15 @@ Per-quest fields:
   gated by another quest, a rank or an Orbiter segment carry no value.
 - `note`: free text. A note containing "doesn't block the main path" marks
   a main-story branch as off-path.
+- `parts`: the quests the game plays as parts of this one, as other sources
+  name them ("Chimera Prologue", "Erra", "The Maker" for Prelude to War). A
+  part asked anywhere reads as this quest.
 - `needs`: what the player must own besides quests, junctions and rank, as
   the wiki's infobox lists it. Each has `need` (the thing, "Railjack"), `how`
   (one line on where the player gets it), `wiki` (its page) and an optional
   `quest` that gives it, which joins the quests before.
+- `art`: the image of the quest's or the mode's page, for the ones whose
+  wiki lead image does not show it. It wins over `update-art.json`.
 
 A top-level `modes` list holds the game modes Plan's milestones open (The
 Steel Path, the Archon Hunt) in the same shape, with `kind: mode`. They sit
@@ -210,15 +215,23 @@ may carry a `note`.
 
 Evidence kinds:
 
-| Kind           | Field    | Reads                                                                                                                                |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `flag`         | `field`  | A boolean at the profile root (`UnlockedOperator`)                                                                                   |
-| `affiliation`  | `tag`    | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                    |
-| `mission`      | `tag`    | A tag in `Missions[]`; a hub that only opens after the quest                                                                         |
-| `mission_type` | `type`   | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                  |
-| `item`         | `type`   | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable |
-| `challenge`    | `name`   | A `Name` in `ChallengeProgress[]` with progress above 0: the title challenge behind the Honoria a quest awards                       |
-| `ability`      | `prefix` | A `type` in `Stats.Abilities[]` starting with the prefix, used at least once: an ability only one thing gives (the Helminth's own)   |
+| Kind           | Field    | Reads                                                                                                                                                                                                                                        |
+| -------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `flag`         | `field`  | A boolean at the profile root (`UnlockedOperator`)                                                                                                                                                                                           |
+| `affiliation`  | `tag`    | A tag in `Affiliations[]`; standing can only be earned once the syndicate is open                                                                                                                                                            |
+| `mission`      | `tag`    | A tag in `Missions[]`; a hub that only opens after the quest                                                                                                                                                                                 |
+| `mission_type` | `type`   | Any star chart node of this mission type in `Missions[]`, as `warframe-worldstate-data` spells it (substring match)                                                                                                                          |
+| `item`         | `type`   | An `ItemType` in `LoadOutInventory.XPInfo` that only exists as the quest's completion reward, never sold in the Market nor tradeable, or that only what the quest gives can make (a Kubrow or Kavat, born in Howl of the Kubrow's Incubator) |
+| `challenge`    | `name`   | A `Name` in `ChallengeProgress[]` with progress above 0: the title challenge behind the Honoria a quest awards                                                                                                                               |
+| `ability`      | `prefix` | A `type` in `Stats.Abilities[]` starting with the prefix, used at least once: an ability only one thing gives (the Helminth's own)                                                                                                           |
+
+A quest whose only effect the app asks about is its own Warframe is proven by
+owning that Warframe, earned or bought: Saya's Vigil (Gara), Sands of Inaros,
+The Limbo Theorem, Hidden Messages, The Glast Gambit, Octavia's Anthem, Mask
+of the Revenant, The Silver Grove and The Waverider. A quest that opens more
+than its reward is not: Call of the Tempestarii (the Sisters of Parvos), The
+New Strange (Simaris's synthesis), Stolen Dreams (Maroo's Ayatan hunt) and
+Once Awake (Patient Zero), since buying the reward opens none of that.
 
 What is deliberately absent, and why, is in `narrative.md`.
 
@@ -247,6 +260,11 @@ Two lists:
 - `tribute`: the mods only a Daily Tribute milestone gives. Each entry has
   `item`, `days` and `cite`. It is a list of its own, not a route type, so
   released apps skip it instead of refusing the file.
+- `syndicates`: each syndicate's profile tag (`tag`, as `Affiliations` spells
+  it), the names its rank rows use for it (`vendors`: "Red Veil", "Hok",
+  "Bird 3") and its rank titles from rank 1 up (`ranks`), as its wiki page
+  lists them. A syndicate rank in Prerequisites reads met once the profile's
+  title reaches it (BR-88).
 - `art`: a map from an enemy's name to the wiki image that shows it, for the
   enemies whose wiki page image is wrong or missing: the Kuva Larvling, the
   Kuva Lich, the Candidate and the Sister of Parvos. It is read before

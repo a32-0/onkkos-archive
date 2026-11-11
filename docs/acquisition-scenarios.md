@@ -141,8 +141,14 @@ rather than adding it as an alternative.
 **Prerequisites** come from the best route of every part, de-duplicated:
 
 - A node's `Requirements` in `Module:Missions/data`, parsed by
-  `parseRequirements()` into quests, an Intrinsics rank, a locator key, or an
-  active Kuva Lich or Sister. 89 nodes carry one. Armatus gives Dante's "The
+  `parseRequirements()` into quests, an Intrinsics rank, a locator key, an
+  active Kuva Lich, Sister or Technocyte Coda, a Mastery Rank ("Must be
+  [[Mastery Rank]] 5 or higher", read into the Mastery row) or a count of a
+  thing ("Must have 5 [[Animo Nav Beacon]]s", an "Acquire 5 Animo Nav
+  Beacons" row). A linked name that is not a quest of the spine reads as
+  "Play {node}" when it is a node, and is left out otherwise, as the
+  Simaris gates "Daily Tribute" and "Defeat Glassmaker" are. 89 nodes carry
+  one. Armatus gives Dante's "The
   Deadlock Protocol and Whispers in the Walls" word for word.
 - For a bounty, the same field on the hub node of that place. Chrysalith
   gives Gyre's "Angels of the Zariman".

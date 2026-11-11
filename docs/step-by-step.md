@@ -26,7 +26,7 @@ A section with nothing in it does not render. Each is a `Divider` over a
 card.
 
 1. **Prerequisites.** Mastery Rank when it is above 0, the slot, the quests
-   the farm needs (root first, the ones the profile confirms left out), a
+   the farm needs (root first, the ones the profile confirms marked met), a
    Railjack Intrinsics rank, a clan for anything researched, a syndicate rank,
    then one "Reach" row per place. Each row says how it is met: standing
    until the rank, the Junction to clear, or for a place off the star chart

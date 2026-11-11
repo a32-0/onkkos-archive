@@ -49,7 +49,8 @@ export function dropSources(): Record<string, DropSource> {
   return sources;
 }
 
-export function questArt(quest: Pick<Quest, "name" | "wikiTitle">): string | null {
+export function questArt(quest: Pick<Quest, "name" | "wikiTitle" | "art">): string | null {
+  if (quest.art !== null) return quest.art;
   const art = updateArt();
   return art[quest.name] ?? (quest.wikiTitle === null ? null : art[quest.wikiTitle]) ?? null;
 }

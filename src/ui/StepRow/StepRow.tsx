@@ -8,6 +8,7 @@ export function StepRow({
   art,
   best,
   locked,
+  done,
   status,
   open,
   bodyId,
@@ -18,6 +19,7 @@ export function StepRow({
   art?: string | null;
   best?: boolean;
   locked?: boolean;
+  done?: boolean;
   status?: string;
   open: boolean;
   bodyId: string;
@@ -35,7 +37,7 @@ export function StepRow({
       >
         {art !== undefined &&
           (art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />)}
-        <span className={best ? styles.best : styles.title}>{title}</span>
+        <span className={best ? styles.best : done ? styles.done : styles.title}>{title}</span>
         {status && <span className={styles.status}>{status}</span>}
         <span className={open ? styles.up : styles.down}>
           <Icon name="chevron-backward" />

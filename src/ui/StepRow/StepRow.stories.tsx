@@ -112,4 +112,8 @@ export const LockedWithArt: Story = {
   },
 };
 
+export const Done: Story = {
+  args: { title: "Complete 2 quests", done: true, open: false, status: "Done" },
+};
+
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

@@ -104,6 +104,7 @@ export function Steps({ view, ticks }: { view: StepsView; ticks: Ticks }) {
                         alternative: row.alternative,
                         best: row.best,
                         locked: row.locked,
+                        done: row.done,
                         content: (
                           <div id={row.anchor ?? undefined}>
                             <StepRow
@@ -111,8 +112,11 @@ export function Steps({ view, ticks }: { view: StepsView; ticks: Ticks }) {
                               {...(row.art !== undefined && { art: row.art })}
                               best={row.best}
                               locked={row.locked}
-                              status={row.locked ? STATES.locked : undefined}
-                              open={open(row.id)}
+                              done={row.done}
+                              status={
+                                row.locked ? STATES.locked : row.done ? STATES.done : undefined
+                              }
+                              open={row.done ? flipped.has(row.id) : open(row.id)}
                               bodyId={bodyId(row.id)}
                               onToggle={() => flip(row.id)}
                             >

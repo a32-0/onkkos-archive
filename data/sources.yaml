@@ -1300,3 +1300,129 @@ art:
   Kuva Lich: https://wiki.warframe.com/images/KuvaLiches.jpg
   Candidate: https://wiki.warframe.com/images/SisterCandidate.png
   Sister of Parvos: https://wiki.warframe.com/images/U37NewSistersLooks.jpg
+
+syndicates:
+  - {
+      syndicate: Steel Meridian,
+      tag: SteelMeridianSyndicate,
+      vendors: [Steel Meridian],
+      ranks: [Brave, Valiant, Defender, Protector, General],
+      cite: Steel Meridian,
+    }
+  - {
+      syndicate: Arbiters of Hexis,
+      tag: ArbitersSyndicate,
+      vendors: [Arbiters of Hexis],
+      ranks: [Principled, Authentic, Lawful, Crusader, Maxim],
+      cite: Arbiters of Hexis,
+    }
+  - {
+      syndicate: Cephalon Suda,
+      tag: CephalonSudaSyndicate,
+      vendors: [Cephalon Suda],
+      ranks: [Competent, Intriguing, Intelligent, Wise, Genius],
+      cite: Cephalon Suda,
+    }
+  - {
+      syndicate: The Perrin Sequence,
+      tag: PerrinSyndicate,
+      vendors: [The Perrin Sequence],
+      ranks: [Associate, Senior Associate, Executive, Senior Executive, Partner],
+      cite: The Perrin Sequence,
+    }
+  - {
+      syndicate: Red Veil,
+      tag: RedVeilSyndicate,
+      vendors: [Red Veil],
+      ranks: [Respected, Honored, Esteemed, Revered, Exalted],
+      cite: Red Veil,
+    }
+  - {
+      syndicate: New Loka,
+      tag: NewLokaSyndicate,
+      vendors: [New Loka],
+      ranks: [Humane, Bountiful, Benevolent, Pure, Flawless],
+      cite: New Loka,
+    }
+  - {
+      syndicate: Conclave,
+      tag: ConclaveSyndicate,
+      vendors: [Conclave],
+      ranks: [Mistral, Whirlwind, Tempest, Hurricane, Typhoon],
+      cite: Conclave,
+    }
+  - {
+      syndicate: Ostrons,
+      tag: CetusSyndicate,
+      vendors: [Hok],
+      ranks: [Offworlder, Visitor, Trusted, Surah, Kin],
+      cite: Ostron,
+    }
+  - {
+      syndicate: The Quills,
+      tag: QuillsSyndicate,
+      vendors: [The Quills],
+      ranks: [Mote, Observer, Adherent, Instrument, Architect],
+      cite: The Quills,
+    }
+  - {
+      syndicate: Solaris United,
+      tag: SolarisSyndicate,
+      vendors: [Rude Zuud, Legs, The Business],
+      ranks: [Outworlder, Rapscallion, Doer, Cove, Old Mate],
+      cite: Solaris United,
+    }
+  - {
+      syndicate: Vox Solaris,
+      tag: VoxSyndicate,
+      vendors: [Vox Solaris],
+      ranks: [Operative, Agent, Hand, Instrument, Shadow],
+      cite: Vox Solaris (Syndicate),
+    }
+  - {
+      syndicate: Ventkids,
+      tag: VentKidsSyndicate,
+      vendors: [Ventkids],
+      ranks: [Glinty, Whozit, Proper Felon, Primo, Logical],
+      cite: Ventkids,
+    }
+  - {
+      syndicate: Entrati,
+      tag: EntratiSyndicate,
+      vendors: [Father],
+      ranks: [Stranger, Acquaintance, Associate, Friend, Family],
+      cite: Entrati,
+    }
+  - {
+      syndicate: Necraloid,
+      tag: NecraloidSyndicate,
+      vendors: [Necraloid],
+      ranks: [Clearance Agnesis, Clearance Modus, Clearance Odima],
+      cite: Necraloid,
+    }
+  - {
+      syndicate: The Holdfasts,
+      tag: ZarimanSyndicate,
+      vendors: [Cavalero],
+      ranks: [Fallen, Watcher, Guardian, Seraph, Angel],
+      cite: The Holdfasts,
+    }
+  - {
+      syndicate: Cavia,
+      tag: EntratiLabSyndicate,
+      vendors: [Bird 3],
+      ranks: [Assistant, Researcher, Colleague, Scholar, Illuminate],
+      cite: Cavia,
+    }
+  - syndicate: The Hex
+    tag: HexSyndicate
+    vendors: [Amir, Aoi, Eleanor, Minerva, Quincy, Flare]
+    ranks: [Leftovers, Fresh Slice, 2-For-1, Hot & Fresh, Pizza Party]
+    cite: The Hex (Syndicate)
+  - {
+      syndicate: Kahl's Garrison,
+      tag: KahlSyndicate,
+      vendors: [Kahl's Garrison],
+      ranks: [Shelter, Encampment, Fort, Settlement, Home],
+      cite: Kahl's Garrison,
+    }

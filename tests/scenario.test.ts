@@ -582,14 +582,19 @@ describe("prerequisites followed to the root", () => {
     ]);
   });
 
-  it("drops every quest the profile confirms, and everything before it", () => {
+  it("keeps every quest the profile confirms, and everything before it, marked done", () => {
     const rows = (done: string[]) => rowsOf(planOf("Dante", done).sections[0]);
     expect(questsIn(rows([]))).toContain("Natah");
+    expect(questsIn(rows([]).filter((row) => row.done))).toEqual([]);
     const after = rows(["The New War"]);
-    expect(questsIn(after)).not.toContain("Natah");
-    expect(after.map((row) => row.id).join(" ")).not.toContain("Neptune Junction");
-    expect(questsIn(after)).toContain("Whispers in the Walls");
-    expect(questsIn(after)).toContain("Heart of Deimos");
+    const met = after.filter((row) => row.done);
+    const left = after.filter((row) => !row.done);
+    expect(questsIn(met)).toContain("Natah");
+    expect(met.map((row) => row.id).join(" ")).toContain("Neptune Junction");
+    expect(questsIn(left)).not.toContain("Natah");
+    expect(left.map((row) => row.id).join(" ")).not.toContain("Neptune Junction");
+    expect(questsIn(left)).toContain("Whispers in the Walls");
+    expect(questsIn(left)).toContain("Heart of Deimos");
   });
 
   it("raises the Mastery row to what a pending quest asks", () => {

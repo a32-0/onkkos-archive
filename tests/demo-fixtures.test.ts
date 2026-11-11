@@ -41,11 +41,11 @@ describe("the two demos", () => {
     }
   });
 
-  it("Ordis stops at Mercury, is recent, and proves no quest past the cut", () => {
+  it("Ordis stops at Mercury, is recent, and proves no quest past Vor's Prize", () => {
     const ordis = fixture(ORDIS);
     expect(ordis.PlayerLevel).toBe(2);
     expect(findNextPlanet(testGraph(), ordis).entry?.planet).toBe("Mars");
-    expect(confirmedQuests(loadEvidenceRules(), ordis).size).toBe(0);
+    expect([...confirmedQuests(loadEvidenceRules(), ordis).keys()]).toEqual(["Vor's Prize"]);
     expect(ordis.UnlockedOperator).toBeUndefined();
     expect(accountCreatedAt(ordis)?.getUTCFullYear()).toBe(2026);
   });

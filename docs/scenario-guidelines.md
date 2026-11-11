@@ -49,7 +49,8 @@ holds the subset.
 ## The four sections
 
 Every item view, arsenal or collectible, is these sections in this order. A
-section with nothing in it does not render.
+section with nothing in it does not render, and Prerequisites is never empty
+outside a collectible (BR-89).
 
 1. **Prerequisites.** Facts the player reads, never ticks.
 2. **How to get** (a shared source), or **Acquisition** (a procedure).
@@ -86,8 +87,8 @@ Slot row for its kind. The owner's comments behind both are in
 A prerequisite brings its own. "Acquire a Railjack" puts Rising Tide and The
 War Within above it as rows, not only in its sentence (BR-28). Quests are one
 row each, root first, read off the spine by `questsBefore()`, each preceded by
-the junctions its requirement names. A quest the profile confirms drops out,
-with everything before it.
+the junctions its requirement names. A quest the profile confirms stays,
+marked met, with everything before it (BR-88).
 
 ### Row grammar inside How to get and Acquisition
 

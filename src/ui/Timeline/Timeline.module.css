@@ -52,6 +52,13 @@
   transform: rotate(45deg);
 }
 
+.met {
+  width: var(--timeline-diamond);
+  height: var(--timeline-diamond);
+  border-radius: var(--radius-full);
+  background: var(--fill-dim);
+}
+
 .best {
   composes: diamond;
   background: var(--accent);
