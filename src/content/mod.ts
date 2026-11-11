@@ -11,6 +11,8 @@ export const MOD = {
   without: "Without",
   withIt: "With it",
   pairsWith: "Pairs with",
+  squad: "It counts for the whole squad.",
+  cooldown: (seconds: number) => `Ready again after ${seconds} s.`,
   rank: (ranks: number) => `Max rank ${ranks}`,
   capacity: (capacity: number, aura: boolean) => (aura ? `+${capacity}` : `${capacity}`),
   trigger: ({

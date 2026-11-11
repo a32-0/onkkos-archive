@@ -668,7 +668,7 @@ export const DETAILS = {
     `A hall of ascension hidden in some ${place} missions; passing it gives the mod.`,
   focusDetail: () => "Spend Focus on it in the Operator's Focus menu.",
   bundledDetail: ({ things }: { things: readonly string[] }) =>
-    `It comes with ${listOf(things)}, already fitted.`,
+    `It comes with ${things.map((thing) => `a ${thing}`).join(" or ")}, already fitted.`,
   primeAccessDetail: ({
     from,
     until,

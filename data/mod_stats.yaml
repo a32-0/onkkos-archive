@@ -237,6 +237,252 @@ stats:
       { math: grow, base: 30, unit: "", line: "A weapon whose shots do {base} Slash does {after}." }
     note: It grows only the part of the weapon's damage that is already Slash.
 
+  - stat: Loot Radar
+    outcome: Shows loot on your minimap
+    down: Shows less loot on your minimap
+    example: { math: plus, base: 0, unit: " m", line: "Loot within {after} shows on your minimap." }
+    note: Containers, lockers and dropped loot show up; you still pick them up yourself.
+
+  - stat: Enemy Radar
+    outcome: Shows enemies on your minimap
+    down: Shows fewer enemies on your minimap
+    example:
+      { math: plus, base: 0, unit: " m", line: "Enemies within {after} show on your minimap." }
+    note: It shows enemies through walls, only on the minimap.
+
+  - stat: Beam Range
+    outcome: Beams reach further
+    down: Beams reach less far
+    example:
+      { math: plus, base: 20, unit: " m", line: "A beam that reaches {base} reaches {after}." }
+    note: It counts only on weapons that fire a continuous beam.
+
+  - stat: Sniper Rifle Damage
+    outcome: "Sniper rifles hit harder"
+    down: "Sniper rifles hit softer"
+    example:
+      { math: grow, base: 100, unit: "", line: "A sniper shot of {base} damage does {after}." }
+    note: "It counts only on sniper rifles."
+
+  - stat: Rifle Damage
+    outcome: "Rifles hit harder"
+    down: "Rifles hit softer"
+    example:
+      { math: grow, base: 100, unit: "", line: "A rifle shot of {base} damage does {after}." }
+    note: "It counts only on rifles, not on bows or sniper rifles."
+
+  - stat: Pistol Damage
+    outcome: "Pistols hit harder"
+    down: "Pistols hit softer"
+    example:
+      { math: grow, base: 100, unit: "", line: "A pistol shot of {base} damage does {after}." }
+    note: "It counts only on secondary weapons."
+
+  - stat: Shotgun Damage
+    outcome: "Shotguns hit harder"
+    down: "Shotguns hit softer"
+    example:
+      { math: grow, base: 100, unit: "", line: "A shotgun blast of {base} damage does {after}." }
+    note: "It counts only on shotguns."
+
+  - stat: Weapon Damage
+    outcome: "Weapons hit harder"
+    down: "Weapons hit softer"
+    example: { math: grow, base: 100, unit: "", line: "A shot of {base} damage does {after}." }
+    note: "It counts on every weapon you hold."
+
+  - stat: Companion and Summon Damage
+    outcome: "Companions and summons hit harder"
+    down: "Companions and summons hit softer"
+    example:
+      { math: grow, base: 100, unit: "", line: "A companion's bite of {base} damage does {after}." }
+    note: "It counts on companions and on what abilities summon."
+
+  - stat: Weak Point Critical Chance
+    outcome: "More critical hits on weak points"
+    down: "Fewer critical hits on weak points"
+    example:
+      {
+        math: grow,
+        base: 20,
+        unit: "%",
+        line: "A headshot with {base} critical chance gets {after}.",
+      }
+    note: "It counts only on hits to a weak point, like the head."
+
+  - stat: Energy Regen/s
+    outcome: "Energy refills on its own"
+    down: "Energy refills slower"
+    example: { math: plus, base: 0, unit: "", line: "You gain {after} energy each second." }
+    note: "It refills energy without orbs."
+
+  - stat: Maximum Health
+    outcome: "More health"
+    down: "Less health"
+    example: { math: grow, base: 300, unit: "", line: "A Warframe with {base} health has {after}." }
+    note: "It grows the Warframe's own health."
+
+  - stat: Pistol Ammo Recovery
+    outcome: "Pistol ammo pickups give more"
+    down: "Pistol ammo pickups give less"
+    example:
+      {
+        math: grow,
+        base: 100,
+        unit: "%",
+        line: "A pickup that gives {base} of its ammo gives {after}.",
+      }
+    note: "It counts on ammo pickups for secondary weapons."
+
+  - stat: Rifle Ammo Recovery
+    outcome: "Rifle ammo pickups give more"
+    down: "Rifle ammo pickups give less"
+    example:
+      {
+        math: grow,
+        base: 100,
+        unit: "%",
+        line: "A pickup that gives {base} of its ammo gives {after}.",
+      }
+    note: "It counts on ammo pickups for rifles."
+
+  - stat: Shotgun Ammo Recovery
+    outcome: "Shotgun ammo pickups give more"
+    down: "Shotgun ammo pickups give less"
+    example:
+      {
+        math: grow,
+        base: 100,
+        unit: "%",
+        line: "A pickup that gives {base} of its ammo gives {after}.",
+      }
+    note: "It counts on ammo pickups for shotguns."
+
+  - stat: Sniper Rifle Ammo Recovery
+    outcome: "Sniper ammo pickups give more"
+    down: "Sniper ammo pickups give less"
+    example:
+      {
+        math: grow,
+        base: 100,
+        unit: "%",
+        line: "A pickup that gives {base} of its ammo gives {after}.",
+      }
+    note: "It counts on ammo pickups for sniper rifles."
+
+  - stat: Companion Recovery Time
+    outcome: "Your companion takes longer to get up"
+    down: "Your companion gets up sooner"
+    example:
+      {
+        math: plus,
+        base: 60,
+        unit: " s",
+        line: "A companion that takes {base} to recover takes {after}.",
+      }
+    note: "Lower is better: the companion is back in the fight sooner."
+
+  - stat: Full Shield Gate immunity duration
+    outcome: "Full shields hold you safe for longer"
+    down: "Full shields hold you safe for less"
+    example:
+      { math: plus, base: 0, unit: " s", line: "Breaking full shields keeps you safe for {after}." }
+    note: "Shield gate is the short safety when your shields break."
+
+  - stat: to Hacking
+    outcome: "More time to hack"
+    down: "Less time to hack"
+    example: { math: plus, base: 10, unit: " s", line: "A hack with {base} to solve gets {after}." }
+    note: "Hacking is the puzzle on consoles and locked doors."
+
+  - stat: "'Truth'"
+    outcome: "Earns the Arbiters of Hexis effect, Truth"
+    example:
+      {
+        math: plus,
+        base: 0,
+        unit: "",
+        line: "Every 1,000 affinity with this weapon hits enemies within 25 m for 1,000.",
+      }
+    note: "Truth is the Arbiters of Hexis effect. It waits 30 s between triggers."
+
+  - stat: "'Purity'"
+    outcome: "Earns the New Loka effect, Purity"
+    example:
+      {
+        math: plus,
+        base: 0,
+        unit: "",
+        line: "Every 1,000 affinity with this weapon hits enemies within 25 m for 1,000.",
+      }
+    note: "Purity is the New Loka effect. It waits 30 s between triggers."
+
+  - stat: "'Sequence'"
+    outcome: "Earns the The Perrin Sequence effect, Sequence"
+    example:
+      {
+        math: plus,
+        base: 0,
+        unit: "",
+        line: "Every 1,000 affinity with this weapon hits enemies within 25 m for 1,000.",
+      }
+    note: "Sequence is the The Perrin Sequence effect. It waits 30 s between triggers."
+
+  - stat: "'Entropy'"
+    outcome: "Earns the Cephalon Suda effect, Entropy"
+    example:
+      {
+        math: plus,
+        base: 0,
+        unit: "",
+        line: "Every 1,000 affinity with this weapon hits enemies within 25 m for 1,000.",
+      }
+    note: "Entropy is the Cephalon Suda effect. It waits 30 s between triggers."
+
+  - stat: "'Blight'"
+    outcome: "Earns the Red Veil effect, Blight"
+    example:
+      {
+        math: plus,
+        base: 0,
+        unit: "",
+        line: "Every 1,000 affinity with this weapon hits enemies within 25 m for 1,000.",
+      }
+    note: "Blight is the Red Veil effect. It waits 30 s between triggers."
+
+  - stat: "'Justice'"
+    outcome: "Earns the Steel Meridian effect, Justice"
+    example:
+      {
+        math: plus,
+        base: 0,
+        unit: "",
+        line: "Every 1,000 affinity with this weapon hits enemies within 25 m for 1,000.",
+      }
+    note: "Justice is the Steel Meridian effect. It waits 30 s between triggers."
+
+  - stat: Damage to Murmur
+    outcome: More damage to the Murmur
+    example:
+      {
+        math: times,
+        base: 100,
+        unit: "",
+        line: "A shot of {base} damage does {after} to the Murmur.",
+      }
+    note: It multiplies everything else, base damage and elements included.
+
+  - stat: Damage to Sentients
+    outcome: More damage to Sentients
+    example:
+      {
+        math: times,
+        base: 100,
+        unit: "",
+        line: "A hit of {base} damage does {after} to a Sentient.",
+      }
+    note: It multiplies everything else, base damage and elements included.
+
   - stat: Damage to Grineer
     outcome: More damage to the Grineer
     example:
@@ -2484,3 +2730,5502 @@ mods:
         example:
           { before: 100, after: 145, unit: "", line: "A melee kill worth 100 affinity gives 145." }
         note: "Affinity is the experience that ranks up your gear."
+
+  - mod: Archon Continuity
+    lines:
+      - match: "also apply a Corrosive status effect"
+        outcome: "Toxin from your abilities also strips armor"
+        amount: "+1"
+        stat: Corrosive with each Toxin
+        example:
+          {
+            before: 1,
+            after: 2,
+            unit: "",
+            line: "An ability that applies 1 Toxin applies 1 Corrosive as well.",
+          }
+        note: "Corrosive strips armor. It counts on abilities, not weapons."
+
+  - mod: Archon Flow
+    lines:
+      - match: "have 10% chance to drop an Energy Orb"
+        outcome: "Kills with Cold abilities drop energy"
+        amount: "10%"
+        stat: Energy Orb chance
+        example:
+          {
+            before: 0,
+            after: 1,
+            unit: "",
+            line: "Of 10 kills with a Cold ability, about 1 drops an Energy Orb.",
+          }
+        note: "Once an orb drops, it waits 10 s before another can."
+
+  - mod: Archon Intensify
+    lines:
+      - match: "grants +30% Ability Strength for 10s"
+        outcome: "Healing with abilities makes them stronger"
+        amount: "+30%"
+        stat: Ability Strength
+        example:
+          { before: 100, after: 130, unit: "%", line: "An ability at 100% strength reaches 130%." }
+        note: "Only after an ability restores health, lasts 10 s."
+
+  - mod: Archon Stretch
+    lines:
+      - match: "restore +2 Energy/s over 5s"
+        outcome: "Electricity abilities give energy back"
+        amount: "+2"
+        stat: Energy per second
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: "",
+            line: "Each Electricity ability gives back 10 energy over 5 s.",
+          }
+        note: "It counts on abilities that deal Electricity damage."
+
+  - mod: Archon Vitality
+    lines:
+      - match: "will be applied twice"
+        outcome: "Heat from your abilities lands twice"
+        amount: "2×"
+        stat: Heat status effects
+        example:
+          { before: 1, after: 2, unit: "", line: "An ability that applies 1 Heat applies 2." }
+        note: "It counts on abilities that deal Heat damage, not on weapons."
+
+  - mod: Primed Pistol Ammo Mutation
+    lines:
+      - match: "Converts Primary ammo pickups to 92% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "92%"
+        stat: Ammo conversion
+        example:
+          {
+            before: 0,
+            after: 92,
+            unit: "",
+            line: "A Primary ammo pickup of 100 rounds gives 92 to this weapon.",
+          }
+        note: "Only Primary ammo pickups count."
+
+  - mod: Primed Rifle Ammo Mutation
+    lines:
+      - match: "Converts Secondary ammo pickups to 92% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "92%"
+        stat: Ammo conversion
+        example:
+          {
+            before: 0,
+            after: 92,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 92 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: Primed Shotgun Ammo Mutation
+    lines:
+      - match: "Converts Secondary ammo pickups to 92% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "92%"
+        stat: Ammo conversion
+        example:
+          {
+            before: 0,
+            after: 92,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 92 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: Primed Sniper Ammo Mutation
+    lines:
+      - match: "Converts Secondary ammo pickups to 92% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "92%"
+        stat: Ammo conversion
+        example:
+          {
+            before: 0,
+            after: 92,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 92 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: Primed Shred
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots faster"
+        amount: "+55%"
+        stat: Fire Rate
+        example:
+          {
+            before: 10,
+            after: 15.5,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 15.5.",
+          }
+        note: "A bow gets twice the amount."
+
+  - mod: Sacrificial Steel
+    lines:
+      - match: "Critical Chance (x2 for Heavy Attacks)"
+        outcome: "More critical hits"
+        amount: "+220%"
+        stat: Critical Chance
+        example:
+          { before: 20, after: 64, unit: "%", line: "A weapon with 20% critical chance gets 64%." }
+        note: "A heavy attack gets twice the amount."
+
+  - mod: "Apex Predator"
+    lines:
+      - match: "Reveals target on Minimap"
+        outcome: "Shows the target you hit on the minimap"
+        amount: "+6 s"
+        stat: "Reveal time"
+        example:
+          {
+            before: 0,
+            after: 6,
+            unit: " s",
+            line: "A target you hit stays on the minimap for 6 s.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Bounty Hunter"
+    lines:
+      - match: "Reveals target on Minimap"
+        outcome: "Shows the target you hit on the minimap"
+        amount: "+6 s"
+        stat: "Reveal time"
+        example:
+          {
+            before: 0,
+            after: 6,
+            unit: " s",
+            line: "A target you hit stays on the minimap for 6 s.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Night Stalker"
+    lines:
+      - match: "Reveals target on Minimap"
+        outcome: "Shows the target you hit on the minimap"
+        amount: "+6 s"
+        stat: "Reveal time"
+        example:
+          {
+            before: 0,
+            after: 6,
+            unit: " s",
+            line: "A target you hit stays on the minimap for 6 s.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Anticipation"
+    lines:
+      - match: "Immune to Knockdown"
+        outcome: "Stays on your feet after a knockdown"
+        amount: "+4 s"
+        stat: "Knockdown immunity"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: " s",
+            line: "After a knockdown, nothing knocks you down again for 4 s.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+      - match: "Immune to Stagger"
+        outcome: "Stays steady after a stagger"
+        amount: "+4 s"
+        stat: "Stagger immunity"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: " s",
+            line: "After a stagger, nothing staggers you again for 4 s.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Battle Forge"
+    lines:
+      - match: "Reduce Forge Cooldown by 120s"
+        outcome: "Makes the forge ready sooner"
+        amount: "-120 s"
+        stat: "Forge cooldown"
+        example:
+          { before: 120, after: 0, unit: " s", line: "A forge that waits 120 s is ready at once." }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Battle Stations"
+    lines:
+      - match: "Boost Turret Damage by 75%"
+        outcome: "Turrets hit harder for a while"
+        amount: "+75%"
+        stat: "Turret Damage"
+        example:
+          {
+            before: 100,
+            after: 175,
+            unit: "",
+            line: "A turret shot of 100 damage does 175 for 30 s.",
+          }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Bell Ringer"
+    lines:
+      - match: "knock down enemies and apply +4 Impact"
+        outcome: "Your companion's melee knocks enemies down"
+        amount: "+4"
+        stat: "Impact status effects"
+        example:
+          { before: 0, after: 4, unit: "", line: "Each melee hit applies 4 Impact status effects." }
+        note: "Impact staggers enemies."
+
+  - mod: "Brief Respite"
+    lines:
+      - match: "converts 150% of Energy spent to Shields"
+        outcome: "Casting abilities refills the squad's shields"
+        amount: "150%"
+        stat: "Energy to Shields"
+        example:
+          {
+            before: 0,
+            after: 150,
+            unit: "",
+            line: "An ability that costs 100 energy gives 150 shields.",
+          }
+        note: "An aura: it counts for the whole squad. It stops while overshields are up."
+
+  - mod: "Brute Conditioning"
+    lines:
+      - match: "Convert all base Physical Damage to Impact Damage"
+        outcome: "Your companion's physical damage becomes Impact"
+        amount: "100%"
+        stat: "Physical to Impact"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All of the companion's base physical damage turns into Impact.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Disabling Conditioning"
+    lines:
+      - match: "Convert all base Physical Damage to Puncture Damage"
+        outcome: "Your companion's physical damage becomes Puncture"
+        amount: "100%"
+        stat: "Physical to Puncture"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All of the companion's base physical damage turns into Puncture.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Precision Conditioning"
+    lines:
+      - match: "Convert all base Physical Damage to Slash Damage"
+        outcome: "Your companion's physical damage becomes Slash"
+        amount: "100%"
+        stat: "Physical to Slash"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All of the companion's base physical damage turns into Slash.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Cold Arrival"
+    lines:
+      - match: "Dismounting deals 400 Cold Damage"
+        outcome: "Getting off the board freezes enemies"
+        amount: "400"
+        stat: "Cold damage"
+        example:
+          {
+            before: 0,
+            after: 400,
+            unit: "",
+            line: "Stepping off deals 400 Cold to enemies within 4 m.",
+          }
+        note: "It counts each time you step off the K-Drive."
+
+  - mod: "Combo Killer"
+    lines:
+      - match: "Reset Melee Combo Timer"
+        outcome: "Pistol kills keep your combo going"
+        amount: "Reset"
+        stat: "Combo timer"
+        example:
+          { before: 0, after: 5, unit: " s", line: "A combo about to drop gets its full 5 s back." }
+        note: "The combo drops when its timer runs out without a melee hit."
+
+  - mod: "Condition's Perfection"
+    lines:
+      - match: "Increases status chance by +100% on Tennokai"
+        outcome: "Tennokai attacks cause more status effects"
+        amount: "+100%"
+        stat: "Status Chance"
+        example:
+          {
+            before: 20,
+            after: 40,
+            unit: "%",
+            line: "A weapon with 20% status chance gets 40% on a Tennokai attack.",
+          }
+        note: "Tennokai is a follow-up attack after a heavy attack, when the prompt shows."
+
+  - mod: "Corrosive Projection"
+    lines:
+      - match: "Enemies lose -18% Armor"
+        outcome: "Enemies have less armor"
+        amount: "-18%"
+        stat: "Enemy Armor"
+        example: { before: 100, after: 82, unit: "", line: "An enemy with 100 armor has 82." }
+        note: "An aura: it counts for the whole squad."
+
+  - mod: "Cull The Weak"
+    lines:
+      - match: "Non-Critical hits deal +240% damage"
+        outcome: "Hits that are not critical hit harder"
+        amount: "+240%"
+        stat: "Non-critical damage"
+        example:
+          { before: 100, after: 340, unit: "", line: "A normal bite of 100 damage does 340." }
+        note: "It counts on your companion's hits that are not critical."
+
+  - mod: "Dreamer's Bond"
+    lines:
+      - match: "+0.3 Energy Regen/s and +1.5 Health Regen/s"
+        outcome: "The squad refills energy and health on its own"
+        amount: "+0.3"
+        stat: "Energy per second"
+        example:
+          {
+            before: 0,
+            after: 18,
+            unit: "",
+            line: "In a minute the squad gains 18 energy and 90 health.",
+          }
+        note: "An aura: it counts for the whole squad."
+
+  - mod: "Electromagnetic Shielding"
+    lines:
+      - match: "redirect 50% of damage taken by allies"
+        outcome: "Blocking takes hits for your allies"
+        amount: "50%"
+        stat: "Damage redirected"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "An ally within 12 m hit for 100 takes 50; you take the other 50.",
+          }
+        note: "It counts only while you block."
+
+  - mod: "Emp Aura"
+    lines:
+      - match: "Enemy Corpus lose -15% Accuracy"
+        outcome: "Corpus miss more"
+        amount: "-15%"
+        stat: "Corpus accuracy"
+        example:
+          {
+            before: 100,
+            after: 85,
+            unit: "%",
+            line: "Corpus that land 100% of their shots land 85%.",
+          }
+        note: "An aura: it counts for the whole squad."
+
+  - mod: "Equilibrium"
+    lines:
+      - match: "Health pickups give +110% Energy"
+        outcome: "Health orbs give energy, and energy orbs give health"
+        amount: "+110%"
+        stat: "Orb crossover"
+        example:
+          { before: 0, after: 110, unit: "", line: "An orb worth 100 also gives 110 of the other." }
+        note: "It adds to what the orb already gives."
+
+  - mod: "Fear Sense"
+    lines:
+      - match: "senses the weaknesses of enemies"
+        outcome: "Your Kavat hits much harder for a while"
+        amount: "+200%"
+        stat: "Kavat damage"
+        example:
+          {
+            before: 100,
+            after: 300,
+            unit: "",
+            line: "A Kavat bite of 100 damage does 300 for 25 s.",
+          }
+        note: "Its attacks also stagger, with a 30% chance to knock down."
+
+  - mod: "Fetch"
+    lines:
+      - match: "Companion Gather-Link"
+        outcome: "Your companion picks up loot for you"
+        amount: "13.5 m"
+        stat: "Gather range"
+        example:
+          {
+            before: 0,
+            after: 13.5,
+            unit: " m",
+            line: "Loot within 13.5 m comes to you without walking to it.",
+          }
+        note: "It counts while the companion with the mod is out."
+
+  - mod: "Firewall"
+    lines:
+      - match: "Reduces damage by 75% while hacking"
+        outcome: "Takes less damage while hacking"
+        amount: "-75%"
+        stat: "Damage taken"
+        example: { before: 100, after: 25, unit: "", line: "A hit of 100 while you hack does 25." }
+        note: "Hacking is the puzzle on consoles and locked doors."
+
+  - mod: "Fomorian Accelerant"
+    lines:
+      - match: "Flak now bounces up to 4x"
+        outcome: "Flak bounces and flies faster"
+        amount: "4×"
+        stat: "Bounces"
+        example: { before: 0, after: 4, unit: "", line: "A flak shot bounces up to 4 times." }
+        note: "It also flies 60% faster."
+
+  - mod: "Form Up"
+    lines:
+      - match: "Recall all Crew Members"
+        outcome: "Brings your crew back and heals them"
+        amount: "100%"
+        stat: "Crew healed"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "Every crew member returns to the Railjack at full health.",
+          }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Heavy Impact"
+    lines:
+      - match: "Create 6m seismic shockwaves"
+        outcome: "Heavy landings knock enemies down"
+        amount: "300"
+        stat: "Shockwave damage"
+        example:
+          { before: 0, after: 300, unit: "", line: "A heavy landing deals 300 damage within 6 m." }
+        note: "A heavy landing is a fall from high enough to slam the ground."
+
+  - mod: "Hunter's Bonesaw"
+    lines:
+      - match: "Increase Finisher Damage by 120% against prone"
+        outcome: "Finishers hit harder on knocked-down enemies"
+        amount: "+120%"
+        stat: "Finisher Damage"
+        example:
+          {
+            before: 100,
+            after: 220,
+            unit: "",
+            line: "A finisher of 100 damage does 220 on a knocked-down enemy.",
+          }
+        note: "A finisher is a melee hit on an enemy that is down or opened up."
+
+  - mod: "Infested Impedance"
+    lines:
+      - match: "Enemy Infested lose -18% Speed"
+        outcome: "Infested move slower"
+        amount: "-18%"
+        stat: "Infested speed"
+        example:
+          { before: 100, after: 82, unit: "%", line: "Infested that move at 100% move at 82%." }
+        note: "An aura: it counts for the whole squad."
+
+  - mod: "Intruder Stasis"
+    lines:
+      - match: "Freeze all Enemy Boarding Parties"
+        outcome: "Freezes enemies boarding the Railjack"
+        amount: "45 s"
+        stat: "Freeze"
+        example:
+          { before: 0, after: 45, unit: " s", line: "Enemies boarding the Railjack stop for 45 s." }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Kinetic Friction"
+    lines:
+      - match: "Grinding builds up a charge"
+        outcome: "Grinds shock enemies when you land the trick"
+        amount: "400"
+        stat: "Electricity damage"
+        example:
+          {
+            before: 0,
+            after: 400,
+            unit: "",
+            line: "Landing a grind trick deals 400 Electricity within 4 m.",
+          }
+        note: "Grinding is riding the K-Drive along a rail or edge."
+
+  - mod: "Link Fiber"
+    lines:
+      - match: "of Warframe's"
+        outcome: "Your companion gets armor from your Warframe"
+        amount: "+125%"
+        stat: "Armor link"
+        example:
+          {
+            before: 0,
+            after: 375,
+            unit: "",
+            line: "A Warframe with 300 armor gives its companion 375.",
+          }
+        note: "The companion keeps its own and adds this."
+
+  - mod: "Link Redirection"
+    lines:
+      - match: "of Warframe's"
+        outcome: "Your companion gets shields from your Warframe"
+        amount: "+125%"
+        stat: "Shield link"
+        example:
+          {
+            before: 0,
+            after: 375,
+            unit: "",
+            line: "A Warframe with 300 shields gives its companion 375.",
+          }
+        note: "The companion keeps its own and adds this."
+
+  - mod: "Link Vitality"
+    lines:
+      - match: "of Warframe's"
+        outcome: "Your companion gets health from your Warframe"
+        amount: "+125%"
+        stat: "Health link"
+        example:
+          {
+            before: 0,
+            after: 375,
+            unit: "",
+            line: "A Warframe with 300 health gives its companion 375.",
+          }
+        note: "The companion keeps its own and adds this."
+
+  - mod: "Master's Edge"
+    lines:
+      - match: "Increases Tennokai damage by 60%"
+        outcome: "Tennokai attacks hit harder"
+        amount: "+60%"
+        stat: "Tennokai damage"
+        example:
+          { before: 100, after: 160, unit: "", line: "A Tennokai attack of 100 damage does 160." }
+        note: "Tennokai is a follow-up attack after a heavy attack, when the prompt shows."
+
+  - mod: "Medi-Ray"
+    lines:
+      - match: "restoring 12% Health over 4s"
+        outcome: "Your sentinel heals you now and then"
+        amount: "12%"
+        stat: "Health restored"
+        example:
+          {
+            before: 0,
+            after: 12,
+            unit: "%",
+            line: "A heal gives back 12% of your health over 4 s.",
+          }
+        note: "It heals at random moments, not only when you are low."
+
+  - mod: "Motus Impact"
+    lines:
+      - match: "range of aerial melee attacks by +2m"
+        outcome: "Melee in the air reaches further"
+        amount: "+2 m"
+        stat: "Aerial reach"
+        example:
+          {
+            before: 2.5,
+            after: 4.5,
+            unit: " m",
+            line: "An aerial attack that reaches 2.5 m reaches 4.5 m.",
+          }
+        note: "It counts only on melee attacks in the air."
+
+  - mod: "Necramech Rage"
+    lines:
+      - match: "Convert +15% of Damage on Health to Energy"
+        outcome: "Damage to your health gives you energy"
+        amount: "+15%"
+        stat: "Health damage to Energy"
+        example:
+          { before: 0, after: 15, unit: "", line: "A hit that takes 100 health gives 15 energy." }
+        note: "It counts on the Necramech."
+
+  - mod: "Necramech Rebuke"
+    lines:
+      - match: "Electrifies enemies within 20m"
+        outcome: "Losing your shields shocks enemies around"
+        amount: "300"
+        stat: "Electricity damage"
+        example:
+          {
+            before: 0,
+            after: 300,
+            unit: "",
+            line: "When your shields run out, enemies within 20 m take 300 Electricity and stop for 3 s.",
+          }
+        note: "It counts on the Necramech."
+
+  - mod: "Necramech Repair"
+    lines:
+      - match: "Restore 10% Health/s over 3s"
+        outcome: "Heals the Necramech when it is low"
+        amount: "30%"
+        stat: "Health restored"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: "%",
+            line: "Below 20% health, the Necramech gets back 30% over 3 s.",
+          }
+        note: "Ready again after 15 s."
+
+  - mod: "Nightwatch Napalm"
+    lines:
+      - match: "Rockets disperse napalm"
+        outcome: "Rockets leave burning napalm"
+        amount: "30%"
+        stat: "Napalm damage"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: "",
+            line: "A rocket of 100 damage leaves napalm for 30 more over 6 s.",
+          }
+        note: "The napalm covers most of the blast area."
+
+  - mod: "Onslaught Matrix"
+    lines:
+      - match: "chance to Reflect 38% Damage"
+        outcome: "Hits on full shields bounce back"
+        amount: "20%"
+        stat: "Reflect chance"
+        example:
+          {
+            before: 0,
+            after: 2,
+            unit: "",
+            line: "Of 10 hits while shields are over 80%, about 2 send back 38% of their damage.",
+          }
+        note: "It counts on the Railjack."
+
+  - mod: "Opportunity's Reach"
+    lines:
+      - match: "Increases opportunity window to 4.0s"
+        outcome: "More time and reach for Tennokai"
+        amount: "+3 m"
+        stat: "Tennokai reach"
+        example:
+          {
+            before: 2.5,
+            after: 5.5,
+            unit: " m",
+            line: "A Tennokai attack that reaches 2.5 m reaches 5.5 m.",
+          }
+        note: "The prompt also stays for 4 s. Tennokai is a follow-up attack after a heavy attack, when the prompt shows."
+
+  - mod: "Overcharge Detectors"
+    lines:
+      - match: "Exposes enemies at maximum Energy"
+        outcome: "Shows enemies with full energy"
+        amount: "30 m"
+        stat: "Detection range"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: " m",
+            line: "Enemies with full energy within 30 m show up.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Peculiar Growth"
+    lines:
+      - match: "inflate the body part hit"
+        outcome: "Hits make body parts swell"
+        amount: "6 s"
+        stat: "Swelling"
+        example: { before: 0, after: 6, unit: " s", line: "A body part you hit swells for 6 s." }
+        note: "It only changes how enemies look."
+
+  - mod: "Pounce"
+    lines:
+      - match: "dealing 90% Damage and stunning"
+        outcome: "Your Kavat pounces and stuns"
+        amount: "90%"
+        stat: "Pounce damage"
+        example:
+          {
+            before: 0,
+            after: 90,
+            unit: "",
+            line: "A Kavat with a 100-damage bite pounces for 90 and stuns.",
+          }
+        note: "The stun lasts a short moment."
+
+  - mod: "Power Drain"
+    lines:
+      - match: "Next ability cast after Mercy Kill"
+        outcome: "A mercy kill makes your next ability stronger"
+        amount: "+50%"
+        stat: "Ability Strength"
+        example:
+          {
+            before: 100,
+            after: 150,
+            unit: "%",
+            line: "The next ability at 100% strength reaches 150%.",
+          }
+        note: "Only the first ability after a mercy kill gets it."
+
+  - mod: "Proton Jet"
+    lines:
+      - match: "During a Wall Latch gain +120%"
+        outcome: "More critical hits and status while wall latching"
+        amount: "+120%"
+        stat: "Critical and Status Chance"
+        example:
+          {
+            before: 20,
+            after: 44,
+            unit: "%",
+            line: "A weapon with 20% critical chance gets 44% while latched.",
+          }
+        note: "Status chance grows by the same amount."
+
+  - mod: "Ready Steel"
+    lines:
+      - match: "Squad begins the mission with +24 Initial Combo"
+        outcome: "The squad starts with a combo"
+        amount: "+24"
+        stat: "Initial Combo"
+        example:
+          {
+            before: 0,
+            after: 24,
+            unit: "",
+            line: "Every melee weapon in the squad starts at a combo of 24.",
+          }
+        note: "An aura: it counts for the whole squad."
+
+  - mod: "Rift Strike"
+    lines:
+      - match: "Heavy attacks now step through the rift"
+        outcome: "Heavy attacks reach far enemies"
+        amount: "25 m"
+        stat: "Heavy attack reach"
+        example:
+          {
+            before: 2.5,
+            after: 25,
+            unit: " m",
+            line: "A heavy attack reaches enemies up to 25 m away.",
+          }
+        note: "You step through the rift to the target."
+
+  - mod: "Sharpened Claws"
+    lines:
+      - match: "dealing 300% damage that sunders armor"
+        outcome: "A strike that tears armor"
+        amount: "300%"
+        stat: "Strike damage"
+        example:
+          {
+            before: 100,
+            after: 300,
+            unit: "",
+            line: "A Kavat with a 100-damage bite strikes for 300.",
+          }
+        note: "It also strips 120% armor and makes the enemy bleed."
+
+  - mod: "Shelter"
+    lines:
+      - match: "Creates a shield with 1800 Health"
+        outcome: "Shields you while you revive"
+        amount: "1,800"
+        stat: "Shield health"
+        example:
+          {
+            before: 0,
+            after: 1800,
+            unit: "",
+            line: "A shield of 1,800 health covers you while you revive an ally.",
+          }
+        note: "It lasts while you revive."
+
+  - mod: "Shield Disruption"
+    lines:
+      - match: "Enemies lose -18% Shield Capacity"
+        outcome: "Enemies have weaker shields"
+        amount: "-18%"
+        stat: "Enemy shields"
+        example: { before: 100, after: 82, unit: "", line: "An enemy with 100 shields has 82." }
+        note: "An aura: it counts for the whole squad."
+
+  - mod: "Silent Battery"
+    lines:
+      - match: "Reduces the chance an enemy will hear gunfire"
+        outcome: "Enemies do not hear your shots"
+        amount: "-100%"
+        stat: "Noise"
+        example:
+          {
+            before: 100,
+            after: 0,
+            unit: "%",
+            line: "Enemies that would hear 100% of your shots hear none.",
+          }
+        note: "Enemies still see you and notice bodies."
+
+  - mod: "Slay Board"
+    lines:
+      - match: "Board is launched, dealing 400 Damage"
+        outcome: "Launches the board through enemies"
+        amount: "400"
+        stat: "Board damage"
+        example:
+          {
+            before: 0,
+            after: 400,
+            unit: "",
+            line: "The thrown board deals 400 to each enemy it slices.",
+          }
+        note: "It counts on the K-Drive."
+
+  - mod: "Spare Parts"
+    lines:
+      - match: "Companion marks a target every 15s"
+        outcome: "Marked enemies drop more loot"
+        amount: "+200%"
+        stat: "Drop chance"
+        example:
+          {
+            before: 100,
+            after: 300,
+            unit: "%",
+            line: "A marked enemy is 3 times as likely to drop an item.",
+          }
+        note: "A new target is marked every 15 s, for 15 s."
+
+  - mod: "Speed Trigger"
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots faster"
+        amount: "+60%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 16,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 16.",
+          }
+        note: "A bow gets twice the amount."
+
+  - mod: "Vigilante Fervor"
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots faster"
+        amount: "+45%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 14.5,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 14.5.",
+          }
+        note: "A bow gets twice the amount."
+
+  - mod: "Swipe"
+    lines:
+      - match: "Strikes 4 additional enemies"
+        outcome: "Your companion hits several enemies at once"
+        amount: "+4"
+        stat: "Extra targets"
+        example: { before: 1, after: 5, unit: "", line: "A bite that hits 1 enemy hits 5." }
+        note: "Its reach grows by 2 m as well."
+
+  - mod: "Territorial Aggression"
+    lines:
+      - match: "stakes their territory"
+        outcome: "Shadow Kavats attack enemies near yours"
+        amount: "30%"
+        stat: "Attack chance"
+        example:
+          {
+            before: 0,
+            after: 3,
+            unit: "",
+            line: "Of 10 enemies in the area each second, about 3 are attacked.",
+          }
+        note: "The area is 6 m around the Kavat and lasts 15 s."
+
+  - mod: "Volatile Quick Return"
+    lines:
+      - match: "Chance to explode on Bounce"
+        outcome: "Thrown glaives explode when they bounce"
+        amount: "100%"
+        stat: "Explode chance"
+        example: { before: 0, after: 10, unit: "", line: "Of 10 bounces, all 10 explode." }
+        note: "It turns off Punch Through."
+
+  - mod: "Vulcan Blitz"
+    lines:
+      - match: "Enemies explode on death"
+        outcome: "Kills burst into Blast"
+        amount: "+60%"
+        stat: "Enemy health as Blast"
+        example:
+          {
+            before: 0,
+            after: 900,
+            unit: "",
+            line: "An enemy with 1,000 health bursts for 900 Blast within 6 m.",
+          }
+        note: "The burst adds 300 to 60% of the enemy's health."
+
+  - mod: Auto Omni
+    lines:
+      - match: "chance to repair nearby Railjack hull damages"
+        outcome: "Your Nautilus repairs the Railjack"
+        amount: "100%"
+        stat: "Repair chance"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: "",
+            line: "Of 10 breaches near the Nautilus, all 10 get repaired.",
+          }
+        note: "It also puts out fires on the Railjack. Ready again after 20 s."
+
+  - mod: Cold Front
+    lines:
+      - match: "Snow Globe is now attached to Frost"
+        outcome: "Snow Globe moves with Frost and grows with kills"
+        amount: "+4%"
+        stat: "Globe health per kill"
+        example:
+          {
+            before: 100,
+            after: 140,
+            unit: "%",
+            line: "After 10 kills on frozen enemies, the globe has 140% of its health.",
+          }
+        note: "Snow Globe augment: the globe follows Frost with a smaller radius, and Frost moves faster inside it."
+
+  - mod: "Acidic Spittle"
+    lines:
+      - match: "spit acidic tar at an enemy"
+        outcome: "Spits tar that blinds and corrodes"
+        amount: "120"
+        stat: "Corrosive damage"
+        example:
+          {
+            before: 0,
+            after: 120,
+            unit: "",
+            line: "Every 5 s it spits at an enemy within 30 m for 120 Corrosive.",
+          }
+        note: "The enemy is blinded for 12 s. It comes with the companion and works on its own."
+
+  - mod: "Iatric Mycelium"
+    lines:
+      - match: "Release a trail of spores every 8s"
+        outcome: "Leaves spores that heal"
+        amount: "300"
+        stat: "Health restored"
+        example:
+          {
+            before: 0,
+            after: 300,
+            unit: "",
+            line: "Its spores heal it and its allies for 300 over 5 s.",
+          }
+        note: "A new trail comes every 8 s. It comes with the companion and works on its own."
+
+  - mod: "Anabolic Pollination"
+    lines:
+      - match: "increasing Toxin Damage by +100%"
+        outcome: "Spores boost Toxin damage"
+        amount: "+100%"
+        stat: "Toxin Damage"
+        example:
+          {
+            before: 100,
+            after: 200,
+            unit: "",
+            line: "A weapon that does 100 Toxin does 200 inside the cloud.",
+          }
+        note: "The cloud lasts 10 s, and the boost 15 s."
+
+  - mod: "Endoparasitic Vector"
+    lines:
+      - match: "Transmit an endoparasite"
+        outcome: "A parasite drags and poisons enemies around it"
+        amount: "20"
+        stat: "Viral damage per second"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "",
+            line: "Tentacles deal 20 Viral a second for 5 s, 100 in all.",
+          }
+        note: "Enemies within 10 m of the parasite are slowed as they move away."
+
+  - mod: "Infectious Bite"
+    lines:
+      - match: "+200% Finisher Damage and infects"
+        outcome: "A bite that infects and bursts"
+        amount: "+200%"
+        stat: "Finisher Damage"
+        example:
+          { before: 100, after: 300, unit: "", line: "A finisher bite of 100 damage does 300." }
+        note: "The infected enemy grows 4 pustules that explode when hit."
+
+  - mod: "Paralytic Spores"
+    lines:
+      - match: "Charges at an enemy within 30m dealing 160"
+        outcome: "A charge that leaves enemies open to finishers"
+        amount: "160"
+        stat: "Charge damage"
+        example:
+          {
+            before: 0,
+            after: 160,
+            unit: "",
+            line: "It charges an enemy within 30 m for 160 damage.",
+          }
+        note: "Spores within 15 m slow enemies by 50% and open them to finishers for 10 s."
+
+  - mod: "Crescent Charge"
+    lines:
+      - match: "Charges an enemy within 25m"
+        outcome: "Lifts an enemy and throws it at others"
+        amount: "20%"
+        stat: "Thrown enemy's health"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "",
+            line: "A thrown enemy with 1,000 health hits the others for 200.",
+          }
+        note: "It adds 5 Puncture status effects to enemies within 5 m."
+
+  - mod: "Crescent Devolution"
+    lines:
+      - match: "Devolves into its larval form"
+        outcome: "When downed, it fights on as a larva"
+        amount: "30 s"
+        stat: "Larval form"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: " s",
+            line: "Downed, it fights as a larva for 30 s, charging for 100 Puncture.",
+          }
+        note: "It regains its true form on its own after 30 s."
+
+  - mod: "Panzer Devolution"
+    lines:
+      - match: "Devolves into its larval form"
+        outcome: "When downed, it fights on as a larva"
+        amount: "30 s"
+        stat: "Larval form"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: " s",
+            line: "Downed, it fights as a larva for 30 s, firing quills for 60 Viral each.",
+          }
+        note: "It regains its true form on its own after 30 s."
+
+  - mod: "Sly Devolution"
+    lines:
+      - match: "Devolves into its larval form"
+        outcome: "When downed, it fights on and your kills blind enemies"
+        amount: "-20%"
+        stat: "Enemy accuracy"
+        example:
+          {
+            before: 100,
+            after: 80,
+            unit: "%",
+            line: "After a kill, enemies that land 100% of their shots land 80% for 8 s.",
+          }
+        note: "Downed, it is a larva for 30 s, then regains its true form."
+
+  - mod: "Viral Quills"
+    lines:
+      - match: "Launches 6 quills at enemies"
+        outcome: "Fires Viral quills at enemies"
+        amount: "6"
+        stat: "Quills"
+        example:
+          {
+            before: 0,
+            after: 360,
+            unit: "",
+            line: "6 quills of 60 Viral each deal 360 to enemies within 20 m.",
+          }
+        note: "Each quill has 40% status chance. A target with Viral gets a spore. Ready again after 4 s."
+
+  - mod: "Survival Instinct"
+    lines:
+      - match: "Enemies lose sight of you for 1.5s"
+        outcome: "Bullet jumps hide you"
+        amount: "1.5 s"
+        stat: "Unseen"
+        example:
+          {
+            before: 0,
+            after: 1.5,
+            unit: " s",
+            line: "After a bullet jump, enemies lose sight of you for 1.5 s.",
+          }
+        note: "Ready again after 5 s."
+
+  - mod: "Draining Bite"
+    lines:
+      - match: "inflicts 5 stacks of Slash"
+        outcome: "A bite that makes the enemy bleed and heals the Kavat"
+        amount: "5"
+        stat: "Slash stacks"
+        example:
+          { before: 0, after: 5, unit: "", line: "Each bite applies 5 Slash status effects." }
+        note: "The Slash deals 150% of its melee damage, and the Kavat heals 10% of its health."
+
+  - mod: "Transfusion"
+    lines:
+      - match: "sacrifices 20% of its Health to raise them"
+        outcome: "Your Kavat revives you"
+        amount: "20%"
+        stat: "Kavat health spent"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: "%",
+            line: "It spends 20% of its health to raise you from bleedout.",
+          }
+        note: "It only acts while you are bleeding out."
+
+  - mod: "Retrieve"
+    lines:
+      - match: "chance to scavenge additional loot"
+        outcome: "Your Kubrow finds more loot"
+        amount: "45%"
+        stat: "Extra loot chance"
+        example:
+          { before: 0, after: 4.5, unit: "", line: "Of 10 tries, about 4 or 5 give extra loot." }
+        note: "It tries every 10 s on enemies and containers within 30 m."
+
+  - mod: "Proboscis"
+    lines:
+      - match: "whips a proboscis out at an enemy"
+        outcome: "Pulls an enemy in"
+        amount: "100"
+        stat: "Pull damage"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "",
+            line: "It pulls an enemy within 30 m back for 100 damage.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Trample"
+    lines:
+      - match: "rushes an enemy, dealing 160 Damage"
+        outcome: "Rushes through enemies and grows stronger"
+        amount: "+10%"
+        stat: "Per enemy hit"
+        example:
+          {
+            before: 100,
+            after: 150,
+            unit: "%",
+            line: "Hitting 5 enemies raises its damage, health and armor to 150% for 5 s.",
+          }
+        note: "The rush deals 160 to every enemy in its path."
+
+  - mod: "Arc Coil"
+    lines:
+      - match: "zap up to 7 enemies"
+        outcome: "Your sentinel shocks enemies around you"
+        amount: "100"
+        stat: "Electricity damage"
+        example:
+          {
+            before: 0,
+            after: 700,
+            unit: "",
+            line: "It zaps up to 7 enemies within 10 m for 100 each, 700 in all.",
+          }
+        note: "Each zap has 10% status chance."
+
+  - mod: "Calculated Shot"
+    lines:
+      - match: "fires at the first enemy within 70m"
+        outcome: "Your sentinel fires a charged shot"
+        amount: "70 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 70,
+            unit: " m",
+            line: "It charges and fires at the first enemy within 70 m.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Electro Pulse"
+    lines:
+      - match: "continually zap an enemy within 15m"
+        outcome: "Your sentinel stuns enemies"
+        amount: "15 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 15,
+            unit: " m",
+            line: "Every 5 s it zaps an enemy within 15 m and keeps it stunned.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Cordon"
+    lines:
+      - match: "forces enemies within 30m"
+        outcome: "Pulls enemies into clusters"
+        amount: "30 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: " m",
+            line: "Enemies within 30 m of the target are pulled together.",
+          }
+        note: "Ready again after 15 s."
+
+  - mod: "Investigator"
+    lines:
+      - match: "scan objects and enemies within 50m"
+        outcome: "Your sentinel scans things for the Codex"
+        amount: "50 m"
+        stat: "Scan range"
+        example: { before: 0, after: 50, unit: " m", line: "It scans what is within 50 m in 2 s." }
+        note: "It uses your Codex Scanner charges."
+
+  - mod: "Targeting Receptor"
+    lines:
+      - match: "attack targets within 10m with 3 glaives"
+        outcome: "Your sentinel throws glaives"
+        amount: "3"
+        stat: "Glaives"
+        example:
+          { before: 0, after: 3, unit: "", line: "It throws 3 glaives at enemies within 10 m." }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Molecular Conversion"
+    lines:
+      - match: "converting 200 Damage into Shields"
+        outcome: "Blasts enemies and gives you shields"
+        amount: "200"
+        stat: "Shields gained"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "",
+            line: "Its blast within 10 m turns 200 damage into your shields.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Scan Matter"
+    lines:
+      - match: "Reveals resource containers and mineral deposits"
+        outcome: "Finds and opens resource containers"
+        amount: "60 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 60, unit: " m", line: "Containers and deposits within 60 m show up." }
+        note: "It breaks containers and collects resources every 3 s."
+
+  - mod: "Vacuum"
+    lines:
+      - match: "Companion Gather-Link"
+        outcome: "Your companion picks up loot for you"
+        amount: "13.5 m"
+        stat: "Gather range"
+        example:
+          {
+            before: 0,
+            after: 13.5,
+            unit: " m",
+            line: "Loot within 13.5 m comes to you without walking to it.",
+          }
+        note: "It counts while the companion with the mod is out."
+
+  - mod: "Anti-Grav Grenade"
+    lines:
+      - match: "A grenade that levitates enemies"
+        outcome: "Floats enemies and slams them down"
+        amount: "80%"
+        stat: "Damage returned"
+        example:
+          {
+            before: 0,
+            after: 80,
+            unit: "",
+            line: "An enemy hit for 100 while floating takes 80 more when it lands.",
+          }
+        note: "Enemies within 6 m float for 6 s."
+
+  - mod: "Whiplash Mine"
+    lines:
+      - match: "Deploys a tether mine"
+        outcome: "Pulls enemies together"
+        amount: "20 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: " m",
+            line: "After 3 s, enemies within 20 m are pulled to the mine.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Blast Shield"
+    lines:
+      - match: "Overshields increased by +3000"
+        outcome: "Gives you overshields"
+        amount: "+3,000"
+        stat: "Overshields"
+        example: { before: 0, after: 3000, unit: "", line: "You get up to 3,000 overshields." }
+        note: "The MOA leaps at an enemy within 10 m, knocks down others within 5 m and refills the overshields."
+
+  - mod: "Hard Engage"
+    lines:
+      - match: "Engages enemies within 10m with melee attacks"
+        outcome: "Your MOA fights in melee"
+        amount: "90"
+        stat: "Impact damage"
+        example:
+          {
+            before: 0,
+            after: 90,
+            unit: "",
+            line: "Each melee hit on enemies within 10 m deals 90 Impact.",
+          }
+        note: "Mods on the MOA's weapon count on these hits."
+
+  - mod: "Security Override"
+    lines:
+      - match: "Auto-hacks consoles over 2s"
+        outcome: "Hacks consoles and takes over robots"
+        amount: "30%"
+        stat: "Control chance"
+        example:
+          {
+            before: 0,
+            after: 3,
+            unit: "",
+            line: "Of 10 robots and turrets within 30 m, about 3 fight for you for 14 s.",
+          }
+        note: "It hacks consoles by itself in 2 s."
+
+  - mod: "Shockwave Actuators"
+    lines:
+      - match: "Blasts a shockwave knocking down"
+        outcome: "Knocks down enemies around you"
+        amount: "12 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 12, unit: " m", line: "A shockwave knocks down enemies within 12 m." }
+        note: "Ready again after 10 s."
+
+  - mod: "Stasis Field"
+    lines:
+      - match: "Creates a stasis field for 30s"
+        outcome: "Slows and weakens enemy shots"
+        amount: "-60%"
+        stat: "Projectile damage"
+        example:
+          {
+            before: 100,
+            after: 40,
+            unit: "",
+            line: "An enemy shot of 100 damage does 40 inside the field.",
+          }
+        note: "Shots also move 90% slower. The field lasts 30 s."
+
+  - mod: "Aerial Prospectus"
+    lines:
+      - match: "calls down an Orbital Strike"
+        outcome: "Calls down an orbital strike"
+        amount: "1,200"
+        stat: "Blast damage"
+        example:
+          { before: 0, after: 1200, unit: "", line: "The strike deals 1,200 Blast within 7 m." }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Focused Prospectus"
+    lines:
+      - match: "Fires a beam of energy"
+        outcome: "Fires a burning beam"
+        amount: "900"
+        stat: "Heat damage"
+        example: { before: 0, after: 900, unit: "", line: "The beam deals 900 Heat over 4.5 s." }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Synergized Prospectus"
+    lines:
+      - match: "Fires a spark that seeks out"
+        outcome: "Fires a spark that jumps between enemies"
+        amount: "7×"
+        stat: "Ricochets"
+        example:
+          {
+            before: 0,
+            after: 7,
+            unit: "",
+            line: "The spark deals 300 Electricity within 10 m and jumps up to 7 times.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Diversified Denial"
+    lines:
+      - match: "Fabricate 3 Specters"
+        outcome: "Makes copies that fight with you"
+        amount: "3"
+        stat: "Specters"
+        example:
+          {
+            before: 0,
+            after: 3,
+            unit: "",
+            line: "3 Specters fight for 30 s, each with 85% of the Hound's damage.",
+          }
+        note: "The Specters cannot use abilities."
+
+  - mod: "Evasive Denial"
+    lines:
+      - match: "chance to dodge enemy fire"
+        outcome: "Your Hound dodges enemy fire"
+        amount: "75%"
+        stat: "Dodge chance"
+        example:
+          { before: 0, after: 7.5, unit: "", line: "Of 10 shots at it, about 7 or 8 miss for 8 s." }
+        note: "It first teleports to a safe distance."
+
+  - mod: "Reflex Denial"
+    lines:
+      - match: "reflects 90% Damage taken"
+        outcome: "Sends damage back as Magnetic"
+        amount: "90%"
+        stat: "Damage reflected"
+        example:
+          {
+            before: 0,
+            after: 90,
+            unit: "",
+            line: "A hit of 100 on the shield sends 90 Magnetic back within 12 m.",
+          }
+        note: "The shield lasts 10 s."
+
+  - mod: "Equilibrium Audit"
+    lines:
+      - match: "Unleashes a series of shockwaves"
+        outcome: "Knocks enemies down with shockwaves"
+        amount: "300"
+        stat: "Shockwave damage"
+        example:
+          {
+            before: 0,
+            after: 300,
+            unit: "",
+            line: "Shockwaves deal 300 and knock down enemies within 15 m.",
+          }
+        note: "It comes with the companion and works on its own."
+
+  - mod: "Null Audit"
+    lines:
+      - match: "same Aura and Abilities as an Eximus"
+        outcome: "Your Hound takes an Eximus's powers"
+        amount: "60 s"
+        stat: "Eximus powers"
+        example:
+          {
+            before: 0,
+            after: 60,
+            unit: " s",
+            line: "It uses an Eximus enemy's aura and abilities for 60 s.",
+          }
+        note: "It also strips 50% of that Eximus's Overguard."
+
+  - mod: "Repo Audit"
+    lines:
+      - match: "magnetic pulse that disarms"
+        outcome: "Disarms enemies around you"
+        amount: "30 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 30, unit: " m", line: "Enemies within 30 m drop their weapons." }
+        note: "Disarmed enemies fight with melee."
+
+  - mod: "Bursting Mass"
+    lines:
+      - match: "accumulates 200% of the damage"
+        outcome: "The mass stores damage and bursts"
+        amount: "200%"
+        stat: "Damage stored"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "",
+            line: "Shots of 100 damage through the mass burst for 200 within 15 m.",
+          }
+        note: "Alt fire bursts it early."
+
+  - mod: "Clip Delegation"
+    lines:
+      - match: "Next Magazine has Status Chance and Multishot"
+        outcome: "Hits make the next magazine stronger"
+        amount: "+15%"
+        stat: "Per hit"
+        example:
+          {
+            before: 0,
+            after: 225,
+            unit: "%",
+            line: "15 hits give the next magazine +225% status chance and multishot.",
+          }
+        note: "It stops at 15 stacks, and starts when you reload."
+
+  - mod: "Combat Reload"
+    lines:
+      - match: "increase reload speed by +120%"
+        outcome: "Headshots speed up your reload"
+        amount: "+120%"
+        stat: "Reload Speed"
+        example: { before: 2, after: 0.91, unit: " s", line: "A reload of 2 s takes 0.91 s." }
+        note: "Only after 5 pellets hit the head, lasts 3 s."
+
+  - mod: "Critical Precision"
+    lines:
+      - match: "Headshots increase Critical Chance by 10%"
+        outcome: "Headshots add critical chance"
+        amount: "+10%"
+        stat: "Per headshot"
+        example:
+          { before: 0, after: 500, unit: "%", line: "50 headshots add +500% critical chance." }
+        note: "Burst fire only. A burst that misses with every shot takes up to 100% back."
+
+  - mod: "Eximus Advantage"
+    lines:
+      - match: "Headshots on Eximus enemies increase Secondary Damage"
+        outcome: "Headshots on Eximus boost your secondary"
+        amount: "+600%"
+        stat: "Secondary damage"
+        example:
+          {
+            before: 100,
+            after: 700,
+            unit: "",
+            line: "A pistol shot of 100 damage does 700 for 10 s.",
+          }
+        note: "Only after a headshot on an Eximus enemy."
+
+  - mod: "Exposing Harpoon"
+    lines:
+      - match: "Pulling an enemy will give +300% Critical Chance"
+        outcome: "Pulling enemies gives critical chance"
+        amount: "+300%"
+        stat: "Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 80,
+            unit: "%",
+            line: "A weapon with 20% critical chance gets 80% for 15 s.",
+          }
+        note: "Only after you pull an enemy."
+
+  - mod: "Metamorphic Magazine"
+    lines:
+      - match: "Inflicting 20 cumulative attacks"
+        outcome: "Enough hits turn an enemy to stone"
+        amount: "20"
+        stat: "Hits to petrify"
+        example:
+          { before: 0, after: 20, unit: "", line: "The 20th hit on an enemy petrifies it for 5 s." }
+        note: "The hits add up on one enemy."
+
+  - mod: "Photon Overcharge"
+    lines:
+      - match: "chance to drop an Energy Orb per Cold Status"
+        outcome: "Kills on frozen enemies drop energy"
+        amount: "2%"
+        stat: "Per Cold status"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: "%",
+            line: "An enemy with 10 Cold status effects has a 20% chance to drop an Energy Orb.",
+          }
+        note: "It counts on kills and assists."
+
+  - mod: "Precision Strike"
+    lines:
+      - match: "increases Reload Speed by 150%"
+        outcome: "Direct grenade hits speed up your reload"
+        amount: "+150%"
+        stat: "Reload Speed"
+        example: { before: 2, after: 0.8, unit: " s", line: "A reload of 2 s takes 0.8 s for 5 s." }
+        note: "Only after a grenade hits an enemy directly."
+
+  - mod: "Sentient Barrage"
+    lines:
+      - match: "Discharge from Alt-Fire now has infinite"
+        outcome: "Alt fire pierces and charges up"
+        amount: "+300%"
+        stat: "Critical Chance and Damage"
+        example:
+          {
+            before: 20,
+            after: 80,
+            unit: "%",
+            line: "A full charge raises the next discharge's 20% critical chance to 80%.",
+          }
+        note: "It passes through every body but no longer explodes on contact."
+
+  - mod: "Vile Discharge"
+    lines:
+      - match: "Damage is accumulated up to 30,000"
+        outcome: "Stores your damage for one blast"
+        amount: "30,000"
+        stat: "Damage stored"
+        example:
+          {
+            before: 0,
+            after: 30000,
+            unit: "",
+            line: "Alt fire launches a sac with up to 30,000 stored damage.",
+          }
+        note: "The store empties with each launch."
+
+  - mod: "Volatile Variant"
+    lines:
+      - match: "Shots have +3 Punch Through"
+        outcome: "Barbs pierce and explode at once"
+        amount: "+50%"
+        stat: "Status Chance"
+        example:
+          {
+            before: 20,
+            after: 30,
+            unit: "%",
+            line: "A barb with 20% status chance gets 30% on a direct hit.",
+          }
+        note: "Shots pass through 3 m, and direct hits explode 4 m wider."
+
+  - mod: "Wild Frenzy"
+    lines:
+      - match: "Secondary Fire will shoot with +400% Fire Rate"
+        outcome: "Alt fire empties the magazine fast"
+        amount: "+400%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 50,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 50.",
+          }
+        note: "Killing 2 or more enemies gives the ammo back."
+
+  - mod: "Critical Mutation"
+    lines:
+      - match: "Each kill increases Critical Chance and Critical Damage by 30%"
+        outcome: "Kills raise critical chance and damage"
+        amount: "+30%"
+        stat: "Per kill"
+        example:
+          {
+            before: 0,
+            after: 300,
+            unit: "%",
+            line: "10 kills add +300% critical chance and damage.",
+          }
+        note: "A grenade that strikes fewer than 3 enemies takes 30% back."
+
+  - mod: "Deadly Maneuvers"
+    lines:
+      - match: "gain 400% Headshot Critical Chance"
+        outcome: "A dodge makes your next headshots crit"
+        amount: "+400%"
+        stat: "Headshot Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 100,
+            unit: "%",
+            line: "Your next 2 headshots with 20% critical chance get 100%.",
+          }
+        note: "Only after a dodge."
+
+  - mod: "Dizzying Rounds"
+    lines:
+      - match: "Shots from less than 8m stun"
+        outcome: "Close shots stun enemies"
+        amount: "8 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 8,
+            unit: " m",
+            line: "Shots from under 8 m stun the enemy and open it to finishers.",
+          }
+        note: "A finisher is a melee hit that does far more damage."
+
+  - mod: "Sentient Surge"
+    lines:
+      - match: "refills 20% of Ocucor's magazine"
+        outcome: "Kills refill the magazine"
+        amount: "20%"
+        stat: "Magazine refilled"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: "%",
+            line: "Each kill refills 20% of the Ocucor's magazine.",
+          }
+        note: "Each active tendril adds 60% status and critical chance."
+
+  - mod: "Dreadful Killshot"
+    lines:
+      - match: "Increased Damage and Status Chance by +20%"
+        outcome: "More Warframe health means more damage"
+        amount: "+20%"
+        stat: "Per 75 Health"
+        example:
+          {
+            before: 0,
+            after: 160,
+            unit: "%",
+            line: "A Warframe with 600 health gives +160% damage and status chance.",
+          }
+        note: "It stops at 360%."
+
+  - mod: "Necrophagic Vigor"
+    lines:
+      - match: "Reloading drains up to half your Health"
+        outcome: "Reloading trades health for critical hits"
+        amount: "+20%"
+        stat: "Per 20 Health"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "%",
+            line: "Draining 200 health gives +200% critical chance and damage.",
+          }
+        note: "It stops at 360%."
+
+  - mod: "Overpressured Rounds"
+    lines:
+      - match: "Rifle kills add 120% Falloff Distance"
+        outcome: "Kills with each mode help the other"
+        amount: "+120%"
+        stat: "Falloff Distance"
+        example:
+          {
+            before: 100,
+            after: 220,
+            unit: "%",
+            line: "After a rifle kill, the next buckshot keeps full damage 120% further.",
+          }
+        note: "Buckshot kills refill 50% of the magazine."
+
+  - mod: "Spontaneous Singularity"
+    lines:
+      - match: "Orbs that strike targets will explode"
+        outcome: "Orbs burst on hit and can pull enemies in"
+        amount: "+90%"
+        stat: "Bonus Damage"
+        example: { before: 100, after: 190, unit: "", line: "An orb of 100 damage bursts for 190." }
+        note: "It has an 18% chance to make a singularity. Orbs no longer bounce or combine."
+
+  - mod: "Unseen Dread"
+    lines:
+      - match: "Become invisible for 5 seconds"
+        outcome: "Multi-hits make you invisible"
+        amount: "+175%"
+        stat: "Critical Damage"
+        example:
+          {
+            before: 2,
+            after: 5.5,
+            unit: "×",
+            line: "A critical hit that does 2\u00d7 does 5.5\u00d7 while invisible.",
+          }
+        note: "Only after one arrow hits 3 or more enemies; you stay invisible for 5 s."
+
+  - mod: "Prototype Shock Coils"
+    lines:
+      - match: "Adds +90% Electric damage"
+        outcome: "More Electricity, and extra shocks"
+        amount: "+90%"
+        stat: "Electricity"
+        example:
+          {
+            before: 100,
+            after: 190,
+            unit: "",
+            line: "A weapon that does 100 damage adds 90 Electricity.",
+          }
+        note: "Shots also have a 20% chance to apply an extra Electricity status."
+
+  - mod: "Velox Conclusion"
+    lines:
+      - match: "gain +0.6% Ability Strength"
+        outcome: "Hits build up ability strength"
+        amount: "+0.6%"
+        stat: "Per hit"
+        example:
+          {
+            before: 100,
+            after: 160,
+            unit: "%",
+            line: "100 hits raise your next ability from 100% to 160% strength.",
+          }
+        note: "Your next ability spends it."
+
+  - mod: "Burning Hate"
+    lines:
+      - match: "vulnerable to 120% more Status Damage"
+        outcome: "Burning enemies take more status damage"
+        amount: "+120%"
+        stat: "Status Damage"
+        example:
+          { before: 100, after: 220, unit: "", line: "A status tick of 100 damage does 220." }
+        note: "It counts on enemies with Heat that Hate hits."
+
+  - mod: "Sentient Incision"
+    lines:
+      - match: "additional damage matching the target's weakness"
+        outcome: "Adds the damage type the target is weak to"
+        amount: "+120%"
+        stat: "Weakness damage"
+        example:
+          {
+            before: 100,
+            after: 220,
+            unit: "",
+            line: "A swing of 100 damage adds 120 of the type the enemy is weak to.",
+          }
+        note: "It does not combine with other damage types."
+
+  - mod: "Brood's Oversurge"
+    lines:
+      - match: "Scuttlers are galvanized with Electricity"
+        outcome: "Sends your Scuttlers at a target"
+        amount: "2,000"
+        stat: "Electricity damage"
+        example:
+          {
+            before: 0,
+            after: 2000,
+            unit: "",
+            line: "The Scuttlers hit the target for 2,000 Electricity in an area.",
+          }
+        note: "Widow's Brood augment: hold to send all active Scuttlers."
+
+  - mod: "Gaseous Quake"
+    lines:
+      - match: "Channel Gas Damage and Status Effect leaks"
+        outcome: "Sound Quake leaks Gas"
+        amount: "2.75×"
+        stat: "Gas multiplier"
+        example:
+          {
+            before: 1,
+            after: 2.75,
+            unit: "×",
+            line: "Gas damage starts at 2.75\u00d7 and grows every second.",
+          }
+        note: "Sound Quake augment: enemies in your sight take the Gas."
+
+  - mod: "Gastroparesis"
+    lines:
+      - match: "Each enemy consumed adds 15% Extra Gas Damage"
+        outcome: "Eating enemies adds Gas to your guns"
+        amount: "+15%"
+        stat: "Gas per enemy"
+        example:
+          {
+            before: 0,
+            after: 75,
+            unit: "%",
+            line: "5 enemies consumed add +75% Gas to your primary and secondary.",
+          }
+        note: "Passive augment for Grendel."
+
+  - mod: "Infernum"
+    lines:
+      - match: "Release Fireballs for 1500Heat Damage"
+        outcome: "Infernalis fires fireballs"
+        amount: "1,500"
+        stat: "Heat damage"
+        example: { before: 0, after: 1500, unit: "", line: "Each fireball deals 1,500 Heat." }
+        note: "Infernalis augment: grabbing runes in flight makes bigger volleys."
+
+  - mod: "Truth's Flame"
+    lines:
+      - match: "Tennokai kills grant an additional 4s"
+        outcome: "Tennokai kills keep the chain going"
+        amount: "+120%"
+        stat: "Tennokai damage"
+        example:
+          { before: 100, after: 220, unit: "", line: "A Tennokai attack of 100 damage does 220." }
+        note: "Each Tennokai kill also adds 4 s to the prompt. Tennokai is a follow-up attack after a heavy attack, when the prompt shows."
+      - match: "CURSE: Suffer 100 Heat Damage/s"
+        outcome: "Curse: it burns you"
+        amount: "100"
+        stat: "Heat per second"
+        example:
+          {
+            before: 0,
+            after: 600,
+            unit: "",
+            line: "You take 100 Heat a second for 6 s, 600 in all.",
+          }
+        note: "This is the mod's curse."
+
+  - mod: "Ammo Case"
+    lines:
+      - match: "Increases Ammo Capacity by 25%"
+        outcome: "Carries more ammo and turns pickups into it"
+        amount: "+25%"
+        stat: "Ammo Capacity"
+        example:
+          {
+            before: 100,
+            after: 125,
+            unit: "",
+            line: "A weapon that carries 100 rounds carries 125.",
+          }
+        note: "After 2 s, any ammo pickup turns into ammo for the weapons you hold."
+
+  - mod: "Assassin Posture"
+    lines:
+      - match: "prioritize Eximus and other high-ranking enemies"
+        outcome: "Your companion goes for Eximus and strips Overguard"
+        amount: "+300%"
+        stat: "Overguard Damage"
+        example: { before: 100, after: 400, unit: "", line: "A bite of 100 does 400 to Overguard." }
+        note: "A posture sets how your companion picks its targets."
+
+  - mod: "Assault Mode"
+    lines:
+      - match: "attack the first visible enemy within 30m"
+        outcome: "Your sentinel attacks on its own"
+        amount: "30 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: " m",
+            line: "It attacks the first enemy it sees within 30 m.",
+          }
+        note: "Without it, the sentinel waits for you to attack."
+
+  - mod: "Aviator"
+    lines:
+      - match: "Reduced damage by 40% while airborne"
+        outcome: "Takes less damage in the air"
+        amount: "-40%"
+        stat: "Damage taken"
+        example:
+          {
+            before: 100,
+            after: 60,
+            unit: "",
+            line: "A hit of 100 while you are in the air does 60.",
+          }
+        note: "It counts only while you is off the ground."
+
+  - mod: "Necramech Aviator"
+    lines:
+      - match: "Reduced damage by 40% while airborne"
+        outcome: "Takes less damage in the air"
+        amount: "-40%"
+        stat: "Damage taken"
+        example:
+          {
+            before: 100,
+            after: 60,
+            unit: "",
+            line: "A hit of 100 while you are in the air does 60.",
+          }
+        note: "It counts only while the Necramech is off the ground."
+
+  - mod: "Balanced Posture"
+    lines:
+      - match: "Staggers enemies within 2m while moving"
+        outcome: "Your companion staggers enemies as it moves"
+        amount: "2 m"
+        stat: "Stagger reach"
+        example:
+          { before: 0, after: 2, unit: " m", line: "Enemies within 2 m of it stumble as it moves." }
+        note: "A posture sets how your companion picks its targets."
+
+  - mod: "Blood For Ammo"
+    lines:
+      - match: "Mercy Kill refills Primary and Secondary Magazine"
+        outcome: "Mercy kills reload your guns"
+        amount: "100%"
+        stat: "Magazine refilled"
+        example: { before: 0, after: 100, unit: "%", line: "A mercy kill refills both magazines." }
+        note: "A mercy kill is the finisher on an enemy that shows the mercy prompt."
+
+  - mod: "Breach Quanta"
+    lines:
+      - match: "Temporarily stall Hull Breach"
+        outcome: "Holds off hull breaches"
+        amount: "55 s"
+        stat: "Breach stall"
+        example: { before: 0, after: 55, unit: " s", line: "Breaches stop getting worse for 55 s." }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Crowd Dispersion"
+    lines:
+      - match: "Unleashes a 10.0m radial knockdown"
+        outcome: "Knocks back crowds around you"
+        amount: "10 m"
+        stat: "Knockdown reach"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: " m",
+            line: "When several enemies close in, they are knocked down within 10 m.",
+          }
+        note: "It deals little damage; it is for space."
+
+  - mod: "Elusive Posture"
+    lines:
+      - match: "The companion will avoid attacking"
+        outcome: "Your companion stays out of fights"
+        amount: "+50%"
+        stat: "Evasion"
+        example: { before: 0, after: 50, unit: "%", line: "It dodges 50% of the shots at it." }
+        note: "A posture sets how your companion picks its targets."
+
+  - mod: "Extend"
+    lines:
+      - match: "Attraction Range (In Space)"
+        outcome: "Archwing pulls loot from further"
+        amount: "+100"
+        stat: "Attraction Range"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: " m",
+            line: "Loot within 100 m more flies to you in space.",
+          }
+        note: "It counts only in space."
+
+  - mod: "Fatal Attraction"
+    lines:
+      - match: "Enemies within 20m are drawn to you"
+        outcome: "Draws enemies in, then they explode"
+        amount: "250"
+        stat: "Detonation damage"
+        example:
+          { before: 0, after: 250, unit: "", line: "Enemies drawn within 6 m explode for 250." }
+        note: "Killing them first keeps the lure going longer."
+
+  - mod: "Fire Suppression"
+    lines:
+      - match: "Extinguish 1 fire"
+        outcome: "Puts out a fire on the Railjack"
+        amount: "1"
+        stat: "Fires"
+        example: { before: 0, after: 1, unit: "", line: "One fire on the Railjack goes out." }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Fizzbang Flourish"
+    lines:
+      - match: "Fireworks trigger when completing a trick"
+        outcome: "Big tricks set off fireworks"
+        amount: "200"
+        stat: "Trick points"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "",
+            line: "A trick of over 200 points sets off fireworks.",
+          }
+        note: "It only changes how tricks look."
+
+  - mod: "Frenzied Posture"
+    lines:
+      - match: "change its target after each attack"
+        outcome: "Your companion spreads status effects around"
+        amount: "+80%"
+        stat: "Status Duration"
+        example:
+          {
+            before: 6,
+            after: 10.8,
+            unit: " s",
+            line: "A status effect that lasts 6 s lasts 10.8 s.",
+          }
+        note: "A posture sets how your companion picks its targets."
+
+  - mod: "Ghost"
+    lines:
+      - match: "Cloaks owner when enemies are within 24m"
+        outcome: "Your sentinel hides you"
+        amount: "24 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 24,
+            unit: " m",
+            line: "You turn invisible when enemies come within 24 m.",
+          }
+        note: "Attacking breaks the cloak."
+
+  - mod: "Guardian"
+    lines:
+      - match: "Boosts owner's shield by 100% when it runs out"
+        outcome: "Refills your shields when they break"
+        amount: "100%"
+        stat: "Shields refilled"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "When your shields run out, they come back in full.",
+          }
+        note: "It comes from your sentinel."
+
+  - mod: "Hok-Kaal"
+    lines:
+      - match: "next Amp attack deals x3.0 bonus damage"
+        outcome: "Leaving Void Mode makes the next Amp shot hit harder"
+        amount: "3×"
+        stat: "Amp damage"
+        example:
+          { before: 100, after: 300, unit: "", line: "The next Amp shot of 100 damage does 300." }
+        note: "Ready again after 5 s."
+
+  - mod: "Hunter Recovery"
+    lines:
+      - match: "Warframe healed for +30% Companion Damage dealt"
+        outcome: "Your companion's hits heal you"
+        amount: "30%"
+        stat: "Damage to health"
+        example: { before: 0, after: 30, unit: "", line: "A companion hit of 100 heals you 30." }
+        note: "It counts on your companion's damage, not yours."
+
+  - mod: "Hush"
+    lines:
+      - match: "Reduces the chance an enemy will hear gunfire"
+        outcome: "Enemies do not hear your shots"
+        amount: "-100%"
+        stat: "Noise"
+        example:
+          {
+            before: 100,
+            after: 0,
+            unit: "%",
+            line: "Enemies that would hear 100% of your shots hear none.",
+          }
+        note: "Enemies still see you and notice bodies."
+
+  - mod: "Suppress"
+    lines:
+      - match: "Reduces the chance an enemy will hear gunfire"
+        outcome: "Enemies do not hear your shots"
+        amount: "-100%"
+        stat: "Noise"
+        example:
+          {
+            before: 100,
+            after: 0,
+            unit: "%",
+            line: "Enemies that would hear 100% of your shots hear none.",
+          }
+        note: "Enemies still see you and notice bodies."
+
+  - mod: "Immuno Shield"
+    lines:
+      - match: "gain 5000 Affinity"
+        outcome: "Hacking gives affinity"
+        amount: "5,000"
+        stat: "Affinity"
+        example:
+          {
+            before: 0,
+            after: 5000,
+            unit: "",
+            line: "A hack gives 5,000 affinity and 15% disinfection.",
+          }
+        note: "Hacking is the puzzle on consoles and locked doors."
+
+  - mod: "Instant Secure"
+    lines:
+      - match: "gain 10,000 H\u00f6llars"
+        outcome: "Hacking gives H\u00f6llars"
+        amount: "10,000"
+        stat: "H\u00f6llars"
+        example:
+          {
+            before: 0,
+            after: 10000,
+            unit: "",
+            line: "A hack gives 10,000 H\u00f6llars and 15% disinfection.",
+          }
+        note: "Hacking is the puzzle on consoles and locked doors."
+
+  - mod: "Juice"
+    lines:
+      - match: "55 Energy per 100 Trick Points"
+        outcome: "Tricks give energy"
+        amount: "55"
+        stat: "Energy per 100 points"
+        example: { before: 0, after: 55, unit: "", line: "A trick of 100 points gives 55 energy." }
+        note: "It counts on the K-Drive."
+
+  - mod: "Live Wire"
+    lines:
+      - match: "Shock enemies within 20m while Hacking"
+        outcome: "Hacking shocks enemies around you"
+        amount: "20 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: " m",
+            line: "Enemies within 20 m are shocked while you hack.",
+          }
+        note: "Hacking is the puzzle on consoles and locked doors."
+
+  - mod: "Loyal Companion"
+    lines:
+      - match: "gain 75% Damage Reduction for 10s"
+        outcome: "Low health makes you tough and your companion a decoy"
+        amount: "-75%"
+        stat: "Damage taken"
+        example:
+          {
+            before: 100,
+            after: 25,
+            unit: "",
+            line: "Below 35% health, a hit of 100 does 25 for 10 s.",
+          }
+        note: "Your companion draws fire and cannot die for 10 s. Ready again after 60 s."
+
+  - mod: "Master Key"
+    lines:
+      - match: "Unlock 5 lockers within 20m"
+        outcome: "Hacking opens nearby lockers"
+        amount: "5"
+        stat: "Lockers"
+        example: { before: 0, after: 5, unit: "", line: "A hack opens 5 lockers within 20 m." }
+        note: "Hacking is the puzzle on consoles and locked doors."
+
+  - mod: "Motus Signal"
+    lines:
+      - match: "Increase Double Jump strength by +200%"
+        outcome: "Double jumps go much higher"
+        amount: "+200%"
+        stat: "Double jump"
+        example: { before: 100, after: 300, unit: "%", line: "A double jump of 100% goes 300%." }
+        note: "It counts only on the second jump."
+
+  - mod: "Peculiar End"
+    lines:
+      - match: "Finisher kills have a 100% chance"
+        outcome: "Finisher kills dissolve enemies"
+        amount: "100%"
+        stat: "Chance"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: "",
+            line: "Of 10 finisher kills, all 10 dissolve the enemy.",
+          }
+        note: "It only changes how kills look."
+
+  - mod: "Persistent Posture"
+    lines:
+      - match: "pick a target and then attack it relentlessly"
+        outcome: "Your companion sticks to one target"
+        amount: "+40%"
+        stat: "Impact Damage"
+        example: { before: 100, after: 140, unit: "", line: "A bite of 100 Impact does 140." }
+        note: "A posture sets how your companion picks its targets."
+
+  - mod: "Protector Posture"
+    lines:
+      - match: "prioritize attacking enemies within 15m"
+        outcome: "Your companion guards you"
+        amount: "+4"
+        stat: "Puncture status effects"
+        example:
+          { before: 0, after: 4, unit: "", line: "Each attack applies 4 Puncture status effects." }
+        note: "It goes for enemies within 15 m of you. A posture sets how your companion picks its targets."
+
+  - mod: "Proton Pulse"
+    lines:
+      - match: "Wall Dashing grants +100% Bullet Jump Speed"
+        outcome: "Wall dashes speed up your bullet jumps"
+        amount: "+100%"
+        stat: "Bullet jump speed"
+        example:
+          { before: 100, after: 200, unit: "%", line: "A bullet jump at 100% speed goes at 200%." }
+        note: "Only after a wall dash."
+
+  - mod: "Revenge"
+    lines:
+      - match: "unless that enemy has attacked the Sentinel's master"
+        outcome: "Your sentinel attacks only who attacks you"
+        amount: "10 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: " m",
+            line: "It attacks enemies within 10 m that attacked you.",
+          }
+        note: "It stays quiet otherwise, which helps stealth."
+
+  - mod: "Shattering Impact"
+    lines:
+      - match: "Impact Damage reduces enemy Armor by 6"
+        outcome: "Impact hits strip armor"
+        amount: "-6"
+        stat: "Armor per hit"
+        example:
+          {
+            before: 100,
+            after: 94,
+            unit: "",
+            line: "An enemy with 100 armor has 94 after one Impact hit.",
+          }
+        note: "It adds up with every hit that deals Impact."
+
+  - mod: "Swift Mercy"
+    lines:
+      - match: "Speed of Mercy Kills increased by 50%"
+        outcome: "Mercy kills are quicker"
+        amount: "+50%"
+        stat: "Mercy speed"
+        example: { before: 2, after: 1.33, unit: " s", line: "A mercy kill of 2 s takes 1.33 s." }
+        note: "A mercy kill is the finisher on an enemy that shows the mercy prompt."
+
+  - mod: "Talsek-An"
+    lines:
+      - match: "Gain knockdown immunity"
+        outcome: "Nothing knocks you down"
+        amount: "3 s"
+        stat: "Void Mode"
+        example:
+          {
+            before: 0,
+            after: 3,
+            unit: " s",
+            line: "A blocked knockdown puts you in Void Mode for 3 s.",
+          }
+        note: "Ready again after 7.5 s."
+
+  - mod: "Thumper"
+    lines:
+      - match: "Djinn will attack the first visible enemy within 60m"
+        outcome: "Your Djinn attacks on its own"
+        amount: "60 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 60,
+            unit: " m",
+            line: "It attacks the first enemy it sees within 60 m.",
+          }
+        note: "Without it, the Djinn waits for you to attack."
+
+  - mod: "Trail Blazer"
+    lines:
+      - match: "Tricks leave a trail inflicting 40 Heat"
+        outcome: "Tricks leave a burning trail"
+        amount: "40"
+        stat: "Heat damage"
+        example: { before: 0, after: 40, unit: "", line: "Enemies in the trail take 40 Heat." }
+        note: "It counts on the K-Drive."
+
+  - mod: "True Steel"
+    lines:
+      - match: "Critical Chance (x2 for Heavy Attacks)"
+        outcome: "More critical hits"
+        amount: "+120%"
+        stat: "Critical Chance"
+        example:
+          { before: 20, after: 44, unit: "%", line: "A weapon with 20% critical chance gets 44%." }
+        note: "A heavy attack gets twice the amount."
+
+  - mod: "Vapor Trail"
+    lines:
+      - match: "Add 11 Boost Speed"
+        outcome: "Boosts faster, at a cost"
+        amount: "+11"
+        stat: "Boost Speed"
+        example: { before: 0, after: 11, unit: "", line: "A boost gets 11 more speed." }
+        note: "It spends 10 energy a second."
+
+  - mod: "Vaporize"
+    lines:
+      - match: "stun and inflict 600 damage"
+        outcome: "Your sentinel stuns and hits hard"
+        amount: "600"
+        stat: "Damage"
+        example:
+          {
+            before: 0,
+            after: 600,
+            unit: "",
+            line: "Every 10 s it stuns an enemy within 30 m and deals 600.",
+          }
+        note: "Mods on the sentinel's weapon count on it."
+
+  - mod: "Void Cloak"
+    lines:
+      - match: "Cloak from Enemies for 50s"
+        outcome: "Hides the Railjack"
+        amount: "50 s"
+        stat: "Cloak"
+        example: { before: 0, after: 50, unit: " s", line: "Enemies lose the Railjack for 50 s." }
+        note: "It is a battle avionic, used from the Railjack."
+      - match: "Engine Speed reduced to 50%"
+        outcome: "The Railjack is slower while cloaked"
+        amount: "50%"
+        stat: "Engine Speed"
+        example:
+          {
+            before: 100,
+            after: 50,
+            unit: "%",
+            line: "A Railjack at 100% speed moves at 50% while cloaked.",
+          }
+        note: "It lasts while the cloak is on."
+
+  - mod: Regen
+    lines:
+      - match: "Sentinel recovery time reduced by 20s"
+        outcome: "Your sentinel gets back up sooner"
+        amount: "-20 s"
+        stat: Recovery time
+        example:
+          {
+            before: 60,
+            after: 40,
+            unit: " s",
+            line: "A sentinel that takes 60 s to recover takes 40 s.",
+          }
+        note: "It comes back with 10 s of invulnerability."
+
+  - mod: Primed Regen
+    lines:
+      - match: "Sentinel recovery time reduced by 35s"
+        outcome: "Your sentinel gets back up sooner"
+        amount: "-35 s"
+        stat: Recovery time
+        example:
+          {
+            before: 60,
+            after: 25,
+            unit: " s",
+            line: "A sentinel that takes 60 s to recover takes 25 s.",
+          }
+        note: "It comes back with 10 s of invulnerability."
+
+  - mod: "Amp Spike"
+    lines:
+      - match: "increase AMP damage by 100%"
+        outcome: "A big combo makes your Amp hit harder"
+        amount: "+100%"
+        stat: "Amp damage"
+        example:
+          {
+            before: 100,
+            after: 200,
+            unit: "",
+            line: "An Amp shot of 100 damage does 200 for 40 s.",
+          }
+        note: "Only after you switch to the Operator with an 8\u00d7 combo."
+
+  - mod: "Astral Cut"
+    lines:
+      - match: "slash size is increased by 80%"
+        outcome: "Tauron Strike slashes wider"
+        amount: "+80%"
+        stat: "Slash size"
+        example: { before: 100, after: 180, unit: "%", line: "A slash of 100% size reaches 180%." }
+        note: "Tauron Strike is the Operator's strongest attack."
+
+  - mod: "Basilisk Gaze"
+    lines:
+      - match: "Increases Void Blast radius by 60%"
+        outcome: "Void Blast reaches wider"
+        amount: "+60%"
+        stat: "Void Blast radius"
+        example:
+          { before: 100, after: 160, unit: "%", line: "A blast of 100% radius reaches 160%." }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Basilisk Scales"
+    lines:
+      - match: "Increases Operator Armor by 200%"
+        outcome: "Your Operator has more armor"
+        amount: "+200%"
+        stat: "Operator Armor"
+        example: { before: 100, after: 300, unit: "", line: "Operator armor of 100 becomes 300." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Blazing Dash"
+    lines:
+      - match: "Void Sling leaves a trail of fire"
+        outcome: "Void Sling leaves fire"
+        amount: "1,000"
+        stat: "Heat per second"
+        example:
+          { before: 0, after: 1000, unit: "", line: "The trail burns for 1,000 a second for 14 s." }
+        note: "Void Sling also stuns enemies instead of pushing them."
+
+  - mod: "Boundless Energy"
+    lines:
+      - match: "granted by spectral pages increased by 40%"
+        outcome: "Spectral pages give more"
+        amount: "+40%"
+        stat: "Page bonus"
+        example: { before: 100, after: 140, unit: "%", line: "A page bonus of 100% becomes 140%." }
+        note: "It grows the strength, duration and cast speed the pages give."
+
+  - mod: "Brilliant Insight"
+    lines:
+      - match: "Spectral pages also fire off beams"
+        outcome: "Spectral pages blind enemies"
+        amount: "16 m"
+        stat: "Blind reach"
+        example: { before: 0, after: 16, unit: " m", line: "Pages blind enemies within 16 m." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Caustic Strike"
+    lines:
+      - match: "stripping 100% of enemy armor"
+        outcome: "A bomb that strips all armor"
+        amount: "-100%"
+        stat: "Enemy Armor"
+        example:
+          {
+            before: 100,
+            after: 0,
+            unit: "",
+            line: "An enemy with 100 armor has none inside the 8 m blast.",
+          }
+        note: "Tap again to set it off in flight."
+
+  - mod: "Cogron Tauron Strike"
+    lines:
+      - match: "Summon forth Cogron"
+        outcome: "A hammer slam that ripples out"
+        amount: "4×"
+        stat: "Shockwaves"
+        example: { before: 0, after: 4, unit: "", line: "The slam sends out 4 shockwaves." }
+        note: "It is a Tauron Strike, the Operator's strongest attack."
+
+  - mod: "Contamination Wave"
+    lines:
+      - match: "making them 50% more vulnerable to Operator Damage"
+        outcome: "Makes enemies weak to the Operator"
+        amount: "+50%"
+        stat: "Operator damage taken"
+        example:
+          { before: 100, after: 150, unit: "", line: "An Operator hit of 100 does 150 for 20 s." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Crippling Dash"
+    lines:
+      - match: "Void Sling through an enemy will reduce their Damage by 50%"
+        outcome: "Void Sling weakens enemies"
+        amount: "-50%"
+        stat: "Enemy damage"
+        example: { before: 100, after: 50, unit: "", line: "An enemy hit of 100 does 50." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Deathless Currents"
+    lines:
+      - match: "Vortex heals allies for 250 health/s"
+        outcome: "The vortex heals and revives"
+        amount: "250"
+        stat: "Health per second"
+        example:
+          { before: 0, after: 250, unit: "", line: "Allies in the vortex heal 250 a second." }
+        note: "Downed allies inside are revived at once."
+
+  - mod: "Disarming Blast"
+    lines:
+      - match: "Enemies hit by Void Blast have a 50% chance to be disarmed"
+        outcome: "Void Blast disarms enemies"
+        amount: "50%"
+        stat: "Disarm chance"
+        example:
+          { before: 0, after: 5, unit: "", line: "Of 10 enemies hit, about 5 drop their weapons." }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Disarming Sling"
+    lines:
+      - match: "Slinging through enemies has a 50% chance to disarm"
+        outcome: "Void Sling disarms enemies"
+        amount: "50%"
+        stat: "Disarm chance"
+        example:
+          {
+            before: 0,
+            after: 5,
+            unit: "",
+            line: "Of 10 enemies you sling through, about 5 drop their weapons.",
+          }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Disorienting Blast"
+    lines:
+      - match: "Void Blast has a 50% chance of confusing"
+        outcome: "Void Blast confuses enemies"
+        amount: "50%"
+        stat: "Confuse chance"
+        example:
+          {
+            before: 0,
+            after: 5,
+            unit: "",
+            line: "Of 10 enemies hit, about 5 attack each other for 16 s.",
+          }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Distilled Contamination"
+    lines:
+      - match: "makes all affected enemies 50% more vulnerable"
+        outcome: "Kills spread the weakness"
+        amount: "+50%"
+        stat: "Damage taken"
+        example:
+          { before: 100, after: 150, unit: "", line: "Enemies hit for 100 take 150 after a kill." }
+        note: "It lasts 10 s longer and stacks twice."
+
+  - mod: "Downpour"
+    lines:
+      - match: "Rain of Arrows will also target 4 additional enemies"
+        outcome: "Rain of Arrows hits more enemies"
+        amount: "+4"
+        stat: "Extra targets"
+        example: { before: 1, after: 5, unit: "", line: "Arrows that hit 1 enemy hit 5." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Enduring Tides"
+    lines:
+      - match: "Increases Operator Health and Armor by 200%"
+        outcome: "Your Operator is tougher"
+        amount: "+200%"
+        stat: "Operator Health and Armor"
+        example: { before: 100, after: 300, unit: "", line: "Operator health of 100 becomes 300." }
+        note: "Armor grows by the same amount."
+
+  - mod: "Energy Pulse"
+    lines:
+      - match: "Energy pickups grant 50% additional Energy"
+        outcome: "Energy orbs give more"
+        amount: "+50%"
+        stat: "Orb energy"
+        example: { before: 25, after: 37.5, unit: "", line: "An orb of 25 energy gives 37.5." }
+        note: "The extra comes over 5 s."
+
+  - mod: "Eroding Rapids"
+    lines:
+      - match: "Vortex applies 100% status vulnerability"
+        outcome: "Enemies in the vortex take more status damage"
+        amount: "+100%"
+        stat: "Status damage taken"
+        example:
+          {
+            before: 100,
+            after: 200,
+            unit: "",
+            line: "A status tick of 100 does 200 inside the vortex.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Eternal Gaze"
+    lines:
+      - match: "Increase Energy Regeneration Rate for Amps and Void Beam by 60%"
+        outcome: "Your Amp refills faster"
+        amount: "+60%"
+        stat: "Amp energy regen"
+        example:
+          {
+            before: 100,
+            after: 160,
+            unit: "%",
+            line: "An Amp that refills at 100% refills at 160%.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Executing Dash"
+    lines:
+      - match: "open them up to Finishers and increase Finisher Damage taken by 35%"
+        outcome: "Void Sling opens enemies to finishers"
+        amount: "+35%"
+        stat: "Finisher damage taken"
+        example: { before: 100, after: 135, unit: "", line: "A finisher of 100 does 135." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Far Sling"
+    lines:
+      - match: "Increases maximum Void Sling distance by 30%"
+        outcome: "Void Sling goes further"
+        amount: "+30%"
+        stat: "Sling distance"
+        example: { before: 100, after: 130, unit: "%", line: "A sling of 100% distance goes 130%." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Flame Blast"
+    lines:
+      - match: "deals 250% of the Void Blast damage"
+        outcome: "Void Blast throws a fireball"
+        amount: "250%"
+        stat: "Fireball damage"
+        example:
+          {
+            before: 100,
+            after: 250,
+            unit: "",
+            line: "A blast of 100 damage throws a fireball for 250.",
+          }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Flowing Strikes"
+    lines:
+      - match: "Increase the range of spectral melee attacks to 26m"
+        outcome: "Spectral melee reaches far"
+        amount: "26 m"
+        stat: "Reach"
+        example:
+          {
+            before: 10,
+            after: 26,
+            unit: " m",
+            line: "Spectral attacks that reach 10 m reach 26 m.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Great Quake"
+    lines:
+      - match: "Increase shockwave radius by +40%"
+        outcome: "Shockwaves reach wider"
+        amount: "+40%"
+        stat: "Shockwave radius"
+        example:
+          { before: 100, after: 140, unit: "%", line: "A shockwave of 100% radius reaches 140%." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Guardian Blast"
+    lines:
+      - match: "grants them 160 Shields"
+        outcome: "Void Blast gives allies shields"
+        amount: "160"
+        stat: "Shields per ally"
+        example: { before: 0, after: 160, unit: "", line: "Each ally within 8 m gets 160 shields." }
+        note: "It costs 25 energy for each ally hit."
+
+  - mod: "Guardian Break"
+    lines:
+      - match: "Shield Regeneration rate is increased by 150%"
+        outcome: "A broken shell speeds up your shields"
+        amount: "+150%"
+        stat: "Shield regen"
+        example:
+          {
+            before: 100,
+            after: 250,
+            unit: "%",
+            line: "Shields that refill at 100% refill at 250% for 12 s.",
+          }
+        note: "The wait before they refill is 80% shorter too."
+
+  - mod: "Guardian Shell"
+    lines:
+      - match: "drains Energy for every 400 Damage absorbed"
+        outcome: "Charge Void Blast for a shield"
+        amount: "400"
+        stat: "Damage per energy"
+        example:
+          {
+            before: 0,
+            after: 400,
+            unit: "",
+            line: "The shield takes 400 damage for each energy it drains.",
+          }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Hardened Wellspring"
+    lines:
+      - match: "boost its duration by 20s"
+        outcome: "Makes the Wellspring bigger and stronger"
+        amount: "+20%"
+        stat: "Ability Strength"
+        example:
+          {
+            before: 100,
+            after: 120,
+            unit: "%",
+            line: "Inside it, an ability at 100% strength reaches 120%.",
+          }
+        note: "The Wellspring also lasts 20 s longer."
+
+  - mod: "Hungering Blades"
+    lines:
+      - match: "100% chance to attack the same enemy a second time"
+        outcome: "Spectral weapons strike twice"
+        amount: "100%"
+        stat: "Second strike"
+        example:
+          { before: 0, after: 10, unit: "", line: "Of 10 spectral attacks, all 10 strike twice." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Inner Gaze"
+    lines:
+      - match: "Increase Energy for Amps and Void Beam by 40%"
+        outcome: "Your Amp holds more energy"
+        amount: "+40%"
+        stat: "Amp energy"
+        example: { before: 100, after: 140, unit: "", line: "An Amp pool of 100 becomes 140." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Inner Might"
+    lines:
+      - match: "cast without using Energy or Shields"
+        outcome: "One free ability now and then"
+        amount: "60 s"
+        stat: "Recharge"
+        example:
+          {
+            before: 0,
+            after: 60,
+            unit: " s",
+            line: "An ability costs nothing, then it takes 60 s to recharge.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Killer's Rush"
+    lines:
+      - match: "increasing melee Critical Chance by 50%"
+        outcome: "Operator finishers boost your melee crits"
+        amount: "+50%"
+        stat: "Melee Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 30,
+            unit: "%",
+            line: "A weapon with 20% critical chance gets 30% for 40 s.",
+          }
+        note: "Only after a finisher as the Operator."
+
+  - mod: "Last Gasp"
+    lines:
+      - match: "Revive your Warframe by transferring to Operator"
+        outcome: "Revive yourself as the Operator"
+        amount: "3"
+        stat: "Kills"
+        example:
+          {
+            before: 0,
+            after: 3,
+            unit: "",
+            line: "Kill 3 enemies within 15 s as the Operator to revive.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Lethal Levitation"
+    lines:
+      - match: "Additional 50% Weapon Damage per Lifted enemy"
+        outcome: "Hitting lifted enemies boosts your weapons"
+        amount: "+50%"
+        stat: "Per lifted enemy"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "%",
+            line: "Hitting 4 lifted enemies adds +200% weapon damage for 60 s.",
+          }
+        note: "It stacks up to 4 times."
+
+  - mod: "Lightning Dash"
+    lines:
+      - match: "zaps enemies within 16m for 800 Damage"
+        outcome: "Void Sling leaves ball lightning"
+        amount: "800"
+        stat: "Damage"
+        example:
+          { before: 0, after: 800, unit: "", line: "The ball zaps enemies within 16 m for 800." }
+        note: "It costs 10 energy."
+
+  - mod: "Lorak Tauron Strike"
+    lines:
+      - match: "100% chance to drop Energy Orbs"
+        outcome: "A beam that makes kills drop energy"
+        amount: "100%"
+        stat: "Energy Orb chance"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: "",
+            line: "Of 10 pierced enemies killed within 10 s, all 10 drop an orb.",
+          }
+        note: "It is a Tauron Strike, the Operator's strongest attack."
+
+  - mod: "Magnetic Blast"
+    lines:
+      - match: "affected by Magnetize for 10s"
+        outcome: "Void Blast magnetizes enemies"
+        amount: "10 s"
+        stat: "Magnetize"
+        example: { before: 0, after: 10, unit: " s", line: "Enemies hit pull in shots for 10 s." }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Magnetic Boost"
+    lines:
+      - match: "refresh its duration and increase its radius by 100%"
+        outcome: "Slinging out of Magnetic Flare grows it"
+        amount: "+100%"
+        stat: "Flare radius"
+        example:
+          { before: 100, after: 200, unit: "%", line: "A flare of 100% radius reaches 200%." }
+        note: "Its time also starts again."
+
+  - mod: "Magnetic Flare"
+    lines:
+      - match: "disables the shields of any enemy that enters"
+        outcome: "A field that turns off shields"
+        amount: "8 m"
+        stat: "Radius"
+        example:
+          {
+            before: 0,
+            after: 8,
+            unit: " m",
+            line: "Enemies within 8 m lose their shields for 30 s.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Mending Soul"
+    lines:
+      - match: "The first 4 revives are instantaneous"
+        outcome: "Revives are instant"
+        amount: "4"
+        stat: "Instant revives"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: "",
+            line: "Your first 4 revives are instant; the rest are twice as fast.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Mending Unity"
+    lines:
+      - match: "Increases Affinity Radius by 25m"
+        outcome: "Affinity reaches further"
+        amount: "+25 m"
+        stat: "Affinity Radius"
+        example:
+          { before: 50, after: 75, unit: " m", line: "Affinity shared within 50 m reaches 75 m." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Meteoric Dash"
+    lines:
+      - match: "Void Sling deals 400 Extra Damage"
+        outcome: "Void Sling hits harder"
+        amount: "+400"
+        stat: "Sling damage"
+        example:
+          { before: 0, after: 400, unit: "", line: "A sling through an enemy deals 400 more." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Mind Sprint"
+    lines:
+      - match: "Increases Void Sling Speed by 120%"
+        outcome: "Void Sling is faster"
+        amount: "+120%"
+        stat: "Sling speed"
+        example: { before: 100, after: 220, unit: "%", line: "A sling at 100% speed goes at 220%." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Mind Step"
+    lines:
+      - match: "Increases Operator Movement Speed by 30%"
+        outcome: "Your Operator moves faster"
+        amount: "+30%"
+        stat: "Movement Speed"
+        example: { before: 100, after: 130, unit: "%", line: "Moving at 100% speed becomes 130%." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Nidri Tauron Strike"
+    lines:
+      - match: "50% of damage dealt to enemies caught in the vortex"
+        outcome: "A vortex that shares damage"
+        amount: "50%"
+        stat: "Shared damage"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "A hit of 100 on one enemy deals 50 to the others inside.",
+          }
+        note: "The vortex lasts 20 s."
+
+  - mod: "No Quarter"
+    lines:
+      - match: "increases Operator energy regen rate by 10%"
+        outcome: "Killing disarmed enemies refills energy faster"
+        amount: "+10%"
+        stat: "Per kill"
+        example:
+          {
+            before: 100,
+            after: 140,
+            unit: "%",
+            line: "4 kills raise energy regen from 100% to 140% for 10 s.",
+          }
+        note: "It stacks 4 times."
+
+  - mod: "Opening Slam"
+    lines:
+      - match: "grants double Combo gain for 20s"
+        outcome: "Operator slams double your combo gain"
+        amount: "2×"
+        stat: "Combo gain"
+        example: { before: 1, after: 2, unit: "×", line: "Each hit adds twice the combo for 20 s." }
+        note: "Only after a slam as the Operator."
+
+  - mod: "Overwhelming Power"
+    lines:
+      - match: "Gain +5% Ability Strength for each enemy hit"
+        outcome: "Tauron Strike hits boost your abilities"
+        amount: "+5%"
+        stat: "Per enemy hit"
+        example:
+          {
+            before: 100,
+            after: 150,
+            unit: "%",
+            line: "Hitting 10 enemies raises ability strength from 100% to 150% for 30 s.",
+          }
+        note: "It stops at +50%."
+
+  - mod: "Phoenix Talons"
+    lines:
+      - match: "Physical Damage and Operator Damage increased by 30%"
+        outcome: "More physical and Operator damage"
+        amount: "+30%"
+        stat: "Physical and Operator Damage"
+        example: { before: 100, after: 130, unit: "", line: "A hit of 100 does 130." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Poise"
+    lines:
+      - match: "Gain immunity to slow, stagger, and knockdown"
+        outcome: "Switching makes you hard to stop"
+        amount: "40 s"
+        stat: "Immunity"
+        example:
+          {
+            before: 0,
+            after: 40,
+            unit: " s",
+            line: "Nothing slows, staggers or knocks you down for 40 s.",
+          }
+        note: "Only after you switch between Operator and Warframe."
+
+  - mod: "Power Spike"
+    lines:
+      - match: "Melee Combo Counter now decays"
+        outcome: "Your combo drains slowly instead of dropping"
+        amount: "-5"
+        stat: "Combo lost"
+        example:
+          {
+            before: 100,
+            after: 95,
+            unit: "",
+            line: "A combo of 100 drops to 95, not to 0, out of combat.",
+          }
+        note: "It keeps losing 5 every few seconds."
+
+  - mod: "Power Transfer"
+    lines:
+      - match: "100% Amp Critical Damage for 20s"
+        outcome: "Switching boosts your Amp and your casting"
+        amount: "+100%"
+        stat: "Amp Critical Damage"
+        example:
+          {
+            before: 2,
+            after: 4,
+            unit: "×",
+            line: "An Amp critical hit of 2\u00d7 does 4\u00d7 for 20 s.",
+          }
+        note: "Switching to the Warframe gives 50% casting speed instead."
+
+  - mod: "Prismatic Beam"
+    lines:
+      - match: "fire off smaller beams at other enemies within 20m"
+        outcome: "Tauron Strike chains to more enemies"
+        amount: "20 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: " m",
+            line: "Struck enemies fire beams at others within 20 m.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Protective Sling"
+    lines:
+      - match: "granted immunity from damage for 5s"
+        outcome: "Void Sling protects and heals allies"
+        amount: "60%"
+        stat: "Health healed"
+        example:
+          {
+            before: 0,
+            after: 60,
+            unit: "%",
+            line: "An ally you sling through heals 60% and takes no damage for 5 s.",
+          }
+        note: "It costs 10 energy."
+
+  - mod: "Rain Of Arrows"
+    lines:
+      - match: "fire an arrow at an enemy"
+        outcome: "Your damage fires extra arrows"
+        amount: "30 s"
+        stat: "Duration"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: " s",
+            line: "For 30 s, your hits fire an arrow every 0.35 s.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Reinforced Return"
+    lines:
+      - match: "Warframe is invulnerable for 4s"
+        outcome: "Your Warframe is safe when the Operator falls"
+        amount: "4 s"
+        stat: "Invulnerable"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: " s",
+            line: "When the Operator falls, the Warframe takes no damage for 4 s.",
+          }
+        note: "Tap as the Operator falls to bring the Warframe to them."
+
+  - mod: "Rejuvenating Tides"
+    lines:
+      - match: "Operator Health Regeneration is increased by 6/s"
+        outcome: "Your Operator heals over time"
+        amount: "+6"
+        stat: "Health per second"
+        example:
+          {
+            before: 0,
+            after: 6,
+            unit: "",
+            line: "The Operator heals 6 a second, 12 while you control the Warframe.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Rift Waters"
+    lines:
+      - match: "Vortex strips enemy Overguard 25% per second"
+        outcome: "The vortex strips Overguard"
+        amount: "25%"
+        stat: "Per second"
+        example:
+          { before: 100, after: 0, unit: "%", line: "Overguard is gone after 4 s in the vortex." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Rising Blast"
+    lines:
+      - match: "Increases Void Blast Damage by 200%"
+        outcome: "Void Blast hits harder"
+        amount: "+200%"
+        stat: "Void Blast damage"
+        example: { before: 100, after: 300, unit: "", line: "A blast of 100 damage does 300." }
+        note: "It can also be charged for more."
+
+  - mod: "Seismic Impact"
+    lines:
+      - match: "enable their shockwave effect for the next 4"
+        outcome: "Your slams carry Cogron's shockwave"
+        amount: "4"
+        stat: "Slams"
+        example:
+          { before: 0, after: 4, unit: "", line: "Your next 4 aerial slams send out shockwaves." }
+        note: "Only after a Cogron Tauron Strike."
+
+  - mod: "Sling Strength"
+    lines:
+      - match: "adds 40% Ability Strength for 20s"
+        outcome: "Switching after slings boosts your abilities"
+        amount: "+40%"
+        stat: "Ability Strength"
+        example:
+          {
+            before: 100,
+            after: 140,
+            unit: "%",
+            line: "An ability at 100% strength reaches 140% for 20 s.",
+          }
+        note: "Only after a chained Void Sling and a switch to the Warframe."
+
+  - mod: "Sling Stun"
+    lines:
+      - match: "increases the width of the next Void Sling by 200%"
+        outcome: "A wider sling that opens enemies to finishers"
+        amount: "+30%"
+        stat: "Finisher damage taken"
+        example:
+          { before: 100, after: 130, unit: "", line: "A finisher of 100 does 130 on enemies hit." }
+        note: "The next sling is 200% wider."
+
+  - mod: "Sonic Dash"
+    lines:
+      - match: "emits a shockwave 14m wide"
+        outcome: "Void Sling stuns with a shockwave"
+        amount: "14 m"
+        stat: "Width"
+        example:
+          { before: 0, after: 14, unit: " m", line: "The shockwave is 14 m wide and travels 8 m." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Spectral Blades"
+    lines:
+      - match: "Summon 4 spectral swords"
+        outcome: "Spectral swords copy your melee"
+        amount: "4"
+        stat: "Swords"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: "",
+            line: "4 swords strike enemies within 10 m with you for 30 s.",
+          }
+        note: "The whole squad in affinity range gets them."
+
+  - mod: "Spectral Pages"
+    lines:
+      - match: "Create 4 spectral pages"
+        outcome: "Pages that boost your abilities"
+        amount: "+10%"
+        stat: "Per page"
+        example:
+          {
+            before: 100,
+            after: 140,
+            unit: "%",
+            line: "4 pages raise ability strength from 100% to 140%.",
+          }
+        note: "Each page also gives 100 energy."
+
+  - mod: "Squad Regen"
+    lines:
+      - match: "applied to squad members within Affinity Range"
+        outcome: "Shares your Void Regen with the squad"
+        amount: "60 s"
+        stat: "Shared healing"
+        example:
+          {
+            before: 0,
+            after: 60,
+            unit: " s",
+            line: "At its peak, Void Regen heals the squad for 60 s.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Stone Skin"
+    lines:
+      - match: "Increases Armor for Warframe and Operator by 200"
+        outcome: "More armor"
+        amount: "+200"
+        stat: "Armor"
+        example: { before: 100, after: 300, unit: "", line: "Armor of 100 becomes 300." }
+        note: "It counts on both the Warframe and the Operator."
+
+  - mod: "Sundered Bounty"
+    lines:
+      - match: "Shockwaves generate 5 pickups"
+        outcome: "Shockwaves drop orbs or ammo"
+        amount: "5"
+        stat: "Pickups"
+        example: { before: 0, after: 5, unit: "", line: "Each shockwave leaves 5 orbs or ammo." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Sundering Dash"
+    lines:
+      - match: "reduce their Armor by 75%"
+        outcome: "Void Sling strips armor"
+        amount: "-75%"
+        stat: "Enemy Armor"
+        example: { before: 100, after: 25, unit: "", line: "An enemy with 100 armor has 25." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Surging Storm"
+    lines:
+      - match: "Increase Rain of Arrows radius to 5m"
+        outcome: "Rain of Arrows hits wider"
+        amount: "5 m"
+        stat: "Radius"
+        example: { before: 0, after: 5, unit: " m", line: "Each arrow bursts within 5 m." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Swelling Deluge"
+    lines:
+      - match: "Increase vortex duration to 40s"
+        outcome: "The vortex lasts longer"
+        amount: "40 s"
+        stat: "Duration"
+        example: { before: 20, after: 40, unit: " s", line: "A vortex of 20 s lasts 40 s." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Tempered Benison"
+    lines:
+      - match: "create 5 Armor Motes"
+        outcome: "Shockwaves leave armor"
+        amount: "+450"
+        stat: "Armor per mote"
+        example: { before: 0, after: 450, unit: "", line: "Each mote gives 450 armor for a while." }
+        note: "Up to 5 motes."
+
+  - mod: "Temporal Drag"
+    lines:
+      - match: "slowing any enemy it touches by 80%"
+        outcome: "Slows enemies down"
+        amount: "-80%"
+        stat: "Enemy speed"
+        example:
+          {
+            before: 100,
+            after: 20,
+            unit: "%",
+            line: "Enemies moving at 100% move at 20% for 10 s.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Temporal Shot"
+    lines:
+      - match: "head shot damage increased by 100%"
+        outcome: "Headshots on slowed enemies hit harder"
+        amount: "+100%"
+        stat: "Headshot damage"
+        example:
+          {
+            before: 100,
+            after: 200,
+            unit: "",
+            line: "A headshot of 100 does 200 on a slowed enemy.",
+          }
+        note: "Only on enemies slowed by Temporal Drag."
+
+  - mod: "Thara Tauron Strike"
+    lines:
+      - match: "blanketing the area with a rain of explosive arrows"
+        outcome: "Rains explosive arrows"
+        amount: "7 s"
+        stat: "Rain"
+        example:
+          { before: 0, after: 7, unit: " s", line: "Explosive arrows fall over the area for 7 s." }
+        note: "It is a Tauron Strike, the Operator's strongest attack."
+
+  - mod: "Unairu Wisp"
+    lines:
+      - match: "increase Operator Damage by 100%"
+        outcome: "Void Blast leaves a wisp that boosts allies"
+        amount: "+100%"
+        stat: "Operator Damage"
+        example:
+          { before: 100, after: 200, unit: "", line: "An Operator hit of 100 does 200 for 12 s." }
+        note: "An ally has to pick up the wisp."
+
+  - mod: "Vengeance"
+    lines:
+      - match: "Operator Damage is increased by 100%"
+        outcome: "Hits harder while you fight to revive"
+        amount: "+100%"
+        stat: "Operator Damage"
+        example:
+          {
+            before: 100,
+            after: 200,
+            unit: "",
+            line: "An Operator hit of 100 does 200, and more each second.",
+          }
+        note: "It counts during Last Gasp, adding 25% a second."
+
+  - mod: "Vexoric Tauron Strike"
+    lines:
+      - match: "Gain +8 Melee Combo from each enemy hit"
+        outcome: "A sword wave that builds your combo"
+        amount: "+8"
+        stat: "Combo per enemy"
+        example:
+          { before: 0, after: 40, unit: "", line: "Hitting 5 enemies adds 40 to your combo." }
+        note: "It is a Tauron Strike, the Operator's strongest attack."
+
+  - mod: "Void Aegis"
+    lines:
+      - match: "creates a shield that grows up to 12m"
+        outcome: "Void Mode raises a shield"
+        amount: "12 m"
+        stat: "Shield size"
+        example: { before: 0, after: 12, unit: " m", line: "The shield grows to 12 m over 5 s." }
+        note: "It costs 2 more energy a second. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Chrysalis"
+    lines:
+      - match: "reduces damage taken by invisible allies"
+        outcome: "Protects invisible allies"
+        amount: "-80%"
+        stat: "Damage taken"
+        example:
+          {
+            before: 100,
+            after: 20,
+            unit: "",
+            line: "An invisible ally within 25 m hit for 100 takes 20.",
+          }
+        note: "It costs 4 more energy a second. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Flow"
+    lines:
+      - match: "Increases Operator Energy by 90%"
+        outcome: "Your Operator has more energy"
+        amount: "+90%"
+        stat: "Operator Energy"
+        example: { before: 100, after: 190, unit: "", line: "An energy pool of 100 becomes 190." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Void Hunter"
+    lines:
+      - match: "reveals enemies within 25m through walls"
+        outcome: "Void Mode shows enemies through walls"
+        amount: "25 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 25, unit: " m", line: "Enemies within 25 m show through walls." }
+        note: "It costs 1 more energy a second. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Levitation"
+    lines:
+      - match: "inflicts Lift Status on all enemies"
+        outcome: "A shockwave that lifts enemies"
+        amount: "6 m"
+        stat: "Width"
+        example:
+          { before: 0, after: 6, unit: " m", line: "A shockwave 6 m wide lifts enemies for 4 s." }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Void Radiance"
+    lines:
+      - match: "blind enemies within 10m for 5s"
+        outcome: "Leaving Void Mode blinds enemies"
+        amount: "10 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 10, unit: " m", line: "Enemies within 10 m are blinded for 5 s." }
+        note: "It costs 50 energy. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Regen"
+    lines:
+      - match: "Void Mode starts healing at +10 Health per second"
+        outcome: "Void Mode heals you"
+        amount: "+50"
+        stat: "Health per second"
+        example:
+          {
+            before: 10,
+            after: 50,
+            unit: "",
+            line: "Healing starts at 10 a second and climbs to 50.",
+          }
+        note: "Void Mode is the Operator's invisibility."
+
+  - mod: "Void Shadow"
+    lines:
+      - match: "renders allies within 40m invisible"
+        outcome: "Void Mode hides your allies"
+        amount: "40 m"
+        stat: "Reach"
+        example: { before: 0, after: 40, unit: " m", line: "Allies within 40 m turn invisible." }
+        note: "It costs 4 more energy a second per ally. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Singularity"
+    lines:
+      - match: "pulls enemies within 20m"
+        outcome: "Void Mode pulls enemies in"
+        amount: "20 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 20, unit: " m", line: "Enemies within 20 m are pulled toward you." }
+        note: "It costs 2 more energy a second. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Siphon"
+    lines:
+      - match: "Increases Operator Energy Regeneration by 90%"
+        outcome: "Your Operator's energy refills faster"
+        amount: "+90%"
+        stat: "Energy regen"
+        example:
+          {
+            before: 100,
+            after: 190,
+            unit: "%",
+            line: "Energy that refills at 100% refills at 190%.",
+          }
+        note: "A Focus node: it works once you unlock it in its school."
+
+  - mod: "Void Snare"
+    lines:
+      - match: "spins up a vortex trap on impact"
+        outcome: "A vortex trap that heals allies"
+        amount: "100"
+        stat: "Health to allies"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "",
+            line: "Slinging through trapped enemies heals allies 100.",
+          }
+        note: "The trap lasts 8 s."
+
+  - mod: "Void Stalker"
+    lines:
+      - match: "increases Critical Chance of melee attacks by up to 50%"
+        outcome: "Void Mode boosts melee crits"
+        amount: "+50%"
+        stat: "Melee Critical Chance"
+        example:
+          { before: 20, after: 30, unit: "%", line: "A weapon with 20% critical chance gets 30%." }
+        note: "It builds over 5 s and costs 4 more energy a second. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Static"
+    lines:
+      - match: "emits a pulse that deals 500 Damage/s"
+        outcome: "Void Mode zaps enemies around you"
+        amount: "500"
+        stat: "Damage per second"
+        example: { before: 0, after: 500, unit: "", line: "Enemies within 15 m take 500 a second." }
+        note: "It costs 1 more energy a second. Void Mode is the Operator's invisibility."
+
+  - mod: "Void Strike"
+    lines:
+      - match: "Deal 10% additional damage for every percentage"
+        outcome: "Spend all energy for a big damage boost"
+        amount: "+10%"
+        stat: "Per energy %"
+        example:
+          {
+            before: 100,
+            after: 1100,
+            unit: "",
+            line: "Spending 100% energy turns a hit of 100 into 1,100 for 8 s.",
+          }
+        note: "Ready again after 40 s."
+
+  - mod: "Voltaic Blast"
+    lines:
+      - match: "zapping enemies within 10m for 200% Damage"
+        outcome: "Void Blast sends out lightning"
+        amount: "200%"
+        stat: "Zap damage"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "",
+            line: "A blast of 100 damage zaps enemies within 10 m for 200.",
+          }
+        note: "Void Blast is the Operator's push."
+
+  - mod: "Wellspring"
+    lines:
+      - match: "Allies passing through the well gain 5 Energy/s"
+        outcome: "A well that gives energy"
+        amount: "5"
+        stat: "Energy per second"
+        example:
+          {
+            before: 0,
+            after: 150,
+            unit: "",
+            line: "Allies who pass through gain 5 energy a second for 30 s, 150 in all.",
+          }
+        note: "The well lasts 8 s."
+
+  - mod: "Adhesive Blast"
+    lines:
+      - match: "Grenades have 100% chance to stick"
+        outcome: "Grenades stick to surfaces"
+        amount: "100%"
+        stat: "Stick chance"
+        example:
+          { before: 0, after: 10, unit: "", line: "Of 10 grenades, all 10 stick where they land." }
+        note: "It counts on weapons that fire grenades."
+
+  - mod: "Aerial Bond"
+    lines:
+      - match: "Airborne kills decrease Companion Recovery Time"
+        outcome: "Air kills bring your companion back sooner"
+        amount: "-3 s"
+        stat: "Recovery per kill"
+        example:
+          {
+            before: 60,
+            after: 30,
+            unit: " s",
+            line: "10 kills in the air cut a 60 s recovery to 30 s.",
+          }
+        note: "A headshot kill in the air takes 9 s off. While you are in the air, it also chills enemies within 10 m."
+
+  - mod: "Afterburner"
+    lines:
+      - match: "Blast Damage ignites exhaust fumes"
+        outcome: "Core Vent fumes catch fire"
+        amount: "500"
+        stat: "Heat damage"
+        example:
+          {
+            before: 0,
+            after: 500,
+            unit: "",
+            line: "Enemies passing through the flames take 500 Heat.",
+          }
+        note: "Core Vent augment: the fire lasts 12 s."
+
+  - mod: "Air Martial"
+    lines:
+      - match: "lock onto targets within +5m while Airborne"
+        outcome: "Melee in the air locks onto targets"
+        amount: "+5 m"
+        stat: "Lock-on range"
+        example:
+          {
+            before: 0,
+            after: 5,
+            unit: " m",
+            line: "In the air, melee locks onto targets within 5 m.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Amalgam Argonak Metal Auger"
+    lines:
+      - match: "Damage from Daggers reduces Armor by 6"
+        outcome: "Dagger damage strips armor"
+        amount: "-6"
+        stat: "Armor per hit"
+        example:
+          {
+            before: 100,
+            after: 94,
+            unit: "",
+            line: "An enemy with 100 armor has 94 after one dagger hit.",
+          }
+        note: "It adds up with every dagger hit."
+
+  - mod: "Amalgam Furax Body Count"
+    lines:
+      - match: "Melee kills Blast and stagger enemies in 15m"
+        outcome: "Melee kills knock enemies back"
+        amount: "15 m"
+        stat: "Blast reach"
+        example:
+          {
+            before: 0,
+            after: 15,
+            unit: " m",
+            line: "A melee kill blasts and staggers enemies within 15 m.",
+          }
+        note: "It counts on any melee kill."
+
+  - mod: "Amalgam Ripkas True Steel"
+    lines:
+      - match: "Critical Chance (x2 for Heavy Attacks)"
+        outcome: "More critical hits"
+        amount: "+187%"
+        stat: "Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 57.4,
+            unit: "%",
+            line: "A weapon with 20% critical chance gets 57.4%.",
+          }
+        note: "A heavy attack gets twice the amount."
+
+  - mod: "Anti-Grav Array"
+    lines:
+      - match: "Increase height of owner's jumps by +40%"
+        outcome: "You jump higher"
+        amount: "+40%"
+        stat: "Jump height"
+        example: { before: 100, after: 140, unit: "%", line: "A jump of 100% goes 140%." }
+        note: "It comes from your sentinel."
+
+  - mod: "Arrow Mutation"
+    lines:
+      - match: "Converts Secondary ammo pickups to 50% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "50%"
+        stat: "Ammo conversion"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 50 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: "Artillery Cheap Shot"
+    lines:
+      - match: "chance to not consume Dome Charges"
+        outcome: "Forward Artillery saves its charges"
+        amount: "90%"
+        stat: "Free shot chance"
+        example:
+          { before: 0, after: 9, unit: "", line: "Of 10 shots, about 9 cost no Dome Charge." }
+        note: "It counts on the Railjack's Forward Artillery."
+
+  - mod: "Astral Bond"
+    lines:
+      - match: "Damage dealt by Operator or Drifter grants 60% damage"
+        outcome: "Your Operator boosts your companion"
+        amount: "+60%"
+        stat: "Companion damage"
+        example:
+          { before: 100, after: 160, unit: "", line: "A companion bite of 100 does 160 for 10 s." }
+        note: "It also adds 30% Void damage, and the Void hits make your Operator's Amp cost less."
+
+  - mod: "Avenging Truth"
+    lines:
+      - match: "Blocking absorbs 50% of incoming damage"
+        outcome: "Blocking stores damage for a strike"
+        amount: "50%"
+        stat: "Damage stored"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "Blocking a hit of 100 stores 50 for your next charge attack.",
+          }
+        note: "It counts while you block."
+
+  - mod: "Bhisaj-Bal"
+    lines:
+      - match: "Restore 300 Health for every 3 Status effects"
+        outcome: "Status effects heal you"
+        amount: "300"
+        stat: "Health per 3 statuses"
+        example:
+          {
+            before: 0,
+            after: 300,
+            unit: "",
+            line: "Every 3 status effects you cause heal you 300.",
+          }
+        note: "It counts on status effects from your weapon."
+
+  - mod: "Bomb The Landin'"
+    lines:
+      - match: "execute a 20m radius Slam Shockwave"
+        outcome: "A slam from the air"
+        amount: "300"
+        stat: "Slam damage"
+        example:
+          { before: 0, after: 300, unit: "", line: "The slam deals 300 to enemies within 20 m." }
+        note: "Tap and hold grind in the air."
+
+  - mod: "Botanist"
+    lines:
+      - match: "pick any plants within 50m"
+        outcome: "Your sentinel picks plants"
+        amount: "50 m"
+        stat: "Reach"
+        example: { before: 0, after: 50, unit: " m", line: "It picks plants within 50 m in 2 s." }
+        note: "It counts on the Oxylus sentinel."
+
+  - mod: "Burning Claws"
+    lines:
+      - match: "Converts all elemental damage from these claws to Heat"
+        outcome: "Your Kavat's claws deal Heat"
+        amount: "100%"
+        stat: "Elements to Heat"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All the claws' elemental damage turns into Heat.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Chilling Claws"
+    lines:
+      - match: "Converts all elemental damage from these claws to Cold"
+        outcome: "Your Kavat's claws deal Cold"
+        amount: "100%"
+        stat: "Elements to Cold"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All the claws' elemental damage turns into Cold.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Sepsis Claws"
+    lines:
+      - match: "Converts all elemental damage from these claws to Toxin"
+        outcome: "Your Kavat's claws deal Toxin"
+        amount: "100%"
+        stat: "Elements to Toxin"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All the claws' elemental damage turns into Toxin.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Shocking Claws"
+    lines:
+      - match: "Converts all elemental damage from these claws to Electricity"
+        outcome: "Your Kavat's claws deal Electricity"
+        amount: "100%"
+        stat: "Elements to Electricity"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "All the claws' elemental damage turns into Electricity.",
+          }
+        note: "The total stays the same; only the damage type changes."
+
+  - mod: "Cannonade"
+    lines:
+      - match: "Chance to Explode (Use with Caution)"
+        outcome: "Shots sometimes explode"
+        amount: "+30%"
+        stat: "Explode chance"
+        example: { before: 0, after: 3, unit: "", line: "Of 10 shots, about 3 explode." }
+        note: "The blast can hurt you if you stand close."
+
+  - mod: "Concealed Explosives"
+    lines:
+      - match: "Chance to Explode (Use with Caution)"
+        outcome: "Shots sometimes explode"
+        amount: "+80%"
+        stat: "Explode chance"
+        example: { before: 0, after: 8, unit: "", line: "Of 10 shots, about 8 explode." }
+        note: "The blast can hurt you if you stand close."
+
+  - mod: "Entropy Spike"
+    lines:
+      - match: "Chance to Explode (Use with Caution)"
+        outcome: "Shots sometimes explode"
+        amount: "+20%"
+        stat: "Explode chance"
+        example: { before: 0, after: 2, unit: "", line: "Of 10 shots, about 2 explode." }
+        note: "The blast can hurt you if you stand close."
+
+  - mod: "Thunderbolt"
+    lines:
+      - match: "Chance to Explode (Use with Caution)"
+        outcome: "Shots sometimes explode"
+        amount: "+30%"
+        stat: "Explode chance"
+        example: { before: 0, after: 3, unit: "", line: "Of 10 shots, about 3 explode." }
+        note: "The blast can hurt you if you stand close."
+
+  - mod: "Cat's Eye"
+    lines:
+      - match: "grants 60% increased critical chance for 10s"
+        outcome: "Your Kavat boosts allies' critical hits"
+        amount: "+60%"
+        stat: "Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 32,
+            unit: "%",
+            line: "A weapon with 20% critical chance gets 32% for 10 s.",
+          }
+        note: "It counts for allies within 25 m, every 20 s."
+
+  - mod: "Charm"
+    lines:
+      - match: "40% chance every 27s to bestow"
+        outcome: "Your Kavat brings good fortune"
+        amount: "40%"
+        stat: "Charm chance"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: "",
+            line: "Of 10 tries, about 4 give a bonus like double resources or a critical boost.",
+          }
+        note: "It tries every 27 s."
+
+  - mod: "Cold Snap"
+    lines:
+      - match: "Enemies near the black hole are completely frozen for 5s"
+        outcome: "Cosmic Crush freezes enemies"
+        amount: "5 s"
+        stat: "Freeze"
+        example:
+          { before: 0, after: 5, unit: " s", line: "Enemies near the black hole freeze for 5 s." }
+        note: "Cosmic Crush augment."
+
+  - mod: "Combustion Beam"
+    lines:
+      - match: "Enemies killed explode, dealing 600 Damage"
+        outcome: "Kills explode"
+        amount: "600"
+        stat: "Explosion damage"
+        example:
+          { before: 0, after: 600, unit: "", line: "Each kill explodes for 600 shortly after." }
+        note: "It counts on beam weapons."
+
+  - mod: "Contagious Bond"
+    lines:
+      - match: "50% of the Status Effect spreads"
+        outcome: "Your companion's kills spread status effects"
+        amount: "50%"
+        stat: "Status spread"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "An enemy with 10 status effects spreads 5 within 9 m.",
+          }
+        note: "It counts on enemies your companion kills."
+
+  - mod: "Coolant Leak"
+    lines:
+      - match: "Unleashes a 10m radial blast of Cold"
+        outcome: "Blasts crowds with Cold"
+        amount: "+3"
+        stat: "Cold stacks"
+        example:
+          { before: 0, after: 3, unit: "", line: "A blast within 10 m adds 3 Cold status effects." }
+        note: "Ready again after 10 s."
+
+  - mod: "Covert Bond"
+    lines:
+      - match: "grant your Companion 10s of stealth"
+        outcome: "Finishers hide your companion"
+        amount: "10 s"
+        stat: "Stealth per kill"
+        example:
+          {
+            before: 0,
+            after: 60,
+            unit: " s",
+            line: "6 finisher kills keep your companion hidden for 60 s.",
+          }
+        note: "Its attacks do not break the stealth."
+
+  - mod: "Crimson Fugue"
+    lines:
+      - match: "+35% Turret Damage per enemy destroyed"
+        outcome: "Kills boost your turrets"
+        amount: "+35%"
+        stat: "Per kill"
+        example:
+          {
+            before: 100,
+            after: 275,
+            unit: "",
+            line: "5 kills raise a turret shot of 100 to 275 for 8 s.",
+          }
+        note: "It stacks up to 5 times."
+
+  - mod: "Critical Delay"
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots slower"
+        amount: "-20%"
+        stat: "Fire Rate"
+        example:
+          { before: 10, after: 8, unit: "", line: "A weapon that fires 10 shots a second fires 8." }
+        note: "A bow gets twice the amount."
+
+  - mod: "Death Blossom"
+    lines:
+      - match: "Turret Cooldowns removed for 30s"
+        outcome: "Turrets fire without overheating"
+        amount: "30 s"
+        stat: "No cooldown"
+        example: { before: 0, after: 30, unit: " s", line: "Turrets never overheat for 30 s." }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Defensive Fire"
+    lines:
+      - match: "+13.5% Maximum Shields per enemy killed"
+        outcome: "Kills grow the Railjack's shields"
+        amount: "+13.5%"
+        stat: "Per kill"
+        example:
+          {
+            before: 100,
+            after: 235,
+            unit: "%",
+            line: "10 kills raise the shields to 235% for 10 s.",
+          }
+        note: "It stacks up to 10 times."
+
+  - mod: "Disarming Purity"
+    lines:
+      - match: "Secondary Fire mode has a 40% chance to disarm"
+        outcome: "Alt fire disarms enemies"
+        amount: "40%"
+        stat: "Disarm chance"
+        example:
+          { before: 0, after: 4, unit: "", line: "Of 10 enemies hit, about 4 drop their weapons." }
+        note: "It counts on the alternate fire."
+
+  - mod: "Discipline's Merit"
+    lines:
+      - match: "Opportunities occur every 4 melee hits"
+        outcome: "Tennokai comes every 4 hits"
+        amount: "4"
+        stat: "Hits"
+        example: { before: 0, after: 4, unit: "", line: "Every 4th melee hit opens a Tennokai." }
+        note: "Tennokai is a follow-up attack after a heavy attack, when the prompt shows."
+
+  - mod: "Dreamer's Wrath"
+    lines:
+      - match: "Increases opportunity chance by 50%"
+        outcome: "More Tennokai, harder critical hits"
+        amount: "+32%"
+        stat: "Critical Damage"
+        example:
+          {
+            before: 2,
+            after: 2.64,
+            unit: "×",
+            line: "A Tennokai critical of 2\u00d7 does 2.64\u00d7.",
+          }
+        note: "Tennokai opens 50% more often. Tennokai is a follow-up attack after a heavy attack, when the prompt shows."
+
+  - mod: "Duplex Bond"
+    lines:
+      - match: "Companion will clone itself"
+        outcome: "Spending energy clones your companion"
+        amount: "3"
+        stat: "Clones"
+        example:
+          {
+            before: 0,
+            after: 3,
+            unit: "",
+            line: "Each 100 energy spent makes a clone, up to 3, for 30 s.",
+          }
+        note: "Their kills have a 50% chance to drop Energy Orbs."
+
+  - mod: "Energizing Shot"
+    lines:
+      - match: "Shoot Energy Orbs to obtain them"
+        outcome: "Shooting energy orbs collects them"
+        amount: "+110%"
+        stat: "Orb effect"
+        example:
+          { before: 25, after: 52.5, unit: "", line: "An orb of 25 energy gives 52.5 when shot." }
+        note: "You can pick them up from afar."
+
+  - mod: "Energy Channel"
+    lines:
+      - match: "Converts 200% of Energy used"
+        outcome: "Abilities charge your next swing"
+        amount: "200"
+        stat: "Bonus damage"
+        example:
+          {
+            before: 0,
+            after: 200,
+            unit: "",
+            line: "An ability of 100 energy adds up to 200 to your next swing.",
+          }
+        note: "Only the next melee attack gets it."
+
+  - mod: "Energy Field"
+    lines:
+      - match: "Energy Shell applies to allies within 140m"
+        outcome: "Energy Shell covers allies"
+        amount: "140 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 140, unit: " m", line: "Allies within 140 m get the Energy Shell." }
+        note: "Energy Shell augment."
+
+  - mod: "Energy Generator"
+    lines:
+      - match: "drops an Energy Orb after assisting in 10 kills"
+        outcome: "Your sentinel makes energy"
+        amount: "10"
+        stat: "Kills per orb"
+        example:
+          {
+            before: 0,
+            after: 1,
+            unit: "",
+            line: "After helping with 10 kills, it drops an Energy Orb.",
+          }
+        note: "It counts on the Dethcube sentinel."
+
+  - mod: "Entropy Detonation"
+    lines:
+      - match: "Lethal ground attacks cause enemies to explode"
+        outcome: "Ground finishers make enemies explode"
+        amount: "1,000"
+        stat: "Blast damage"
+        example:
+          {
+            before: 0,
+            after: 1000,
+            unit: "",
+            line: "A killing ground attack makes the enemy burst for 1,000 Blast.",
+          }
+        note: "The burst adds 20% of the enemy's health and reaches 10 m."
+
+  - mod: "Esti Vel-Ikha"
+    lines:
+      - match: "Increases maximum Void Sling distance by +30%"
+        outcome: "Void Sling goes further"
+        amount: "+30%"
+        stat: "Sling distance"
+        example: { before: 100, after: 130, unit: "%", line: "A sling of 100% distance goes 130%." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Explosive Demise"
+    lines:
+      - match: "Enemies killed explode, dealing 300 Damage"
+        outcome: "Kills explode"
+        amount: "300"
+        stat: "Explosion damage"
+        example:
+          { before: 0, after: 300, unit: "", line: "Each kill explodes for 300 shortly after." }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Fass Canticle"
+    lines:
+      - match: "Killing enemies grants Allies in Affinity Range 40% Shield Recharge"
+        outcome: "Kills speed up your allies' shields"
+        amount: "+40%"
+        stat: "Shield Recharge"
+        example:
+          {
+            before: 100,
+            after: 140,
+            unit: "%",
+            line: "Shields that refill at 100% refill at 140% for 15 s.",
+          }
+        note: "Only after a kill, for allies in affinity range."
+
+  - mod: "Ferocity"
+    lines:
+      - match: "attacks an enemy open to finishers with +300% crit chance"
+        outcome: "Your Kubrow's finishers crit more"
+        amount: "+300%"
+        stat: "Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 80,
+            unit: "%",
+            line: "A bite with 20% critical chance gets 80% on an enemy open to finishers.",
+          }
+        note: "If the enemy dies, others within 6 m may be knocked down."
+
+  - mod: "Fired Up"
+    lines:
+      - match: "5% Heat Damage on weapon per hit"
+        outcome: "Each hit adds Heat to your weapon"
+        amount: "+5%"
+        stat: "Heat per hit"
+        example:
+          { before: 0, after: 100, unit: "%", line: "20 hits add +100% Heat to your weapon." }
+        note: "It resets after 5 s with no hits."
+
+  - mod: "Flux Overdrive"
+    lines:
+      - match: "Status Chance fluctuates between +150% and +250%"
+        outcome: "Beams cause more status effects"
+        amount: "+250%"
+        stat: "Status Chance"
+        example:
+          {
+            before: 20,
+            after: 70,
+            unit: "%",
+            line: "A beam with 20% status chance swings between 50% and 70%.",
+          }
+        note: "It changes over 5 s while you fire."
+
+  - mod: "Fortifying Fire"
+    lines:
+      - match: "Replenish 4.5% of Shields"
+        outcome: "Critical hits refill the Railjack's shields"
+        amount: "4.5%"
+        stat: "Shields per crit"
+        example:
+          { before: 0, after: 45, unit: "%", line: "10 critical hits refill 45% of the shields." }
+        note: "It counts on the Railjack's turrets."
+
+  - mod: "Galvanized Steel"
+    lines:
+      - match: "Critical Chance (x2 for Heavy Attacks)"
+        outcome: "More critical hits"
+        amount: "+110%"
+        stat: "Critical Chance"
+        example:
+          { before: 20, after: 42, unit: "%", line: "A weapon with 20% critical chance gets 42%." }
+        note: "A heavy attack gets twice the amount."
+
+  - mod: "Granum's Nemesis"
+    lines:
+      - match: "Turret Damage vs Corpus"
+        outcome: "Turrets hit Corpus harder"
+        amount: "×1.41"
+        stat: "Turret damage to Corpus"
+        example:
+          {
+            before: 100,
+            after: 141,
+            unit: "",
+            line: "A turret shot of 100 damage does 141 to Corpus.",
+          }
+        note: "It counts on the Railjack's turrets."
+
+  - mod: "Sentient Scalpel"
+    lines:
+      - match: "Turret Damage vs Sentients"
+        outcome: "Turrets hit Sentients harder"
+        amount: "×1.41"
+        stat: "Turret damage to Sentients"
+        example:
+          {
+            before: 100,
+            after: 141,
+            unit: "",
+            line: "A turret shot of 100 damage does 141 to Sentients.",
+          }
+        note: "It counts on the Railjack's turrets."
+
+  - mod: "Worm's Torment"
+    lines:
+      - match: "Turret Damage vs Grineer"
+        outcome: "Turrets hit Grineer harder"
+        amount: "×1.41"
+        stat: "Turret damage to Grineer"
+        example:
+          {
+            before: 100,
+            after: 141,
+            unit: "",
+            line: "A turret shot of 100 damage does 141 to Grineer.",
+          }
+        note: "It counts on the Railjack's turrets."
+
+  - mod: "Guardian Derision"
+    lines:
+      - match: "Blocking taunts enemies within 15 meters"
+        outcome: "Blocking draws enemy fire to you"
+        amount: "15 m"
+        stat: "Taunt reach"
+        example:
+          {
+            before: 0,
+            after: 15,
+            unit: " m",
+            line: "Enemies within 15 m target you while you block.",
+          }
+        note: "It protects allies by pulling attention."
+
+  - mod: "Hard Reset"
+    lines:
+      - match: "Mercy Kills reduce Companion Recovery by 15s"
+        outcome: "Mercy kills bring your companion back sooner"
+        amount: "-15 s"
+        stat: "Recovery per mercy"
+        example:
+          {
+            before: 60,
+            after: 45,
+            unit: " s",
+            line: "A recovery of 60 s takes 45 s after a mercy kill.",
+          }
+        note: "A mercy kill is the finisher on an enemy that shows the mercy prompt."
+
+  - mod: "Harrowed Hook"
+    lines:
+      - match: "unchanneled hits slow target and disable jump"
+        outcome: "Melee hits slow targets"
+        amount: "+2 s"
+        stat: "Slow"
+        example:
+          {
+            before: 0,
+            after: 2,
+            unit: " s",
+            line: "A hit slows the target and stops it jumping for 2 s.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Hata-Satya"
+    lines:
+      - match: "Each hit increases Critical Chance by 1.2%"
+        outcome: "Each hit adds critical chance"
+        amount: "+1.2%"
+        stat: "Per hit"
+        example: { before: 0, after: 60, unit: "%", line: "50 hits add +60% critical chance." }
+        note: "It resets when you reload or holster."
+
+  - mod: "Healing Return"
+    lines:
+      - match: "Restores 11 Health per Status Type"
+        outcome: "Hits on afflicted enemies heal you"
+        amount: "11"
+        stat: "Health per status type"
+        example:
+          {
+            before: 0,
+            after: 33,
+            unit: "",
+            line: "A hit on an enemy with 3 status types heals you 33.",
+          }
+        note: "It counts each different status effect once."
+
+  - mod: "Heartseeker"
+    lines:
+      - match: "Lock onto targets within 1m"
+        outcome: "Melee locks onto targets"
+        amount: "1 m"
+        stat: "Lock-on range"
+        example: { before: 0, after: 1, unit: " m", line: "Melee locks onto targets within 1 m." }
+        note: "Blocking works less well. It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Hemorrhage"
+    lines:
+      - match: "chance to apply a Slash Status Effect"
+        outcome: "Impact also applies Slash"
+        amount: "35%"
+        stat: "Slash chance"
+        example:
+          {
+            before: 0,
+            after: 3.5,
+            unit: "",
+            line: "Of 10 Impact status effects, about 3 or 4 also apply Slash.",
+          }
+        note: "Twice the chance on weapons that fire slower than 2.5 shots a second."
+
+  - mod: "Internal Bleeding"
+    lines:
+      - match: "chance to apply a Slash Status Effect"
+        outcome: "Impact also applies Slash"
+        amount: "35%"
+        stat: "Slash chance"
+        example:
+          {
+            before: 0,
+            after: 3.5,
+            unit: "",
+            line: "Of 10 Impact status effects, about 3 or 4 also apply Slash.",
+          }
+        note: "Twice the chance on weapons that fire slower than 2.5 shots a second."
+
+  - mod: "Magnetic Welt"
+    lines:
+      - match: "chance to apply a Magnetic Status Effect"
+        outcome: "Impact also applies Magnetic"
+        amount: "35%"
+        stat: "Magnetic chance"
+        example:
+          {
+            before: 0,
+            after: 3.5,
+            unit: "",
+            line: "Of 10 Impact status effects, about 3 or 4 also apply Magnetic.",
+          }
+        note: "Twice the chance on weapons that fire slower than 2.5 shots a second."
+
+  - mod: "Howl"
+    lines:
+      - match: "strikes fear into 15 enemies within 24m"
+        outcome: "Your Kubrow scares enemies"
+        amount: "15"
+        stat: "Enemies"
+        example:
+          { before: 0, after: 15, unit: "", line: "Up to 15 enemies within 24 m flee for 16 s." }
+        note: "Scared enemies stop attacking."
+
+  - mod: "Hunt"
+    lines:
+      - match: "dealing 120% damage to all in its path"
+        outcome: "Your Kubrow charges and drags enemies"
+        amount: "120%"
+        stat: "Charge damage"
+        example:
+          {
+            before: 0,
+            after: 120,
+            unit: "",
+            line: "A Kubrow with a 100-damage bite deals 120 to everything in its path.",
+          }
+        note: "It drags the target with it."
+
+  - mod: "Hunter Command"
+    lines:
+      - match: "Applying a Slash Status to an enemy causes the Companion to attack"
+        outcome: "Bleeding enemies draw your companion"
+        amount: "6 s"
+        stat: "Attack"
+        example:
+          {
+            before: 0,
+            after: 6,
+            unit: " s",
+            line: "Your companion attacks a bleeding enemy for 6 s.",
+          }
+        note: "Slash is the status effect that makes an enemy bleed."
+
+  - mod: "Jahu Canticle"
+    lines:
+      - match: "reduces the Armor and Shields of other enemies"
+        outcome: "Kills weaken other enemies"
+        amount: "-5%"
+        stat: "Armor and shields"
+        example:
+          { before: 100, after: 95, unit: "", line: "An enemy with 100 armor has 95 after a kill." }
+        note: "It counts for allies in affinity range."
+
+  - mod: "Khra Canticle"
+    lines:
+      - match: "chance to drop a Universal Orb"
+        outcome: "Kills drop orbs"
+        amount: "12%"
+        stat: "Orb chance"
+        example:
+          { before: 0, after: 1.2, unit: "", line: "Of 10 kills, about 1 drops a Universal Orb." }
+        note: "A Universal Orb gives health, energy and ammo."
+
+  - mod: "Kinetic Diversion"
+    lines:
+      - match: "Convert +40% of Damage on Health to Energy"
+        outcome: "Damage to your health gives you energy"
+        amount: "+40%"
+        stat: "Health damage to Energy"
+        example:
+          { before: 0, after: 40, unit: "", line: "A hit that takes 100 health gives 40 energy." }
+        note: "It counts on the Archwing."
+
+  - mod: "Kinetic Ricochet"
+    lines:
+      - match: "Shots now bounce up to 6x"
+        outcome: "Shots bounce"
+        amount: "6×"
+        stat: "Bounces"
+        example: { before: 0, after: 6, unit: "", line: "A shot bounces up to 6 times." }
+        note: "Shots also travel 30% further."
+
+  - mod: "Lashta-Vak"
+    lines:
+      - match: "Void Sling emits a pulse that breaks Containers"
+        outcome: "Void Sling breaks containers"
+        amount: "12 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 12, unit: " m", line: "A sling breaks containers within 12 m." }
+        note: "Void Sling is the Operator's dash."
+
+  - mod: "Lohk Canticle"
+    lines:
+      - match: "+30% Fire Rate for 15s"
+        outcome: "Kills speed up your allies' guns"
+        amount: "+30%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 13,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 13 for 15 s.",
+          }
+        note: "Only after a kill, for allies in affinity range."
+
+  - mod: "Looter"
+    lines:
+      - match: "break open Loot Crates within 22m"
+        outcome: "Your sentinel breaks crates"
+        amount: "22 m"
+        stat: "Reach"
+        example: { before: 0, after: 22, unit: " m", line: "Its pulse breaks crates within 22 m." }
+        note: "It comes from your sentinel."
+
+  - mod: "Manifold Bond"
+    lines:
+      - match: "reduces Companion Ability cooldowns by 3s"
+        outcome: "Your companion's abilities come back sooner"
+        amount: "-3 s"
+        stat: "Cooldown"
+        example:
+          {
+            before: 15,
+            after: 12,
+            unit: " s",
+            line: "An ability that waits 15 s waits 12 s after a kill.",
+          }
+        note: "Only kills on enemies with 3 or more status types count."
+
+  - mod: "Martyr Symbiosis"
+    lines:
+      - match: "Drains and stores 20 health from corpses"
+        outcome: "Stores health from corpses for you"
+        amount: "20"
+        stat: "Health per corpse"
+        example: { before: 0, after: 40, unit: "%", line: "It stores health up to 40% of yours." }
+        note: "Below 10% health, your companion downs itself to heal you."
+
+  - mod: "Mending Shot"
+    lines:
+      - match: "Shoot Health Orbs to obtain them"
+        outcome: "Shooting health orbs collects them"
+        amount: "+110%"
+        stat: "Orb effect"
+        example:
+          { before: 25, after: 52.5, unit: "", line: "An orb of 25 health heals 52.5 when shot." }
+        note: "You can pick them up from afar."
+
+  - mod: "Metem-Erun"
+    lines:
+      - match: "Increase Operator Sprint Speed by +30%"
+        outcome: "Your Operator runs faster"
+        amount: "+30%"
+        stat: "Sprint Speed"
+        example:
+          { before: 100, after: 130, unit: "%", line: "A sprint at 100% speed goes at 130%." }
+        note: "It counts on the Operator."
+
+  - mod: "Mischief"
+    lines:
+      - match: "becomes invisible for 9s every 7s"
+        outcome: "Your Kavat sends a decoy"
+        amount: "9 s"
+        stat: "Decoy"
+        example:
+          {
+            before: 0,
+            after: 9,
+            unit: " s",
+            line: "Your Kavat turns invisible for 9 s while a decoy draws fire.",
+          }
+        note: "The decoy blinds nearby enemies when it dies."
+
+  - mod: "Momentous Bond"
+    lines:
+      - match: "Killing Eximus enemies grants 120% bonus"
+        outcome: "Eximus kills power up your companion"
+        amount: "+120%"
+        stat: "Elemental damage"
+        example:
+          {
+            before: 100,
+            after: 220,
+            unit: "",
+            line: "A companion bite of 100 adds 120 of a random element for 30 s.",
+          }
+        note: "It also takes 18 s off your companion's recovery."
+
+  - mod: "Mystic Bond"
+    lines:
+      - match: "you may cast a Warframe Ability without expending Energy"
+        outcome: "Your companion earns you a free cast"
+        amount: "5"
+        stat: "Companion abilities"
+        example:
+          {
+            before: 0,
+            after: 1,
+            unit: "",
+            line: "After 5 companion abilities, your next cast is free.",
+          }
+        note: "Only abilities with cooldowns count."
+
+  - mod: "Negate"
+    lines:
+      - match: "prevents Status Effects from applying to its owner"
+        outcome: "Your sentinel blocks status effects"
+        amount: "5 s"
+        stat: "Cooldown"
+        example:
+          { before: 0, after: 1, unit: "", line: "It blocks one status effect on you every 5 s." }
+        note: "It comes from your sentinel."
+
+  - mod: "Netra Invocation"
+    lines:
+      - match: "Alternate Fire increases Ability Efficiency by 4%"
+        outcome: "Alt fire hits raise ability efficiency"
+        amount: "+4%"
+        stat: "Ability Efficiency"
+        example:
+          {
+            before: 100,
+            after: 160,
+            unit: "%",
+            line: "15 enemies hit raise ability efficiency from 100% to 160% for 20 s.",
+          }
+        note: "It stacks up to 15 times."
+
+  - mod: "Ris Invocation"
+    lines:
+      - match: "Alternate Fire increases Ability Duration by 4%"
+        outcome: "Alt fire hits raise ability duration"
+        amount: "+4%"
+        stat: "Ability Duration"
+        example:
+          {
+            before: 100,
+            after: 160,
+            unit: "%",
+            line: "15 enemies hit raise ability duration from 100% to 160% for 20 s.",
+          }
+        note: "It stacks up to 15 times."
+
+  - mod: "Vome Invocation"
+    lines:
+      - match: "Alternate Fire increases Ability Strength by 4%"
+        outcome: "Alt fire hits raise ability strength"
+        amount: "+4%"
+        stat: "Ability Strength"
+        example:
+          {
+            before: 100,
+            after: 160,
+            unit: "%",
+            line: "15 enemies hit raise ability strength from 100% to 160% for 20 s.",
+          }
+        note: "It stacks up to 15 times."
+
+  - mod: "Neutralize"
+    lines:
+      - match: "causing enemies within 10m to stumble"
+        outcome: "Your Kubrow disarms enemies"
+        amount: "10 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: " m",
+            line: "Enemies within 10 m stumble and drop their weapons.",
+          }
+        note: "Disarmed enemies fight with melee."
+
+  - mod: "Neutralizing Justice"
+    lines:
+      - match: "chance to immediately destroy a Nullifier field"
+        outcome: "Blades pop Nullifier bubbles"
+        amount: "90%"
+        stat: "Pop chance"
+        example:
+          {
+            before: 0,
+            after: 9,
+            unit: "",
+            line: "Of 10 blades that hit a Nullifier field, about 9 pop it.",
+          }
+        note: "A Nullifier bubble cancels abilities."
+
+  - mod: "Odomedic"
+    lines:
+      - match: "Every 3m traversed by Wall Running"
+        outcome: "Wall running heals you"
+        amount: "+40"
+        stat: "Health per 3 m"
+        example:
+          { before: 0, after: 120, unit: "", line: "Running 9 m on a wall heals 120 over 4 s." }
+        note: "It stacks up to 3 times."
+
+  - mod: "Ordnance Cheap Shot"
+    lines:
+      - match: "chance to not consume Munitions"
+        outcome: "Missiles sometimes cost nothing"
+        amount: "90%"
+        stat: "Free shot chance"
+        example:
+          { before: 0, after: 9, unit: "", line: "Of 10 missiles, about 9 cost no munitions." }
+        note: "It counts on the Railjack's ordnance."
+
+  - mod: "Out Of Sight"
+    lines:
+      - match: "Blinds enemies within 18m on Mercy Kill"
+        outcome: "Mercy kills blind enemies"
+        amount: "18 m"
+        stat: "Reach"
+        example:
+          { before: 0, after: 18, unit: " m", line: "A mercy kill blinds enemies within 18 m." }
+        note: "A mercy kill is the finisher on an enemy that shows the mercy prompt."
+
+  - mod: "Pistol Acuity"
+    lines:
+      - match: "Weak Point Critical Chance. Multishot cannot be modified"
+        outcome: "Much more critical chance on weak points"
+        amount: "+350%"
+        stat: "Weak Point Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 90,
+            unit: "%",
+            line: "A headshot with 20% critical chance gets 90%.",
+          }
+        note: "Multishot mods stop working on the weapon."
+
+  - mod: "Primary Acuity"
+    lines:
+      - match: "Weak Point Critical Chance. Multishot cannot be modified"
+        outcome: "Much more critical chance on weak points"
+        amount: "+350%"
+        stat: "Weak Point Critical Chance"
+        example:
+          {
+            before: 20,
+            after: 90,
+            unit: "%",
+            line: "A headshot with 20% critical chance gets 90%.",
+          }
+        note: "Multishot mods stop working on the weapon."
+
+  - mod: "Pistol Ammo Mutation"
+    lines:
+      - match: "Converts Primary ammo pickups to 50% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "50%"
+        stat: "Ammo conversion"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "A Primary ammo pickup of 100 rounds gives 50 to this weapon.",
+          }
+        note: "Only Primary ammo pickups count."
+
+  - mod: "Rifle Ammo Mutation"
+    lines:
+      - match: "Converts Secondary ammo pickups to 50% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "50%"
+        stat: "Ammo conversion"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 50 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: "Shotgun Ammo Mutation"
+    lines:
+      - match: "Converts Secondary ammo pickups to 50% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "50%"
+        stat: "Ammo conversion"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 50 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: "Sniper Ammo Mutation"
+    lines:
+      - match: "Converts Secondary ammo pickups to 50% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "50%"
+        stat: "Ammo conversion"
+        example:
+          {
+            before: 0,
+            after: 50,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 50 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: "Vigilante Supplies"
+    lines:
+      - match: "Converts Secondary ammo pickups to 30% of Ammo Pick Up"
+        outcome: "Spare ammo pickups refill this weapon"
+        amount: "30%"
+        stat: "Ammo conversion"
+        example:
+          {
+            before: 0,
+            after: 30,
+            unit: "",
+            line: "A Secondary ammo pickup of 100 rounds gives 30 to this weapon.",
+          }
+        note: "Only Secondary ammo pickups count."
+
+  - mod: "Primo Flair"
+    lines:
+      - match: "Increase Maximum Trick Combo to 6000"
+        outcome: "Trick combos go higher"
+        amount: "6,000"
+        stat: "Max trick combo"
+        example: { before: 0, after: 6000, unit: "", line: "A trick combo can reach 6,000." }
+        note: "It counts on the K-Drive."
+
+  - mod: "Protect"
+    lines:
+      - match: "replenishing both of their shields by 30%"
+        outcome: "Your Kubrow refills your shields"
+        amount: "30%"
+        stat: "Shields restored"
+        example:
+          { before: 0, after: 30, unit: "%", line: "It gives you 30% of its maximum shields." }
+        note: "It also shares its shield regen with you for 3 s."
+
+  - mod: "Proton Snap"
+    lines:
+      - match: "Hold Wall Latch for 2s to gain +100% Toxin"
+        outcome: "Wall latching adds Toxin"
+        amount: "+100%"
+        stat: "Toxin Damage"
+        example:
+          { before: 100, after: 200, unit: "", line: "A weapon that does 100 Toxin does 200." }
+        note: "Hold a wall latch for 2 s."
+
+  - mod: "Quick Escape"
+    lines:
+      - match: "Gain invulnerability for 5s mounting"
+        outcome: "Mounting the K-Drive makes you untouchable"
+        amount: "5 s"
+        stat: "Invulnerable"
+        example:
+          {
+            before: 0,
+            after: 5,
+            unit: " s",
+            line: "Mounting the board makes you invulnerable for 5 s.",
+          }
+        note: "It ends early if you step off."
+
+  - mod: "Reawaken"
+    lines:
+      - match: "Energy Orbs reduce Sentinel Recovery timer by 6s"
+        outcome: "Energy orbs bring your Djinn back"
+        amount: "-6 s"
+        stat: "Recovery per orb"
+        example: { before: 60, after: 30, unit: " s", line: "5 orbs cut a 60 s recovery to 30 s." }
+        note: "The Djinn also gets 300 overshields per orb, up to 900."
+
+  - mod: "Reflect"
+    lines:
+      - match: "40% chance to reflect damage back"
+        outcome: "Your Kavat sends damage back"
+        amount: "40%"
+        stat: "Reflect chance"
+        example:
+          {
+            before: 0,
+            after: 4,
+            unit: "",
+            line: "Of 10 hits on it, about 4 bounce back 60% stronger.",
+          }
+        note: "It counts on the Adarza Kavat."
+
+  - mod: "Reinforced Bond"
+    lines:
+      - match: "your fire rate is increased 60%"
+        outcome: "A well-shielded companion speeds your guns"
+        amount: "+60%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 16,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 16.",
+          }
+        note: "Only while your companion has over 1,200 shields or overshields."
+
+  - mod: "Restorative Bond"
+    lines:
+      - match: "Health Orbs restore 60 more health"
+        outcome: "Health orbs heal more"
+        amount: "+60"
+        stat: "Orb health"
+        example: { before: 25, after: 85, unit: "", line: "An orb of 25 health heals 85." }
+        note: "It also takes 3 s off your companion's recovery."
+
+  - mod: "Sacrifice"
+    lines:
+      - match: "Sentinel incapacitates itself to revive"
+        outcome: "Your sentinel revives you"
+        amount: "100%"
+        stat: "Health and shields"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "%",
+            line: "It brings you back with full health and shields in 4 s.",
+          }
+        note: "Its own recovery takes 15 s longer."
+
+  - mod: "Sanctuary"
+    lines:
+      - match: "Creates a shield with 1800 Health"
+        outcome: "Shields you while you revive"
+        amount: "1,800"
+        stat: "Shield health"
+        example:
+          {
+            before: 0,
+            after: 1800,
+            unit: "",
+            line: "A shield of 1,800 health covers you while you revive an ally.",
+          }
+        note: "It lasts while you revive."
+
+  - mod: "Savagery"
+    lines:
+      - match: "rushes at 8 enemies within 10m"
+        outcome: "Your Kubrow knocks enemies over"
+        amount: "8"
+        stat: "Enemies"
+        example: { before: 0, after: 8, unit: "", line: "It rushes up to 8 enemies within 10 m." }
+        note: "Knocked-over enemies are open to finishers."
+
+  - mod: "Seismic Bond"
+    lines:
+      - match: "Companion melee attacks create a 4m shockwave"
+        outcome: "Your companion's hits send shockwaves"
+        amount: "30%"
+        stat: "Shockwave damage"
+        example:
+          { before: 0, after: 30, unit: "", line: "A bite of 100 sends a 4 m shockwave for 30." }
+        note: "Only while a channeled ability is on."
+
+  - mod: "Self Destruct"
+    lines:
+      - match: "Explodes when incapacitated"
+        outcome: "Your sentinel explodes when downed"
+        amount: "600"
+        stat: "Blast damage"
+        example: { before: 0, after: 600, unit: "", line: "It explodes for 600 Blast within 18 m." }
+        note: "It also knocks down nearby enemies."
+
+  - mod: "Shield Charger"
+    lines:
+      - match: "Increase Warframe Max Shields and Shield Regeneration by 60%"
+        outcome: "Boosts your shields"
+        amount: "+60%"
+        stat: "Shields"
+        example: { before: 100, after: 160, unit: "", line: "Shields of 100 become 160 for 10 s." }
+        note: "Shield regen grows by the same amount."
+
+  - mod: "Shivering Contagion"
+    lines:
+      - match: "100% chance to spread that status"
+        outcome: "Cold spreads to nearby enemies"
+        amount: "100%"
+        stat: "Spread chance"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: "",
+            line: "Of 10 Cold status effects, all 10 spread within 6 m.",
+          }
+        note: "It counts when you apply Cold."
+
+  - mod: "Shred"
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots faster"
+        amount: "+30%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 13,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 13.",
+          }
+        note: "A bow gets twice the amount."
+
+  - mod: "Vile Acceleration"
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots faster"
+        amount: "+90%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 19,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 19.",
+          }
+        note: "A bow gets twice the amount."
+
+  - mod: "Vile Precision"
+    lines:
+      - match: "Fire Rate (x2 for Bows)"
+        outcome: "Shoots slower"
+        amount: "-36%"
+        stat: "Fire Rate"
+        example:
+          {
+            before: 10,
+            after: 6.4,
+            unit: "",
+            line: "A weapon that fires 10 shots a second fires 6.4.",
+          }
+        note: "A bow gets twice the amount."
+
+  - mod: "Sonic Boost"
+    lines:
+      - match: "Every 10s, boosting will release a shockwave"
+        outcome: "Boosting stuns enemies"
+        amount: "4 m"
+        stat: "Stun reach"
+        example: { before: 0, after: 4, unit: " m", line: "A boost stuns enemies within 4 m." }
+        note: "Ready again after 10 s."
+
+  - mod: "Spring-Loaded Blade"
+    lines:
+      - match: "+1 Range for 24s"
+        outcome: "Status effects extend your reach"
+        amount: "+1 m"
+        stat: "Range"
+        example:
+          {
+            before: 2.5,
+            after: 4.5,
+            unit: " m",
+            line: "A reach of 2.5 m grows to 4.5 m with 2 stacks.",
+          }
+        note: "It stacks up to 2 times, for 24 s."
+
+  - mod: "Squad Renew"
+    lines:
+      - match: "Heal all Railjack squad members by 100%"
+        outcome: "Heals the whole Railjack crew"
+        amount: "100%"
+        stat: "Health"
+        example: { before: 0, after: 100, unit: "%", line: "Every squad member is healed in full." }
+        note: "It is a battle avionic, used from the Railjack."
+
+  - mod: "Stalk"
+    lines:
+      - match: "cloaks itself and its master"
+        outcome: "Your Kubrow hides you both"
+        amount: "24 m"
+        stat: "Reach"
+        example:
+          {
+            before: 0,
+            after: 24,
+            unit: " m",
+            line: "You both turn invisible when prey is within 24 m.",
+          }
+        note: "It stalks a target for you."
+
+  - mod: "Stand Ground"
+    lines:
+      - match: "Blocking reduces damage taken from enemy abilities by 60%"
+        outcome: "Blocking guards against abilities"
+        amount: "-60%"
+        stat: "Ability damage"
+        example:
+          {
+            before: 100,
+            after: 40,
+            unit: "",
+            line: "An ability hit of 100 does 40 while you block.",
+          }
+        note: "It is a Conclave mod, so it counts only in player-versus-player matches."
+
+  - mod: "Static Discharge"
+    lines:
+      - match: "Heavy Attacks electrify nearby enemies"
+        outcome: "Heavy attacks shock enemies around"
+        amount: "80%"
+        stat: "Electricity damage"
+        example:
+          {
+            before: 0,
+            after: 80,
+            unit: "",
+            line: "A heavy attack of 100 shocks nearby enemies for 80.",
+          }
+        note: "A heavy attack spends the combo for one big hit."
+
+  - mod: "Strain Eruption"
+    lines:
+      - match: "Maggots explode on death"
+        outcome: "Maggots burst with Corrosive"
+        amount: "4%"
+        stat: "Enemy health as Corrosive"
+        example:
+          {
+            before: 0,
+            after: 40,
+            unit: "",
+            line: "Next to an enemy with 1,000 health, a maggot bursts for 40.",
+          }
+        note: "It reaches 8 m."
+
+  - mod: "Strain Fever"
+    lines:
+      - match: "gains +40% Damage per Cyst"
+        outcome: "Cysts make your Charger stronger"
+        amount: "+40%"
+        stat: "Per cyst"
+        example:
+          { before: 100, after: 140, unit: "", line: "With one cyst, a bite of 100 does 140." }
+        note: "Cysts grow on a Warframe infected by the Helminth Charger."
+
+  - mod: "Strain Infection"
+    lines:
+      - match: "+20% Critical Damage per Cyst"
+        outcome: "Cysts make your melee crit harder"
+        amount: "+20%"
+        stat: "Per cyst"
+        example:
+          {
+            before: 2,
+            after: 2.4,
+            unit: "×",
+            line: "With one cyst, a critical of 2\u00d7 does 2.4\u00d7.",
+          }
+        note: "Cysts grow on a Warframe infected by the Helminth Charger."
+
+  - mod: "Synth Charge"
+    lines:
+      - match: "Bonus Damage on final shot"
+        outcome: "The last shot hits much harder"
+        amount: "+200%"
+        stat: "Bonus Damage"
+        example:
+          { before: 100, after: 300, unit: "", line: "The last shot of 100 damage does 300." }
+        note: "It needs a magazine of 6 or more."
+
+  - mod: "Synth Deconstruct"
+    lines:
+      - match: "25% chance to drop a Health Orb"
+        outcome: "Your companion's kills drop health"
+        amount: "25%"
+        stat: "Orb chance"
+        example:
+          {
+            before: 0,
+            after: 2.5,
+            unit: "",
+            line: "Of 10 enemies it hurt, about 2 or 3 drop a Health Orb.",
+          }
+        note: "It counts on kills of enemies it damaged."
+
+  - mod: "Synth Fiber"
+    lines:
+      - match: "Health Orbs increase Armor for Companions by 100%"
+        outcome: "Health orbs toughen your companion"
+        amount: "+100%"
+        stat: "Companion armor"
+        example:
+          {
+            before: 100,
+            after: 200,
+            unit: "",
+            line: "Companion armor of 100 becomes 200 for 12 s.",
+          }
+        note: "It counts when you pick up a Health Orb."
+
+  - mod: "Tandem Bond"
+    lines:
+      - match: "Companion melee hits increase your Combo by 6"
+        outcome: "Your companion builds your combo"
+        amount: "+6"
+        stat: "Combo per hit"
+        example: { before: 0, after: 60, unit: "", line: "10 companion hits add 60 to your combo." }
+        note: "Your heavy attacks then boost its melee damage."
+
+  - mod: "Tek Assault"
+    lines:
+      - match: "60% chance to ignore Lethal Damage"
+        outcome: "Your Kavat cheats death"
+        amount: "60%"
+        stat: "Survive chance"
+        example:
+          {
+            before: 0,
+            after: 6,
+            unit: "",
+            line: "Of 10 killing blows, about 6 leave it standing for 4 s.",
+          }
+        note: "It is immune for those 4 s."
+
+  - mod: "Tek Gravity"
+    lines:
+      - match: "Slam Attacks in the Marked Zone pull all enemies"
+        outcome: "Slams pull enemies in"
+        amount: "20 m"
+        stat: "Pull reach"
+        example:
+          {
+            before: 0,
+            after: 20,
+            unit: " m",
+            line: "A slam in the marked zone pulls enemies within 20 m.",
+          }
+        note: "It counts only inside the zone the mod marks."
+
+  - mod: "Tenacious Bond"
+    lines:
+      - match: "Headshot kills reduce Companion Recovery timer by 3s"
+        outcome: "Headshots bring your companion back sooner"
+        amount: "×1.2"
+        stat: "Final critical damage"
+        example:
+          {
+            before: 2,
+            after: 2.4,
+            unit: "×",
+            line: "With a companion over 50% critical chance, a critical of 2\u00d7 does 2.4\u00d7.",
+          }
+        note: "Each headshot kill also takes 3 s off its recovery."
+
+  - mod: "Tether Grenades"
+    lines:
+      - match: "Grenades tether up to 5 enemies"
+        outcome: "Grenades pull enemies together"
+        amount: "5"
+        stat: "Enemies"
+        example:
+          { before: 0, after: 5, unit: "", line: "A grenade tethers up to 5 enemies from 9 m." }
+        note: "It counts on weapons that fire grenades."
+
+  - mod: "Thermagnetic Shells"
+    lines:
+      - match: "Enemies explode on death, dealing 80 Magnetic"
+        outcome: "Kills burst into Magnetic"
+        amount: "+40%"
+        stat: "Enemy health as Magnetic"
+        example:
+          {
+            before: 0,
+            after: 480,
+            unit: "",
+            line: "An enemy with 1,000 health bursts for 480 Magnetic within 6 m.",
+          }
+        note: "The burst adds 80 to 40% of the enemy's health."
+
+  - mod: "Thrash Landing"
+    lines:
+      - match: "Landing a trick releases an explosion"
+        outcome: "Tricks end in an explosion"
+        amount: "40%"
+        stat: "Trick score as Blast"
+        example:
+          {
+            before: 0,
+            after: 400,
+            unit: "",
+            line: "A trick of 1,000 points blasts for 400 within 4 m.",
+          }
+        note: "It counts on the K-Drive."
+
+  - mod: "Unleashed"
+    lines:
+      - match: "deals +300% Damage against Overguard"
+        outcome: "Your Kubrow hunts Eximus"
+        amount: "+300%"
+        stat: "Overguard damage"
+        example: { before: 100, after: 400, unit: "", line: "A bite of 100 does 400 to Overguard." }
+        note: "It hunts within 60 m."
+
+  - mod: "Untraceable"
+    lines:
+      - match: "Invisible for 15s after Hacking"
+        outcome: "Hacking makes you invisible"
+        amount: "15 s"
+        stat: "Invisible"
+        example:
+          { before: 0, after: 15, unit: " s", line: "After a hack, you are invisible for 15 s." }
+        note: "Hacking is the puzzle on consoles and locked doors."
+
+  - mod: "Vicious Bond"
+    lines:
+      - match: "Companion melee attacks strip 15% of enemy armor"
+        outcome: "Your companion strips armor"
+        amount: "-15%"
+        stat: "Enemy armor"
+        example:
+          { before: 100, after: 85, unit: "", line: "An enemy with 100 armor has 85 after a bite." }
+        note: "Enemies your abilities hit spread it within 9 m."
+
+  - mod: "Volatile Parasite"
+    lines:
+      - match: "spits out a maggot that latches"
+        outcome: "A maggot that soaks damage and bursts"
+        amount: "100%"
+        stat: "Damage stored"
+        example:
+          {
+            before: 0,
+            after: 100,
+            unit: "",
+            line: "A maggot that soaks 100 damage bursts for 100 Viral.",
+          }
+        note: "It spits a maggot every 15 s."
+
+  - mod: "Volatile Rebound"
+    lines:
+      - match: "Chance to explode on Bounce"
+        outcome: "Thrown glaives explode when they bounce"
+        amount: "100%"
+        stat: "Explode chance"
+        example: { before: 0, after: 10, unit: "", line: "Of 10 bounces, all 10 explode." }
+        note: "It turns off Punch Through."
+
+  - mod: "Voltage Sequence"
+    lines:
+      - match: "Killing a flying enemy creates a lightning trap"
+        outcome: "Flying kills leave lightning traps"
+        amount: "8 s"
+        stat: "Trap"
+        example:
+          {
+            before: 0,
+            after: 8,
+            unit: " s",
+            line: "A flying enemy you kill leaves a trap for 8 s.",
+          }
+        note: "It counts on flying enemies only."
+
+  - mod: "Xata Invocation"
+    lines:
+      - match: "Alternate Fire grants 1 Energy Regen/s"
+        outcome: "Alt fire hits refill your energy"
+        amount: "+1"
+        stat: "Energy per second"
+        example:
+          {
+            before: 0,
+            after: 10,
+            unit: "",
+            line: "10 enemies hit give 10 energy a second for 20 s.",
+          }
+        note: "It stacks up to 10 times."

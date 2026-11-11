@@ -10,8 +10,8 @@
       "sha256": "cbfdd91592eb07c23aa54a437359818a2aa56ed1b02d9a031497b0e1c78c11bd"
     },
     "mod_stats.yaml": {
-      "size": 87400,
-      "sha256": "0044352c6d16e351ac9227a1a97f781e080da18160473598ab711397227a505a"
+      "size": 272959,
+      "sha256": "edbd8eae8d6bd82540f686e71f2f08a848047ac01a17cab1faf3cb15df9820b0"
     },
     "narrative_spine.yaml": {
       "size": 15212,
@@ -22,8 +22,8 @@
       "sha256": "7ea66aabba412d84859e8c58a79cb1809d54af214c1fe1d839b064f1810498c1"
     },
     "sources.yaml": {
-      "size": 37377,
-      "sha256": "bcd8e71eb9382e80df10c0307d88193965625acb09060fadfd15c6dc54916dd2"
+      "size": 53458,
+      "sha256": "57acb0b0540fa249eb63a442906d0335b7400a7b8cad6f82c8089018c575083d"
     },
     "systems.yaml": {
       "size": 1838,
@@ -98,8 +98,8 @@
       "sha256": "1fdce8cfd1c4667ba43bb198368b4bea0767cbc27a0f15e3c1d3f566002f31cf"
     },
     "vendor/wiki-pages.json": {
-      "size": 249966,
-      "sha256": "2fa8fcb11c26ee22f9f89c9939e9f7e24e97bebcaaa6bbebfa90580caae79fea"
+      "size": 253722,
+      "sha256": "88391be465cc5dd9ef5f616baa86c117da7bcc6099179af3057a704482632182"
     },
     "vendor/wiki-relics.json": {
       "size": 476618,

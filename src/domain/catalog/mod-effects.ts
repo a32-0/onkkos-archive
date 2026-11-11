@@ -94,14 +94,18 @@ interface Parsed {
   sign: 1 | -1;
   value: number;
   unit: "%" | "x" | "";
+  measure: string;
   stat: string;
   seconds: number | null;
   stacks: number | null;
+  squad: boolean;
 }
 
+const SQUAD = /^Squad (?:receives|gains) /;
+const MEASURES: Readonly<Record<string, string>> = { m: " m", s: " s" };
 const TAG = /<[^>]+>/g;
 const AMOUNT =
-  /^(?<sign>[+-])?(?<value>\d+(?:,\d{3})*(?:\.\d+)?)(?<unit>%)?\s+(?<stat>[^(]+?)(?:\s+for\s+(?<seconds>\d+(?:\.\d+)?)s)?(?:\.?\s*Stacks up to (?<stacks>\d+)x)?\.?$/;
+  /^(?<sign>[+-])?(?<value>\d+(?:,\d{3})*(?:\.\d+)?)(?<unit>%|[ms](?=\s))?\s+(?<stat>[^(]+?)(?:\s+for\s+(?<seconds>\d+(?:\.\d+)?)s)?(?:\.?\s*Stacks up to (?<stacks>\d+)x)?\.?$/;
 const TIMES = /^x(?<value>\d+(?:\.\d+)?)\s+(?<stat>Damage to [A-Za-z]+)$/;
 
 function cleanLine(line: string): string {
@@ -109,16 +113,20 @@ function cleanLine(line: string): string {
 }
 
 function parseLine(line: string): Parsed | null {
-  const clean = cleanLine(line);
+  const full = cleanLine(line);
+  const squad = SQUAD.test(full);
+  const clean = full.replace(SQUAD, "");
   const times = TIMES.exec(clean);
   if (times?.groups) {
     return {
       sign: 1,
       value: Number(times.groups["value"]),
       unit: "x",
+      measure: "",
       stat: times.groups["stat"] ?? "",
       seconds: null,
       stacks: null,
+      squad,
     };
   }
   const found = AMOUNT.exec(clean);
@@ -128,14 +136,25 @@ function parseLine(line: string): Parsed | null {
     sign: sign === "-" ? -1 : 1,
     value: Number((value ?? "").replace(/,/g, "")),
     unit: unit === "%" ? "%" : "",
+    measure: MEASURES[unit ?? ""] ?? "",
     stat: (stat ?? "").trim(),
     seconds: seconds ? Number(seconds) : null,
     stacks: stacks ? Number(stacks) : null,
+    squad,
   };
 }
 
-export function lines(stats: readonly string[]): { trigger: string | null; text: string }[] {
-  const out: { trigger: string | null; text: string }[] = [];
+const COOLDOWN =
+  /^(?:Cooldown: (?<after>\d+(?:\.\d+)?)s|(?<before>\d+(?:\.\d+)?)s [Cc]ooldown)\.?$/;
+
+interface ModLine {
+  trigger: string | null;
+  text: string;
+  cooldown?: number;
+}
+
+export function lines(stats: readonly string[]): ModLine[] {
+  const out: ModLine[] = [];
   for (const entry of stats) {
     let trigger: string | null = null;
     for (const part of entry.split(/\\n|\n/)) {
@@ -143,6 +162,12 @@ export function lines(stats: readonly string[]): { trigger: string | null; text:
       if (text === "") continue;
       if (text.endsWith(":")) {
         trigger = text.slice(0, -1);
+        continue;
+      }
+      const wait = COOLDOWN.exec(text)?.groups;
+      const last = out.at(-1);
+      if (wait && last) {
+        last.cooldown = Number(wait["after"] ?? wait["before"]);
         continue;
       }
       out.push({ trigger, text });
@@ -227,10 +252,15 @@ function ownLine(own: RawLine, icon: string, trigger: string | null): ModEffect 
 
 export function effectOf(
   stats: ModStats,
-  line: { trigger: string | null; text: string },
-  words: { trigger: (trigger: ModTrigger) => string },
+  line: ModLine,
+  words: {
+    trigger: (trigger: ModTrigger) => string;
+    squad?: string;
+    cooldown?: (seconds: number) => string;
+  },
   mod?: string,
 ): ModEffect {
+  const wait = line.cooldown !== undefined && words.cooldown ? words.cooldown(line.cooldown) : null;
   const own = mod
     ? stats.mods.get(mod.toLowerCase())?.find((one) => line.text.includes(one.match))
     : undefined;
@@ -238,7 +268,11 @@ export function effectOf(
     const trigger = line.trigger
       ? words.trigger({ on: line.trigger, seconds: null, stacks: null })
       : null;
-    return ownLine(own, familyIcon(stats, own.stat), trigger);
+    return ownLine(
+      own,
+      familyIcon(stats, own.stat),
+      [trigger, wait].filter(Boolean).join(" ") || null,
+    );
   }
   const parsed = parseLine(line.text);
   const curated = parsed ? stats.stats.get(parsed.stat.toLowerCase()) : undefined;
@@ -257,7 +291,7 @@ export function effectOf(
       amount: null,
       stat: null,
       example: null,
-      note: trigger,
+      note: [trigger, wait].filter(Boolean).join(" ") || null,
       pairs: [],
     };
   }
@@ -266,7 +300,7 @@ export function effectOf(
   const amount =
     parsed.unit === "x"
       ? `×${shown(parsed.value, "")}`
-      : `${parsed.sign < 0 ? "-" : "+"}${shown(parsed.value, parsed.unit)}`;
+      : `${parsed.sign < 0 ? "-" : "+"}${shown(parsed.value, parsed.unit)}${parsed.measure}`;
   const outcome = parsed.sign < 0 && curated.down ? curated.down : curated.outcome;
   const pairs = Object.entries(stats.elements[curated.stat] ?? {}).map(([other, makes]) => ({
     with: other,
@@ -282,7 +316,10 @@ export function effectOf(
     amount,
     stat: curated.stat,
     example,
-    note: [curated.note, trigger].filter((part): part is string => !!part).join(" ") || null,
+    note:
+      [curated.note, parsed.squad ? (words.squad ?? null) : null, trigger, wait]
+        .filter((part): part is string => !!part)
+        .join(" ") || null,
     pairs,
   };
 }

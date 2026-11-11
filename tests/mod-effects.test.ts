@@ -32,6 +32,25 @@ describe("a mod's effects (BR-87)", () => {
     });
   });
 
+  it("reads an aura's line as its stat, for the whole squad", () => {
+    const [aura] = effects("Rifle Amp");
+    expect(aura?.stat).toBe("Rifle Damage");
+    expect(aura?.note).toContain("It counts for the whole squad.");
+  });
+
+  it("keeps a unit written against the number", () => {
+    const [combo] = effects("Combo Killer");
+    expect(combo?.amount).toBe("+5 s");
+  });
+
+  it("puts a cooldown line in the note of the line before it", () => {
+    const own = lines(modEntry("Battle Stations")?.maxStats ?? []).map((line) =>
+      effectOf(stats, line, MOD, "Battle Stations"),
+    );
+    expect(own).toHaveLength(1);
+    expect(own[0]?.note).toContain("Ready again after 240 s.");
+  });
+
   it("reads a number written with thousands separators", () => {
     const overguard = effects("Primed Pack Leader").find(
       (effect) => effect.stat === "Overguard Max",

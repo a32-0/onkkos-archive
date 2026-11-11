@@ -1600,6 +1600,10 @@ The other proposals went to the Archive page.
 - A line the game writes in prose (an augment, an aura, a Focus node) fills
   the same `Mod effect` from the mod's own curated entry: what it does, the
   amount and what it counts, an example with its two bars, and the note.
+- An aura's line ("Squad receives +27% Rifle Damage") reads as its stat and
+  adds "It counts for the whole squad." to the note. A cooldown the game
+  writes as a line of its own ("Cooldown: 240s") joins the note of the line
+  before it ("Ready again after 240 s."), not an effect of its own.
 
 ### BR-88 · A met prerequisite stays, marked
 
