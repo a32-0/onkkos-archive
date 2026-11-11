@@ -27,13 +27,8 @@ export interface BuiltIntoFact {
 }
 
 export interface ModFactsView {
-  ranks: number;
-  capacity: number | null;
-  aura: boolean;
-  polarity: string | null;
   rarity: Rarity | null;
   category: string | null;
-  polarityArt: string | null;
   effects: ModEffect[];
 }
 
@@ -41,10 +36,6 @@ export interface ModPageView {
   overview: {
     art: string | null;
     name: string;
-    capacity: string | null;
-    polarity: string | null;
-    ranks: number;
-    rank: string;
     rarity: Rarity | null;
   };
   title: string;
@@ -68,6 +59,7 @@ export interface ItemFacts {
   blocks: BriefBlock[];
   lines: Readonly<Record<string, { reading: Part[]; where: Part[] }>>;
   place: ItemPlace | null;
+  orbs: Readonly<Record<string, string>>;
   beyond: boolean;
   steps: StepsFacts;
   builtInto: BuiltIntoFact[];
@@ -80,6 +72,7 @@ export interface ItemRowView {
   reading: string;
   place: string;
   art: string | null;
+  orb: string | null;
   blueprint?: string | null;
   href?: string;
 }

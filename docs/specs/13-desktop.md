@@ -127,8 +127,8 @@ that can reach it can spend the player's reads. Only the app's window may:
   `403` and does nothing else. A web page open in the player's browser cannot
   know the secret, so it cannot make the app call DE. The check runs in the
   server's own process, in front of Next, so the demo's proxy stays as it is.
-- The window's origin stays the same across starts, so cookies (BR-01) and
-  the ticks of spec 10 survive a restart. Chromium keeps cookies per port, and a new
+- The window's origin stays the same across starts, so cookies (BR-01)
+  survive a restart. Chromium keeps cookies per port, and a new
   port at each start lost them (measured on 2026-10-23), so the app keeps the
   port the system first gave it in a file under its own folder, and picks
   another only when that one is taken.
@@ -144,7 +144,6 @@ AppImage mounts read-only. The one exception is the updater's cache, which
 | -------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
 | The trimmed profile and every lock of spec 11                                                | One store file                | Each lock's own window, as spec 11                                                               |
 | `wf_account`, `wf_since`, `wf_place`, `wf_onkko`, `wf_tour`                                  | The window's cookies          | As on the demo                                                                                   |
-| The ticks of spec 10                                                                         | The window's storage          | Until cleared                                                                                    |
 | Wiki prose and icons, Varzia, rotations                                                      | Next's fetch cache, in memory | A day at most, Varzia ten minutes; gone when the app closes                                      |
 | The current `data/`                                                                          | A data folder (below)         | Until a newer set replaces it                                                                    |
 | A downloaded version of the app                                                              | The updater's cache           | Until the first start after it installs; the installer itself until the next update or uninstall |
@@ -269,8 +268,8 @@ steps are in [`desktop.md`](../desktop.md#cutting-a-version).
 3. A request to the server from outside the window (a browser tab, `curl`)
    answers `403` and never reads a profile or calls DE.
 4. After closing and opening the app within twelve hours, the same account
-   is read from the store, with no request to DE; the id, the month, the last
-   place and the ticks are all still there.
+   is read from the store, with no request to DE; the id, the month and the
+   last place are all still there.
 5. A manifest with a newer set replaces the data in one start; a wrong hash,
    another schema, a set this version cannot read or no connection leaves the
    current set in use, and the app opens normally.

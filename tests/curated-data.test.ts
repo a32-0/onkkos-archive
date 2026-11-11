@@ -5,6 +5,7 @@ import { parse } from "yaml";
 import { describe, expect, it } from "vitest";
 
 import { canonicalMod, effectOf, lines, modFacts } from "@/domain/catalog/mod-effects";
+import { catalogData } from "@/infra/catalog/data";
 import { loadModStats } from "@/infra/catalog/mod-stats";
 import { loadEvidenceRules } from "@/infra/narrative/evidence-load";
 
@@ -69,6 +70,23 @@ describe("quest_evidence.yaml still points at the game's data", () => {
         : [],
     );
     expect(lost).toEqual([]);
+  });
+});
+
+describe("sources.yaml still names what the game has", () => {
+  it("every item it curates is in the catalogue, or is what an item is made from", () => {
+    const data = catalogData();
+    const made = (parse(read("acquisition.yaml")) as { acquisition: { from: string }[] })
+      .acquisition;
+    const known = new Set(
+      [
+        ...data.arsenal.map((item) => item.name),
+        ...[...data.collectibles.values()].map((one) => one.name),
+        ...data.resources.map((one) => one.name),
+        ...made.map((one) => one.from),
+      ].map((name) => name.toLowerCase()),
+    );
+    expect([...data.curated.items.keys()].filter((name) => !known.has(name))).toEqual([]);
   });
 });
 
@@ -138,6 +156,21 @@ describe("the mods still carry what their page draws (BR-87)", () => {
     expect(
       [...stats.stats.keys()].filter((stat) => !used.has(stat) && !combined.has(stat)),
     ).toEqual([]);
+  });
+
+  it("every line of every mod is curated, as a shared stat or as the mod's own line", () => {
+    const stats = loadModStats();
+    const bare: string[] = [];
+    for (const name of modNames) {
+      const mod = canonicalMod(mods, name);
+      if (mod?.type === "Focus Way") continue;
+      const own = stats.mods.get(name.toLowerCase()) ?? [];
+      for (const line of lines(mod?.maxStats ?? [])) {
+        if (own.some((one) => line.text.includes(one.match))) continue;
+        if (!effectOf(stats, line, { trigger: () => "" }).stat) bare.push(`${name}: ${line.text}`);
+      }
+    }
+    expect(bare).toEqual([]);
   });
 
   it("every mod's own entry still matches a line the game writes for that mod", () => {

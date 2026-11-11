@@ -15,19 +15,6 @@ import { WikiLink } from "@/ui/WikiLink/WikiLink";
 import type { StepRowView, StepsView } from "./state";
 import styles from "./Steps.module.css";
 
-export interface Ticks {
-  ticked: ReadonlySet<string>;
-  tick: (id: string, on: boolean) => void;
-}
-
-export function tickableIds(view: StepsView): string[] {
-  return view.blocks.flatMap((block) =>
-    block.cards
-      .filter((card) => card.checkable)
-      .flatMap((card) => card.groups.flatMap((group) => group.rows.map((row) => row.id))),
-  );
-}
-
 function RowBody({ row }: { row: StepRowView }) {
   const link = row.link && (
     <WikiLink href={row.link.href} label={row.link.label} target={row.link.target} />
@@ -43,7 +30,7 @@ function RowBody({ row }: { row: StepRowView }) {
   );
 }
 
-export function Steps({ view, ticks }: { view: StepsView; ticks: Ticks }) {
+export function Steps({ view }: { view: StepsView }) {
   const prefix = useId();
   const [flipped, setFlipped] = useState<ReadonlySet<string>>(new Set());
   const flip = (id: string) =>
@@ -69,33 +56,21 @@ export function Steps({ view, ticks }: { view: StepsView; ticks: Ticks }) {
                   {index > 0 && <Divider />}
                   {card.checkable ? (
                     <div className={styles.components}>
-                      {group.rows.map((row) => {
-                        const ticked = ticks.ticked.has(row.id);
-                        return (
-                          <div key={row.id} id={row.anchor ?? undefined}>
-                            <ComponentRow
-                              title={row.title}
-                              art={row.art ?? null}
-                              ticked={ticked}
-                              locked={row.locked}
-                              status={row.locked ? STATES.locked : undefined}
-                              open={ticked ? flipped.has(row.id) : open(row.id)}
-                              bodyId={bodyId(row.id)}
-                              onTick={(on) => {
-                                ticks.tick(row.id, on);
-                                setFlipped((now) => {
-                                  const next = new Set(now);
-                                  next.delete(row.id);
-                                  return next;
-                                });
-                              }}
-                              onToggle={() => flip(row.id)}
-                            >
-                              <RowBody row={row} />
-                            </ComponentRow>
-                          </div>
-                        );
-                      })}
+                      {group.rows.map((row) => (
+                        <div key={row.id} id={row.anchor ?? undefined}>
+                          <ComponentRow
+                            title={row.title}
+                            art={row.art ?? null}
+                            locked={row.locked}
+                            status={row.locked ? STATES.locked : undefined}
+                            open={open(row.id)}
+                            bodyId={bodyId(row.id)}
+                            onToggle={() => flip(row.id)}
+                          >
+                            <RowBody row={row} />
+                          </ComponentRow>
+                        </div>
+                      ))}
                     </div>
                   ) : (
                     <Timeline

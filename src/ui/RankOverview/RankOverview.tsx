@@ -13,7 +13,7 @@ export interface RankOverviewChip {
   href?: string;
 }
 
-const FRAME = 152;
+const FRAME = 200;
 const STROKE = 5;
 const EDGE = STROKE / 2;
 const FAR = FRAME - EDGE;

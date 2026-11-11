@@ -97,6 +97,8 @@ or removed something a curated file points at. The test names the rule:
 | A mission rule's node           | Find the node's new tag in `data/vendor/wiki-nodes.json` and change it in `quest_evidence.yaml` |
 | An item rule's path             | Find the item's new `uniqueName` in `data/vendor/items.json` and change it                      |
 | A curated stat no mod uses      | Find the mod's new wording in `items.json` and rename the stat in `mod_stats.yaml`              |
+| A mod line nothing curates      | A new mod or new wording: write its stat or its own entry in `mod_stats.yaml` (BR-87)           |
+| An item the catalogue lacks     | Find the item's new name in `items.json` and change it in `sources.yaml`                        |
 | Mods without rarity or category | `@wfcd/items` dropped the field: wait for a fix, as above                                       |
 
 5. Open a few new items in `pnpm dev`. A drop from an enemy shows the

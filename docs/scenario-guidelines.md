@@ -52,11 +52,11 @@ Every item view, arsenal or collectible, is these sections in this order. A
 section with nothing in it does not render, and Prerequisites is never empty
 outside a collectible (BR-89).
 
-1. **Prerequisites.** Facts the player reads, never ticks.
+1. **Prerequisites.** Facts the player reads.
 2. **How to get** (a shared source), or **Acquisition** (a procedure).
 3. **One section per part**, or one flat **Blueprints** list when all parts
    share a source.
-4. **Components.** What the player collects. The only section with ticks.
+4. **Components.** What the player collects, read and never ticked (BR-21).
 
 ### Prerequisite kinds
 

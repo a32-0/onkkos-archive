@@ -97,7 +97,7 @@ store, which keeps the same locks until the process stops.
 - Kept: the trimmed profile last read, with when it was read and when a
   later read last failed; nothing else about a player.
 - On the device: `wf_account` (one year) and `wf_since` (the month), both
-  cookies; `wf_place` (BR-46); the ticks of spec 10 in browser storage.
+  cookies; `wf_place` (BR-46).
 - Never: the raw payload, a computed result.
 - Disconnect clears the cookies; the stored profile follows step 9.
 

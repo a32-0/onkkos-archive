@@ -243,6 +243,7 @@ describe("withProse", () => {
     prose,
     wikiTitle,
     imageUrl: null,
+    place: null,
     best: false,
     alternative: false,
     optional: false,

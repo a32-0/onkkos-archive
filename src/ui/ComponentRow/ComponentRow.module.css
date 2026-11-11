@@ -10,10 +10,6 @@
   opacity: var(--row-locked-opacity);
 }
 
-.ticked {
-  composes: row;
-}
-
 .head {
   display: flex;
   align-items: center;
@@ -27,11 +23,6 @@
   width: var(--component-art-size);
   height: var(--component-art-size);
   object-fit: contain;
-}
-
-.ticked .art {
-  --component-art-done: 0.4;
-  opacity: var(--component-art-done);
 }
 
 .toggle {
@@ -57,11 +48,6 @@
   composes: label from "../type.module.css";
   flex: 1 0 0;
   min-width: 0;
-}
-
-.ticked .title {
-  color: var(--ink-dim);
-  text-decoration: line-through;
 }
 
 .chevron {

@@ -1,6 +1,7 @@
 const TIMES: Readonly<Record<number, string>> = { 2: "twice", 3: "three times" };
 
 function after(on: string): string {
+  if (/^(When|While|During)\s/i.test(on)) return on.toLowerCase();
   const what = on.replace(/^On\s+/i, "").toLowerCase();
   return /^[aeiou]/.test(what) ? `after an ${what}` : `after a ${what}`;
 }
@@ -13,8 +14,6 @@ export const MOD = {
   pairsWith: "Pairs with",
   squad: "It counts for the whole squad.",
   cooldown: (seconds: number) => `Ready again after ${seconds} s.`,
-  rank: (ranks: number) => `Max rank ${ranks}`,
-  capacity: (capacity: number, aura: boolean) => (aura ? `+${capacity}` : `${capacity}`),
   trigger: ({
     on,
     seconds,

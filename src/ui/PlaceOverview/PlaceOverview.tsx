@@ -13,7 +13,7 @@ export type PlaceOverviewKind = {
   href?: string;
 };
 
-const RING = 152;
+const RING = 200;
 const STROKE = 5;
 const RADIUS = (RING - STROKE) / 2;
 

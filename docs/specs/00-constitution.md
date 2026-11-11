@@ -151,8 +151,10 @@ they govern every screen:
   first, places the player already reaches ahead of the rest.
 - **Name a thing, show its icon.** Wherever an item, a part, a resource or a
   place is named as a fact, its art rides with it: the catalog's for items, the
-  wiki's for places. A name with no art available renders as a name, never as
-  a placeholder box.
+  Star Chart's orb for places. A name with no art available renders as a name, never as
+  a placeholder box. A row never wears the art of the thing its page is about,
+  which the page already shows; it wears the art of what the row itself names
+  ([BR-90](../business-rules.md#br-90--a-row-wears-the-art-of-what-it-names)).
 - **Show what the player can reach; count what lies beyond.** The wiki hands
   over the whole game at once, to a player who does not yet know what any of
   it is. The app shows what the player's progress and Mastery Rank allow, and

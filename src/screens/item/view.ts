@@ -42,13 +42,15 @@ function rowOf(facts: ItemFacts, line: BriefLine, from: string, blueprint: boole
   const told = own ? tileLines(own.reading, own.where) : tileLines(line.reading, line.where);
   const words =
     told.reading || told.place ? told : { reading: "", place: detailOf(line.detail) ?? "" };
-  const art = line.imageUrl ?? (blueprint ? null : facts.art);
+  const orb = blueprint || line.place === null ? null : (facts.orbs[line.place] ?? null);
+  const repeats = (text: string) => line.place !== null && text === line.place;
   return {
     key: line.id,
     name: line.optional ? STEP_WORDS.optional(titled(line.title)) : titled(line.title),
-    reading: words.reading,
-    place: words.place,
-    art,
+    reading: repeats(words.reading) ? "" : words.reading,
+    place: repeats(words.place) ? "" : words.place,
+    art: orb === null ? line.imageUrl : null,
+    orb,
     ...(blueprint && { blueprint: facts.blueprint }),
     ...(blueprint
       ? { href: itemRoute(facts.name, from, STEPS, line.id) }
@@ -133,10 +135,6 @@ function modPage(mod: ModFactsView, facts: Pick<ItemFacts, "art" | "name">): Mod
     overview: {
       art: facts.art,
       name: facts.name,
-      capacity: mod.capacity === null ? null : MOD.capacity(mod.capacity, mod.aura),
-      polarity: mod.polarityArt,
-      ranks: mod.ranks,
-      rank: MOD.rank(mod.ranks),
       rarity: mod.rarity,
     },
     title: MOD.whatItDoes,

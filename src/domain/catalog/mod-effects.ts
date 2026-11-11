@@ -17,14 +17,23 @@ const rawStat = z.object({
   note: z.string().optional(),
 });
 
-const rawLine = z.object({
-  match: z.string(),
-  outcome: z.string(),
-  amount: z.string(),
-  stat: z.string(),
-  example: z.object({ before: z.number(), after: z.number(), unit: z.string(), line: z.string() }),
-  note: z.string(),
-});
+const rawLine = z
+  .object({
+    match: z.string(),
+    outcome: z.string(),
+    amount: z.string().optional(),
+    stat: z.string().optional(),
+    example: z
+      .object({ before: z.number(), after: z.number(), unit: z.string(), line: z.string() })
+      .optional(),
+    note: z.string(),
+  })
+  .refine(
+    (line) =>
+      [line.amount, line.stat, line.example].every((part) => part === undefined) ||
+      [line.amount, line.stat, line.example].every((part) => part !== undefined),
+    { message: "a mod line gives amount, stat and example together, or none of them" },
+  );
 
 const rawMod = z.object({ mod: z.string(), lines: z.array(rawLine).min(1) });
 
@@ -147,6 +156,8 @@ function parseLine(line: string): Parsed | null {
 const COOLDOWN =
   /^(?:Cooldown: (?<after>\d+(?:\.\d+)?)s|(?<before>\d+(?:\.\d+)?)s [Cc]ooldown)\.?$/;
 
+const CONTINUES = /^(?:\(|[a-z]+\s|Stacks up to )/;
+
 interface ModLine {
   trigger: string | null;
   text: string;
@@ -168,6 +179,10 @@ export function lines(stats: readonly string[]): ModLine[] {
       const last = out.at(-1);
       if (wait && last) {
         last.cooldown = Number(wait["after"] ?? wait["before"]);
+        continue;
+      }
+      if (CONTINUES.test(text) && last) {
+        last.text = `${last.text} ${text}`;
         continue;
       }
       out.push({ trigger, text });
@@ -232,19 +247,24 @@ function fits(math: (typeof MATHS)[number], unit: Parsed["unit"]): boolean {
   return unit !== "x";
 }
 
-function ownLine(own: RawLine, icon: string, trigger: string | null): ModEffect {
-  const { before, after, unit, line } = own.example;
+function ownExample(example: RawLine["example"]): ModExample | null {
+  if (!example) return null;
+  const { before, after, unit, line } = example;
   const top = Math.max(before, after) || 1;
+  return {
+    before: { value: shown(before, unit), share: before / top },
+    after: { value: shown(after, unit), share: after / top },
+    line,
+  };
+}
+
+function ownLine(own: RawLine, icon: string, trigger: string | null): ModEffect {
   return {
     icon,
     outcome: own.outcome,
-    amount: own.amount,
-    stat: own.stat,
-    example: {
-      before: { value: shown(before, unit), share: before / top },
-      after: { value: shown(after, unit), share: after / top },
-      line,
-    },
+    amount: own.amount ?? null,
+    stat: own.stat ?? null,
+    example: ownExample(own.example),
     note: [own.note, trigger].filter((part): part is string => !!part).join(" "),
     pairs: [],
   };
@@ -270,7 +290,7 @@ export function effectOf(
       : null;
     return ownLine(
       own,
-      familyIcon(stats, own.stat),
+      familyIcon(stats, own.stat ?? own.outcome),
       [trigger, wait].filter(Boolean).join(" ") || null,
     );
   }
@@ -328,16 +348,11 @@ const RARITIES = ["common", "uncommon", "rare", "legendary"] as const;
 export type Rarity = (typeof RARITIES)[number];
 
 export interface ModFacts {
-  ranks: number;
-  capacity: number | null;
-  aura: boolean;
-  polarity: string | null;
   rarity: Rarity | null;
   category: string | null;
 }
 
 const MOD_TYPE = /^(.+) Mod$/;
-const FOCUS_WAY = "Focus Way";
 
 function categoryOf(type: string | undefined): string | null {
   const category = MOD_TYPE.exec(type ?? "")?.[1] ?? null;
@@ -352,21 +367,11 @@ function rarityOf(value: string | undefined): Rarity | null {
 export function modFacts(entry: {
   baseDrain?: number;
   fusionLimit?: number;
-  polarity?: string;
   rarity?: string;
   type?: string;
 }): ModFacts | null {
   if (entry.baseDrain === undefined || entry.fusionLimit === undefined) return null;
-  const aura = entry.baseDrain < 0;
-  const capacity = entry.type === FOCUS_WAY ? null : Math.abs(entry.baseDrain) + entry.fusionLimit;
-  const polarity = entry.polarity
-    ? entry.polarity.charAt(0).toUpperCase() + entry.polarity.slice(1)
-    : null;
   return {
-    ranks: entry.fusionLimit,
-    capacity,
-    aura,
-    polarity: capacity === null ? null : polarity,
     rarity: rarityOf(entry.rarity),
     category: categoryOf(entry.type),
   };

@@ -57,6 +57,29 @@ export const Route: Story = {
   args: { href: undefined, name: "Fate Pearl", art: SAMPLE_ART[1], blueprint: undefined },
 };
 
+export const Place: Story = {
+  args: {
+    href: undefined,
+    name: "Play any mission on Mercury",
+    reading: undefined,
+    place: undefined,
+    art: null,
+    orb: "#b9a08a",
+    blueprint: undefined,
+  },
+};
+
+export const NoArt: Story = {
+  args: {
+    href: undefined,
+    name: "Research it in the Energy Lab",
+    reading: undefined,
+    place: "Energy Lab",
+    art: null,
+    blueprint: undefined,
+  },
+};
+
 export const Hover: Story = { parameters: { pseudo: { hover: true } } };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

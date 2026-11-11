@@ -69,9 +69,9 @@ tabs or player chip. From the top, as `661:4354` draws it:
 3. **Where do I find this?**: three numbered steps. On a computer,
    log in at `https://www.warframe.com`, a link that opens in a new tab; in the
    same browser, open the developer tools, pressing F12, and in the side or down
-   panel go to the cookies (**On Firefox:** Storage › Cookies, **On Edge or
-   Chrome:** Application › Cookies, the browsers' names in bold; Edge added on
-   2026-10-29, since Windows ships it); copy the value of the `gid` cookie. Under
+   panel go to the cookies (**On Chrome or Edge:** Application › Cookies, then
+   **On Firefox:** Storage › Cookies, the browsers' names in bold; Chrome first
+   as the most used); copy the value of the `gid` cookie. Under
    the steps, **Help me find my ID**, a secondary button, opens **Find your ID**
    (below). Then an example of that cookie and the note "It's safe: it's the same
    public profile the game shows when you look at another player. We only remember
@@ -94,7 +94,7 @@ other content (constitution), so the pictures have their own page instead of
 opening inside the steps. A lead, "Where the “gid” cookie is, in what each
 browser shows. Do it on a computer, logged in at www.warframe.com.", where
 `www.warframe.com` is an underlined link that opens the site in a new tab, then
-one card per browser, **Firefox** and then **Edge or Chrome** (one card, as both
+one card per browser, **Chrome or Edge** and then **Firefox** (one card, as both
 use the same developer tools), each with three numbered steps ("**Press F12** to
 open the developer tools."; Storage › Cookies, or Application › Cookies, ›
 `https://www.warframe.com`; "Type “gid” in the filter, and copy its **Value**.",

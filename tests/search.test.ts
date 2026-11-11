@@ -109,7 +109,7 @@ describe("a collectible's own page", () => {
     expect(reached.has(view.routes[0]?.place ?? "")).toBe(true);
   });
 
-  it("gets a step-by-step plan like any item, with no tick of its own", () => {
+  it("gets a step-by-step plan like any item, with component rows only under Components", () => {
     for (const name of ["Serration", "Lith C7 Relic", "Neurodes", "Arcane Energize"]) {
       const plan = collectibleStepPlan(data, collectibleView(data, found(name), known, new Set()), {
         now,
@@ -125,16 +125,13 @@ describe("a collectible's own page", () => {
     }
   });
 
-  it("finds a Drift mod by its hall of ascension and a Focus node by its school", () => {
+  it("finds a Drift mod by its hall of ascension, and no Focus node", () => {
     expect(hitNamed("cunning drift", "Cunning Drift")?.group).toBe("mods");
     expect(found("Cunning Drift").drops).toEqual([]);
     expect(data.curated.items.get("Cunning Drift")?.routes).toEqual([
       { type: "challenge", challenge: "Cunning Test", place: "Lua" },
     ]);
-    expect(hitNamed("affinity spike", "Affinity Spike")?.group).toBe("mods");
-    expect(data.curated.items.get("Affinity Spike")?.routes).toEqual([
-      { type: "focus", school: "Naramon" },
-    ]);
+    expect(hitNamed("affinity spike", "Affinity Spike")).toBeUndefined();
   });
 
   it("says a vaulted relic no longer drops", () => {

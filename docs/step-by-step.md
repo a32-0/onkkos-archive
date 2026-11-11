@@ -18,7 +18,6 @@ are grouped and which sources feed each route is in
 | Links  | `src/domain/catalog/wiki.ts`: `linkedPage()`, over `wiki-pages.json`  |
 | Words  | `src/content/checks.ts`: `TITLES`, `BRIEF`, `DETAILS`, `STEPS`        |
 | View   | `src/screens/item/steps/`: `stepsView()` and `Steps`                  |
-| Ticks  | `src/infra/ticks.ts`, wired by `src/app/item/ItemTicks.tsx`           |
 
 ## The sections, in order
 
@@ -118,16 +117,13 @@ what the row is for and never asks for its passage. `tests/wiki-links.test.ts`
 builds the same plans offline and fails on a link the file hasn't checked,
 so a change that adds one says to run the command.
 
-## Ticks only on Components
+## Nothing is ticked
 
 Route rows are alternatives, not steps: a player runs Obol Crossing _or_
-Fenton's Field. Prerequisites are facts to read. What the player collects is
-what they tick. A tick lives in this browser under
-`wf:manual:item:{name}:{rowId}`; nothing is pre-ticked, because the profile
-lists no resources. The server renders nothing ticked and the browser fills
-the ticks in after it loads, so the two never disagree on the first paint. A
-ticked row strikes its title through and folds; unticking brings it back. A
-fold is per visit and is not kept.
+Fenton's Field. Prerequisites are facts to read, and Components are read too:
+the profile lists no resources, and the game's foundry shows what the player
+holds, so no row carries a checkbox (BR-21). A fold is per visit and is not
+kept.
 
 ## A plan dims what waits on an unmet prerequisite (BR-63)
 
@@ -136,8 +132,7 @@ profile proves unmet: a Mastery Rank above the player's, or a place or
 junction past the frontier the profile's `Missions[]` draws. That row keeps
 full contrast and reads its gap ("Needs Mastery Rank 15. You are Mastery
 Rank 5."); every row after it, in every section, is drawn Locked at half
-opacity, still open and readable, and a locked component can still be
-ticked. With no `PlayerLevel` or no `Missions[]`, nothing locks, and a quest
+opacity, still open and readable. With no `PlayerLevel` or no `Missions[]`, nothing locks, and a quest
 without evidence locks nothing.
 
 ## The prose costs one request per page, cached a day

@@ -19,7 +19,6 @@ interface RawMod {
   uniqueName: string;
   baseDrain?: number;
   fusionLimit?: number;
-  polarity?: string;
   rarity?: string;
   type?: string;
   maxStats?: string[];

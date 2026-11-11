@@ -14,8 +14,8 @@ export const CONNECT = {
     {
       text: "In the same browser, open the developer tools, pressing F12, and in the side or down panel go to:",
       value: [
+        { label: "On Chrome or Edge:", text: "Application › Cookies" },
         { label: "On Firefox:", text: "Storage › Cookies" },
-        { label: "On Edge or Chrome:", text: "Application › Cookies" },
       ],
     },
     { text: "Copy the 24-character value of the cookie:", value: [{ label: null, text: "gid" }] },
@@ -46,6 +46,16 @@ export const FIND_ID = {
   leadEnd: ".",
   browsers: [
     {
+      key: "edge-chrome",
+      name: "Chrome or Edge",
+      steps: [
+        [{ strong: "Press F12" }, " to open the developer tools."],
+        ["Go to Application › Cookies › https://www.warframe.com."],
+        ["Type “gid” in the filter, and copy its ", { strong: "Value" }, "."],
+      ],
+      shot: "Edge's developer tools on Application › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
+    },
+    {
       key: "firefox",
       name: "Firefox",
       steps: [
@@ -54,16 +64,6 @@ export const FIND_ID = {
         ["Type “gid” in the filter, and copy its ", { strong: "Value" }, "."],
       ],
       shot: "Firefox's developer tools on Storage › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
-    },
-    {
-      key: "edge-chrome",
-      name: "Edge or Chrome",
-      steps: [
-        [{ strong: "Press F12" }, " to open the developer tools."],
-        ["Go to Application › Cookies › https://www.warframe.com."],
-        ["Type “gid” in the filter, and copy its ", { strong: "Value" }, "."],
-      ],
-      shot: "Edge's developer tools on Application › Cookies › https://www.warframe.com, filtered by gid: one row, the gid cookie, with its value in the Value column.",
     },
   ],
 } as const;

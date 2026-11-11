@@ -278,9 +278,6 @@ interface Says {
   raceDetail: { place: string };
   challengeTitle: { challenge: string };
   challengeDetail: { place: string };
-  focusTitle: { school: string };
-  focusMenuTitle: None;
-  focusDetail: None;
   bundledTitle: { things: string[] };
   bundledDetail: { things: string[] };
   primeAccessTitle: { warframe: string };
@@ -345,6 +342,7 @@ export interface StepRow {
   prose: ProseAsk | null;
   wikiTitle: string | null;
   imageUrl: string | null;
+  place: string | null;
   best: boolean;
   alternative: boolean;
   optional: boolean;
@@ -466,6 +464,7 @@ function row(
     prose: rest.prose ?? null,
     wikiTitle: rest.wikiTitle ?? null,
     imageUrl: rest.imageUrl ?? null,
+    place: rest.place ?? null,
     best: rest.best ?? false,
     alternative: rest.alternative ?? false,
     optional: rest.optional ?? false,
@@ -698,12 +697,6 @@ function curatedFacts(
         detail: say("challengeDetail", { place: source.place }),
         brief: parts(source.place),
       };
-    case "focus":
-      return {
-        title: say("focusTitle", { school: source.school }),
-        detail: say("focusDetail"),
-        brief: parts(say("focusMenuTitle")),
-      };
     case "bundled":
       return {
         title: say("bundledTitle", { things: source.with }),
@@ -903,6 +896,7 @@ function routeRow(
         where: parts(say("nodeOn", { node: route.node, place: route.place }), route.mission),
         prose: mechanics(route.mission),
         wikiTitle: route.node,
+        place: route.place,
       });
     case "endless":
       return row(id, say("circuitModeTitle", { mode: route.mode }), {
@@ -910,6 +904,7 @@ function routeRow(
         where: parts(say("nodeOn", { node: CIRCUIT_WIKI, place: route.place })),
         prose: lead(CIRCUIT_WIKI),
         wikiTitle: CIRCUIT_WIKI,
+        place: route.place,
       });
     case "bounty": {
       const range = levels(route.tier);
@@ -923,7 +918,12 @@ function routeRow(
               low: range?.low ?? null,
               high: range?.high ?? null,
             }),
-        { ...shared, where: parts(route.place, BOUNTY), wikiTitle: route.place },
+        {
+          ...shared,
+          where: parts(route.place, BOUNTY),
+          wikiTitle: route.place,
+          place: route.place,
+        },
       );
     }
     case "enemy":
@@ -958,6 +958,7 @@ function routeRow(
       return row(id, say("vendorTitle", { vendor: route.vendor }), {
         ...shared,
         wikiTitle: route.link,
+        imageUrl: data.vendorArt[route.vendor] ?? null,
       });
     case "market":
       return row(id, say("marketTitle"), { ...shared, wikiTitle: MARKET_WIKI });
@@ -1016,6 +1017,7 @@ function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisit
       brief: parts(route.place, route.boss ?? route.mission),
       prose: route.boss ? lead(route.boss) : mechanics(route.mission),
       wikiTitle: route.node,
+      place: route.place,
     });
   }
   if (route.kind === "bounty") {
@@ -1028,6 +1030,7 @@ function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisit
       brief: routeBrief(data, reader, route),
       prose: mechanics(BOUNTY),
       wikiTitle: found.places[0] ?? route.place,
+      place: route.place,
     });
   }
   if (route.kind === "vendor") {
@@ -1035,6 +1038,7 @@ function howRow(data: CatalogData, reader: Reader, route: Route, found: Acquisit
       brief: parts(priceBrief(route.cost, route.currency, route.rank)),
       prose: lead(route.link),
       wikiTitle: route.link,
+      imageUrl: data.vendorArt[route.vendor] ?? null,
     });
   }
   if (route.kind === "research") {
@@ -2371,6 +2375,7 @@ function regionRows(data: CatalogData, collectible: CollectibleView["collectible
       brief: parts(place),
       prose: index === 0 ? lead(fact?.link ?? collectible.name) : null,
       wikiTitle: place,
+      place,
     }),
   );
 }

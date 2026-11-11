@@ -44,7 +44,6 @@ const source = z.discriminatedUnion("type", [
   }),
   z.object({ type: z.literal("race"), race: z.string(), place: z.string() }),
   z.object({ type: z.literal("challenge"), challenge: z.string(), place: z.string() }),
-  z.object({ type: z.literal("focus"), school: z.string() }),
   z.object({ type: z.literal("bundled"), with: z.array(z.string()) }),
   z.object({
     type: z.literal("primeAccess"),
@@ -159,33 +158,6 @@ export function normalizeSources(input: unknown): Curated {
       ),
     ),
   };
-}
-
-const SCHOOLS: Readonly<Record<string, string>> = {
-  Attack: "Madurai",
-  Defense: "Vazarin",
-  Tactic: "Naramon",
-  Power: "Zenurik",
-  Ward: "Unairu",
-};
-const FOCUS_WAY = /\/Focus\/(?<way>[A-Za-z]+)\//;
-
-export function withFocusWays(
-  curated: Curated,
-  entries: readonly { name?: string; type?: string; uniqueName?: string }[],
-): Curated {
-  const items = new NameMap<CuratedEntry>(curated.items);
-  for (const entry of entries) {
-    if (entry.type !== "Focus Way" || !entry.name || items.has(entry.name)) continue;
-    const school = SCHOOLS[FOCUS_WAY.exec(entry.uniqueName ?? "")?.groups?.["way"] ?? ""];
-    if (!school) continue;
-    items.set(entry.name, {
-      item: entry.name,
-      cite: entry.name,
-      routes: [{ type: "focus", school }],
-    });
-  }
-  return { ...curated, items };
 }
 
 export function withStores(wiki: Wiki, curated: Curated): Wiki {

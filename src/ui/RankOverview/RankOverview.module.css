@@ -26,9 +26,9 @@
 }
 
 .frame {
-  --rank-frame-size: 152px;
+  --rank-frame-size: 200px;
   --rank-frame-stroke: 5px;
-  --rank-art-size: 120px;
+  --rank-art-size: 168px;
   position: relative;
   width: var(--rank-frame-size);
   height: var(--rank-frame-size);

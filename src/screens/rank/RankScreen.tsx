@@ -6,14 +6,12 @@ import { ROUTES } from "@/routes";
 import { OnkkoLine } from "@/ui/OnkkoLine/OnkkoLine";
 import { RankOverview } from "@/ui/RankOverview/RankOverview";
 
-import { Steps, type Ticks } from "../item/steps/Steps";
+import { Steps } from "../item/steps/Steps";
 import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
 import styles from "./Rank.module.css";
 import type { RankPageView } from "./state";
-
-const NO_TICKS: Ticks = { ticked: new Set(), tick: () => {} };
 
 export function RankScreen({ chrome, page }: { chrome: ShellChrome; page: RankPageView }) {
   return (
@@ -27,7 +25,7 @@ export function RankScreen({ chrome, page }: { chrome: ShellChrome; page: RankPa
           </div>
           <RankOverview {...page.overview} link={Link} />
         </div>
-        <Steps view={page.steps} ticks={NO_TICKS} />
+        <Steps view={page.steps} />
       </div>
     </Shell>
   );

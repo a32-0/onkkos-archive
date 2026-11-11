@@ -31,16 +31,16 @@ the materials they call for.
   siblings (Serration, Intensify, Infected Clip, Berserker Fury): a mod's card
   and what each stat does (BR-87). Point Strike is the reference: its art
   framed in its rarity's colour (Common here; Uncommon on Serration and
-  Infected Clip, Rare on Intensify and Berserker Fury), dots for the ranks,
-  and no cost line under them.
+  Infected Clip, Rare on Intensify and Berserker Fury), and nothing on it or
+  under it.
 - Hunter Adrenaline (`1239:7362`), Acid Shells (`1239:7457`) and Aerial Ace
   (`1239:7552`): a line the game writes in prose, filled from the mod's own
   entry. Their How to get is hidden in the frame; it draws as on any mod.
 - Aura — Growing Power (`1242:7907`): an aura's corner reads "+7".
 - Lua challenge — Cunning Drift (`1242:8001`): How to get with one row,
   "Pass the Cunning Test", Lua.
-- Focus tree — Affinity Spike (`1242:8107`): no capacity in the corner, and
-  How to get with one row, "Unlock it in the Naramon tree", Focus.
+- No number — Truth's Flame (`1246:7441`): a line with no number shows what
+  it does and its note, next to a full effect.
 
 ## Rules
 
@@ -125,12 +125,22 @@ hero is kicker, name and art, as `677:6750` draws a resource.
   Acquisition rows in the same row style, then Components. A quest's reward or a
   bought blueprint is how the item is had, so it leads, never its first
   ingredient (on Thornbak and Thalys). A quest's own page leads with the row that
-  starts it, which wears the quest's art, as a collectible's rows wear the
-  collectible's (T-43). A Lich's or a Sister's steps wear the enemy's art,
-  curated in `sources.yaml` (`art`), never the weapon's. A How to get row of an
-  arsenal item with no art of its own (a lab, a bounty) wears the item's, so no
-  row is an empty box (constitution). Drawn in
-  [`928:5859` Item>Overview — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859).
+  starts it.
+- A How to get row wears the art of what it names, never the item's, which the
+  hero already shows:
+  - a place, a mission node, a bounty or a planet, its `Orb` in the
+    `Summary row` Kind=Place ([`1265:270`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1265-270)), in the colour the
+    Star Chart gives it (`data/systems.yaml`);
+  - a vendor its art (`data/vendor/vendor-art.json`), a Lich's or a Sister's
+    steps the enemy's (`sources.yaml`, `art`), a boss, a relic or a quest its
+    own;
+  - nothing with art, no image, in Kind=No art ([`1265:278`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1265-278)):
+    the slot stays, bare, so the text keeps the line of the rows that have art.
+- A line under the title that only repeats the place the title names goes:
+  "Play any mission on Mercury" has no "Mercury" under it.
+- Drawn in [`677:6750` Item>Overview — Collectible](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6750),
+  [`928:5859` Item>Overview — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859)
+  and [`1263:7250` Item>Overview — How to get row that names a vendor](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1263-7250).
 
 ### What a row does
 
@@ -151,12 +161,11 @@ hero is kicker, name and art, as `677:6750` draws a resource.
   catalog's `blueprint.png`; place art from the wiki.
 - The catalogue kicker: the catalog's category, named as the map names its
   groups (spec 07).
-- A mod: its polarity, base drain, max rank and max-rank stats from
-  `@wfcd/items` (vendored by `pnpm data:items`, the entry without
-  `Beginner`, `Intermediate` or `Expert` in its path); what each stat does from
+- A mod: its rarity, its type and its max-rank stats from `@wfcd/items`
+  (vendored by `pnpm data:items`, the entry without `Beginner`,
+  `Intermediate` or `Expert` in its path); what each stat does from
   `data/mod_stats.yaml` through `effectOf()` in
-  `src/domain/catalog/mod-effects.ts`; the polarity's symbol from the wiki
-  (`{Polarity} Pol(xBlack).svg`), drawn as a mask in the ink's colour.
+  `src/domain/catalog/mod-effects.ts`.
 
 ## Components
 

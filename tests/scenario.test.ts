@@ -357,7 +357,7 @@ describe("the step plan each scenario renders", () => {
     expect(components?.groups.map((group) => group.title)).toEqual([null]);
   });
 
-  it("ticks only components", () => {
+  it("draws only components as component rows", () => {
     for (const name of ["Ember", "Ash", "Nezha", "Kuva Bramma"]) {
       const { sections } = planOf(name);
       expect(sections.filter((one) => one.checkable).map((one) => one.id)).toEqual(

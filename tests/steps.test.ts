@@ -127,7 +127,7 @@ describe("Step by step draws each scenario as its frame does (spec 10)", () => {
     expect(rows.at(-1)?.alternative).toBe(true);
   });
 
-  it("ticks only Components and splits them into their groups (BR-24)", () => {
+  it("draws only Components as component rows, split into their groups (BR-24)", () => {
     const cards = viewOf("Dante").blocks.flatMap((block) => block.cards);
     expect(cards.filter((card) => card.checkable).map((card) => card.key)).toEqual(["components"]);
     const groups = cards.find((card) => card.checkable)?.groups ?? [];

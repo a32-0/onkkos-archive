@@ -7,7 +7,7 @@
 }
 
 .ring {
-  --place-ring-size: 152px;
+  --place-ring-size: 200px;
   --place-ring-stroke: 5px;
   position: relative;
   width: var(--place-ring-size);

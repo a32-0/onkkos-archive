@@ -290,7 +290,6 @@ route. The types and their fields:
 | `unavailable` | `reason`, `event`, `until`                           | No longer obtainable, and why                   |
 | `race`        | `race`, `place`                                      | Win the {race} K-Drive race                     |
 | `challenge`   | `challenge`, `place`                                 | Pass the {challenge}                            |
-| `focus`       | `school`                                             | Unlock it in the {school} tree                  |
 | `bundled`     | `with`                                               | Claim a {Necramech}                             |
 | `primeAccess` | `warframe`, `from`, `until`, `resurgence`            | Buy the Prime Access Accessories pack           |
 | `adversary`   | `adversary`, `element`, `chance`                     | Vanquish or convert a {element} {adversary}     |
@@ -360,7 +359,9 @@ example adds that number to the base.
 - `mods`: for a mod whose line the game writes in prose, its own entry: the
   `mod`, and for each line a `match` (words the game's line contains), the
   `outcome`, `amount`, `stat`, an `example` (`before`, `after`, `unit` and the
-  `line` it reads) and the `note`. It fills the same `Mod effect`, and it is
+  `line` it reads) and the `note`. A line with no number gives only the
+  `outcome` and the `note`: amount, stat and example come together or not at
+  all. It fills the same `Mod effect`, and it is
   read before the shared stats.
 
 A stat with no entry, and a mod line with no entry of its own, shows its

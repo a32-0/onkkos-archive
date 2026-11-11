@@ -23,12 +23,21 @@ describe("a mod's effects (BR-87)", () => {
       "/Lotus/Upgrades/Mods/Rifle/WeaponCritChanceMod",
     );
     expect(modEntry("Point Strike")?.facts).toEqual({
-      ranks: 5,
-      capacity: 9,
-      aura: false,
-      polarity: "Madurai",
       rarity: "common",
       category: "Primary",
+    });
+  });
+
+  it("draws a line with no number as what it does and its note alone", () => {
+    const [unlock] = lines(modEntry("Truth's Flame")?.maxStats ?? []).map((line) =>
+      effectOf(stats, line, MOD, "Truth's Flame"),
+    );
+    expect(unlock).toMatchObject({
+      outcome: "Unlocks Tennokai",
+      amount: null,
+      stat: null,
+      example: null,
+      note: "Tennokai is a follow-up attack after a heavy attack, when the prompt shows.",
     });
   });
 
@@ -49,6 +58,15 @@ describe("a mod's effects (BR-87)", () => {
     );
     expect(own).toHaveLength(1);
     expect(own[0]?.note).toContain("Ready again after 240 s.");
+  });
+
+  it("joins a line the game splits in two back into one", () => {
+    const glide = lines(modEntry("Gun Glide")?.maxStats ?? []).map((line) =>
+      effectOf(stats, line, MOD, "Gun Glide"),
+    );
+    expect(glide).toHaveLength(1);
+    expect(glide[0]?.amount).toBe("-20%");
+    expect(glide[0]?.note).toContain("while you slide");
   });
 
   it("reads a number written with thousands separators", () => {
@@ -118,25 +136,9 @@ describe("a mod's effects (BR-87)", () => {
     expect(augment?.outcome).toMatch(/Grenades have 100% chance to stick/);
   });
 
-  it("keeps the numbers a card needs", () => {
-    expect(modFacts({ baseDrain: 6, fusionLimit: 5, polarity: "naramon" })).toEqual({
-      ranks: 5,
-      capacity: 11,
-      aura: false,
-      polarity: "Naramon",
-      rarity: null,
-      category: null,
-    });
-  });
-
-  it("counts an aura's capacity as what it adds, and gives a Focus node none", () => {
-    expect(modFacts({ baseDrain: -2, fusionLimit: 5, polarity: "madurai" })).toMatchObject({
-      capacity: 7,
-      aura: true,
-    });
-    expect(
-      modFacts({ baseDrain: 4, fusionLimit: 3, polarity: "naramon", type: "Focus Way" }),
-    ).toMatchObject({ capacity: null, polarity: null });
+  it("reads nothing from an entry with no drain or ranks", () => {
+    expect(modFacts({ baseDrain: 6, fusionLimit: 5 })).toEqual({ rarity: null, category: null });
+    expect(modFacts({ fusionLimit: 5 })).toBeNull();
   });
 
   it("fills the whole effect from the mod's own entry when the game writes the line in prose", () => {

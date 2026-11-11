@@ -95,17 +95,15 @@ advanced search to Plan (spec 04).
 
 The app asks only what it cannot read.
 
-| Answer                           | Kept in                                         | Read by     |
-| -------------------------------- | ----------------------------------------------- | ----------- |
-| The account id                   | the `wf_account` cookie, a year, out of scripts | the server  |
-| The month the player last played | the `wf_since` cookie, as `YYYY-MM`             | the server  |
-| The last place opened            | the `wf_place` cookie, as `{system}/{place}`    | the server  |
-| Whether Onkko speaks             | the `wf_onkko` cookie, a year (BR-64)           | the server  |
-| The first tour was seen          | the `wf_tour` cookie, a year (T-45)             | the server  |
-| A ticked component               | the browser, `wf:manual:item:{name}:{rowId}`    | the browser |
+| Answer                           | Kept in                                         | Read by    |
+| -------------------------------- | ----------------------------------------------- | ---------- |
+| The account id                   | the `wf_account` cookie, a year, out of scripts | the server |
+| The month the player last played | the `wf_since` cookie, as `YYYY-MM`             | the server |
+| The last place opened            | the `wf_place` cookie, as `{system}/{place}`    | the server |
+| Whether Onkko speaks             | the `wf_onkko` cookie, a year (BR-64)           | the server |
+| The first tour was seen          | the `wf_tour` cookie, a year (T-45)             | the server |
 
-A tick is the player's own word, never read from the profile, which lists no
-resources. `since` is a cookie because the server needs it while it renders
+`since` is a cookie because the server needs it while it renders
 Catch up, What's new and the map's update card.
 
 ## How much a screen shows
@@ -135,15 +133,14 @@ profile, never inferred, with one treatment per context:
 
 ## The states of a step
 
-Every row of Step by step is in one of four states, the same on every item
+Every row of Step by step is in one of three states, the same on every item
 (spec 10):
 
-| State     | Means                                                       | Treatment                                                           |
-| --------- | ----------------------------------------------------------- | ------------------------------------------------------------------- |
-| Open      | A step to read or to do                                     | Full contrast, its detail and the wiki's passage under it           |
-| Collapsed | The player folded it for this visit                         | The title and a chevron pointing down; the fold is not kept         |
-| Ticked    | A component the player marked as had                        | The box filled, the title struck through and dimmed, the row folded |
-| Locked    | It waits on a prerequisite the profile proves unmet (BR-63) | Half opacity, open and readable, never hidden; it can be ticked     |
+| State     | Means                                                       | Treatment                                                   |
+| --------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| Open      | A step to read or to do                                     | Full contrast, its detail and the wiki's passage under it   |
+| Collapsed | The player folded it for this visit                         | The title and a chevron pointing down; the fold is not kept |
+| Locked    | It waits on a prerequisite the profile proves unmet (BR-63) | Half opacity, open and readable, never hidden               |
 
 What the profile already proves is not a state: a quest the profile confirms
 is left out of Prerequisites

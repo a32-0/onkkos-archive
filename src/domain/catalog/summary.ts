@@ -11,6 +11,7 @@ export interface BriefLine {
   where: Part[];
   detail: Part[];
   imageUrl: string | null;
+  place: string | null;
   thing: string | null;
   optional: boolean;
   more: number;
@@ -76,6 +77,7 @@ function line(row: Row): BriefLine {
     where: row.where,
     detail: row.detail,
     imageUrl: row.imageUrl,
+    place: row.place,
     thing: row.thing,
     optional: row.optional,
     more: 0,
@@ -109,6 +111,7 @@ export function briefOf(plan: StepPlan): BriefBlock[] {
         ...placed(first.brief, first.where, first.title, shared),
         detail: first.detail,
         imageUrl: section.imageUrl,
+        place: null,
         thing: null,
         optional: false,
         more: rows.length - 1,

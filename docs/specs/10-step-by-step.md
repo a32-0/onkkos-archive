@@ -1,9 +1,8 @@
 # 10 · Step by step
 
 The full route to one item or quest for this player: what they need first, in
-what order, and where to go for each part, best odds first. Each component can
-be ticked off as the player gathers it. It is the long version of the short
-answer on the item's page, and it is built exactly as the frames draw it.
+what order, and where to go for each part, best odds first. It is the long
+version of the short answer on the item's page, and it is built exactly as the frames draw it.
 
 ## Frames
 
@@ -15,7 +14,7 @@ Row states:
   a collapsed row; State=Done (`1220:7391`) is a met prerequisite, closed, its
   title in `ink/dim`.
 - [`465:477` Component row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=465-477):
-  a ticked component.
+  a component, Open, Collapsed or Locked, with no checkbox.
 
 The scenarios. Each is a case the grammar must place, and each is an
 acceptance test:
@@ -58,7 +57,7 @@ changes; the layout is what each frame fixes.
 - The grammar: [`scenario-guidelines.md`](../scenario-guidelines.md), and
   [`step-by-step.md`](../step-by-step.md).
 - Row states: [BR-20](../business-rules.md#br-20--a-collapsed-row),
-  [BR-21](../business-rules.md#br-21--a-ticked-component),
+  [BR-21](../business-rules.md#br-21--a-component-is-read-never-ticked),
   [BR-63](../business-rules.md#br-63--a-plan-dims-what-waits-on-an-unmet-prerequisite)
   (locked).
 - By scenario: [BR-22](../business-rules.md#br-22--mastery-rank-0-is-not-shown)
@@ -181,14 +180,7 @@ closing its line. A resource's description is where it comes from; one that
 comes from nowhere but the foundry, a cut gem or an alloy, says what it is made
 from ("Made in your foundry from 10 Azurite and 1,000 Credits."), and the
 credits say where credits come from. The row opens the
-thing's own page (BR-67). Ticking a row (`465:477`):
-
-- fills the box, dims the title and strikes it through, dims the art;
-- collapses the row, its chevron pointing down;
-- is kept on this device (`wf:manual:item:{name}:{rowId}`), never read from the
-  profile, which lists no resources.
-
-Unticking brings the row back as it was.
+thing's own page (BR-67). A component has no checkbox (BR-21).
 
 ### A collapsed row (`479:3620`)
 
@@ -202,8 +194,7 @@ the player's or a junction whose tag `Missions[]` lacks, that row keeps full
 contrast with the gap as its detail ("Needs Mastery Rank 8. You are Mastery
 Rank 5."), and every row after it, in
 every section, is drawn Locked: `Step row` Locked (`526:96`, `1087:7336` with art) and
-`Component row` Locked (`526:102`), at half opacity, open and readable, never hidden. A
-locked component can still be ticked. A quest with no evidence, or anything
+`Component row` Locked (`526:102`), at half opacity, open and readable, never hidden. A quest with no evidence, or anything
 else the profile cannot read, locks nothing.
 
 ## A collection item's Step by step (BR-72)
@@ -284,14 +275,13 @@ rank, has no goal, and the route returns to Plan.
   kept (BR-48).
 - Varzia's stock, live and cached ten minutes, only for a vaulted Prime on
   screen (BR-29).
-- Ticks: browser storage, per device.
 
 ## Components
 
 `Divider` (sections and component groups), `SectionHeader` (part art),
 `Timeline`, `StepRow` (step, optional, alternative, best; open, collapsed,
 locked), `RowDetail`, `RowProse`, `WikiLink` (wiki, our page), `ComponentRow`
-(open, collapsed, ticked, locked) and `Checkbox`, each with its stories. Each
+(open, collapsed, locked), each with its stories. Each
 scenario frame above is a test of the view built from the catalogue's own
 plan (`tests/steps.test.ts`), not a story: the plan is built on the server
 from data Storybook does not load (2026-10-19).
@@ -300,8 +290,8 @@ from data Storybook does not load (2026-10-19).
 
 1. At 390 px every scenario above matches its frame in layout, row types,
    states and order, with the data's own texts.
-2. A collapsed row matches `479:3620`; a ticked component matches `465:477`
-   and survives a reload.
+2. A collapsed row matches `479:3620`; a component matches `465:477`, with no
+   checkbox.
 3. Prose shows the source's paragraphs, from the source BR-48 names for the
    row's kind: Mechanics for a mission, Acquisition for a prose-only route,
    the lead otherwise.

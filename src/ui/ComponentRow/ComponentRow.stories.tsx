@@ -23,10 +23,8 @@ const meta = {
   args: {
     title: "Alloy Plate ×8,000",
     art: SAMPLE_ART[3],
-    ticked: false,
     open: true,
     bodyId: "alloy-plate",
-    onTick: () => {},
     onToggle: () => {},
     children: (
       <RowProse
@@ -59,8 +57,6 @@ export const Open: Story = {};
 
 export const Collapsed: Story = { args: { open: false } };
 
-export const Ticked: Story = { args: { ticked: true } };
-
 export const UnderADivider: Story = {
   decorators: [
     (Story) => (
@@ -75,11 +71,6 @@ export const UnderADivider: Story = {
 export const Locked: Story = {
   parameters: locked,
   args: { title: "22,000 Entrati Obols", locked: true, open: false },
-};
-
-export const LockedTicked: Story = {
-  parameters: locked,
-  args: { title: "22,000 Entrati Obols", locked: true, ticked: true },
 };
 
 export const Focus: Story = { parameters: { pseudo: { focusVisible: true } } };

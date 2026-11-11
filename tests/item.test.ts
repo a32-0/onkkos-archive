@@ -32,6 +32,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             where: ["Armatus", "Disruption"],
             detail: [],
             imageUrl: "helmet.png",
+            place: null,
             thing: null,
             optional: false,
             more: 0,
@@ -50,6 +51,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             where: [],
             detail: [],
             imageUrl: "spores.png",
+            place: null,
             thing: "Nano Spores",
             optional: false,
             more: 0,
@@ -62,6 +64,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
             where: [],
             detail: [{ say: "creditsDetail" }],
             imageUrl: null,
+            place: null,
             thing: null,
             optional: false,
             more: 0,
@@ -78,6 +81,7 @@ function facts(over: Partial<ItemFacts> = {}): ItemFacts {
       },
     },
     place: { system: "origin", systemName: "Origin", place: "Deimos", orb: "#a33" },
+    orbs: { Mercury: "#b9a08a" },
     beyond: false,
     steps: { sections: [], lock: null },
     builtInto: [],
@@ -146,6 +150,7 @@ describe("the item's page (spec 09)", () => {
       reading: "~20 Runs · Rotation C",
       place: "Armatus · Disruption",
       art: "helmet.png",
+      orb: null,
       blueprint: "blueprint.png",
       href: "/item?name=Dante&from=resume&view=steps#part-neuroptics",
     });
@@ -171,7 +176,7 @@ describe("the item's page (spec 09)", () => {
     expect(itemPage(facts({ state: { kind: "absent" } }), null, null).owned).toBe(false);
   });
 
-  it("shows a quest's own art on the row that starts it", () => {
+  it("never puts the item's own art on a row, which the hero already shows", () => {
     const start: BriefLine = {
       id: "start:Octavia's Anthem",
       title: { say: "questStartTitle", quest: "Octavia's Anthem" },
@@ -180,6 +185,7 @@ describe("the item's page (spec 09)", () => {
       where: [],
       detail: [],
       imageUrl: null,
+      place: null,
       thing: null,
       optional: false,
       more: 0,
@@ -190,7 +196,34 @@ describe("the item's page (spec 09)", () => {
       blocks: [{ id: "how", title: { say: "sectionHowToGet" }, lines: [start] }],
     });
     const [how] = itemPage(quest, "goal", null).sections;
-    expect(how?.rows[0]?.art).toBe("anthem.png");
+    expect(how?.rows[0]?.art).toBeNull();
+    expect(how?.rows[0]?.orb).toBeNull();
+  });
+
+  it("draws a place's orb on the row that names it, and drops a line that repeats it", () => {
+    const region: BriefLine = {
+      id: "region:Mercury",
+      title: { say: "anyMissionTitle", place: "Mercury" },
+      route: null,
+      reading: ["Mercury"],
+      where: [],
+      detail: [],
+      imageUrl: null,
+      place: "Mercury",
+      thing: null,
+      optional: false,
+      more: 0,
+    };
+    const ferrite = facts({
+      collectible: true,
+      art: "ferrite.png",
+      blocks: [{ id: "how", title: { say: "sectionHowToGet" }, lines: [region] }],
+    });
+    const [row] = itemPage(ferrite, "goal", null).sections[0]?.rows ?? [];
+    expect(row?.orb).toBe("#b9a08a");
+    expect(row?.art).toBeNull();
+    expect(row?.reading).toBe("");
+    expect(row?.place).toBe("");
   });
 
   it("keeps the view in the link it writes", () => {
@@ -212,7 +245,7 @@ describe("the titles every row may carry", () => {
 });
 
 describe("a mod's Overview (BR-87)", () => {
-  it("draws the mod's numbers on its art and words each stat", () => {
+  it("frames the mod's art in its rarity and words each stat", () => {
     const page = itemPage(
       facts({
         name: "Point Strike",
@@ -220,13 +253,8 @@ describe("a mod's Overview (BR-87)", () => {
         collectible: true,
         art: "point-strike.png",
         mod: {
-          ranks: 5,
-          capacity: 9,
-          aura: false,
           rarity: "common",
           category: "Primary",
-          polarity: "Madurai",
-          polarityArt: "madurai.svg",
           effects: [
             {
               icon: "crisis-alert",
@@ -251,10 +279,6 @@ describe("a mod's Overview (BR-87)", () => {
     expect(page.mod?.overview).toEqual({
       art: "point-strike.png",
       name: "Point Strike",
-      capacity: "9",
-      polarity: "madurai.svg",
-      ranks: 5,
-      rank: "Max rank 5",
       rarity: "common",
     });
     const [effect] = page.mod?.effects ?? [];

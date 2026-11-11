@@ -590,18 +590,14 @@ The item screen's hero card has four states. Each is a frame of its own,
   description (`Frame 196`) is hidden. Expanded, the chevron points up and the
   description shows.
 
-### BR-21 · A ticked component
+### BR-21 · A component is read, never ticked
 
-- Frame [`382:2233`](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=382-2233)
-  (layer "Checkbox clicked step by step") · pin (166, 15) · layer:
-  "22,000 Entrati Obols" · comment `1951841416`
+- Component [`465:477` Component row](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=465-477):
+  Open, Collapsed and Locked.
 - Type: state.
-- Rule: tapping the checkbox ticks the row and:
-- fills the box, `#9f9486` (nearest `--ink-dim`);
-- dims the title to the same ink and strikes it through;
-- dims the icon (its ground was retired on 2026-10-19, when Step by step
-  dropped the ground behind a component's art);
-- collapses the row (the description is hidden, the chevron points down).
+- Rule: a component row is its art, its name and its chevron, with no
+  checkbox. The profile lists no resources, so the app keeps no record of what
+  the player gathered; the game's foundry already shows what they hold.
 
 ## Step by step: rules by scenario
 
@@ -1063,7 +1059,7 @@ is never an Alert, which is for the app's own states.
   that row keeps full contrast with the gap as its detail ("Needs Mastery
   Rank 8. You are Mastery Rank 5."), and
   every row after it, in every section, is drawn Locked: at half opacity,
-  open, readable, never hidden. A locked component can still be ticked.
+  open, readable, never hidden.
 - A quest with no evidence locks nothing, and neither does any prerequisite
   the profile cannot read: absence of evidence is never "not done" (BR-28).
 
@@ -1251,6 +1247,22 @@ opened the wiki while Nano Spores opened its own page.
   Ki'Teer when he has sold it.
 - A title always says what to do; a thing's bare name is never a step.
 
+### BR-90 · A row wears the art of what it names
+
+- Component [`1265:270` Summary row, Kind=Place](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1265-270) and
+  [`1265:278` Kind=No art](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1265-278); frames
+  [`677:6750` Item>Overview — Collectible](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=677-6750),
+  [`928:5859` — How to get row with no art of its own](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=928-5859) and
+  [`1263:7250` — How to get row that names a vendor](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1263-7250).
+- Type: content.
+- Rule: a How to get row on the item's Overview wears the art of what it
+  names, never the art of the item the page is about, which its hero already
+  shows. A place, a node, a bounty or a planet wears its orb, in the Star
+  Chart's colour; a vendor, an enemy, a boss, a relic or a quest its own art.
+  A row that names nothing with art shows none; its bare slot keeps the text
+  in line with the rows that have art.
+- A line under the title that only repeats the place the title names goes.
+
 ### BR-73 · Every Wiki link opens a page the wiki has
 
 led nowhere.
@@ -1355,8 +1367,8 @@ The other proposals went to the Archive page.
   [`1009:7612` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7612).
 - Type: state.
 - Rule: the place card's ring (BR-65), made square because the wiki's art and
-  the player's glyph are square. The frame is 152 px, its edge 5 px, the art
-  120 px in the middle in a 2 px `--state-absent` line drawn inside it. The
+  the player's glyph are square. The frame is 200 px, its edge 5 px, the art
+  168 px in the middle in a 2 px `--state-absent` line drawn inside it. The
   edge fills from the top centre, counter-clockwise as the Star Chart's
   does, with the share of the way to the next rank in `--state-rank`.
 - Under it, the share in whole percent, never rounded up to 100, and
@@ -1480,9 +1492,9 @@ The other proposals went to the Archive page.
   mods, Archon Shards, Legendary Core, companion weapons, companion and Zaw
   parts, and Railjack weapons, whose drops name their house ("Zetki Apoc Mk I").
 - The Drift mods come from the Halls of Ascension on Lua ("Pass the Cunning
-  Test", Lua), and each Focus node from its school's tree ("Unlock it in the
-  Naramon tree", Focus), the school read from the node's own path.
-- Captura scenes, Conservation Tags and Ship Segments stay out.
+  Test", Lua).
+- Captura scenes, Conservation Tags, Ship Segments and the Operator's Focus
+  nodes, which `@wfcd/items` files as mods, stay out.
 
 ### BR-85 · In Step by step, only Blueprints and Components carry art
 
@@ -1560,18 +1572,15 @@ The other proposals went to the Archive page.
   [`1156:9655` — Infected Clip](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9655), [`1156:9711` — Berserker Fury](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9711),
   [`1239:7362` — Hunter Adrenaline](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1239-7362), [`1239:7457` — Acid Shells](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1239-7457),
   [`1239:7552` — Aerial Ace](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1239-7552), [`1242:7907` — Aura — Growing Power](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-7907),
-  [`1242:8001` — Lua challenge — Cunning Drift](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-8001) and [`1242:8107` — Focus tree — Affinity Spike](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-8107).
+  [`1242:8001` — Lua challenge — Cunning Drift](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-8001) and [`1246:7441` — No number — Truth's Flame](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1246-7441).
 - Type: content.
 - Rule: a mod's Overview carries its card and what each of its stats does.
 - The kicker names the mod's category, from the game's type: "Mod
   Primary", "Mod Warframe", "Mod Melee". A type that is no category ("Mod
   Set Mod", "Focus Way") leaves the kicker at "Mod".
 - Under the name, `Mod overview`: the mod's art, 200 px, in a 2 px frame
-  the colour of its rarity, with what it costs at max rank and its
-  polarity's symbol over the corner; under it one dot per rank and "Max rank
-  5", both in `--state-rank`. An aura adds capacity instead, so its corner
-  reads "+7". A Focus node has no capacity and no polarity, so its corner is
-  empty.
+  the colour of its rarity, and nothing else. Its cost, its polarity and its
+  ranks are on the game's own card, so the app does not draw them again.
 - The rarity colours are the wiki's (Mod, Rarity): Common bronze `#dca156`,
   Uncommon silver `#cccccc`, Rare gold `#ffd01c`, Legendary platinum
   `#e6e6e6`, as `--rarity-common` to `--rarity-legendary`. The rarity comes
@@ -1597,13 +1606,18 @@ The other proposals went to the Archive page.
   amount, the example and the note. A stat with no curated copy shows its
   family icon and the game's own words, with no amount, example or note.
   Curated copy is facts, never advice.
-- A line the game writes in prose (an augment, an aura, a Focus node) fills
+- A line the game writes in prose (an augment, an aura, a precept) fills
   the same `Mod effect` from the mod's own curated entry: what it does, the
   amount and what it counts, an example with its two bars, and the note.
+- A line with no number to show ("Enables Tennokai.", a battle avionic that
+  only stuns) keeps what it does and the note, with no amount and no Example.
 - An aura's line ("Squad receives +27% Rifle Damage") reads as its stat and
   adds "It counts for the whole squad." to the note. A cooldown the game
   writes as a line of its own ("Cooldown: 240s") joins the note of the line
   before it ("Ready again after 240 s."), not an effect of its own.
+- A line the game splits in two reads as one: a part that starts with a
+  lower-case word ("and +20% Accuracy when Sliding"), with "(" or with
+  "Stacks up to" joins the line before it.
 
 ### BR-88 · A met prerequisite stays, marked
 

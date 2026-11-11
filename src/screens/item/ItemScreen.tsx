@@ -20,7 +20,7 @@ import { SummaryRow } from "@/ui/SummaryRow/SummaryRow";
 import { Link } from "../shell/Link";
 import { Shell } from "../shell/Shell";
 import type { ShellChrome } from "../shell/voice";
-import { Steps, type Ticks } from "./steps/Steps";
+import { Steps } from "./steps/Steps";
 import styles from "./Item.module.css";
 import type { ItemPageView } from "./state";
 
@@ -33,15 +33,7 @@ function isView(value: string): value is ItemView {
   return VIEWS.some((option) => option.value === value);
 }
 
-export function ItemScreen({
-  chrome,
-  page,
-  ticks,
-}: {
-  chrome: ShellChrome;
-  page: ItemPageView;
-  ticks: Ticks;
-}) {
+export function ItemScreen({ chrome, page }: { chrome: ShellChrome; page: ItemPageView }) {
   const [view, setView] = useState<ItemView>(page.view);
   const choose = (value: string) => {
     if (!isView(value)) return;
@@ -103,6 +95,7 @@ export function ItemScreen({
                         reading={row.reading || undefined}
                         place={row.place || undefined}
                         art={row.art}
+                        orb={row.orb}
                         {...(row.blueprint !== undefined && { blueprint: row.blueprint })}
                         link={Link}
                       />
@@ -112,7 +105,7 @@ export function ItemScreen({
               ))}
             </div>
           )}
-          {view === "steps" && <Steps view={page.steps} ticks={ticks} />}
+          {view === "steps" && <Steps view={page.steps} />}
         </div>
       </div>
     </Shell>

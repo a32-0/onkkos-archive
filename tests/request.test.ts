@@ -1107,15 +1107,21 @@ describe("the item (spec 09, BR-51, BR-62)", () => {
     expect(absent).toContain("These will assist.");
   });
 
-  it("draws Step by step as cards under dividers, ticks only on Components (spec 10)", async () => {
+  it("draws each planet's orb on a resource's How to get, never the resource's art (BR-90)", async () => {
+    const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Ferrite", from: "goal" });
+    expect(html).toContain(">Play any mission on Mercury<");
+    expect(html).toContain("--orb-color:#b9a08a");
+    expect(html).not.toMatch(/>Play any mission on Mercury<\/span><span[^>]*>Mercury</);
+  });
+
+  it("draws Step by step as cards under dividers, with no checkbox to tick (spec 10)", async () => {
     const html = await page(DEMO_ACCOUNT_IDS.cy, { name: "Dante", from: "goal", view: "steps" });
     for (const title of ["Prerequisites", "How to get", "Blueprints", "Components"]) {
       expect(html).toContain(`>${title}<`);
     }
     expect(html).not.toContain("Deimos specific");
     expect(html).toContain('id="part-neuroptics"');
-    expect(html.match(/type="checkbox"/g)?.length).toBeGreaterThan(5);
-    expect(html).not.toMatch(/type="checkbox"[^>]*checked/);
+    expect(html).not.toContain('type="checkbox"');
   });
 
   it("locks what waits on an unmet Mastery Rank for Ordis (BR-63)", async () => {

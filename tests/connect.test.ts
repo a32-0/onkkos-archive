@@ -160,8 +160,8 @@ describe("Find your ID (spec 02)", () => {
     expect(html).toMatch(/<a [^>]*aria-label="Back" href="\/connect"/);
   });
 
-  it("shows Firefox, then Edge or Chrome, each with its steps and a described screenshot", () => {
-    expect(html.indexOf(">Firefox<")).toBeLessThan(html.indexOf(">Edge or Chrome<"));
+  it("shows Chrome or Edge, then Firefox, each with its steps and a described screenshot", () => {
+    expect(html.indexOf(">Chrome or Edge<")).toBeLessThan(html.indexOf(">Firefox<"));
     expect(html).toContain("Go to Storage › Cookies › https://www.warframe.com.");
     expect(html).toContain("Go to Application › Cookies › https://www.warframe.com.");
     expect(html).toContain("<strong");

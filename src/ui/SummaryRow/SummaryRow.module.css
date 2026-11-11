@@ -35,6 +35,18 @@
   object-fit: cover;
 }
 
+.ground {
+  composes: art;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slot {
+  composes: art;
+  background: none;
+}
+
 .band {
   display: flex;
   flex: 1 0 0;
