@@ -1,5 +1,5 @@
 import type { Part } from "@/domain/catalog/checks";
-import type { ModEffect } from "@/domain/catalog/mod-effects";
+import type { ModEffect, Rarity } from "@/domain/catalog/mod-effects";
 import type { BriefBlock } from "@/domain/catalog/summary";
 import type { Group } from "@/domain/place/catalog";
 import type { ItemState } from "@/domain/place/state";
@@ -28,9 +28,11 @@ export interface BuiltIntoFact {
 
 export interface ModFactsView {
   ranks: number;
-  capacity: number;
-  slot: number;
+  capacity: number | null;
+  aura: boolean;
   polarity: string | null;
+  rarity: Rarity | null;
+  category: string | null;
   polarityArt: string | null;
   effects: ModEffect[];
 }
@@ -39,11 +41,11 @@ export interface ModPageView {
   overview: {
     art: string | null;
     name: string;
-    capacity: number;
+    capacity: string | null;
     polarity: string | null;
     ranks: number;
     rank: string;
-    cost: string;
+    rarity: Rarity | null;
   };
   title: string;
   effects: (Omit<ModEffect, "icon" | "example" | "pairs"> & {

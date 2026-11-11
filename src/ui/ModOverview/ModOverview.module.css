@@ -1,7 +1,6 @@
 .overview {
-  --mod-art: 160px;
-  --mod-rank-width: 12px;
-  --mod-rank-height: 4px;
+  --mod-art: 200px;
+  --mod-rank: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,31 +8,64 @@
 }
 
 .card {
+  --mod-line: var(--state-absent);
   position: relative;
   width: var(--mod-art);
   height: var(--mod-art);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--border-2) solid var(--mod-line);
+  pointer-events: none;
+}
+
+.common {
+  --mod-line: var(--rarity-common);
+}
+
+.uncommon {
+  --mod-line: var(--rarity-uncommon);
+}
+
+.rare {
+  --mod-line: var(--rarity-rare);
+}
+
+.legendary {
+  --mod-line: var(--rarity-legendary);
 }
 
 .art {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .capacity {
   composes: label from "../type.module.css";
   --game-icon-size: 16px;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: var(--space-4);
+  right: var(--space-4);
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-4);
   border-radius: var(--radius-m);
   background-color: var(--surface-sunken);
   color: var(--ink);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
 }
 
 .ranks {
@@ -42,21 +74,13 @@
 }
 
 .rank {
-  width: var(--mod-rank-width);
-  height: var(--mod-rank-height);
-  border-radius: calc(var(--mod-rank-height) / 2);
-  background-color: var(--fill-strong);
-}
-
-.caption {
-  composes: eyebrow from "../type.module.css";
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  text-align: center;
-  color: var(--ink-dim);
+  width: var(--mod-rank);
+  height: var(--mod-rank);
+  border-radius: var(--radius-full);
+  background-color: var(--state-rank);
 }
 
 .max {
   composes: label-s-upper from "../type.module.css";
+  color: var(--state-rank);
 }

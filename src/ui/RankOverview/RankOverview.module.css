@@ -60,12 +60,18 @@
 .art {
   position: absolute;
   inset: 0;
-  box-sizing: border-box;
   width: var(--rank-art-size);
   height: var(--rank-art-size);
   margin: auto;
   overflow: hidden;
-  border: var(--border-1) solid var(--state-absent);
+}
+
+.art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--border-2) solid var(--state-absent);
+  pointer-events: none;
 }
 
 .image {

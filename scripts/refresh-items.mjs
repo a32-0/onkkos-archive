@@ -39,6 +39,7 @@ const FIELDS = {
   polarity: true,
   baseDrain: true,
   fusionLimit: true,
+  rarity: true,
 };
 
 function maxStats(item) {

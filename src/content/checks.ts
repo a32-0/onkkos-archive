@@ -291,6 +291,9 @@ export const TITLES = {
   anniversaryTitle: () => "Claim it from the anniversary alerts",
   unavailableTitle: () => "No longer obtainable",
   raceTitle: ({ race }: { race: string }) => `Win the ${race} K-Drive race`,
+  challengeTitle: ({ challenge }: { challenge: string }) => `Pass the ${challenge}`,
+  focusTitle: ({ school }: { school: string }) => `Unlock it in the ${school} tree`,
+  focusMenuTitle: () => "Focus",
   bundledTitle: ({ things }: { things: readonly string[] }) => `Claim a ${things.join(" or ")}`,
   primeAccessTitle: ({ warframe }: { warframe: string }) =>
     `Buy the ${warframe} Access Accessories pack`,
@@ -661,6 +664,9 @@ export const DETAILS = {
   },
   raceDetail: ({ place }: { place: string }) =>
     `It runs on the ${place}; the active races change every day.`,
+  challengeDetail: ({ place }: { place: string }) =>
+    `A hall of ascension hidden in some ${place} missions; passing it gives the mod.`,
+  focusDetail: () => "Spend Focus on it in the Operator's Focus menu.",
   bundledDetail: ({ things }: { things: readonly string[] }) =>
     `It comes with ${listOf(things)}, already fitted.`,
   primeAccessDetail: ({

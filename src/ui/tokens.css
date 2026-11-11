@@ -29,6 +29,10 @@
   --red-50: #ffe6e6;
   --red-800: #a10000;
   --abyss-900: #00142c;
+  --mod-bronze: #dca156;
+  --mod-silver: #cccccc;
+  --mod-gold: #ffd01c;
+  --mod-platinum: #e6e6e6;
 
   --canvas: var(--night-800);
   --surface-header: var(--night-800);
@@ -77,6 +81,10 @@
   --state-selected-tint: color-mix(in srgb, var(--slate-600) 50%, transparent);
   --accent-tint: color-mix(in srgb, var(--accent) 20%, transparent);
   --state-prime: var(--gold-400);
+  --rarity-common: var(--mod-bronze);
+  --rarity-uncommon: var(--mod-silver);
+  --rarity-rare: var(--mod-gold);
+  --rarity-legendary: var(--mod-platinum);
   --hover: color-mix(in srgb, var(--ash-100) 8%, transparent);
   --focus: var(--gold-400);
 

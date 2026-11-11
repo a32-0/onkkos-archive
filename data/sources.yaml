@@ -300,6 +300,41 @@ items:
         vendor: Cephalon Simaris
         costs: [{ currency: Standing, amount: 100000 }]
 
+  - item: Agility Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Agility Test, place: Lua }
+
+  - item: Coaction Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Collaboration Test, place: Lua }
+
+  - item: Cunning Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Cunning Test, place: Lua }
+
+  - item: Endurance Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Endurance Test, place: Lua }
+
+  - item: Power Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Power Test, place: Lua }
+
+  - item: Speed Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Speed Test, place: Lua }
+
+  - item: Stealth Drift
+    cite: Orokin Moon
+    routes:
+      - { type: challenge, challenge: Stealth Test, place: Lua }
+
   - item: Feverspine
     cite: Feverspine
     routes:

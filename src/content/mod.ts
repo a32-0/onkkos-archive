@@ -12,8 +12,7 @@ export const MOD = {
   withIt: "With it",
   pairsWith: "Pairs with",
   rank: (ranks: number) => `Max rank ${ranks}`,
-  cost: (capacity: number, slot: number, polarity: string | null) =>
-    polarity ? `costs ${capacity}, or ${slot} in a ${polarity} slot` : `costs ${capacity}`,
+  capacity: (capacity: number, aura: boolean) => (aura ? `+${capacity}` : `${capacity}`),
   trigger: ({
     on,
     seconds,

@@ -222,7 +222,9 @@ describe("a mod's Overview (BR-87)", () => {
         mod: {
           ranks: 5,
           capacity: 9,
-          slot: 5,
+          aura: false,
+          rarity: "common",
+          category: "Primary",
           polarity: "Madurai",
           polarityArt: "madurai.svg",
           effects: [
@@ -245,14 +247,15 @@ describe("a mod's Overview (BR-87)", () => {
       "goal",
       null,
     );
+    expect(page.kicker).toBe("Mod Primary");
     expect(page.mod?.overview).toEqual({
       art: "point-strike.png",
       name: "Point Strike",
-      capacity: 9,
+      capacity: "9",
       polarity: "madurai.svg",
       ranks: 5,
       rank: "Max rank 5",
-      cost: "costs 9, or 5 in a Madurai slot",
+      rarity: "common",
     });
     const [effect] = page.mod?.effects ?? [];
     expect(effect?.example?.before.label).toBe("Without");

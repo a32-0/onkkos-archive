@@ -25,8 +25,28 @@ describe("a mod's effects (BR-87)", () => {
     expect(modEntry("Point Strike")?.facts).toEqual({
       ranks: 5,
       capacity: 9,
-      slot: 5,
+      aura: false,
       polarity: "Madurai",
+      rarity: "common",
+      category: "Primary",
+    });
+  });
+
+  it("reads a number written with thousands separators", () => {
+    const overguard = effects("Primed Pack Leader").find(
+      (effect) => effect.stat === "Overguard Max",
+    );
+    expect(overguard?.amount).toBe("+2,200");
+  });
+
+  it("draws a share of something as growing from nothing", () => {
+    const [arrows] = effects("Amalgam Daikyu Target Acquired").filter(
+      (effect) => effect.stat === "chance to pickup used arrows",
+    );
+    expect(arrows?.example).toEqual({
+      before: { value: "0", share: 0 },
+      after: { value: "6", share: 1 },
+      line: "Of 10 arrows fired, about 6 come back to you.",
     });
   });
 
@@ -58,7 +78,7 @@ describe("a mod's effects (BR-87)", () => {
     const [speed] = effects("Berserker Fury");
     expect(speed?.outcome).toBe("Faster melee attacks");
     expect(speed?.amount).toBe("+35%");
-    expect(speed?.example?.line).toBe("Attacks come 70% faster.");
+    expect(speed?.example?.line).toBe("An attack speed of 1× becomes 1.7×.");
     expect(speed?.note).toBe(
       "Adds to other attack speed. Only after a melee kill, lasts 10 s, twice at most.",
     );
@@ -83,8 +103,50 @@ describe("a mod's effects (BR-87)", () => {
     expect(modFacts({ baseDrain: 6, fusionLimit: 5, polarity: "naramon" })).toEqual({
       ranks: 5,
       capacity: 11,
-      slot: 6,
+      aura: false,
       polarity: "Naramon",
+      rarity: null,
+      category: null,
     });
+  });
+
+  it("counts an aura's capacity as what it adds, and gives a Focus node none", () => {
+    expect(modFacts({ baseDrain: -2, fusionLimit: 5, polarity: "madurai" })).toMatchObject({
+      capacity: 7,
+      aura: true,
+    });
+    expect(
+      modFacts({ baseDrain: 4, fusionLimit: 3, polarity: "naramon", type: "Focus Way" }),
+    ).toMatchObject({ capacity: null, polarity: null });
+  });
+
+  it("fills the whole effect from the mod's own entry when the game writes the line in prose", () => {
+    const [own] = lines(modEntry("Hunter Adrenaline")?.maxStats ?? []).map((line) =>
+      effectOf(stats, line, MOD, "Hunter Adrenaline"),
+    );
+    expect(own).toMatchObject({
+      icon: "bolt",
+      outcome: "Damage to your health gives you energy",
+      amount: "+45%",
+      stat: "Health damage to Energy",
+      example: {
+        before: { value: "0", share: 0 },
+        after: { value: "45", share: 1 },
+        line: "A hit that takes 100 health gives 45 energy.",
+      },
+    });
+  });
+
+  it("names the mod's category, and leaves out a type that is no category", () => {
+    expect(modEntry("Intensify")?.facts?.category).toBe("Warframe");
+    expect(modEntry("Berserker Fury")?.facts?.category).toBe("Melee");
+    expect(modFacts({ baseDrain: 2, fusionLimit: 5, type: "Mod Set Mod" })?.category).toBeNull();
+    expect(modFacts({ baseDrain: 2, fusionLimit: 5, type: "Focus Way" })?.category).toBeNull();
+  });
+
+  it("reads each mod's rarity, which colours its frame", () => {
+    expect(modEntry("Serration")?.facts?.rarity).toBe("uncommon");
+    expect(modEntry("Intensify")?.facts?.rarity).toBe("rare");
+    expect(modEntry("Primed Continuity")?.facts?.rarity).toBe("legendary");
   });
 });

@@ -276,6 +276,11 @@ interface Says {
   unavailableDetail: { reason: string; event: string | null; until: string | null };
   raceTitle: { race: string };
   raceDetail: { place: string };
+  challengeTitle: { challenge: string };
+  challengeDetail: { place: string };
+  focusTitle: { school: string };
+  focusMenuTitle: None;
+  focusDetail: None;
   bundledTitle: { things: string[] };
   bundledDetail: { things: string[] };
   primeAccessTitle: { warframe: string };
@@ -686,6 +691,18 @@ function curatedFacts(
         title: say("raceTitle", { race: source.race }),
         detail: say("raceDetail", { place: source.place }),
         brief: parts(source.place),
+      };
+    case "challenge":
+      return {
+        title: say("challengeTitle", { challenge: source.challenge }),
+        detail: say("challengeDetail", { place: source.place }),
+        brief: parts(source.place),
+      };
+    case "focus":
+      return {
+        title: say("focusTitle", { school: source.school }),
+        detail: say("focusDetail"),
+        brief: parts(say("focusMenuTitle")),
       };
     case "bundled":
       return {

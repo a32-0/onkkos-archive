@@ -89,6 +89,16 @@ If many items are gone or renamed at once, the new `@wfcd/items` is
 broken, not the game. Throw the update away with `git restore.` and
 `git clean -fd docs/updates`, and run it again when WFCD publishes a fix.
 
+If `pnpm check` stops on `tests/curated-data.test.ts`, the game renamed
+or removed something a curated file points at. The test names the rule:
+
+| It names                        | What to do                                                                                      |
+| ------------------------------- | ----------------------------------------------------------------------------------------------- |
+| A mission rule's node           | Find the node's new tag in `data/vendor/wiki-nodes.json` and change it in `quest_evidence.yaml` |
+| An item rule's path             | Find the item's new `uniqueName` in `data/vendor/items.json` and change it                      |
+| A curated stat no mod uses      | Find the mod's new wording in `items.json` and rename the stat in `mod_stats.yaml`              |
+| Mods without rarity or category | `@wfcd/items` dropped the field: wait for a fix, as above                                       |
+
 5. Open a few new items in `pnpm dev`. A drop from an enemy shows the
    enemy's art from the wiki. If a new enemy shows its name with no art:
 

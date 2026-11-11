@@ -29,7 +29,18 @@ the materials they call for.
 
 - [`1156:9487` Item>Overview — Mod — Point Strike](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9487) and its four
   siblings (Serration, Intensify, Infected Clip, Berserker Fury): a mod's card
-  and what each stat does (BR-87).
+  and what each stat does (BR-87). Point Strike is the reference: its art
+  framed in its rarity's colour (Common here; Uncommon on Serration and
+  Infected Clip, Rare on Intensify and Berserker Fury), dots for the ranks,
+  and no cost line under them.
+- Hunter Adrenaline (`1239:7362`), Acid Shells (`1239:7457`) and Aerial Ace
+  (`1239:7552`): a line the game writes in prose, filled from the mod's own
+  entry. Their How to get is hidden in the frame; it draws as on any mod.
+- Aura — Growing Power (`1242:7907`): an aura's corner reads "+7".
+- Lua challenge — Cunning Drift (`1242:8001`): How to get with one row,
+  "Pass the Cunning Test", Lua.
+- Focus tree — Affinity Spike (`1242:8107`): no capacity in the corner, and
+  How to get with one row, "Unlock it in the Naramon tree", Focus.
 
 ## Rules
 

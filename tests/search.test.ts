@@ -125,6 +125,18 @@ describe("a collectible's own page", () => {
     }
   });
 
+  it("finds a Drift mod by its hall of ascension and a Focus node by its school", () => {
+    expect(hitNamed("cunning drift", "Cunning Drift")?.group).toBe("mods");
+    expect(found("Cunning Drift").drops).toEqual([]);
+    expect(data.curated.items.get("Cunning Drift")?.routes).toEqual([
+      { type: "challenge", challenge: "Cunning Test", place: "Lua" },
+    ]);
+    expect(hitNamed("affinity spike", "Affinity Spike")?.group).toBe("mods");
+    expect(data.curated.items.get("Affinity Spike")?.routes).toEqual([
+      { type: "focus", school: "Naramon" },
+    ]);
+  });
+
   it("says a vaulted relic no longer drops", () => {
     const plan = collectibleStepPlan(
       data,

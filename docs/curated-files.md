@@ -289,6 +289,8 @@ route. The types and their fields:
 | `anniversary` | `year`                                               | Claim it from the anniversary alerts            |
 | `unavailable` | `reason`, `event`, `until`                           | No longer obtainable, and why                   |
 | `race`        | `race`, `place`                                      | Win the {race} K-Drive race                     |
+| `challenge`   | `challenge`, `place`                                 | Pass the {challenge}                            |
+| `focus`       | `school`                                             | Unlock it in the {school} tree                  |
 | `bundled`     | `with`                                               | Claim a {Necramech}                             |
 | `primeAccess` | `warframe`, `from`, `until`, `resurgence`            | Buy the Prime Access Accessories pack           |
 | `adversary`   | `adversary`, `element`, `chance`                     | Vanquish or convert a {element} {adversary}     |
@@ -345,11 +347,24 @@ Chance`, `Damage to Grineer`):
   lowers it.
 - `example`: `base` (a typical value), `unit`, `math` (`grow` adds to the
   base, `shrink` divides a time, `add` adds an element on top, `times`
-  multiplies, `cost` lowers a cost) and the `line` it reads, with `{base}`,
-  `{after}`, `{added}` and `{amount}`.
+  multiplies, `cost` lowers a cost, `plus` adds a fixed number, `part` takes
+  that share of the base, its bars growing from nothing) and the `line` it
+  reads, with `{base}`, `{after}`, `{added}` and `{amount}`.
 - `note`: what is good to know. Facts only, never advice.
 
-A stat with no entry shows its family icon and the game's words.
+A curated stat fills the whole `Mod effect`: what it does, how much, an
+example and a note, and `down` when some mod lowers it. When a mod gives a
+fixed number on a stat curated in percent ("+40 Magazine Capacity"), the
+example adds that number to the base.
+
+- `mods`: for a mod whose line the game writes in prose, its own entry: the
+  `mod`, and for each line a `match` (words the game's line contains), the
+  `outcome`, `amount`, `stat`, an `example` (`before`, `after`, `unit` and the
+  `line` it reads) and the `note`. It fills the same `Mod effect`, and it is
+  read before the shared stats.
+
+A stat with no entry, and a mod line with no entry of its own, shows its
+family icon and the game's words.
 
 ## Invariants the tests enforce
 
@@ -362,7 +377,15 @@ A stat with no entry shows its family icon and the game's words.
 - Every main-path quest has a release date.
 - Every quest has `wiki`, `start`, `requirement` and at least one location.
 - Every `quest_evidence.yaml` rule cites the wiki and names a quest spelled
-  as the spine spells it.
+  as the spine spells it. A mission rule names a node tag in
+  `wiki-nodes.json`, and an item rule an item or part in `items.json`.
+- `sources.yaml` gives each syndicate its own tag and vendors, a cite and at
+  least three ranks.
+- Every stat in `mod_stats.yaml` is a stat some mod still has, or an element
+  only a pair makes, and every mod that names it draws the whole `Mod
+effect`. Every mod with numbers has a rarity, and nine in ten or
+  more name a category. Every mod's own entry matches a line the game still
+  writes for that mod.
 - `sources.yaml` parses against its schema, names no item twice, and leaves no
   arsenal item or collectible answered by prose alone.
 - `acquisition.yaml` names no item twice, and only items the catalog has.

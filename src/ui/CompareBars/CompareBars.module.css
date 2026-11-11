@@ -16,7 +16,7 @@
 }
 
 .label {
-  composes: eyebrow-s from "../type.module.css";
+  composes: eyebrow from "../type.module.css";
   color: var(--ink-dim);
 }
 

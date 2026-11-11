@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "files": {
     "acquisition.yaml": {
       "size": 3690,
@@ -10,8 +10,8 @@
       "sha256": "cbfdd91592eb07c23aa54a437359818a2aa56ed1b02d9a031497b0e1c78c11bd"
     },
     "mod_stats.yaml": {
-      "size": 12815,
-      "sha256": "b369847b8c8aa23282c9c650c7ad30aafdccd97854c55f40ffb41164c1291bf5"
+      "size": 87400,
+      "sha256": "0044352c6d16e351ac9227a1a97f781e080da18160473598ab711397227a505a"
     },
     "narrative_spine.yaml": {
       "size": 15212,
@@ -22,8 +22,8 @@
       "sha256": "7ea66aabba412d84859e8c58a79cb1809d54af214c1fe1d839b064f1810498c1"
     },
     "sources.yaml": {
-      "size": 36506,
-      "sha256": "7bbc20b726e263aa7210838662cc5c019e3a2f79f1220e6db0945b56f5811875"
+      "size": 37377,
+      "sha256": "bcd8e71eb9382e80df10c0307d88193965625acb09060fadfd15c6dc54916dd2"
     },
     "systems.yaml": {
       "size": 1838,
@@ -34,8 +34,8 @@
       "sha256": "760bad4b536168d2a9d9a76ae972a99b753d49c912dc18803f80bb827c479d43"
     },
     "vendor/items.json": {
-      "size": 20508867,
-      "sha256": "0694b550c34dd4e049dca76905fe3e9f631b1f583b687ee2270adbe5700b22f6"
+      "size": 20543633,
+      "sha256": "cb52cd275e93b71b36c35bb3fac8df710cb32733d566d9988b8ff992df0bff01"
     },
     "vendor/manifest.json": {
       "size": 554,
@@ -98,8 +98,8 @@
       "sha256": "1fdce8cfd1c4667ba43bb198368b4bea0767cbc27a0f15e3c1d3f566002f31cf"
     },
     "vendor/wiki-pages.json": {
-      "size": 245830,
-      "sha256": "40a35fbc332d7bb486078272f0878a46e899b12271e588284e5825745621eb0f"
+      "size": 249966,
+      "sha256": "2fa8fcb11c26ee22f9f89c9939e9f7e24e97bebcaaa6bbebfa90580caae79fea"
     },
     "vendor/wiki-relics.json": {
       "size": 476618,

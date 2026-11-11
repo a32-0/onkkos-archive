@@ -86,9 +86,11 @@ export function itemPage(
     ? ITEM.mode
     : facts.quest
       ? ITEM.quest
-      : facts.group
-        ? ITEM.kicker[facts.group]
-        : "";
+      : facts.mod?.category
+        ? ITEM.modKicker(facts.mod.category)
+        : facts.group
+          ? ITEM.kicker[facts.group]
+          : "";
   const state = facts.state.kind;
   return {
     title: facts.mode
@@ -131,11 +133,11 @@ function modPage(mod: ModFactsView, facts: Pick<ItemFacts, "art" | "name">): Mod
     overview: {
       art: facts.art,
       name: facts.name,
-      capacity: mod.capacity,
+      capacity: mod.capacity === null ? null : MOD.capacity(mod.capacity, mod.aura),
       polarity: mod.polarityArt,
       ranks: mod.ranks,
       rank: MOD.rank(mod.ranks),
-      cost: MOD.cost(mod.capacity, mod.slot, mod.polarity),
+      rarity: mod.rarity,
     },
     title: MOD.whatItDoes,
     effects: mod.effects.map((effect) => ({

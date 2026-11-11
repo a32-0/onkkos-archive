@@ -27,21 +27,28 @@
 
 .frame {
   --hero-art-size: 200px;
+  --hero-line: var(--state-absent);
   position: relative;
-  box-sizing: border-box;
   width: var(--hero-art-size);
   height: var(--hero-art-size);
-  border: var(--border-1) solid var(--state-absent);
+}
+
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--border-2) solid var(--hero-line);
+  pointer-events: none;
 }
 
 .rank {
   composes: frame;
-  border-color: var(--state-rank);
+  --hero-line: var(--state-rank);
 }
 
 .mastered {
   composes: frame;
-  border-color: var(--state-mastered);
+  --hero-line: var(--state-mastered);
 }
 
 .absent {
@@ -54,7 +61,7 @@
 
 .prime {
   composes: frame;
-  border-color: var(--state-prime);
+  --hero-line: var(--state-prime);
 }
 
 .art {

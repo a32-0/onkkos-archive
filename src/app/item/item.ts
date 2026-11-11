@@ -229,6 +229,6 @@ async function modOf(name: string): Promise<ModFactsView | null> {
   return {
     ...entry.facts,
     polarityArt: file ? (art.get(file) ?? null) : null,
-    effects: lines(entry.maxStats ?? []).map((line) => effectOf(stats, line, MOD)),
+    effects: lines(entry.maxStats ?? []).map((line) => effectOf(stats, line, MOD, name)),
   };
 }

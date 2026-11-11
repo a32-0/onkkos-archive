@@ -14,11 +14,11 @@ const meta = {
   args: {
     art: null,
     name: "Point Strike",
-    capacity: 9,
+    capacity: "9",
     polarity: POLARITY,
     ranks: 5,
     rank: "Max rank 5",
-    cost: "costs 9, or 5 in a Madurai slot",
+    rarity: "common",
   },
   decorators: [
     (Story) => (
@@ -36,9 +36,35 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const TenRanks: Story = {
-  args: { capacity: 14, ranks: 10, rank: "Max rank 10", cost: "costs 14, or 7 in a Madurai slot" },
+  args: { capacity: "14", ranks: 10, rank: "Max rank 10", rarity: "uncommon" },
 };
 
 export const NoPolarity: Story = {
-  args: { polarity: null, cost: "costs 9" },
+  args: { polarity: null },
+};
+
+export const Rare: Story = {
+  args: { name: "Intensify", capacity: "11", rarity: "rare" },
+};
+
+export const Legendary: Story = {
+  args: {
+    name: "Primed Continuity",
+    capacity: "16",
+    ranks: 10,
+    rank: "Max rank 10",
+    rarity: "legendary",
+  },
+};
+
+export const NoRarity: Story = {
+  args: { rarity: null },
+};
+
+export const Aura: Story = {
+  args: { name: "Growing Power", capacity: "+7", rarity: "rare" },
+};
+
+export const FocusWay: Story = {
+  args: { name: "Affinity Spike", capacity: null, polarity: null, ranks: 3, rank: "Max rank 3" },
 };

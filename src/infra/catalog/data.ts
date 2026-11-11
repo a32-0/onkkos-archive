@@ -8,7 +8,7 @@ import { parse as parseYaml } from "yaml";
 import { buildCollectibleCatalog, buildGearRecipes } from "@/domain/catalog/collectibles";
 import type { CatalogData, Opening } from "@/domain/catalog/data";
 import { buildRelicCatalog } from "@/domain/catalog/relics";
-import { normalizeSources, withStores } from "@/domain/catalog/sources";
+import { normalizeSources, withFocusWays, withStores } from "@/domain/catalog/sources";
 import type { UpdateSources } from "@/domain/catalog/updates";
 import {
   arsenalCatalog,
@@ -34,8 +34,12 @@ export function catalogData(): CatalogData {
   const regions = loadRegionResources();
   const arsenal = arsenalCatalog();
   const relics = buildRelicCatalog(relicEntries(), rewards);
-  const curated = normalizeSources(
-    parseYaml(readFileSync(path.join(process.cwd(), "data", "sources.yaml"), "utf8")),
+  const raw = collectibleEntries();
+  const curated = withFocusWays(
+    normalizeSources(
+      parseYaml(readFileSync(path.join(process.cwd(), "data", "sources.yaml"), "utf8")),
+    ),
+    raw,
   );
   const wiki = withStores(wikiModules(), curated);
   cached = {
@@ -49,7 +53,7 @@ export function catalogData(): CatalogData {
     resources: resourceCatalog(),
     relics,
     collectibles: buildCollectibleCatalog({
-      raw: collectibleEntries(),
+      raw,
       arsenal,
       relics,
       regions,

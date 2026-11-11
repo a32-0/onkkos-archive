@@ -898,7 +898,9 @@ These are the axes in [`acquisition-scenarios.md`](acquisition-scenarios.md).
   Cards, which draws the badge under the name.
 - Type: state.
 - Rule: the state badge and the image's border carry the state, on the image,
-  as BR-17's table draws them. The Cards frame shows every catalogue's hero
+  as BR-17's table draws them. Every item's image frame is 2 px
+  (`--border-2`), drawn inside the 200 px art so the art keeps its full
+  size. The Cards frame shows every catalogue's hero
   for its kicker, name and art; its badge position is not followed.
 
 ## The mark
@@ -1354,9 +1356,9 @@ The other proposals went to the Archive page.
 - Type: state.
 - Rule: the place card's ring (BR-65), made square because the wiki's art and
   the player's glyph are square. The frame is 152 px, its edge 5 px, the art
-  120 px in the middle. The edge fills from the top centre, counter-clockwise
-  as the Star Chart's does, with the share of the way to the next rank in
-  `--state-rank`.
+  120 px in the middle in a 2 px `--state-absent` line drawn inside it. The
+  edge fills from the top centre, counter-clockwise as the Star Chart's
+  does, with the share of the way to the next rank in `--state-rank`.
 - Under it, the share in whole percent, never rounded up to 100, and
   "Progress to Rank {n}" on the goal. On Profile that line is the call to open
   the goal, and the figure says what it measures, "92% to Rank {n}" : "See the
@@ -1477,6 +1479,9 @@ The other proposals went to the Archive page.
   it: a drop, a vendor, Baro, a recipe or `sources.yaml`. That brings in Primed
   mods, Archon Shards, Legendary Core, companion weapons, companion and Zaw
   parts, and Railjack weapons, whose drops name their house ("Zetki Apoc Mk I").
+- The Drift mods come from the Halls of Ascension on Lua ("Pass the Cunning
+  Test", Lua), and each Focus node from its school's tree ("Unlock it in the
+  Naramon tree", Focus), the school read from the node's own path.
 - Captura scenes, Conservation Tags and Ship Segments stay out.
 
 ### BR-85 · In Step by step, only Blueprints and Components carry art
@@ -1552,16 +1557,30 @@ The other proposals went to the Archive page.
 
 - Frames [`1156:9487` Item>Overview — Mod — Point Strike](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9487),
   [`1156:9543` — Serration](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9543), [`1156:9599` — Intensify](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9599),
-  [`1156:9655` — Infected Clip](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9655) and [`1156:9711` — Berserker Fury](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9711).
+  [`1156:9655` — Infected Clip](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9655), [`1156:9711` — Berserker Fury](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1156-9711),
+  [`1239:7362` — Hunter Adrenaline](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1239-7362), [`1239:7457` — Acid Shells](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1239-7457),
+  [`1239:7552` — Aerial Ace](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1239-7552), [`1242:7907` — Aura — Growing Power](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-7907),
+  [`1242:8001` — Lua challenge — Cunning Drift](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-8001) and [`1242:8107` — Focus tree — Affinity Spike](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1242-8107).
 - Type: content.
 - Rule: a mod's Overview carries its card and what each of its stats does.
-- Under the name, `Mod overview`: the mod's art with what it costs at max
-  rank and its polarity's symbol over the corner, one bar per rank, and
-  under them, in words, "Max rank 5" (bold) and "costs 9, or 5 in a Madurai
-  slot".
+- The kicker names the mod's category, from the game's type: "Mod
+  Primary", "Mod Warframe", "Mod Melee". A type that is no category ("Mod
+  Set Mod", "Focus Way") leaves the kicker at "Mod".
+- Under the name, `Mod overview`: the mod's art, 200 px, in a 2 px frame
+  the colour of its rarity, with what it costs at max rank and its
+  polarity's symbol over the corner; under it one dot per rank and "Max rank
+  5", both in `--state-rank`. An aura adds capacity instead, so its corner
+  reads "+7". A Focus node has no capacity and no polarity, so its corner is
+  empty.
+- The rarity colours are the wiki's (Mod, Rarity): Common bronze `#dca156`,
+  Uncommon silver `#cccccc`, Rare gold `#ffd01c`, Legendary platinum
+  `#e6e6e6`, as `--rarity-common` to `--rarity-legendary`. The rarity comes
+  from `@wfcd/items`, which files Primed, Galvanized, Amalgam and the other
+  special mods under these four. A mod with no rarity takes the
+  `--state-absent` frame.
 - Before How to get, "What it does", one `Mod effect` per stat: the stat's
   family icon and what it does in plain words; the amount, tinted, and the
-  stat; an Example, two `Compare bars` (Without, With it in the accent) and
+  stat in the accent; an Example, two `Compare bars` (Without, With it in the accent) and
   the sentence they draw; a note, with the info icon, on what is good to
   know. A triggered stat says its condition at the end of the note ("Only
   after a melee kill, lasts 10 s, twice at most."), and the example counts
@@ -1574,8 +1593,13 @@ The other proposals went to the Archive page.
   that shares its name. The example works from a typical value of the stat and
   follows how the stat stacks: critical chance grows the weapon's own, an
   element adds to the damage, a faction mod multiplies all of it.
-- A stat with no curated copy shows its family icon and the game's own words,
-  with no amount, example or note. Curated copy is facts, never advice.
+- A curated stat always fills the whole `Mod effect`: what it does, the
+  amount, the example and the note. A stat with no curated copy shows its
+  family icon and the game's own words, with no amount, example or note.
+  Curated copy is facts, never advice.
+- A line the game writes in prose (an augment, an aura, a Focus node) fills
+  the same `Mod effect` from the mod's own curated entry: what it does, the
+  amount and what it counts, an example with its two bars, and the note.
 
 ### BR-88 · A met prerequisite stays, marked
 
