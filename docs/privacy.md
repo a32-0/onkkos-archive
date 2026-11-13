@@ -5,7 +5,7 @@ app reads, what it keeps, and what leaves your computer. It covers the app from
 the Microsoft Store, the app from GitHub Releases and the demo at
 `onkkos-archive.vercel.app`.
 
-Last changed on 31 October 2026.
+Last changed on 11 November 2026.
 
 ## What the app asks for
 
