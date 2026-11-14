@@ -1154,7 +1154,7 @@ opened the wiki while Nano Spores opened its own page.
 
 ## Feedback on a wait and a read
 
-### BR-88 · An Alert is only for the app's own states
+### BR-91 · An Alert is only for the app's own states
 
 - Component [`947:159` Alert](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=947-159),
   its words in [`956:6488` Alert — Examples](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=956-6488).
