@@ -36,7 +36,11 @@ export function StepRow({
         onClick={onToggle}
       >
         {art !== undefined &&
-          (art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />)}
+          (art ? (
+            <img className={styles.art} src={art} alt="" loading="lazy" />
+          ) : (
+            <span className={styles.art} />
+          ))}
         <span className={best ? styles.best : done ? styles.done : styles.title}>{title}</span>
         {status && <span className={styles.status}>{status}</span>}
         <span className={open ? styles.up : styles.down}>

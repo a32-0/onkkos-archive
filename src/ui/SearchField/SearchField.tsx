@@ -17,7 +17,7 @@ export function SearchField({
 }) {
   const expanded = suggestions !== undefined;
   return (
-    <div className={styles.search}>
+    <search className={styles.search}>
       <input
         {...rest}
         type="search"
@@ -30,6 +30,6 @@ export function SearchField({
         className={styles.input}
       />
       {suggestions}
-    </div>
+    </search>
   );
 }

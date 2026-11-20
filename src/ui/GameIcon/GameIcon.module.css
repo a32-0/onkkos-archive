@@ -9,3 +9,10 @@
   mask-repeat: no-repeat;
   mask-position: center;
 }
+
+@media (forced-colors: active) {
+  .icon {
+    forced-color-adjust: none;
+    background-color: CanvasText;
+  }
+}

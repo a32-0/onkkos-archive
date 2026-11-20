@@ -19,7 +19,7 @@ export function SectionHeader({
     <span className={styles.label}>
       {art !== undefined ? (
         art ? (
-          <img className={styles.art} src={art} alt="" />
+          <img className={styles.art} src={art} alt="" loading="lazy" />
         ) : (
           <span className={styles.art} />
         )

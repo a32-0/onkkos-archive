@@ -25,7 +25,11 @@ export function ComponentRow({
   return (
     <div className={locked ? styles.locked : styles.row}>
       <div className={styles.head}>
-        {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
+        {art ? (
+          <img className={styles.art} src={art} alt="" loading="lazy" />
+        ) : (
+          <span className={styles.art} />
+        )}
         <button
           type="button"
           className={styles.toggle}

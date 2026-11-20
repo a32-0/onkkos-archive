@@ -59,6 +59,25 @@ describe("the cookies (BR-46, spec 02, spec 04)", () => {
     expect(await readAccountId()).toBe(ORDIS);
   });
 
+  it("marks every cookie Secure on the demo site, served over HTTPS", async () => {
+    vi.stubEnv("WF_EDITION", "demo");
+    const { placeCookie, writeConnected, writeSince } = await import("@/infra/session");
+    await writeSince("2026-10");
+    await writeConnected();
+    expect(jar.get("wf_since")?.options).toMatchObject({ secure: true });
+    expect(jar.get("wf_toast")?.options).toMatchObject({ secure: true });
+    expect(placeCookie("origin", "Earth")).toMatchObject({ secure: true });
+    vi.unstubAllEnvs();
+  });
+
+  it("leaves Secure off in the app, which the desktop serves over plain localhost", async () => {
+    vi.stubEnv("WF_EDITION", "app");
+    const { writeSince } = await import("@/infra/session");
+    await writeSince("2026-10");
+    expect(jar.get("wf_since")?.options).not.toHaveProperty("secure");
+    vi.unstubAllEnvs();
+  });
+
   it("leaves a one-minute note the toast can clear after Connect (BR-70)", async () => {
     const { readConnected, writeConnected } = await import("@/infra/session");
     await writeConnected();

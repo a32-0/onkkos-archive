@@ -27,3 +27,11 @@
   background: var(--fill-strong);
   color: var(--ink-inverse);
 }
+
+@media (forced-colors: active) {
+  .on {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}

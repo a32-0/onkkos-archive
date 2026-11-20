@@ -11,6 +11,7 @@ import { Wait } from "@/screens/shell/Wait";
 import { Button } from "@/ui/Button/Button";
 import { SearchField } from "@/ui/SearchField/SearchField";
 import { nextActive, optionId, SuggestionList } from "@/ui/SuggestionList/SuggestionList";
+import { composing } from "@/ui/SuggestionList/keys";
 
 import styles from "./Goals.module.css";
 import type { SearchRow } from "./state";
@@ -69,6 +70,7 @@ export function GoalSearch() {
   };
 
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (composing(event)) return;
     if (event.key === "Escape") {
       setOpen(false);
       return;

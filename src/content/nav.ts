@@ -59,6 +59,8 @@ export const SHELL = {
   english: "English",
   spanish: "Español",
   onkko: "Onkko’s Phrases",
+  zoom: "Zoom",
+  zoomLevel: (level: number) => `${level}%`,
   tutorial: "Tutorial",
   reset: "Reset",
   about: "About",

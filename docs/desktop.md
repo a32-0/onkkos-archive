@@ -57,6 +57,7 @@ fixtures (`pnpm dev`); the app is for checking the app.
 | `src/server.ts`              | The kept port, the start's secret, the server started in a utility process, the wait until it answers, and the second server that checks a new data set                                                                                                                             |
 | `src/serve.ts`               | The utility process's entry: the guard, then Next's `server.js`                                                                                                                                                                                                                     |
 | `src/guard.ts`               | The check in front of Next: the secret and the `Host`, or `403`                                                                                                                                                                                                                     |
+| `src/zoom.ts`                | The three zoom levels, the step for each key, and the width each level needs                                                                                                                                                                                                        |
 | `src/window-bounds.ts`       | The size and place the window was left at, read back inside its limits and the screens                                                                                                                                                                                              |
 | `src/links.ts`               | Navigation held to the server's origin; the wiki, warframe.com and GitHub opened in the system's browser; **Restart** on Can't start relaunches the app                                                                                                                             |
 | `src/log.ts`                 | `app.log`: the server's output and the main process's warnings, each line stamped with its time                                                                                                                                                                                     |
@@ -77,6 +78,18 @@ in the app's folder, and the next start opens there. A saved size is held
 inside the same limits and the height of the screen it opens on, so a smaller
 screen or a broken file opens at 390 by 844 or the screen's height. Checked on
 2026-10-23: widened to 520 by 760, closed, and reopened at 520 by 760.
+
+The zoom (BR-92) is the main process's. `src/zoom.ts` holds the levels, the
+keys and the width each level needs; `main.ts` applies the level with
+`setZoomFactor` on every `dom-ready`, catches Ctrl +, Ctrl − and Ctrl 0 in
+`before-input-event`, and takes Profile's choice from the utility process's
+`parentPort` (`src/infra/app-zoom.ts`). It writes the level to `wf_zoom` before
+applying it, so the page reads the new level on the `resize` the zoom fires.
+`setMinimumSize` sets the outer window, not the content as the constructor's
+`minWidth` does with `useContentSize`, so the main process adds the frame's
+width to it. Checked on 2026-11-19 in the staged app: at 130% the content stays
+507 wide when asked for 400; the keys step 130, 115, 130, 100; the level is back
+after a restart.
 
 The saved place stands while the middle of the title bar falls inside some
 screen's work area, so a window left partly past a screen's edge opens there.
@@ -154,6 +167,12 @@ Checked on 2026-10-23, with the app running. The right secret on another
   the same rule.
 - `requestSingleInstanceLock`: opening the app again brings the open window
   forward instead of starting a second server.
+- Every page, in the app and on the demo site, is sent with
+  `frame-ancestors 'none'` and `X-Frame-Options: DENY` (no other site can
+  frame it), `X-Content-Type-Options: nosniff`, `Referrer-Policy:
+strict-origin-when-cross-origin` and a `Permissions-Policy` that turns off
+  the camera, the microphone and the location. They are set in
+  `next.config.ts`.
 
 Checked on 2026-10-23, with the app running: `require`, `process` and
 `module` are undefined in the window. A wiki link on Step by step reached the
@@ -166,7 +185,9 @@ sent to the browser. Close on **Desktop — Can't start** quit the app.
 The window's cookies are Chromium's, under the app's folder, kept per port
 (spec 13). The port lives in `port` under the app's folder, and the app takes
 another only when that one is taken. The cookies are flushed to disk before
-the app quits.
+the app quits. They carry no `Secure` flag here, since the window reads the
+server over plain `http://localhost`. On the demo site, served over HTTPS,
+every cookie is `Secure`.
 
 ## The data at each start
 

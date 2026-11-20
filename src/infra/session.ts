@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { normalizeAccountId } from "@/domain/profile/account-id";
 import { isOnkkoChoice, type OnkkoChoice } from "@/domain/profile/onkko";
 import { isYearMonth } from "@/domain/since";
+import { ZOOM_COOKIE, zoomFrom, type ZoomLevel } from "@/domain/zoom";
 import { isDemoSite } from "@/infra/edition";
 import { isDemoAccountId } from "@/infra/profile/fixture-source";
 
@@ -23,6 +24,9 @@ const PLACE_NAME = /^[^/]{1,80}$/;
 const KEPT = { httpOnly: true, sameSite: "lax", path: "/", maxAge: ONE_YEAR_SECONDS } as const;
 const ONE_MINUTE = { httpOnly: false, sameSite: "lax", path: "/", maxAge: 60 } as const;
 
+const secured = <T extends object>(options: T) =>
+  isDemoSite() ? { ...options, secure: true } : options;
+
 export interface LastPlace {
   system: string;
   place: string;
@@ -36,11 +40,11 @@ export async function readAccountId(): Promise<string | null> {
 }
 
 export async function writeAccountId(accountId: string): Promise<void> {
-  (await cookies()).set(ACCOUNT_COOKIE, accountId, KEPT);
+  (await cookies()).set(ACCOUNT_COOKIE, accountId, secured(KEPT));
 }
 
 export async function writeConnected(): Promise<void> {
-  (await cookies()).set(TOAST_COOKIE, CONNECTED, ONE_MINUTE);
+  (await cookies()).set(TOAST_COOKIE, CONNECTED, secured(ONE_MINUTE));
 }
 
 export async function readConnected(): Promise<boolean> {
@@ -61,7 +65,11 @@ export async function readOnkko(): Promise<OnkkoChoice | null> {
 }
 
 export async function writeOnkko(choice: OnkkoChoice): Promise<void> {
-  (await cookies()).set(ONKKO_COOKIE, choice, KEPT);
+  (await cookies()).set(ONKKO_COOKIE, choice, secured(KEPT));
+}
+
+export async function readZoom(): Promise<ZoomLevel> {
+  return zoomFrom((await cookies()).get(ZOOM_COOKIE)?.value);
 }
 
 export async function readTourSeen(): Promise<boolean> {
@@ -69,7 +77,7 @@ export async function readTourSeen(): Promise<boolean> {
 }
 
 export async function writeTourSeen(): Promise<void> {
-  (await cookies()).set(TOUR_COOKIE, TOUR_SEEN, KEPT);
+  (await cookies()).set(TOUR_COOKIE, TOUR_SEEN, secured(KEPT));
 }
 
 export async function forgetTour(): Promise<void> {
@@ -83,7 +91,7 @@ export async function readSince(): Promise<string | null> {
 
 export async function writeSince(yearMonth: string): Promise<void> {
   if (!isYearMonth(yearMonth)) return;
-  (await cookies()).set(SINCE_COOKIE, yearMonth, KEPT);
+  (await cookies()).set(SINCE_COOKIE, yearMonth, secured(KEPT));
 }
 
 function lastPlace(system: string | null, place: string | null): LastPlace | null {
@@ -100,5 +108,5 @@ export async function readPlace(): Promise<LastPlace | null> {
 
 export function placeCookie(system: string | null, place: string | null) {
   const last = lastPlace(system, place);
-  return last && { ...KEPT, name: PLACE_COOKIE, value: `${last.system}/${last.place}` };
+  return last && { ...secured(KEPT), name: PLACE_COOKIE, value: `${last.system}/${last.place}` };
 }

@@ -23,7 +23,12 @@ export function ResultList({
             {item.orb !== undefined ? (
               <Orb color={item.orb} size="s" />
             ) : item.art ? (
-              <img className={item.round ? styles.round : styles.art} src={item.art} alt="" />
+              <img
+                className={item.round ? styles.round : styles.art}
+                src={item.art}
+                alt=""
+                loading="lazy"
+              />
             ) : (
               <span className={item.round ? styles["blank-round"] : styles.blank} />
             )}

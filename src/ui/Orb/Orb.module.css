@@ -35,7 +35,7 @@
 }
 
 .l {
-  --orb-size: 168px;
+  --orb-size: 140px;
   composes: orb;
   width: var(--orb-size);
   height: var(--orb-size);

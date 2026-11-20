@@ -41,7 +41,12 @@ export function ItemScreen({ chrome, page }: { chrome: ShellChrome; page: ItemPa
     window.history.replaceState(null, "", page.hrefs[value]);
   };
   return (
-    <Shell chrome={chrome} tab={page.tab} tabs bar={{ title: page.title, back: page.back }}>
+    <Shell
+      chrome={chrome}
+      tab={page.tab}
+      tabs
+      bar={{ title: page.title, back: page.back, heading: false }}
+    >
       <div className={styles.page}>
         <div className={styles.head}>
           {chrome.voice.on && (

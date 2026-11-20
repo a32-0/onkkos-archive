@@ -20,6 +20,7 @@ import type { ShellChrome } from "./voice";
 export interface ShellBar {
   title: string;
   back: string;
+  heading?: boolean;
 }
 
 function tourSteps(tab: ShellTab | null): TourStep[] {
@@ -66,7 +67,15 @@ export function Shell({
             }
           />
         )}
-        {bar && <TopBar title={bar.title} back={bar.back} backLabel={SHELL.back} link={BackLink} />}
+        {bar && (
+          <TopBar
+            title={bar.title}
+            back={bar.back}
+            backLabel={SHELL.back}
+            heading={bar.heading}
+            link={BackLink}
+          />
+        )}
         <ReadToast player={player} />
       </div>
       <main className={styles.main}>{children}</main>

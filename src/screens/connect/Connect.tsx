@@ -1,4 +1,4 @@
-import { APP } from "@/content/app";
+import { APP, PAGE_TITLES } from "@/content/app";
 import { CONNECT } from "@/content/onboarding";
 import { LATEST_RELEASE, ROUTES, STORE_LISTING } from "@/routes";
 import { VOICE } from "@/content/voice";
@@ -31,6 +31,7 @@ export function Connect({
     <>
       <Header variant="wordmark" wordmark={APP.name} />
       <main className={styles.page}>
+        <h1 className={styles.title}>{PAGE_TITLES.connect}</h1>
         <div className={styles.intro}>
           <OnkkoLine place="top" line={VOICE.connect} />
           <p className={styles.lead}>{demoSite ? CONNECT.demoLead : CONNECT.lead}</p>

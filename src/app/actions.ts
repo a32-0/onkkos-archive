@@ -7,6 +7,8 @@ import { normalizeAccountId } from "@/domain/profile/account-id";
 import { isOnkkoChoice } from "@/domain/profile/onkko";
 import type { UpdateState } from "@/domain/types/update-state";
 import { askUpdates, restartToUpdate } from "@/infra/app-updates";
+import { tellZoom } from "@/infra/app-zoom";
+import { zoomFrom } from "@/domain/zoom";
 import { appVersion } from "@/infra/edition";
 import { DEMO_ACCOUNT_IDS } from "@/infra/profile/fixture-source";
 import { forgetStoredProfile, readProfile } from "@/infra/profile/read";
@@ -97,4 +99,8 @@ export async function checkUpdates(): Promise<UpdateState> {
 
 export async function restartNow(): Promise<void> {
   if (appVersion()) restartToUpdate();
+}
+
+export async function setZoom(form: FormData): Promise<void> {
+  if (appVersion()) tellZoom(zoomFrom(form.get("zoom")));
 }

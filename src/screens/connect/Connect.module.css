@@ -164,3 +164,7 @@
   flex-direction: column;
   gap: var(--space-4);
 }
+
+.title {
+  composes: visually-hidden from "../../ui/type.module.css";
+}

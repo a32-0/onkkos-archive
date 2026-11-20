@@ -50,3 +50,7 @@
   width: 100%;
   max-width: var(--onboarding-column);
 }
+
+.title {
+  display: contents;
+}

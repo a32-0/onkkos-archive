@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, useTransition } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore, useTransition } from "react";
 
 import { SHELL } from "@/content/nav";
 import { RANK } from "@/content/rank";
@@ -11,6 +11,7 @@ import { Alert } from "@/ui/Alert/Alert";
 import { Button } from "@/ui/Button/Button";
 import { ControlRow } from "@/ui/ControlRow/ControlRow";
 import { Divider } from "@/ui/Divider/Divider";
+import { LevelLine } from "@/ui/LevelLine/LevelLine";
 import { List, ListEntry } from "@/ui/List/List";
 import { RankOverview } from "@/ui/RankOverview/RankOverview";
 import { Segmented } from "@/ui/Segmented/Segmented";
@@ -18,12 +19,47 @@ import { Segmented } from "@/ui/Segmented/Segmented";
 import { Link } from "./Link";
 import styles from "./Profile.module.css";
 import { readCycle, staleLine, useLocalTime } from "./read-cycle";
+import { keptLevel, type ZoomSetting } from "./zoom";
 import { Shell } from "./Shell";
 import type { ShellTab } from "./tabs";
 import type { ShellChrome } from "./voice";
 import { FormWait } from "./Wait";
 
 const FOLLOW_MS = 3_000;
+
+function followResize(notify: () => void): () => void {
+  window.addEventListener("resize", notify);
+  return () => window.removeEventListener("resize", notify);
+}
+
+function ZoomRow({ zoom }: { zoom: ZoomSetting }) {
+  const level = useSyncExternalStore(
+    followResize,
+    () => keptLevel(document.cookie, zoom),
+    () => zoom.level,
+  );
+  const options = zoom.levels.map((each) => ({
+    value: String(each),
+    label: SHELL.zoomLevel(each),
+  }));
+  const [, start] = useTransition();
+  const choose = (value: string) => {
+    const form = new FormData();
+    form.set("zoom", value);
+    start(() => zoom.choose(form));
+  };
+  return (
+    <ControlRow label={SHELL.zoom}>
+      <LevelLine
+        label={SHELL.zoom}
+        name="zoom"
+        options={options}
+        chosen={String(level)}
+        onChoose={choose}
+      />
+    </ControlRow>
+  );
+}
 
 function updateLine(update: UpdateState): string {
   if (update.state === "current") return SHELL.upToDate;
@@ -41,6 +77,7 @@ export function Profile({
   restart,
   store = false,
   rank = null,
+  zoom = null,
 }: {
   chrome: ShellChrome;
   tab: ShellTab | null;
@@ -50,6 +87,7 @@ export function Profile({
   restart?: () => Promise<void>;
   store?: boolean;
   rank?: RankOverviewView | null;
+  zoom?: ZoomSetting | null;
 }) {
   const { player, voice, disconnect, setOnkko, resetTour } = chrome;
   const [onkko, setChoice] = useState(voice.on ? "on" : "off");
@@ -135,6 +173,11 @@ export function Profile({
                 />
               </ControlRow>
             </ListEntry>
+            {zoom && (
+              <ListEntry>
+                <ZoomRow zoom={zoom} />
+              </ListEntry>
+            )}
             {voice.met && (
               <ListEntry>
                 <ControlRow label={SHELL.onkko}>

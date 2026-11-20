@@ -6,20 +6,23 @@ export function TopBar({
   title,
   back,
   backLabel,
+  heading = true,
   link,
 }: {
   title: string;
   back: string;
   backLabel: string;
+  heading?: boolean;
   link?: LinkComponent;
 }) {
   const Link = link ?? "a";
+  const Title = heading ? "h1" : "p";
   return (
     <header className={styles.bar}>
       <Link href={back} className={styles.back} aria-label={backLabel}>
         <Icon name="chevron-backward" />
       </Link>
-      <h1 className={styles.title}>{title}</h1>
+      <Title className={styles.title}>{title}</Title>
     </header>
   );
 }

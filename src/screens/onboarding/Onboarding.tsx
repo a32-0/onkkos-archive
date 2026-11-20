@@ -18,7 +18,9 @@ export function Onboarding() {
       <div className={styles.scrim} />
       <div className={styles.frame}>
         <div className={styles.spacer} />
-        <Wordmark size="splash" label={APP.name} />
+        <h1 className={styles.title}>
+          <Wordmark size="splash" label={APP.name} />
+        </h1>
         <div className={styles.content}>
           <Button href={ROUTES.connect} link={Link}>
             {VOICE.onboardingEnter}

@@ -14,7 +14,14 @@
   color: var(--ink);
 }
 
+.tour:modal {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
 .tour::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
   background: none;
 }
 
@@ -88,4 +95,10 @@
   display: flex;
   width: var(--done-width);
   margin-left: auto;
+}
+
+@media (forced-colors: active) {
+  .spot {
+    border-color: Highlight;
+  }
 }

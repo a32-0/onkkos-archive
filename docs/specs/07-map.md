@@ -105,7 +105,7 @@ the top, as `662:5177` draws it:
    system, 11 px for an update's name); at the floor it takes a second
    line, and past that ends in an ellipsis; the card never grows.
 4. The **place** (`Place overview`, `656:211`), on the page and not on a
-   card: its sphere in its colour inside a ring that fills counter-clockwise from
+   card: its sphere in its colour, 140 px, inside a 172 px ring with a 5 px edge that fills counter-clockwise from
    the top with the share of its readable items mastered; under it "{n}/{m}" in
    the display face and "Items mastered". The place counts items alone: a place is
    mastered by its items, never by its nodes, which the game already shows. While

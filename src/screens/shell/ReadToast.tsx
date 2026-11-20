@@ -50,10 +50,11 @@ export function ReadToast({ player }: { player: ShellPlayer }) {
     return () => window.clearTimeout(leave);
   }, [shown, held]);
 
-  if (key === null || shown !== key) return null;
+  const line =
+    key === null || shown !== key ? null : connected ? SHELL.connected(player.name) : SHELL.updated;
   return (
     <Toast
-      line={connected ? SHELL.connected(player.name) : SHELL.updated}
+      line={line}
       onDismiss={() => {
         setHeld(false);
         setShown(null);

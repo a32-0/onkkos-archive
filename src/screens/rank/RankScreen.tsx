@@ -15,7 +15,12 @@ import type { RankPageView } from "./state";
 
 export function RankScreen({ chrome, page }: { chrome: ShellChrome; page: RankPageView }) {
   return (
-    <Shell chrome={chrome} tab="goal" tabs bar={{ title: GOALS.title, back: ROUTES.goals }}>
+    <Shell
+      chrome={chrome}
+      tab="goal"
+      tabs
+      bar={{ title: GOALS.title, back: ROUTES.goals, heading: false }}
+    >
       <div className={styles.page}>
         <div className={styles.head}>
           {chrome.voice.on && <OnkkoLine place="top" line={VOICE.itemOwned} />}

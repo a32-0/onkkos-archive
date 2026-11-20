@@ -21,6 +21,8 @@ How each part is built is [`desktop.md`](../desktop.md).
   words colour and `Body/Default`, "Onkko's Archive couldn't start." and
   "Please restart the app." on two lines, and **Restart**, a secondary
   button as wide as the column, which closes the app and opens it again.
+- [`1298:8454` Star Chart — Zoom 130%](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1298-8454): the map at 130%, the
+  window 507 px wide and as tall as before (BR-92).
 
 No other state needs a frame. The update notice is the operating system's own
 notification, and every data failure is silent by design (below).
@@ -94,6 +96,14 @@ GitHub beside it for Linux and for anyone who wants the installer.
   switched on from inside the app; `docs/desktop.md`). The system's own title
   bar; its title is the page's. A desktop layout was drawn and set aside the same
   day: the first version ships at a phone's width.
+- **Zoom** (BR-92): 100%, 115% or 130%, chosen on Profile's Zoom row or
+  with Ctrl + and Ctrl − (main keys or keypad), which step one level and stop
+  at the ends; Ctrl 0 goes back to 100%. The window is never narrower than
+  390 × the level (449 px at 115%, 507 px at 130%), so the page keeps its
+  390 px and its order and only grows; going back down leaves the width as
+  it is. The main process owns the level: it keeps it in `wf_zoom`, a cookie
+  only it writes, applies it on every page the window loads, and the Zoom
+  row's action reaches it as a message, as Updates does.
 - No menu bar and no developer tools in a packaged build.
 - One app at a time: opening it again brings the open window forward.
 - **Desktop — Starting** shows from the first frame, before the server
@@ -144,6 +154,7 @@ AppImage mounts read-only. The one exception is the updater's cache, which
 | -------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
 | The trimmed profile and every lock of spec 11                                                | One store file                | Each lock's own window, as spec 11                                                               |
 | `wf_account`, `wf_since`, `wf_place`, `wf_onkko`, `wf_tour`                                  | The window's cookies          | As on the demo                                                                                   |
+| `wf_zoom`, the zoom level (BR-92)                                                            | The window's cookies          | A year from its last change                                                                      |
 | Wiki prose and icons, Varzia, rotations                                                      | Next's fetch cache, in memory | A day at most, Varzia ten minutes; gone when the app closes                                      |
 | The current `data/`                                                                          | A data folder (below)         | Until a newer set replaces it                                                                    |
 | A downloaded version of the app                                                              | The updater's cache           | Until the first start after it installs; the installer itself until the next update or uninstall |
@@ -278,7 +289,10 @@ steps are in [`desktop.md`](../desktop.md#cutting-a-version).
    **Restart now** opens the app again on the new version. The same tag
    builds the Store's package; installed from it, the app asks GitHub for no
    update, and Profile's Updates row reads "Through the Microsoft Store".
-7. Development still reads fixtures by default; only the packaged app reads
+7. Ctrl +, Ctrl − and Ctrl 0 move the zoom through 100%, 115% and 130%,
+   Profile's Zoom row follows, and the window widens so the page keeps
+   390 px; the level is the same after a restart.
+8. Development still reads fixtures by default; only the packaged app reads
    live without being told.
-8. `pnpm check` passes, with tests for the store file, the request guard and
+9. `pnpm check` passes, with tests for the store file, the request guard and
    the manifest.

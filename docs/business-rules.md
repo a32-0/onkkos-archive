@@ -1367,8 +1367,8 @@ The other proposals went to the Archive page.
   [`1009:7612` — Highest rank](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1009-7612).
 - Type: state.
 - Rule: the place card's ring (BR-65), made square because the wiki's art and
-  the player's glyph are square. The frame is 200 px, its edge 5 px, the art
-  168 px in the middle in a 2 px `--state-absent` line drawn inside it. The
+  the player's glyph are square. The frame is 172 px, its edge 5 px, the art
+  140 px in the middle with no line of its own: the edge is the only frame. The
   edge fills from the top centre, counter-clockwise as the Star Chart's
   does, with the share of the way to the next rank in `--state-rank`.
 - Under it, the share in whole percent, never rounded up to 100, and
@@ -1648,3 +1648,24 @@ The other proposals went to the Archive page.
   the item page, after the plan is drafted.
 - `tests/steps.test.ts` holds the rule for every quest and mode of the spine,
   with nothing confirmed and with every quest confirmed.
+
+### BR-92 · The app zooms in three levels and keeps its order
+
+- Component [`1298:498` Level line](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1298-498); frames
+  [`662:4642` Profile](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=662-4642) and its variants, and
+  [`1298:8454` Star Chart — Zoom 130%](https://www.figma.com/design/unteOMr3YYUIyBE6XF0AD6/Warframe?node-id=1298-8454).
+- Type: behaviour.
+- Rule: in the app alone, the player can make everything larger: 100%,
+  115% or 130%. Text, icons, art and space grow together, so a screen reads
+  as its frame, only larger. The window is never narrower than 390 px times
+  the level, so the page keeps its 390 px; 130% is the last level that fits
+  BR-39's 600 px with room to spare.
+- Profile's Settings carry a **Zoom** row under Language: a `Level line`, a
+  line with one node per level and the level under each; the chosen node is
+  filled in `--fill-strong` and its level reads in Label. It is a radio
+  group, so arrow keys move it, and it applies at once, as Onkko's Phrases
+  does.
+- Ctrl + and Ctrl − step one level and stop at the ends; Ctrl 0 goes back to
+  100%. The row and the keys change the same level, which stays for the next
+  start (spec 13, The window).
+- The demo site has no Zoom row: the browser zooms on its own.

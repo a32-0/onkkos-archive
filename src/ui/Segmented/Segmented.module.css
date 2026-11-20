@@ -50,3 +50,11 @@
   background-color: var(--fill-strong);
   color: var(--ink-inverse);
 }
+
+@media (forced-colors: active) {
+  .chosen {
+    forced-color-adjust: none;
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}

@@ -116,7 +116,13 @@
   gap: var(--space-6);
 }
 
+.confirm:modal {
+  overscroll-behavior: contain;
+}
+
 .confirm::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
   background: var(--scrim);
 }
 

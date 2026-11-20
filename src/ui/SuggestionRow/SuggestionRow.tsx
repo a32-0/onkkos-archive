@@ -32,7 +32,7 @@ export function SuggestionRow({
       {orb !== undefined ? (
         <Orb color={orb} size="s" />
       ) : art ? (
-        <img className={round ? styles.round : styles.art} src={art} alt="" />
+        <img className={round ? styles.round : styles.art} src={art} alt="" loading="lazy" />
       ) : (
         <span className={round ? styles["blank-round"] : styles.blank} />
       )}

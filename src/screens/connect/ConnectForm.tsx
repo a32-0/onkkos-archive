@@ -13,6 +13,8 @@ import styles from "./Connect.module.css";
 import type { ConnectAction, ConnectState } from "./state";
 
 const FIELD = "account-id";
+const HINT = `${FIELD}-hint`;
+const ERROR = `${FIELD}-error`;
 
 export function ConnectForm({
   connect,
@@ -33,7 +35,9 @@ export function ConnectForm({
           <label htmlFor={FIELD} className={styles.label}>
             {CONNECT.fieldLabel}
           </label>
-          <p className={styles.hint}>{CONNECT.readsNote}</p>
+          <p id={HINT} className={styles.hint}>
+            {CONNECT.readsNote}
+          </p>
           <Field
             id={FIELD}
             name="accountId"
@@ -42,8 +46,13 @@ export function ConnectForm({
             autoComplete="off"
             spellCheck={false}
             invalid={message !== null}
+            aria-describedby={message ? `${HINT} ${ERROR}` : HINT}
           />
-          {message && <Alert tone="error" message={message} />}
+          {message && (
+            <div id={ERROR}>
+              <Alert tone="error" message={message} />
+            </div>
+          )}
         </div>
         <Button type="submit" loading={pending}>
           {CONNECT.submit}

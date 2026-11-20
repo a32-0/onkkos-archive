@@ -25,7 +25,11 @@ export function ItemHero({
       </div>
       {!bare && (
         <div className={styles[state.kind]}>
-          {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.art} />}
+          {art ? (
+            <img className={styles.art} src={art} alt="" fetchPriority="high" />
+          ) : (
+            <span className={styles.art} />
+          )}
           {"label" in state && (
             <span className={styles.badge}>
               <Badge kind={state.kind} label={state.label} />

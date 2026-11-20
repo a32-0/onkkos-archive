@@ -3,19 +3,10 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 
 import type { UpdateState } from "@/domain/types/update-state";
-
-interface ParentPort {
-  postMessage(message: unknown): void;
-  on(event: "message", listener: (event: { data: unknown }) => void): void;
-  off(event: "message", listener: (event: { data: unknown }) => void): void;
-}
+import { parentPort } from "@/infra/app-port";
 
 const ASK_MS = 60_000;
 const UNREACHABLE: UpdateState = { state: "unreachable" };
-
-function parentPort(): ParentPort | null {
-  return (process as { parentPort?: ParentPort }).parentPort ?? null;
-}
 
 function isState(value: unknown): value is UpdateState {
   const given = value as { state?: unknown; version?: unknown } | null;

@@ -5,6 +5,7 @@ import { expect, fn, userEvent, within } from "storybook/test";
 import { SearchField } from "../SearchField/SearchField";
 import { SAMPLE_ART, SAMPLE_ORB } from "../stories/art";
 import { nextActive, optionId, type Suggestion, SuggestionList } from "./SuggestionList";
+import { composing } from "./keys";
 
 const ITEMS: readonly Suggestion[] = [
   { value: "ember", name: "Ember", catalogue: "Warframe", art: SAMPLE_ART[4] },
@@ -29,6 +30,7 @@ function Search({
   const [active, setActive] = useState(start);
   const [open, setOpen] = useState(true);
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (composing(event)) return;
     if (event.key === "Escape") {
       setOpen(false);
       return;

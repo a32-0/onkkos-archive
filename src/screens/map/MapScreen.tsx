@@ -1,3 +1,4 @@
+import { PAGE_TITLES } from "@/content/app";
 import { MAP } from "@/content/system";
 import { VOICE } from "@/content/voice";
 import { mapCategoryRoute, placesRoute, updatesRoute } from "@/routes";
@@ -31,6 +32,7 @@ export function MapScreen({
     <Shell chrome={chrome} tab="navigation" tabs>
       <div className={styles.page}>
         <div className={styles.main}>
+          <h1 className={styles.heading}>{PAGE_TITLES.map}</h1>
           {voice && <OnkkoLine place="top" line={VOICE.place} />}
           <div className={styles.cards}>
             <FeaturedCard {...card} href={updatesRoute("navigation", null)} link={Link} />

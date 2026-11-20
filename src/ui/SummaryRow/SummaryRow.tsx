@@ -31,7 +31,7 @@ export function SummaryRow({
           <Orb color={orb} size="m" />
         </span>
       ) : art ? (
-        <img className={styles.art} src={art} alt="" />
+        <img className={styles.art} src={art} alt="" loading="lazy" />
       ) : (
         <span className={styles.slot} />
       )}

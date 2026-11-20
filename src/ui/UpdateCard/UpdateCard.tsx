@@ -31,7 +31,11 @@ export function UpdateCard({
       : null;
   const body: ReactNode = (
     <>
-      {art ? <img className={styles.art} src={art} alt="" /> : <span className={styles.blank} />}
+      {art ? (
+        <img className={styles.art} src={art} alt="" loading="lazy" />
+      ) : (
+        <span className={styles.blank} />
+      )}
       <span className={styles.over}>
         <span className={mark ? styles[mark.kind] : styles.plain}>
           {mark && <Badge kind={mark.kind} label={mark.label} />}

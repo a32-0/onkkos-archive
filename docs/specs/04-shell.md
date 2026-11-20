@@ -125,7 +125,8 @@ replaced the player menu, a full-screen sheet:
    "The highest rank there is", opens nothing and has no empty state. A profile with no `XPInfo` keeps the avatar square, the name
    and the rank as `662:4642` draws them.
 2. **Settings**: a divider, then the settings as a grouped list, one row
-   each: **Language** (English, Español), **Onkko's Phrases** (On, Off) and
+   each: **Language** (English, Español), **Zoom** (100%, 115%, 130%; the app
+   alone, BR-92), **Onkko's Phrases** (On, Off) and
    **Tutorial** (Reset, a button 200 px wide). Onkko's Phrases shows once the
    player has reached Cetus (BR-64). Language shows disabled; it waits for a later
    version. Tutorial's Reset shows the first tour again: it forgets `wf_tour` and
